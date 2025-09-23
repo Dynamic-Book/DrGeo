@@ -1,6 +1,6 @@
-'From Cuis7.5 [latest update: #7452] on 30 August 2025 at 11:42:36 am'!
+'From Cuis7.5 [latest update: #7605] on 23 September 2025 at 6:13:20 pm'!
 'Description '!
-!provides: 'DrGeo' 1 778!
+!provides: 'DrGeo' 1 779!
 !requires: 'Gettext' 1 17 nil!
 !requires: 'SVG' 1 16 nil!
 !requires: 'YAXO' 1 19 nil!
@@ -2040,6 +2040,16 @@ DrGUIControlsManager subclass: #DrGUIMinimalControlsManager
 DrGUIMinimalControlsManager class
 	instanceVariableNames: ''!
 
+!classDefinition: #DrGCommandStack category: #'DrGeo-Presenter-Command'!
+ReadWriteStream subclass: #DrGCommandStack
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'DrGeo-Presenter-Command'!
+!classDefinition: 'DrGCommandStack class' category: #'DrGeo-Presenter-Command'!
+DrGCommandStack class
+	instanceVariableNames: ''!
+
 !classDefinition: #DrGeoDomain category: #'DrGeo-Model'!
 ActiveModel subclass: #DrGeoDomain
 	instanceVariableNames: 'factory cmdManager pointNameIndex'
@@ -2438,16 +2448,6 @@ DrGMathItemBuilder subclass: #DrGValueBuilder
 	category: 'DrGeo-Presenter-Builder'!
 !classDefinition: 'DrGValueBuilder class' category: #'DrGeo-Presenter-Builder'!
 DrGValueBuilder class
-	instanceVariableNames: ''!
-
-!classDefinition: #DrGCommandStack category: #'DrGeo-Presenter-Command'!
-ReadWriteStream subclass: #DrGCommandStack
-	instanceVariableNames: ''
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'DrGeo-Presenter-Command'!
-!classDefinition: 'DrGCommandStack class' category: #'DrGeo-Presenter-Command'!
-DrGCommandStack class
 	instanceVariableNames: ''!
 
 !classDefinition: #DrGLocusSample category: #'DrGeo-Model-Item'!
@@ -3555,26 +3555,26 @@ indexOf: anItem in: aPool
 		aPool findFirst: [ :each | each hash = anItem hash  and: [ each = anItem ] ] ]
 			"double check when hash is equal (can be a collision)"! !
 
-!DrGFactory methodsFor: 'accessing'!
+!DrGFactory methodsFor: 'accessing' stamp: ''!
 last
 	^last! !
 
-!DrGFactory methodsFor: 'accessing'!
+!DrGFactory methodsFor: 'accessing' stamp: ''!
 last: item 
 	"push item as the last instantiated item in the pool, purelly artificial however
 	as the items order in the pool is not changed"
 	last := item! !
 
-!DrGFactory methodsFor: 'accessing'!
+!DrGFactory methodsFor: 'accessing' stamp: ''!
 pool
 	^pool ! !
 
-!DrGFactory methodsFor: 'accessing'!
+!DrGFactory methodsFor: 'accessing' stamp: ''!
 subPool: item
 "The items comming after me in the pool"
 	^ self subPool: item from: pool! !
 
-!DrGFactory methodsFor: 'accessing'!
+!DrGFactory methodsFor: 'accessing' stamp: ''!
 subPool: item from: aPool
 "The items comming after me in aPool"
 	^ aPool allButFirst: (self indexOf: item in: aPool)! !
@@ -3598,13 +3598,13 @@ removeAt: index
 	last = item ifTrue: [last := nil].
 	pool removeAt: index! !
 
-!DrGFactory methodsFor: 'enumerating'!
+!DrGFactory methodsFor: 'enumerating' stamp: ''!
 from: item do: aBlock
 	(self indexOf: item) 
 		to: pool size 
 		do: [:index | aBlock value: (pool at: index)]! !
 
-!DrGFactory methodsFor: 'initialize-release'!
+!DrGFactory methodsFor: 'initialize-release' stamp: ''!
 initialize
 	super initialize.
 	pool := OrderedCollection new.
@@ -3614,7 +3614,7 @@ initialize
 release
 	pool do: [ :item | item release].! !
 
-!DrGFactory methodsFor: 'updating'!
+!DrGFactory methodsFor: 'updating' stamp: ''!
 pushAsLastWhenInPool: anItem
 	"if this item has a twin in the pool, push as last this last one and
 return true, otherwise return false"
@@ -3625,44 +3625,44 @@ return true, otherwise return false"
 			true ]
 		ifNil: [ false ]! !
 
-!DrGFactory methodsFor: 'testing'!
+!DrGFactory methodsFor: 'testing' stamp: ''!
 is: item1 before: item2
 	^ (self indexOf: item1) < (self indexOf: item2)! !
 
-!DrGFactory methodsFor: 'testing'!
+!DrGFactory methodsFor: 'testing' stamp: ''!
 isAnyInPool: itemList 
 	^itemList anySatisfy: [:item | (self findInPool: item) isNil not].! !
 
-!DrGFactory methodsFor: 'testing'!
+!DrGFactory methodsFor: 'testing' stamp: ''!
 isInPool: item
 	^ (self findInPool: item) isNil not! !
 
-!DrGMacroFactory methodsFor: 'accessing'!
+!DrGMacroFactory methodsFor: 'accessing' stamp: ''!
 addUnique: aMacro
 	^ (self findInPool: aMacro) 
 		ifNil: [self add: aMacro].! !
 
-!DrGMacroFactory methodsFor: 'accessing'!
+!DrGMacroFactory methodsFor: 'accessing' stamp: ''!
 titles
 	^ self pool collect: [:m | m title]! !
 
-!DrGMacroFactory class methodsFor: 'as yet unclassified'!
+!DrGMacroFactory class methodsFor: 'as yet unclassified' stamp: ''!
 purge
 	"self purge"
 	self new purge! !
 
-!DrGMacroFactory class methodsFor: 'instance creation'!
+!DrGMacroFactory class methodsFor: 'instance creation' stamp: ''!
 new
 	^ uniqueInstance ifNil: [uniqueInstance := super new]! !
 
-!DrGMathItemFactory methodsFor: 'testing'!
+!DrGMathItemFactory methodsFor: 'testing' stamp: ''!
 is: item parentWithTest: testSelector
 	self from: item do: [:aChild |
 		((aChild perform: testSelector)
 			and: [aChild parents includes: item]) ifTrue: [^ true]].
 	^ false! !
 
-!DrGMathItemFactory methodsFor: 'accessing'!
+!DrGMathItemFactory methodsFor: 'accessing' stamp: ''!
 childrenOf: mathItemIndex
 	|children directChildren|
 	directChildren := OrderedCollection withAll: (self directChildrenOf: mathItemIndex).
@@ -3670,7 +3670,7 @@ childrenOf: mathItemIndex
 	directChildren do: [:childIndex | children addAll: (self childrenOf: childIndex)].
 	^ children! !
 
-!DrGMathItemFactory methodsFor: 'accessing'!
+!DrGMathItemFactory methodsFor: 'accessing' stamp: ''!
 dependentMathItem: theMathItem 
 	"Return a collection of the dependents items of theMathItem, 
 	Caution: it is not following the creation order, further traitment is need for that"
@@ -3687,7 +3687,7 @@ dependentMathItem: dependentItem in: subPool
 				(self dependentMathItem: aMathItem in: (self subPool: aMathItem from: subPool))]].
 	^ dependents! !
 
-!DrGMathItemFactory methodsFor: 'accessing'!
+!DrGMathItemFactory methodsFor: 'accessing' stamp: ''!
 directChildrenOf: parent
 "return the collection of my direct child"
 	^ pool select: [:item| | parents|
@@ -3695,13 +3695,13 @@ directChildrenOf: parent
 		parents notNil and: [(parents anySatisfy: [:aParent | aParent = parent])]].
 ! !
 
-!DrGMathItemFactory methodsFor: 'accessing'!
+!DrGMathItemFactory methodsFor: 'accessing' stamp: ''!
 findInPoolById: anID
 "Try to find an item given its unique ID, it used to load Dr. Geo 1.1 file"
 	^ pool detect: [:each | each id = anID ]
 	! !
 
-!DrGMathItemFactory methodsFor: 'accessing'!
+!DrGMathItemFactory methodsFor: 'accessing' stamp: ''!
 moveableParentsOf: theMathItem in: parents
 	"Return a collection of the parents items of theMathItem, sensidble to reverse dragging
 	Caution: we may have duplicated item"
@@ -3715,16 +3715,16 @@ moveableParentsOf: theMathItem in: parents
 			self moveableParentsOf: aParent in: parents]].
 ! !
 
-!DrGMathItemFactory methodsFor: 'accessing'!
+!DrGMathItemFactory methodsFor: 'accessing' stamp: ''!
 ordered: aMathItemCollection
 "sort the the math item according to the pool order"
 	^ pool select: [:item | aMathItemCollection includes: item]! !
 
-!DrGMathItemFactory methodsFor: 'accessing'!
+!DrGMathItemFactory methodsFor: 'accessing' stamp: ''!
 orderedDependentMathItem: aMathItem
 	^self ordered: (self dependentMathItem: aMathItem )! !
 
-!DrGMathItemFactory methodsFor: 'updating'!
+!DrGMathItemFactory methodsFor: 'updating' stamp: ''!
 rehash
 	pool do: [:mathIten | mathIten rehash]! !
 
@@ -3734,13 +3734,13 @@ updateAllMathItems
 	pool
 		do: [:aMathItem | aMathItem update]! !
 
-!DrGMathItemFactory methodsFor: 'updating'!
+!DrGMathItemFactory methodsFor: 'updating' stamp: ''!
 updateAllMathItemsButLocus
 	"stupidly update all math item but the loci ones"
 	pool
 		do: [:aMathItem | aMathItem isLocusItem not ifTrue: [ aMathItem update]]! !
 
-!DrGMathItemFactory methodsFor: 'updating'!
+!DrGMathItemFactory methodsFor: 'updating' stamp: ''!
 updateAllMathItemsButLocusFrom: startIndex to: endIndex 
 	"stupidly update math item in the given range"
 	pool
@@ -4019,7 +4019,7 @@ styleOf: element StrokeWidth: strokeWidth color: strokeColor strokeDashArray: sd
 		ifNil: [element attributeAt: #fill put: 'none']
 ! !
 
-!DrGeoCommandLineHandler methodsFor: 'as yet unclassified'!
+!DrGeoCommandLineHandler methodsFor: 'as yet unclassified' stamp: ''!
 activate
 	self activateHelp ifTrue: [ ^ self].
 	(self hasOption: 'sketch') ifTrue: [ ^ self loadSketch: (self optionAt: 'sketch')].
@@ -4027,7 +4027,7 @@ activate
 	self printHelp.
 	self exitFailure: 'Wrong arguments'.! !
 
-!DrGeoCommandLineHandler methodsFor: 'as yet unclassified'!
+!DrGeoCommandLineHandler methodsFor: 'as yet unclassified' stamp: ''!
 checkForFile: aString
 	aString asFileReference exists
 		ifFalse: [ ^ self exitFailure: aString, ' does not exist!!' ]! !
@@ -4048,11 +4048,11 @@ loadSketch: aString
 	self checkForFile: utfString.
 	DrGeo fileFullscreen: utfString"! !
 
-!DrGeoCommandLineHandler class methodsFor: 'accessing'!
+!DrGeoCommandLineHandler class methodsFor: 'accessing' stamp: ''!
 commandName
 	^ 'drgeo'! !
 
-!DrGeoCommandLineHandler class methodsFor: 'accessing'!
+!DrGeoCommandLineHandler class methodsFor: 'accessing' stamp: ''!
 description
 	^ 'Command line for Dr. Geo'! !
 
@@ -4068,7 +4068,7 @@ domain
 drawable
 	^ presenter drawable! !
 
-!DrGeoXml methodsFor: 'accessing'!
+!DrGeoXml methodsFor: 'accessing' stamp: ''!
 factory
 	^ self domain factory! !
 
@@ -4104,7 +4104,7 @@ setScaleTo: aNumber
 view
 	^ presenter view! !
 
-!DrGeoXml methodsFor: 'parse item'!
+!DrGeoXml methodsFor: 'parse item' stamp: ''!
 parentsById: aNode 
 	"return a collection of the item parent given theirs id in the attribute
 	elements <parent id=xxx>"
@@ -4114,163 +4114,163 @@ parentsById: aNode
 				add: (self factory findInPoolById: (each attributeAt: 'ref') asSymbol)]].
 	^collection ! !
 
-!DrGeoXml methodsFor: 'parse item'!
+!DrGeoXml methodsFor: 'parse item' stamp: ''!
 parseAngle3pts: aNode
 	^ self parseItem: aNode with: DrGAngleGeometricBuilder.! !
 
-!DrGeoXml methodsFor: 'parse item'!
+!DrGeoXml methodsFor: 'parse item' stamp: ''!
 parseAngle3ptsOriented: aNode
 	^ self parseItem: aNode with: DrGAngleOrientedBuilder.! !
 
-!DrGeoXml methodsFor: 'parse item'!
+!DrGeoXml methodsFor: 'parse item' stamp: ''!
 parseAngleVectors: aNode
 	^ self parseItem: aNode with: DrGAngleOrientedBuilder.
 ! !
 
-!DrGeoXml methodsFor: 'parse item'!
+!DrGeoXml methodsFor: 'parse item' stamp: ''!
 parseArc3pts: aNode
 	^ self parseItem: aNode with: DrGArcBuilder.! !
 
-!DrGeoXml methodsFor: 'parse item'!
+!DrGeoXml methodsFor: 'parse item' stamp: ''!
 parseArcCenterAngle: aNode
 	^ self parseItem: aNode with: DrGArcCenterBuilder.! !
 
-!DrGeoXml methodsFor: 'parse item'!
+!DrGeoXml methodsFor: 'parse item' stamp: ''!
 parseArcCircle3pts: aNode
 "Dr.Geo 1.1 compatibility"
 	^ self parseArc3pts: aNode! !
 
-!DrGeoXml methodsFor: 'parse item'!
+!DrGeoXml methodsFor: 'parse item' stamp: ''!
 parseArcCircleReflexion: aNode
 "Dr.Geo 1.1 compatibility"
 	^ self parseArcReflexion: aNode ! !
 
-!DrGeoXml methodsFor: 'parse item'!
+!DrGeoXml methodsFor: 'parse item' stamp: ''!
 parseArcCircleRotation: aNode
 "Dr.Geo 1.1 compatibility"
 	^ self parseArcRotation: aNode! !
 
-!DrGeoXml methodsFor: 'parse item'!
+!DrGeoXml methodsFor: 'parse item' stamp: ''!
 parseArcCircleScale: aNode 
 "Dr.Geo 1.1 compatibility"
 	^self parseArcHomothety: aNode ! !
 
-!DrGeoXml methodsFor: 'parse item'!
+!DrGeoXml methodsFor: 'parse item' stamp: ''!
 parseArcCircleSymmetry: aNode 
 "Dr.Geo 1.1 compatibility"
 	^ self parseArcSymmetry: aNode! !
 
-!DrGeoXml methodsFor: 'parse item'!
+!DrGeoXml methodsFor: 'parse item' stamp: ''!
 parseArcCircleTranslation: aNode
 "Dr.Geo 1.1 compatibility"
 	^self parseArcTranslation: aNode ! !
 
-!DrGeoXml methodsFor: 'parse item'!
+!DrGeoXml methodsFor: 'parse item' stamp: ''!
 parseArcHomothety: aNode 
 	^self parseHomothety: aNode ! !
 
-!DrGeoXml methodsFor: 'parse item'!
+!DrGeoXml methodsFor: 'parse item' stamp: ''!
 parseArcReflexion: aNode
 	^ self parseReflexion: aNode ! !
 
-!DrGeoXml methodsFor: 'parse item'!
+!DrGeoXml methodsFor: 'parse item' stamp: ''!
 parseArcRotation: aNode
 	^ self parseRotation: aNode! !
 
-!DrGeoXml methodsFor: 'parse item'!
+!DrGeoXml methodsFor: 'parse item' stamp: ''!
 parseArcSymmetry: aNode 
 	^ self parseSymmetry: aNode! !
 
-!DrGeoXml methodsFor: 'parse item'!
+!DrGeoXml methodsFor: 'parse item' stamp: ''!
 parseArcTranslation: aNode
 	^self parseTranslation: aNode ! !
 
-!DrGeoXml methodsFor: 'parse item'!
+!DrGeoXml methodsFor: 'parse item' stamp: ''!
 parseBitmapFree: aNode
 "We do not have a builder yet for free bitmap"
 	^ self parseItem: aNode with: DrGBitmapBuilder 
 		! !
 
-!DrGeoXml methodsFor: 'parse item'!
+!DrGeoXml methodsFor: 'parse item' stamp: ''!
 parseCircle2pts: aNode
 	^ self parseItem: aNode with: DrGCircleBuilder.! !
 
-!DrGeoXml methodsFor: 'parse item'!
+!DrGeoXml methodsFor: 'parse item' stamp: ''!
 parseCircleHomothety: aNode
 	^self parseHomothety: aNode ! !
 
-!DrGeoXml methodsFor: 'parse item'!
+!DrGeoXml methodsFor: 'parse item' stamp: ''!
 parseCircleRadius: aNode
 	^ self parseItem: aNode with: DrGCircleBuilder.! !
 
-!DrGeoXml methodsFor: 'parse item'!
+!DrGeoXml methodsFor: 'parse item' stamp: ''!
 parseCircleReflexion: aNode
 	^ self parseReflexion: aNode! !
 
-!DrGeoXml methodsFor: 'parse item'!
+!DrGeoXml methodsFor: 'parse item' stamp: ''!
 parseCircleRotation: aNode
 	^ self parseRotation: aNode! !
 
-!DrGeoXml methodsFor: 'parse item'!
+!DrGeoXml methodsFor: 'parse item' stamp: ''!
 parseCircleScale: aNode
 "Dr.Geo 1.1 compatibility"
 	^self parseCircleHomothety: aNode ! !
 
-!DrGeoXml methodsFor: 'parse item'!
+!DrGeoXml methodsFor: 'parse item' stamp: ''!
 parseCircleSegment: aNode
 	^ self parseItem: aNode with: DrGCircleBuilder.! !
 
-!DrGeoXml methodsFor: 'parse item'!
+!DrGeoXml methodsFor: 'parse item' stamp: ''!
 parseCircleSymmetry: aNode 
 	^ self parseSymmetry:  aNode! !
 
-!DrGeoXml methodsFor: 'parse item'!
+!DrGeoXml methodsFor: 'parse item' stamp: ''!
 parseCircleTranslation: aNode
 	^ self parseTranslation: aNode ! !
 
-!DrGeoXml methodsFor: 'parse item'!
+!DrGeoXml methodsFor: 'parse item' stamp: ''!
 parseCoordinates: aNode
 	^ self parseItem: aNode with: DrGCoordinatesBuilder.! !
 
-!DrGeoXml methodsFor: 'parse item'!
+!DrGeoXml methodsFor: 'parse item' stamp: ''!
 parseEquationCircle: aNode
 	^ self parseCoordinates: aNode ! !
 
-!DrGeoXml methodsFor: 'parse item'!
+!DrGeoXml methodsFor: 'parse item' stamp: ''!
 parseEquationLine: aNode
 	^ self parseCoordinates: aNode ! !
 
-!DrGeoXml methodsFor: 'parse item'!
+!DrGeoXml methodsFor: 'parse item' stamp: ''!
 parseHalfLine2pts: aNode
 "Dr.Geo 1.1 compatibility"
 	^self parseRay2pts: aNode! !
 
-!DrGeoXml methodsFor: 'parse item'!
+!DrGeoXml methodsFor: 'parse item' stamp: ''!
 parseHalfLineReflexion: aNode
 "Dr.Geo 1.1 compatibility"
 	^self parseRayReflexion: aNode! !
 
-!DrGeoXml methodsFor: 'parse item'!
+!DrGeoXml methodsFor: 'parse item' stamp: ''!
 parseHalfLineRotation: aNode
 "Dr.Geo 1.1 compatibility"
 	^self parseRayRotation: aNode! !
 
-!DrGeoXml methodsFor: 'parse item'!
+!DrGeoXml methodsFor: 'parse item' stamp: ''!
 parseHalfLineScale: aNode 
 "Dr.Geo 1.1 compatibility"
 	^self parseRayHomothety: aNode ! !
 
-!DrGeoXml methodsFor: 'parse item'!
+!DrGeoXml methodsFor: 'parse item' stamp: ''!
 parseHalfLineSymmetry: aNode 
 "Dr.Geo 1.1 compatibility"
 	^self parseRaySymmetry: aNode! !
 
-!DrGeoXml methodsFor: 'parse item'!
+!DrGeoXml methodsFor: 'parse item' stamp: ''!
 parseHalfLineTranslation:aNode
 "Dr.Geo 1.1 compatibility"
 	^ self parseRayTranslation: aNode ! !
 
-!DrGeoXml methodsFor: 'parse item'!
+!DrGeoXml methodsFor: 'parse item' stamp: ''!
 parseHomothety: aNode 
 	^ self parseItem: aNode with: DrGHomothetyBuilder! !
 
@@ -4281,386 +4281,386 @@ parseItem: aNode with: builderClass
 		ifTrue: [builderClass basicItemFrom: aNode "an item"].
 ! !
 
-!DrGeoXml methodsFor: 'parse item'!
+!DrGeoXml methodsFor: 'parse item' stamp: ''!
 parseLine2pts: aNode
 	^self parseItem: aNode with: DrGLineBuilder.! !
 
-!DrGeoXml methodsFor: 'parse item'!
+!DrGeoXml methodsFor: 'parse item' stamp: ''!
 parseLineAngleBisector: aNode
 	^ self parseItem: aNode with: DrGAngleBisectorBuilder! !
 
-!DrGeoXml methodsFor: 'parse item'!
+!DrGeoXml methodsFor: 'parse item' stamp: ''!
 parseLineAngleBisector3pts: aNode
 	^ self parseItem: aNode with: DrGAngleBisectorBuilder! !
 
-!DrGeoXml methodsFor: 'parse item'!
+!DrGeoXml methodsFor: 'parse item' stamp: ''!
 parseLineHomothety: aNode
 	^self parseHomothety: aNode ! !
 
-!DrGeoXml methodsFor: 'parse item'!
+!DrGeoXml methodsFor: 'parse item' stamp: ''!
 parseLineParallel: aNode
 	^self parseItem: aNode with: DrGParallelBuilder.! !
 
-!DrGeoXml methodsFor: 'parse item'!
+!DrGeoXml methodsFor: 'parse item' stamp: ''!
 parseLinePerpendicular: aNode 
 	^ self parseItem: aNode with: DrGPerpendicularBuilder.
 ! !
 
-!DrGeoXml methodsFor: 'parse item'!
+!DrGeoXml methodsFor: 'parse item' stamp: ''!
 parseLinePerpendicularBisector: aNode
 	^ self parseItem: aNode with: DrGPerpendicularBisectorBuilder! !
 
-!DrGeoXml methodsFor: 'parse item'!
+!DrGeoXml methodsFor: 'parse item' stamp: ''!
 parseLinePerpendicularBisector2pts: aNode
 	^ self parseItem: aNode with: DrGPerpendicularBisectorBuilder! !
 
-!DrGeoXml methodsFor: 'parse item'!
+!DrGeoXml methodsFor: 'parse item' stamp: ''!
 parseLineReflexion: aNode 
 	^ self parseItem: aNode with: DrGReflectionBuilder.
 ! !
 
-!DrGeoXml methodsFor: 'parse item'!
+!DrGeoXml methodsFor: 'parse item' stamp: ''!
 parseLineRotation: aNode
 	^self parseRotation: aNode ! !
 
-!DrGeoXml methodsFor: 'parse item'!
+!DrGeoXml methodsFor: 'parse item' stamp: ''!
 parseLineScale: aNode
 "Dr.Geo 1.1 compatibility"
 	^self parseLineHomothety: aNode ! !
 
-!DrGeoXml methodsFor: 'parse item'!
+!DrGeoXml methodsFor: 'parse item' stamp: ''!
 parseLineSymmetry: aNode
 	^ self parseSymmetry: aNode ! !
 
-!DrGeoXml methodsFor: 'parse item'!
+!DrGeoXml methodsFor: 'parse item' stamp: ''!
 parseLineTranslation: aNode
 	^self parseTranslation: aNode ! !
 
-!DrGeoXml methodsFor: 'parse item'!
+!DrGeoXml methodsFor: 'parse item' stamp: ''!
 parseLocus2pts: aNode
 	^ self parseItem: aNode with: DrGLocusBuilder.! !
 
-!DrGeoXml methodsFor: 'parse item'!
+!DrGeoXml methodsFor: 'parse item' stamp: ''!
 parseLocusHomothety: aNode
 	^ self parseItem: aNode with: DrGHomothetyBuilder ! !
 
-!DrGeoXml methodsFor: 'parse item'!
+!DrGeoXml methodsFor: 'parse item' stamp: ''!
 parseLocusNone: aNode
 "DrGeo 1.1 compatibility"
 	 ^ self parseLocus2pts: aNode ! !
 
-!DrGeoXml methodsFor: 'parse item'!
+!DrGeoXml methodsFor: 'parse item' stamp: ''!
 parseLocusReflexion: aNode 
 	^ self parseReflexion:  aNode! !
 
-!DrGeoXml methodsFor: 'parse item'!
+!DrGeoXml methodsFor: 'parse item' stamp: ''!
 parseLocusRotation: aNode
 	^ self parseItem: aNode with: DrGRotationBuilder! !
 
-!DrGeoXml methodsFor: 'parse item'!
+!DrGeoXml methodsFor: 'parse item' stamp: ''!
 parseLocusScale: aNode
 	^ self parseLocusHomothety: aNode ! !
 
-!DrGeoXml methodsFor: 'parse item'!
+!DrGeoXml methodsFor: 'parse item' stamp: ''!
 parseLocusSymmetry: aNode 
 	^ self parseItem: aNode with: DrGSymmetryBuilder! !
 
-!DrGeoXml methodsFor: 'parse item'!
+!DrGeoXml methodsFor: 'parse item' stamp: ''!
 parseLocusTranslation: aNode
 	^self parseTranslation: aNode ! !
 
-!DrGeoXml methodsFor: 'parse item'!
+!DrGeoXml methodsFor: 'parse item' stamp: ''!
 parseNumericArclength: aNode
 "Dr.Geo 1.1 compatibility"
 	^ self parseValueArclength: aNode ! !
 
-!DrGeoXml methodsFor: 'parse item'!
+!DrGeoXml methodsFor: 'parse item' stamp: ''!
 parseNumericCircleperimeter: aNode
 "Dr.Geo 1.1 compatibility"
 	^ self parseValueCircleperimeter: aNode ! !
 
-!DrGeoXml methodsFor: 'parse item'!
+!DrGeoXml methodsFor: 'parse item' stamp: ''!
 parseNumericDistance2pts: aNode
 "Dr.Geo 1.1 compatibility"
 	^ self parseValueDistance2pts: aNode! !
 
-!DrGeoXml methodsFor: 'parse item'!
+!DrGeoXml methodsFor: 'parse item' stamp: ''!
 parseNumericDistanceptline: aNode
 "Dr.Geo 1.1 compatibility"
 	^ self parseValueDistanceptline: aNode ! !
 
-!DrGeoXml methodsFor: 'parse item'!
+!DrGeoXml methodsFor: 'parse item' stamp: ''!
 parseNumericSegmentlength: aNode
 "Dr.Geo 1.1 compatibility"
 	^ self parseValueSegmentlength: aNode ! !
 
-!DrGeoXml methodsFor: 'parse item'!
+!DrGeoXml methodsFor: 'parse item' stamp: ''!
 parseNumericSlope: aNode
 "Dr.Geo 1.1 compatibility"
 	^ self parseValueSlope: aNode ! !
 
-!DrGeoXml methodsFor: 'parse item'!
+!DrGeoXml methodsFor: 'parse item' stamp: ''!
 parseNumericValue: aNode
 "Dr.Geo 1.1 compatibility"
 	^ self parseValueValue: aNode ! !
 
-!DrGeoXml methodsFor: 'parse item'!
+!DrGeoXml methodsFor: 'parse item' stamp: ''!
 parseNumericVectornorm: aNode
 "Dr.Geo 1.1 compatibility"
 	^ self parseValueVectornorm: aNode ! !
 
-!DrGeoXml methodsFor: 'parse item'!
+!DrGeoXml methodsFor: 'parse item' stamp: ''!
 parsePointBlock: aNode
 	self notYetImplemented.
 	"^ self parseItem: aNode with: DrGPointBlockBuilder."! !
 
-!DrGeoXml methodsFor: 'parse item'!
+!DrGeoXml methodsFor: 'parse item' stamp: ''!
 parsePointCoordinate: aNode
 	^ self parseItem: aNode with: DrGPointByCoordinatesBuilder.! !
 
-!DrGeoXml methodsFor: 'parse item'!
+!DrGeoXml methodsFor: 'parse item' stamp: ''!
 parsePointFree: aNode
 	^ self parseItem: aNode with: DrGFreePointBuilder 
 		! !
 
-!DrGeoXml methodsFor: 'parse item'!
+!DrGeoXml methodsFor: 'parse item' stamp: ''!
 parsePointHomothety: aNode
 	^ self parseItem: aNode with: DrGHomothetyBuilder ! !
 
-!DrGeoXml methodsFor: 'parse item'!
+!DrGeoXml methodsFor: 'parse item' stamp: ''!
 parsePointIntersection: aNode
 	^ self parseItem: aNode with: DrGPointIntersectionBuilder! !
 
-!DrGeoXml methodsFor: 'parse item'!
+!DrGeoXml methodsFor: 'parse item' stamp: ''!
 parsePointMiddle2pts: aNode
 ^ self parseItem: aNode with: DrGMiddleBuilder.! !
 
-!DrGeoXml methodsFor: 'parse item'!
+!DrGeoXml methodsFor: 'parse item' stamp: ''!
 parsePointMiddlesegment: aNode
 	^self parseItem: aNode with: DrGMiddleBuilder.! !
 
-!DrGeoXml methodsFor: 'parse item'!
+!DrGeoXml methodsFor: 'parse item' stamp: ''!
 parsePointOncurve: aNode
 	^ self parseItem: aNode with: DrGFreePointBuilder ! !
 
-!DrGeoXml methodsFor: 'parse item'!
+!DrGeoXml methodsFor: 'parse item' stamp: ''!
 parsePointReflexion: aNode 
 	^ self parseReflexion:  aNode! !
 
-!DrGeoXml methodsFor: 'parse item'!
+!DrGeoXml methodsFor: 'parse item' stamp: ''!
 parsePointRotation: aNode
 	^ self parseItem: aNode with: DrGRotationBuilder! !
 
-!DrGeoXml methodsFor: 'parse item'!
+!DrGeoXml methodsFor: 'parse item' stamp: ''!
 parsePointScale: aNode
 "Dr.Geo 1.1 compatibility"
 	^ self parsePointHomothety: aNode ! !
 
-!DrGeoXml methodsFor: 'parse item'!
+!DrGeoXml methodsFor: 'parse item' stamp: ''!
 parsePointScript: aNode
 	^ self parseItem: aNode with: DrGPointByCoordinatesBuilder.! !
 
-!DrGeoXml methodsFor: 'parse item'!
+!DrGeoXml methodsFor: 'parse item' stamp: ''!
 parsePointSymmetry: aNode 
 	^ self parseItem: aNode with: DrGSymmetryBuilder! !
 
-!DrGeoXml methodsFor: 'parse item'!
+!DrGeoXml methodsFor: 'parse item' stamp: ''!
 parsePointTranslation: aNode
 	^self parseTranslation: aNode ! !
 
-!DrGeoXml methodsFor: 'parse item'!
+!DrGeoXml methodsFor: 'parse item' stamp: ''!
 parsePolygonHomothety: aNode 
 	^self parseHomothety: aNode ! !
 
-!DrGeoXml methodsFor: 'parse item'!
+!DrGeoXml methodsFor: 'parse item' stamp: ''!
 parsePolygonNpts: aNode
 	^ self parseItem: aNode with: DrGPolygonBuilder! !
 
-!DrGeoXml methodsFor: 'parse item'!
+!DrGeoXml methodsFor: 'parse item' stamp: ''!
 parsePolygonReflexion: aNode
 	^ self parseReflexion: aNode ! !
 
-!DrGeoXml methodsFor: 'parse item'!
+!DrGeoXml methodsFor: 'parse item' stamp: ''!
 parsePolygonRegular: aNode
 	^ self parseItem: aNode with: DrGPolygonRegularBuilder! !
 
-!DrGeoXml methodsFor: 'parse item'!
+!DrGeoXml methodsFor: 'parse item' stamp: ''!
 parsePolygonRotation: aNode
 	^ self parseRotation: aNode ! !
 
-!DrGeoXml methodsFor: 'parse item'!
+!DrGeoXml methodsFor: 'parse item' stamp: ''!
 parsePolygonScale: aNode 
 "Dr.Geo 1.1 compatibility"
 	^self parsePolygonHomothety: aNode ! !
 
-!DrGeoXml methodsFor: 'parse item'!
+!DrGeoXml methodsFor: 'parse item' stamp: ''!
 parsePolygonSymmetry: aNode 
 	^self parseSymmetry: aNode! !
 
-!DrGeoXml methodsFor: 'parse item'!
+!DrGeoXml methodsFor: 'parse item' stamp: ''!
 parsePolygonTranslation: aNode
 	^self parseTranslation: aNode ! !
 
-!DrGeoXml methodsFor: 'parse item'!
+!DrGeoXml methodsFor: 'parse item' stamp: ''!
 parseRay2pts: aNode
 	^self parseItem: aNode with: DrGRayBuilder.! !
 
-!DrGeoXml methodsFor: 'parse item'!
+!DrGeoXml methodsFor: 'parse item' stamp: ''!
 parseRayHomothety: aNode 
 	^self parseHomothety: aNode ! !
 
-!DrGeoXml methodsFor: 'parse item'!
+!DrGeoXml methodsFor: 'parse item' stamp: ''!
 parseRayReflexion: aNode
 	^self parseReflexion: aNode! !
 
-!DrGeoXml methodsFor: 'parse item'!
+!DrGeoXml methodsFor: 'parse item' stamp: ''!
 parseRayRotation: aNode
 	^self parseRotation: aNode! !
 
-!DrGeoXml methodsFor: 'parse item'!
+!DrGeoXml methodsFor: 'parse item' stamp: ''!
 parseRaySymmetry: aNode 
 	^self parseSymmetry: aNode! !
 
-!DrGeoXml methodsFor: 'parse item'!
+!DrGeoXml methodsFor: 'parse item' stamp: ''!
 parseRayTranslation:aNode
 	^ self parseTranslation: aNode ! !
 
-!DrGeoXml methodsFor: 'parse item'!
+!DrGeoXml methodsFor: 'parse item' stamp: ''!
 parseReflexion: aNode 
 	^ self parseItem: aNode with: DrGReflectionBuilder! !
 
-!DrGeoXml methodsFor: 'parse item'!
+!DrGeoXml methodsFor: 'parse item' stamp: ''!
 parseRotation: aNode 
 	^ self parseItem: aNode with: DrGRotationBuilder! !
 
-!DrGeoXml methodsFor: 'parse item'!
+!DrGeoXml methodsFor: 'parse item' stamp: ''!
 parseScriptNitems: aNode
 	"Do nothing!!, compatibility for Dr. Geo 1.1
 	See method parseValueScript:"! !
 
-!DrGeoXml methodsFor: 'parse item'!
+!DrGeoXml methodsFor: 'parse item' stamp: ''!
 parseSegment2pts: aNode 
 	^ self parseItem: aNode with: DrGSegmentBuilder! !
 
-!DrGeoXml methodsFor: 'parse item'!
+!DrGeoXml methodsFor: 'parse item' stamp: ''!
 parseSegmentHomothety: aNode
 	^self parseHomothety: aNode ! !
 
-!DrGeoXml methodsFor: 'parse item'!
+!DrGeoXml methodsFor: 'parse item' stamp: ''!
 parseSegmentReflexion: aNode
 	^ self parseReflexion: aNode! !
 
-!DrGeoXml methodsFor: 'parse item'!
+!DrGeoXml methodsFor: 'parse item' stamp: ''!
 parseSegmentRotation: aNode
 	^self parseRotation: aNode! !
 
-!DrGeoXml methodsFor: 'parse item'!
+!DrGeoXml methodsFor: 'parse item' stamp: ''!
 parseSegmentScale: aNode
 "Dr.Geo 1.1 compatibility"
 	^self parseSegmentHomothety: aNode ! !
 
-!DrGeoXml methodsFor: 'parse item'!
+!DrGeoXml methodsFor: 'parse item' stamp: ''!
 parseSegmentSymmetry: aNode
 	^self parseSymmetry: aNode ! !
 
-!DrGeoXml methodsFor: 'parse item'!
+!DrGeoXml methodsFor: 'parse item' stamp: ''!
 parseSegmentTranslation: aNode
 	^self parseTranslation: aNode ! !
 
-!DrGeoXml methodsFor: 'parse item'!
+!DrGeoXml methodsFor: 'parse item' stamp: ''!
 parseSymmetry: aNode 
 	^ self parseItem: aNode with: DrGSymmetryBuilder! !
 
-!DrGeoXml methodsFor: 'parse item'!
+!DrGeoXml methodsFor: 'parse item' stamp: ''!
 parseTextFree: aNode
 	^ self parseItem: aNode with: DrGTextBuilder! !
 
-!DrGeoXml methodsFor: 'parse item'!
+!DrGeoXml methodsFor: 'parse item' stamp: ''!
 parseTranslation: aNode 
 	^ self parseItem: aNode with: DrGTranslationBuilder! !
 
-!DrGeoXml methodsFor: 'parse item'!
+!DrGeoXml methodsFor: 'parse item' stamp: ''!
 parseValueArclength: aNode
 	^ self parseValueComputation: aNode ! !
 
-!DrGeoXml methodsFor: 'parse item'!
+!DrGeoXml methodsFor: 'parse item' stamp: ''!
 parseValueCircleperimeter: aNode
 	^ self parseValueComputation: aNode ! !
 
-!DrGeoXml methodsFor: 'parse item'!
+!DrGeoXml methodsFor: 'parse item' stamp: ''!
 parseValueComputation: aNode
 	^ self parseItem: aNode with: DrGValueBuilder.! !
 
-!DrGeoXml methodsFor: 'parse item'!
+!DrGeoXml methodsFor: 'parse item' stamp: ''!
 parseValueDistance2pts: aNode
 	^ self parseValueComputation: aNode ! !
 
-!DrGeoXml methodsFor: 'parse item'!
+!DrGeoXml methodsFor: 'parse item' stamp: ''!
 parseValueDistanceptline: aNode
 	^ self parseValueComputation: aNode ! !
 
-!DrGeoXml methodsFor: 'parse item'!
+!DrGeoXml methodsFor: 'parse item' stamp: ''!
 parseValuePolygonperimeter: aNode
 	^ self parseValueComputation: aNode ! !
 
-!DrGeoXml methodsFor: 'parse item'!
+!DrGeoXml methodsFor: 'parse item' stamp: ''!
 parseValuePtabscissa: aNode
 	^ self parseCoordinates: aNode ! !
 
-!DrGeoXml methodsFor: 'parse item'!
+!DrGeoXml methodsFor: 'parse item' stamp: ''!
 parseValuePtordinate: aNode
 	^ self parseCoordinates: aNode ! !
 
-!DrGeoXml methodsFor: 'parse item'!
+!DrGeoXml methodsFor: 'parse item' stamp: ''!
 parseValueScript: aNode
 	^ self parseItem: aNode with: DrGScriptPlayer.! !
 
-!DrGeoXml methodsFor: 'parse item'!
+!DrGeoXml methodsFor: 'parse item' stamp: ''!
 parseValueSegmentlength: aNode
 	^ self parseValueComputation: aNode ! !
 
-!DrGeoXml methodsFor: 'parse item'!
+!DrGeoXml methodsFor: 'parse item' stamp: ''!
 parseValueSlope: aNode
 	^ self parseValueComputation: aNode ! !
 
-!DrGeoXml methodsFor: 'parse item'!
+!DrGeoXml methodsFor: 'parse item' stamp: ''!
 parseValueValue: aNode
 	^ self parseValueComputation: aNode ! !
 
-!DrGeoXml methodsFor: 'parse item'!
+!DrGeoXml methodsFor: 'parse item' stamp: ''!
 parseValueVectorabscissa: aNode
 	^ self parseCoordinates: aNode ! !
 
-!DrGeoXml methodsFor: 'parse item'!
+!DrGeoXml methodsFor: 'parse item' stamp: ''!
 parseValueVectornorm: aNode
 	^ self parseValueComputation: aNode ! !
 
-!DrGeoXml methodsFor: 'parse item'!
+!DrGeoXml methodsFor: 'parse item' stamp: ''!
 parseValueVectorordinate: aNode
 	^ self parseCoordinates: aNode ! !
 
-!DrGeoXml methodsFor: 'parse item'!
+!DrGeoXml methodsFor: 'parse item' stamp: ''!
 parseVector2pts: aNode
 	^self parseItem: aNode with: DrGVectorBuilder.! !
 
-!DrGeoXml methodsFor: 'parse item'!
+!DrGeoXml methodsFor: 'parse item' stamp: ''!
 parseVectorHomothety: aNode 
 	^self parseHomothety: aNode ! !
 
-!DrGeoXml methodsFor: 'parse item'!
+!DrGeoXml methodsFor: 'parse item' stamp: ''!
 parseVectorReflexion: aNode
 	^self parseReflexion: aNode! !
 
-!DrGeoXml methodsFor: 'parse item'!
+!DrGeoXml methodsFor: 'parse item' stamp: ''!
 parseVectorRotation: aNode
 	^self parseRotation: aNode! !
 
-!DrGeoXml methodsFor: 'parse item'!
+!DrGeoXml methodsFor: 'parse item' stamp: ''!
 parseVectorScale: aNode 
 "Dr.Geo 1.1 compatibility"
 	^self parseVectorHomothety: aNode ! !
 
-!DrGeoXml methodsFor: 'parse item'!
+!DrGeoXml methodsFor: 'parse item' stamp: ''!
 parseVectorSymmetry: aNode 
 	^ self parseSymmetry: aNode! !
 
@@ -4693,7 +4693,7 @@ parseStyleOf: costume with: aNode
 	costume style feedback: (aNode attributeAt: #feedback ifAbsent: ['True']) = 'True'.
 	costume style color: (self parseColorAt: #color with: aNode).! !
 
-!DrGeoXml methodsFor: 'parse style'!
+!DrGeoXml methodsFor: 'parse style' stamp: ''!
 parseStyleOfAngle: item with: aNode 
 	self parseStyleOfNumeric: item  with: aNode ! !
 
@@ -4704,7 +4704,7 @@ parseStyleOfArc: item with: aNode
 	costume style arrow: (self parseArrowWith: aNode).
 	self parseStyleOfFilledCircle: costume with: aNode! !
 
-!DrGeoXml methodsFor: 'parse style'!
+!DrGeoXml methodsFor: 'parse style' stamp: ''!
 parseStyleOfArcCircle: item with: aNode 
 	self parseStyleOfArc: item with: aNode! !
 
@@ -4714,7 +4714,7 @@ parseStyleOfBitmap: item with: aNode
 	morph := self drawable fastLastItemView .
 	self parseStyleOf: morph with: aNode! !
 
-!DrGeoXml methodsFor: 'parse style'!
+!DrGeoXml methodsFor: 'parse style' stamp: ''!
 parseStyleOfCircle: item with: aNode 
 	|costume|
 	costume := self parseStyleOfCurve: item with: aNode.
@@ -4746,24 +4746,24 @@ parseStyleOfEquation: item with: aNode
 	morph := self drawable fastLastMorph .
 	self parseStyleOf: morph with: aNode.! !
 
-!DrGeoXml methodsFor: 'parse style'!
+!DrGeoXml methodsFor: 'parse style' stamp: ''!
 parseStyleOfFilledCircle: costume with: aNode 
 	costume style fill: (aNode attributeAt: #filled ifAbsent: ['False']) = 'True'.
 	costume style translucent: 	(aNode attributeAt: #translucent ifAbsent: ['True']) = 'True'.
 ! !
 
-!DrGeoXml methodsFor: 'parse style'!
+!DrGeoXml methodsFor: 'parse style' stamp: ''!
 parseStyleOfFilledPolygon: costume with: aNode 
 	costume style fill: (aNode attributeAt: #filled ifAbsent: ['True']) = 'True'.
 	costume style translucent: 	(aNode attributeAt: #translucent ifAbsent: ['True']) = 'True'.
 ! !
 
-!DrGeoXml methodsFor: 'parse style'!
+!DrGeoXml methodsFor: 'parse style' stamp: ''!
 parseStyleOfHalfLine: item with: aNode 
 "DrGeo 1.1 xml compatibility"
 	self parseStyleOfRay: item with: aNode! !
 
-!DrGeoXml methodsFor: 'parse style'!
+!DrGeoXml methodsFor: 'parse style' stamp: ''!
 parseStyleOfLine: item with: aNode 
 	self parseStyleOfCurve: item with: aNode! !
 
@@ -4771,7 +4771,7 @@ parseStyleOfLine: item with: aNode
 parseStyleOfLocus: item with: aNode 
 	self parseStyleOfCurve: item with: aNode! !
 
-!DrGeoXml methodsFor: 'parse style'!
+!DrGeoXml methodsFor: 'parse style' stamp: ''!
 parseStyleOfNumeric: item with: aNode 
  "DrGeo 1.1 xml compatibility"
 	self parseStyleOfValue: item with: aNode! !
@@ -4796,13 +4796,13 @@ parseStyleOfPoint: item with: aNode
 		ifTrue: [attribute := #round].
 	morph style shape: attribute asLowercase asSymbol! !
 
-!DrGeoXml methodsFor: 'parse style'!
+!DrGeoXml methodsFor: 'parse style' stamp: ''!
 parseStyleOfPolygon: item with: aNode 
 	| costume |
 	costume := self parseStyleOfCurve: item with: aNode.
 	self parseStyleOfFilledPolygon: costume with: aNode! !
 
-!DrGeoXml methodsFor: 'parse style'!
+!DrGeoXml methodsFor: 'parse style' stamp: ''!
 parseStyleOfRay: item with: aNode 
 	self parseStyleOfCurve: item with: aNode! !
 
@@ -4871,7 +4871,7 @@ load: fileEntry for: constructor
 		loadFrom: (fileEntry readStream) 
 		for: constructor ! !
 
-!DrGeoXml methodsFor: 'xml read'!
+!DrGeoXml methodsFor: 'xml read' stamp: ''!
 loadFigureFrom: doc for: constructor
 "One XML document may contain several drgeo figure instances, parse it all,
 and return a DrGeo for each one"
@@ -4883,7 +4883,7 @@ and return a DrGeo for each one"
 		do: [:each | instances add: (self parseOneFigure: each for: constructor)].
 	^ instances! !
 
-!DrGeoXml methodsFor: 'xml read'!
+!DrGeoXml methodsFor: 'xml read' stamp: ''!
 loadFrom: stream for: constructor
 "One XML document may contain several drgeo figure instances, parse it all,
 and return a DrGeo for each one"
@@ -4893,7 +4893,7 @@ and return a DrGeo for each one"
 	self loadMacroFrom: doc.
 	^ self loadFigureFrom: doc for: constructor.! !
 
-!DrGeoXml methodsFor: 'xml read'!
+!DrGeoXml methodsFor: 'xml read' stamp: ''!
 loadMacroFrom: doc
 	(doc elementAt: #drgenius) ifNil: [^self].
 	(doc elementAt: #drgenius)
@@ -4901,7 +4901,7 @@ loadMacroFrom: doc
 		do: [:each | DrGMacroFactory new addUnique: (self parseOneMacro: each)].
 ! !
 
-!DrGeoXml methodsFor: 'xml read'!
+!DrGeoXml methodsFor: 'xml read' stamp: ''!
 loadOnlyFigureFrom: stream for: constructor
 "One XML document may contain several drgeo figure instances, parse it all,
 and return a DrGeo for each one"
@@ -4949,14 +4949,14 @@ parseScript: drgeoNode
 		(node tag = #value and: [(node attributeAt: #type) = #script]) ifTrue:
 			[(node contentStringAt: #code) readStream fileInAnnouncing: 'Compile']]! !
 
-!DrGeoXml methodsFor: 'xml read item'!
+!DrGeoXml methodsFor: 'xml read item' stamp: ''!
 instantiateItemFrom: aNode
  "instantiate an item from this node"
 	^ self 
 		perform: (self methodToParse: aNode) 
 		with: aNode.! !
 
-!DrGeoXml methodsFor: 'xml read item'!
+!DrGeoXml methodsFor: 'xml read item' stamp: ''!
 instantiateStyle: aNode for: item
  "instantiate the style for this item"
 	self 
@@ -4964,14 +4964,14 @@ instantiateStyle: aNode for: item
 		with: item
 		with: aNode! !
 
-!DrGeoXml methodsFor: 'xml read item'!
+!DrGeoXml methodsFor: 'xml read item' stamp: ''!
 methodToParse: aNode
  "find which method to use to parse this node"
 	|type|
 	type := ((aNode attributeAt: #type) copyWithoutAll: '_' ) capitalized asSymbol.
 	 ^(#parse , aNode tag capitalized , type , #':') asSymbol ! !
 
-!DrGeoXml methodsFor: 'xml read macro'!
+!DrGeoXml methodsFor: 'xml read macro' stamp: ''!
 parentMacroNodesIn: macro from: aNode 
 	"return a collection of parent macro nodes  given theirs id in the attribute
 	elements <parent id=xxx>"
@@ -4982,7 +4982,7 @@ parentMacroNodesIn: macro from: aNode
 			collection add: (macro detectId: (each attributeAt: 'ref') asSymbol)]].
 	^collection ! !
 
-!DrGeoXml methodsFor: 'xml read macro'!
+!DrGeoXml methodsFor: 'xml read macro' stamp: ''!
 parseInput: node inMacro: macro
 	(node elementAt: #input) elementsDo: [:each | |item|
 		item := DrGMacroMathItem new
@@ -4991,7 +4991,7 @@ parseInput: node inMacro: macro
 			yourself.
 		macro addNode: (DrGMacroInputNode new itemTemplate: item; yourself)]! !
 
-!DrGeoXml methodsFor: 'xml read macro'!
+!DrGeoXml methodsFor: 'xml read macro' stamp: ''!
 parseOneMacro: node
 " parse one macro and return it"
 	| macro|
@@ -5003,7 +5003,7 @@ parseOneMacro: node
 	macro saved: true. "We just load this macro, nothing to save"
 	^ macro! !
 
-!DrGeoXml methodsFor: 'xml read macro'!
+!DrGeoXml methodsFor: 'xml read macro' stamp: ''!
 parseOutput: node inMacro: macro
 	(node elementAt: #output) elementsDo: [:aNode | |macroNodeClass|
 		aNode tag = #hidden ifTrue: [macroNodeClass := DrGMacroHiddenNode].
@@ -5029,7 +5029,7 @@ saveMultiple: sketchesAndMacros on: stream
 	doc addElement: root.
 	doc printXMLOn: writer.! !
 
-!DrGeoXml methodsFor: 'xml write'!
+!DrGeoXml methodsFor: 'xml write' stamp: ''!
 saveOn: stream
 	| doc writer root |
 	doc := XMLDocument new version: '1.0'.
@@ -5103,7 +5103,7 @@ on: aPresenter
 		presenter: aPresenter ;
 		yourself! !
 
-!DrGMathItem methodsFor: 'accessing'!
+!DrGMathItem methodsFor: 'accessing' stamp: ''!
 basicType
 	^#mathItem! !
 
@@ -5113,7 +5113,7 @@ descriptiveName
 		copyReplaceAll: '%1'
 		with: self safeName! !
 
-!DrGMathItem methodsFor: 'accessing'!
+!DrGMathItem methodsFor: 'accessing' stamp: ''!
 exist
 	^exist! !
 
@@ -5128,11 +5128,11 @@ exist: aBoolean
 icon
 	^ nil! !
 
-!DrGMathItem methodsFor: 'accessing'!
+!DrGMathItem methodsFor: 'accessing' stamp: ''!
 id
 	^id! !
 
-!DrGMathItem methodsFor: 'accessing'!
+!DrGMathItem methodsFor: 'accessing' stamp: ''!
 id: aSymbol
 	id := aSymbol! !
 
@@ -5140,19 +5140,19 @@ id: aSymbol
 morphClass
 	^ DrGMorph! !
 
-!DrGMathItem methodsFor: 'accessing'!
+!DrGMathItem methodsFor: 'accessing' stamp: ''!
 name
 	^name! !
 
-!DrGMathItem methodsFor: 'accessing'!
+!DrGMathItem methodsFor: 'accessing' stamp: ''!
 name: aString
 	name := aString ! !
 
-!DrGMathItem methodsFor: 'accessing'!
+!DrGMathItem methodsFor: 'accessing' stamp: ''!
 parents
 	^ parents ! !
 
-!DrGMathItem methodsFor: 'accessing'!
+!DrGMathItem methodsFor: 'accessing' stamp: ''!
 parents: aCollection
 	parents := aCollection.! !
 
@@ -5160,11 +5160,11 @@ parents: aCollection
 parents: aCollection in: presenter
 	self parents: aCollection! !
 
-!DrGMathItem methodsFor: 'accessing'!
+!DrGMathItem methodsFor: 'accessing' stamp: ''!
 position
 	self shouldBeImplemented.! !
 
-!DrGMathItem methodsFor: 'accessing'!
+!DrGMathItem methodsFor: 'accessing' stamp: ''!
 safeName
 	| itsName |
 	itsName := self name.
@@ -5172,7 +5172,7 @@ safeName
 		ifTrue: [''] 
 		ifFalse: [itsName]! !
 
-!DrGMathItem methodsFor: 'printing'!
+!DrGMathItem methodsFor: 'printing' stamp: ''!
 printCoordinates: aPoint on: aStream
 	aPoint ifNotNil: [
 		aStream nextPut: $(.
@@ -5191,11 +5191,11 @@ printDecimal: aValue on: aStream
 			ifFalse: [aValue printOn: aStream fractionDigits: 1]
 			ifTrue: [aStream print: aValue]]! !
 
-!DrGMathItem methodsFor: 'printing'!
+!DrGMathItem methodsFor: 'printing' stamp: ''!
 printInteger: aValue on: aStream
 	aStream nextPutAll: aValue rounded asString! !
 
-!DrGMathItem methodsFor: 'printing'!
+!DrGMathItem methodsFor: 'printing' stamp: ''!
 printOn: aStream 
 	aStream 
 		nextPutAll: 'a ';
@@ -5204,7 +5204,7 @@ printOn: aStream
 		nextPut: Character space.
 ! !
 
-!DrGMathItem methodsFor: 'printing'!
+!DrGMathItem methodsFor: 'printing' stamp: ''!
 printType: aString on: aStream
 	aStream nextPutAll: aString;
 		nextPut: Character space;
@@ -5217,15 +5217,15 @@ printType: aString on: aStream
 		and: [self nodeType == aMathItem nodeType
 		and: [self parentsEqual: aMathItem] ] ]! !
 
-!DrGMathItem methodsFor: 'comparing'!
+!DrGMathItem methodsFor: 'comparing' stamp: ''!
 hash
 	^ hash! !
 
-!DrGMathItem methodsFor: 'comparing'!
+!DrGMathItem methodsFor: 'comparing' stamp: ''!
 parentsEqual: aMathItem 
 	^ parents = aMathItem parents! !
 
-!DrGMathItem methodsFor: 'comparing'!
+!DrGMathItem methodsFor: 'comparing' stamp: ''!
 parentsIncludes: aMathItem 
 "An idendity comparaison"
 	^ parents notNil and: [parents anySatisfy: [:each | each == aMathItem]]! !
@@ -5236,12 +5236,12 @@ rehash
 	bitXor: self nodeType hash) 
 	bitXor: self basicType hash! !
 
-!DrGMathItem methodsFor: 'initialize-release'!
+!DrGMathItem methodsFor: 'initialize-release' stamp: ''!
 initialize
 	parents := nil.
 	exist := true.! !
 
-!DrGMathItem methodsFor: 'initialize-release'!
+!DrGMathItem methodsFor: 'initialize-release' stamp: ''!
 initialize: theParents
 ! !
 
@@ -5251,15 +5251,15 @@ release
 	"Do it last otherwise our deletedMathItem will never be sent"
 	self flag: #drgeoEvent! !
 
-!DrGMathItem methodsFor: 'private'!
+!DrGMathItem methodsFor: 'private' stamp: ''!
 adaptiveDescriptiveName
 	^ 'This math item %1' translated! !
 
-!DrGMathItem methodsFor: 'xml writing'!
+!DrGMathItem methodsFor: 'xml writing' stamp: ''!
 nodeType
 	^ #mathItem! !
 
-!DrGMathItem methodsFor: 'xml writing'!
+!DrGMathItem methodsFor: 'xml writing' stamp: ''!
 writeAsXmlTo: aNode
 	"return the newly created element"
 	| node |
@@ -5272,7 +5272,7 @@ writeAsXmlTo: aNode
 	aNode addElement: node.
 	^node! !
 
-!DrGMathItem methodsFor: 'xml writing'!
+!DrGMathItem methodsFor: 'xml writing' stamp: ''!
 writeParents: collection asXmlTo: aNode
 "write parents reference in the natural order"
 |attr|
@@ -5281,35 +5281,35 @@ writeParents: collection asXmlTo: aNode
 		attr at: #ref put: each hash asString.
 		aNode addElement: (XMLElement named: #parent attributes: attr)]! !
 
-!DrGMathItem methodsFor: 'xml writing'!
+!DrGMathItem methodsFor: 'xml writing' stamp: ''!
 writeParentsAsXmlTo: aNode
 	parents ifNotNil:
 		[self writeParents: parents asXmlTo: aNode]! !
 
-!DrGMathItem methodsFor: 'computing'!
+!DrGMathItem methodsFor: 'computing' stamp: ''!
 abscissaOf: aPoint
 	self subclassResponsibility! !
 
-!DrGMathItem methodsFor: 'computing'!
+!DrGMathItem methodsFor: 'computing' stamp: ''!
 clone
 "Return a collection with the necessary parents (free points) and a clone of myself"
 	self shouldNotImplement! !
 
-!DrGMathItem methodsFor: 'computing'!
+!DrGMathItem methodsFor: 'computing' stamp: ''!
 closestPointTo: aPoint
 	self subclassResponsibility ! !
 
-!DrGMathItem methodsFor: 'computing'!
+!DrGMathItem methodsFor: 'computing' stamp: ''!
 intersectionWith: aCurveItem
 	^ Array 
 		with: (self intersectionWith: aCurveItem flag: 1)
 		with: (self intersectionWith: aCurveItem flag: -1)! !
 
-!DrGMathItem methodsFor: 'computing'!
+!DrGMathItem methodsFor: 'computing' stamp: ''!
 intersectionWith: aCurveItem flag: aFlag
 	self subclassResponsibility ! !
 
-!DrGMathItem methodsFor: 'computing'!
+!DrGMathItem methodsFor: 'computing' stamp: ''!
 pointAt: anAbscissa
 	self subclassResponsibility ! !
 
@@ -5317,15 +5317,15 @@ pointAt: anAbscissa
 changed
 	self triggerEvent: #updateMyView! !
 
-!DrGMathItem methodsFor: 'updating'!
+!DrGMathItem methodsFor: 'updating' stamp: ''!
 move: aPoint
 ! !
 
-!DrGMathItem methodsFor: 'updating'!
+!DrGMathItem methodsFor: 'updating' stamp: ''!
 moveAt: aPoint
 	self shouldNotImplement! !
 
-!DrGMathItem methodsFor: 'updating'!
+!DrGMathItem methodsFor: 'updating' stamp: ''!
 moveEvent: aPoint
 	(self moveParent: aPoint)
 		ifFalse:
@@ -5333,7 +5333,7 @@ moveEvent: aPoint
 			self move: aPoint].
 ! !
 
-!DrGMathItem methodsFor: 'updating'!
+!DrGMathItem methodsFor: 'updating' stamp: ''!
 moveParent: aPoint
 "By default we try reverse dragging (move parents).
 This behaviour should be overridden for some mathItem, for example a free point on a curve should not reverse dragging the curve it belongs to.
@@ -5343,19 +5343,19 @@ Return true if we are doing reverse dragging, otherwise false"
 			parent moveEvent: aPoint]].
 	^true.! !
 
-!DrGMathItem methodsFor: 'updating'!
+!DrGMathItem methodsFor: 'updating' stamp: ''!
 property
 	self subclassResponsibility ! !
 
-!DrGMathItem methodsFor: 'updating'!
+!DrGMathItem methodsFor: 'updating' stamp: ''!
 property: aProperty 
 	self subclassResponsibility ! !
 
-!DrGMathItem methodsFor: 'updating'!
+!DrGMathItem methodsFor: 'updating' stamp: ''!
 update
 ! !
 
-!DrGMathItem methodsFor: 'testing'!
+!DrGMathItem methodsFor: 'testing' stamp: ''!
 contains: aPoint
 	self subclassResponsibility ! !
 
@@ -5365,23 +5365,23 @@ doParentsExist
 		ifNotNil: [parents allSatisfy: [:parent | parent exist] ]
 		ifNil: [false]! !
 
-!DrGMathItem methodsFor: 'testing'!
+!DrGMathItem methodsFor: 'testing' stamp: ''!
 isCloneable
 	^ false! !
 
-!DrGMathItem methodsFor: 'testing'!
+!DrGMathItem methodsFor: 'testing' stamp: ''!
 isLockable
 	^ false! !
 
-!DrGMathItem methodsFor: 'testing'!
+!DrGMathItem methodsFor: 'testing' stamp: ''!
 isPropertyEditable
 	^ false! !
 
-!DrGMathItem methodsFor: 'testing-model'!
+!DrGMathItem methodsFor: 'testing-model' stamp: ''!
 isAngleItem
 	^false! !
 
-!DrGMathItem methodsFor: 'testing-model'!
+!DrGMathItem methodsFor: 'testing-model' stamp: ''!
 isArcItem
 	^false! !
 
@@ -5389,15 +5389,15 @@ isArcItem
 isBitmapItem
 	^false! !
 
-!DrGMathItem methodsFor: 'testing-model'!
+!DrGMathItem methodsFor: 'testing-model' stamp: ''!
 isCircleItem
 	^false! !
 
-!DrGMathItem methodsFor: 'testing-model'!
+!DrGMathItem methodsFor: 'testing-model' stamp: ''!
 isCompositeItem
 	^false! !
 
-!DrGMathItem methodsFor: 'testing-model'!
+!DrGMathItem methodsFor: 'testing-model' stamp: ''!
 isConstrainedPointItem
 	^false! !
 
@@ -5415,7 +5415,7 @@ isDirectionItem
 isEquation
 	^ false! !
 
-!DrGMathItem methodsFor: 'testing-model'!
+!DrGMathItem methodsFor: 'testing-model' stamp: ''!
 isFreePointItem
 	^false! !
 
@@ -5423,7 +5423,7 @@ isFreePointItem
 isFreePointOnPlaneItem
 	^false! !
 
-!DrGMathItem methodsFor: 'testing-model'!
+!DrGMathItem methodsFor: 'testing-model' stamp: ''!
 isGeometricItem
 	^false! !
 
@@ -5432,63 +5432,63 @@ isIntersectableItem
 "When true, this curve can be intersected"
 	^self isCurveItem! !
 
-!DrGMathItem methodsFor: 'testing-model'!
+!DrGMathItem methodsFor: 'testing-model' stamp: ''!
 isIntersectionPointItem
 	^false! !
 
-!DrGMathItem methodsFor: 'testing-model'!
+!DrGMathItem methodsFor: 'testing-model' stamp: ''!
 isLineItem
 	^false! !
 
-!DrGMathItem methodsFor: 'testing-model'!
+!DrGMathItem methodsFor: 'testing-model' stamp: ''!
 isLocusItem
 	^false! !
 
-!DrGMathItem methodsFor: 'testing-model'!
+!DrGMathItem methodsFor: 'testing-model' stamp: ''!
 isMathItem
 	^ true! !
 
-!DrGMathItem methodsFor: 'testing-model'!
+!DrGMathItem methodsFor: 'testing-model' stamp: ''!
 isNumberItem
 	^false! !
 
-!DrGMathItem methodsFor: 'testing-model'!
+!DrGMathItem methodsFor: 'testing-model' stamp: ''!
 isPointItem
 	^false! !
 
-!DrGMathItem methodsFor: 'testing-model'!
+!DrGMathItem methodsFor: 'testing-model' stamp: ''!
 isPointItemOnCurve
 	^false! !
 
-!DrGMathItem methodsFor: 'testing-model'!
+!DrGMathItem methodsFor: 'testing-model' stamp: ''!
 isPolygonItem
 	^false! !
 
-!DrGMathItem methodsFor: 'testing-model'!
+!DrGMathItem methodsFor: 'testing-model' stamp: ''!
 isRayItem
 	^false! !
 
-!DrGMathItem methodsFor: 'testing-model'!
+!DrGMathItem methodsFor: 'testing-model' stamp: ''!
 isScriptItem
 	^false! !
 
-!DrGMathItem methodsFor: 'testing-model'!
+!DrGMathItem methodsFor: 'testing-model' stamp: ''!
 isSegmentItem
 	^false! !
 
-!DrGMathItem methodsFor: 'testing-model'!
+!DrGMathItem methodsFor: 'testing-model' stamp: ''!
 isTextItem
 	^false! !
 
-!DrGMathItem methodsFor: 'testing-model'!
+!DrGMathItem methodsFor: 'testing-model' stamp: ''!
 isValueItem
 	^false! !
 
-!DrGMathItem methodsFor: 'testing-model'!
+!DrGMathItem methodsFor: 'testing-model' stamp: ''!
 isVectorItem
 	^false! !
 
-!DrGMathItem class methodsFor: 'instance creation'!
+!DrGMathItem class methodsFor: 'instance creation' stamp: ''!
 newWith: theParents
 	"Instantiate this mathItem with these parents
 	Parents contains other MathItem instance, sometime it contains other object as Point"
@@ -5510,13 +5510,13 @@ newWith: theParents in: aPresenter
 		rehash;
 		yourself ! !
 
-!DrGArcItem methodsFor: 'printing'!
+!DrGArcItem methodsFor: 'printing' stamp: ''!
 printOn: aStream
 	self printType: DrGArcBuilder title on: aStream.
 	aStream nextPut: Character space.
 	self printDecimal: (length * radius ) abs on: aStream.! !
 
-!DrGArcItem methodsFor: 'private'!
+!DrGArcItem methodsFor: 'private' stamp: ''!
 adaptiveDescriptiveName
 	^ 'This Arc Circle %1' translated! !
 
@@ -5535,7 +5535,7 @@ angleOf: aPoint
 			angleM := angleM max: length ].
 	^ angleM! !
 
-!DrGArcItem methodsFor: 'computing'!
+!DrGArcItem methodsFor: 'computing' stamp: ''!
 clone
 	|pointA pointB pointC clone|
 	pointA := DrGPointFreeItem newWith: {(self pointAt: 0) + (0.2@0.2)}.
@@ -5544,13 +5544,13 @@ clone
 	clone := DrGArc3ptsItem newWith: {pointA . pointB . pointC}.
 	^ {pointA . pointB . pointC. clone}! !
 
-!DrGArcItem methodsFor: 'computing'!
+!DrGArcItem methodsFor: 'computing' stamp: ''!
 closestPointTo: aPoint
 	| angle |
 	angle := self angleOf: aPoint.
 	^center + (radius * ((origin + angle) cos @ (origin + angle) sin))! !
 
-!DrGArcItem methodsFor: 'computing'!
+!DrGArcItem methodsFor: 'computing' stamp: ''!
 intersectionWith: aCurveItem flag: aFlag
 	| aPoint |
 	aCurveItem isLineItem 
@@ -5583,7 +5583,7 @@ intersectionWith: aCurveItem flag: aFlag
 				ifFalse: [^nil]].
 ! !
 
-!DrGArcItem methodsFor: 'computing'!
+!DrGArcItem methodsFor: 'computing' stamp: ''!
 intersectionWithCircle: aCircleOrArcItem flag: aFlag 
 	| circleItem |
 	circleItem := (DrGCircleItem new)
@@ -5591,7 +5591,7 @@ intersectionWithCircle: aCircleOrArcItem flag: aFlag
 				radius: self radius.
 	^circleItem intersectionWithCircle: aCircleOrArcItem flag: aFlag! !
 
-!DrGArcItem methodsFor: 'computing'!
+!DrGArcItem methodsFor: 'computing' stamp: ''!
 intersectionWithDirection: aDirectionItem flag: aFlag 
 	| circleItem |
 	circleItem := (DrGCircleItem new)
@@ -5599,7 +5599,7 @@ intersectionWithDirection: aDirectionItem flag: aFlag
 				radius: self radius.
 	^circleItem intersectionWithDirection: aDirectionItem flag: aFlag! !
 
-!DrGArcItem methodsFor: 'computing'!
+!DrGArcItem methodsFor: 'computing' stamp: ''!
 pointAt: anAbscissa
 	|angle|
 	angle := origin + (anAbscissa * length).
@@ -5620,32 +5620,32 @@ contains: aPoint
 			[angleM > 0 ifTrue: [angleM := angleM - Float twoPi].
 			length <= angleM]! !
 
-!DrGArcItem methodsFor: 'testing'!
+!DrGArcItem methodsFor: 'testing' stamp: ''!
 isCloneable 
 	^ true! !
 
-!DrGArcItem methodsFor: 'accessing'!
+!DrGArcItem methodsFor: 'accessing' stamp: ''!
 abscissaOf: aPoint
 	^(self angleOf: aPoint) / length! !
 
-!DrGArcItem methodsFor: 'accessing'!
+!DrGArcItem methodsFor: 'accessing' stamp: ''!
 basicType
 	^#arc! !
 
-!DrGArcItem methodsFor: 'accessing'!
+!DrGArcItem methodsFor: 'accessing' stamp: ''!
 center
 	^center! !
 
-!DrGArcItem methodsFor: 'accessing'!
+!DrGArcItem methodsFor: 'accessing' stamp: ''!
 center: aPoint
 	center := aPoint ! !
 
-!DrGArcItem methodsFor: 'accessing'!
+!DrGArcItem methodsFor: 'accessing' stamp: ''!
 length
 "the arc length, in radius, can be negative"
 	^length! !
 
-!DrGArcItem methodsFor: 'accessing'!
+!DrGArcItem methodsFor: 'accessing' stamp: ''!
 length: aFloat
 	length := aFloat ! !
 
@@ -5653,19 +5653,19 @@ length: aFloat
 morphClass 
 	^DrGArcMorph! !
 
-!DrGArcItem methodsFor: 'accessing'!
+!DrGArcItem methodsFor: 'accessing' stamp: ''!
 origin
 	^origin! !
 
-!DrGArcItem methodsFor: 'accessing'!
+!DrGArcItem methodsFor: 'accessing' stamp: ''!
 origin: aFloat
 	origin := aFloat ! !
 
-!DrGArcItem methodsFor: 'accessing'!
+!DrGArcItem methodsFor: 'accessing' stamp: ''!
 radius
 	^radius! !
 
-!DrGArcItem methodsFor: 'accessing'!
+!DrGArcItem methodsFor: 'accessing' stamp: ''!
 radius: aFloat
 	radius := aFloat! !
 
@@ -5717,11 +5717,11 @@ updateAsSegmentOrRay
 "the three point are aligned, the arc is a segment"
 	self exist: false.! !
 
-!DrGArc3ptsItem methodsFor: 'xml writing'!
+!DrGArc3ptsItem methodsFor: 'xml writing' stamp: ''!
 nodeType
 	^#'3pts'! !
 
-!DrGArc3ptsItem methodsFor: 'comparing'!
+!DrGArc3ptsItem methodsFor: 'comparing' stamp: ''!
 parentsEqual: aMathItem 
 	^ parents = aMathItem parents
 		or: [parents reverse = aMathItem parents]! !
@@ -5747,15 +5747,15 @@ update
 			length < 0 ifTrue: [ length := length + Float twoPi] ].
 	self exist: true! !
 
-!DrGArcCenterAngleItem methodsFor: 'xml writing'!
+!DrGArcCenterAngleItem methodsFor: 'xml writing' stamp: ''!
 nodeType
 	^ #centerAngle! !
 
-!DrGArcHomothetyItem methodsFor: 'xml writing'!
+!DrGArcHomothetyItem methodsFor: 'xml writing' stamp: ''!
 nodeType
 	^#Scale! !
 
-!DrGArcHomothetyItem methodsFor: 'updating'!
+!DrGArcHomothetyItem methodsFor: 'updating' stamp: ''!
 moveParent: aPoint
 	^false! !
 
@@ -5772,11 +5772,11 @@ update
 	length := arcItem length.
 	self exist: true! !
 
-!DrGArcReflexionItem methodsFor: 'xml writing'!
+!DrGArcReflexionItem methodsFor: 'xml writing' stamp: ''!
 nodeType
 	^#Reflexion! !
 
-!DrGArcReflexionItem methodsFor: 'updating'!
+!DrGArcReflexionItem methodsFor: 'updating' stamp: ''!
 moveParent: aPoint
 	^false! !
 
@@ -5799,11 +5799,11 @@ update
 	origin := pointA y asFloat arcTan: pointA x.
 	self exist: true! !
 
-!DrGArcRotationItem methodsFor: 'xml writing'!
+!DrGArcRotationItem methodsFor: 'xml writing' stamp: ''!
 nodeType
 	^#Reflexion! !
 
-!DrGArcRotationItem methodsFor: 'updating'!
+!DrGArcRotationItem methodsFor: 'updating' stamp: ''!
 moveParent: aPoint
 	^false! !
 
@@ -5821,7 +5821,7 @@ update
 	self exist: true
 ! !
 
-!DrGArcSymmetryItem methodsFor: 'updating'!
+!DrGArcSymmetryItem methodsFor: 'updating' stamp: ''!
 moveParent: aPoint
 	^false! !
 
@@ -5835,15 +5835,15 @@ update
 	length := parents first length.
 	self exist: true! !
 
-!DrGArcSymmetryItem methodsFor: 'xml writing'!
+!DrGArcSymmetryItem methodsFor: 'xml writing' stamp: ''!
 nodeType
 	^#Symmetry! !
 
-!DrGArcTranslationItem methodsFor: 'xml writing'!
+!DrGArcTranslationItem methodsFor: 'xml writing' stamp: ''!
 nodeType
 	^#Translation! !
 
-!DrGArcTranslationItem methodsFor: 'updating'!
+!DrGArcTranslationItem methodsFor: 'updating' stamp: ''!
 moveParent: aPoint
 	^false! !
 
@@ -5857,36 +5857,36 @@ update
 	self exist: true
 ! !
 
-!DrGBitmapItem methodsFor: 'printing'!
+!DrGBitmapItem methodsFor: 'printing' stamp: ''!
 printOn: aStream
 	self printType: 'Picture' translated on: aStream.
 	self printCoordinates: position on: aStream ! !
 
-!DrGBitmapItem methodsFor: 'testing'!
+!DrGBitmapItem methodsFor: 'testing' stamp: ''!
 doParentsExist 
 	^ true! !
 
-!DrGBitmapItem methodsFor: 'testing'!
+!DrGBitmapItem methodsFor: 'testing' stamp: ''!
 isLockable 
 	^ true! !
 
-!DrGBitmapItem methodsFor: 'testing'!
+!DrGBitmapItem methodsFor: 'testing' stamp: ''!
 isPropertyEditable 
 	^ false! !
 
-!DrGBitmapItem methodsFor: 'updating'!
+!DrGBitmapItem methodsFor: 'updating' stamp: ''!
 move: aPoint
 	self isLocked ifFalse: [position := position + aPoint]! !
 
-!DrGBitmapItem methodsFor: 'updating'!
+!DrGBitmapItem methodsFor: 'updating' stamp: ''!
 moveParent: aPoint
 	^ false! !
 
-!DrGBitmapItem methodsFor: 'xml writing'!
+!DrGBitmapItem methodsFor: 'xml writing' stamp: ''!
 nodeType
 	^#free! !
 
-!DrGBitmapItem methodsFor: 'xml writing'!
+!DrGBitmapItem methodsFor: 'xml writing' stamp: ''!
 writeAsXmlPositionTo: aNode 
 	"return the newly created element"
 	aNode
@@ -5914,63 +5914,63 @@ writeAsXmlTo: aNode
 	^ node
 ! !
 
-!DrGBitmapItem methodsFor: 'comparing'!
+!DrGBitmapItem methodsFor: 'comparing' stamp: ''!
 = aMathItem 
 	^ super = aMathItem 
 		and: [position = aMathItem position and:
 			[data = aMathItem data]]! !
 
-!DrGBitmapItem methodsFor: 'comparing'!
+!DrGBitmapItem methodsFor: 'comparing' stamp: ''!
 rehash
 	^ hash := data hash bitXor: position hash! !
 
-!DrGBitmapItem methodsFor: 'accessing'!
+!DrGBitmapItem methodsFor: 'accessing' stamp: ''!
 basicType
 	^ #bitmap! !
 
-!DrGBitmapItem methodsFor: 'accessing'!
+!DrGBitmapItem methodsFor: 'accessing' stamp: ''!
 data
 	^ data! !
 
-!DrGBitmapItem methodsFor: 'accessing'!
+!DrGBitmapItem methodsFor: 'accessing' stamp: ''!
 data: anAthensPaint
 	data := anAthensPaint ! !
 
-!DrGBitmapItem methodsFor: 'accessing'!
+!DrGBitmapItem methodsFor: 'accessing' stamp: ''!
 descriptiveName 
 	^ self adaptiveDescriptiveName ! !
 
-!DrGBitmapItem methodsFor: 'accessing'!
+!DrGBitmapItem methodsFor: 'accessing' stamp: ''!
 height
 	"height in the world coordinates system"
 	^ data extent y * self magnifiedScale ! !
 
-!DrGBitmapItem methodsFor: 'accessing'!
+!DrGBitmapItem methodsFor: 'accessing' stamp: ''!
 insertAtScale
 	^ canvasScaleAtInsertion  ! !
 
-!DrGBitmapItem methodsFor: 'accessing'!
+!DrGBitmapItem methodsFor: 'accessing' stamp: ''!
 insertAtScale: aScale
 	canvasScaleAtInsertion  := aScale ! !
 
-!DrGBitmapItem methodsFor: 'accessing'!
+!DrGBitmapItem methodsFor: 'accessing' stamp: ''!
 isLocked
 	^ locked ifNil: [locked := false]! !
 
-!DrGBitmapItem methodsFor: 'accessing'!
+!DrGBitmapItem methodsFor: 'accessing' stamp: ''!
 locked: aBoolean
 	locked := aBoolean ! !
 
-!DrGBitmapItem methodsFor: 'accessing'!
+!DrGBitmapItem methodsFor: 'accessing' stamp: ''!
 magnifiedScale
 	"Scale factor accordingly to the canvas scale at insertion and the magnify factor"
 	^ (magnifyBy / canvasScaleAtInsertion ) asFloat! !
 
-!DrGBitmapItem methodsFor: 'accessing'!
+!DrGBitmapItem methodsFor: 'accessing' stamp: ''!
 magnifyBy 
 	^ magnifyBy ! !
 
-!DrGBitmapItem methodsFor: 'accessing'!
+!DrGBitmapItem methodsFor: 'accessing' stamp: ''!
 magnifyBy: aFloat
 	magnifyBy := aFloat ! !
 
@@ -5978,35 +5978,35 @@ magnifyBy: aFloat
 morphClass
 	^ DrGBitmapMorph! !
 
-!DrGBitmapItem methodsFor: 'accessing'!
+!DrGBitmapItem methodsFor: 'accessing' stamp: ''!
 parents: aCollection
 	parents := nil.
 ! !
 
-!DrGBitmapItem methodsFor: 'accessing'!
+!DrGBitmapItem methodsFor: 'accessing' stamp: ''!
 position
 	^ position! !
 
-!DrGBitmapItem methodsFor: 'accessing'!
+!DrGBitmapItem methodsFor: 'accessing' stamp: ''!
 position: aPoint 
 	position := aPoint.! !
 
-!DrGBitmapItem methodsFor: 'accessing'!
+!DrGBitmapItem methodsFor: 'accessing' stamp: ''!
 topCenter
 	"top center position in the world coordinates system"
 	^ position + (0@(self height / 2))! !
 
-!DrGBitmapItem methodsFor: 'initialize-release'!
+!DrGBitmapItem methodsFor: 'initialize-release' stamp: ''!
 initialize
 	super initialize.
 	magnifyBy := 1.! !
 
-!DrGBitmapItem methodsFor: 'initialize-release'!
+!DrGBitmapItem methodsFor: 'initialize-release' stamp: ''!
 initialize: theParents
 	super initialize: theParents.
 	self position: theParents last! !
 
-!DrGBitmapItem methodsFor: 'private'!
+!DrGBitmapItem methodsFor: 'private' stamp: ''!
 adaptiveDescriptiveName 
 	^ 'This picture' translated! !
 
@@ -6014,7 +6014,7 @@ adaptiveDescriptiveName
 isBitmapItem
 	^ true! !
 
-!DrGCircleItem methodsFor: 'printing'!
+!DrGCircleItem methodsFor: 'printing' stamp: ''!
 printOn: aStream 
 	self printType: DrGCircleBuilder title on: aStream .
 	aStream nextPut: Character space.
@@ -6022,19 +6022,19 @@ printOn: aStream
 	aStream nextPut: Character space.
 	self printDecimal: radius  on: aStream! !
 
-!DrGCircleItem methodsFor: 'private'!
+!DrGCircleItem methodsFor: 'private' stamp: ''!
 adaptiveDescriptiveName
 	^ 'This circle %1' translated! !
 
-!DrGCircleItem methodsFor: 'testing'!
+!DrGCircleItem methodsFor: 'testing' stamp: ''!
 contains: aPoint
 	^ (center dist: aPoint) closeTo: radius  ! !
 
-!DrGCircleItem methodsFor: 'testing'!
+!DrGCircleItem methodsFor: 'testing' stamp: ''!
 isCloneable
 	^ true! !
 
-!DrGCircleItem methodsFor: 'computing'!
+!DrGCircleItem methodsFor: 'computing' stamp: ''!
 clone
 	|pointA pointB clone|
 	pointA := DrGPointFreeItem newWith: {self center + (0.2@0.2)}.
@@ -6042,7 +6042,7 @@ clone
 	clone := DrGCircle2ptsItem newWith: {pointA . pointB}.
 	^ {pointA . pointB . clone}! !
 
-!DrGCircleItem methodsFor: 'computing'!
+!DrGCircleItem methodsFor: 'computing' stamp: ''!
 intersectionWith: aCurveItem flag: aFlag
 |aPoint|
 	aCurveItem isLineItem 
@@ -6092,19 +6092,19 @@ abscissaOf: aPoint
 	angle < 0 ifTrue: [angle := angle + Float twoPi].
 	^angle * 0.5 * DrGDirectionItem invPi! !
 
-!DrGCircleItem methodsFor: 'accessing'!
+!DrGCircleItem methodsFor: 'accessing' stamp: ''!
 basicType
 	^#circle! !
 
-!DrGCircleItem methodsFor: 'accessing'!
+!DrGCircleItem methodsFor: 'accessing' stamp: ''!
 center
 	^center! !
 
-!DrGCircleItem methodsFor: 'accessing'!
+!DrGCircleItem methodsFor: 'accessing' stamp: ''!
 center: aPoint
 	center := aPoint ! !
 
-!DrGCircleItem methodsFor: 'accessing'!
+!DrGCircleItem methodsFor: 'accessing' stamp: ''!
 closestPointTo: aPoint
 | v | 
 	[v := (aPoint - self center) normalized] on: ZeroDivide do: [ v := 0 @ 0 ].
@@ -6120,11 +6120,11 @@ pointAt: anAbscissa
 	angle := Float twoPi * anAbscissa.
 	^ (Point x: angle cos y: angle sin) * self radius + self center.! !
 
-!DrGCircleItem methodsFor: 'accessing'!
+!DrGCircleItem methodsFor: 'accessing' stamp: ''!
 radius
 	^radius! !
 
-!DrGCircleItem methodsFor: 'accessing'!
+!DrGCircleItem methodsFor: 'accessing' stamp: ''!
 radius: aFlaot
 	radius := aFlaot ! !
 
@@ -6140,7 +6140,7 @@ isCurveItem
 isGeometricItem
 	^ true! !
 
-!DrGCircle2ptsItem methodsFor: 'xml writing'!
+!DrGCircle2ptsItem methodsFor: 'xml writing' stamp: ''!
 nodeType
 	^#'2pts'! !
 
@@ -6151,11 +6151,11 @@ update
 	radius := center dist: parents second point.
 	self exist: true! !
 
-!DrGCircleHomothetyItem methodsFor: 'xml writing'!
+!DrGCircleHomothetyItem methodsFor: 'xml writing' stamp: ''!
 nodeType
 	^#Scale! !
 
-!DrGCircleHomothetyItem methodsFor: 'updating'!
+!DrGCircleHomothetyItem methodsFor: 'updating' stamp: ''!
 moveParent: aPoint
 	^false! !
 
@@ -6169,7 +6169,7 @@ update
 		(parents third valueItem * (parents first center - centerHomothety)).
 	self exist: true! !
 
-!DrGCircleRadiusItem methodsFor: 'computing'!
+!DrGCircleRadiusItem methodsFor: 'computing' stamp: ''!
 clone
 	|pointA clone radiusItem |
 	pointA := DrGPointFreeItem newWith: {self center + (0.2@0.2)}.
@@ -6177,7 +6177,7 @@ clone
 	clone := DrGCircleRadiusItem newWith: {pointA . radiusItem}.
 	^ {pointA . clone}! !
 
-!DrGCircleRadiusItem methodsFor: 'updating'!
+!DrGCircleRadiusItem methodsFor: 'updating' stamp: ''!
 moveParent: aPoint 
 	| thePoint |
 	(parents
@@ -6195,11 +6195,11 @@ update
 	radius := parents second valueItem abs.
 	self exist: true! !
 
-!DrGCircleRadiusItem methodsFor: 'xml writing'!
+!DrGCircleRadiusItem methodsFor: 'xml writing' stamp: ''!
 nodeType
 	^ #radius! !
 
-!DrGCircleSegmentItem methodsFor: 'computing'!
+!DrGCircleSegmentItem methodsFor: 'computing' stamp: ''!
 clone
 	|pointA clone segmentItem |
 	pointA := DrGPointFreeItem newWith: {self center + (0.2@0.2)}.
@@ -6207,7 +6207,7 @@ clone
 	clone := DrGCircleSegmentItem newWith: {pointA . segmentItem}.
 	^ {pointA . clone}! !
 
-!DrGCircleSegmentItem methodsFor: 'xml writing'!
+!DrGCircleSegmentItem methodsFor: 'xml writing' stamp: ''!
 nodeType
 	^ #segment! !
 
@@ -6218,11 +6218,11 @@ update
 	radius := parents second direction r.
 	self exist: true! !
 
-!DrGCircleReflexionItem methodsFor: 'xml writing'!
+!DrGCircleReflexionItem methodsFor: 'xml writing' stamp: ''!
 nodeType
 	^#Reflexion! !
 
-!DrGCircleReflexionItem methodsFor: 'updating'!
+!DrGCircleReflexionItem methodsFor: 'updating' stamp: ''!
 moveParent: aPoint
 	^false! !
 
@@ -6235,7 +6235,7 @@ update
 		direction: parents second direction).
 	self exist: true! !
 
-!DrGCircleRotationItem methodsFor: 'updating'!
+!DrGCircleRotationItem methodsFor: 'updating' stamp: ''!
 moveParent: aPoint
 	^false! !
 
@@ -6249,15 +6249,15 @@ update
 	self exist: true
 ! !
 
-!DrGCircleRotationItem methodsFor: 'xml writing'!
+!DrGCircleRotationItem methodsFor: 'xml writing' stamp: ''!
 nodeType
 	^#Rotation! !
 
-!DrGCircleSymmetryItem methodsFor: 'xml writing'!
+!DrGCircleSymmetryItem methodsFor: 'xml writing' stamp: ''!
 nodeType
 	^#Symmetry! !
 
-!DrGCircleSymmetryItem methodsFor: 'updating'!
+!DrGCircleSymmetryItem methodsFor: 'updating' stamp: ''!
 moveParent: aPoint
 	^false! !
 
@@ -6269,11 +6269,11 @@ update
 	self exist: true
 ! !
 
-!DrGCircleTranslationItem methodsFor: 'xml writing'!
+!DrGCircleTranslationItem methodsFor: 'xml writing' stamp: ''!
 nodeType
 	^#Translation! !
 
-!DrGCircleTranslationItem methodsFor: 'updating'!
+!DrGCircleTranslationItem methodsFor: 'updating' stamp: ''!
 moveParent: aPoint
 	^false! !
 
@@ -6285,30 +6285,30 @@ update
 	self exist: true
 ! !
 
-!DrGCompositeItem methodsFor: 'private'!
+!DrGCompositeItem methodsFor: 'private' stamp: ''!
 adaptiveDescriptiveName
 	^ 'This composite object %1' translated! !
 
-!DrGCompositeItem methodsFor: 'comparing'!
+!DrGCompositeItem methodsFor: 'comparing' stamp: ''!
 = aMathItem
 	^ aMathItem 
 		ifNil: [false] 
 		ifNotNil: [self className = aMathItem className 
 			and: [self subItems = aMathItem subItems]]! !
 
-!DrGCompositeItem methodsFor: 'comparing'!
+!DrGCompositeItem methodsFor: 'comparing' stamp: ''!
 hash
 	^ self subItems hash bitXor: self className hash! !
 
-!DrGCompositeItem methodsFor: 'accessing'!
+!DrGCompositeItem methodsFor: 'accessing' stamp: ''!
 subItems
 	^subItems ! !
 
-!DrGCompositeItem methodsFor: 'accessing'!
+!DrGCompositeItem methodsFor: 'accessing' stamp: ''!
 subItems: theSubItems
 	subItems := theSubItems ! !
 
-!DrGCompositeItem methodsFor: 'updating'!
+!DrGCompositeItem methodsFor: 'updating' stamp: ''!
 move: aPoint
 	subItems do: [:item|
 		(item class ~= DrGPointFreeItem
@@ -6316,7 +6316,7 @@ move: aPoint
 			ifTrue:
 				[item moveEvent: aPoint]].! !
 
-!DrGCompositeItem methodsFor: 'updating'!
+!DrGCompositeItem methodsFor: 'updating' stamp: ''!
 moveParent: aPoint
 	^false! !
 
@@ -6332,12 +6332,12 @@ isGeometricItem
 			ifFalse: [^false]].
 	^true! !
 
-!DrGCompositeItem class methodsFor: 'as yet unclassified'!
+!DrGCompositeItem class methodsFor: 'as yet unclassified' stamp: ''!
 newWith: theSubItems
 	^self new
 		subItems: theSubItems! !
 
-!DrGDirectionItem methodsFor: 'printing'!
+!DrGDirectionItem methodsFor: 'printing' stamp: ''!
 printOn: aStream 	
 	self printCoordinates: origin  on: aStream.
 	aStream nextPutAll: '->'.
@@ -6396,36 +6396,36 @@ update
 	self direction: (parents at: 2) point - self origin.
 	self exist: (self direction = (0@0) ) not ! !
 
-!DrGDirectionItem methodsFor: 'testing'!
+!DrGDirectionItem methodsFor: 'testing' stamp: ''!
 isCloneable
 	^ true! !
 
-!DrGDirectionItem methodsFor: 'testing'!
+!DrGDirectionItem methodsFor: 'testing' stamp: ''!
 isCollinearWith: aDirection 
 	^ (vector crossProduct: aDirection direction)
 		closeTo: 0! !
 
-!DrGDirectionItem methodsFor: 'accessing'!
+!DrGDirectionItem methodsFor: 'accessing' stamp: ''!
 basicType 
 	^#direction! !
 
-!DrGDirectionItem methodsFor: 'accessing'!
+!DrGDirectionItem methodsFor: 'accessing' stamp: ''!
 direction
 	^vector ! !
 
-!DrGDirectionItem methodsFor: 'accessing'!
+!DrGDirectionItem methodsFor: 'accessing' stamp: ''!
 direction: aDirection
 	vector := aDirection ! !
 
-!DrGDirectionItem methodsFor: 'accessing'!
+!DrGDirectionItem methodsFor: 'accessing' stamp: ''!
 normal
 	^ vector normal! !
 
-!DrGDirectionItem methodsFor: 'accessing'!
+!DrGDirectionItem methodsFor: 'accessing' stamp: ''!
 origin
 	^origin ! !
 
-!DrGDirectionItem methodsFor: 'accessing'!
+!DrGDirectionItem methodsFor: 'accessing' stamp: ''!
 origin: anOrigin
 	origin := anOrigin ! !
 
@@ -6451,31 +6451,31 @@ isDirectionItem
 isGeometricItem
 	^ true! !
 
-!DrGDirectionItem class methodsFor: 'constants'!
+!DrGDirectionItem class methodsFor: 'constants' stamp: ''!
 inv2Pi
 	^Inv2Pi! !
 
-!DrGDirectionItem class methodsFor: 'constants'!
+!DrGDirectionItem class methodsFor: 'constants' stamp: ''!
 invPi
 	^InvPi! !
 
-!DrGDirectionItem class methodsFor: 'class initialization'!
+!DrGDirectionItem class methodsFor: 'class initialization' stamp: ''!
 initialize
 	InvPi := 0.31830988618379067154.
 	Inv2Pi := 0.636619772367581.! !
 
-!DrGLineItem methodsFor: 'printing'!
+!DrGLineItem methodsFor: 'printing' stamp: ''!
 printOn: aStream 
 	self printType: DrGLineBuilder title on: aStream.! !
 
-!DrGLineItem methodsFor: 'computing'!
+!DrGLineItem methodsFor: 'computing' stamp: ''!
 abscissaOf: aPoint 
 	| v | 
 	[ v := vector normalized ] on: ZeroDivide do: [ v := 0 @ 0 ].
 	^(aPoint - origin dotProduct: v) arcTan 
 		* DrGDirectionItem invPi + 0.5! !
 
-!DrGLineItem methodsFor: 'computing'!
+!DrGLineItem methodsFor: 'computing' stamp: ''!
 clone
 	|pointA pointB clone|
 	pointA := DrGPointFreeItem newWith: {self origin + (0.2@0.2)}.
@@ -6483,17 +6483,17 @@ clone
 	clone := DrGLine2ptsItem newWith: {pointA . pointB}.
 	^ {pointA . pointB . clone}! !
 
-!DrGLineItem methodsFor: 'computing'!
+!DrGLineItem methodsFor: 'computing' stamp: ''!
 closestPointTo: aPoint
 	|unitVector|
 	[ unitVector := vector normalized ] on: ZeroDivide do: [ unitVector := 0 @ 0 ].
 	^origin + (((aPoint - origin) dotProduct: unitVector) * unitVector)! !
 
-!DrGLineItem methodsFor: 'computing'!
+!DrGLineItem methodsFor: 'computing' stamp: ''!
 contains: aPoint
 	^ (vector crossProduct: (aPoint - origin)) closeTo: 0! !
 
-!DrGLineItem methodsFor: 'computing'!
+!DrGLineItem methodsFor: 'computing' stamp: ''!
 intersectionWith: aCurveItem flag: aFlag
 	aCurveItem isLineItem 
 		ifTrue: [^ self intersectionWithDirection: aCurveItem].
@@ -6503,7 +6503,7 @@ intersectionWith: aCurveItem flag: aFlag
 				or: [aCurveItem isArcItem]]])
 			ifTrue: [^ aCurveItem intersectionWith: self flag: aFlag].! !
 
-!DrGLineItem methodsFor: 'computing'!
+!DrGLineItem methodsFor: 'computing' stamp: ''!
 pointAt:	anAbscissa
 	|point abscissa v |
 	"In the interval [-0.5 ; 0.5]"
@@ -6523,7 +6523,7 @@ pointAt:	anAbscissa
 			point := origin + (abscissa tan * v)].
 	^point! !
 
-!DrGLineItem methodsFor: 'accessing'!
+!DrGLineItem methodsFor: 'accessing' stamp: ''!
 basicType
 	^#line! !
 
@@ -6531,7 +6531,7 @@ basicType
 morphClass 
 	^ DrGLineMorph! !
 
-!DrGLineItem methodsFor: 'private'!
+!DrGLineItem methodsFor: 'private' stamp: ''!
 adaptiveDescriptiveName
 	^ 'This line %1' translated! !
 
@@ -6539,11 +6539,11 @@ adaptiveDescriptiveName
 isLineItem
 	^ true! !
 
-!DrGAngleBisector3ptsItem methodsFor: 'xml writing'!
+!DrGAngleBisector3ptsItem methodsFor: 'xml writing' stamp: ''!
 nodeType
 	^#'angleBisector3pts'! !
 
-!DrGAngleBisector3ptsItem methodsFor: 'comparing'!
+!DrGAngleBisector3ptsItem methodsFor: 'comparing' stamp: ''!
 parentsEqual: aMathItem 
 	^ parents = aMathItem parents
 		or: [parents reverse = aMathItem parents]! !
@@ -6559,15 +6559,15 @@ update
 	self direction:  v1 + v2.
 	self exist: ( self direction = (0@0) ) not! !
 
-!DrGAngleBisector3ptsItem methodsFor: 'private'!
+!DrGAngleBisector3ptsItem methodsFor: 'private' stamp: ''!
 adaptiveDescriptiveName
 	^ 'This angle bisector %1' translated! !
 
-!DrGLine2ptsItem methodsFor: 'xml writing'!
+!DrGLine2ptsItem methodsFor: 'xml writing' stamp: ''!
 nodeType
 	^#'2pts'! !
 
-!DrGLineAngleBisectorItem methodsFor: 'private'!
+!DrGLineAngleBisectorItem methodsFor: 'private' stamp: ''!
 adaptiveDescriptiveName
 	^ 'This angle bisector %1' translated! !
 
@@ -6582,32 +6582,32 @@ update
 	self direction: v1+ v2.
 	self exist: (self direction = (0@0)) not! !
 
-!DrGLineAngleBisectorItem methodsFor: 'xml writing'!
+!DrGLineAngleBisectorItem methodsFor: 'xml writing' stamp: ''!
 nodeType 
 	^ #angleBisector! !
 
-!DrGLineHomothetyItem methodsFor: 'updating'!
+!DrGLineHomothetyItem methodsFor: 'updating' stamp: ''!
 moveParent: aPoint
 	^false! !
 
-!DrGLineHomothetyItem methodsFor: 'updating'!
+!DrGLineHomothetyItem methodsFor: 'updating' stamp: ''!
 update
 	self homothetyUpdate ! !
 
-!DrGLineHomothetyItem methodsFor: 'xml writing'!
+!DrGLineHomothetyItem methodsFor: 'xml writing' stamp: ''!
 nodeType
 	^#Scale! !
 
-!DrGLineParallelItem methodsFor: 'xml writing'!
+!DrGLineParallelItem methodsFor: 'xml writing' stamp: ''!
 nodeType
 	^#parallel! !
 
-!DrGLineParallelItem methodsFor: 'updating'!
+!DrGLineParallelItem methodsFor: 'updating' stamp: ''!
 move: aPoint
 	parents size = 1 ifTrue: [origin := origin + aPoint].
 ! !
 
-!DrGLineParallelItem methodsFor: 'updating'!
+!DrGLineParallelItem methodsFor: 'updating' stamp: ''!
 moveParent: aPoint
 "Only move the origin parent if it is a PointItem instance"
 	parents isEmptyOrNil ifFalse: [parents second moveEvent: aPoint].
@@ -6621,7 +6621,7 @@ update
 	self exist: true
 ! !
 
-!DrGLineParallelItem methodsFor: 'private'!
+!DrGLineParallelItem methodsFor: 'private' stamp: ''!
 adaptiveDescriptiveName
 	^ 'This parallel line %1' translated! !
 
@@ -6633,59 +6633,59 @@ update
 	self exist: true
 ! !
 
-!DrGLinePerpendicularItem methodsFor: 'xml writing'!
+!DrGLinePerpendicularItem methodsFor: 'xml writing' stamp: ''!
 nodeType
 	^#perpendicular! !
 
-!DrGLinePerpendicularItem methodsFor: 'private'!
+!DrGLinePerpendicularItem methodsFor: 'private' stamp: ''!
 adaptiveDescriptiveName
 	^ 'This perpendicular line %1' translated! !
 
-!DrGLineReflexionItem methodsFor: 'updating'!
+!DrGLineReflexionItem methodsFor: 'updating' stamp: ''!
 moveParent: aPoint
 	^false! !
 
-!DrGLineReflexionItem methodsFor: 'updating'!
+!DrGLineReflexionItem methodsFor: 'updating' stamp: ''!
 update
 	self reflexionUpdate! !
 
-!DrGLineReflexionItem methodsFor: 'xml writing'!
+!DrGLineReflexionItem methodsFor: 'xml writing' stamp: ''!
 nodeType
 	^#Reflexion! !
 
-!DrGLineRotationItem methodsFor: 'updating'!
+!DrGLineRotationItem methodsFor: 'updating' stamp: ''!
 moveParent: aPoint
 	^false! !
 
-!DrGLineRotationItem methodsFor: 'updating'!
+!DrGLineRotationItem methodsFor: 'updating' stamp: ''!
 update
 	self rotationUpdate ! !
 
-!DrGLineRotationItem methodsFor: 'xml writing'!
+!DrGLineRotationItem methodsFor: 'xml writing' stamp: ''!
 nodeType
 	^#Rotation! !
 
-!DrGLineSymmetryItem methodsFor: 'xml writing'!
+!DrGLineSymmetryItem methodsFor: 'xml writing' stamp: ''!
 nodeType
 	^#Symmetry! !
 
-!DrGLineSymmetryItem methodsFor: 'updating'!
+!DrGLineSymmetryItem methodsFor: 'updating' stamp: ''!
 moveParent: aPoint
 	^false! !
 
-!DrGLineSymmetryItem methodsFor: 'updating'!
+!DrGLineSymmetryItem methodsFor: 'updating' stamp: ''!
 update
 	self symmetryUpdate ! !
 
-!DrGLineTranslationItem methodsFor: 'xml writing'!
+!DrGLineTranslationItem methodsFor: 'xml writing' stamp: ''!
 nodeType
 	^#Translation! !
 
-!DrGLineTranslationItem methodsFor: 'updating'!
+!DrGLineTranslationItem methodsFor: 'updating' stamp: ''!
 moveParent: aPoint
 	^false! !
 
-!DrGLineTranslationItem methodsFor: 'updating'!
+!DrGLineTranslationItem methodsFor: 'updating' stamp: ''!
 update
 	self translationUpdate! !
 
@@ -6725,7 +6725,7 @@ update
 nodeType
 	^ #perpendicularBisectorSegment! !
 
-!DrGPerpendicularBisectorItem methodsFor: 'private'!
+!DrGPerpendicularBisectorItem methodsFor: 'private' stamp: ''!
 adaptiveDescriptiveName
 	^ 'This perpendicular bisector %1' translated! !
 
@@ -6749,7 +6749,7 @@ rehash
 	bitXor: super nodeType hash) "We really want this "
 	bitXor: self basicType hash! !
 
-!DrGLinePerpendicularBisector2ptsItem methodsFor: 'private'!
+!DrGLinePerpendicularBisector2ptsItem methodsFor: 'private' stamp: ''!
 adaptiveDescriptiveName
 	^ 'This perpendicular bisector %1' translated! !
 
@@ -6763,25 +6763,25 @@ update
 			self exist: true]
 		ifTrue: [self exist: false]		! !
 
-!DrGLinePerpendicularBisector2ptsItem methodsFor: 'xml writing'!
+!DrGLinePerpendicularBisector2ptsItem methodsFor: 'xml writing' stamp: ''!
 nodeType
 	^#'perpendicularBisector2pts'! !
 
-!DrGRayItem methodsFor: 'printing'!
+!DrGRayItem methodsFor: 'printing' stamp: ''!
 printOn: aStream 
 	self printType: DrGRayBuilder title on: aStream.
 	self printCoordinates: origin on: aStream! !
 
-!DrGRayItem methodsFor: 'private'!
+!DrGRayItem methodsFor: 'private' stamp: ''!
 adaptiveDescriptiveName
 	^ 'This half-line %1' translated! !
 
-!DrGRayItem methodsFor: 'testing'!
+!DrGRayItem methodsFor: 'testing' stamp: ''!
 contains: aPoint
 	^ ((vector crossProduct: (aPoint - origin)) closeTo: 0) 
 		and: [((aPoint - origin) dotProduct: vector) >= 0]! !
 
-!DrGRayItem methodsFor: 'accessing'!
+!DrGRayItem methodsFor: 'accessing' stamp: ''!
 basicType
 	^#ray! !
 
@@ -6789,14 +6789,14 @@ basicType
 morphClass 
 	^DrGRayMorph! !
 
-!DrGRayItem methodsFor: 'computing'!
+!DrGRayItem methodsFor: 'computing' stamp: ''!
 abscissaOf: aPoint 
 	| v |
 	[ v := vector normalized ] on: ZeroDivide do: [ v := 0 @ 0 ].
 	^(aPoint - origin dotProduct: v) arcTan 
 		* DrGDirectionItem inv2Pi! !
 
-!DrGRayItem methodsFor: 'computing'!
+!DrGRayItem methodsFor: 'computing' stamp: ''!
 clone
 	|pointA pointB clone|
 	pointA := DrGPointFreeItem newWith: {self origin + (0.2@0.2)}.
@@ -6804,7 +6804,7 @@ clone
 	clone := DrGRay2ptsItem newWith: {pointA . pointB}.
 	^ {pointA . pointB . clone}! !
 
-!DrGRayItem methodsFor: 'computing'!
+!DrGRayItem methodsFor: 'computing' stamp: ''!
 closestPointTo: aPoint
 	|unitVector abscissa|
 	[ unitVector := vector normalized ] on: ZeroDivide do: [ unitVector := 0 @ 0 ].	
@@ -6812,7 +6812,7 @@ closestPointTo: aPoint
 	abscissa < 0 ifTrue: [abscissa := 0].
 	^origin + (abscissa * unitVector)! !
 
-!DrGRayItem methodsFor: 'computing'!
+!DrGRayItem methodsFor: 'computing' stamp: ''!
 intersectionWith: aCurveItem flag: aFlag
 |aPoint|
 	aCurveItem isLineItem 
@@ -6832,7 +6832,7 @@ intersectionWith: aCurveItem flag: aFlag
 		ifTrue:
 			[^aCurveItem intersectionWith: self flag: aFlag].! !
 
-!DrGRayItem methodsFor: 'computing'!
+!DrGRayItem methodsFor: 'computing' stamp: ''!
 pointAt: anAbscissa
 	|point|
 	anAbscissa = 1 
@@ -6860,100 +6860,100 @@ pointAt: anAbscissa
 isRayItem
 	^ true! !
 
-!DrGRay2ptsItem methodsFor: 'xml writing'!
+!DrGRay2ptsItem methodsFor: 'xml writing' stamp: ''!
 nodeType
 	^#'2pts'! !
 
-!DrGRayHomothetyItem methodsFor: 'updating'!
+!DrGRayHomothetyItem methodsFor: 'updating' stamp: ''!
 moveParent: aPoint
 	^false! !
 
-!DrGRayHomothetyItem methodsFor: 'updating'!
+!DrGRayHomothetyItem methodsFor: 'updating' stamp: ''!
 update
 	self homothetyUpdate! !
 
-!DrGRayHomothetyItem methodsFor: 'xml writing'!
+!DrGRayHomothetyItem methodsFor: 'xml writing' stamp: ''!
 nodeType
 	^#Scale! !
 
-!DrGRayReflexionItem methodsFor: 'xml writing'!
+!DrGRayReflexionItem methodsFor: 'xml writing' stamp: ''!
 nodeType
 	^#Reflexion! !
 
-!DrGRayReflexionItem methodsFor: 'updating'!
+!DrGRayReflexionItem methodsFor: 'updating' stamp: ''!
 moveParent: aPoint
 	^false! !
 
-!DrGRayReflexionItem methodsFor: 'updating'!
+!DrGRayReflexionItem methodsFor: 'updating' stamp: ''!
 update
 	self reflexionUpdate ! !
 
-!DrGRayRotationItem methodsFor: 'updating'!
+!DrGRayRotationItem methodsFor: 'updating' stamp: ''!
 moveParent: aPoint
 	^false! !
 
-!DrGRayRotationItem methodsFor: 'updating'!
+!DrGRayRotationItem methodsFor: 'updating' stamp: ''!
 update
 	self rotationUpdate ! !
 
-!DrGRayRotationItem methodsFor: 'xml writing'!
+!DrGRayRotationItem methodsFor: 'xml writing' stamp: ''!
 nodeType
 	^#Rotation! !
 
-!DrGRaySymmetryItem methodsFor: 'updating'!
+!DrGRaySymmetryItem methodsFor: 'updating' stamp: ''!
 moveParent: aPoint
 	^false! !
 
-!DrGRaySymmetryItem methodsFor: 'updating'!
+!DrGRaySymmetryItem methodsFor: 'updating' stamp: ''!
 update
 	self symmetryUpdate ! !
 
-!DrGRaySymmetryItem methodsFor: 'xml writing'!
+!DrGRaySymmetryItem methodsFor: 'xml writing' stamp: ''!
 nodeType
 	^#Symmetry! !
 
-!DrGRayTranslationItem methodsFor: 'updating'!
+!DrGRayTranslationItem methodsFor: 'updating' stamp: ''!
 moveParent: aPoint
 	^false! !
 
-!DrGRayTranslationItem methodsFor: 'updating'!
+!DrGRayTranslationItem methodsFor: 'updating' stamp: ''!
 update
 	self translationUpdate ! !
 
-!DrGRayTranslationItem methodsFor: 'xml writing'!
+!DrGRayTranslationItem methodsFor: 'xml writing' stamp: ''!
 nodeType
 	^#Translation! !
 
-!DrGSegmentItem methodsFor: 'printing'!
+!DrGSegmentItem methodsFor: 'printing' stamp: ''!
 printOn: aStream 
 	self printType: DrGSegmentBuilder title on: aStream.
 	aStream nextPut: Character space.
 	self printDecimal: self length on: aStream.! !
 
-!DrGSegmentItem methodsFor: 'testing'!
+!DrGSegmentItem methodsFor: 'testing' stamp: ''!
 contains: aPoint
 |anAbscissa|
 	^ ((vector crossProduct: (aPoint - origin)) closeTo: 0) 
 		and: [(anAbscissa := self abscissaOf: aPoint) >= 0
 			and: [anAbscissa <= 1]]! !
 
-!DrGSegmentItem methodsFor: 'accessing'!
+!DrGSegmentItem methodsFor: 'accessing' stamp: ''!
 basicType
 	^#segment! !
 
-!DrGSegmentItem methodsFor: 'accessing'!
+!DrGSegmentItem methodsFor: 'accessing' stamp: ''!
 extremity1
 	^ origin ! !
 
-!DrGSegmentItem methodsFor: 'accessing'!
+!DrGSegmentItem methodsFor: 'accessing' stamp: ''!
 extremity2
 	^ self pointAt: 1! !
 
-!DrGSegmentItem methodsFor: 'accessing'!
+!DrGSegmentItem methodsFor: 'accessing' stamp: ''!
 length
 	^ self direction r! !
 
-!DrGSegmentItem methodsFor: 'accessing'!
+!DrGSegmentItem methodsFor: 'accessing' stamp: ''!
 middle
 	^ self extremity1 + self extremity2 / 2! !
 
@@ -6961,11 +6961,11 @@ middle
 morphClass 
 	^DrGSegmentMorph! !
 
-!DrGSegmentItem methodsFor: 'computing'!
+!DrGSegmentItem methodsFor: 'computing' stamp: ''!
 abscissaOf: aPoint
 	^((aPoint - origin) dotProduct: vector) / (vector dotProduct: vector)! !
 
-!DrGSegmentItem methodsFor: 'computing'!
+!DrGSegmentItem methodsFor: 'computing' stamp: ''!
 clone
 	|pointA pointB clone|
 	pointA := DrGPointFreeItem newWith: {self extremity1 + (0.2@0.2)}.
@@ -6981,7 +6981,7 @@ closestPointTo: aPoint
 	abscissa := abscissa min: squareNorm max: 0.
 	^ [origin + (abscissa * vector / squareNorm asFloat)] on: ZeroDivide do: [origin]! !
 
-!DrGSegmentItem methodsFor: 'computing'!
+!DrGSegmentItem methodsFor: 'computing' stamp: ''!
 intersectionWith: aCurveItem flag: aFlag
 |aPoint|
 	aCurveItem isLineItem
@@ -7005,11 +7005,11 @@ intersectionWith: aCurveItem flag: aFlag
 			[^aCurveItem intersectionWith: self flag: aFlag].
 			! !
 
-!DrGSegmentItem methodsFor: 'computing'!
+!DrGSegmentItem methodsFor: 'computing' stamp: ''!
 pointAt: anAbscissa
 	^ origin + (anAbscissa * vector)! !
 
-!DrGSegmentItem methodsFor: 'private'!
+!DrGSegmentItem methodsFor: 'private' stamp: ''!
 adaptiveDescriptiveName
 	^ 'This segment %1' translated! !
 
@@ -7028,7 +7028,7 @@ rehash
 	bitXor: self nodeType hash) 
 	bitXor: self basicType hash! !
 
-!DrGSegment2ptsItem methodsFor: 'xml writing'!
+!DrGSegment2ptsItem methodsFor: 'xml writing' stamp: ''!
 nodeType
 	^#'2pts'! !
 
@@ -7036,83 +7036,83 @@ nodeType
 extremity2
 	^ (parents at: 2) point.! !
 
-!DrGSegmentHomothetyItem methodsFor: 'updating'!
+!DrGSegmentHomothetyItem methodsFor: 'updating' stamp: ''!
 moveParent: aPoint
 	^false! !
 
-!DrGSegmentHomothetyItem methodsFor: 'updating'!
+!DrGSegmentHomothetyItem methodsFor: 'updating' stamp: ''!
 update
 	self homothetyUpdate ! !
 
-!DrGSegmentHomothetyItem methodsFor: 'xml writing'!
+!DrGSegmentHomothetyItem methodsFor: 'xml writing' stamp: ''!
 nodeType
 	^#Scale! !
 
-!DrGSegmentReflexionItem methodsFor: 'xml writing'!
+!DrGSegmentReflexionItem methodsFor: 'xml writing' stamp: ''!
 nodeType
 	^#Reflexion! !
 
-!DrGSegmentReflexionItem methodsFor: 'updating'!
+!DrGSegmentReflexionItem methodsFor: 'updating' stamp: ''!
 moveParent: aPoint
 	^false! !
 
-!DrGSegmentReflexionItem methodsFor: 'updating'!
+!DrGSegmentReflexionItem methodsFor: 'updating' stamp: ''!
 update
 	self reflexionUpdate ! !
 
-!DrGSegmentRotationItem methodsFor: 'xml writing'!
+!DrGSegmentRotationItem methodsFor: 'xml writing' stamp: ''!
 nodeType
 	^#Rotation! !
 
-!DrGSegmentRotationItem methodsFor: 'updating'!
+!DrGSegmentRotationItem methodsFor: 'updating' stamp: ''!
 moveParent: aPoint
 	^false! !
 
-!DrGSegmentRotationItem methodsFor: 'updating'!
+!DrGSegmentRotationItem methodsFor: 'updating' stamp: ''!
 update
 	self rotationUpdate ! !
 
-!DrGSegmentSymmetryItem methodsFor: 'updating'!
+!DrGSegmentSymmetryItem methodsFor: 'updating' stamp: ''!
 moveParent: aPoint
 	^false! !
 
-!DrGSegmentSymmetryItem methodsFor: 'updating'!
+!DrGSegmentSymmetryItem methodsFor: 'updating' stamp: ''!
 update
 	self symmetryUpdate ! !
 
-!DrGSegmentSymmetryItem methodsFor: 'xml writing'!
+!DrGSegmentSymmetryItem methodsFor: 'xml writing' stamp: ''!
 nodeType
 	^#Symmetry! !
 
-!DrGSegmentTranslationItem methodsFor: 'xml writing'!
+!DrGSegmentTranslationItem methodsFor: 'xml writing' stamp: ''!
 nodeType
 	^#Translation! !
 
-!DrGSegmentTranslationItem methodsFor: 'updating'!
+!DrGSegmentTranslationItem methodsFor: 'updating' stamp: ''!
 moveParent: aPoint
 	^false! !
 
-!DrGSegmentTranslationItem methodsFor: 'updating'!
+!DrGSegmentTranslationItem methodsFor: 'updating' stamp: ''!
 update
 	self translationUpdate ! !
 
-!DrGVectorItem methodsFor: 'printing'!
+!DrGVectorItem methodsFor: 'printing' stamp: ''!
 printOn: aStream
 	self printType: DrGVectorBuilder title on: aStream.
 	self printCoordinates: vector on: aStream ! !
 
-!DrGVectorItem methodsFor: 'xml writing'!
+!DrGVectorItem methodsFor: 'xml writing' stamp: ''!
 writeAsXmlTo: aNode
 	|node|
 	node := super writeAsXmlTo: aNode.
 	node attributeAt: #origin put: origin asString.
 	^ node! !
 
-!DrGVectorItem methodsFor: 'private'!
+!DrGVectorItem methodsFor: 'private' stamp: ''!
 adaptiveDescriptiveName
 	^ 'This vector %1' translated! !
 
-!DrGVectorItem methodsFor: 'computing'!
+!DrGVectorItem methodsFor: 'computing' stamp: ''!
 clone
 	|pointA pointB clone|
 	pointA := DrGPointFreeItem newWith: {self origin + (0.2@0.2)}.
@@ -7120,7 +7120,7 @@ clone
 	clone := DrGVector2ptsItem newWith: {pointA . pointB}.
 	^ {pointA . pointB . clone}! !
 
-!DrGVectorItem methodsFor: 'accessing'!
+!DrGVectorItem methodsFor: 'accessing' stamp: ''!
 basicType
 	^#vector! !
 
@@ -7128,12 +7128,12 @@ basicType
 morphClass 
 	^ DrGVectorMorph! !
 
-!DrGVectorItem methodsFor: 'updating'!
+!DrGVectorItem methodsFor: 'updating' stamp: ''!
 move: aPoint
 	origin := origin + aPoint.
 ! !
 
-!DrGVectorItem methodsFor: 'updating'!
+!DrGVectorItem methodsFor: 'updating' stamp: ''!
 moveParent: aPoint
 "We don't want to move the parents, as the whole vector representation can be move all arround"
 	^false! !
@@ -7157,21 +7157,21 @@ update
 	self exist: true
 ! !
 
-!DrGVector2ptsItem methodsFor: 'xml writing'!
+!DrGVector2ptsItem methodsFor: 'xml writing' stamp: ''!
 nodeType
 	^#'2pts'! !
 
-!DrGVector2ptsItem methodsFor: 'initialize-release'!
+!DrGVector2ptsItem methodsFor: 'initialize-release' stamp: ''!
 initialize: theParents
 	super initialize: theParents.
 	self origin: (theParents first point).! !
 
-!DrGVectorHomothetyItem methodsFor: 'initialize-release'!
+!DrGVectorHomothetyItem methodsFor: 'initialize-release' stamp: ''!
 initialize: theParents
 	super initialize: theParents.
 	self origin: parents second point.! !
 
-!DrGVectorHomothetyItem methodsFor: 'updating'!
+!DrGVectorHomothetyItem methodsFor: 'updating' stamp: ''!
 moveParent: aPoint
 	^false! !
 
@@ -7181,15 +7181,15 @@ update
 	vector := parents first direction * parents third valueItem.
 	self exist: true! !
 
-!DrGVectorHomothetyItem methodsFor: 'xml writing'!
+!DrGVectorHomothetyItem methodsFor: 'xml writing' stamp: ''!
 nodeType
 	^#Scale! !
 
-!DrGVectorReflexionItem methodsFor: 'xml writing'!
+!DrGVectorReflexionItem methodsFor: 'xml writing' stamp: ''!
 nodeType
 	^#Reflexion! !
 
-!DrGVectorReflexionItem methodsFor: 'updating'!
+!DrGVectorReflexionItem methodsFor: 'updating' stamp: ''!
 moveParent: aPoint
 	^false! !
 
@@ -7200,12 +7200,12 @@ update
 	self exist: true
 ! !
 
-!DrGVectorReflexionItem methodsFor: 'initialize-release'!
+!DrGVectorReflexionItem methodsFor: 'initialize-release' stamp: ''!
 initialize: theParents
 	super initialize: theParents.
 	self origin: parents first origin.! !
 
-!DrGVectorRotationItem methodsFor: 'updating'!
+!DrGVectorRotationItem methodsFor: 'updating' stamp: ''!
 moveParent: aPoint
 	^false! !
 
@@ -7216,25 +7216,25 @@ update
 	self exist: true
 ! !
 
-!DrGVectorRotationItem methodsFor: 'initialize-release'!
+!DrGVectorRotationItem methodsFor: 'initialize-release' stamp: ''!
 initialize: theParents
 	super initialize: theParents.
 	self origin: parents first origin.! !
 
-!DrGVectorRotationItem methodsFor: 'xml writing'!
+!DrGVectorRotationItem methodsFor: 'xml writing' stamp: ''!
 nodeType
 	^#Rotation! !
 
-!DrGVectorSymmetryItem methodsFor: 'initialize-release'!
+!DrGVectorSymmetryItem methodsFor: 'initialize-release' stamp: ''!
 initialize: theParents
 	super initialize: theParents.
 	self origin: (parents first origin)! !
 
-!DrGVectorSymmetryItem methodsFor: 'xml writing'!
+!DrGVectorSymmetryItem methodsFor: 'xml writing' stamp: ''!
 nodeType
 	^#Symmetry! !
 
-!DrGVectorSymmetryItem methodsFor: 'updating'!
+!DrGVectorSymmetryItem methodsFor: 'updating' stamp: ''!
 moveParent: aPoint
 	^false! !
 
@@ -7245,19 +7245,19 @@ update
 	self exist: true
 ! !
 
-!DrGLocus2ptsItem methodsFor: 'printing'!
+!DrGLocus2ptsItem methodsFor: 'printing' stamp: ''!
 printOn: aStream
 	self printType: DrGLocusBuilder title on: aStream! !
 
-!DrGLocus2ptsItem methodsFor: 'xml writing'!
+!DrGLocus2ptsItem methodsFor: 'xml writing' stamp: ''!
 nodeType
 	^#'2pts'! !
 
-!DrGLocus2ptsItem methodsFor: 'private'!
+!DrGLocus2ptsItem methodsFor: 'private' stamp: ''!
 adaptiveDescriptiveName
 	^ 'This locus %1' translated! !
 
-!DrGLocus2ptsItem methodsFor: 'private'!
+!DrGLocus2ptsItem methodsFor: 'private' stamp: ''!
 squareNorm: aPoint 
 	^ aPoint x * aPoint x + (aPoint y * aPoint y)! !
 
@@ -7278,7 +7278,7 @@ abscissaOf: aPoint
 			i := n]].
 	^ (i / samplesQty) asFloat! !
 
-!DrGLocus2ptsItem methodsFor: 'accessing'!
+!DrGLocus2ptsItem methodsFor: 'accessing' stamp: ''!
 basicType
 	^ #locus! !
 
@@ -7294,11 +7294,11 @@ closestPointTo: aPoint
 			distance := d]].
 	^ m! !
 
-!DrGLocus2ptsItem methodsFor: 'accessing'!
+!DrGLocus2ptsItem methodsFor: 'accessing' stamp: ''!
 constrainedPoint
 	^ parents second! !
 
-!DrGLocus2ptsItem methodsFor: 'accessing'!
+!DrGLocus2ptsItem methodsFor: 'accessing' stamp: ''!
 freePoint
 	^ parents first! !
 
@@ -7314,11 +7314,11 @@ pointAt: anAbscissa
 	m = 0 ifTrue: [m := 1].
 	^ p at: m! !
 
-!DrGLocus2ptsItem methodsFor: 'accessing'!
+!DrGLocus2ptsItem methodsFor: 'accessing' stamp: ''!
 points
 	^ p! !
 
-!DrGLocus2ptsItem methodsFor: 'accessing'!
+!DrGLocus2ptsItem methodsFor: 'accessing' stamp: ''!
 points: aCollection 
 	p := aCollection! !
 
@@ -7350,7 +7350,7 @@ isLocusItem
 isSampled
 	^ samplesQty notNil! !
 
-!DrGLocusTranslationItem methodsFor: 'xml writing'!
+!DrGLocusTranslationItem methodsFor: 'xml writing' stamp: ''!
 nodeType
 	^ #Translation! !
 
@@ -7365,11 +7365,11 @@ update
 	1 to: samplesQty do: [:i | p at: i put: (locusPoints at: i) + direction].
 	self exist: true! !
 
-!DrGLocusTranslationItem methodsFor: 'accessing'!
+!DrGLocusTranslationItem methodsFor: 'accessing' stamp: ''!
 constrainedPoint
 	self shouldNotImplement ! !
 
-!DrGLocusTranslationItem methodsFor: 'accessing'!
+!DrGLocusTranslationItem methodsFor: 'accessing' stamp: ''!
 freePoint
 	self shouldNotImplement ! !
 
@@ -7377,7 +7377,7 @@ freePoint
 morphClass
 	^ DrGLocusTransformedMorph! !
 
-!DrGLocusTranslationItem methodsFor: 'accessing'!
+!DrGLocusTranslationItem methodsFor: 'accessing' stamp: ''!
 points: aCollection
 	self shouldNotImplement ! !
 
@@ -7403,7 +7403,7 @@ update
 	1 to: samplesQty do: [:i | p at: i put: center + (factor * ((locusPoints at: i) - center))].
 	self exist: true! !
 
-!DrGLocusHomothetyItem methodsFor: 'xml writing'!
+!DrGLocusHomothetyItem methodsFor: 'xml writing' stamp: ''!
 nodeType
 	^#Scale! !
 
@@ -7419,7 +7419,7 @@ update
 		p at: i put: ((locusPoints at: i) reflexionBy: axe origin direction: axe direction)].
 	self exist: true! !
 
-!DrGLocusReflexionItem methodsFor: 'xml writing'!
+!DrGLocusReflexionItem methodsFor: 'xml writing' stamp: ''!
 nodeType
 	^#Reflexion! !
 
@@ -7436,7 +7436,7 @@ update
 		p at: i put: ((locusPoints at: i) rotateBy: angle about: center)].
 	self exist: true! !
 
-!DrGLocusRotationItem methodsFor: 'xml writing'!
+!DrGLocusRotationItem methodsFor: 'xml writing' stamp: ''!
 nodeType
 	^#Rotation! !
 
@@ -7451,11 +7451,11 @@ update
 	1 to: samplesQty do: [:i | p at: i put: 2 * center - (locusPoints at: i)].
 	self exist: true! !
 
-!DrGLocusSymmetryItem methodsFor: 'xml writing'!
+!DrGLocusSymmetryItem methodsFor: 'xml writing' stamp: ''!
 nodeType
 	^#Symmetry! !
 
-!DrGPointItem methodsFor: 'printing'!
+!DrGPointItem methodsFor: 'printing' stamp: ''!
 printOn: aStream
 	self printType: DrGFlyPointBuilder title on: aStream.
 	self printCoordinates: point on: aStream
@@ -7463,27 +7463,27 @@ printOn: aStream
 
 ! !
 
-!DrGPointItem methodsFor: 'private'!
+!DrGPointItem methodsFor: 'private' stamp: ''!
 adaptiveDescriptiveName
 	^ 'This point %1' translated! !
 
-!DrGPointItem methodsFor: 'updating'!
+!DrGPointItem methodsFor: 'updating' stamp: ''!
 moveAt: aPoint
 ! !
 
-!DrGPointItem methodsFor: 'updating'!
+!DrGPointItem methodsFor: 'updating' stamp: ''!
 moveParent: aPoint
 	^false! !
 
-!DrGPointItem methodsFor: 'testing'!
+!DrGPointItem methodsFor: 'testing' stamp: ''!
 isPropertyEditable
 	^ self isFreePointItem ! !
 
-!DrGPointItem methodsFor: 'computing'!
+!DrGPointItem methodsFor: 'computing' stamp: ''!
 closestPointTo: aPoint
 	^ self point  ! !
 
-!DrGPointItem methodsFor: 'accessing'!
+!DrGPointItem methodsFor: 'accessing' stamp: ''!
 basicType
 	^#point! !
 
@@ -7491,23 +7491,23 @@ basicType
 morphClass 
 	^DrGPointMorph! !
 
-!DrGPointItem methodsFor: 'accessing'!
+!DrGPointItem methodsFor: 'accessing' stamp: ''!
 point
 	^point ! !
 
-!DrGPointItem methodsFor: 'accessing'!
+!DrGPointItem methodsFor: 'accessing' stamp: ''!
 point: aPoint
 	point := aPoint .! !
 
-!DrGPointItem methodsFor: 'accessing'!
+!DrGPointItem methodsFor: 'accessing' stamp: ''!
 x
 	^ point x ! !
 
-!DrGPointItem methodsFor: 'accessing'!
+!DrGPointItem methodsFor: 'accessing' stamp: ''!
 y
 	^ point y! !
 
-!DrGPointItem methodsFor: 'scripting'!
+!DrGPointItem methodsFor: 'scripting' stamp: ''!
 moveTo: aPoint
 	self moveAt: aPoint.
 	self update.
@@ -7533,19 +7533,19 @@ parents: aCollection
 		ifFalse: [parents := aCollection].
 ! !
 
-!DrGPointBlockItem methodsFor: 'accessing'!
+!DrGPointBlockItem methodsFor: 'accessing' stamp: ''!
 pointBlock
 	^ pointBlock ! !
 
-!DrGPointBlockItem methodsFor: 'accessing'!
+!DrGPointBlockItem methodsFor: 'accessing' stamp: ''!
 pointBlock: aBlock
 	pointBlock := aBlock ! !
 
-!DrGPointBlockItem methodsFor: 'comparing'!
+!DrGPointBlockItem methodsFor: 'comparing' stamp: ''!
 = aMathItem
 	^ super = aMathItem and: [ pointBlock = aMathItem pointBlock ]! !
 
-!DrGPointBlockItem methodsFor: 'comparing'!
+!DrGPointBlockItem methodsFor: 'comparing' stamp: ''!
 rehash
 	^ hash := super rehash bitXor: pointBlock hash! !
 
@@ -7570,7 +7570,7 @@ update
 	point := evaluator on: Error do: [nil].
 	self exist: point notNil ! !
 
-!DrGPointBlockItem methodsFor: 'xml writing'!
+!DrGPointBlockItem methodsFor: 'xml writing' stamp: ''!
 nodeType
 	^#Block! !
 
@@ -7595,7 +7595,7 @@ update
 	self exist: true
 ! !
 
-!DrGPointCoordinateItem methodsFor: 'xml writing'!
+!DrGPointCoordinateItem methodsFor: 'xml writing' stamp: ''!
 nodeType
 	^#Coordinate! !
 
@@ -7603,52 +7603,52 @@ nodeType
 isConstrainedPointItem
 	^ true! !
 
-!DrGPointFreeItem methodsFor: 'accessing'!
+!DrGPointFreeItem methodsFor: 'accessing' stamp: ''!
 isLocked
 	^ locked ifNil: [locked := false]! !
 
-!DrGPointFreeItem methodsFor: 'accessing'!
+!DrGPointFreeItem methodsFor: 'accessing' stamp: ''!
 locked: aBoolean
 	locked := aBoolean ! !
 
-!DrGPointFreeItem methodsFor: 'accessing'!
+!DrGPointFreeItem methodsFor: 'accessing' stamp: ''!
 parents: aCollection
 	parents := nil.
 ! !
 
-!DrGPointFreeItem methodsFor: 'accessing'!
+!DrGPointFreeItem methodsFor: 'accessing' stamp: ''!
 point: aPoint
 	super point: aPoint.
 	self rehash ! !
 
-!DrGPointFreeItem methodsFor: 'accessing'!
+!DrGPointFreeItem methodsFor: 'accessing' stamp: ''!
 x: aNumber
 	self point: aNumber @ self point y
 ! !
 
-!DrGPointFreeItem methodsFor: 'accessing'!
+!DrGPointFreeItem methodsFor: 'accessing' stamp: ''!
 y: aNumber
 	self point: self point x @ aNumber
 ! !
 
-!DrGPointFreeItem methodsFor: 'comparing'!
+!DrGPointFreeItem methodsFor: 'comparing' stamp: ''!
 parentsEqual: aMathItem
 	^ self point = aMathItem point! !
 
-!DrGPointFreeItem methodsFor: 'comparing'!
+!DrGPointFreeItem methodsFor: 'comparing' stamp: ''!
 rehash
 	^hash := super rehash bitXor: point hash! !
 
-!DrGPointFreeItem methodsFor: 'initialize-release'!
+!DrGPointFreeItem methodsFor: 'initialize-release' stamp: ''!
 initialize: theParents
 	super initialize: theParents.
 	self point: theParents first.! !
 
-!DrGPointFreeItem methodsFor: 'xml writing'!
+!DrGPointFreeItem methodsFor: 'xml writing' stamp: ''!
 nodeType
 	^#Free! !
 
-!DrGPointFreeItem methodsFor: 'xml writing'!
+!DrGPointFreeItem methodsFor: 'xml writing' stamp: ''!
 writeAsXmlTo: aNode
 	"It is important to return the node"
 	| node|
@@ -7664,31 +7664,31 @@ editPropertyIn: presenter
 	holder action: [:newPoint | presenter domain propertyCommandFor: self with: newPoint].
 	^ PointEntryPanel open: holder label: 'Edit the coordinates' translated.! !
 
-!DrGPointFreeItem methodsFor: 'updating'!
+!DrGPointFreeItem methodsFor: 'updating' stamp: ''!
 move: aPoint
 	self isLocked ifFalse: [
 		self point: point + aPoint]
 	! !
 
-!DrGPointFreeItem methodsFor: 'updating'!
+!DrGPointFreeItem methodsFor: 'updating' stamp: ''!
 moveAt: aPoint
 	self isLocked ifFalse: [
 		self point: aPoint]
 	! !
 
-!DrGPointFreeItem methodsFor: 'updating'!
+!DrGPointFreeItem methodsFor: 'updating' stamp: ''!
 property 
 	^ self point! !
 
-!DrGPointFreeItem methodsFor: 'updating'!
+!DrGPointFreeItem methodsFor: 'updating' stamp: ''!
 property: aProperty 
 	self point: aProperty.! !
 
-!DrGPointFreeItem methodsFor: 'testing'!
+!DrGPointFreeItem methodsFor: 'testing' stamp: ''!
 doParentsExist
 	^ true! !
 
-!DrGPointFreeItem methodsFor: 'testing'!
+!DrGPointFreeItem methodsFor: 'testing' stamp: ''!
 isLockable 
 	^ true! !
 
@@ -7708,7 +7708,7 @@ update
 	point := center + 		(parents third valueItem * (parents first point - center)).
 	self exist: true! !
 
-!DrGPointHomothetyItem methodsFor: 'xml writing'!
+!DrGPointHomothetyItem methodsFor: 'xml writing' stamp: ''!
 nodeType
 	^#Scale! !
 
@@ -7724,17 +7724,17 @@ update
 	aPoint 	ifNotNil: [self point: aPoint].
 	self exist: aPoint notNil! !
 
-!DrGPointIntersectionItem methodsFor: 'accessing'!
+!DrGPointIntersectionItem methodsFor: 'accessing' stamp: ''!
 k
 	^k! !
 
-!DrGPointIntersectionItem methodsFor: 'accessing'!
+!DrGPointIntersectionItem methodsFor: 'accessing' stamp: ''!
 k: integer 
 	k := integer.
 	self update.
 	self rehash! !
 
-!DrGPointIntersectionItem methodsFor: 'accessing'!
+!DrGPointIntersectionItem methodsFor: 'accessing' stamp: ''!
 parents: aCollection 
 	"We only need the 1st and 2nd mathItem in the collection. 
 The 3rd one is a Point instance (position the user clicked) only used at initialization time"
@@ -7747,11 +7747,11 @@ The 3rd one is a Point instance (position the user clicked) only used at initial
 		yourself.
 ! !
 
-!DrGPointIntersectionItem methodsFor: 'xml writing'!
+!DrGPointIntersectionItem methodsFor: 'xml writing' stamp: ''!
 nodeType
 	^#Intersection! !
 
-!DrGPointIntersectionItem methodsFor: 'xml writing'!
+!DrGPointIntersectionItem methodsFor: 'xml writing' stamp: ''!
 writeAsXmlTo: aNode 
 	| node |
 	node := super writeAsXmlTo: aNode.
@@ -7762,7 +7762,7 @@ writeAsXmlTo: aNode
 				ifFalse: ['0']).
 	^node! !
 
-!DrGPointIntersectionItem methodsFor: 'initialize-release'!
+!DrGPointIntersectionItem methodsFor: 'initialize-release' stamp: ''!
 initialize: theParents
 "check for the right intersection point when one parent is a circle or an arc"
 |pointA pointB clicPoint|
@@ -7782,11 +7782,11 @@ initialize: theParents
 		ifTrue: [self k: -1] 
 		ifFalse: [self k: 1]! !
 
-!DrGPointIntersectionItem methodsFor: 'comparing'!
+!DrGPointIntersectionItem methodsFor: 'comparing' stamp: ''!
 = aMathItem
 	^ super = aMathItem and: [k = aMathItem k]! !
 
-!DrGPointIntersectionItem methodsFor: 'comparing'!
+!DrGPointIntersectionItem methodsFor: 'comparing' stamp: ''!
 rehash
 	^hash := (super rehash bitXor: k ) bitXor: point hash ! !
 
@@ -7798,7 +7798,7 @@ isConstrainedPointItem
 isIntersectionPointItem
 	^true! !
 
-!DrGPointIntersectionItem class methodsFor: 'as yet unclassified'!
+!DrGPointIntersectionItem class methodsFor: 'as yet unclassified' stamp: ''!
 newWith: theParents k: integer
 	"Instantiate this mathItem with these parents
 	Parents contains other MathItem instance, sometime it contains other object as Point"
@@ -7809,7 +7809,7 @@ newWith: theParents k: integer
 		rehash;
 		yourself! !
 
-!DrGPointMiddle2ptsItem methodsFor: 'xml writing'!
+!DrGPointMiddle2ptsItem methodsFor: 'xml writing' stamp: ''!
 nodeType
 	^#'Middle_2pts'! !
 
@@ -7840,11 +7840,11 @@ update
 	self point: (parents first origin + (parents first direction / 2.0)).
 	self exist: true! !
 
-!DrGPointMiddlesegmentItem methodsFor: 'xml writing'!
+!DrGPointMiddlesegmentItem methodsFor: 'xml writing' stamp: ''!
 nodeType
 	^ #'Middle_segment'! !
 
-!DrGPointMiddlesegmentItem methodsFor: 'comparing'!
+!DrGPointMiddlesegmentItem methodsFor: 'comparing' stamp: ''!
 parentsEqual: aMathItem 
 	^ parents first = aMathItem parents first! !
 
@@ -7866,7 +7866,7 @@ move: aVector
 		self abscissa: (parents first abscissaOf: self point)]
 ! !
 
-!DrGPointOncurveItem methodsFor: 'updating'!
+!DrGPointOncurveItem methodsFor: 'updating' stamp: ''!
 moveAt: aPoint
 	self isLocked ifFalse: [
 		self point: (parents first closestPointTo: aPoint).
@@ -7880,11 +7880,11 @@ update
 	self exist: (point x isInfinite or: [point y isInfinite ]) not
 ! !
 
-!DrGPointOncurveItem methodsFor: 'testing'!
+!DrGPointOncurveItem methodsFor: 'testing' stamp: ''!
 isLockable 
 	^ true! !
 
-!DrGPointOncurveItem methodsFor: 'initialize-release'!
+!DrGPointOncurveItem methodsFor: 'initialize-release' stamp: ''!
 initialize: theParents
 	super initialize: theParents. 
 	self doParentsExist ifTrue:
@@ -7892,26 +7892,26 @@ initialize: theParents
 		self abscissa: (theParents first abscissaOf: self point)].
 	self rehash! !
 
-!DrGPointOncurveItem methodsFor: 'accessing'!
+!DrGPointOncurveItem methodsFor: 'accessing' stamp: ''!
 abscissa
 	^abscissa! !
 
-!DrGPointOncurveItem methodsFor: 'accessing'!
+!DrGPointOncurveItem methodsFor: 'accessing' stamp: ''!
 abscissa: anAbscissa
 	abscissa := anAbscissa.
 	abscissa > 1 ifTrue: [abscissa := 1].
 	abscissa < 0 ifTrue: [abscissa := 0].
 	self rehash! !
 
-!DrGPointOncurveItem methodsFor: 'accessing'!
+!DrGPointOncurveItem methodsFor: 'accessing' stamp: ''!
 isLocked
 	^ locked ifNil: [locked := false]! !
 
-!DrGPointOncurveItem methodsFor: 'accessing'!
+!DrGPointOncurveItem methodsFor: 'accessing' stamp: ''!
 locked: aBoolean
 	locked := aBoolean ! !
 
-!DrGPointOncurveItem methodsFor: 'accessing'!
+!DrGPointOncurveItem methodsFor: 'accessing' stamp: ''!
 parents: aCollection
 "We only need the first mathItem in the collection. 
 The second one is a Point instance (position the user clicked) only used at initialization time"
@@ -7921,28 +7921,28 @@ The second one is a Point instance (position the user clicked) only used at init
 	parents := OrderedCollection new add: aCollection first;yourself.
 ! !
 
-!DrGPointOncurveItem methodsFor: 'accessing'!
+!DrGPointOncurveItem methodsFor: 'accessing' stamp: ''!
 property 
 	^ self abscissa ! !
 
-!DrGPointOncurveItem methodsFor: 'accessing'!
+!DrGPointOncurveItem methodsFor: 'accessing' stamp: ''!
 property: aProperty 
 	self setCurveAbscissa: aProperty.! !
 
-!DrGPointOncurveItem methodsFor: 'comparing'!
+!DrGPointOncurveItem methodsFor: 'comparing' stamp: ''!
 = aMathItem
 	^ super = aMathItem 
 		and: [self abscissa = aMathItem abscissa ]! !
 
-!DrGPointOncurveItem methodsFor: 'comparing'!
+!DrGPointOncurveItem methodsFor: 'comparing' stamp: ''!
 rehash
 	^hash := super rehash bitXor: abscissa hash! !
 
-!DrGPointOncurveItem methodsFor: 'xml writing'!
+!DrGPointOncurveItem methodsFor: 'xml writing' stamp: ''!
 nodeType
 	^#'On_curve'! !
 
-!DrGPointOncurveItem methodsFor: 'xml writing'!
+!DrGPointOncurveItem methodsFor: 'xml writing' stamp: ''!
 writeAsXmlTo: aNode
 	"It is important to return the node"
 	| node|
@@ -7950,7 +7950,7 @@ writeAsXmlTo: aNode
 	node addElement:  ((XMLElement named: #value) addContent: (XMLStringNode string: abscissa  asString)).
 	^node! !
 
-!DrGPointOncurveItem methodsFor: 'scripting'!
+!DrGPointOncurveItem methodsFor: 'scripting' stamp: ''!
 setCurveAbscissa: aFloat 
 	self abscissa: aFloat.
 	self update! !
@@ -7963,7 +7963,7 @@ isFreePointItem
 isPointItemOnCurve
 	^true! !
 
-!DrGPointReflexionItem methodsFor: 'xml writing'!
+!DrGPointReflexionItem methodsFor: 'xml writing' stamp: ''!
 nodeType
 	^#Reflexion! !
 
@@ -7989,7 +7989,7 @@ update
 	self exist: true
 ! !
 
-!DrGPointRotationItem methodsFor: 'xml writing'!
+!DrGPointRotationItem methodsFor: 'xml writing' stamp: ''!
 nodeType
 	^#Rotation! !
 
@@ -8004,7 +8004,7 @@ update
 	self exist: true
 ! !
 
-!DrGPointScriptItem methodsFor: 'xml writing'!
+!DrGPointScriptItem methodsFor: 'xml writing' stamp: ''!
 nodeType
 	^#Script! !
 
@@ -8019,7 +8019,7 @@ update
 	self exist: true
 ! !
 
-!DrGPointSymmetryItem methodsFor: 'xml writing'!
+!DrGPointSymmetryItem methodsFor: 'xml writing' stamp: ''!
 nodeType
 	^#Symmetry! !
 
@@ -8027,7 +8027,7 @@ nodeType
 isConstrainedPointItem
 	^true! !
 
-!DrGPointTranslationItem methodsFor: 'xml writing'!
+!DrGPointTranslationItem methodsFor: 'xml writing' stamp: ''!
 nodeType
 	^#Translation! !
 
@@ -8042,17 +8042,17 @@ update
 isConstrainedPointItem
 	^true! !
 
-!DrGPolygonItem methodsFor: 'printing'!
+!DrGPolygonItem methodsFor: 'printing' stamp: ''!
 printOn: aStream 
 	self printType: DrGPolygonBuilder title on: aStream.
 	aStream nextPutAll: ' edges=' translated;
 		nextPutAll: points size printString! !
 
-!DrGPolygonItem methodsFor: 'accessing'!
+!DrGPolygonItem methodsFor: 'accessing' stamp: ''!
 basicType
 	^#polygon! !
 
-!DrGPolygonItem methodsFor: 'accessing'!
+!DrGPolygonItem methodsFor: 'accessing' stamp: ''!
 length
 	^length ! !
 
@@ -8060,19 +8060,19 @@ length
 morphClass 
 	^ DrGPolygonMorph! !
 
-!DrGPolygonItem methodsFor: 'accessing'!
+!DrGPolygonItem methodsFor: 'accessing' stamp: ''!
 points
 	^points! !
 
-!DrGPolygonItem methodsFor: 'accessing'!
+!DrGPolygonItem methodsFor: 'accessing' stamp: ''!
 sidesLength
 	^ sidesLength ! !
 
-!DrGPolygonItem methodsFor: 'testing'!
+!DrGPolygonItem methodsFor: 'testing' stamp: ''!
 isCloneable
 	^ true! !
 
-!DrGPolygonItem methodsFor: 'updating'!
+!DrGPolygonItem methodsFor: 'updating' stamp: ''!
 computeLength
 	length := 0.
 	sidesLength := OrderedCollection new.
@@ -8081,7 +8081,7 @@ computeLength
 			(sidesLength add: (p dist: (points at: i + 1 ifAbsent: [points at: 1])))].
 	^length! !
 
-!DrGPolygonItem methodsFor: 'private'!
+!DrGPolygonItem methodsFor: 'private' stamp: ''!
 adaptiveDescriptiveName
 | sides |
 	sides := self points size.
@@ -8089,11 +8089,11 @@ adaptiveDescriptiveName
 	sides = 4 ifTrue: [^ 'This quadrilateral %1' translated].
 	^ 'This polygon %1' translated! !
 
-!DrGPolygonItem methodsFor: 'computing'!
+!DrGPolygonItem methodsFor: 'computing' stamp: ''!
 abscissaOf: aPoint
  ^ (self closestPointInfoTo: aPoint) second! !
 
-!DrGPolygonItem methodsFor: 'computing'!
+!DrGPolygonItem methodsFor: 'computing' stamp: ''!
 abscissaOf: aPoint in: side
 "To speed up calculs, we better know the side where is the point"
 |distanceToPoint|
@@ -8103,14 +8103,14 @@ abscissaOf: aPoint in: side
 	distanceToPoint := distanceToPoint + (aPoint dist: (points at: side)).
 	^ distanceToPoint / length! !
 
-!DrGPolygonItem methodsFor: 'computing'!
+!DrGPolygonItem methodsFor: 'computing' stamp: ''!
 clone
 	|clonedPoints clone|
 	clonedPoints := points collect: [:aPoint | DrGPointFreeItem newWith: {aPoint + (0.2@0.2)}].
 	clone := DrGPolygonNptsItem newWith: clonedPoints.
 	^ (OrderedCollection withAll: clonedPoints) add: clone; yourself! !
 
-!DrGPolygonItem methodsFor: 'computing'!
+!DrGPolygonItem methodsFor: 'computing' stamp: ''!
 closestPointInfoTo: aPoint
 "the closest point on the polygon and its curvilinear abscissa in [0 ; 1]"
 |closestPoint smallestDistance side|
@@ -8127,11 +8127,11 @@ closestPointInfoTo: aPoint
 				side := i]].
 	^{closestPoint . self abscissaOf: closestPoint in: side}! !
 
-!DrGPolygonItem methodsFor: 'computing'!
+!DrGPolygonItem methodsFor: 'computing' stamp: ''!
 closestPointTo: aPoint
 	^ (self closestPointInfoTo: aPoint) first! !
 
-!DrGPolygonItem methodsFor: 'computing'!
+!DrGPolygonItem methodsFor: 'computing' stamp: ''!
 closestPointTo: aPoint from: pointA to: pointB
 "the closest point to aPoint in [AB]"
 |abscissa vector squareNorm|
@@ -8143,7 +8143,7 @@ closestPointTo: aPoint from: pointA to: pointB
 		[abscissa := squareNorm].
 	^ pointA + (abscissa * vector / squareNorm asFloat)! !
 
-!DrGPolygonItem methodsFor: 'computing'!
+!DrGPolygonItem methodsFor: 'computing' stamp: ''!
 pointAt: anAbscissa
 |distanceToPoint leftDistanceToPoint sum|
 	distanceToPoint := leftDistanceToPoint := anAbscissa * length.
@@ -8178,11 +8178,11 @@ isIntersectableItem
 isPolygonItem
 	^true! !
 
-!DrGPolygonHomothetyItem methodsFor: 'xml writing'!
+!DrGPolygonHomothetyItem methodsFor: 'xml writing' stamp: ''!
 nodeType
 	^#Scale! !
 
-!DrGPolygonHomothetyItem methodsFor: 'updating'!
+!DrGPolygonHomothetyItem methodsFor: 'updating' stamp: ''!
 moveParent: aPoint
 	^false! !
 
@@ -8196,7 +8196,7 @@ update
 	self computeLength.
 	self exist: true! !
 
-!DrGPolygonNptsItem methodsFor: 'comparing'!
+!DrGPolygonNptsItem methodsFor: 'comparing' stamp: ''!
 parentsEqual: aPolygon
 	|shiftedCollection|
 	parents size = aPolygon parents size ifFalse: [^false].
@@ -8224,15 +8224,15 @@ update
 	self exist: true
 ! !
 
-!DrGPolygonNptsItem methodsFor: 'xml writing'!
+!DrGPolygonNptsItem methodsFor: 'xml writing' stamp: ''!
 nodeType
 	^ #npts! !
 
-!DrGPolygonReflexionItem methodsFor: 'xml writing'!
+!DrGPolygonReflexionItem methodsFor: 'xml writing' stamp: ''!
 nodeType
 	^#Reflexion! !
 
-!DrGPolygonReflexionItem methodsFor: 'updating'!
+!DrGPolygonReflexionItem methodsFor: 'updating' stamp: ''!
 moveParent: aPoint
 	^false! !
 
@@ -8245,7 +8245,7 @@ update
 	self computeLength.
 	self exist: true! !
 
-!DrGPolygonRegularItem methodsFor: 'updating'!
+!DrGPolygonRegularItem methodsFor: 'updating' stamp: ''!
 moveParent: aPoint
 "We only move center and the summit, not the value, number of summit."
 	parents first moveEvent: aPoint.
@@ -8266,15 +8266,15 @@ update
 	self computeLength.
 	self exist: true! !
 
-!DrGPolygonRegularItem methodsFor: 'xml writing'!
+!DrGPolygonRegularItem methodsFor: 'xml writing' stamp: ''!
 nodeType
 	^ #Regular! !
 
-!DrGPolygonRotationItem methodsFor: 'xml writing'!
+!DrGPolygonRotationItem methodsFor: 'xml writing' stamp: ''!
 nodeType
 	^#Rotation! !
 
-!DrGPolygonRotationItem methodsFor: 'updating'!
+!DrGPolygonRotationItem methodsFor: 'updating' stamp: ''!
 moveParent: aPoint
 	^false! !
 
@@ -8289,11 +8289,11 @@ update
 	self exist: true
 ! !
 
-!DrGPolygonSymmetryItem methodsFor: 'xml writing'!
+!DrGPolygonSymmetryItem methodsFor: 'xml writing' stamp: ''!
 nodeType
 	^#Symmetry! !
 
-!DrGPolygonSymmetryItem methodsFor: 'updating'!
+!DrGPolygonSymmetryItem methodsFor: 'updating' stamp: ''!
 moveParent: aPoint
 	^false! !
 
@@ -8307,7 +8307,7 @@ update
 	self exist: true
 ! !
 
-!DrGPolygonTranslationItem methodsFor: 'updating'!
+!DrGPolygonTranslationItem methodsFor: 'updating' stamp: ''!
 moveParent: aPoint
 	^false! !
 
@@ -8321,29 +8321,29 @@ update
 	self exist: true
 ! !
 
-!DrGPolygonTranslationItem methodsFor: 'xml writing'!
+!DrGPolygonTranslationItem methodsFor: 'xml writing' stamp: ''!
 nodeType
 	^#Translation! !
 
-!DrGTextItem methodsFor: 'printing'!
+!DrGTextItem methodsFor: 'printing' stamp: ''!
 printOn: aStream
 	self printType: DrGTextBuilder title on: aStream ! !
 
-!DrGTextItem methodsFor: 'initialize-release'!
+!DrGTextItem methodsFor: 'initialize-release' stamp: ''!
 initialize 
 	super initialize.
 	text := 'Edit me' translated! !
 
-!DrGTextItem methodsFor: 'initialize-release'!
+!DrGTextItem methodsFor: 'initialize-release' stamp: ''!
 initialize: theParents
 	super initialize: theParents.
 	self position: theParents last! !
 
-!DrGTextItem methodsFor: 'xml writing'!
+!DrGTextItem methodsFor: 'xml writing' stamp: ''!
 nodeType
 	^#free! !
 
-!DrGTextItem methodsFor: 'xml writing'!
+!DrGTextItem methodsFor: 'xml writing' stamp: ''!
 writeAsXmlPositionTo: aNode 
 	"return the newly created element"
 	aNode
@@ -8353,7 +8353,7 @@ writeAsXmlPositionTo: aNode
 				addContent: (XMLStringNode string: position y asString)).
 	^ aNode! !
 
-!DrGTextItem methodsFor: 'xml writing'!
+!DrGTextItem methodsFor: 'xml writing' stamp: ''!
 writeAsXmlTo: aNode
 	|node|
 	node := super writeAsXmlTo: aNode.
@@ -8361,20 +8361,20 @@ writeAsXmlTo: aNode
 	^ self writeAsXmlPositionTo: node
 ! !
 
-!DrGTextItem methodsFor: 'accessing'!
+!DrGTextItem methodsFor: 'accessing' stamp: ''!
 basicType
 	^#text! !
 
-!DrGTextItem methodsFor: 'accessing'!
+!DrGTextItem methodsFor: 'accessing' stamp: ''!
 descriptiveName 
 	^ self adaptiveDescriptiveName
 ! !
 
-!DrGTextItem methodsFor: 'accessing'!
+!DrGTextItem methodsFor: 'accessing' stamp: ''!
 isLocked
 	^ locked ifNil: [locked := false]! !
 
-!DrGTextItem methodsFor: 'accessing'!
+!DrGTextItem methodsFor: 'accessing' stamp: ''!
 locked: aBoolean
 	locked := aBoolean ! !
 
@@ -8382,25 +8382,25 @@ locked: aBoolean
 morphClass 
 	^ DrGTextMorph! !
 
-!DrGTextItem methodsFor: 'accessing'!
+!DrGTextItem methodsFor: 'accessing' stamp: ''!
 parents: aCollection
 	parents := nil.
 ! !
 
-!DrGTextItem methodsFor: 'accessing'!
+!DrGTextItem methodsFor: 'accessing' stamp: ''!
 position
 	^ position! !
 
-!DrGTextItem methodsFor: 'accessing'!
+!DrGTextItem methodsFor: 'accessing' stamp: ''!
 position: aPoint 
 	position := aPoint.
 	self rehash! !
 
-!DrGTextItem methodsFor: 'accessing'!
+!DrGTextItem methodsFor: 'accessing' stamp: ''!
 text
 	^ text! !
 
-!DrGTextItem methodsFor: 'accessing'!
+!DrGTextItem methodsFor: 'accessing' stamp: ''!
 text: aText
 	text := aText.
 	self rehash! !
@@ -8412,47 +8412,47 @@ editPropertyIn: presenter
 	holder action: [:newText | presenter domain propertyCommandFor: self with: newText].
 	^ TextEntryPanel open: holder label: 'Edit this text' translated! !
 
-!DrGTextItem methodsFor: 'updating'!
+!DrGTextItem methodsFor: 'updating' stamp: ''!
 move: aPoint
 	self isLocked ifFalse: [position := position + aPoint]! !
 
-!DrGTextItem methodsFor: 'updating'!
+!DrGTextItem methodsFor: 'updating' stamp: ''!
 moveParent: aPoint
 	^ false! !
 
-!DrGTextItem methodsFor: 'updating'!
+!DrGTextItem methodsFor: 'updating' stamp: ''!
 property
 	^ self text! !
 
-!DrGTextItem methodsFor: 'updating'!
+!DrGTextItem methodsFor: 'updating' stamp: ''!
 property: aProperty 
 	self text: aProperty ! !
 
-!DrGTextItem methodsFor: 'computing'!
+!DrGTextItem methodsFor: 'computing' stamp: ''!
 closestPointTo: aPoint
  ^ position! !
 
-!DrGTextItem methodsFor: 'testing'!
+!DrGTextItem methodsFor: 'testing' stamp: ''!
 doParentsExist 
 	^ true! !
 
-!DrGTextItem methodsFor: 'testing'!
+!DrGTextItem methodsFor: 'testing' stamp: ''!
 isLockable 
 	^ true! !
 
-!DrGTextItem methodsFor: 'testing'!
+!DrGTextItem methodsFor: 'testing' stamp: ''!
 isPropertyEditable 
 	^ true! !
 
-!DrGTextItem methodsFor: 'comparing'!
+!DrGTextItem methodsFor: 'comparing' stamp: ''!
 = aMathItem
 	^ super = aMathItem and: [text = aMathItem text and: [position = aMathItem position]]! !
 
-!DrGTextItem methodsFor: 'comparing'!
+!DrGTextItem methodsFor: 'comparing' stamp: ''!
 rehash
 	^ hash := (self basicType hash bitXor: text hash) bitXor: position hash! !
 
-!DrGTextItem methodsFor: 'private'!
+!DrGTextItem methodsFor: 'private' stamp: ''!
 adaptiveDescriptiveName
 	^ 'This text' translated! !
 
@@ -8460,15 +8460,15 @@ adaptiveDescriptiveName
 isTextItem
 	^ true! !
 
-!DrGValueItem methodsFor: 'accessing'!
+!DrGValueItem methodsFor: 'accessing' stamp: ''!
 basicType
 	 ^#value! !
 
-!DrGValueItem methodsFor: 'accessing'!
+!DrGValueItem methodsFor: 'accessing' stamp: ''!
 isLocked
 	^ locked ifNil: [locked := false]! !
 
-!DrGValueItem methodsFor: 'accessing'!
+!DrGValueItem methodsFor: 'accessing' stamp: ''!
 locked: aBoolean
 	locked := aBoolean ! !
 
@@ -8476,7 +8476,7 @@ locked: aBoolean
 morphClass 
 	 ^ DrGValueMorph! !
 
-!DrGValueItem methodsFor: 'accessing'!
+!DrGValueItem methodsFor: 'accessing' stamp: ''!
 parents: aCollection 
 	"last is the initial screen position of the value"
 	aCollection isEmptyOrNil ifTrue: 
@@ -8487,43 +8487,43 @@ parents: aCollection
 		ifFalse: [ parents := aCollection ].
 ! !
 
-!DrGValueItem methodsFor: 'accessing'!
+!DrGValueItem methodsFor: 'accessing' stamp: ''!
 position
 	^position! !
 
-!DrGValueItem methodsFor: 'accessing'!
+!DrGValueItem methodsFor: 'accessing' stamp: ''!
 position: aPoint
 	position := aPoint.! !
 
-!DrGValueItem methodsFor: 'accessing'!
+!DrGValueItem methodsFor: 'accessing' stamp: ''!
 valueItem
 	^value! !
 
-!DrGValueItem methodsFor: 'computing'!
+!DrGValueItem methodsFor: 'computing' stamp: ''!
 closestPointTo: aPoint
 	^ position! !
 
-!DrGValueItem methodsFor: 'initialize-release'!
+!DrGValueItem methodsFor: 'initialize-release' stamp: ''!
 initialize
 	super initialize.
 	value := 0! !
 
-!DrGValueItem methodsFor: 'initialize-release'!
+!DrGValueItem methodsFor: 'initialize-release' stamp: ''!
 initialize: theParents
 	super initialize: theParents.
 	self position: theParents last! !
 
-!DrGValueItem methodsFor: 'printing'!
+!DrGValueItem methodsFor: 'printing' stamp: ''!
 printNameOn: aStream
 	aStream nextPutAll: 'Value ' translated.
 ! !
 
-!DrGValueItem methodsFor: 'printing'!
+!DrGValueItem methodsFor: 'printing' stamp: ''!
 printOn: aStream
 	self printTypeOn: aStream.
 	self printValueOn: aStream ! !
 
-!DrGValueItem methodsFor: 'printing'!
+!DrGValueItem methodsFor: 'printing' stamp: ''!
 printTypeOn: aStream
 |safeName|
 	self printNameOn: aStream.
@@ -8532,11 +8532,11 @@ printTypeOn: aStream
 			nextPutAll: ' = '].
 ! !
 
-!DrGValueItem methodsFor: 'printing'!
+!DrGValueItem methodsFor: 'printing' stamp: ''!
 printValueOn: aStream 
 	self printDecimal: value on: aStream ! !
 
-!DrGValueItem methodsFor: 'testing'!
+!DrGValueItem methodsFor: 'testing' stamp: ''!
 isLockable 
 	^ true! !
 
@@ -8544,17 +8544,17 @@ isLockable
 isValueItem
 	^true! !
 
-!DrGValueItem methodsFor: 'updating'!
+!DrGValueItem methodsFor: 'updating' stamp: ''!
 move: aPoint
 	self isLocked ifFalse: [self position: position + aPoint].
 ! !
 
-!DrGValueItem methodsFor: 'updating'!
+!DrGValueItem methodsFor: 'updating' stamp: ''!
 moveParent: aPoint
 "Don't move my parent"
 	^false! !
 
-!DrGValueItem methodsFor: 'xml writing'!
+!DrGValueItem methodsFor: 'xml writing' stamp: ''!
 writeAsXmlPositionTo: aNode 
 	"return the newly created element"
 	aNode
@@ -8564,7 +8564,7 @@ writeAsXmlPositionTo: aNode
 				addContent: (XMLStringNode string: position y asString)).
 	^ aNode! !
 
-!DrGValueItem methodsFor: 'private'!
+!DrGValueItem methodsFor: 'private' stamp: ''!
 adaptiveDescriptiveName
 	^ 'This value %1' translated! !
 
@@ -8575,21 +8575,21 @@ printOn: aStream
 	self printInteger: self degreeAngle on: aStream.
 	aStream nextPutAll: '°'.! !
 
-!DrGAngleItem methodsFor: 'accessing'!
+!DrGAngleItem methodsFor: 'accessing' stamp: ''!
 basicType
 	^#angle! !
 
-!DrGAngleItem methodsFor: 'accessing'!
+!DrGAngleItem methodsFor: 'accessing' stamp: ''!
 degreeAngle
 "return the angle in degree"
 	^degreeValue ! !
 
-!DrGAngleItem methodsFor: 'accessing'!
+!DrGAngleItem methodsFor: 'accessing' stamp: ''!
 radianAngle
 "return the angle in radian"
 	^radianValue ! !
 
-!DrGAngleItem methodsFor: 'private'!
+!DrGAngleItem methodsFor: 'private' stamp: ''!
 adaptiveDescriptiveName
 	^ 'This oriented angle %1' translated! !
 
@@ -8597,7 +8597,7 @@ adaptiveDescriptiveName
 isAngleItem
 	^true! !
 
-!DrGAngle3ptsOrientedItem methodsFor: 'updating'!
+!DrGAngle3ptsOrientedItem methodsFor: 'updating' stamp: ''!
 move: aPoint
 "Don't move when user drag around"! !
 
@@ -8615,7 +8615,7 @@ update
 			degreeValue := radianValue radiansToDegrees + 360 \\ 360.
 			self exist: true]! !
 
-!DrGAngle3ptsOrientedItem methodsFor: 'xml writing'!
+!DrGAngle3ptsOrientedItem methodsFor: 'xml writing' stamp: ''!
 nodeType
 	^ #'3ptsOriented'! !
 
@@ -8623,23 +8623,23 @@ nodeType
 morphClass
 	^ DrGAngleOrientedMorph ! !
 
-!DrGAngle3ptsOrientedItem methodsFor: 'accessing'!
+!DrGAngle3ptsOrientedItem methodsFor: 'accessing' stamp: ''!
 position 
 	^ self summit point! !
 
-!DrGAngle3ptsOrientedItem methodsFor: 'accessing'!
+!DrGAngle3ptsOrientedItem methodsFor: 'accessing' stamp: ''!
 side1
 	^ parents first! !
 
-!DrGAngle3ptsOrientedItem methodsFor: 'accessing'!
+!DrGAngle3ptsOrientedItem methodsFor: 'accessing' stamp: ''!
 side2
 	^ parents third! !
 
-!DrGAngle3ptsOrientedItem methodsFor: 'accessing'!
+!DrGAngle3ptsOrientedItem methodsFor: 'accessing' stamp: ''!
 summit
 	^ parents second! !
 
-!DrGAngle3ptsOrientedItem methodsFor: 'testing'!
+!DrGAngle3ptsOrientedItem methodsFor: 'testing' stamp: ''!
 isLockable 
 	^ false! !
 
@@ -8669,19 +8669,19 @@ update
 morphClass
 	^ DrGAngleGeometricMorph! !
 
-!DrGAngle3ptsItem methodsFor: 'xml writing'!
+!DrGAngle3ptsItem methodsFor: 'xml writing' stamp: ''!
 nodeType
 	^#'3pts'! !
 
-!DrGAngle3ptsItem methodsFor: 'private'!
+!DrGAngle3ptsItem methodsFor: 'private' stamp: ''!
 adaptiveDescriptiveName
 	^ 'This geometric angle %1' translated! !
 
-!DrGAngleVectorsItem methodsFor: 'xml writing'!
+!DrGAngleVectorsItem methodsFor: 'xml writing' stamp: ''!
 nodeType
 	^ #vectors! !
 
-!DrGAngleVectorsItem methodsFor: 'xml writing'!
+!DrGAngleVectorsItem methodsFor: 'xml writing' stamp: ''!
 writeAsXmlPositionTo: aNode 
 	"return the newly created element"
 	aNode
@@ -8691,7 +8691,7 @@ writeAsXmlPositionTo: aNode
 				addContent: (XMLStringNode string: position y asString)).
 	^ aNode! !
 
-!DrGAngleVectorsItem methodsFor: 'xml writing'!
+!DrGAngleVectorsItem methodsFor: 'xml writing' stamp: ''!
 writeAsXmlTo: aNode 
 	"return the newly created element"
 	| node |
@@ -8711,7 +8711,7 @@ update
 			degreeValue := radianValue radiansToDegrees.
 			self exist: true].! !
 
-!DrGComputedValueItem methodsFor: 'xml writing'!
+!DrGComputedValueItem methodsFor: 'xml writing' stamp: ''!
 writeAsXmlTo: aNode 
 	"return the newly created element"
 	| node |
@@ -8723,12 +8723,12 @@ initialize
 	super initialize.
 	value := ''! !
 
-!DrGEquationItem methodsFor: 'printing'!
+!DrGEquationItem methodsFor: 'printing' stamp: ''!
 printOn: aStream
 	self printType: 'Equation' translated on: aStream.
 	self printValueOn: aStream ! !
 
-!DrGEquationItem methodsFor: 'printing'!
+!DrGEquationItem methodsFor: 'printing' stamp: ''!
 printValueOn: aStream 
 	aStream nextPutAll: value! !
 
@@ -8736,24 +8736,24 @@ printValueOn: aStream
 isEquationItem 
 	^ true! !
 
-!DrGEquationItem methodsFor: 'testing'!
+!DrGEquationItem methodsFor: 'testing' stamp: ''!
 isVerifiedBy: aPoint
 	self subclassResponsibility ! !
 
-!DrGEquationItem methodsFor: 'accessing'!
+!DrGEquationItem methodsFor: 'accessing' stamp: ''!
 basicType
 	^#equation! !
 
-!DrGEquationItem methodsFor: 'accessing'!
+!DrGEquationItem methodsFor: 'accessing' stamp: ''!
 equation
 "a string representing the equation"
 	^ ''! !
 
-!DrGEquationItem methodsFor: 'accessing'!
+!DrGEquationItem methodsFor: 'accessing' stamp: ''!
 valueItem
 	^ self equation ! !
 
-!DrGEquationItem methodsFor: 'private'!
+!DrGEquationItem methodsFor: 'private' stamp: ''!
 adaptiveDescriptiveName
 	^ 'This equation %1' translated! !
 
@@ -8761,7 +8761,7 @@ adaptiveDescriptiveName
 isValueItem 
 	^ false! !
 
-!DrGEquationCircleItem methodsFor: 'accessing'!
+!DrGEquationCircleItem methodsFor: 'accessing' stamp: ''!
 equation
 	^ value! !
 
@@ -8781,11 +8781,11 @@ update
 	self printDecimal: circle radius squared  on: stream].
 	self exist: true.! !
 
-!DrGEquationCircleItem methodsFor: 'testing'!
+!DrGEquationCircleItem methodsFor: 'testing' stamp: ''!
 isVerifiedBy: aPoint
 	^ parents first contains: aPoint! !
 
-!DrGEquationCircleItem methodsFor: 'xml writing'!
+!DrGEquationCircleItem methodsFor: 'xml writing' stamp: ''!
 nodeType
 	^#circle! !
 
@@ -8800,35 +8800,35 @@ update
 	self c: origin y * u x - (origin x * u y).
 	self exist: true ! !
 
-!DrGEquationLineItem methodsFor: 'xml writing'!
+!DrGEquationLineItem methodsFor: 'xml writing' stamp: ''!
 nodeType
 	^#line! !
 
-!DrGEquationLineItem methodsFor: 'accessing'!
+!DrGEquationLineItem methodsFor: 'accessing' stamp: ''!
 a
 	^ a! !
 
-!DrGEquationLineItem methodsFor: 'accessing'!
+!DrGEquationLineItem methodsFor: 'accessing' stamp: ''!
 a: aNumber
 	a := aNumber! !
 
-!DrGEquationLineItem methodsFor: 'accessing'!
+!DrGEquationLineItem methodsFor: 'accessing' stamp: ''!
 b
 	^ b! !
 
-!DrGEquationLineItem methodsFor: 'accessing'!
+!DrGEquationLineItem methodsFor: 'accessing' stamp: ''!
 b: aNumber
 	b := aNumber! !
 
-!DrGEquationLineItem methodsFor: 'accessing'!
+!DrGEquationLineItem methodsFor: 'accessing' stamp: ''!
 c
 	^ c! !
 
-!DrGEquationLineItem methodsFor: 'accessing'!
+!DrGEquationLineItem methodsFor: 'accessing' stamp: ''!
 c: aNumber
 	c := aNumber! !
 
-!DrGEquationLineItem methodsFor: 'accessing'!
+!DrGEquationLineItem methodsFor: 'accessing' stamp: ''!
 equation 
 	^ value := self reducedEquation ! !
 
@@ -8861,7 +8861,7 @@ reducedEquation
 slope
 	^ b isZero 		ifTrue: [nil] ifFalse: [a negated / b]! !
 
-!DrGEquationLineItem methodsFor: 'testing'!
+!DrGEquationLineItem methodsFor: 'testing' stamp: ''!
 isVerifiedBy: aPoint
 	^ parents first isCollinearWith: (parents first origin - aPoint)! !
 
@@ -8872,11 +8872,11 @@ update
 	self exist: true
 ! !
 
-!DrGValueArclengthItem methodsFor: 'xml writing'!
+!DrGValueArclengthItem methodsFor: 'xml writing' stamp: ''!
 nodeType
 	^#'arc_length'! !
 
-!DrGValueArclengthItem methodsFor: 'private'!
+!DrGValueArclengthItem methodsFor: 'private' stamp: ''!
 adaptiveDescriptiveName
 	^ 'This arc length %1' translated! !
 
@@ -8935,7 +8935,7 @@ doParentsExist
 	^ super doParentsExist and: [valueBlock isNil not]
 ! !
 
-!DrGValueCircleperimeterItem methodsFor: 'xml writing'!
+!DrGValueCircleperimeterItem methodsFor: 'xml writing' stamp: ''!
 nodeType
 	^#'circle_perimeter'! !
 
@@ -8946,11 +8946,11 @@ update
 	self exist: true
 ! !
 
-!DrGValueCircleperimeterItem methodsFor: 'private'!
+!DrGValueCircleperimeterItem methodsFor: 'private' stamp: ''!
 adaptiveDescriptiveName
 	^ 'This circle perimeter %1' translated! !
 
-!DrGValueDistance2ptsItem methodsFor: 'accessing'!
+!DrGValueDistance2ptsItem methodsFor: 'accessing' stamp: ''!
 name
 "When my name is empty, I try to deduce a name from my parent's names if any"
 	^ name isEmptyOrNil 
@@ -8961,7 +8961,7 @@ name
 		ifFalse: [name]
 ! !
 
-!DrGValueDistance2ptsItem methodsFor: 'private'!
+!DrGValueDistance2ptsItem methodsFor: 'private' stamp: ''!
 adaptiveDescriptiveName
 	^ 'This distance between two points %1' translated! !
 
@@ -8972,7 +8972,7 @@ update
 	self exist: true
 ! !
 
-!DrGValueDistance2ptsItem methodsFor: 'xml writing'!
+!DrGValueDistance2ptsItem methodsFor: 'xml writing' stamp: ''!
 nodeType
 	^#'distance_2pts'! !
 
@@ -8984,19 +8984,19 @@ update
 	self exist: true
 ! !
 
-!DrGValueDistanceptlineItem methodsFor: 'private'!
+!DrGValueDistanceptlineItem methodsFor: 'private' stamp: ''!
 adaptiveDescriptiveName
 	^ 'This point-line distance %1' translated! !
 
-!DrGValueDistanceptlineItem methodsFor: 'xml writing'!
+!DrGValueDistanceptlineItem methodsFor: 'xml writing' stamp: ''!
 nodeType
 	^#'distance_pt_line'! !
 
-!DrGValuePolygonperimeterItem methodsFor: 'private'!
+!DrGValuePolygonperimeterItem methodsFor: 'private' stamp: ''!
 adaptiveDescriptiveName
 	^ 'This polygon perimeter %1' translated! !
 
-!DrGValuePolygonperimeterItem methodsFor: 'xml writing'!
+!DrGValuePolygonperimeterItem methodsFor: 'xml writing' stamp: ''!
 nodeType
 	^#'polygon_perimeter'! !
 
@@ -9007,7 +9007,7 @@ update
 	self exist: true
 ! !
 
-!DrGValuePtabscissaItem methodsFor: 'private'!
+!DrGValuePtabscissaItem methodsFor: 'private' stamp: ''!
 adaptiveDescriptiveName
 	^ 'This point abscissa %1' translated! !
 
@@ -9017,11 +9017,11 @@ update
 	value := parents first point x.
 	self exist: true! !
 
-!DrGValuePtabscissaItem methodsFor: 'xml writing'!
+!DrGValuePtabscissaItem methodsFor: 'xml writing' stamp: ''!
 nodeType 
 	^#'pt_abscissa'! !
 
-!DrGValuePtordinateItem methodsFor: 'private'!
+!DrGValuePtordinateItem methodsFor: 'private' stamp: ''!
 adaptiveDescriptiveName
 	^ 'This point ordinate %1' translated! !
 
@@ -9031,11 +9031,11 @@ update
 	value := parents first point y.
 	self exist: true! !
 
-!DrGValuePtordinateItem methodsFor: 'xml writing'!
+!DrGValuePtordinateItem methodsFor: 'xml writing' stamp: ''!
 nodeType 
 	^#'pt_ordinate'! !
 
-!DrGValueSegmentlengthItem methodsFor: 'xml writing'!
+!DrGValueSegmentlengthItem methodsFor: 'xml writing' stamp: ''!
 nodeType
 	^#'segment_length'! !
 
@@ -9046,23 +9046,23 @@ update
 	self exist: true
 ! !
 
-!DrGValueSegmentlengthItem methodsFor: 'private'!
+!DrGValueSegmentlengthItem methodsFor: 'private' stamp: ''!
 adaptiveDescriptiveName
 	^ 'This segment length %1' translated! !
 
-!DrGValueVectornormItem methodsFor: 'private'!
+!DrGValueVectornormItem methodsFor: 'private' stamp: ''!
 adaptiveDescriptiveName
 	^ 'This Vector''s norm %1' translated! !
 
-!DrGValueVectornormItem methodsFor: 'xml writing'!
+!DrGValueVectornormItem methodsFor: 'xml writing' stamp: ''!
 nodeType
 	^#'vector_norm'! !
 
-!DrGValueSlopeItem methodsFor: 'xml writing'!
+!DrGValueSlopeItem methodsFor: 'xml writing' stamp: ''!
 nodeType
 	^#slope! !
 
-!DrGValueSlopeItem methodsFor: 'private'!
+!DrGValueSlopeItem methodsFor: 'private' stamp: ''!
 adaptiveDescriptiveName
 	^ 'This line slope %1' translated! !
 
@@ -9079,11 +9079,11 @@ update
 
 ! !
 
-!DrGValueVectorabscissaItem methodsFor: 'xml writing'!
+!DrGValueVectorabscissaItem methodsFor: 'xml writing' stamp: ''!
 nodeType 
 	^#'vector_abscissa'! !
 
-!DrGValueVectorabscissaItem methodsFor: 'private'!
+!DrGValueVectorabscissaItem methodsFor: 'private' stamp: ''!
 adaptiveDescriptiveName
 	^ 'This vector abscissa %1' translated! !
 
@@ -9093,7 +9093,7 @@ update
 	value := parents first direction x.
 	self exist: true! !
 
-!DrGValueVectorordinateItem methodsFor: 'xml writing'!
+!DrGValueVectorordinateItem methodsFor: 'xml writing' stamp: ''!
 nodeType 
 	^ #'vector_ordinate'! !
 
@@ -9103,11 +9103,11 @@ update
 	value := parents first direction y.
 	self exist: true! !
 
-!DrGValueVectorordinateItem methodsFor: 'private'!
+!DrGValueVectorordinateItem methodsFor: 'private' stamp: ''!
 adaptiveDescriptiveName
 	^ 'This vector ordinate %1' translated! !
 
-!DrGValueScriptItem methodsFor: 'initialization'!
+!DrGValueScriptItem methodsFor: 'initialization' stamp: ''!
 initialize: theParentsCostume 
 	super initialize: theParentsCostume.
 	self script: (theParentsCostume at: theParentsCostume size - 1)! !
@@ -9118,12 +9118,12 @@ update
 	value := script compute.
 	self exist: true! !
 
-!DrGValueScriptItem methodsFor: 'printing'!
+!DrGValueScriptItem methodsFor: 'printing' stamp: ''!
 printNameOn: aStream
 	aStream nextPutAll: 'Script ' translated.
 ! !
 
-!DrGValueScriptItem methodsFor: 'printing'!
+!DrGValueScriptItem methodsFor: 'printing' stamp: ''!
 printValueOn: aStream
 	value isNumber 
 		ifTrue: [^ self printDecimal: value on: aStream].
@@ -9131,7 +9131,7 @@ printValueOn: aStream
 		ifTrue: [^ self printCoordinates: value on:  aStream].
 	aStream print: value! !
 
-!DrGValueScriptItem methodsFor: 'accessing'!
+!DrGValueScriptItem methodsFor: 'accessing' stamp: ''!
 compute
 "Do the script computation and return its result "
 	^ self script compute! !
@@ -9166,7 +9166,7 @@ parents: aCollection in: presenter
 	"reinject the argument in the script in cas it is already instanciated"
 	script ifNotNil: [script arguments: parentMorphs]! !
 
-!DrGValueScriptItem methodsFor: 'accessing'!
+!DrGValueScriptItem methodsFor: 'accessing' stamp: ''!
 script
 	^script! !
 
@@ -9175,11 +9175,11 @@ script: aScriptClass
 	script := aScriptClass new arguments: self morphs.
 	self rehash ! !
 
-!DrGValueScriptItem methodsFor: 'xml writing'!
+!DrGValueScriptItem methodsFor: 'xml writing' stamp: ''!
 nodeType
 	^#script! !
 
-!DrGValueScriptItem methodsFor: 'xml writing'!
+!DrGValueScriptItem methodsFor: 'xml writing' stamp: ''!
 writeAsXmlTo: aNode
 	|node|
 	node := super writeAsXmlTo: aNode.
@@ -9189,15 +9189,15 @@ writeAsXmlTo: aNode
 			XMLStringNode string: (String streamContents: [:out |script class fileOutOn: out]))).
 	^ self writeAsXmlPositionTo: node.! !
 
-!DrGValueScriptItem methodsFor: 'comparing'!
+!DrGValueScriptItem methodsFor: 'comparing' stamp: ''!
 = aScriptItem
 	^super = aScriptItem and: [self script class == aScriptItem script class]! !
 
-!DrGValueScriptItem methodsFor: 'comparing'!
+!DrGValueScriptItem methodsFor: 'comparing' stamp: ''!
 rehash
 	^hash := super rehash bitXor: script class hash! !
 
-!DrGValueScriptItem methodsFor: 'testing'!
+!DrGValueScriptItem methodsFor: 'testing' stamp: ''!
 isPropertyEditable
 	^ DrGeoSystem isTablet 
 		ifTrue: [false]  
@@ -9207,7 +9207,7 @@ isPropertyEditable
 isScriptItem
 	^true! !
 
-!DrGValueScriptItem methodsFor: 'private'!
+!DrGValueScriptItem methodsFor: 'private' stamp: ''!
 adaptiveDescriptiveName
 	| string |
 	parents size > 0 
@@ -9219,7 +9219,7 @@ adaptiveDescriptiveName
 			string := string copyReplaceAll: '%2' with: self argumentsName].
 	^string format: {script class scriptName}.! !
 
-!DrGValueScriptItem methodsFor: 'private'!
+!DrGValueScriptItem methodsFor: 'private' stamp: ''!
 argumentsName
 	"collect parents name in a string as A, B, C"
 	| stream |
@@ -9237,11 +9237,11 @@ argumentsName
 editPropertyIn: presenter
 	^ presenter editScript: script class! !
 
-!DrGValueValueItem methodsFor: 'xml writing'!
+!DrGValueValueItem methodsFor: 'xml writing' stamp: ''!
 nodeType
 	^#value! !
 
-!DrGValueValueItem methodsFor: 'xml writing'!
+!DrGValueValueItem methodsFor: 'xml writing' stamp: ''!
 writeAsXmlTo: aNode 
 	"return the newly created element"
 	| node |
@@ -9249,13 +9249,13 @@ writeAsXmlTo: aNode
 	node addElement:  ((XMLElement named: #value) addContent: (XMLStringNode string: value asFloat asString)).
 	^ self writeAsXmlPositionTo: node.! !
 
-!DrGValueValueItem methodsFor: 'comparing'!
+!DrGValueValueItem methodsFor: 'comparing' stamp: ''!
 = aMathItem
 	^super = aMathItem 
 		and: [self valueItem = aMathItem valueItem
 		and: [self position = aMathItem position]]! !
 
-!DrGValueValueItem methodsFor: 'comparing'!
+!DrGValueValueItem methodsFor: 'comparing' stamp: ''!
 rehash
 	^ hash := (super rehash bitXor: position hash) bitXor: value hash! !
 
@@ -9266,33 +9266,33 @@ editPropertyIn: presenter
 	holder action: [:newValue | presenter domain propertyCommandFor: self with: newValue].
 	^ FloatEntryPanel open: holder label: 'Edit this value' translated ! !
 
-!DrGValueValueItem methodsFor: 'updating'!
+!DrGValueValueItem methodsFor: 'updating' stamp: ''!
 property
 	^ self valueItem! !
 
-!DrGValueValueItem methodsFor: 'updating'!
+!DrGValueValueItem methodsFor: 'updating' stamp: ''!
 property: aProperty 
 	self valueItem: aProperty ! !
 
-!DrGValueValueItem methodsFor: 'accessing'!
+!DrGValueValueItem methodsFor: 'accessing' stamp: ''!
 position: aPoint
 	position := aPoint.
 	self rehash! !
 
-!DrGValueValueItem methodsFor: 'accessing'!
+!DrGValueValueItem methodsFor: 'accessing' stamp: ''!
 valueItem: aValue
 	value := aValue.
 	self rehash! !
 
-!DrGValueValueItem methodsFor: 'testing'!
+!DrGValueValueItem methodsFor: 'testing' stamp: ''!
 doParentsExist
 	^ true! !
 
-!DrGValueValueItem methodsFor: 'testing'!
+!DrGValueValueItem methodsFor: 'testing' stamp: ''!
 isPropertyEditable
 	^ true! !
 
-!DrGMacro methodsFor: 'xml writting'!
+!DrGMacro methodsFor: 'xml writting' stamp: ''!
 writeAsXmlTo: aNode
 	| node |
 	self saved: true.
@@ -9307,14 +9307,14 @@ writeAsXmlTo: aNode
 	^node
 		! !
 
-!DrGMacro methodsFor: 'xml writting'!
+!DrGMacro methodsFor: 'xml writting' stamp: ''!
 writeInputAsXml
 	| element |
 	element := XMLElement named: 'input'.
 	self inputNodes do: [:aMacroNode | aMacroNode writeAsXmlTo: element].
 	^ element ! !
 
-!DrGMacro methodsFor: 'xml writting'!
+!DrGMacro methodsFor: 'xml writting' stamp: ''!
 writeOutputAsXml
 	| element |
 	element := XMLElement named: 'output'.
@@ -9335,65 +9335,65 @@ execute: inputs in: presenter
 		node itemTemplate update; rehash.].
 	^ self constructedNodes collect: [ :n | n itemTemplate ]! !
 
-!DrGMacro methodsFor: 'accessing'!
+!DrGMacro methodsFor: 'accessing' stamp: ''!
 addNode: aNode
 	nodes add: aNode! !
 
-!DrGMacro methodsFor: 'accessing'!
+!DrGMacro methodsFor: 'accessing' stamp: ''!
 allButInputNodes
 	^ nodes reject: [:node | node isInputNode]! !
 
-!DrGMacro methodsFor: 'accessing'!
+!DrGMacro methodsFor: 'accessing' stamp: ''!
 constructedNodes
 	^ nodes select: [:node | node isInputNode not]! !
 
-!DrGMacro methodsFor: 'accessing'!
+!DrGMacro methodsFor: 'accessing' stamp: ''!
 description
 	^ description! !
 
-!DrGMacro methodsFor: 'accessing'!
+!DrGMacro methodsFor: 'accessing' stamp: ''!
 description: anObject
 	description := anObject. 
 	self saved: false.! !
 
-!DrGMacro methodsFor: 'accessing'!
+!DrGMacro methodsFor: 'accessing' stamp: ''!
 detectId: anId
 	^ nodes detect: [:node | node isId: anId]! !
 
-!DrGMacro methodsFor: 'accessing'!
+!DrGMacro methodsFor: 'accessing' stamp: ''!
 hiddenNodes
 	^ nodes select: [:node | node isHiddenNode]! !
 
-!DrGMacro methodsFor: 'accessing'!
+!DrGMacro methodsFor: 'accessing' stamp: ''!
 inputBasicType
 "The basic type of the input parameters"
 	^self inputNodes collect: [:n | n itemTemplate basicType]! !
 
-!DrGMacro methodsFor: 'accessing'!
+!DrGMacro methodsFor: 'accessing' stamp: ''!
 inputNodes
 	^ nodes select: [:node | node isInputNode]! !
 
-!DrGMacro methodsFor: 'accessing'!
+!DrGMacro methodsFor: 'accessing' stamp: ''!
 nodes
 	^nodes! !
 
-!DrGMacro methodsFor: 'accessing'!
+!DrGMacro methodsFor: 'accessing' stamp: ''!
 outputNodes
 	^ nodes select: [:node | node isOutputNode]! !
 
-!DrGMacro methodsFor: 'accessing'!
+!DrGMacro methodsFor: 'accessing' stamp: ''!
 saved: bool
 	saved := bool.! !
 
-!DrGMacro methodsFor: 'accessing'!
+!DrGMacro methodsFor: 'accessing' stamp: ''!
 title
 	^ title! !
 
-!DrGMacro methodsFor: 'accessing'!
+!DrGMacro methodsFor: 'accessing' stamp: ''!
 title: anObject
 	title := anObject! !
 
-!DrGMacro methodsFor: 'private'!
+!DrGMacro methodsFor: 'private' stamp: ''!
 cleanNodes
 	nodes do: [ :node | 
 		node itemTemplate: 
@@ -9419,22 +9419,22 @@ extractItemsFrom: inputs to: outputs in: domain
 			items addAll: parents ].
 	^ domain factory ordered: items! !
 
-!DrGMacro methodsFor: 'private'!
+!DrGMacro methodsFor: 'private' stamp: ''!
 itemToNode: item
 	^ nodes detect: [:node |node itemTemplate = item]! !
 
-!DrGMacro methodsFor: 'private'!
+!DrGMacro methodsFor: 'private' stamp: ''!
 updateParentNodes
 	nodes do: 
 		[ :node | 
 		node isInputNode | node itemTemplate parents isNil ifFalse: 
 			[ node parentNodes: (node itemTemplate parents collect: [ :item | self itemToNode: item ]) ] ]! !
 
-!DrGMacro methodsFor: 'testing'!
+!DrGMacro methodsFor: 'testing' stamp: ''!
 isSaved
 	^ saved! !
 
-!DrGMacro methodsFor: 'initialize-release'!
+!DrGMacro methodsFor: 'initialize-release' stamp: ''!
 from: inputs to: outputs in: domain 
 	"build the tree nodes"
 	| items |
@@ -9451,7 +9451,7 @@ from: inputs to: outputs in: domain
 	self updateParentNodes.
 	self cleanNodes! !
 
-!DrGMacro methodsFor: 'initialize-release'!
+!DrGMacro methodsFor: 'initialize-release' stamp: ''!
 initialize 
 	nodes := OrderedCollection new.
 	saved := false! !
@@ -9459,7 +9459,7 @@ initialize
 !DrGMacro methodsFor: 'initialize-release' stamp: 'hlsf 8/5/2023 14:35:47'!
 release! !
 
-!DrGMacro methodsFor: 'comparing'!
+!DrGMacro methodsFor: 'comparing' stamp: ''!
 = aMacro
 	^ nodes size = aMacro nodes size 
 		and: 
@@ -9467,7 +9467,7 @@ release! !
 				n1 = n2 ifFalse: [^false]].
 			true]! !
 
-!DrGMacro methodsFor: 'comparing'!
+!DrGMacro methodsFor: 'comparing' stamp: ''!
 hash
 	^nodes hash! !
 
@@ -9490,31 +9490,31 @@ isValidWith: inputs and: outputs
 		ifTrue: [ ^ true ].
 	^ self isValidWith: inputs and: parents! !
 
-!DrGMacroMathItem methodsFor: 'accessing'!
+!DrGMacroMathItem methodsFor: 'accessing' stamp: ''!
 basicType 
 	^ basicType ! !
 
-!DrGMacroMathItem methodsFor: 'accessing'!
+!DrGMacroMathItem methodsFor: 'accessing' stamp: ''!
 basicType: symbol
 	basicType := symbol ! !
 
-!DrGMacroMathItem methodsFor: 'accessing'!
+!DrGMacroMathItem methodsFor: 'accessing' stamp: ''!
 id 
 	^ id! !
 
-!DrGMacroMathItem methodsFor: 'accessing'!
+!DrGMacroMathItem methodsFor: 'accessing' stamp: ''!
 id: aSymbol
 	id := aSymbol ! !
 
-!DrGMacroMathItem methodsFor: 'accessing'!
+!DrGMacroMathItem methodsFor: 'accessing' stamp: ''!
 parents
 	^ #()! !
 
-!DrGMacroMathItem methodsFor: 'accessing'!
+!DrGMacroMathItem methodsFor: 'accessing' stamp: ''!
 parents: object
 ! !
 
-!DrGMacroMathItem methodsFor: 'xml writing'!
+!DrGMacroMathItem methodsFor: 'xml writing' stamp: ''!
 writeAsXmlTo: aNode
 	"return the newly created element"
 	| node |
@@ -9524,39 +9524,39 @@ writeAsXmlTo: aNode
 	aNode addElement: node.
 	^node! !
 
-!DrGMacroNode methodsFor: 'testing'!
+!DrGMacroNode methodsFor: 'testing' stamp: ''!
 isHiddenNode
 	^false! !
 
-!DrGMacroNode methodsFor: 'testing'!
+!DrGMacroNode methodsFor: 'testing' stamp: ''!
 isId: anID
 	^ itemTemplate id = anID ! !
 
-!DrGMacroNode methodsFor: 'testing'!
+!DrGMacroNode methodsFor: 'testing' stamp: ''!
 isInputNode
 	^false! !
 
-!DrGMacroNode methodsFor: 'testing'!
+!DrGMacroNode methodsFor: 'testing' stamp: ''!
 isOutputNode
 	^false! !
 
-!DrGMacroNode methodsFor: 'accessing'!
+!DrGMacroNode methodsFor: 'accessing' stamp: ''!
 basicType
 	^#macroNode! !
 
-!DrGMacroNode methodsFor: 'accessing'!
+!DrGMacroNode methodsFor: 'accessing' stamp: ''!
 itemTemplate
 	^itemTemplate! !
 
-!DrGMacroNode methodsFor: 'accessing'!
+!DrGMacroNode methodsFor: 'accessing' stamp: ''!
 itemTemplate: anItem
 	itemTemplate := anItem! !
 
-!DrGMacroNode methodsFor: 'xml writting'!
+!DrGMacroNode methodsFor: 'xml writting' stamp: ''!
 writeAsXmlTo: aNode
 	^ itemTemplate writeAsXmlTo: aNode! !
 
-!DrGMacroNode methodsFor: 'comparing'!
+!DrGMacroNode methodsFor: 'comparing' stamp: ''!
 = aNode
 "This is what we expect for input item of the macro.
 Handle carrefully when this is a script node"
@@ -9570,7 +9570,7 @@ Handle carrefully when this is a script node"
 		ifFalse: [answer]
 		! !
 
-!DrGMacroNode methodsFor: 'comparing'!
+!DrGMacroNode methodsFor: 'comparing' stamp: ''!
 hash
 | hash |
 	hash := itemTemplate basicType hash bitXor: 
@@ -9578,7 +9578,7 @@ hash
 	itemTemplate isScriptItem ifTrue: [hash := hash bitXor: itemTemplate script hash].
 	^ hash! !
 
-!DrGMacroNode class methodsFor: 'as yet unclassified'!
+!DrGMacroNode class methodsFor: 'as yet unclassified' stamp: ''!
 on: item from: inputs to: outputs
 "return the appropriate nodes depending on the item is an input, output or intermediate item"
 	| class |
@@ -9587,17 +9587,17 @@ on: item from: inputs to: outputs
 	(outputs includes: item) ifTrue: [class := DrGMacroOutputNode].
 	^ class new itemTemplate: item! !
 
-!DrGMacroHiddenNode methodsFor: 'initialize-release'!
+!DrGMacroHiddenNode methodsFor: 'initialize-release' stamp: ''!
 initialize 
 	super initialize.
 	parentNodes := OrderedCollection new.! !
 
-!DrGMacroHiddenNode methodsFor: 'xml writting'!
+!DrGMacroHiddenNode methodsFor: 'xml writting' stamp: ''!
 statusElement
 	^ XMLElement named: 'hidden'.
 ! !
 
-!DrGMacroHiddenNode methodsFor: 'xml writting'!
+!DrGMacroHiddenNode methodsFor: 'xml writting' stamp: ''!
 writeAsXmlTo: aNode
 	| element statusElement|
 	statusElement := self statusElement.
@@ -9606,80 +9606,80 @@ writeAsXmlTo: aNode
 	element := itemTemplate writeAsXmlTo: statusElement.
 	^ statusElement ! !
 
-!DrGMacroHiddenNode methodsFor: 'accessing'!
+!DrGMacroHiddenNode methodsFor: 'accessing' stamp: ''!
 basicType
 	^#hiddenMacroNode! !
 
-!DrGMacroHiddenNode methodsFor: 'accessing'!
+!DrGMacroHiddenNode methodsFor: 'accessing' stamp: ''!
 parentNodes
 	^ parentNodes! !
 
-!DrGMacroHiddenNode methodsFor: 'accessing'!
+!DrGMacroHiddenNode methodsFor: 'accessing' stamp: ''!
 parentNodes: anObject
 	parentNodes := anObject! !
 
-!DrGMacroHiddenNode methodsFor: 'testing'!
+!DrGMacroHiddenNode methodsFor: 'testing' stamp: ''!
 isHiddenNode
 	^true! !
 
-!DrGMacroHiddenNode methodsFor: 'comparing'!
+!DrGMacroHiddenNode methodsFor: 'comparing' stamp: ''!
 = aNode
 	^ super = aNode and:
 		[parentNodes = aNode parentNodes]! !
 
-!DrGMacroHiddenNode methodsFor: 'comparing'!
+!DrGMacroHiddenNode methodsFor: 'comparing' stamp: ''!
 hash
 	^(super hash) bitXor: parentNodes hash! !
 
-!DrGMacroOutputNode methodsFor: 'accessing'!
+!DrGMacroOutputNode methodsFor: 'accessing' stamp: ''!
 basicType
 	^#outputMacroNode! !
 
-!DrGMacroOutputNode methodsFor: 'testing'!
+!DrGMacroOutputNode methodsFor: 'testing' stamp: ''!
 isHiddenNode
 	^false! !
 
-!DrGMacroOutputNode methodsFor: 'testing'!
+!DrGMacroOutputNode methodsFor: 'testing' stamp: ''!
 isOutputNode
 	^true! !
 
-!DrGMacroOutputNode methodsFor: 'xml writting'!
+!DrGMacroOutputNode methodsFor: 'xml writting' stamp: ''!
 statusElement
 	^ XMLElement named: 'final'.
 ! !
 
-!DrGMacroInputNode methodsFor: 'testing'!
+!DrGMacroInputNode methodsFor: 'testing' stamp: ''!
 isInputNode
 	^true! !
 
-!DrGMacroInputNode methodsFor: 'accessing'!
+!DrGMacroInputNode methodsFor: 'accessing' stamp: ''!
 basicType
 	^#inputMacroNode! !
 
-!DrGMacroInputNode methodsFor: 'comparing'!
+!DrGMacroInputNode methodsFor: 'comparing' stamp: ''!
 = aNode
 "this is what we expect for input item of the macro"
 	^ self basicType = aNode basicType 
 		and: [itemTemplate basicType = aNode itemTemplate basicType]
 		! !
 
-!DrGMacroInputNode methodsFor: 'comparing'!
+!DrGMacroInputNode methodsFor: 'comparing' stamp: ''!
 hash
 	^ itemTemplate basicType hash bitXor: self basicType hash! !
 
-!DrGeoUserScript methodsFor: 'helpers'!
+!DrGeoUserScript methodsFor: 'helpers' stamp: ''!
 arg1
 	^ arguments first mathItem! !
 
-!DrGeoUserScript methodsFor: 'helpers'!
+!DrGeoUserScript methodsFor: 'helpers' stamp: ''!
 arg2
 	^ arguments second mathItem! !
 
-!DrGeoUserScript methodsFor: 'helpers'!
+!DrGeoUserScript methodsFor: 'helpers' stamp: ''!
 arg3
 	^ arguments third mathItem! !
 
-!DrGeoUserScript methodsFor: 'helpers'!
+!DrGeoUserScript methodsFor: 'helpers' stamp: ''!
 arg4
 	^ arguments fourth mathItem! !
 
@@ -9697,19 +9697,19 @@ costume
 			ifNone: [ nil ]
 		 ]! !
 
-!DrGeoUserScript methodsFor: 'helpers'!
+!DrGeoUserScript methodsFor: 'helpers' stamp: ''!
 costume1
 	^ arguments first! !
 
-!DrGeoUserScript methodsFor: 'helpers'!
+!DrGeoUserScript methodsFor: 'helpers' stamp: ''!
 costume2
 	^ arguments second! !
 
-!DrGeoUserScript methodsFor: 'helpers'!
+!DrGeoUserScript methodsFor: 'helpers' stamp: ''!
 costume3
 	^ arguments third! !
 
-!DrGeoUserScript methodsFor: 'helpers'!
+!DrGeoUserScript methodsFor: 'helpers' stamp: ''!
 costume4
 	^ arguments fourth! !
 
@@ -9722,12 +9722,12 @@ presenter
 arguments: aCollectionOfMorph
 	arguments := aCollectionOfMorph ! !
 
-!DrGeoUserScript methodsFor: 'public'!
+!DrGeoUserScript methodsFor: 'public' stamp: ''!
 compute
 	"return a value, the returned value by the script"
 	self subclassResponsibility ! !
 
-!DrGeoUserScript class methodsFor: 'private'!
+!DrGeoUserScript class methodsFor: 'private' stamp: ''!
 argumentsType
 "return a collection of Math item, one for each argument type for this script"
 	^ argumentsType ifNil: [ argumentsType := self newArgumentsType ]! !
@@ -9737,20 +9737,20 @@ newArgumentsType
 "The arguments type I need to work"
 	self subclassResponsibility ! !
 
-!DrGeoUserScript class methodsFor: 'private'!
+!DrGeoUserScript class methodsFor: 'private' stamp: ''!
 reset
 	argumentsType := nil.! !
 
-!DrGeoUserScript class methodsFor: 'public'!
+!DrGeoUserScript class methodsFor: 'public' stamp: ''!
 description
 	^ 'I am the description of this script. Please edit me.' translated! !
 
-!DrGeoUserScript class methodsFor: 'public'!
+!DrGeoUserScript class methodsFor: 'public' stamp: ''!
 scriptName
 "I appear in the scripts menu"
 	^ 'A script' translated! !
 
-!DrGWrappedItem methodsFor: 'updating'!
+!DrGWrappedItem methodsFor: 'updating' stamp: ''!
 color: aColor
 	self style color: aColor! !
 
@@ -9763,7 +9763,7 @@ hide
 lock
 	morph locked: true! !
 
-!DrGWrappedItem methodsFor: 'updating'!
+!DrGWrappedItem methodsFor: 'updating' stamp: ''!
 moveTo: aPoint! !
 
 !DrGWrappedItem methodsFor: 'updating' stamp: 'hlsf 4/12/2021 22:19:13'!
@@ -9808,30 +9808,30 @@ printOn: aStream
 wrap: aMorph
 	^ self new morph: aMorph! !
 
-!DrGWrappedCurve methodsFor: 'updating'!
+!DrGWrappedCurve methodsFor: 'updating' stamp: ''!
 dashed
 	self style lineStyle: #dash
 
 ! !
 
-!DrGWrappedCurve methodsFor: 'updating'!
+!DrGWrappedCurve methodsFor: 'updating' stamp: ''!
 dotted
 	self style lineStyle: #dot! !
 
-!DrGWrappedCurve methodsFor: 'updating'!
+!DrGWrappedCurve methodsFor: 'updating' stamp: ''!
 large
 	self style thickness: #large! !
 
-!DrGWrappedCurve methodsFor: 'updating'!
+!DrGWrappedCurve methodsFor: 'updating' stamp: ''!
 normal
 	self style thickness: #medium! !
 
-!DrGWrappedCurve methodsFor: 'updating'!
+!DrGWrappedCurve methodsFor: 'updating' stamp: ''!
 plain
 	self style lineStyle: #plain
 ! !
 
-!DrGWrappedCurve methodsFor: 'updating'!
+!DrGWrappedCurve methodsFor: 'updating' stamp: ''!
 small
 	self style thickness: #small! !
 
@@ -9847,87 +9847,87 @@ bothArrows
 forwardArrow
 	self style arrow: #forward! !
 
-!DrGWrappedFilledCurve methodsFor: 'updating'!
+!DrGWrappedFilledCurve methodsFor: 'updating' stamp: ''!
 filled
 	self style fill: true! !
 
-!DrGWrappedFilledCurve methodsFor: 'updating'!
+!DrGWrappedFilledCurve methodsFor: 'updating' stamp: ''!
 opaque
 	self style translucent: false! !
 
-!DrGWrappedFilledCurve methodsFor: 'updating'!
+!DrGWrappedFilledCurve methodsFor: 'updating' stamp: ''!
 translucent
 	self style translucent: true! !
 
-!DrGWrappedFilledCurve methodsFor: 'updating'!
+!DrGWrappedFilledCurve methodsFor: 'updating' stamp: ''!
 unfilled
 	self style fill: false! !
 
-!DrGWrappedSegment methodsFor: 'updating'!
+!DrGWrappedSegment methodsFor: 'updating' stamp: ''!
 circleMark
 	self style mark: #circle! !
 
-!DrGWrappedSegment methodsFor: 'updating'!
+!DrGWrappedSegment methodsFor: 'updating' stamp: ''!
 discMark
 	self style mark: #disc! !
 
-!DrGWrappedSegment methodsFor: 'updating'!
+!DrGWrappedSegment methodsFor: 'updating' stamp: ''!
 doubleMark
 	self style mark: #mark2! !
 
-!DrGWrappedSegment methodsFor: 'updating'!
+!DrGWrappedSegment methodsFor: 'updating' stamp: ''!
 noMark
 	self style mark: #none! !
 
-!DrGWrappedSegment methodsFor: 'updating'!
+!DrGWrappedSegment methodsFor: 'updating' stamp: ''!
 simpleMark
 	self style mark: #mark1! !
 
-!DrGWrappedSegment methodsFor: 'updating'!
+!DrGWrappedSegment methodsFor: 'updating' stamp: ''!
 tripleMark
 	self style mark: #mark3! !
 
-!DrGWrappedPoint methodsFor: 'accessing'!
+!DrGWrappedPoint methodsFor: 'accessing' stamp: ''!
 coordinates
 	^ self mathItem point! !
 
-!DrGWrappedPoint methodsFor: 'accessing'!
+!DrGWrappedPoint methodsFor: 'accessing' stamp: ''!
 x
 	^ self coordinates x! !
 
-!DrGWrappedPoint methodsFor: 'accessing'!
+!DrGWrappedPoint methodsFor: 'accessing' stamp: ''!
 y
 	^ self coordinates y! !
 
-!DrGWrappedPoint methodsFor: 'updating'!
+!DrGWrappedPoint methodsFor: 'updating' stamp: ''!
 cross
 	self style shape: #cross! !
 
-!DrGWrappedPoint methodsFor: 'updating'!
+!DrGWrappedPoint methodsFor: 'updating' stamp: ''!
 large
 	self style pointSize: #large! !
 
-!DrGWrappedPoint methodsFor: 'updating'!
+!DrGWrappedPoint methodsFor: 'updating' stamp: ''!
 medium
 	self style pointSize: #medium! !
 
-!DrGWrappedPoint methodsFor: 'updating'!
+!DrGWrappedPoint methodsFor: 'updating' stamp: ''!
 moveTo: aPoint
 	self mathItem moveTo: aPoint    ! !
 
-!DrGWrappedPoint methodsFor: 'updating'!
+!DrGWrappedPoint methodsFor: 'updating' stamp: ''!
 round
 	self style shape: #round! !
 
-!DrGWrappedPoint methodsFor: 'updating'!
+!DrGWrappedPoint methodsFor: 'updating' stamp: ''!
 small
 	self style pointSize: #small! !
 
-!DrGWrappedPoint methodsFor: 'updating'!
+!DrGWrappedPoint methodsFor: 'updating' stamp: ''!
 square
 	self style shape: #square! !
 
-!DrGWrappedText methodsFor: 'accessing'!
+!DrGWrappedText methodsFor: 'accessing' stamp: ''!
 backgroundColor: aColor
 	self style backgroundColor: aColor! !
 
@@ -9941,7 +9941,7 @@ text: aText
 	self mathItem text: aText asText.
 	morph redrawNeeded! !
 
-!DrGWrappedValue methodsFor: 'updating'!
+!DrGWrappedValue methodsFor: 'updating' stamp: ''!
 moveTo: aPoint
 	self mathItem position: aPoint     ! !
 
@@ -9950,7 +9950,7 @@ name: aString
 	morph mathItem name: aString.
 	morph redrawNeeded! !
 
-!DrGWrappedValue methodsFor: 'updating'!
+!DrGWrappedValue methodsFor: 'updating' stamp: ''!
 value: aNumber
 	(self mathItem respondsTo: #valueItem:) 
 		ifTrue: [self mathItem valueItem: aNumber]! !
@@ -10070,7 +10070,7 @@ pointX: wrpValue1 Y: wrpValue2
 	^ self
 		finalizePoint: (DrGPointCoordinateItem  newWith: {wrpValue1 mathItem . wrpValue2 mathItem })! !
 
-!DrGeoSketch methodsFor: 'point'!
+!DrGeoSketch methodsFor: 'point' stamp: ''!
 wrappedPoint: aPointOrWrappedPointItem
 "ensure a wrapped point"
 	^ aPointOrWrappedPointItem isPoint 
@@ -10103,7 +10103,7 @@ scale: anInteger
 	presenter drawable 
 		setScaleTo: anInteger! !
 
-!DrGeoSketch methodsFor: 'accessing'!
+!DrGeoSketch methodsFor: 'accessing' stamp: ''!
 aPosition
 	^ 10 atRandom - 5 @ (10 atRandom - 5)! !
 
@@ -10131,7 +10131,7 @@ presenter
 view
 	^ presenter view! !
 
-!DrGeoSketch methodsFor: 'transformations'!
+!DrGeoSketch methodsFor: 'transformations' stamp: ''!
 canTransform: wrptItem
 	wrptItem mathItem isGeometricItem
 		ifFalse: [self error: 'Only geometric object can be transformed.' translated].! !
@@ -10207,11 +10207,11 @@ exportToImage: aFilename
 "Export to a SVG file"
 	presenter exportToImage: aFilename! !
 
-!DrGeoSketch methodsFor: 'helpers'!
+!DrGeoSketch methodsFor: 'helpers' stamp: ''!
 float: value at: aPoint from: startValue to: endValue 
 	^ self float: value at: aPoint from: startValue to: endValue name: ''! !
 
-!DrGeoSketch methodsFor: 'helpers'!
+!DrGeoSketch methodsFor: 'helpers' stamp: ''!
 float: aValue at: aPoint from: startValue to: endValue name: name
 "A valueslider ranging between startValue and endValue"
 	^ self float: aValue at: aPoint from: startValue to: endValue name: name showValue: false! !
@@ -10235,11 +10235,11 @@ float: aValue at: aPoint from: startValue to: endValue name: name showValue: isV
 		ifFalse: [[mobile mathItem abscissa * ( endValue - startValue) + startValue]]  	
 	! !
 
-!DrGeoSketch methodsFor: 'helpers'!
+!DrGeoSketch methodsFor: 'helpers' stamp: ''!
 integer: value at: aPoint from: startValue to: endValue 
 	^ self integer: value at: aPoint from: startValue to: endValue name: ''! !
 
-!DrGeoSketch methodsFor: 'helpers'!
+!DrGeoSketch methodsFor: 'helpers' stamp: ''!
 integer: aValue at: aPoint from: startValue to: endValue name: name
 "A valueslider ranging between startValue and endValue"
 	^ self integer: aValue at: aPoint from: startValue to: endValue name: name showValue: false! !
@@ -10263,7 +10263,7 @@ integer: aValue at: aPoint from: startValue to: endValue name: name showValue: i
 		ifFalse: [[(mobile mathItem abscissa * ( endValue - startValue) + startValue) floor]]  	
 	! !
 
-!DrGeoSketch methodsFor: 'helpers'!
+!DrGeoSketch methodsFor: 'helpers' stamp: ''!
 plot: f from: x0 to: x1
 | mobile s pen|
 	s := self segment: x0@0 to: x1@0.
@@ -10309,7 +10309,7 @@ vector: wrpPt1 to: wrpPt2
 			(self wrappedPoint: wrpPt1) mathItem. 
 			(self wrappedPoint: wrpPt2) mathItem})! !
 
-!DrGeoSketch methodsFor: 'curve finit'!
+!DrGeoSketch methodsFor: 'curve finit' stamp: ''!
 wrappedVector: aVectorOrWrappedVectorItem
 "ensure a wrapped vector"
 	^ aVectorOrWrappedVectorItem isPoint 
@@ -10425,7 +10425,7 @@ distance: item1 to: item2
 	arg addLast: self aPosition.
 	^ self 	finalizeValue: (class newWith: arg)! !
 
-!DrGeoSketch methodsFor: 'value'!
+!DrGeoSketch methodsFor: 'value' stamp: ''!
 finalizeValue: item
 "By default we don't hide the value"
 	^ self finalizeValue: item hide: false! !
@@ -10546,7 +10546,7 @@ update
 finalizeText: item
 	^ DrGWrappedText wrap: (self morphOf: item)! !
 
-!DrGeoSketch methodsFor: 'text'!
+!DrGeoSketch methodsFor: 'text' stamp: ''!
 text: aText
 	^ self text:aText at: self aPosition! !
 
@@ -10585,13 +10585,13 @@ fullscreen
 arrow: boolean
 " Does nothing by default "! !
 
-!DrGStyle methodsFor: 'accessing'!
+!DrGStyle methodsFor: 'accessing' stamp: ''!
 baseColor
 	"Answer color whatever it is hidden or not"
 
 	^ color alpha: 1! !
 
-!DrGStyle methodsFor: 'accessing'!
+!DrGStyle methodsFor: 'accessing' stamp: ''!
 borderColor
 	self shouldNotImplement ! !
 
@@ -10623,7 +10623,7 @@ feedback: aBoolean
 fill: boolean
 " Does nothing by default "! !
 
-!DrGStyle methodsFor: 'accessing'!
+!DrGStyle methodsFor: 'accessing' stamp: ''!
 hidden
 	^ self isHidden! !
 
@@ -10635,7 +10635,7 @@ hidden: anObject
 	morph redrawNeeded.
 	self changed: #hidden! !
 
-!DrGStyle methodsFor: 'accessing'!
+!DrGStyle methodsFor: 'accessing' stamp: ''!
 isHidden
 	"Answer the value of isHidden"
 
@@ -10667,21 +10667,21 @@ initialize
 	hidden := false.
 	color := Color black! !
 
-!DrGStyle methodsFor: 'testing'!
+!DrGStyle methodsFor: 'testing' stamp: ''!
 isFeedback
 	^ feedback ! !
 
-!DrGStyle methodsFor: 'testing'!
+!DrGStyle methodsFor: 'testing' stamp: ''!
 isFilled
 	^ false! !
 
-!DrGStyle methodsFor: 'testing'!
+!DrGStyle methodsFor: 'testing' stamp: ''!
 isNotHidden
 	"Answer the value of isHidden"
 
 	^ hidden not! !
 
-!DrGStyle methodsFor: 'testing'!
+!DrGStyle methodsFor: 'testing' stamp: ''!
 isTranslucent 
 	^ false! !
 
@@ -10742,7 +10742,7 @@ lockedWidget
 		setBalloonText: 'Toggle to lock the object to its position.' translated;
 		yourself! !
 
-!DrGStyle methodsFor: 'widget'!
+!DrGStyle methodsFor: 'widget' stamp: ''!
 myWidgets
 "overwrite to add specific widget to edit specific style"
 	^ OrderedCollection new! !
@@ -10823,7 +10823,7 @@ lineWidget
 		named: 'Style' translated 
 		help: 'Set the style of the line.' translated! !
 
-!DrGCurveStyle methodsFor: 'widget'!
+!DrGCurveStyle methodsFor: 'widget' stamp: ''!
 myWidgets 
 	^ super myWidgets addAll: {self lineWidget . self thicknessWidget}; yourself! !
 
@@ -10884,7 +10884,7 @@ color: aColor
 		color: self color;
 		redrawNeeded! !
 
-!DrGCurveStyle methodsFor: 'accessing'!
+!DrGCurveStyle methodsFor: 'accessing' stamp: ''!
 lineStyle
 	"Answer the value of lineStyle"
 
@@ -10897,7 +10897,7 @@ lineStyle: aSymbol
 	morph dashedBorder: (Theme current lineStyleDataFor: aSymbol).
 	morph redrawNeeded! !
 
-!DrGCurveStyle methodsFor: 'accessing'!
+!DrGCurveStyle methodsFor: 'accessing' stamp: ''!
 thickness
 	"Answer the value of thickness"
 
@@ -10910,13 +10910,13 @@ thickness: anObject
 	morph borderWidth: self borderWidth.
 	morph redrawNeeded! !
 
-!DrGCurveStyle methodsFor: 'xml writing'!
+!DrGCurveStyle methodsFor: 'xml writing' stamp: ''!
 writeAttributesTo: aNode
 	super writeAttributesTo: aNode.
 	aNode attributeAt: #style put: self lineStyle.
 	aNode attributeAt: #thickness put: self thickness.! !
 
-!DrGFinitCurveStyle methodsFor: 'accessing'!
+!DrGFinitCurveStyle methodsFor: 'accessing' stamp: ''!
 arrow
 	"Answer the value of arrows"
 
@@ -10969,7 +10969,7 @@ myWidgets
 		ifTrue: [super myWidgets addAll: {self arrowWidget}; yourself]
 		ifFalse: [super myWidgets]! !
 
-!DrGCompositeStyle methodsFor: 'accessing'!
+!DrGCompositeStyle methodsFor: 'accessing' stamp: ''!
 shape
 	^shape! !
 
@@ -10978,7 +10978,7 @@ shape: anObject
 	shape := anObject.
 	morph shape: anObject! !
 
-!DrGFilledStyle methodsFor: 'xml writing'!
+!DrGFilledStyle methodsFor: 'xml writing' stamp: ''!
 writeAttributesTo: aNode
 	super writeAttributesTo: aNode.
 	aNode attributeAt: #filled put: self isFilled asString capitalized.
@@ -10994,7 +10994,7 @@ fillWidget
 		setBalloonText:  'Toggle to fill the object.' translated;
 		yourself! !
 
-!DrGFilledStyle methodsFor: 'widget'!
+!DrGFilledStyle methodsFor: 'widget' stamp: ''!
 myWidgets 
 	^ super myWidgets addAll: {self fillWidget. self translucentWidget}; yourself! !
 
@@ -11008,7 +11008,7 @@ translucentWidget
 		setBalloonText: 'Toggle the translucency of the object.' translated;
 		yourself! !
 
-!DrGFilledStyle methodsFor: 'accessing'!
+!DrGFilledStyle methodsFor: 'accessing' stamp: ''!
 fill
 	^ self isFilled! !
 
@@ -11027,7 +11027,7 @@ isFilled
 isTranslucent
 	^ translucent ifNil: [translucent := true]! !
 
-!DrGFilledStyle methodsFor: 'accessing'!
+!DrGFilledStyle methodsFor: 'accessing' stamp: ''!
 toggleFilled
 	self fill: fill not.
 	self changed! !
@@ -11036,7 +11036,7 @@ toggleFilled
 toggleTranslucent
 	self translucent: translucent not! !
 
-!DrGFilledStyle methodsFor: 'accessing'!
+!DrGFilledStyle methodsFor: 'accessing' stamp: ''!
 translucent
 	^ self isTranslucent ! !
 
@@ -11076,7 +11076,7 @@ initialize
 	self translucent: (DrGeoSystem preferences at: #polygonTranslucent).
 	self arrow: #none! !
 
-!DrGSegmentStyle methodsFor: 'xml writing'!
+!DrGSegmentStyle methodsFor: 'xml writing' stamp: ''!
 writeAttributesTo: aNode
 	super writeAttributesTo: aNode.
 	aNode attributeAt: #mark put: self mark! !
@@ -11108,11 +11108,11 @@ markWidget
 		named: 'Mark' translated 
 		help: 'Set a mark to the segment.' translated! !
 
-!DrGSegmentStyle methodsFor: 'widget'!
+!DrGSegmentStyle methodsFor: 'widget' stamp: ''!
 myWidgets 
 	^ super myWidgets addAll: {self markWidget}; yourself! !
 
-!DrGSegmentStyle methodsFor: 'accessing'!
+!DrGSegmentStyle methodsFor: 'accessing' stamp: ''!
 mark
 	^ mark ifNil: [mark := #none]! !
 
@@ -11162,7 +11162,7 @@ initialize
 	self lineStyle:(DrGeoSystem preferences at: #vectorStyle).
 	self thickness: (DrGeoSystem preferences at: #vectorThickness)! !
 
-!DrGPointStyle methodsFor: 'widget'!
+!DrGPointStyle methodsFor: 'widget' stamp: ''!
 myWidgets 
 	^ super myWidgets addAll: {self shapeWidget. self sizeWidget}; yourself! !
 
@@ -11211,11 +11211,11 @@ initialize
 	self pointSize: (DrGeoSystem preferences at: #pointSize).
 	self shape: (DrGeoSystem preferences at: #pointShape)! !
 
-!DrGPointStyle methodsFor: 'accessing'!
+!DrGPointStyle methodsFor: 'accessing' stamp: ''!
 abscissa
 	^ self mathItem point x asString! !
 
-!DrGPointStyle methodsFor: 'accessing'!
+!DrGPointStyle methodsFor: 'accessing' stamp: ''!
 abscissa: aText
 	|number|
 	[number := aText asString asNumber]
@@ -11225,11 +11225,11 @@ abscissa: aText
 	self changed.
 	^ true! !
 
-!DrGPointStyle methodsFor: 'accessing'!
+!DrGPointStyle methodsFor: 'accessing' stamp: ''!
 curvilinearAbscissa
 	^ self mathItem abscissa asString! !
 
-!DrGPointStyle methodsFor: 'accessing'!
+!DrGPointStyle methodsFor: 'accessing' stamp: ''!
 curvilinearAbscissa: aText
 	|number|
 	[number := aText asString asNumber]
@@ -11243,11 +11243,11 @@ curvilinearAbscissa: aText
 extent
 	^ extent! !
 
-!DrGPointStyle methodsFor: 'accessing'!
+!DrGPointStyle methodsFor: 'accessing' stamp: ''!
 ordinate
 	^ self mathItem point y asString! !
 
-!DrGPointStyle methodsFor: 'accessing'!
+!DrGPointStyle methodsFor: 'accessing' stamp: ''!
 ordinate: aText
 	|number|
 	[number := aText asString asNumber]
@@ -11257,7 +11257,7 @@ ordinate: aText
 	self changed.
 	^ true! !
 
-!DrGPointStyle methodsFor: 'accessing'!
+!DrGPointStyle methodsFor: 'accessing' stamp: ''!
 pointSize
 	"Answer the value of thickness"
 
@@ -11282,7 +11282,7 @@ pointSizeIndex: index
 	self pointSize: (DrGTypePointSize pointSizeFor: index).
 	self changed: #pointSizeIndex:! !
 
-!DrGPointStyle methodsFor: 'accessing'!
+!DrGPointStyle methodsFor: 'accessing' stamp: ''!
 shape
 	"Answer the value of shape"
 
@@ -11306,7 +11306,7 @@ shapeIndex: index
 	self changed: #shapeIndex:.
 	self updateStylePanel ! !
 
-!DrGPointStyle methodsFor: 'xml writing'!
+!DrGPointStyle methodsFor: 'xml writing' stamp: ''!
 writeAttributesTo: aNode
 	|attr|
 	super writeAttributesTo: aNode.
@@ -11319,7 +11319,7 @@ writeAttributesTo: aNode
 	self shape = #round ifTrue: [attr := 'Round'].
 	aNode attributeAt: #style put: attr! !
 
-!DrGTextStyle methodsFor: 'accessing'!
+!DrGTextStyle methodsFor: 'accessing' stamp: ''!
 backgroundColor
 	^ backgroundColor ! !
 
@@ -11328,7 +11328,7 @@ backgroundColor: aColor
 	backgroundColor := aColor.
 	self changed! !
 
-!DrGTextStyle methodsFor: 'accessing'!
+!DrGTextStyle methodsFor: 'accessing' stamp: ''!
 backgroundColorIndex
 	^ self class backgroundColors indexOf: self baseBackgroundColor
 	! !
@@ -11341,14 +11341,14 @@ backgroundColorIndex: index
 	self changed: #backgroundColorIndex:
 ! !
 
-!DrGTextStyle methodsFor: 'accessing'!
+!DrGTextStyle methodsFor: 'accessing' stamp: ''!
 baseBackgroundColor 
 "This color whithout transparency"
 	^ backgroundColor isTransparent 
 		ifFalse: [backgroundColor alpha: 1.0] 
 		ifTrue: [backgroundColor]! !
 
-!DrGTextStyle methodsFor: 'accessing'!
+!DrGTextStyle methodsFor: 'accessing' stamp: ''!
 borderColor
 	^ borderColor ! !
 
@@ -11357,7 +11357,7 @@ borderColor: aColor
 	borderColor := aColor.
 	morph redrawNeeded! !
 
-!DrGTextStyle methodsFor: 'accessing'!
+!DrGTextStyle methodsFor: 'accessing' stamp: ''!
 borderColorIndex
 	^ self class backgroundColors indexOf: borderColor! !
 
@@ -11451,7 +11451,7 @@ fontSizesMorphCollection
 					familyName: FontFamily defaultFamilyName 
 					pointSize: (Theme current scale: pt))]! !
 
-!DrGTextStyle methodsFor: 'widget'!
+!DrGTextStyle methodsFor: 'widget' stamp: ''!
 myWidgets
 	^ super myWidgets 
 		addAll: {self backgroundWidget . self borderWidget . self fontSizeWidget}; 
@@ -11492,7 +11492,7 @@ backgroundColorSymbols
 		addAll: DrGTypeColor colorSymbols;
 		yourself ! !
 
-!DrGTextStyle class methodsFor: 'as yet unclassified'!
+!DrGTextStyle class methodsFor: 'as yet unclassified' stamp: ''!
 backgroundColors
 	^ self backgroundColorSymbols collect: [:symbol | Color perform: symbol]! !
 
@@ -11543,7 +11543,7 @@ axesWording
 		ifTrue: ['<yes> Axes' translated]
 		ifFalse: ['<no> Axes' translated]! !
 
-!DrGeo methodsFor: 'accessing'!
+!DrGeo methodsFor: 'accessing' stamp: ''!
 controlsManager
 	^ controlsManager! !
 
@@ -11591,7 +11591,7 @@ saved: bool
 	saved := bool.
 ! !
 
-!DrGeo methodsFor: 'accessing'!
+!DrGeo methodsFor: 'accessing' stamp: ''!
 selection
 	^selection! !
 
@@ -11603,7 +11603,7 @@ sketchName
 stSketch: aDrGeoSketch
 	stSketch := aDrGeoSketch ! !
 
-!DrGeo methodsFor: 'accessing'!
+!DrGeo methodsFor: 'accessing' stamp: ''!
 tool
 	^tool! !
 
@@ -11732,25 +11732,25 @@ animate
 		selectedTool := #animate.
 		self selectTool: DrGAnimateTool]! !
 
-!DrGeo methodsFor: 'callback canvas'!
+!DrGeo methodsFor: 'callback canvas' stamp: ''!
 animate1
 	self animate.
 	self tool animateStep: 0.01.
 ! !
 
-!DrGeo methodsFor: 'callback canvas'!
+!DrGeo methodsFor: 'callback canvas' stamp: ''!
 animate2
 	self animate.
 	self tool animateStep: 0.043.
 ! !
 
-!DrGeo methodsFor: 'callback canvas'!
+!DrGeo methodsFor: 'callback canvas' stamp: ''!
 animate3
 	self animate.
 	self tool animateStep: 0.076.
 ! !
 
-!DrGeo methodsFor: 'callback canvas'!
+!DrGeo methodsFor: 'callback canvas' stamp: ''!
 animate4
 	self animate.
 	self tool animateStep: 0.1
@@ -12086,11 +12086,11 @@ isAxesVisible
 		ifNotNil: [self drawable axesVisible]
 		ifNil: [false]! !
 
-!DrGeo methodsFor: 'testing'!
+!DrGeo methodsFor: 'testing' stamp: ''!
 isCreateMultipleMode
 	^isCreateMultipleMode! !
 
-!DrGeo methodsFor: 'testing'!
+!DrGeo methodsFor: 'testing' stamp: ''!
 isForceVisible
 	"We force unvisible costume to be visible when in style mode only"
 	^ (self isTool: #style) or: [self isTool: #eraser]! !
@@ -12101,7 +12101,7 @@ isGridVisible
 		ifNotNil: [self drawable gridVisible]
 		ifNil: [false]! !
 
-!DrGeo methodsFor: 'testing'!
+!DrGeo methodsFor: 'testing' stamp: ''!
 isGridded
 	^ gridStuck! !
 
@@ -12113,7 +12113,7 @@ isNotInteractive
 isSaved
 	^ saved! !
 
-!DrGeo methodsFor: 'testing'!
+!DrGeo methodsFor: 'testing' stamp: ''!
 isTool: symbolTool
 "Do we have this symbolTool selected"
 	^ selectedTool == symbolTool ! !
@@ -12138,7 +12138,7 @@ selectToolAfterBuilding
 	self isCreateMultipleMode
 		ifFalse: 	[self move]! !
 
-!DrGeo methodsFor: 'tool'!
+!DrGeo methodsFor: 'tool' stamp: ''!
 selectionCleanUp
 |createdItem|
 	"a mathItem is just been created, do some clean up"
@@ -12153,7 +12153,7 @@ selectionCleanUp
 		self selectToolAfterBuilding].
 ! !
 
-!DrGeo methodsFor: 'updating'!
+!DrGeo methodsFor: 'updating' stamp: ''!
 deleteMathItem: aCostume
 	self domain deleteMathItem: aCostume mathItem.
 	self domain updateAllMathItems! !
@@ -12169,7 +12169,7 @@ readyToBuild
 	self domain updateAllMathItems.
 	self saved: false.! !
 
-!DrGeo methodsFor: 'updating'!
+!DrGeo methodsFor: 'updating' stamp: ''!
 readyToBuildClone
 	|answer|
 	"readyToBuild event sent from the SelectTool. The builder is ready to clone an items and its parents,
@@ -12177,7 +12177,7 @@ readyToBuildClone
 	answer := self domain createMathItem: self tool builder.
 	self tool grabClone: answer first last.! !
 
-!DrGeo methodsFor: 'updating'!
+!DrGeo methodsFor: 'updating' stamp: ''!
 readyToBuildMacro
 	"readyToBuild event, the builder is ready to build a macro, request to the domain the construction of the math item under the builder"
 	self domain createMacro: self tool builder.
@@ -12401,15 +12401,15 @@ worldMenu: builder
 		icon: #quitIcon;
 		order: 999! !
 
-!DrGCommand methodsFor: 'command'!
+!DrGCommand methodsFor: 'command' stamp: ''!
 execute
 	self subclassResponsibility ! !
 
-!DrGCommand methodsFor: 'command'!
+!DrGCommand methodsFor: 'command' stamp: ''!
 unexecute
 	self subclassResponsibility ! !
 
-!DrGCommand methodsFor: 'accessing'!
+!DrGCommand methodsFor: 'accessing' stamp: ''!
 domain: aDomain
 	domain := aDomain.! !
 
@@ -12417,12 +12417,12 @@ domain: aDomain
 release
 "Let my child do some clean up"! !
 
-!DrGCompositeCommand methodsFor: 'as yet unclassified'!
+!DrGCompositeCommand methodsFor: 'as yet unclassified' stamp: ''!
 compileComposite: theMathItems
 	mathItems := theMathItems.
 	compositeItem := DrGCompositeItem newWith: theMathItems.! !
 
-!DrGCompositeCommand methodsFor: 'as yet unclassified'!
+!DrGCompositeCommand methodsFor: 'as yet unclassified' stamp: ''!
 execute
 	domain triggerEvent: #groupCostumes with: compositeItem.! !
 
@@ -12431,17 +12431,17 @@ release
 	compositeItem release.
 ! !
 
-!DrGCompositeCommand methodsFor: 'as yet unclassified'!
+!DrGCompositeCommand methodsFor: 'as yet unclassified' stamp: ''!
 unexecute
 	domain triggerEvent: #ungroupCostumes with: compositeItem.! !
 
-!DrGCompositeCommand class methodsFor: 'as yet unclassified'!
+!DrGCompositeCommand class methodsFor: 'as yet unclassified' stamp: ''!
 with: theMathItems in: aDomain
 	^self new
 		domain: aDomain ;
 		compileComposite: theMathItems! !
 
-!DrGDeleteCommand methodsFor: 'as yet unclassified'!
+!DrGDeleteCommand methodsFor: 'as yet unclassified' stamp: ''!
 deleteMathItem: aMathItem 
 	mathItems := domain factory orderedDependentMathItem: aMathItem.! !
 
@@ -12462,7 +12462,7 @@ unexecute
 	domain factory changed: #pool
 	! !
 
-!DrGDeleteCommand class methodsFor: 'as yet unclassified'!
+!DrGDeleteCommand class methodsFor: 'as yet unclassified' stamp: ''!
 for: aMathItem in: aDomain
 	^self new
 		domain: aDomain;
@@ -12474,7 +12474,7 @@ createMathItem: aBuilder
 	mathItems do: [:each | domain autoname: each]
 ! !
 
-!DrGMathItemCommand methodsFor: 'accessing'!
+!DrGMathItemCommand methodsFor: 'accessing' stamp: ''!
 fromMathItem: aMathItem
 	mathItems := {aMathItem}.
 ! !
@@ -12498,19 +12498,19 @@ unexecute
 	domain factory 
 		remove: mathItems! !
 
-!DrGMathItemCommand class methodsFor: 'as yet unclassified'!
+!DrGMathItemCommand class methodsFor: 'as yet unclassified' stamp: ''!
 for: aMathItem in: aDomain 
 	^self new
 		domain: aDomain;
 		fromMathItem: aMathItem .! !
 
-!DrGMathItemCommand class methodsFor: 'as yet unclassified'!
+!DrGMathItemCommand class methodsFor: 'as yet unclassified' stamp: ''!
 with: aBuilder in: aDomain 
 	^self new
 		domain: aDomain;
 		createMathItem: aBuilder.! !
 
-!DrGMergeCommand methodsFor: 'command'!
+!DrGMergeCommand methodsFor: 'command' stamp: ''!
 execute
 	"replace mathItem as target in the parent item"
 	directChildren do: [:array |
@@ -12520,7 +12520,7 @@ execute
 	domain factory remove: {mathItem}.
 	domain updateAllMathItems.! !
 
-!DrGMergeCommand methodsFor: 'command'!
+!DrGMergeCommand methodsFor: 'command' stamp: ''!
 unexecute
 	"unmerge target and mathItem"
 	domain factory add: mathItem beforeIndex: mathItemIndex.
@@ -12531,7 +12531,7 @@ unexecute
 			put: mathItem].
 	domain updateAllMathItems.! !
 
-!DrGMergeCommand methodsFor: 'initialize-release'!
+!DrGMergeCommand methodsFor: 'initialize-release' stamp: ''!
 merge: aMathItem with: aTarget
 	|children|
 	mathItem := aMathItem.
@@ -12545,7 +12545,7 @@ merge: aMathItem with: aTarget
 				with: aChild 
 				with: (aChild parents indexOf: mathItem))]! !
 
-!DrGMergeCommand class methodsFor: 'as yet unclassified'!
+!DrGMergeCommand class methodsFor: 'as yet unclassified' stamp: ''!
 merge: aMathItem with: aTarget in: aDomain
 	^ self new 
 		domain: aDomain;
@@ -12559,31 +12559,31 @@ execute
 unexecute
 	domain moveEvent: mathItem inDirection: vector negated! !
 
-!DrGMoveCommand methodsFor: 'accessing'!
+!DrGMoveCommand methodsFor: 'accessing' stamp: ''!
 mathItem: aMathItem
 	mathItem := aMathItem ! !
 
-!DrGMoveCommand methodsFor: 'accessing'!
+!DrGMoveCommand methodsFor: 'accessing' stamp: ''!
 vector: aPoint
 	vector := aPoint
 	! !
 
-!DrGMoveCommand class methodsFor: 'as yet unclassified'!
+!DrGMoveCommand class methodsFor: 'as yet unclassified' stamp: ''!
 for: aMathItem with: aPoint in: aDomain
 	^self new
 		domain: aDomain;
 		mathItem: aMathItem;
 		vector: aPoint! !
 
-!DrGPropertyCommand methodsFor: 'accessing'!
+!DrGPropertyCommand methodsFor: 'accessing' stamp: ''!
 mathItem: aMathItem 
 	mathItem := aMathItem ! !
 
-!DrGPropertyCommand methodsFor: 'accessing'!
+!DrGPropertyCommand methodsFor: 'accessing' stamp: ''!
 property: aProperty
 	property := aProperty ! !
 
-!DrGPropertyCommand methodsFor: 'command'!
+!DrGPropertyCommand methodsFor: 'command' stamp: ''!
 execute
 	|temp|
 	temp := mathItem property.
@@ -12591,11 +12591,11 @@ execute
 	property := temp. 
 	mathItem changed! !
 
-!DrGPropertyCommand methodsFor: 'command'!
+!DrGPropertyCommand methodsFor: 'command' stamp: ''!
 unexecute
 	self execute! !
 
-!DrGPropertyCommand class methodsFor: 'as yet unclassified'!
+!DrGPropertyCommand class methodsFor: 'as yet unclassified' stamp: ''!
 for: aMathItem with: aProperty in: aDomain
 	^self new
 		domain: aDomain;
@@ -12606,64 +12606,64 @@ for: aMathItem with: aProperty in: aDomain
 release
 	stack contents do: [:c | c release].! !
 
-!DrGCommandManager methodsFor: 'initialization'!
+!DrGCommandManager methodsFor: 'initialization' stamp: ''!
 initialize
 	stack := DrGCommandStack new! !
 
-!DrGCommandManager methodsFor: 'command exec'!
+!DrGCommandManager methodsFor: 'command exec' stamp: ''!
 buildCommandFor: aMathItem
 	|command|
 	command := stack nextPut: (DrGMathItemCommand for: aMathItem in: domain).
 	^command execute! !
 
-!DrGCommandManager methodsFor: 'command exec'!
+!DrGCommandManager methodsFor: 'command exec' stamp: ''!
 buildCommandWith: aBuilder
 	|command|
 	command := stack nextPut: (DrGMathItemCommand with: aBuilder in: domain).
 	^command execute! !
 
-!DrGCommandManager methodsFor: 'command exec'!
+!DrGCommandManager methodsFor: 'command exec' stamp: ''!
 compositeCommandFor: aMathItemSelection
 |command|
 	command := stack nextPut: (DrGCompositeCommand with: aMathItemSelection in: domain).
 	command execute.! !
 
-!DrGCommandManager methodsFor: 'command exec'!
+!DrGCommandManager methodsFor: 'command exec' stamp: ''!
 deleteCommandFor: aMathItem
 |command|
 	command := stack nextPut: (DrGDeleteCommand for: aMathItem in: domain).
 	command execute! !
 
-!DrGCommandManager methodsFor: 'command exec'!
+!DrGCommandManager methodsFor: 'command exec' stamp: ''!
 mergeCommandFor: aMathItem with: aTarget
 "create a merge command"
 |command|
 	command := stack nextPut: (DrGMergeCommand merge: aMathItem with: aTarget in: domain).
 	command execute! !
 
-!DrGCommandManager methodsFor: 'command exec'!
+!DrGCommandManager methodsFor: 'command exec' stamp: ''!
 moveCommandFor: aMathItem with: aPoint
 	stack nextPut: (DrGMoveCommand for: aMathItem with: aPoint in: domain).! !
 
-!DrGCommandManager methodsFor: 'command exec'!
+!DrGCommandManager methodsFor: 'command exec' stamp: ''!
 propertyCommandFor: aMathItem with: aProperty
 	|command|
 	command := stack nextPut: (DrGPropertyCommand for: aMathItem with: aProperty in: domain).
 	command execute! !
 
-!DrGCommandManager methodsFor: 'command exec'!
+!DrGCommandManager methodsFor: 'command exec' stamp: ''!
 redo
 |command|
 	command := stack next.
 	command ifNotNil:	[command execute]! !
 
-!DrGCommandManager methodsFor: 'command exec'!
+!DrGCommandManager methodsFor: 'command exec' stamp: ''!
 undo
 |command|
 	command := stack previous.
 	command ifNotNil: [command unexecute]! !
 
-!DrGCommandManager methodsFor: 'accessing'!
+!DrGCommandManager methodsFor: 'accessing' stamp: ''!
 domain: aDomain
 	domain := aDomain! !
 
@@ -12692,7 +12692,7 @@ handleMouseAt: aPoint
 handlePress: aPoint
 	^self state handlePress: aPoint ! !
 
-!DrGTool methodsFor: 'handling'!
+!DrGTool methodsFor: 'handling' stamp: ''!
 handlePressShiftKey: aPoint
 	^self state handlePressShiftKey: aPoint ! !
 
@@ -12700,19 +12700,19 @@ handlePressShiftKey: aPoint
 handleRelease: aPoint
 	self state handleRelease: aPoint ! !
 
-!DrGTool methodsFor: 'handling'!
+!DrGTool methodsFor: 'handling' stamp: ''!
 handleReleaseShiftKey: aPoint
 	self state handleReleaseShiftKey: aPoint ! !
 
-!DrGTool methodsFor: 'handling'!
+!DrGTool methodsFor: 'handling' stamp: ''!
 handleShiftKey: aPoint
 	^self state handleShiftKey: aPoint ! !
 
-!DrGTool methodsFor: 'handling'!
+!DrGTool methodsFor: 'handling' stamp: ''!
 handleShiftKeyMouseAt: aPoint
 	^self state handleShiftKeyMouseAt: aPoint! !
 
-!DrGTool methodsFor: 'handling'!
+!DrGTool methodsFor: 'handling' stamp: ''!
 handleStillPress: aPoint
 	self state handleStillPress: aPoint! !
 
@@ -12732,7 +12732,7 @@ initialize
 	morph := nil.
 	self last: 0@0.! !
 
-!DrGTool methodsFor: 'initialize-release'!
+!DrGTool methodsFor: 'initialize-release' stamp: ''!
 registerDependant: anObject! !
 
 !DrGTool methodsFor: 'initialize-release' stamp: 'hlsf 4/24/2020 12:02:18'!
@@ -12746,15 +12746,15 @@ reset
 		spot: nil.
 	mathItemUnderMouse := nil! !
 
-!DrGTool methodsFor: 'initialize-release'!
+!DrGTool methodsFor: 'initialize-release' stamp: ''!
 resetForFreshStart 
 	self reset.! !
 
-!DrGTool methodsFor: 'accessing'!
+!DrGTool methodsFor: 'accessing' stamp: ''!
 description 
 	^ self subclassResponsibility! !
 
-!DrGTool methodsFor: 'accessing'!
+!DrGTool methodsFor: 'accessing' stamp: ''!
 domain 
 	^presenter domain! !
 
@@ -12762,15 +12762,15 @@ domain
 drawable 
 	^presenter drawable! !
 
-!DrGTool methodsFor: 'accessing'!
+!DrGTool methodsFor: 'accessing' stamp: ''!
 factory  
 	^self domain factory! !
 
-!DrGTool methodsFor: 'accessing'!
+!DrGTool methodsFor: 'accessing' stamp: ''!
 last
 	^last! !
 
-!DrGTool methodsFor: 'accessing'!
+!DrGTool methodsFor: 'accessing' stamp: ''!
 last: aPoint
 	last := aPoint! !
 
@@ -12794,11 +12794,11 @@ morph: aMorph
 	]
 	! !
 
-!DrGTool methodsFor: 'accessing'!
+!DrGTool methodsFor: 'accessing' stamp: ''!
 presenter
 	^presenter ! !
 
-!DrGTool methodsFor: 'accessing'!
+!DrGTool methodsFor: 'accessing' stamp: ''!
 presenter: aPresenter
 	presenter := aPresenter ! !
 
@@ -12807,19 +12807,19 @@ relevantMorphsNear: aPoint
 "return the list of morphs at position aPoint relevant to me, override if needed"
 	^self myMorphsNear: aPoint ! !
 
-!DrGTool methodsFor: 'accessing'!
+!DrGTool methodsFor: 'accessing' stamp: ''!
 spot
 	^spot! !
 
-!DrGTool methodsFor: 'accessing'!
+!DrGTool methodsFor: 'accessing' stamp: ''!
 spot: aPoint
 	spot := aPoint ! !
 
-!DrGTool methodsFor: 'accessing'!
+!DrGTool methodsFor: 'accessing' stamp: ''!
 state
 	^state! !
 
-!DrGTool methodsFor: 'accessing'!
+!DrGTool methodsFor: 'accessing' stamp: ''!
 state: aState
 	state :=	aState ! !
 
@@ -12851,15 +12851,15 @@ isBuilding
 "does the tool build new object ?"
 	^ true! !
 
-!DrGTool methodsFor: 'testing'!
+!DrGTool methodsFor: 'testing' stamp: ''!
 isCloning
 	^ false! !
 
-!DrGTool methodsFor: 'testing'!
+!DrGTool methodsFor: 'testing' stamp: ''!
 isGridded
 	^presenter isGridded! !
 
-!DrGTool methodsFor: 'testing'!
+!DrGTool methodsFor: 'testing' stamp: ''!
 isWanted: aMathItem
 	^true! !
 
@@ -12874,19 +12874,19 @@ presenter: aPresenter
 		initialize;
 		yourself! !
 
-!DrGAnimateTool methodsFor: 'accessing'!
+!DrGAnimateTool methodsFor: 'accessing' stamp: ''!
 animateStep
 	^ animateStep! !
 
-!DrGAnimateTool methodsFor: 'accessing'!
+!DrGAnimateTool methodsFor: 'accessing' stamp: ''!
 animateStep: aFloat
 	animateStep := aFloat ! !
 
-!DrGAnimateTool methodsFor: 'accessing'!
+!DrGAnimateTool methodsFor: 'accessing' stamp: ''!
 description 
 	^ self class description! !
 
-!DrGAnimateTool methodsFor: 'accessing'!
+!DrGAnimateTool methodsFor: 'accessing' stamp: ''!
 isAnimating
 	^ self state isAnimating ! !
 
@@ -12894,31 +12894,31 @@ isAnimating
 relevantMorphsNear: aPoint
 	^ (self pointMorphsNear: aPoint) select: [:aMorph | aMorph mathItem isPointItemOnCurve]! !
 
-!DrGAnimateTool methodsFor: 'as yet unclassified'!
+!DrGAnimateTool methodsFor: 'as yet unclassified' stamp: ''!
 animate
 	state animate! !
 
-!DrGAnimateTool methodsFor: 'initialize-release'!
+!DrGAnimateTool methodsFor: 'initialize-release' stamp: ''!
 initialize
 	super initialize.
 	self reset! !
 
-!DrGAnimateTool methodsFor: 'initialize-release'!
+!DrGAnimateTool methodsFor: 'initialize-release' stamp: ''!
 reset
 	state ifNotNil: [state stopAnimating].
 	super reset.
 	self switchState: DrGAnimateToolState.
 ! !
 
-!DrGAnimateTool class methodsFor: 'as yet unclassified'!
+!DrGAnimateTool class methodsFor: 'as yet unclassified' stamp: ''!
 description
 	^'Select a free point on a curve to animate it.' translated! !
 
-!DrGAnimateTool class methodsFor: 'as yet unclassified'!
+!DrGAnimateTool class methodsFor: 'as yet unclassified' stamp: ''!
 title
 	^ 'Animate' translated! !
 
-!DrGBuildTool methodsFor: 'testing'!
+!DrGBuildTool methodsFor: 'testing' stamp: ''!
 isWanted: aMathItemCollection
 	^builder isWanted: aMathItemCollection  ! !
 
@@ -12934,11 +12934,11 @@ initialize
 	self switchState:  DrGBuildToolState.
 	selectedMorphs := OrderedCollection new! !
 
-!DrGBuildTool methodsFor: 'initialize-release'!
+!DrGBuildTool methodsFor: 'initialize-release' stamp: ''!
 registerDependant: anObject
 	builder when: #readyToBuild send: #readyToBuild to: anObject! !
 
-!DrGBuildTool methodsFor: 'initialize-release'!
+!DrGBuildTool methodsFor: 'initialize-release' stamp: ''!
 release
 	super release.
 	builder release.
@@ -12963,15 +12963,15 @@ startBlinking
 stopBlinking
 	selectedMorphs do: [ :aMorph | aMorph stopStepping ]! !
 
-!DrGBuildTool methodsFor: 'accessing'!
+!DrGBuildTool methodsFor: 'accessing' stamp: ''!
 builder
 	^builder! !
 
-!DrGBuildTool methodsFor: 'accessing'!
+!DrGBuildTool methodsFor: 'accessing' stamp: ''!
 builder: aBuilder
 	builder := aBuilder ! !
 
-!DrGBuildTool methodsFor: 'accessing'!
+!DrGBuildTool methodsFor: 'accessing' stamp: ''!
 description 
 	^ builder class description! !
 
@@ -12988,12 +12988,12 @@ builder: aBuilderClassName presenter: aPresenter
 		initialize;
 		yourself! !
 
-!DrGFlyPointBuildTool methodsFor: 'initialize'!
+!DrGFlyPointBuildTool methodsFor: 'initialize' stamp: ''!
 initialize
 	super initialize.
 	self switchState: DrGFlyPointBuildToolState! !
 
-!DrGFlyPointBuildTool methodsFor: 'accessing'!
+!DrGFlyPointBuildTool methodsFor: 'accessing' stamp: ''!
 intersectableCurves: aCollection at: aPoint 
 	"As long as we can't get proper intersection with the first two, we remove the first one an try again "
 	aCollection size <= 1 ifTrue: [ ^ aCollection ].
@@ -13041,17 +13041,17 @@ selectNoMorph
 selectOutputMorph
 	self selectMorphsFrom: builder output! !
 
-!DrGMacroBuildTool methodsFor: 'updating'!
+!DrGMacroBuildTool methodsFor: 'updating' stamp: ''!
 cancel
 	"the builder informs us the user wants to cancel the macro building process"
 	presenter move.! !
 
-!DrGMacroBuildTool methodsFor: 'initialize-release'!
+!DrGMacroBuildTool methodsFor: 'initialize-release' stamp: ''!
 initialize
 	super initialize.
 	self switchState: DrGMacroToolStateNeutral ! !
 
-!DrGMacroBuildTool methodsFor: 'initialize-release'!
+!DrGMacroBuildTool methodsFor: 'initialize-release' stamp: ''!
 registerDependant: anObject
 	builder when: #changedState send: #switchState: to: self.
 	builder when: #cancel send: #cancel to: self.
@@ -13068,7 +13068,7 @@ presenter: aPresenter
 	super presenter: aPresenter.
 	presenter notInteractive: true.! !
 
-!DrGMacroPlayTool methodsFor: 'initialize-release'!
+!DrGMacroPlayTool methodsFor: 'initialize-release' stamp: ''!
 registerDependant: anObject
 	builder when: #changedState send: #switchState: to: self.
 	builder when: #cancel send: #cancel to: self.
@@ -13080,7 +13080,7 @@ release
 	super release.
 	presenter notInteractive: false! !
 
-!DrGScriptPlayTool methodsFor: 'initialize-release'!
+!DrGScriptPlayTool methodsFor: 'initialize-release' stamp: ''!
 registerDependant: anObject
 	builder when: #changedState send: #switchState: to: self.
 	builder when: #cancel send: #cancel to: self.
@@ -13138,7 +13138,7 @@ resetForFreshStart
 	mathItemTool reset.
 	flyPointTool reset.! !
 
-!DrGFlyBuildTool methodsFor: 'testing'!
+!DrGFlyBuildTool methodsFor: 'testing' stamp: ''!
 isWanted: aMathItem
 	^mathItemTool isWanted: aMathItem! !
 
@@ -13149,11 +13149,11 @@ builder
 		ifTrue: [^flyPointTool builder]
 		ifFalse: [^mathItemTool builder]! !
 
-!DrGFlyBuildTool methodsFor: 'accessing'!
+!DrGFlyBuildTool methodsFor: 'accessing' stamp: ''!
 builder: aBuilder
 	mathItemTool builder: aBuilder.! !
 
-!DrGFlyBuildTool methodsFor: 'accessing'!
+!DrGFlyBuildTool methodsFor: 'accessing' stamp: ''!
 description 
 	^ mathItemTool builder class description ! !
 
@@ -13161,7 +13161,7 @@ description
 flyPointTool
 	^flyPointTool! !
 
-!DrGFlyBuildTool methodsFor: 'accessing'!
+!DrGFlyBuildTool methodsFor: 'accessing' stamp: ''!
 mathItemTool
 	^mathItemTool! !
 
@@ -13182,7 +13182,7 @@ builder: aBuilderClass presenter: aPresenter
 with: aBuilderClass
 	^self new mathItemTool: aBuilderClass! !
 
-!DrGFlyBuildTouchTool methodsFor: 'initialize-release'!
+!DrGFlyBuildTouchTool methodsFor: 'initialize-release' stamp: ''!
 initialize 
 	super initialize.
 	self switchState: DrGFlyBuildTouchToolState.! !
@@ -13191,20 +13191,20 @@ initialize
 isBuilding
 	^ false! !
 
-!DrGSelectTool methodsFor: 'testing'!
+!DrGSelectTool methodsFor: 'testing' stamp: ''!
 isCloning
 	^ builder readyToBuild ! !
 
-!DrGSelectTool methodsFor: 'initialize-release'!
+!DrGSelectTool methodsFor: 'initialize-release' stamp: ''!
 initialize
 	self reset.
 	builder := DrGCloneBuilder new.! !
 
-!DrGSelectTool methodsFor: 'initialize-release'!
+!DrGSelectTool methodsFor: 'initialize-release' stamp: ''!
 registerDependant: anObject
 	builder when: #readyToBuild send: #readyToBuildClone to: anObject! !
 
-!DrGSelectTool methodsFor: 'accessing'!
+!DrGSelectTool methodsFor: 'accessing' stamp: ''!
 builder
 	^ builder! !
 
@@ -13223,11 +13223,11 @@ curvesToMutatePointIntoNear: aPoint
 				ifFalse: [#()]]
 		ifFalse: [ curves ]! !
 
-!DrGSelectTool methodsFor: 'accessing'!
+!DrGSelectTool methodsFor: 'accessing' stamp: ''!
 description
 	^ self class description! !
 
-!DrGSelectTool methodsFor: 'accessing'!
+!DrGSelectTool methodsFor: 'accessing' stamp: ''!
 mathItems 
 	^ mathItems ! !
 
@@ -13262,11 +13262,11 @@ pointMorphToMergeWithAt: aPoint
 relevantMorphsNear: aPoint
 	^ self pointMorphsFirstNear: aPoint! !
 
-!DrGSelectTool methodsFor: 'accessing'!
+!DrGSelectTool methodsFor: 'accessing' stamp: ''!
 start
 	^start! !
 
-!DrGSelectTool methodsFor: 'accessing'!
+!DrGSelectTool methodsFor: 'accessing' stamp: ''!
 start: aPoint
 	start := aPoint ! !
 
@@ -13292,15 +13292,15 @@ updateDirtyItemsList
 	mathItems := self factory pool.
 	morphs := self drawable itemViews ! !
 
-!DrGSelectTool class methodsFor: 'documentation'!
+!DrGSelectTool class methodsFor: 'documentation' stamp: ''!
 description
 	^ 'Select and move an object.' translated! !
 
-!DrGSelectTool class methodsFor: 'documentation'!
+!DrGSelectTool class methodsFor: 'documentation' stamp: ''!
 title 
 	^ 'Select and Move' translated! !
 
-!DrGPropertyTool methodsFor: 'testing'!
+!DrGPropertyTool methodsFor: 'testing' stamp: ''!
 isWanted: aMathItemCollection
 " only items whose property are editable "
 	^ aMathItemCollection first isPropertyEditable! !
@@ -13316,11 +13316,11 @@ presenter: aPresenter
 	super presenter: aPresenter.
 	self drawable forcedVisibility: false.! !
 
-!DrGPropertyTool class methodsFor: 'documentation'!
+!DrGPropertyTool class methodsFor: 'documentation' stamp: ''!
 description
 	^ 'Edit an item''s property' translated! !
 
-!DrGPropertyTool class methodsFor: 'documentation'!
+!DrGPropertyTool class methodsFor: 'documentation' stamp: ''!
 title
 	^ 'Property' translated! !
 
@@ -13330,7 +13330,7 @@ reset
 	presenter controlsManager stylerFor: nil.
 	self switchState: DrGStyleToolState.! !
 
-!DrGStyleTool methodsFor: 'initialize-release'!
+!DrGStyleTool methodsFor: 'initialize-release' stamp: ''!
 initialize
 	super initialize.
 	self reset.! !
@@ -13342,7 +13342,7 @@ release
 	DrGeoSystem showVirtualKeyboard: false.
 	super release.! !
 
-!DrGStyleTool methodsFor: 'accessing'!
+!DrGStyleTool methodsFor: 'accessing' stamp: ''!
 description 
 	^ self class description! !
 
@@ -13369,15 +13369,15 @@ myMorphsNear: aPoint
 isBuilding
 	^ false! !
 
-!DrGStyleTool class methodsFor: 'documentation'!
+!DrGStyleTool class methodsFor: 'documentation' stamp: ''!
 description 
 	^ 'Edit an object style.' translated! !
 
-!DrGStyleTool class methodsFor: 'documentation'!
+!DrGStyleTool class methodsFor: 'documentation' stamp: ''!
 title
 	^ 'Edit Style' translated! !
 
-!DrGDeleteTool methodsFor: 'updating'!
+!DrGDeleteTool methodsFor: 'updating' stamp: ''!
 reset
 	super reset.
 	self switchState: DrGDeleteToolState! !
@@ -13386,11 +13386,11 @@ reset
 relevantMorphsNear: aPoint
 	^self myMorphsNear: aPoint ! !
 
-!DrGDeleteTool class methodsFor: 'documentation'!
+!DrGDeleteTool class methodsFor: 'documentation' stamp: ''!
 description 
 	^'Erase an object and all its depedencies.' translated! !
 
-!DrGDeleteTool class methodsFor: 'documentation'!
+!DrGDeleteTool class methodsFor: 'documentation' stamp: ''!
 title 
 	^'Eraser' translated ! !
 
@@ -13414,35 +13414,35 @@ handleMouseAt: aPoint
 		ifFalse: [self drawable tip: aTip at: aPoint].
 	^ aTip notNil! !
 
-!DrGToolState methodsFor: 'handling'!
+!DrGToolState methodsFor: 'handling' stamp: ''!
 handlePress: aPoint
 	^ false! !
 
-!DrGToolState methodsFor: 'handling'!
+!DrGToolState methodsFor: 'handling' stamp: ''!
 handlePressShiftKey: aPoint
 "handle pressed mouse bouton with shift key, by default  just handle mouse button press"
 	^ self handlePress: aPoint! !
 
-!DrGToolState methodsFor: 'handling'!
+!DrGToolState methodsFor: 'handling' stamp: ''!
 handleRelease: aPoint 
 ! !
 
-!DrGToolState methodsFor: 'handling'!
+!DrGToolState methodsFor: 'handling' stamp: ''!
 handleReleaseShiftKey: aPoint 
 " handle mouse bouton release while shift key down, by default only handle release"
 	self handleRelease: aPoint! !
 
-!DrGToolState methodsFor: 'handling'!
+!DrGToolState methodsFor: 'handling' stamp: ''!
 handleShiftKey: aPoint
 "handle shift key down, do nothing by default"
 	^ false! !
 
-!DrGToolState methodsFor: 'handling'!
+!DrGToolState methodsFor: 'handling' stamp: ''!
 handleShiftKeyMouseAt: aPoint 
 "handle moved mouse while shift key down, by default just handle mouse at"
 	^ self handleMouseAt: aPoint! !
 
-!DrGToolState methodsFor: 'handling'!
+!DrGToolState methodsFor: 'handling' stamp: ''!
 handleStillPress: aPoint
 	"A 2s mouse down evt, by default do nothing"! !
 
@@ -13450,11 +13450,11 @@ handleStillPress: aPoint
 switchState: aStateClass
 	context switchState: aStateClass! !
 
-!DrGToolState methodsFor: 'accessing'!
+!DrGToolState methodsFor: 'accessing' stamp: ''!
 context
 	^context! !
 
-!DrGToolState methodsFor: 'accessing'!
+!DrGToolState methodsFor: 'accessing' stamp: ''!
 context: aContext
 	context := aContext ! !
 
@@ -13638,7 +13638,7 @@ handleRelease: aPoint
 	self addFlyingPointToBuiltItemAt: aPoint.
 	^ true! !
 
-!DrGMacroToolStateNeutral methodsFor: 'as yet unclassified'!
+!DrGMacroToolStateNeutral methodsFor: 'as yet unclassified' stamp: ''!
 handleMouseAt: aPoint
 	^false! !
 
@@ -13720,7 +13720,7 @@ handleStillPress: aPoint
 			ifTrue: [self handleChoice: merger]
 			ifFalse: [context chooseMorph: merger title: 'Select a point to merge with' translated]]! !
 
-!DrGMutatorToolStateDragged methodsFor: 'as yet unclassified'!
+!DrGMutatorToolStateDragged methodsFor: 'as yet unclassified' stamp: ''!
 isMutantFreePoint
 	^ originalPointClass = DrGPointFreeItem! !
 
@@ -13764,7 +13764,7 @@ handleRelease: aPoint
 	context reset
 ! !
 
-!DrGMutatorToolStateDragged methodsFor: 'accessing'!
+!DrGMutatorToolStateDragged methodsFor: 'accessing' stamp: ''!
 context: aContext
 	super context: aContext.
 	originalPointClass := context mathItem class.! !
@@ -13911,7 +13911,7 @@ handleShiftKeyMouseAt: aPoint
 	self drawable tip: aTip at: aPoint.
 	^ aTip notNil! !
 
-!DrGSelectToolStateNeutral methodsFor: 'testing'!
+!DrGSelectToolStateNeutral methodsFor: 'testing' stamp: ''!
 isSelectNeutral
 	^ true! !
 
@@ -13991,7 +13991,7 @@ handleChoice: aMorphCollection
 			context reset.
 			^ false]! !
 
-!DrGAnimateToolState methodsFor: 'testing'!
+!DrGAnimateToolState methodsFor: 'testing' stamp: ''!
 isAnimating
 	^ false! !
 
@@ -13999,11 +13999,11 @@ isAnimating
 animateStep 
 	^ context animateStep  ! !
 
-!DrGAnimateToolState methodsFor: 'animate'!
+!DrGAnimateToolState methodsFor: 'animate' stamp: ''!
 animate
 	self shouldNotImplement! !
 
-!DrGAnimateToolState methodsFor: 'animate'!
+!DrGAnimateToolState methodsFor: 'animate' stamp: ''!
 stopAnimating
 	"we are not animating in this state, do nothing"! !
 
@@ -14031,7 +14031,7 @@ context: aContext
 	super context: aContext.
 	self drawable arrangeToStartStepping.! !
 
-!DrGAnimateToolStateSelected methodsFor: 'testing'!
+!DrGAnimateToolStateSelected methodsFor: 'testing' stamp: ''!
 isAnimating
 	^ true! !
 
@@ -14325,7 +14325,7 @@ userPathFromPreference
 		ifEmpty: [self resourcesPath]
 		! !
 
-!DrGPlatform methodsFor: 'user interface'!
+!DrGPlatform methodsFor: 'user interface' stamp: ''!
 showVirtualKeyboard: boolean
 ! !
 
@@ -14339,21 +14339,21 @@ toggleFullscreen
 	Preferences at: #fullscreen put: isFullscreen not.
 	Display fullScreenMode: isFullscreen not! !
 
-!DrGPlatform methodsFor: 'testing'!
+!DrGPlatform methodsFor: 'testing' stamp: ''!
 isAndroid
 	^ false! !
 
-!DrGPlatform methodsFor: 'testing'!
+!DrGPlatform methodsFor: 'testing' stamp: ''!
 isSystem
 "Preferences for a DrGeo development environment"
 	^ false! !
 
-!DrGPlatform methodsFor: 'testing'!
+!DrGPlatform methodsFor: 'testing' stamp: ''!
 isWorkstation
 "Preferences for Windows/Linux/Mac workstation"
 	^ false! !
 
-!DrGPlatform methodsFor: 'testing'!
+!DrGPlatform methodsFor: 'testing' stamp: ''!
 isiPad
 	^ false! !
 
@@ -14365,7 +14365,7 @@ canWeDisplaySpinner
 preferences
 	^ preferences ifNil: [self setDefaultPreferences]! !
 
-!DrGPlatform methodsFor: 'font'!
+!DrGPlatform methodsFor: 'font' stamp: ''!
 canvasFontSize
 	^ 9! !
 
@@ -14406,7 +14406,7 @@ initialize
 		at: #fullScreenLeavesDeskMargins put: true;
 		at: #worldMenu put: TheWorldMenu.! !
 
-!DrGDevelopment methodsFor: 'testing'!
+!DrGDevelopment methodsFor: 'testing' stamp: ''!
 isSystem
 "I hold the Dr. Geo development environment preferences"
 	^ true! !
@@ -14453,7 +14453,7 @@ launch
 	self splash.
 	Transcript show: '[DrGeo] Splash done'; cr.! !
 
-!DrGWorkstation methodsFor: 'testing'!
+!DrGWorkstation methodsFor: 'testing' stamp: ''!
 isWorkstation
 	^ true! !
 
@@ -14517,7 +14517,7 @@ toggleFullscreen
 canvasFont
 	^ self fontOfSize: self canvasFontSize! !
 
-!DrGeoSystem class methodsFor: 'font'!
+!DrGeoSystem class methodsFor: 'font' stamp: ''!
 canvasFontSize
 	^ platform canvasFontSize! !
 
@@ -14529,7 +14529,7 @@ fontOfSize: anInteger
 backgroundsPath
 	^ platform backgroundsPath! !
 
-!DrGeoSystem class methodsFor: 'path'!
+!DrGeoSystem class methodsFor: 'path' stamp: ''!
 examplesPath
 	^ platform examplesPath! !
 
@@ -14560,37 +14560,37 @@ smalltalkSketchesPath
 canWeDisplaySpinner
 	^ platform canWeDisplaySpinner! !
 
-!DrGeoSystem class methodsFor: 'testing'!
+!DrGeoSystem class methodsFor: 'testing' stamp: ''!
 ifNotTablet: aBlock
 	^ self isTablet ifFalse: [aBlock value]! !
 
-!DrGeoSystem class methodsFor: 'testing'!
+!DrGeoSystem class methodsFor: 'testing' stamp: ''!
 ifNotiPad: aBlock
 	^ platform isiPad ifFalse: [aBlock value]! !
 
-!DrGeoSystem class methodsFor: 'testing'!
+!DrGeoSystem class methodsFor: 'testing' stamp: ''!
 ifTablet: aBlock
 	^ self isTablet ifTrue: [aBlock value]! !
 
-!DrGeoSystem class methodsFor: 'testing'!
+!DrGeoSystem class methodsFor: 'testing' stamp: ''!
 isAndroid
 	^ platform isAndroid! !
 
-!DrGeoSystem class methodsFor: 'testing'!
+!DrGeoSystem class methodsFor: 'testing' stamp: ''!
 isSystem
 "Are we in the DrGeo development environment"
 	^ platform isSystem! !
 
-!DrGeoSystem class methodsFor: 'testing'!
+!DrGeoSystem class methodsFor: 'testing' stamp: ''!
 isTablet
 	^ platform isAndroid or: [platform isiPad]! !
 
-!DrGeoSystem class methodsFor: 'testing'!
+!DrGeoSystem class methodsFor: 'testing' stamp: ''!
 isWorkstation
 "Are we workstation version of DrGeo"
 	^ platform isWorkstation! !
 
-!DrGeoSystem class methodsFor: 'testing'!
+!DrGeoSystem class methodsFor: 'testing' stamp: ''!
 isiPad
 	^ platform isiPad! !
 
@@ -14724,54 +14724,54 @@ initialize
 	super initialize.
 	languageFonts := OrderedCollection new! !
 
-!DrGIcons class methodsFor: 'accessing'!
+!DrGIcons class methodsFor: 'accessing' stamp: ''!
 angleGeometric
 	^self formFromGraphic: #(137 80 78 71 13 10 26 10 0 0 0 13 73 72 68 82 0 0 0 48 0 0 0 48 16 6 0 0 0 7 146 37 196 0 0 0 6 98 75 71 68 255 255 255 255 255 255 9 88 247 220 0 0 0 9 112 72 89 115 0 0 0 72 0 0 0 72 0 70 201 107 62 0 0 9 93 73 68 65 84 120 218 237 90 107 76 147 215 27 255 189 212 118 109 41 72 105 144 75 239 165 88 196 41 136 34 157 12 47 212 133 44 129 13 5 151 177 57 62 240 97 178 108 81 251 69 179 132 100 155 95 220 178 236 195 98 178 65 150 200 134 44 91 140 19 198 36 217 133 218 45 113 153 98 22 116 72 128 181 180 20 74 116 114 81 161 148 123 159 255 135 238 245 69 253 51 160 92 138 218 223 151 183 231 125 207 229 247 60 207 57 207 121 158 115 10 132 16 66 8 33 44 17 136 130 205 224 41 21 120 181 240 8 154 192 193 82 192 226 199 13 11 14 241 199 29 172 226 25 38 216 76 22 72 120 174 239 179 61 3 237 119 165 229 88 117 152 47 225 213 46 216 106 231 183 104 194 171 85 192 229 231 181 66 123 192 66 87 66 176 13 178 114 62 126 153 6 152 175 2 231 18 112 165 55 187 199 110 115 93 168 96 43 213 110 181 142 243 40 214 4 107 224 249 41 96 185 103 226 19 59 227 87 59 136 36 18 137 68 34 9 52 252 13 33 64 204 150 65 7 79 241 79 73 38 60 183 171 201 203 203 203 203 203 123 184 126 8 139 196 194 51 233 162 162 162 162 162 162 144 43 90 36 22 175 56 255 138 8 25 98 129 88 122 69 101 100 100 100 100 100 16 137 197 98 177 88 28 50 196 44 88 126 197 68 69 69 69 69 69 17 25 141 70 163 209 24 50 196 191 120 124 239 1 30 115 4 79 1 219 182 109 219 182 109 27 145 86 171 213 106 181 79 157 33 86 155 192 139 231 179 226 41 120 73 73 73 73 73 9 81 103 167 221 222 209 1 184 221 110 183 219 13 244 247 15 12 220 185 3 120 189 94 239 232 40 87 95 44 22 139 69 34 64 38 147 201 100 50 64 161 80 40 148 74 64 175 215 235 245 122 160 186 186 186 186 186 122 229 143 18 50 51 51 51 51 51 137 60 30 143 199 227 1 90 91 91 91 91 91 23 206 99 217 136 151 149 149 149 149 149 17 89 173 86 171 213 10 116 116 116 116 116 116 0 10 69 66 130 76 6 100 101 109 221 186 118 45 144 158 190 113 163 64 0 40 149 10 69 124 60 240 218 107 239 188 99 181 2 191 253 118 246 236 158 61 192 237 219 253 253 30 15 208 209 225 116 2 192 181 107 109 109 30 15 112 229 74 115 243 205 155 64 79 79 111 239 221 187 64 114 178 193 160 215 3 187 119 239 217 99 50 1 21 21 21 21 149 149 79 209 41 170 217 108 54 155 205 68 42 149 74 165 84 114 241 115 110 110 78 142 193 192 149 29 142 198 198 164 36 34 151 235 226 69 165 242 209 39 91 207 233 180 88 18 19 185 247 221 221 23 47 202 229 254 167 66 65 212 213 101 177 168 213 92 253 252 252 189 123 19 18 184 178 74 165 82 41 20 68 102 179 217 124 244 232 242 185 46 185 92 46 151 203 137 10 11 11 11 11 11 131 224 34 77 38 147 105 207 30 78 240 157 59 141 70 181 154 168 174 174 162 34 37 197 175 72 173 150 200 229 178 88 20 10 174 30 91 254 251 239 31 127 212 106 137 174 93 171 175 79 73 225 190 55 52 84 85 237 216 65 244 211 79 95 125 149 154 74 116 233 210 183 223 174 95 79 116 253 122 125 253 76 131 118 118 254 242 139 86 203 25 232 194 133 202 74 157 142 40 59 219 104 212 104 184 122 38 147 201 148 147 179 244 10 218 191 127 255 254 253 251 137 116 58 157 78 167 91 120 255 1 47 153 228 100 131 33 41 137 168 189 189 163 195 102 227 222 119 117 89 44 26 141 255 183 207 7 76 79 251 124 60 30 48 53 53 53 69 4 12 13 121 189 12 3 100 100 20 22 58 157 192 215 95 127 242 137 86 11 120 189 99 99 12 3 140 142 142 143 19 1 68 68 236 130 102 24 128 97 24 198 231 3 14 31 62 113 194 233 4 170 170 62 252 80 163 1 100 50 169 116 205 26 64 167 83 40 248 124 32 50 82 36 26 26 2 134 135 39 39 149 74 96 227 198 220 220 203 151 57 126 27 54 36 39 107 181 64 91 91 123 187 211 185 212 46 99 225 174 104 193 4 212 106 255 210 246 120 134 135 7 6 128 207 63 127 239 61 153 12 48 26 55 111 6 0 149 42 39 199 237 6 90 90 26 26 82 82 0 151 171 183 119 98 2 24 24 184 115 103 114 18 184 113 195 110 159 152 0 174 95 111 107 27 27 3 156 78 183 123 124 28 184 117 171 191 127 98 2 24 25 241 122 167 167 185 241 36 18 177 152 207 7 226 226 214 173 147 72 128 196 68 141 70 42 5 82 82 18 19 137 0 181 58 62 158 8 136 136 8 15 7 0 157 78 173 142 137 1 118 237 122 245 213 166 38 160 179 179 177 209 96 0 254 252 243 198 141 145 17 224 237 183 79 156 184 125 27 136 136 136 136 88 187 22 112 56 92 174 190 190 197 27 34 50 50 50 50 50 146 104 104 104 104 104 104 104 25 12 192 206 248 254 254 190 190 158 30 160 166 230 163 143 164 82 96 195 6 157 142 199 243 219 158 97 128 225 225 209 81 161 16 216 180 41 47 207 102 3 14 29 42 46 142 139 3 44 150 63 254 184 119 15 176 219 187 186 70 71 1 141 70 165 138 142 6 182 108 73 75 75 73 1 12 134 245 235 147 147 1 135 195 225 176 219 129 236 236 93 187 94 120 1 168 171 171 171 171 175 7 164 210 232 232 184 56 160 185 185 185 249 175 191 128 206 78 135 195 233 4 146 146 180 218 136 8 32 39 199 104 12 15 7 42 43 191 249 230 214 45 192 98 57 115 102 203 22 64 46 95 183 110 98 2 16 10 215 172 25 30 6 218 219 29 142 201 73 224 141 55 142 31 239 235 3 98 99 99 99 227 226 128 27 55 218 218 220 238 192 13 193 230 7 74 165 82 169 84 2 181 181 181 181 181 181 115 247 55 231 113 52 235 59 89 87 211 223 63 56 56 54 230 159 129 97 97 156 226 239 221 27 25 17 137 128 150 22 155 205 231 243 71 57 145 145 156 66 132 66 145 40 58 26 120 247 221 99 199 14 29 2 210 211 183 110 205 206 6 106 107 235 235 47 93 98 152 246 118 187 189 191 31 56 123 246 252 249 95 127 101 24 139 197 106 189 122 21 176 88 172 214 43 87 24 102 106 106 122 154 97 88 197 51 76 118 118 118 118 86 22 32 18 133 135 199 199 115 227 100 101 165 167 71 68 0 54 91 87 215 221 187 64 103 103 79 15 235 10 249 124 63 111 30 15 232 235 27 28 156 154 98 21 15 228 230 238 221 251 220 115 129 239 17 26 141 70 163 209 0 189 189 189 189 189 189 129 246 50 3 108 84 227 47 17 189 255 254 225 195 26 13 183 217 177 239 91 90 46 92 216 176 129 232 179 207 62 248 64 171 37 74 74 210 104 132 66 238 123 73 201 235 175 191 248 34 81 77 205 153 51 167 79 19 21 20 20 20 20 20 112 130 46 85 185 180 180 180 180 180 148 27 87 175 87 171 69 34 162 143 63 62 126 92 173 246 111 226 51 55 121 54 154 58 121 210 108 142 138 226 222 155 205 102 243 145 35 129 27 98 201 50 100 149 74 165 82 169 136 210 210 158 125 86 169 228 194 62 151 203 98 145 203 137 108 182 159 127 246 123 97 78 96 161 144 72 36 18 10 121 60 162 99 199 204 230 226 98 162 154 154 154 154 47 191 124 84 241 139 197 108 134 40 47 47 47 47 47 39 18 139 69 34 62 159 51 4 203 179 181 181 161 193 96 120 48 172 149 203 137 114 114 118 236 136 137 33 98 247 184 64 121 73 165 82 169 84 186 8 57 203 202 202 202 14 29 122 244 170 142 37 202 26 160 169 233 220 57 189 158 200 191 228 185 122 199 142 29 61 122 224 128 127 198 87 85 45 189 226 23 106 8 150 23 203 179 190 254 139 47 210 210 136 156 206 198 198 153 97 234 195 79 54 145 92 40 31 129 64 32 16 8 22 33 175 63 76 35 202 203 51 153 20 10 162 206 206 198 198 245 235 231 186 188 38 58 120 240 192 1 163 113 229 20 63 151 33 246 237 219 183 239 229 151 31 117 77 15 63 217 137 229 143 150 136 76 166 221 187 211 211 137 12 6 131 129 203 55 230 15 134 97 24 134 89 180 220 68 231 206 125 250 105 108 172 63 19 85 169 56 159 217 212 84 91 187 101 11 81 82 146 86 43 145 16 109 220 104 48 196 196 16 85 87 87 85 157 58 181 242 138 159 203 16 108 57 53 53 53 53 53 149 115 73 13 13 167 79 103 100 60 152 105 43 20 68 167 78 157 60 201 181 95 126 3 220 143 130 222 122 171 180 52 55 151 72 167 83 42 5 2 96 251 246 77 155 248 124 192 231 35 226 241 128 241 241 169 169 200 72 224 242 229 182 54 141 6 176 217 156 78 143 7 40 46 126 229 149 220 92 224 252 249 239 191 183 88 252 97 99 93 29 195 4 203 16 15 143 207 150 243 243 243 243 243 243 1 187 221 229 26 29 5 6 7 7 7 111 221 2 124 62 159 47 44 140 83 247 75 47 109 223 126 245 42 144 144 144 144 16 27 203 29 30 206 119 124 62 159 207 231 243 3 32 190 115 231 243 207 111 222 60 251 82 101 207 102 222 124 179 184 120 230 153 205 227 246 76 75 75 78 22 8 30 221 132 231 215 126 54 4 222 254 126 162 144 152 168 209 200 100 68 71 142 28 60 8 0 5 5 57 57 66 225 191 149 152 255 223 205 195 239 103 171 55 95 60 156 182 16 249 87 32 159 207 229 27 60 30 195 76 78 114 101 134 241 31 121 204 197 107 122 218 223 79 88 24 48 49 241 95 28 24 134 97 128 138 138 31 126 72 77 5 106 106 190 251 174 165 5 232 238 238 238 238 238 158 45 177 10 252 191 176 247 255 154 248 207 63 125 125 94 47 32 145 8 133 207 60 3 56 157 61 61 99 99 129 41 114 169 177 84 60 102 222 51 204 5 189 94 38 251 253 119 96 96 96 96 96 114 114 174 218 115 77 189 217 51 226 251 6 24 25 241 122 199 198 128 145 145 241 241 152 24 192 225 184 121 51 44 12 16 137 252 105 213 192 192 221 187 97 97 0 155 145 62 233 240 122 199 198 124 62 255 5 145 203 53 223 86 179 249 132 255 104 241 96 113 181 93 249 61 233 152 97 160 229 58 34 120 82 202 43 134 96 11 186 218 203 33 197 63 105 138 15 33 132 16 66 8 30 254 7 195 86 167 231 229 37 138 50 0 0 0 0 73 69 78 68 174 66 96 130)! !
 
-!DrGIcons class methodsFor: 'accessing'!
+!DrGIcons class methodsFor: 'accessing' stamp: ''!
 arc
 	^self formFromGraphic:  #(137 80 78 71 13 10 26 10 0 0 0 13 73 72 68 82 0 0 0 48 0 0 0 48 16 6 0 0 0 7 146 37 196 0 0 0 6 98 75 71 68 255 255 255 255 255 255 9 88 247 220 0 0 0 9 112 72 89 115 0 0 0 72 0 0 0 72 0 70 201 107 62 0 0 7 221 73 68 65 84 120 218 237 90 203 79 147 89 20 63 95 203 163 60 74 65 10 5 132 2 37 136 18 27 98 16 17 137 129 21 134 168 33 237 2 67 38 153 132 133 75 137 18 163 9 175 70 94 49 6 212 68 131 11 23 147 204 31 160 49 51 106 52 136 102 76 88 32 105 124 67 38 12 146 182 137 82 138 188 218 210 150 199 157 197 153 147 27 202 212 66 31 130 245 251 109 126 185 95 239 215 246 158 115 238 185 231 113 1 68 136 16 33 66 132 8 17 34 68 136 248 89 193 216 70 254 121 32 217 217 159 255 249 4 238 141 168 240 126 189 47 1 11 194 78 47 124 183 32 204 130 216 174 133 11 66 119 119 119 119 119 55 99 211 211 211 211 211 211 0 209 209 81 81 81 81 0 215 175 223 184 113 227 70 228 41 46 204 59 96 235 232 237 237 237 237 237 101 204 100 50 153 76 38 128 153 153 153 153 153 25 0 133 34 41 41 41 105 167 255 93 248 16 182 51 224 249 243 11 23 46 92 216 250 252 193 193 193 193 193 65 128 145 145 145 145 145 17 0 139 197 98 177 88 0 60 158 149 149 149 21 128 174 174 174 174 174 174 200 59 51 66 174 128 135 15 209 133 28 63 126 251 246 237 219 91 127 111 104 104 104 104 104 8 96 97 97 97 97 97 1 96 121 121 121 121 121 25 96 126 126 126 126 126 158 143 69 248 129 205 166 209 104 52 222 97 229 246 185 186 186 186 186 186 154 177 166 166 166 166 166 166 200 179 124 66 200 118 192 219 183 58 157 78 199 152 82 57 57 57 57 233 127 126 81 81 81 81 81 209 230 231 101 101 101 101 101 101 0 114 185 92 46 151 3 200 100 50 153 76 182 211 98 10 31 66 166 0 173 246 254 253 251 247 253 207 43 47 47 47 47 47 7 136 142 142 142 142 142 222 252 60 33 33 33 33 33 1 96 109 109 109 109 109 13 96 118 118 118 118 118 22 128 162 163 157 22 88 168 17 180 2 222 191 63 117 234 212 41 255 130 169 172 172 172 172 172 4 112 187 221 110 183 27 64 42 149 74 165 82 128 138 138 138 138 138 10 0 133 66 161 80 40 0 146 146 48 234 161 207 237 118 187 221 110 7 88 90 90 90 90 90 218 105 113 133 30 65 135 161 5 5 47 95 190 124 201 199 70 35 242 111 191 197 199 199 199 3 124 248 112 244 232 209 163 0 115 115 115 115 115 115 220 178 227 226 226 226 226 226 184 224 85 42 149 74 165 226 59 192 225 112 56 28 14 238 130 200 37 69 26 2 222 1 207 158 93 186 116 233 18 99 50 25 70 45 132 215 175 145 191 126 213 104 52 26 128 213 213 213 213 213 85 0 137 68 34 145 72 184 64 73 240 153 153 153 153 153 153 0 249 249 249 249 249 249 0 3 3 3 3 3 3 130 144 157 157 157 157 157 13 144 155 155 155 155 155 11 208 214 214 214 214 214 230 43 17 251 113 93 83 192 59 64 165 250 248 241 227 71 62 254 242 5 249 159 127 144 237 246 140 140 140 12 128 152 24 28 199 198 198 198 198 198 114 11 79 75 75 75 75 75 3 200 201 201 201 201 201 1 232 232 232 232 232 232 224 2 238 233 233 233 233 233 137 188 204 215 27 1 43 32 53 245 211 167 79 159 248 120 106 10 217 102 67 139 246 120 240 144 149 203 209 226 211 211 211 211 211 211 57 99 98 21 249 2 246 135 128 93 144 92 254 229 11 89 61 0 128 197 130 188 178 162 84 42 149 220 229 36 38 38 38 38 38 2 100 101 101 101 101 101 137 130 247 70 192 10 144 201 22 23 23 23 249 216 102 67 94 94 198 195 50 42 10 139 104 164 0 131 193 96 48 24 68 193 123 35 96 23 36 149 98 141 134 143 145 61 30 140 126 40 206 39 159 31 24 182 123 184 110 117 254 238 49 132 128 119 192 218 26 10 152 150 156 150 134 28 23 135 241 58 237 128 224 50 89 18 148 63 14 116 254 206 35 96 5 184 92 152 48 209 146 114 115 145 21 10 12 75 5 65 16 4 129 43 66 196 255 35 96 5 44 46 98 226 68 208 104 144 51 50 176 116 192 24 99 140 241 196 43 50 17 124 47 59 96 5 204 206 98 226 68 72 76 68 214 106 177 145 34 149 98 9 33 50 203 200 161 75 252 2 86 192 231 207 251 247 239 223 191 249 57 61 83 169 176 42 74 37 133 31 11 190 202 228 161 71 208 135 146 195 33 151 203 229 140 197 199 227 225 235 114 225 243 63 255 196 195 247 143 63 234 235 235 235 1 10 11 11 11 11 11 1 218 219 219 219 219 219 119 223 97 184 17 129 247 178 173 86 171 213 106 229 81 96 127 127 127 127 127 191 239 245 6 93 13 253 251 239 99 199 142 29 227 99 42 49 87 86 186 92 46 23 64 81 209 232 232 232 40 239 116 125 123 193 63 94 77 167 174 174 174 174 174 142 177 209 81 92 231 212 212 212 212 212 20 47 62 250 67 208 241 201 161 67 79 158 60 121 34 8 40 58 46 192 244 116 100 157 14 107 70 191 255 142 59 96 35 118 171 192 201 98 253 255 63 179 217 108 54 155 249 89 71 85 94 74 64 253 33 100 13 153 87 175 106 107 107 107 1 36 255 125 35 133 158 197 197 200 87 175 62 120 240 224 1 192 197 139 231 206 157 59 231 123 97 205 205 205 205 205 205 187 85 49 155 97 52 26 141 70 35 143 250 168 108 78 229 117 127 8 153 2 142 28 121 252 248 241 99 65 248 252 121 239 222 189 123 125 207 235 235 187 117 235 214 173 205 207 245 122 189 94 175 231 77 248 157 197 246 13 96 124 124 124 124 124 156 91 62 149 219 253 33 228 183 34 94 188 104 104 104 104 216 254 123 30 143 199 227 241 0 196 196 196 196 80 9 251 123 224 209 163 43 87 174 92 217 250 25 116 228 8 246 57 188 81 90 90 90 90 90 202 19 79 90 143 63 132 92 1 191 252 210 215 215 215 39 8 119 239 234 116 58 221 214 223 171 175 223 104 65 225 198 235 215 122 189 94 207 88 109 173 193 96 48 248 159 95 91 123 240 224 193 131 0 11 11 27 123 217 90 173 86 171 213 114 223 79 13 40 138 134 176 175 225 91 177 97 187 152 53 51 131 183 27 182 138 95 127 157 152 152 152 0 104 105 185 115 231 206 29 128 191 254 58 121 242 228 201 208 157 5 70 227 153 51 103 206 48 230 112 236 217 179 103 15 99 37 37 247 238 221 187 231 255 189 211 167 75 74 74 74 0 44 22 44 173 172 175 175 175 175 175 3 20 23 23 23 23 23 115 87 147 156 156 156 156 156 204 203 240 91 237 101 239 178 187 161 190 223 52 153 14 28 56 112 0 96 122 26 23 62 55 87 80 80 80 0 112 226 196 181 107 215 174 9 194 211 167 151 47 95 190 204 24 53 138 50 50 198 198 198 198 0 178 178 222 189 123 247 206 247 239 140 141 33 15 14 34 191 121 147 154 154 154 10 96 181 238 219 183 111 31 128 217 140 209 141 211 233 116 58 157 220 197 164 164 164 164 164 164 240 142 30 141 41 26 162 34 36 125 222 218 218 218 218 218 186 57 31 8 147 2 252 11 254 252 121 108 220 220 188 105 179 81 47 1 0 192 237 70 166 242 54 193 123 188 93 56 157 200 212 185 163 203 3 164 28 139 5 21 59 63 159 151 151 151 199 51 120 202 95 200 242 233 214 134 90 173 86 171 213 0 5 5 104 8 212 104 194 222 53 99 241 241 88 150 111 105 105 105 105 105 241 157 136 125 119 5 84 85 85 85 85 85 1 172 172 96 63 97 120 120 120 120 120 24 224 236 89 180 188 195 135 113 193 106 53 250 210 236 108 124 79 169 68 166 139 186 177 177 200 235 235 200 148 129 83 147 200 106 69 54 153 144 39 38 144 205 102 180 204 175 95 177 217 111 183 163 32 221 238 141 190 157 92 9 9 158 174 201 40 149 104 56 121 121 168 168 96 27 77 223 77 1 53 53 53 53 53 53 60 69 39 223 73 241 51 221 134 166 123 67 106 53 250 80 165 18 21 146 144 128 28 19 131 174 64 34 193 121 36 160 213 85 20 144 219 141 205 127 151 11 227 113 167 19 125 51 250 126 128 165 37 100 250 93 239 219 26 222 97 36 89 50 29 178 222 151 7 130 69 216 206 128 198 198 198 198 198 70 94 27 33 11 162 219 16 116 237 132 158 219 108 232 138 72 160 4 242 169 228 131 105 231 16 211 124 239 247 8 36 96 98 50 0 239 142 29 9 156 124 249 183 175 193 132 14 97 107 149 80 84 64 32 11 162 123 64 219 45 202 161 229 49 70 190 217 229 194 90 19 237 24 234 59 144 34 72 224 164 96 186 22 67 150 78 130 239 236 236 236 236 236 220 237 197 65 17 34 68 136 16 17 137 248 23 96 111 227 207 148 31 36 213 0 0 0 0 73 69 78 68 174 66 96 130)
 ! !
 
-!DrGIcons class methodsFor: 'accessing'!
+!DrGIcons class methodsFor: 'accessing' stamp: ''!
 axialSymmetry
 	^self formFromGraphic: #(137 80 78 71 13 10 26 10 0 0 0 13 73 72 68 82 0 0 0 48 0 0 0 48 16 6 0 0 0 7 146 37 196 0 0 0 6 98 75 71 68 255 255 255 255 255 255 9 88 247 220 0 0 0 9 112 72 89 115 0 0 0 72 0 0 0 72 0 70 201 107 62 0 0 2 63 73 68 65 84 120 218 237 154 63 170 194 48 28 199 211 135 139 131 155 139 32 20 133 174 122 0 111 32 226 9 164 8 221 68 236 238 1 220 123 128 130 20 79 32 226 228 234 1 116 21 132 130 224 226 230 224 82 200 27 106 120 188 188 23 211 104 106 147 248 251 44 90 11 53 126 63 249 31 17 2 0 0 0 0 0 0 0 64 13 48 254 253 154 31 95 178 31 120 187 249 190 239 231 95 240 124 208 181 220 8 161 205 166 209 104 52 48 62 28 28 199 113 48 86 83 4 93 179 233 242 241 238 203 71 90 11 88 44 46 151 203 5 161 56 78 146 36 65 232 116 90 175 215 107 93 90 4 171 124 150 85 116 201 132 25 14 43 149 74 5 99 53 91 4 171 134 191 191 230 75 199 117 93 215 117 127 10 94 180 8 207 243 60 207 99 125 143 65 2 232 224 139 22 65 7 255 191 8 3 91 130 234 34 82 68 131 7 17 146 16 13 88 195 224 105 212 18 193 15 254 241 152 161 49 197 136 200 62 191 207 54 102 24 192 123 68 100 15 246 99 130 167 201 71 132 188 224 65 196 157 108 34 216 65 125 108 176 162 136 138 72 63 101 183 136 201 100 60 30 141 32 120 97 120 34 82 84 221 226 48 8 86 240 228 93 209 91 28 134 195 14 94 141 5 157 241 252 29 92 213 90 208 25 11 127 165 10 34 94 164 223 159 78 59 29 140 219 237 94 175 217 124 126 239 5 68 8 66 130 127 44 64 28 16 113 135 4 74 7 77 238 211 193 203 18 64 208 93 132 244 127 69 16 104 17 132 221 110 181 58 30 229 157 181 70 81 20 69 145 101 145 224 233 235 249 252 122 189 94 45 75 213 51 107 105 2 226 120 191 63 159 139 250 25 250 138 16 22 64 47 237 101 215 232 87 209 77 68 102 1 36 248 48 12 195 48 180 44 209 61 22 219 110 181 106 53 118 215 36 27 93 68 8 215 92 90 4 43 80 86 151 68 68 16 150 203 217 108 187 205 191 5 177 68 144 107 50 88 15 6 213 106 181 138 144 109 151 74 165 18 66 245 122 183 219 237 34 84 46 7 65 16 200 47 231 211 15 228 213 100 34 128 116 81 244 236 167 168 174 75 85 17 194 176 230 247 116 208 170 110 7 235 62 125 69 116 224 188 224 65 132 36 76 61 226 123 86 196 219 10 104 106 240 52 89 69 176 238 231 142 41 65 243 224 137 120 123 240 159 122 214 90 120 240 64 10 4 15 0 0 0 0 134 241 13 162 86 226 137 186 18 79 185 0 0 0 0 73 69 78 68 174 66 96 130)! !
 
-!DrGIcons class methodsFor: 'accessing'!
+!DrGIcons class methodsFor: 'accessing' stamp: ''!
 blankFigure
 	^self formFromGraphic: #(137 80 78 71 13 10 26 10 0 0 0 13 73 72 68 82 0 0 0 48 0 0 0 48 8 6 0 0 0 87 2 249 135 0 0 0 1 115 82 71 66 0 174 206 28 233 0 0 0 6 98 75 71 68 0 255 0 255 0 255 160 189 167 147 0 0 0 9 112 72 89 115 0 0 11 19 0 0 11 19 1 0 154 156 24 0 0 0 7 116 73 77 69 7 219 6 29 6 15 22 238 223 233 130 0 0 7 58 73 68 65 84 104 222 237 153 91 76 148 233 25 199 127 223 105 142 200 97 0 135 81 131 39 96 100 55 210 210 208 44 106 54 81 183 222 184 132 52 110 77 140 214 100 107 44 171 92 88 172 122 177 166 27 165 224 213 154 232 133 9 89 111 32 219 84 47 188 88 143 27 21 131 46 198 83 151 18 87 84 16 28 79 227 238 202 65 164 226 56 51 31 243 125 111 47 102 24 134 173 117 65 7 210 52 60 201 155 239 155 153 204 188 255 255 243 252 159 231 125 158 111 96 202 166 108 202 166 108 202 166 108 242 76 196 86 210 76 154 68 224 236 221 187 23 128 237 219 183 39 109 111 117 178 128 231 230 230 98 24 17 158 63 31 196 229 114 209 223 223 207 255 26 129 184 52 100 89 38 47 47 143 170 170 42 102 207 158 141 97 24 8 97 98 154 42 86 171 149 37 75 22 115 226 196 73 145 140 40 72 111 11 120 250 244 233 0 172 94 189 154 146 146 18 102 204 240 32 68 148 139 105 154 152 166 136 93 77 132 16 152 166 65 111 111 47 155 54 109 78 138 140 222 40 2 57 57 57 98 207 158 61 76 155 150 130 44 203 168 170 138 205 102 143 178 18 195 75 196 136 68 151 36 17 123 45 145 157 61 157 252 252 124 186 186 186 222 58 236 242 155 120 190 177 177 17 159 207 135 207 119 143 193 193 23 132 66 33 194 225 16 145 200 16 134 97 96 24 70 130 247 197 40 66 146 20 13 222 134 13 127 32 25 21 105 188 4 196 173 91 183 72 77 157 134 166 105 60 126 252 152 135 15 31 18 12 134 208 245 33 34 17 3 195 136 32 132 153 112 53 98 210 17 241 232 0 20 20 20 144 153 153 57 169 17 16 13 13 13 216 108 54 116 125 136 178 178 50 158 61 235 39 20 10 161 235 97 194 225 48 145 72 4 195 48 137 68 12 76 83 96 24 6 32 226 250 143 255 144 136 202 127 219 182 109 111 29 133 49 19 240 120 60 148 148 148 32 203 50 178 44 99 179 217 8 133 194 232 186 78 48 24 149 144 174 135 19 228 147 40 161 145 92 16 194 140 203 200 235 245 190 117 20 198 90 5 196 145 35 71 88 180 104 17 23 47 54 211 216 216 72 111 111 31 233 233 233 184 92 46 114 115 115 113 58 157 88 44 22 172 86 43 86 171 5 144 144 101 9 144 226 250 143 230 128 132 36 17 187 74 116 116 116 240 233 167 59 223 184 34 141 185 10 157 57 115 134 99 199 142 17 12 6 17 66 144 149 149 69 90 90 26 170 170 34 203 50 146 20 5 42 203 114 28 139 36 69 9 68 43 16 152 230 136 223 36 41 250 157 119 222 121 151 172 172 44 250 250 250 38 86 66 247 238 221 99 254 252 249 228 229 229 145 159 159 143 219 237 198 102 179 225 118 187 81 20 5 77 83 177 90 45 88 44 26 170 170 162 105 26 138 162 162 170 42 138 162 198 164 39 161 40 50 138 34 199 165 40 66 33 254 188 101 203 27 231 194 88 9 72 29 29 29 164 165 165 49 119 238 28 156 78 7 110 183 27 171 213 138 221 110 199 225 112 96 181 218 120 248 240 17 131 131 47 80 213 40 161 68 160 170 170 161 170 35 164 84 85 193 8 135 152 125 226 28 25 146 138 215 235 157 216 131 172 187 187 155 66 89 230 95 233 25 56 28 78 12 195 32 51 211 133 170 170 124 255 253 15 236 219 183 15 93 215 217 188 121 51 30 143 39 174 241 104 226 14 159 204 35 78 190 113 35 141 166 166 34 254 113 237 67 86 217 30 177 113 163 198 142 29 59 198 221 94 140 153 128 97 24 4 114 114 248 213 201 147 180 125 240 1 170 203 21 43 137 2 167 211 137 215 235 165 184 248 151 20 21 21 197 115 34 74 128 56 129 39 79 94 208 220 92 192 185 115 110 180 161 32 107 3 245 252 46 120 159 182 208 70 188 222 66 10 11 11 105 111 111 159 184 86 34 50 52 132 235 254 125 10 30 251 249 193 227 129 88 226 206 156 57 147 161 161 33 190 248 226 32 69 69 191 32 35 35 157 96 48 136 205 102 67 211 44 124 243 77 58 95 127 157 205 131 7 14 138 139 7 216 178 229 1 165 246 127 146 251 183 211 52 149 252 154 223 150 189 196 52 237 236 218 181 139 53 107 214 140 43 10 227 34 160 88 173 4 150 44 97 65 237 30 148 154 26 250 23 47 198 52 13 108 54 27 5 5 5 44 88 176 128 204 204 76 122 123 123 169 175 175 39 28 246 242 221 119 21 204 153 147 197 202 149 125 188 247 94 7 169 169 42 226 233 83 22 174 223 78 79 89 25 5 197 197 4 148 104 130 231 228 184 249 236 179 191 80 83 83 59 102 18 227 106 37 254 126 232 16 189 229 229 244 127 252 49 169 61 61 200 64 74 202 52 82 83 83 41 44 44 100 96 96 0 128 214 214 86 78 159 62 141 221 222 67 93 93 128 186 186 7 148 151 7 200 206 118 96 177 104 104 167 78 97 166 164 224 95 189 154 240 188 121 40 138 26 91 10 43 86 172 32 59 59 107 194 218 105 225 247 251 121 242 237 183 204 107 108 36 48 119 46 47 203 203 1 208 117 61 86 50 21 12 35 194 249 243 23 48 77 147 165 75 151 198 115 33 162 235 56 91 91 153 94 87 199 163 247 223 39 252 251 117 241 19 123 248 160 51 77 147 206 206 78 54 108 216 48 38 124 227 38 224 243 249 112 216 237 240 252 57 174 149 43 209 23 46 228 217 206 157 232 25 25 72 138 50 42 105 163 247 102 124 54 120 122 215 199 187 159 127 78 160 168 136 222 53 107 48 237 246 248 140 48 12 222 48 162 109 72 69 69 5 183 111 223 150 146 42 33 128 190 190 62 236 14 7 90 86 22 61 91 183 98 185 123 23 247 186 117 184 14 31 38 52 248 28 69 81 98 117 94 141 221 107 40 161 48 153 245 13 20 239 216 142 229 199 31 9 174 248 13 74 106 42 138 162 196 150 138 44 43 200 178 18 63 232 106 107 107 198 116 184 141 155 192 241 227 199 227 39 173 99 237 90 2 7 15 162 151 151 147 242 229 151 228 253 177 2 75 91 27 154 166 161 170 202 8 137 151 47 113 158 61 203 192 159 170 120 244 213 87 24 222 5 177 207 149 81 135 93 116 69 137 120 60 51 104 104 168 255 89 18 227 110 160 102 205 154 37 124 62 95 194 224 98 16 137 24 60 185 122 149 252 234 106 228 142 14 244 178 50 132 197 130 94 82 130 118 245 42 182 83 167 120 89 94 206 227 138 10 108 30 79 66 183 58 188 70 58 216 97 9 133 195 97 90 90 90 168 170 170 122 45 206 55 233 0 69 87 87 87 124 88 79 4 18 238 237 193 121 232 48 242 253 251 40 29 29 16 8 16 252 232 35 2 171 86 33 92 174 81 96 135 129 190 138 76 115 243 69 106 107 107 69 79 79 207 95 129 221 201 30 234 197 217 179 103 89 190 124 121 60 241 18 151 16 130 72 36 130 20 10 18 209 44 9 195 189 249 95 61 63 76 166 189 189 157 202 202 74 186 187 187 171 99 123 237 158 144 167 18 165 165 165 226 242 229 203 241 106 147 24 137 97 82 163 201 25 175 241 184 73 91 219 13 62 249 100 83 34 240 68 75 122 4 98 149 82 140 42 153 81 208 230 107 129 38 122 253 217 179 1 90 91 91 89 191 126 125 245 207 236 53 49 4 154 154 154 88 182 108 217 168 55 127 10 244 85 100 58 59 59 185 126 253 58 149 149 149 213 227 216 111 119 210 159 204 157 63 127 254 63 8 68 167 177 209 254 25 30 33 143 30 61 202 129 3 7 104 105 105 169 30 231 86 19 18 129 81 50 250 169 13 123 251 230 205 155 92 184 112 129 173 91 183 38 21 116 210 158 141 190 42 10 126 191 159 75 151 46 177 127 255 126 174 93 187 86 157 108 192 73 125 188 94 90 90 42 174 92 185 130 223 239 231 206 157 59 52 55 55 83 83 83 83 61 145 128 147 253 255 192 238 137 246 240 100 252 193 177 123 178 192 78 217 148 77 217 255 161 253 27 58 98 17 74 10 213 30 16 0 0 0 0 73 69 78 68 174 66 96 130)! !
 
-!DrGIcons class methodsFor: 'accessing'!
+!DrGIcons class methodsFor: 'accessing' stamp: ''!
 centralSymmetry
 	^self formFromGraphic: #(137 80 78 71 13 10 26 10 0 0 0 13 73 72 68 82 0 0 0 48 0 0 0 48 16 6 0 0 0 7 146 37 196 0 0 0 6 98 75 71 68 255 255 255 255 255 255 9 88 247 220 0 0 0 9 112 72 89 115 0 0 0 72 0 0 0 72 0 70 201 107 62 0 0 2 3 73 68 65 84 120 218 237 154 209 141 194 48 12 134 233 233 150 224 9 137 1 96 0 86 64 44 209 55 132 24 128 1 24 0 33 222 186 4 98 5 6 128 1 144 120 98 140 242 148 67 245 93 206 73 157 196 105 251 127 47 149 64 77 157 223 142 237 90 29 141 0 0 0 0 16 128 186 110 94 121 190 180 77 238 7 238 130 83 190 181 77 239 6 54 129 139 66 186 178 120 129 97 224 27 225 238 142 65 10 82 6 14 32 148 101 89 150 37 141 120 121 170 1 12 84 248 191 29 65 187 28 238 10 188 9 35 188 187 35 112 180 254 197 53 146 77 138 242 79 93 168 1 34 138 162 121 98 140 224 168 25 129 176 167 20 191 154 161 78 119 138 22 39 172 155 240 116 223 106 248 26 16 202 96 127 199 74 133 207 204 17 210 7 182 189 95 126 178 252 132 77 165 71 54 15 226 4 110 239 128 237 118 179 89 175 67 11 207 235 18 168 90 211 46 32 22 241 102 50 105 236 254 109 143 176 13 77 37 124 87 225 245 105 233 128 248 194 119 123 38 19 77 159 248 197 164 219 51 153 104 207 75 223 207 166 158 201 104 233 195 28 145 92 114 124 232 153 12 183 158 235 126 229 250 244 100 22 20 106 38 147 78 120 71 114 121 179 147 206 100 220 215 107 167 135 162 0 177 8 59 10 176 237 199 117 159 217 204 116 252 13 90 173 118 187 197 162 174 231 243 229 114 58 229 239 139 59 147 233 28 237 35 194 8 239 235 0 67 207 133 253 129 249 46 200 94 100 140 160 147 201 108 54 30 127 126 63 159 247 251 235 245 115 223 243 121 191 191 94 238 6 153 153 204 225 112 60 158 78 159 226 90 85 85 85 85 218 221 88 120 90 111 200 230 0 138 113 192 237 118 185 60 30 253 19 80 138 184 13 245 141 112 208 196 217 1 52 7 35 162 195 192 58 128 230 96 223 98 104 82 148 41 198 218 27 206 13 231 8 166 142 176 9 106 75 73 92 177 30 42 222 2 112 145 76 139 46 109 63 145 186 154 136 63 79 167 17 111 4 238 123 251 168 134 137 104 122 53 255 15 229 5 42 57 3 31 9 232 1 225 51 1 66 43 17 247 123 25 0 0 0 0 0 37 222 28 134 87 22 39 202 104 13 0 0 0 0 73 69 78 68 174 66 96 130)  
 ! !
 
-!DrGIcons class methodsFor: 'accessing'!
+!DrGIcons class methodsFor: 'accessing' stamp: ''!
 circle
 	^self formFromGraphic: #(137 80 78 71 13 10 26 10 0 0 0 13 73 72 68 82 0 0 0 48 0 0 0 48 16 6 0 0 0 7 146 37 196 0 0 0 6 98 75 71 68 255 255 255 255 255 255 9 88 247 220 0 0 0 9 112 72 89 115 0 0 0 72 0 0 0 72 0 70 201 107 62 0 0 11 6 73 68 65 84 120 218 237 90 89 76 84 247 23 62 195 62 3 195 54 80 96 216 226 64 21 172 136 49 77 80 145 64 92 74 77 120 16 77 109 40 47 188 25 18 86 31 36 225 161 66 99 2 24 21 100 107 66 82 19 107 31 140 90 104 19 105 155 136 177 46 149 132 88 75 193 34 9 160 172 14 21 134 25 134 1 134 97 185 125 56 249 114 203 181 83 96 24 168 252 255 243 189 124 222 59 227 112 239 57 191 223 89 190 243 35 114 192 1 7 28 112 192 1 7 28 112 192 129 77 135 236 191 126 0 107 184 119 239 236 217 179 103 5 33 40 168 171 171 171 139 72 165 122 245 234 213 43 34 165 114 116 116 116 148 200 195 195 104 52 26 137 156 157 231 231 231 231 137 22 23 93 93 93 93 137 204 102 111 111 111 111 34 163 49 40 40 40 136 72 167 219 182 109 219 54 162 209 209 216 216 216 88 162 163 71 47 94 188 120 81 246 206 190 247 166 227 219 111 175 92 185 114 69 16 158 63 79 75 75 75 19 132 217 89 31 31 31 31 65 16 4 34 162 213 243 210 210 234 190 55 61 173 84 42 149 130 240 219 111 169 169 169 169 130 112 243 230 229 203 151 47 243 167 255 87 232 232 72 79 79 79 95 217 96 90 45 115 107 43 243 173 91 204 95 126 201 220 208 192 220 212 196 252 236 25 179 193 192 188 176 176 156 173 253 157 182 182 99 199 142 29 219 124 71 108 218 86 108 110 62 127 254 252 121 65 72 72 184 122 245 234 85 34 149 234 229 203 151 47 197 207 77 38 230 158 30 230 246 118 230 190 62 230 241 241 144 144 144 16 162 249 249 128 128 128 0 162 217 89 165 82 169 36 178 88 20 10 133 130 72 46 159 154 154 154 34 242 241 153 156 156 156 36 10 14 214 233 116 58 162 184 184 177 177 177 49 162 152 24 254 157 200 72 102 87 215 229 207 231 228 196 172 213 134 134 134 134 18 61 124 152 153 153 153 73 148 145 113 225 194 133 11 27 23 178 54 220 1 247 239 23 22 22 22 10 66 82 82 109 109 109 173 24 179 129 174 46 230 159 127 102 238 238 246 244 244 244 36 210 235 53 26 141 134 200 100 98 195 91 44 46 46 46 46 68 50 153 76 38 147 17 185 184 240 181 171 43 199 126 92 227 115 65 224 213 237 236 108 50 153 76 68 65 65 236 240 253 251 153 19 19 205 102 179 153 232 189 247 254 217 17 139 139 252 123 141 141 236 136 79 63 189 118 237 218 53 251 59 98 195 28 0 195 167 164 84 86 86 86 138 247 167 166 152 31 63 102 126 244 136 121 96 96 215 174 93 187 136 38 39 35 35 35 35 255 110 64 103 103 103 103 34 119 119 119 119 119 119 34 133 130 87 188 167 39 59 10 44 151 203 229 114 185 248 253 197 197 197 197 197 69 162 217 217 217 217 217 89 162 233 233 233 233 233 105 145 119 236 120 250 244 233 83 162 244 116 78 242 97 97 252 28 10 197 242 247 48 26 153 155 154 50 50 50 50 136 102 103 19 19 19 19 137 114 114 114 114 114 114 214 239 16 187 59 0 161 38 53 181 180 180 180 84 92 241 35 35 252 249 79 63 49 183 181 169 84 42 21 145 193 16 23 23 23 71 100 50 177 97 177 130 97 104 31 31 31 31 31 31 34 95 95 95 95 95 95 241 26 134 119 115 115 115 115 115 179 110 144 218 218 218 218 218 90 65 176 88 44 22 139 69 116 192 228 36 135 42 23 151 158 158 158 30 162 228 228 7 15 30 60 32 218 191 223 96 48 24 136 188 188 248 255 47 46 50 247 245 177 99 155 155 179 178 178 178 136 220 221 227 227 227 227 137 242 242 242 242 242 242 108 119 132 221 29 48 62 174 209 104 52 130 128 24 143 21 127 243 38 243 227 199 225 225 225 225 68 19 19 187 119 239 222 77 180 176 192 43 29 161 4 6 14 12 12 12 12 12 36 10 8 224 152 175 84 114 204 183 215 202 131 99 166 166 56 119 232 245 92 222 126 252 113 99 99 99 35 81 98 226 208 208 208 16 145 179 51 127 127 102 134 185 165 133 159 231 215 95 79 159 62 125 154 40 36 132 67 164 173 207 101 55 7 160 170 137 139 107 106 226 138 132 241 227 143 204 223 125 199 43 126 116 116 223 190 125 251 68 195 99 165 171 84 252 121 80 16 215 239 184 206 207 207 207 207 207 223 248 186 189 186 186 186 186 186 90 16 12 6 118 68 86 86 67 67 67 3 81 120 248 248 248 248 184 184 19 116 58 230 111 190 217 179 103 207 30 162 169 169 227 199 143 31 39 42 41 41 41 41 41 89 251 115 58 173 247 193 81 199 75 13 143 228 138 24 143 80 35 53 60 12 30 25 201 177 31 43 106 179 12 15 32 148 4 6 242 14 189 119 239 212 169 83 167 222 254 158 74 197 28 31 223 222 222 222 78 100 52 246 245 245 245 17 85 84 84 84 84 84 172 189 140 93 247 11 162 129 250 224 131 59 119 238 220 17 203 201 175 191 102 254 229 23 78 174 6 67 68 68 68 132 24 106 130 131 131 131 131 131 69 195 23 23 23 23 23 23 191 123 29 234 195 135 71 142 28 57 34 8 73 73 45 45 45 45 226 78 24 24 96 254 234 171 152 152 152 24 34 139 37 45 45 45 141 40 34 130 223 115 181 185 97 221 59 32 42 234 209 35 172 114 34 177 142 71 57 137 170 6 201 21 49 30 43 223 207 207 207 207 207 239 191 54 179 117 252 241 199 201 147 39 79 18 25 141 44 113 32 39 160 106 210 104 88 34 209 233 184 239 48 26 89 34 89 45 108 118 0 180 26 15 15 174 38 0 52 80 168 227 81 78 34 228 32 185 34 198 103 103 103 103 103 103 175 119 229 111 92 7 139 231 235 236 76 78 78 78 22 239 195 17 161 161 115 115 115 115 68 110 110 189 189 189 189 68 122 189 94 175 215 19 213 212 212 212 212 212 172 252 92 54 59 0 34 25 48 58 202 140 206 213 100 226 16 131 186 28 43 31 85 205 102 199 248 245 98 112 240 208 161 67 135 222 190 143 157 32 151 191 126 253 250 181 88 222 206 204 204 204 160 114 250 55 216 236 0 168 147 64 127 63 51 36 3 139 133 99 61 26 40 212 241 40 39 183 26 62 251 172 176 176 176 80 38 27 28 100 85 21 59 32 32 128 217 211 147 251 7 105 195 183 18 108 118 0 100 97 96 120 152 25 90 141 181 134 202 94 117 252 127 133 63 255 220 185 115 231 78 241 218 219 155 217 213 149 87 252 252 60 55 158 112 0 250 13 107 191 103 179 3 160 199 3 227 227 204 16 201 160 205 160 99 133 35 182 58 244 250 168 168 168 40 241 218 221 157 217 201 137 115 1 28 96 54 179 214 132 107 107 112 177 245 65 164 162 26 182 36 212 73 148 155 112 0 66 209 218 176 214 228 186 218 239 219 190 3 33 14 2 60 135 32 90 90 90 90 90 90 18 121 110 142 29 2 77 202 26 108 222 1 152 64 225 149 3 3 153 33 11 99 7 120 120 120 120 120 120 216 26 122 240 253 149 216 214 239 175 29 210 208 107 54 51 47 44 112 177 1 7 192 240 184 182 187 3 48 250 195 43 65 103 135 30 47 149 141 255 87 32 45 62 16 134 231 230 150 239 112 24 30 101 184 53 216 236 0 204 92 1 141 134 25 131 16 252 225 149 182 224 86 67 112 240 139 23 47 94 136 215 111 222 48 155 205 203 171 59 39 39 39 39 39 39 113 33 90 131 205 14 192 176 27 128 124 139 9 20 6 33 208 227 87 170 6 222 117 220 186 197 207 175 86 119 118 118 118 138 247 7 7 153 103 102 184 204 134 225 209 255 224 218 26 108 118 128 86 203 26 136 20 184 135 9 20 202 49 206 1 248 214 214 115 132 84 114 65 147 213 219 203 60 61 237 239 239 239 47 26 28 69 7 28 97 13 54 71 231 143 62 186 116 233 210 37 153 12 167 12 20 10 78 190 200 5 24 253 125 242 201 242 142 121 99 176 241 125 197 142 29 119 239 222 189 43 94 163 241 28 26 226 34 99 106 138 29 224 225 177 188 248 64 53 104 13 235 22 227 60 61 217 240 48 129 92 206 140 153 235 86 71 123 251 137 19 39 78 8 130 66 49 49 49 49 33 222 231 211 23 68 19 19 203 71 168 152 208 161 252 94 169 250 91 183 3 172 65 173 254 231 251 101 101 101 101 101 101 111 223 175 170 170 170 170 170 18 4 240 230 152 215 58 126 248 161 180 180 180 84 16 226 227 121 66 6 32 1 35 15 152 76 44 63 35 244 72 103 213 43 97 211 11 68 157 142 69 171 242 242 242 242 242 114 65 64 195 210 215 199 131 13 108 89 56 162 160 160 160 160 160 96 243 165 11 28 159 1 176 250 91 90 152 135 135 89 146 48 155 209 241 115 200 129 228 178 218 206 223 78 59 96 245 6 74 77 189 125 251 246 109 162 145 17 54 120 127 127 127 127 127 63 209 200 200 200 200 200 8 145 193 192 162 22 134 232 155 141 161 161 189 123 247 238 21 4 127 255 129 1 12 93 136 136 248 96 24 81 71 7 107 93 147 147 92 5 98 229 123 121 121 121 121 121 137 162 99 110 110 110 110 110 238 38 12 100 214 138 163 71 181 90 173 150 40 47 239 198 141 27 55 136 148 202 238 238 238 110 209 224 136 161 43 37 47 123 1 161 70 167 139 140 140 140 20 132 176 176 103 207 16 223 137 136 158 60 97 190 127 159 171 25 131 129 39 124 136 249 8 53 144 217 177 3 86 11 59 133 160 181 199 236 247 223 231 228 45 8 173 173 173 173 68 215 175 71 71 71 71 19 117 116 112 121 107 155 118 180 122 32 185 198 199 159 59 119 238 220 219 159 195 240 223 127 207 60 50 146 144 144 144 64 52 51 195 161 5 11 5 131 37 12 154 214 122 76 101 195 39 81 159 127 126 224 192 129 3 68 95 124 241 228 9 94 138 136 136 207 106 138 64 173 172 215 243 138 122 254 60 37 37 37 133 104 104 232 240 225 195 135 137 50 51 207 156 57 115 102 237 185 0 13 20 234 120 148 147 210 170 6 255 70 168 193 138 135 225 141 70 14 45 168 235 177 226 49 211 182 245 84 196 134 37 225 186 186 186 186 186 58 162 158 30 62 248 68 196 14 184 126 157 147 149 78 199 101 42 78 25 64 174 240 243 227 198 45 41 169 185 185 185 153 136 136 249 224 193 216 216 216 88 65 128 30 15 89 24 234 36 68 50 104 53 144 12 212 234 191 55 128 111 3 85 13 146 43 98 60 66 13 86 60 12 143 25 182 90 173 86 171 213 162 35 108 197 6 237 0 153 172 190 190 190 190 190 94 16 6 6 56 153 117 117 113 67 166 213 114 14 56 120 144 147 111 90 26 159 187 129 172 129 17 159 180 123 252 183 110 114 53 64 231 138 6 10 113 30 229 36 170 26 36 87 105 93 47 53 60 14 21 172 247 100 220 58 119 128 245 63 140 83 2 99 99 172 13 45 44 44 44 44 44 136 73 171 173 109 251 246 237 219 137 126 255 157 87 112 116 52 151 167 31 126 200 106 106 68 4 127 31 14 193 42 195 4 10 249 1 82 47 154 62 168 147 16 201 160 213 64 50 64 231 138 6 10 117 252 220 28 39 125 188 17 170 26 233 129 49 172 248 119 246 108 104 101 101 101 101 101 165 32 32 244 12 15 15 15 15 15 139 19 34 233 17 68 172 52 56 10 125 65 68 4 139 121 1 1 236 16 79 79 102 55 55 30 253 97 2 5 217 23 122 60 100 97 168 147 16 201 160 213 64 50 192 223 69 25 9 233 0 51 107 105 114 45 42 42 42 42 42 178 127 63 98 247 28 128 17 28 84 80 200 209 120 65 188 80 88 88 88 88 88 152 24 91 113 95 58 192 48 153 248 119 222 188 89 62 115 5 75 39 81 82 192 192 96 185 156 23 128 116 98 135 5 129 80 227 237 205 243 142 245 134 152 77 119 0 98 38 26 18 0 199 199 113 244 16 91 25 231 110 164 114 53 12 106 237 120 57 118 148 116 244 135 255 39 149 133 81 214 98 33 72 37 3 116 174 171 109 160 236 133 13 251 67 144 18 208 96 97 197 21 22 242 241 14 91 127 23 142 66 78 1 75 39 80 24 132 192 17 152 204 129 183 250 233 12 7 28 112 192 1 59 224 47 137 64 226 59 103 178 13 148 0 0 0 0 73 69 78 68 174 66 96 130) ! !
 
-!DrGIcons class methodsFor: 'accessing'!
+!DrGIcons class methodsFor: 'accessing' stamp: ''!
 coordinates
 	^self formFromGraphic:  #(137 80 78 71 13 10 26 10 0 0 0 13 73 72 68 82 0 0 0 48 0 0 0 48 16 6 0 0 0 7 146 37 196 0 0 0 6 98 75 71 68 255 255 255 255 255 255 9 88 247 220 0 0 0 9 112 72 89 115 0 0 0 72 0 0 0 72 0 70 201 107 62 0 0 2 14 73 68 65 84 120 218 237 154 193 21 194 32 12 134 169 207 17 220 194 33 28 192 147 87 174 234 115 130 78 209 21 60 115 245 228 0 14 225 22 238 80 79 60 159 244 97 8 80 146 216 124 151 190 182 208 134 252 16 82 168 49 138 162 40 82 25 71 106 11 164 211 229 85 139 57 190 203 124 222 114 65 58 44 181 199 171 16 141 208 16 84 202 138 218 128 165 179 198 21 215 30 207 12 21 164 20 13 65 196 168 0 196 44 116 14 8 219 65 151 54 35 71 128 55 84 106 158 207 175 3 77 4 216 239 251 126 183 227 103 104 26 222 238 240 200 151 232 8 240 66 200 22 196 195 119 233 100 98 0 228 240 211 105 24 94 47 106 179 167 28 14 198 60 159 232 230 119 214 90 107 237 56 58 231 156 115 211 243 230 13 9 123 254 111 65 184 142 140 88 40 250 28 189 163 125 141 240 156 12 92 200 97 96 240 79 187 4 11 129 107 40 23 210 29 31 30 133 56 158 107 150 145 234 232 105 121 33 142 135 26 78 13 236 120 239 232 219 205 152 237 86 124 232 9 27 78 13 236 120 127 238 5 136 221 23 38 4 95 67 99 142 21 62 2 184 206 1 31 32 199 66 35 64 24 124 13 135 70 0 181 125 149 224 215 144 203 229 124 62 30 211 71 128 112 228 53 132 155 0 11 221 15 224 195 194 246 3 248 161 91 146 196 8 21 0 10 133 165 161 178 221 234 47 82 128 212 252 191 118 185 176 124 44 4 66 247 75 159 239 175 215 19 98 230 57 32 102 48 214 81 212 142 79 109 23 158 70 33 40 52 184 246 36 30 62 31 235 152 210 250 100 96 99 101 110 108 205 189 159 122 125 46 187 96 26 127 7 104 250 90 153 90 217 66 173 45 80 40 132 64 107 65 216 228 161 156 153 230 0 108 79 175 53 249 65 73 2 244 30 168 126 234 28 150 46 144 208 239 0 170 80 134 125 47 44 196 58 183 98 89 121 46 180 178 59 62 114 34 2 148 230 231 165 121 251 191 220 135 253 41 52 4 229 115 189 246 253 102 211 234 109 112 71 46 84 112 174 15 171 250 196 126 56 187 223 135 225 241 96 243 123 122 232 208 250 107 31 202 55 127 31 130 160 95 45 153 254 253 45 110 77 68 81 242 120 3 185 219 205 252 208 44 95 233 0 0 0 0 73 69 78 68 174 66 96 130)
 ! !
 
-!DrGIcons class methodsFor: 'accessing'!
+!DrGIcons class methodsFor: 'accessing' stamp: ''!
 createAndMove
 	^self formFromGraphic: #(137 80 78 71 13 10 26 10 0 0 0 13 73 72 68 82 0 0 0 24 0 0 0 24 8 6 0 0 0 224 119 61 248 0 0 0 9 112 72 89 115 0 0 11 18 0 0 11 18 1 210 221 126 252 0 0 3 152 73 68 65 84 72 199 181 150 111 76 155 85 20 198 127 183 45 157 64 9 89 72 216 194 212 18 144 66 178 4 54 162 4 170 147 15 68 81 214 26 23 18 135 113 115 24 13 146 169 153 201 18 12 81 99 244 203 20 17 93 92 182 15 203 134 154 105 130 75 220 146 206 40 206 178 17 54 33 197 132 145 77 201 168 150 117 98 97 64 11 133 240 167 127 222 30 63 16 154 17 186 63 17 56 95 222 188 231 189 247 62 247 156 231 62 247 121 149 136 8 235 24 58 214 57 12 171 153 124 163 194 188 236 61 219 233 93 251 10 178 157 222 132 11 175 25 64 83 83 19 74 41 46 5 22 18 15 144 251 8 64 18 13 181 150 149 198 243 214 178 210 132 115 87 112 160 148 90 2 6 192 110 183 211 213 241 13 67 158 97 148 82 136 8 74 41 182 109 43 162 175 239 10 197 197 197 0 164 164 154 120 220 90 22 95 231 242 111 221 43 43 0 228 187 83 159 201 192 181 159 226 59 3 228 214 205 11 210 223 115 58 158 123 181 246 121 25 245 58 197 102 179 73 67 67 131 136 136 52 54 54 138 136 72 77 77 141 12 14 14 198 43 90 193 65 118 246 131 232 245 58 234 234 234 226 185 152 166 33 154 6 128 217 108 102 239 238 103 24 241 141 210 217 217 73 85 85 21 0 149 149 149 0 212 215 215 223 153 100 17 225 248 241 54 50 50 54 242 70 221 206 120 187 208 4 137 45 2 60 105 221 202 35 57 89 56 157 61 24 141 70 154 155 155 201 207 51 83 94 94 14 16 127 222 241 20 181 126 253 3 63 183 119 145 102 50 113 244 139 247 151 241 1 80 251 226 179 104 225 8 151 187 175 16 12 6 41 45 202 162 227 220 49 242 243 22 53 225 114 185 238 14 32 34 156 56 121 142 52 83 10 59 118 60 122 251 7 0 242 114 178 184 229 27 227 204 143 93 188 190 207 198 158 93 21 124 220 210 138 165 160 16 151 203 69 110 110 110 98 0 165 20 118 187 29 0 103 71 7 215 7 135 216 148 153 193 168 247 34 74 167 72 51 165 114 179 255 12 177 72 20 145 197 118 29 124 173 26 223 200 56 191 116 184 112 56 28 148 148 148 36 22 154 82 138 192 120 47 219 139 30 142 131 52 127 126 2 4 174 94 29 68 161 103 120 100 10 148 14 68 72 75 125 128 191 46 181 226 247 7 57 223 217 139 165 160 16 0 191 223 127 119 37 191 125 224 21 172 37 249 216 237 118 206 58 156 40 93 18 55 134 103 209 27 146 233 31 248 7 141 36 46 254 254 47 161 185 8 11 179 33 66 209 8 223 158 189 64 75 75 11 110 183 155 64 32 64 32 16 160 189 189 125 249 101 183 36 30 255 88 47 213 187 42 49 110 48 208 221 221 141 94 103 36 197 148 206 184 127 146 212 180 141 16 213 8 71 21 198 13 41 76 79 5 112 252 218 131 165 160 144 218 125 47 175 216 249 146 208 12 183 147 123 244 200 135 236 174 174 226 233 138 39 120 110 231 83 8 26 254 137 49 98 209 116 82 146 147 153 14 78 176 48 59 201 223 158 25 68 9 159 28 105 227 94 118 178 172 69 251 223 252 128 119 222 253 148 172 45 155 144 152 70 76 34 20 109 125 136 140 140 116 54 111 206 36 18 137 226 243 186 65 193 87 109 231 177 217 108 247 188 12 85 34 71 203 201 201 225 212 201 67 88 44 102 36 166 161 133 66 12 251 102 144 249 49 194 161 57 220 67 195 28 250 242 123 174 187 189 255 207 209 60 30 15 47 188 116 0 127 96 10 4 20 138 45 153 201 40 3 204 204 206 163 79 210 175 222 50 183 23 63 70 56 28 1 5 162 19 68 52 230 230 34 204 135 163 24 12 134 248 209 92 149 101 94 27 112 19 156 206 68 162 81 36 18 101 98 114 134 254 63 61 8 178 54 166 239 243 141 177 255 173 143 64 167 136 41 56 248 222 97 14 31 59 77 223 31 19 56 28 142 251 2 80 235 253 219 242 31 185 225 254 15 195 173 162 18 0 0 0 0 73 69 78 68 174 66 96 130)! !
 
-!DrGIcons class methodsFor: 'accessing'!
+!DrGIcons class methodsFor: 'accessing' stamp: ''!
 createMultiple
 	^ self formFromGraphic: #(137 80 78 71 13 10 26 10 0 0 0 13 73 72 68 82 0 0 0 48 0 0 0 48 8 6 0 0 0 87 2 249 135 0 0 0 1 115 82 71 66 0 174 206 28 233 0 0 0 6 98 75 71 68 0 255 0 255 0 255 160 189 167 147 0 0 0 9 112 72 89 115 0 0 11 19 0 0 11 19 1 0 154 156 24 0 0 0 7 116 73 77 69 7 219 6 29 6 2 11 56 119 251 22 0 0 1 11 73 68 65 84 104 222 237 151 205 13 131 48 12 133 177 197 0 28 122 232 28 172 210 57 89 165 179 176 129 123 105 37 14 129 36 142 159 67 42 127 18 226 128 228 23 255 17 189 105 10 130 32 8 130 123 33 223 167 8 70 11 40 98 87 49 163 5 42 226 145 38 0 23 86 91 156 70 39 149 140 92 21 143 209 2 6 73 209 225 109 178 3 85 2 25 168 224 251 81 163 58 129 102 129 198 113 202 22 136 26 22 151 12 58 32 21 5 82 47 49 106 124 36 83 208 162 238 50 90 64 185 15 169 238 138 166 66 169 223 168 100 222 154 248 214 177 125 4 46 22 23 162 33 29 146 128 221 150 230 2 207 199 130 61 60 92 32 8 130 160 187 191 69 56 50 87 127 171 97 6 29 152 188 90 204 14 213 135 218 79 118 222 135 22 255 0 79 160 139 253 100 167 202 195 58 64 160 185 87 249 219 158 29 240 182 159 240 17 50 247 183 94 55 174 151 253 116 93 220 191 73 98 28 194 126 118 186 7 32 44 239 215 233 183 125 221 238 159 192 89 18 251 186 141 209 129 84 18 191 195 15 199 213 56 13 203 7 27 12 132 199 176 214 170 20 0 0 0 0 73 69 78 68 174 66 96 130)! !
 
-!DrGIcons class methodsFor: 'accessing'!
+!DrGIcons class methodsFor: 'accessing' stamp: ''!
 distance
 		^self formFromGraphic:  #(137 80 78 71 13 10 26 10 0 0 0 13 73 72 68 82 0 0 0 48 0 0 0 48 16 6 0 0 0 7 146 37 196 0 0 0 6 98 75 71 68 255 255 255 255 255 255 9 88 247 220 0 0 0 9 112 72 89 115 0 0 0 72 0 0 0 72 0 70 201 107 62 0 0 1 212 73 68 65 84 120 218 237 153 59 170 2 49 24 133 227 221 128 133 165 157 149 224 62 132 108 69 16 23 32 86 174 64 132 244 46 65 16 2 22 130 59 176 180 16 5 221 132 221 88 92 66 32 26 50 143 252 127 226 120 190 102 8 153 201 227 156 147 76 116 132 0 32 62 69 145 122 4 64 8 1 35 178 1 70 100 2 140 96 194 8 237 94 221 122 64 140 207 0 183 30 68 166 106 226 91 99 68 217 137 134 146 73 213 63 245 243 201 169 187 212 115 19 142 207 136 63 174 142 104 48 66 117 58 113 219 53 237 209 27 241 165 6 80 9 111 219 223 239 215 235 201 196 237 47 62 145 39 16 18 198 55 145 178 66 114 11 111 25 143 167 83 165 170 142 183 53 80 111 5 70 120 123 56 48 229 251 253 112 232 247 237 53 246 120 50 223 130 248 19 175 148 82 74 217 196 239 118 231 243 124 110 235 255 141 112 199 215 58 210 37 254 115 255 118 5 28 143 155 77 175 87 20 171 213 98 49 24 52 95 17 153 173 0 254 196 155 242 112 56 26 109 183 118 5 152 251 77 249 118 123 60 158 79 33 78 167 203 165 219 21 98 54 91 46 175 87 115 223 215 191 19 242 217 227 221 107 40 241 82 74 41 101 253 241 39 118 46 221 169 198 36 222 71 40 241 70 120 173 181 214 250 189 156 82 213 82 194 80 183 207 149 248 47 91 1 72 124 34 144 120 31 1 231 154 38 22 137 143 54 209 106 245 72 124 89 42 58 233 75 180 59 64 36 158 24 95 226 233 62 180 180 37 241 46 13 157 197 30 159 9 72 124 93 152 191 7 132 159 71 226 163 80 53 81 191 147 120 23 98 231 195 95 200 144 120 22 222 79 77 191 154 120 23 246 255 130 144 248 36 32 241 62 200 223 1 72 124 18 144 248 178 68 255 29 128 196 103 1 18 207 206 103 97 32 60 59 33 35 32 60 19 62 35 32 60 51 62 35 124 245 16 158 136 144 208 16 158 9 8 159 9 16 30 0 0 146 243 2 254 23 48 217 74 149 99 100 0 0 0 0 73 69 78 68 174 66 96 130)! !
 
-!DrGIcons class methodsFor: 'accessing'!
+!DrGIcons class methodsFor: 'accessing' stamp: ''!
 drgeo
 	^self formFromGraphic: #(137 80 78 71 13 10 26 10 0 0 0 13 73 72 68 82 0 0 0 48 0 0 0 48 8 6 0 0 0 87 2 249 135 0 0 0 4 103 65 77 65 0 0 177 143 11 252 97 5 0 0 0 9 112 72 89 115 0 0 11 18 0 0 11 18 1 210 221 126 252 0 0 15 190 73 68 65 84 120 156 197 154 121 112 84 215 149 135 191 183 244 91 122 111 181 164 110 9 9 33 9 1 66 8 4 2 140 88 108 179 36 142 9 137 99 187 176 157 196 241 56 51 21 87 202 51 169 76 77 198 197 76 37 169 33 227 170 120 166 226 144 154 137 29 39 241 16 39 94 98 108 12 56 142 67 8 198 118 48 216 236 59 2 1 18 32 9 16 218 90 173 222 212 203 123 239 206 31 54 158 33 56 11 72 73 78 85 255 115 251 245 185 231 123 231 174 231 215 210 219 111 191 205 95 202 36 73 66 8 49 166 62 229 49 245 118 197 169 44 35 73 210 85 109 3 3 3 47 175 89 179 70 60 251 236 179 226 119 191 27 85 95 99 230 233 3 51 12 131 117 235 214 137 129 129 129 255 184 210 22 139 197 30 90 189 122 245 202 154 154 26 118 236 216 65 58 157 30 179 254 198 20 96 104 104 104 217 195 15 63 44 18 137 4 61 61 61 171 174 180 75 146 116 246 145 71 30 225 142 59 238 144 238 187 239 190 107 178 51 26 147 198 114 14 164 82 105 246 236 217 45 150 46 93 58 118 17 254 17 27 83 128 63 102 87 230 134 109 219 99 230 83 29 43 71 142 99 115 248 240 33 49 156 28 6 91 194 116 123 152 51 103 182 164 40 10 153 76 134 231 158 127 94 188 245 214 54 220 30 131 150 121 45 124 229 31 190 42 229 114 249 81 247 59 102 0 91 223 252 149 56 223 121 138 162 168 7 9 232 61 53 140 227 228 69 115 243 28 233 133 23 158 23 200 25 30 249 198 23 41 20 70 120 111 199 17 182 108 217 44 22 47 94 54 234 161 54 38 0 137 196 48 71 142 237 99 197 93 243 240 251 189 12 14 119 17 44 86 217 246 214 111 104 63 123 86 8 53 203 223 125 233 30 188 94 131 193 161 62 220 126 137 29 219 14 51 127 254 34 116 93 255 235 2 216 142 205 211 107 127 40 86 126 110 9 21 21 149 4 253 81 122 7 130 148 132 135 112 187 138 9 133 34 52 53 53 16 10 68 240 185 67 248 60 165 100 115 67 84 84 247 144 76 199 133 174 71 70 149 133 81 3 12 13 197 246 103 243 9 38 84 213 16 240 149 18 10 148 81 26 174 32 51 146 164 121 154 138 132 140 170 105 152 186 15 69 150 241 184 253 24 70 128 68 60 69 62 95 24 109 247 163 223 7 18 137 120 179 199 39 97 152 94 28 75 102 237 211 63 229 209 213 107 200 36 5 165 197 213 148 22 87 17 242 69 233 60 123 158 239 124 231 113 122 123 123 240 184 3 116 180 95 36 54 216 255 215 5 144 101 153 211 29 199 168 170 141 160 185 12 158 249 201 207 57 223 217 205 236 57 77 168 170 130 109 229 25 201 166 200 230 82 180 159 109 39 59 146 231 229 117 175 18 240 134 48 52 157 87 54 108 36 147 25 221 174 172 60 248 224 131 55 252 99 65 129 45 219 94 93 221 178 104 42 245 19 231 50 103 206 92 74 35 197 188 244 194 47 216 249 222 46 12 211 69 32 164 33 132 32 224 47 98 40 150 68 215 76 76 211 205 196 73 21 188 185 109 39 118 65 172 174 175 159 250 173 27 141 97 84 25 104 61 121 76 248 195 42 53 85 147 81 93 6 251 247 29 230 107 95 253 38 51 102 204 162 162 188 154 199 30 93 67 54 155 37 147 25 225 187 255 249 125 118 108 223 195 96 127 146 213 223 252 30 207 252 104 3 119 175 252 24 191 250 245 107 116 117 119 222 240 17 245 134 1 6 7 251 247 191 185 99 19 45 45 141 4 253 227 216 250 235 173 124 235 223 254 147 39 159 120 138 229 203 151 179 252 246 219 201 100 114 36 18 73 98 177 1 186 47 92 226 177 199 190 205 67 15 125 137 117 63 127 145 25 211 231 241 214 27 187 185 255 75 159 96 205 154 199 233 234 238 186 33 136 27 2 72 166 226 53 235 54 172 109 110 154 91 73 113 113 5 169 68 150 239 125 247 199 124 237 159 30 161 182 182 150 72 36 66 69 197 56 34 145 82 250 251 7 104 107 59 69 73 113 9 146 36 225 114 185 48 12 131 7 30 120 128 248 80 150 138 242 18 90 22 215 242 244 218 167 200 140 100 254 252 0 154 230 226 173 237 91 59 92 222 20 53 19 234 8 122 163 108 221 186 157 137 181 147 249 228 39 111 39 28 14 19 10 133 48 12 147 124 161 64 105 36 202 241 99 167 184 233 166 22 12 195 32 16 8 16 14 135 41 47 31 199 212 250 6 78 28 59 199 188 69 83 8 150 200 60 241 196 127 95 119 22 174 27 224 229 13 47 138 87 127 241 10 179 230 214 81 30 153 8 142 139 159 173 93 199 163 143 254 59 62 159 31 195 48 144 36 137 92 46 203 224 224 32 37 225 0 71 14 182 82 59 177 26 89 150 49 12 3 77 211 48 12 131 69 139 22 176 127 207 73 76 211 203 226 143 205 160 111 176 147 159 61 251 19 49 50 50 50 246 0 66 8 90 219 246 139 141 27 214 83 26 13 209 48 105 54 94 51 196 249 206 46 202 202 162 84 85 85 161 40 202 135 207 14 12 12 208 123 185 151 108 161 64 34 153 38 28 46 66 150 101 84 85 69 150 101 16 48 99 70 19 3 125 41 36 225 34 90 30 102 249 157 11 56 120 104 47 27 55 109 20 150 101 141 45 192 185 238 54 241 131 39 159 194 31 86 48 53 55 145 112 13 178 164 176 119 247 126 150 44 94 138 36 73 31 94 84 10 133 60 201 100 28 203 42 48 146 78 146 207 229 113 187 61 255 23 60 32 16 148 150 70 168 170 170 226 232 225 211 128 196 64 255 48 94 159 206 177 214 3 236 220 185 243 79 26 78 127 210 81 226 248 201 195 226 103 207 253 152 72 149 65 121 69 148 142 214 4 150 237 128 237 226 208 129 19 124 243 235 247 34 132 192 113 28 132 16 228 243 121 82 169 12 85 85 227 144 85 25 213 165 162 200 239 195 9 33 176 109 27 73 146 49 116 131 146 146 98 50 169 12 46 69 99 233 178 22 22 46 152 205 192 64 140 231 159 217 136 162 200 98 193 130 133 210 21 232 235 6 176 109 155 182 211 173 226 165 151 158 163 110 106 49 51 231 214 81 20 8 83 94 122 129 108 62 69 62 165 99 21 4 211 166 53 126 152 129 124 62 143 16 176 119 239 30 102 54 55 224 80 0 28 250 250 251 137 68 202 177 44 11 85 85 1 129 36 73 168 138 11 89 5 144 240 121 252 20 5 13 12 175 139 79 221 221 194 218 39 255 135 116 38 35 150 44 94 34 105 154 246 145 49 254 193 33 116 172 245 144 120 238 249 31 17 173 210 113 123 188 76 159 58 143 186 154 102 22 222 114 19 182 101 113 230 76 59 19 39 77 198 52 77 36 73 66 81 20 10 133 2 153 145 12 91 182 108 229 166 249 179 0 135 233 51 235 89 255 202 6 146 137 228 7 128 2 203 178 24 201 102 201 91 5 210 153 4 35 185 36 8 240 152 1 2 222 16 182 200 17 42 50 121 251 157 45 108 125 99 235 239 29 78 191 23 96 199 187 111 138 23 95 121 154 69 159 168 100 114 253 120 134 250 51 56 182 66 192 87 66 105 184 26 143 17 36 49 148 164 172 52 74 42 149 226 232 209 163 220 115 207 61 180 181 181 241 206 246 237 88 86 142 169 51 170 25 78 12 240 241 21 115 217 254 219 55 233 237 189 76 79 79 15 171 86 173 98 197 138 21 28 60 120 128 216 96 12 73 182 201 21 178 8 69 66 150 20 52 151 155 142 211 125 4 194 6 183 221 209 200 142 247 182 208 221 221 253 145 16 215 0 20 10 121 54 189 182 78 28 108 219 204 188 197 149 212 55 52 82 63 165 1 85 85 57 116 240 48 8 129 199 244 35 112 200 228 147 216 142 77 33 95 160 189 189 157 214 214 86 250 250 250 232 238 190 64 221 212 241 56 100 192 17 24 110 193 248 154 16 175 108 122 133 254 254 126 186 187 187 57 115 230 12 221 221 231 105 59 121 130 170 218 32 154 170 99 104 110 4 14 167 218 58 56 123 234 34 159 88 177 128 170 154 50 238 252 252 124 214 111 252 57 61 61 61 215 64 92 5 80 176 10 60 189 246 9 209 126 105 39 141 179 163 76 158 84 71 69 201 20 38 84 77 165 121 238 52 246 238 58 74 247 133 110 4 18 233 108 156 100 58 6 64 42 157 194 239 247 179 106 213 42 234 167 76 225 229 151 215 209 114 235 36 28 199 198 235 45 194 208 220 124 234 222 57 188 177 237 151 60 246 237 199 184 239 222 123 89 189 122 53 170 11 178 133 20 142 148 195 227 46 198 212 253 168 170 78 95 207 0 247 127 241 110 22 45 88 74 101 100 18 227 43 163 76 152 236 97 195 166 245 215 148 100 174 154 196 235 215 191 40 146 118 59 51 230 149 227 117 7 9 7 203 81 93 42 249 124 134 250 134 137 8 73 70 8 9 93 51 0 135 241 53 126 158 252 206 235 220 124 203 34 92 170 78 67 67 61 63 248 225 147 84 214 249 137 142 243 226 243 132 9 249 163 200 178 139 84 54 206 3 95 105 97 199 214 147 124 229 31 191 76 168 168 152 108 46 69 253 172 82 60 70 0 83 247 160 200 50 154 230 225 158 123 239 71 56 14 201 116 236 253 139 144 203 197 244 230 36 103 78 238 230 192 129 253 98 214 172 102 233 26 128 100 50 201 59 239 190 193 226 79 87 162 202 26 225 96 20 77 115 19 139 95 194 113 44 82 153 4 213 213 69 84 84 148 227 53 131 120 205 34 74 162 33 166 207 169 228 27 95 255 87 162 101 101 216 118 158 120 162 159 7 255 126 41 94 51 68 192 27 65 215 61 120 29 27 191 89 132 215 237 97 254 178 90 102 206 175 70 20 100 10 86 129 112 177 151 128 47 140 101 23 176 108 11 231 131 143 64 96 59 5 100 73 33 232 141 16 10 148 51 189 185 138 221 123 223 99 214 172 230 107 51 240 250 230 95 10 20 11 211 212 48 13 15 33 127 57 125 125 125 28 62 216 78 124 48 73 73 196 195 148 25 229 152 151 79 98 232 110 12 205 67 145 63 202 231 31 184 157 115 183 116 209 121 238 18 142 99 83 82 54 137 178 200 56 74 139 39 96 232 110 36 73 193 208 60 4 252 17 198 69 39 227 73 244 225 56 22 8 9 7 7 151 162 97 26 33 92 170 142 109 219 228 11 89 28 225 32 9 129 101 91 184 20 9 151 203 36 28 40 103 114 125 140 55 94 223 128 166 171 228 115 214 213 0 166 105 98 24 42 170 75 37 228 47 101 120 168 192 150 215 222 197 146 147 216 142 197 233 119 50 156 57 211 197 237 159 206 35 112 40 43 174 195 52 3 184 221 1 60 102 136 9 85 227 209 92 110 76 195 139 91 15 18 240 149 224 82 117 44 187 128 162 168 132 2 81 52 85 39 28 24 135 35 44 16 144 207 103 201 21 70 80 85 29 67 243 96 57 22 78 54 129 229 228 177 109 11 77 51 49 52 3 85 85 241 184 67 20 23 149 82 93 27 229 192 129 253 162 113 90 147 116 21 64 98 56 137 207 111 34 41 10 126 119 128 211 39 46 82 85 87 196 197 254 126 210 217 56 193 74 139 243 29 113 158 95 59 196 93 159 205 195 100 7 159 183 20 77 53 241 22 133 40 149 107 112 169 26 178 226 66 145 20 84 151 134 101 229 113 28 231 195 55 173 233 110 28 97 35 75 42 142 16 8 134 176 133 131 97 122 81 20 141 124 46 69 38 23 7 36 242 35 130 88 127 22 143 225 163 178 122 60 1 191 137 169 123 40 41 45 230 216 177 86 26 167 53 93 157 129 202 241 21 28 57 97 145 31 177 73 141 12 51 117 70 45 133 124 41 53 137 74 186 46 158 97 40 217 139 219 127 153 115 199 6 217 188 105 15 238 47 24 84 68 45 130 254 40 94 79 24 175 59 136 34 43 216 142 131 35 108 28 219 193 178 10 128 132 36 129 229 88 104 170 129 208 222 63 110 56 194 193 208 60 168 138 142 162 184 72 166 7 137 13 95 192 118 108 14 239 237 228 213 151 222 193 165 23 48 12 29 69 241 243 248 154 213 104 186 135 112 36 192 64 247 71 172 66 139 111 89 34 253 242 245 95 136 190 139 105 66 69 189 8 100 124 158 16 19 42 166 48 46 90 67 54 55 76 239 80 55 126 207 78 14 238 188 196 166 23 119 178 98 229 8 197 69 113 16 224 53 3 8 225 0 14 194 118 200 217 105 114 185 17 76 211 7 226 253 253 69 145 21 100 69 35 22 235 37 224 15 160 107 30 84 59 207 229 254 14 122 135 58 25 138 15 243 211 239 111 99 40 62 72 203 109 81 252 65 31 193 96 136 34 99 26 219 183 111 231 230 37 179 25 232 141 49 173 113 225 135 0 87 93 234 39 77 154 180 250 221 119 246 97 57 185 247 87 0 213 6 217 70 83 117 36 20 76 221 131 207 231 69 210 83 156 56 210 77 50 110 17 40 145 65 42 224 119 135 209 117 47 146 36 113 255 231 254 150 201 13 227 9 250 253 104 46 15 0 142 83 192 113 108 218 78 180 241 95 223 123 154 230 217 141 24 186 78 127 188 139 243 61 173 92 188 216 195 250 103 118 145 41 12 210 178 180 146 198 198 70 38 215 204 196 173 22 51 60 144 163 166 118 2 46 67 162 163 189 11 73 120 168 174 170 253 214 53 251 64 245 132 90 233 225 47 127 77 236 218 189 147 183 55 191 73 160 232 28 205 45 117 212 84 151 129 44 129 16 120 61 62 154 166 207 196 182 45 222 219 210 129 16 54 115 23 230 112 235 1 170 132 141 238 242 210 213 121 129 179 29 29 212 213 54 124 112 200 147 145 101 21 129 141 131 197 205 183 206 70 55 117 6 19 61 92 236 111 231 210 165 11 108 122 225 8 137 100 156 150 101 101 204 152 57 139 178 226 10 76 181 136 189 191 221 69 105 89 41 101 21 197 244 246 118 147 24 78 65 110 240 195 152 255 64 121 93 208 218 122 92 188 190 249 53 186 187 187 144 100 9 69 181 8 150 232 148 149 149 81 18 213 233 186 124 154 158 115 89 132 80 88 182 98 26 149 101 53 76 155 188 0 43 11 166 199 141 215 27 196 165 104 200 146 140 237 88 228 173 44 249 124 150 108 46 203 112 242 34 221 151 219 56 222 122 138 151 215 238 34 84 38 104 106 25 71 99 125 19 101 145 74 188 238 32 154 230 166 80 200 35 1 233 76 130 195 135 218 249 205 171 135 120 242 251 79 73 178 236 186 122 14 92 107 18 13 13 141 210 212 134 6 226 241 248 67 185 92 238 71 217 124 146 67 39 222 230 252 217 78 142 236 141 209 219 155 98 194 132 9 156 57 221 201 209 125 23 144 231 202 168 170 70 237 248 70 28 241 254 14 238 168 54 32 0 137 92 110 132 212 72 140 193 225 75 244 15 118 209 215 219 71 219 225 94 170 167 20 19 12 107 4 180 137 36 7 85 130 94 153 34 159 31 73 40 8 199 102 56 49 196 169 182 243 28 220 125 142 47 124 254 111 184 18 252 31 201 192 71 91 193 202 243 238 190 215 196 238 67 111 97 137 97 122 58 211 104 138 73 34 230 112 243 109 117 212 77 29 71 36 92 137 223 19 38 224 45 65 81 85 28 225 224 56 130 145 108 156 120 178 143 193 120 15 185 92 158 3 187 206 81 200 73 248 3 38 201 68 22 85 242 113 238 204 101 116 93 67 150 32 149 30 193 178 44 92 46 149 121 243 230 179 248 214 37 68 35 229 210 255 87 58 175 187 184 235 82 53 230 54 45 151 78 159 232 17 182 217 73 180 60 71 174 144 196 74 123 216 179 253 44 151 47 197 185 121 153 77 38 59 204 96 226 50 178 4 249 194 8 185 92 150 244 72 146 244 72 134 108 82 176 99 107 7 77 179 39 162 7 227 12 14 159 70 24 26 29 199 99 124 124 201 29 44 95 190 252 247 86 172 127 87 166 189 161 210 162 203 229 162 166 122 162 185 103 207 161 133 53 181 81 130 193 0 197 37 126 130 69 62 142 236 189 72 58 157 39 24 214 201 230 18 196 147 49 6 99 3 244 246 14 114 169 107 136 211 199 6 216 183 163 155 207 172 188 149 105 77 85 120 124 110 116 197 71 251 113 155 7 62 251 101 22 204 95 112 93 229 246 81 105 100 27 54 190 36 50 162 131 241 117 6 2 5 89 150 200 166 37 54 189 176 15 69 145 168 158 88 130 166 43 196 135 210 12 197 210 164 147 57 202 43 162 220 185 114 41 69 37 6 3 177 139 216 78 158 205 27 143 51 109 226 66 238 252 204 221 18 92 159 92 48 42 128 129 129 190 216 19 63 124 60 180 228 211 53 184 61 26 18 50 110 211 139 199 12 112 186 237 2 71 15 119 0 18 37 197 65 42 171 34 140 175 42 197 244 184 209 84 157 120 178 151 161 225 62 142 29 184 128 87 169 227 174 59 87 74 138 114 253 114 197 168 4 142 226 226 210 162 241 21 53 98 224 114 134 154 41 30 116 197 196 165 234 232 46 55 51 154 38 211 208 56 17 69 86 81 85 23 134 230 121 191 106 129 192 177 115 8 97 227 20 100 186 59 82 252 203 63 223 117 67 193 143 26 0 224 182 219 150 211 51 116 136 210 34 15 170 75 67 150 21 188 70 8 73 82 80 21 23 146 228 66 150 174 20 188 28 28 225 96 21 242 120 204 52 105 93 48 119 246 34 52 237 198 117 178 191 168 78 124 181 93 89 77 70 39 84 142 153 204 122 253 54 54 98 254 159 229 223 42 127 73 251 95 108 18 182 185 23 127 126 182 0 0 0 0 73 69 78 68 174 66 96 130)! !
 
-!DrGIcons class methodsFor: 'accessing'!
+!DrGIcons class methodsFor: 'accessing' stamp: ''!
 eraser
 	^self formFromGraphic:  #(137 80 78 71 13 10 26 10 0 0 0 13 73 72 68 82 0 0 0 48 0 0 0 48 16 6 0 0 0 7 146 37 196 0 0 0 6 98 75 71 68 255 255 255 255 255 255 9 88 247 220 0 0 0 9 112 72 89 115 0 0 0 72 0 0 0 72 0 70 201 107 62 0 0 9 239 73 68 65 84 120 218 237 90 91 76 92 85 27 93 231 54 55 152 2 214 182 64 165 23 27 72 109 129 137 144 106 133 146 42 84 45 137 6 155 246 129 55 83 245 193 7 180 49 26 77 154 152 244 197 24 19 125 52 49 233 19 154 152 38 53 40 15 42 38 26 172 166 25 40 49 150 166 173 45 246 70 129 82 58 148 12 12 157 203 185 109 31 190 255 251 247 204 80 34 197 78 161 237 172 4 14 251 156 189 55 103 214 218 123 125 223 222 123 128 60 242 200 35 143 60 242 200 35 143 60 242 200 35 143 60 242 120 152 160 44 245 11 204 135 221 187 119 239 126 249 101 33 250 250 250 250 126 255 125 169 223 6 136 70 163 209 104 84 185 235 124 45 59 1 246 236 217 179 103 223 62 33 82 41 211 92 181 10 168 174 174 174 110 110 6 132 160 31 134 101 89 150 227 0 66 184 174 101 1 182 237 186 174 11 56 142 109 11 1 40 138 108 67 127 187 174 227 200 246 174 75 189 101 223 87 20 69 81 20 192 113 132 72 165 128 174 174 163 71 63 252 48 119 2 168 75 77 56 163 181 181 181 181 181 85 136 222 222 222 222 159 127 6 170 171 107 106 154 155 1 215 101 98 29 199 113 0 203 178 109 38 222 113 232 190 16 146 120 215 117 28 219 166 50 61 183 109 203 146 253 240 53 155 120 134 16 66 8 1 12 14 254 249 231 79 63 229 254 115 47 185 0 7 14 28 56 112 224 128 16 225 112 56 28 14 3 29 29 111 191 221 217 121 59 98 120 36 19 65 92 6 84 85 85 1 85 165 146 162 168 170 166 205 157 49 11 197 216 216 216 216 153 51 192 35 143 148 148 148 151 231 254 243 47 185 0 157 157 157 157 157 157 192 59 239 188 247 222 215 95 203 251 76 164 162 48 181 124 63 243 135 159 26 134 97 80 125 178 16 85 101 97 52 77 215 101 125 22 48 27 60 51 38 39 35 145 75 151 128 141 27 55 109 218 182 237 1 22 160 184 184 184 184 184 88 136 215 94 123 253 245 79 62 1 52 77 81 104 84 51 129 153 126 75 116 166 11 65 53 52 77 211 52 77 122 186 166 209 125 238 135 173 198 117 133 112 221 249 223 103 116 116 100 164 175 15 168 168 168 168 168 173 5 10 11 11 10 124 190 220 243 160 223 107 226 219 219 219 219 219 219 133 16 66 81 54 108 0 86 174 124 244 209 245 235 165 151 43 10 224 186 146 64 121 117 93 46 3 233 22 67 191 229 172 96 233 92 151 37 35 226 89 80 110 37 132 162 0 211 211 211 211 99 99 192 173 91 241 120 44 6 212 214 214 214 110 221 10 152 166 101 217 118 238 249 184 103 51 160 163 163 163 163 163 67 136 158 158 158 158 158 30 250 160 207 62 75 65 147 9 33 106 136 182 116 139 73 31 251 60 19 88 24 38 54 187 44 99 2 205 16 69 81 20 77 227 62 164 48 103 207 158 57 211 211 3 212 215 215 215 191 248 34 160 105 186 174 40 148 101 89 214 3 36 192 241 227 199 143 159 58 5 116 116 188 245 214 225 195 233 132 18 45 76 180 28 201 154 150 62 162 165 167 83 59 69 33 193 164 101 105 26 181 167 145 205 245 185 63 182 42 77 211 117 77 3 70 70 174 94 253 227 15 96 211 166 202 202 167 159 6 130 193 96 176 168 8 72 36 18 9 203 2 226 241 120 124 102 230 1 16 32 20 10 133 154 155 133 216 177 163 169 169 189 29 240 251 3 129 96 48 189 70 118 72 36 33 152 64 77 35 33 184 156 253 92 8 114 255 249 130 43 11 195 87 33 92 55 149 2 70 71 71 71 79 159 6 182 108 121 226 137 237 219 1 211 52 77 74 79 169 159 104 52 26 189 113 227 62 22 96 255 254 253 251 247 239 23 162 170 170 170 170 174 14 40 45 45 43 123 252 241 219 213 204 14 182 50 185 164 17 76 115 68 215 117 157 5 97 43 161 214 50 216 210 58 128 130 45 7 101 238 207 227 209 117 93 7 6 7 7 7 127 252 17 216 182 237 169 167 218 218 50 179 38 0 176 109 219 118 93 224 216 177 95 127 253 226 11 160 178 178 178 178 178 242 62 20 224 220 185 243 231 35 17 160 166 38 20 106 105 89 192 139 252 143 0 182 34 190 74 194 217 162 50 45 137 5 20 130 131 181 140 10 220 175 174 3 215 174 141 141 157 61 11 20 20 20 20 20 21 1 171 87 175 94 189 110 29 165 159 0 144 74 165 82 150 37 189 127 235 214 234 234 93 187 128 129 129 129 129 129 129 187 191 2 206 153 0 85 85 85 85 79 62 41 68 75 75 75 203 171 175 74 11 89 240 11 169 183 15 194 210 146 200 195 179 211 80 77 203 204 154 120 228 235 58 89 207 185 115 231 206 253 242 11 80 87 87 87 183 107 151 252 127 108 57 241 120 60 110 154 192 55 223 28 61 250 193 7 192 198 141 27 54 20 20 0 109 109 109 109 109 109 139 89 210 45 12 119 45 13 13 133 66 161 29 59 132 104 104 104 108 220 183 239 118 94 255 111 200 76 19 21 133 214 5 236 236 186 78 22 98 219 182 109 219 153 158 158 30 140 53 205 48 12 67 182 159 152 24 31 63 127 30 88 183 110 253 250 80 136 250 241 120 0 219 182 44 215 5 18 137 100 50 149 154 155 245 196 98 177 88 52 10 116 119 119 119 119 119 47 227 25 208 212 212 212 244 202 43 66 212 214 134 66 205 205 192 99 143 85 84 108 222 44 159 115 126 47 61 250 118 59 48 115 133 72 183 154 244 167 60 163 116 157 102 134 174 27 70 250 125 190 222 184 49 49 113 225 2 112 226 196 137 19 93 93 64 77 77 77 77 99 163 220 196 75 165 76 211 178 164 245 124 251 109 87 215 193 131 192 206 157 59 119 238 220 41 137 207 245 12 88 180 178 188 146 205 213 139 253 87 172 89 179 102 77 105 41 176 121 243 230 205 47 188 64 155 123 13 13 68 184 227 208 194 43 149 2 174 95 31 31 31 26 2 188 94 143 103 108 12 56 114 228 200 145 175 190 146 196 231 122 6 252 103 11 234 237 125 243 205 131 7 129 217 217 120 60 30 151 158 204 150 192 150 33 199 62 239 241 240 182 175 101 153 102 122 90 73 121 188 162 144 197 112 62 147 93 214 52 42 235 58 197 4 85 165 25 243 238 187 199 143 255 240 3 112 242 228 153 51 167 79 3 207 61 215 210 82 83 35 131 173 244 252 217 217 217 89 224 242 229 75 151 194 97 224 228 201 147 39 143 29 155 75 252 161 67 135 14 29 58 36 4 93 239 190 16 119 44 0 143 252 149 43 11 11 131 65 242 202 217 89 73 168 105 90 86 50 9 88 150 227 88 150 36 84 85 105 133 169 235 114 43 64 8 18 136 77 201 178 136 88 195 0 52 77 8 190 79 2 8 145 105 70 170 74 94 79 105 231 244 116 42 101 154 192 216 216 196 196 245 235 178 150 207 231 245 122 60 210 202 226 241 68 194 52 129 161 161 191 255 254 237 183 249 137 231 114 174 136 95 180 0 140 206 206 189 123 223 120 99 238 72 54 12 195 208 117 32 16 8 4 252 126 34 138 151 246 142 3 24 6 237 78 186 46 29 164 56 14 187 120 230 246 155 16 142 147 190 48 50 12 175 151 219 1 233 231 3 212 239 151 95 14 14 246 247 3 229 229 229 229 229 229 64 36 50 57 57 57 73 239 99 24 178 221 236 108 44 54 53 5 248 253 62 159 162 200 44 39 155 248 92 91 15 99 209 65 152 211 62 30 149 193 96 48 88 88 40 137 103 139 160 92 132 136 231 116 146 218 19 49 154 70 130 249 124 62 159 199 3 148 148 172 88 177 98 5 80 82 82 84 84 84 4 20 23 83 57 24 244 251 3 1 96 197 138 194 194 64 0 8 4 168 126 32 16 8 4 2 64 56 124 241 226 249 243 192 199 31 63 255 252 222 189 233 66 146 101 205 204 204 204 196 227 192 240 240 240 240 224 32 189 175 105 206 13 182 217 214 147 107 1 22 60 3 216 122 250 251 223 127 255 163 143 0 219 166 244 205 113 40 157 99 41 88 16 199 81 85 215 165 160 103 154 116 196 7 0 94 111 230 74 214 182 229 238 165 109 147 69 80 44 201 76 43 29 135 44 200 227 161 25 164 170 126 191 174 3 87 174 68 163 55 111 210 127 86 20 160 162 98 237 218 244 131 148 100 210 52 77 19 152 154 154 154 154 156 36 65 98 177 249 137 191 87 214 115 199 2 52 54 110 223 254 204 51 64 48 232 245 22 20 0 138 226 243 21 22 206 221 26 96 200 147 43 69 73 183 18 0 184 93 125 18 13 176 109 211 164 35 71 110 79 87 185 25 199 91 20 36 208 247 223 247 247 247 246 2 189 189 159 125 246 249 231 128 235 70 163 177 88 186 0 228 249 87 174 92 190 124 226 4 16 14 135 195 223 125 55 63 241 247 202 122 238 88 128 210 82 211 36 34 2 1 159 15 112 28 191 223 48 36 65 138 66 158 205 87 41 4 121 53 91 145 244 122 185 128 250 255 203 232 228 245 148 5 81 16 230 45 6 106 153 254 70 20 188 7 6 134 135 47 92 0 20 133 118 49 45 107 122 122 118 86 214 26 31 191 118 237 175 191 128 181 107 43 42 54 110 4 218 218 86 175 94 14 196 51 22 28 3 182 108 41 45 173 168 32 66 57 173 164 223 68 168 227 144 199 243 209 158 116 123 143 199 235 5 92 151 60 219 117 41 109 116 93 143 71 215 1 199 49 12 143 71 182 119 28 154 31 150 69 177 193 113 232 234 186 30 15 157 245 82 48 22 194 239 247 122 129 161 161 241 241 209 81 192 52 147 201 68 2 152 152 32 171 97 68 34 145 200 197 139 128 101 165 82 67 67 75 239 249 217 88 240 12 176 109 202 227 109 155 22 48 201 228 212 212 244 52 61 35 139 161 145 234 186 84 143 13 71 211 232 32 132 211 80 222 163 231 153 160 170 180 53 144 157 231 243 186 129 251 179 109 90 185 242 174 102 60 78 49 163 189 189 190 190 161 1 184 121 115 98 226 198 13 96 102 38 22 75 183 160 178 178 178 50 85 93 62 158 191 104 1 70 70 110 222 140 68 104 223 60 145 144 249 59 125 101 132 238 155 38 144 76 38 147 201 36 221 231 44 136 199 149 16 128 174 123 60 134 33 133 224 249 194 66 102 30 35 146 240 188 14 224 5 89 122 12 73 36 40 200 143 143 15 15 95 189 10 148 148 148 148 148 148 200 231 255 70 252 82 89 207 29 11 224 243 145 149 156 58 53 58 58 50 2 172 90 101 24 100 45 252 61 155 204 19 42 199 225 163 196 116 138 129 84 138 206 90 169 13 45 184 210 219 101 7 95 69 161 172 135 173 143 131 176 215 75 11 172 91 183 82 169 68 2 8 4 10 11 11 10 128 151 94 58 124 248 211 79 229 23 169 150 43 241 140 59 126 129 229 190 7 180 80 226 115 189 197 144 51 100 239 14 222 239 229 251 22 75 77 220 67 75 124 54 150 154 200 135 150 248 60 242 200 35 143 60 242 200 35 143 60 242 88 60 254 1 118 124 0 146 139 47 157 2 0 0 0 0 73 69 78 68 174 66 96 130)! !
 
@@ -14779,19 +14779,19 @@ eraser
 forms
 	^ forms ifNil: [forms := Dictionary new]! !
 
-!DrGIcons class methodsFor: 'accessing'!
+!DrGIcons class methodsFor: 'accessing' stamp: ''!
 freePoint
 	^self formFromGraphic: #(137 80 78 71 13 10 26 10 0 0 0 13 73 72 68 82 0 0 0 48 0 0 0 48 16 6 0 0 0 7 146 37 196 0 0 0 6 98 75 71 68 255 255 255 255 255 255 9 88 247 220 0 0 0 9 112 72 89 115 0 0 0 72 0 0 0 72 0 70 201 107 62 0 0 0 174 73 68 65 84 120 218 237 215 65 10 131 48 16 5 80 45 61 128 11 23 222 255 162 118 81 178 104 48 104 19 219 76 224 189 141 8 46 134 255 157 160 211 4 0 0 0 0 0 0 192 177 125 255 188 142 231 209 123 128 58 227 6 158 123 246 30 224 88 41 224 121 238 61 217 221 6 219 128 111 139 201 159 143 183 57 131 21 112 85 10 58 21 147 223 199 17 180 128 214 160 74 193 219 128 31 41 29 53 241 55 32 220 64 111 173 111 106 252 224 147 96 27 112 53 248 82 160 227 28 61 73 176 2 206 212 6 31 191 136 32 242 63 219 82 96 103 159 151 241 63 63 7 213 26 188 34 110 34 216 191 219 182 117 93 22 193 3 0 0 0 0 64 133 23 160 158 76 100 195 246 158 5 0 0 0 0 73 69 78 68 174 66 96 130)! !
 
-!DrGIcons class methodsFor: 'accessing'!
+!DrGIcons class methodsFor: 'accessing' stamp: ''!
 grid
 	^ self formFromGraphic: #(137 80 78 71 13 10 26 10 0 0 0 13 73 72 68 82 0 0 0 48 0 0 0 48 8 6 0 0 0 87 2 249 135 0 0 0 1 115 82 71 66 0 174 206 28 233 0 0 0 6 98 75 71 68 0 255 0 255 0 255 160 189 167 147 0 0 0 9 112 72 89 115 0 0 11 19 0 0 11 19 1 0 154 156 24 0 0 0 7 116 73 77 69 7 218 8 3 11 29 16 179 58 226 95 0 0 0 90 73 68 65 84 104 222 237 213 177 9 0 49 12 4 65 157 251 239 89 46 193 153 145 96 20 127 50 152 251 77 119 215 230 59 181 252 0 198 1 146 116 146 231 48 166 124 183 254 5 226 47 4 0 0 0 0 160 196 74 108 3 0 0 0 0 74 172 196 54 0 0 0 0 0 160 196 74 108 3 0 0 0 0 74 172 196 54 240 241 46 99 58 68 173 164 85 224 244 0 0 0 0 73 69 78 68 174 66 96 130)! !
 
-!DrGIcons class methodsFor: 'accessing'!
+!DrGIcons class methodsFor: 'accessing' stamp: ''!
 gridMagnet
 	^ self formFromGraphic:  #(137 80 78 71 13 10 26 10 0 0 0 13 73 72 68 82 0 0 0 48 0 0 0 48 8 6 0 0 0 87 2 249 135 0 0 0 1 115 82 71 66 0 174 206 28 233 0 0 0 6 98 75 71 68 0 255 0 255 0 255 160 189 167 147 0 0 0 9 112 72 89 115 0 0 11 19 0 0 11 19 1 0 154 156 24 0 0 0 7 116 73 77 69 7 218 8 3 11 34 36 202 80 60 214 0 0 1 137 73 68 65 84 104 222 237 88 61 75 196 64 16 125 147 28 34 34 71 176 241 42 43 197 66 172 82 137 156 133 189 165 246 254 13 91 193 191 97 47 88 9 150 22 126 112 26 56 27 177 136 41 4 17 221 59 44 2 73 33 98 110 45 206 156 146 160 249 48 159 231 76 19 216 12 179 243 102 119 242 222 132 164 148 168 179 41 168 185 49 128 202 1 32 34 73 68 145 141 81 21 191 218 159 0 241 87 136 1 48 0 6 192 0 254 98 141 172 2 9 33 164 227 56 208 52 173 235 175 189 29 237 234 0 240 110 139 68 177 220 27 129 165 253 83 42 148 137 29 199 41 134 184 2 251 134 136 204 127 41 165 164 168 64 223 253 44 203 146 0 208 19 207 35 31 185 185 149 58 81 109 117 14 0 176 124 104 208 111 251 134 174 80 84 226 73 253 178 182 224 190 153 245 128 95 121 227 170 51 90 91 24 12 146 85 93 249 186 209 246 197 3 0 224 100 101 81 2 192 122 199 164 202 107 161 179 86 43 148 140 253 89 132 141 126 159 152 7 242 182 182 16 212 22 130 38 102 167 153 137 75 181 169 249 153 122 3 80 154 147 60 19 215 87 204 101 205 196 121 251 53 170 84 205 219 237 53 9 0 238 245 83 57 114 26 0 84 85 237 122 158 167 3 128 119 188 135 56 114 250 245 254 101 40 191 31 237 225 179 231 142 222 253 196 192 185 244 64 81 146 58 151 19 240 147 55 46 207 117 127 173 185 115 144 58 158 29 83 8 242 72 25 148 211 166 121 151 90 78 199 189 247 99 117 2 153 141 148 101 249 241 223 105 150 211 12 128 1 48 0 6 48 94 0 120 38 102 38 254 103 61 240 1 57 113 219 42 89 173 167 92 0 0 0 0 73 69 78 68 174 66 96 130)! !
 
-!DrGIcons class methodsFor: 'accessing'!
+!DrGIcons class methodsFor: 'accessing' stamp: ''!
 group
 	^self formFromGraphic: #(137 80 78 71 13 10 26 10 0 0 0 13 73 72 68 82 0 0 0 24 0 0 0 24 8 2 0 0 0 111 21 170 175 0 0 0 9 112 72 89 115 0 0 11 19 0 0 11 19 1 0 154 156 24 0 0 1 13 73 68 65 84 56 203 173 85 65 106 133 48 20 156 212 224 33 220 231 44 66 90 193 75 40 180 123 93 181 171 118 231 82 104 241 30 173 224 70 240 28 185 129 17 92 199 77 186 248 16 196 95 53 166 153 85 120 129 121 147 153 199 11 209 90 195 7 40 128 199 231 119 66 136 51 133 214 250 231 235 141 2 32 132 124 127 190 58 19 61 189 124 0 120 128 39 80 115 202 243 124 28 199 101 89 76 37 8 130 40 138 154 166 185 70 36 165 172 170 138 49 102 42 66 136 162 40 46 43 82 74 173 89 0 48 198 140 192 44 203 164 148 7 122 169 101 195 105 154 142 245 218 154 125 172 215 103 106 187 68 125 223 167 105 10 128 115 206 57 7 144 36 73 215 117 231 102 111 80 215 245 159 166 196 113 124 162 40 12 67 33 132 189 41 187 138 230 121 46 203 82 41 245 223 201 30 134 97 125 113 243 229 0 66 8 74 233 185 71 123 48 13 40 165 235 157 113 153 168 109 219 107 241 123 155 163 77 136 247 166 216 206 209 125 136 27 83 108 137 54 33 186 63 205 101 142 180 214 183 189 235 188 252 1 16 95 223 209 47 26 227 127 226 181 183 68 199 0 0 0 0 73 69 78 68 174 66 96 130)! !
 
@@ -14806,27 +14806,27 @@ hatchForm
 				4026531840 251658240 251658240 251658240 251658240)
 			offset: 0@0]! !
 
-!DrGIcons class methodsFor: 'accessing'!
+!DrGIcons class methodsFor: 'accessing' stamp: ''!
 help
 	^ self formFromGraphic: #(137 80 78 71 13 10 26 10 0 0 0 13 73 72 68 82 0 0 0 48 0 0 0 48 8 6 0 0 0 87 2 249 135 0 0 0 4 115 66 73 84 8 8 8 8 124 8 100 136 0 0 0 9 112 72 89 115 0 0 13 215 0 0 13 215 1 66 40 155 120 0 0 0 25 116 69 88 116 83 111 102 116 119 97 114 101 0 119 119 119 46 105 110 107 115 99 97 112 101 46 111 114 103 155 238 60 26 0 0 0 18 116 69 88 116 84 105 116 108 101 0 72 101 108 112 32 66 114 111 119 115 101 114 107 56 239 133 0 0 0 23 116 69 88 116 65 117 116 104 111 114 0 84 117 111 109 97 115 32 75 117 111 115 109 97 110 101 110 26 211 135 76 0 0 0 24 116 69 88 116 67 114 101 97 116 105 111 110 32 84 105 109 101 0 50 48 48 53 45 49 49 45 48 54 53 58 0 201 0 0 0 24 116 69 88 116 83 111 117 114 99 101 0 104 116 116 112 58 47 47 116 105 103 101 114 116 46 99 111 109 22 191 81 211 0 0 0 73 116 69 88 116 67 111 112 121 114 105 103 104 116 0 80 117 98 108 105 99 32 68 111 109 97 105 110 32 104 116 116 112 58 47 47 99 114 101 97 116 105 118 101 99 111 109 109 111 110 115 46 111 114 103 47 108 105 99 101 110 115 101 115 47 112 117 98 108 105 99 100 111 109 97 105 110 47 89 195 254 202 0 0 13 76 73 68 65 84 104 129 213 90 125 116 85 85 118 255 237 115 238 203 75 222 203 247 7 9 65 72 72 248 16 12 132 96 4 65 200 32 148 113 144 48 56 56 51 107 141 22 91 90 101 141 157 50 51 178 90 109 97 254 104 103 181 56 214 214 25 203 178 44 173 51 213 177 29 187 6 5 20 5 21 21 16 197 65 62 4 34 68 49 36 33 49 137 249 126 121 121 121 95 185 231 156 254 113 63 222 189 47 121 68 43 107 102 205 89 107 175 115 242 238 125 231 252 126 123 239 179 207 62 251 133 148 82 248 99 110 236 15 13 224 171 182 63 122 2 218 181 154 168 98 221 35 213 144 248 54 160 22 129 80 10 69 147 20 33 11 74 17 129 130 32 234 129 82 157 0 62 0 195 11 205 251 31 58 119 45 214 165 175 178 7 166 175 221 177 128 24 251 129 82 248 214 244 210 130 180 213 55 207 240 207 155 57 153 21 230 250 81 148 231 71 97 174 15 0 208 31 8 163 55 48 130 190 193 17 52 52 117 203 67 191 187 52 210 220 209 31 39 98 123 149 212 159 104 121 117 219 217 223 43 129 138 181 255 92 6 240 199 139 242 253 127 178 177 190 214 183 242 166 74 170 152 146 15 208 23 159 163 165 99 0 135 79 54 171 103 95 57 21 238 29 8 189 165 4 126 212 114 240 239 90 191 44 150 47 69 96 230 237 59 189 130 133 31 245 165 167 109 218 124 231 98 223 198 250 26 150 225 245 184 222 137 197 117 244 5 194 232 31 50 180 78 32 20 230 250 76 241 35 205 195 93 239 71 99 58 254 251 192 135 242 201 221 239 71 70 162 241 103 185 244 111 253 244 192 150 216 53 39 80 177 126 71 49 116 126 104 205 242 235 103 109 255 203 91 189 249 57 62 251 89 87 239 48 142 157 189 130 247 27 218 112 161 185 23 128 2 17 129 64 46 171 16 8 115 43 138 176 100 222 84 220 82 61 13 147 11 179 236 103 131 193 8 118 252 234 112 236 213 119 26 47 129 139 213 205 47 109 235 190 102 4 42 214 236 152 79 26 123 227 71 119 45 47 188 111 195 34 78 100 160 234 234 27 198 127 189 124 6 135 79 55 131 136 192 136 129 24 129 8 46 2 22 7 99 41 101 247 95 91 56 29 247 172 93 128 146 130 76 251 249 47 247 158 148 63 255 205 59 125 106 84 172 110 62 184 237 252 87 38 80 177 102 199 252 244 12 239 177 71 31 88 155 189 106 209 12 128 0 93 72 60 189 239 20 246 29 109 132 148 10 140 49 48 70 96 68 32 98 96 204 32 0 24 100 236 166 0 101 18 80 74 65 41 5 70 132 117 117 179 177 169 190 6 156 27 81 253 200 169 102 108 125 236 149 96 116 36 186 124 34 18 87 37 48 243 246 135 139 36 167 134 127 127 240 142 98 11 124 32 24 193 63 60 245 54 46 180 244 130 91 192 237 222 34 145 16 92 141 128 84 144 74 65 74 137 57 229 69 216 190 169 14 57 89 233 54 137 31 60 188 183 155 9 57 239 211 3 127 223 155 10 99 202 131 172 182 246 41 143 78 134 219 88 224 155 59 6 112 255 207 94 198 197 214 94 104 156 129 107 12 154 198 161 217 253 248 226 49 37 121 236 148 79 218 250 241 227 159 31 68 107 103 0 0 176 162 182 2 15 252 233 215 138 4 99 111 212 214 62 229 73 133 51 37 129 129 146 129 199 110 95 126 253 156 251 54 44 226 150 230 183 63 113 8 253 193 8 56 231 224 156 67 227 28 26 119 128 231 110 208 90 18 88 23 112 235 93 206 236 121 6 135 163 248 199 167 143 96 40 20 5 0 220 123 71 45 171 175 155 59 103 160 100 224 177 84 56 199 117 161 202 111 62 50 45 35 205 115 241 141 93 247 250 243 115 124 208 133 196 223 252 226 32 46 182 244 154 192 25 56 103 134 11 89 61 35 20 231 103 98 214 180 2 44 152 89 140 226 124 63 178 124 105 240 104 28 163 186 192 208 72 12 189 131 97 188 123 190 29 23 91 251 32 133 130 84 18 82 42 72 169 32 164 132 20 18 66 74 92 95 86 136 127 250 254 74 112 206 16 24 142 98 245 247 159 26 9 133 226 85 227 157 19 227 166 18 74 168 199 54 223 121 115 134 21 42 127 185 239 20 46 54 247 130 107 14 240 156 131 51 139 8 225 167 155 87 160 48 39 3 62 47 135 71 99 176 34 149 213 79 46 240 99 246 212 60 84 207 152 132 222 161 8 158 121 245 60 90 187 2 144 164 32 73 130 8 16 0 64 192 199 87 250 240 235 3 231 240 23 235 106 144 155 149 142 251 191 179 52 227 95 127 125 244 23 0 238 152 208 133 102 212 239 168 42 202 207 188 109 99 125 13 3 140 80 185 239 104 163 173 105 3 52 55 128 107 204 220 11 28 133 57 25 200 240 40 48 82 118 132 177 54 50 99 198 50 74 41 248 188 12 101 147 252 248 171 13 11 49 41 223 15 77 51 190 207 121 194 181 56 103 56 112 252 83 124 62 48 2 2 112 215 154 5 172 56 63 115 213 244 181 59 22 76 72 64 64 219 178 177 254 70 191 117 194 62 179 255 12 164 130 173 109 155 8 55 193 155 123 1 148 208 182 165 121 11 60 37 69 38 41 37 10 178 210 176 233 246 106 219 37 19 150 53 68 41 224 55 175 27 17 52 195 171 225 207 190 89 235 39 210 238 159 144 0 65 109 88 121 83 37 1 198 9 123 248 116 139 17 38 185 225 231 214 2 26 99 224 140 219 127 147 25 47 57 231 8 199 37 130 17 29 109 61 33 116 15 70 48 28 30 117 175 65 4 41 5 38 23 250 145 238 245 24 22 213 18 115 89 243 190 119 174 13 159 15 132 0 0 183 222 84 73 4 181 33 25 175 107 15 84 172 123 164 186 188 52 207 91 113 93 62 0 224 221 115 87 192 200 240 113 67 152 219 18 60 97 9 198 8 81 29 104 184 210 135 195 31 126 134 158 64 24 74 1 68 192 226 185 147 113 199 210 74 104 238 52 8 68 64 105 97 38 218 123 130 32 1 64 25 162 184 225 110 82 41 156 248 168 3 235 235 102 163 124 114 46 166 95 87 224 173 88 247 72 181 51 21 119 89 128 20 54 124 125 201 44 59 201 121 191 161 221 113 80 89 86 48 45 193 156 38 231 56 120 162 21 59 247 156 197 243 111 125 130 158 64 24 140 18 225 181 189 59 132 232 168 176 247 134 21 249 8 128 144 176 35 90 194 2 100 127 118 178 177 211 198 247 141 91 102 251 160 212 157 41 45 160 136 22 86 205 40 225 0 16 31 21 184 216 210 107 107 215 18 62 6 188 33 239 95 232 116 0 72 16 37 2 110 153 55 5 62 47 55 85 156 104 186 4 2 161 24 56 227 0 55 13 160 20 24 83 96 74 129 49 194 165 182 126 196 71 5 210 60 28 85 149 37 156 136 22 59 231 112 239 1 165 166 22 229 249 1 0 125 1 35 2 24 73 154 145 168 49 98 9 107 140 99 9 141 59 15 51 6 143 198 177 106 225 52 44 168 44 0 65 185 44 64 196 208 212 17 176 191 203 44 205 187 44 109 4 128 254 96 4 0 80 152 231 3 64 165 169 9 0 197 9 2 97 51 138 16 136 185 173 144 144 196 98 201 22 209 56 199 218 155 167 99 201 156 98 104 204 13 158 115 142 158 224 40 222 56 213 62 174 213 24 37 132 136 48 96 17 200 245 3 80 147 82 187 16 144 83 96 30 94 253 67 17 51 53 78 76 100 247 99 92 106 172 37 234 230 151 162 170 44 23 156 164 43 251 36 34 12 69 36 94 60 118 25 186 149 201 154 238 146 44 100 246 131 65 35 181 200 207 206 128 146 42 59 37 129 100 31 77 196 110 115 108 77 236 112 43 74 114 43 206 25 230 150 231 163 118 86 33 24 4 164 116 207 55 20 145 120 225 88 11 66 81 29 156 49 40 110 68 27 198 12 33 166 192 152 116 41 204 149 209 18 185 64 186 163 16 104 168 127 40 108 154 203 103 239 1 155 4 220 7 18 141 163 53 206 24 230 149 231 195 67 114 76 212 9 197 129 125 191 107 67 48 50 234 216 228 110 119 97 4 247 26 100 104 30 48 110 109 68 52 156 146 0 128 238 190 65 147 64 142 47 113 178 218 147 186 45 147 188 24 51 73 77 202 77 135 174 235 144 82 58 8 48 156 110 234 71 40 170 143 235 42 46 75 35 161 121 2 217 4 250 2 97 16 208 147 218 2 68 237 125 129 17 131 64 158 15 26 103 182 230 93 68 204 177 245 132 28 68 52 206 0 16 4 121 160 195 3 29 26 116 104 24 85 12 67 97 221 21 93 108 65 2 188 117 7 181 214 229 156 161 32 59 3 0 161 127 40 12 5 213 233 196 236 222 3 74 157 185 112 185 123 205 202 69 149 60 77 227 152 91 81 132 198 214 126 216 120 157 68 144 68 196 92 84 74 224 185 183 155 224 77 211 224 209 52 251 48 19 66 34 20 137 27 86 130 3 172 169 128 132 22 221 46 63 187 172 0 30 143 113 72 92 184 220 45 148 82 39 82 18 80 132 61 175 29 255 228 129 45 223 91 154 5 0 139 230 94 103 19 24 219 148 123 203 43 35 4 48 34 220 181 162 18 30 205 121 169 55 250 215 78 119 162 107 32 236 248 222 56 215 217 164 143 22 206 42 177 199 7 222 109 12 131 232 69 231 115 151 11 53 239 127 232 92 107 199 64 172 181 115 16 0 176 248 134 41 32 115 70 163 144 96 142 149 99 29 43 68 90 12 160 224 225 4 21 15 67 141 134 161 226 97 200 248 8 32 116 48 34 72 229 60 19 156 223 119 84 45 204 49 65 97 225 108 131 64 91 119 0 205 159 13 196 146 75 146 99 178 81 5 218 115 228 84 179 2 128 146 130 76 44 91 80 102 71 17 235 168 7 220 149 5 11 140 52 19 48 235 61 231 38 86 74 65 72 5 41 18 183 48 43 97 75 108 116 107 94 99 181 197 55 76 129 117 176 30 61 221 162 20 97 79 50 222 49 4 24 244 157 207 190 124 106 36 26 215 1 0 119 125 125 158 17 175 147 192 90 99 11 128 148 210 22 56 192 91 159 41 40 8 41 32 132 132 16 137 119 149 52 8 41 7 41 165 20 56 99 216 176 226 122 0 70 181 239 87 123 63 24 81 66 223 53 33 129 166 87 182 125 212 51 24 122 253 127 95 111 144 0 80 156 239 199 154 165 51 220 154 118 46 104 246 182 8 105 150 78 146 5 16 186 132 110 222 123 133 144 16 210 180 138 83 17 102 191 242 198 50 187 56 188 251 205 143 100 207 224 240 91 227 21 129 199 175 74 16 182 254 199 111 223 139 12 141 24 37 202 187 111 155 135 89 211 10 220 26 119 138 169 77 33 36 116 41 49 170 43 48 111 38 40 205 15 102 10 72 67 52 62 10 93 8 8 93 216 36 18 150 75 40 164 178 52 23 27 86 204 6 0 12 143 196 176 243 249 99 17 49 170 126 60 46 212 84 133 173 138 250 127 217 185 254 214 27 238 123 120 203 109 94 2 48 52 18 195 79 158 60 140 224 72 124 108 237 199 170 84 88 183 42 150 168 84 56 83 1 171 152 37 164 65 90 23 18 66 8 232 186 213 11 100 102 120 176 237 158 37 200 242 121 1 165 240 147 93 135 98 123 223 108 248 207 166 253 15 110 25 15 103 202 186 80 254 231 185 91 95 58 114 161 241 217 87 206 8 0 200 201 76 199 223 222 189 20 121 89 233 14 151 73 148 66 12 141 10 8 11 140 16 24 213 13 80 99 196 4 43 132 176 173 32 132 68 182 63 13 127 125 231 141 200 246 121 1 0 207 29 56 39 247 188 217 208 152 219 149 187 53 21 206 9 75 139 74 99 13 187 182 127 187 184 174 166 12 32 66 112 36 134 157 187 79 226 114 103 192 204 253 173 139 189 153 215 59 181 207 18 167 172 21 134 165 2 148 148 182 21 132 105 133 242 146 28 220 183 174 26 89 190 52 40 0 199 207 183 97 243 79 119 119 99 84 92 181 180 248 133 138 187 25 254 244 99 143 63 184 62 123 121 77 57 0 64 8 137 23 14 55 226 237 51 109 0 144 84 39 50 239 9 148 32 224 114 33 147 128 85 204 2 1 117 243 175 195 250 101 51 193 25 153 224 219 177 229 103 123 131 225 80 228 171 21 119 173 86 190 106 251 66 205 159 125 240 193 63 95 89 120 79 125 13 179 146 188 190 64 24 251 222 185 132 83 31 119 37 46 54 142 203 79 242 111 4 174 16 44 37 106 102 21 99 237 146 74 20 230 100 152 207 129 255 121 237 156 124 248 233 67 253 145 254 246 245 29 199 159 56 169 148 210 255 223 4 136 136 3 200 0 144 158 59 125 217 148 188 57 223 120 254 91 171 22 84 62 180 105 69 90 78 102 186 253 94 95 32 140 15 47 117 227 124 115 15 90 186 130 70 174 99 222 172 224 112 33 2 48 125 114 14 170 42 10 81 93 57 201 6 14 24 65 226 209 103 142 198 95 60 116 166 165 175 225 165 141 193 246 147 93 0 162 0 34 0 162 74 41 241 165 8 16 17 51 193 103 0 72 7 144 225 241 228 102 150 44 219 252 80 110 65 201 186 31 222 93 151 254 221 213 85 204 155 102 164 83 86 2 22 215 5 2 161 24 134 66 49 4 66 81 0 132 220 76 175 41 233 240 104 238 184 17 27 21 216 253 230 5 249 248 115 71 98 131 253 157 7 187 142 61 249 111 186 62 60 236 4 111 246 97 53 14 216 171 17 208 156 224 157 100 50 75 231 151 23 204 89 251 195 210 210 210 154 123 191 179 212 91 87 83 78 83 139 115 92 68 38 106 159 245 4 113 236 108 171 122 242 183 239 197 59 58 58 206 247 95 120 117 215 200 231 13 173 73 160 35 142 191 195 227 89 225 106 4 40 9 124 186 163 79 7 144 158 93 190 116 110 78 217 162 117 30 127 209 226 202 169 69 158 250 21 85 105 85 51 74 88 65 142 15 5 57 25 200 53 127 172 8 12 71 49 16 140 160 127 40 140 143 154 122 228 254 35 231 227 151 219 123 244 248 112 207 201 161 43 39 14 12 95 57 241 177 9 210 146 72 210 216 114 163 47 110 129 36 18 78 241 58 122 75 210 178 203 111 158 229 159 92 189 204 235 207 159 201 52 111 30 152 150 13 112 211 201 69 20 74 15 42 61 54 24 13 245 55 133 58 207 30 31 190 242 65 19 128 56 128 152 217 71 205 113 204 49 182 8 196 198 3 63 33 129 20 68 210 44 208 14 241 192 184 91 88 194 97 28 146 73 63 48 65 194 168 162 235 14 137 3 24 53 123 139 144 77 36 21 240 47 69 32 137 12 51 1 91 36 146 129 91 224 83 17 176 72 56 137 56 9 140 42 165 28 181 140 9 240 92 139 127 183 49 45 196 198 1 111 141 45 224 201 36 228 68 26 158 168 253 31 117 83 9 157 111 115 43 45 0 0 0 0 73 69 78 68 174 66 96 130)! !
 
-!DrGIcons class methodsFor: 'accessing'!
+!DrGIcons class methodsFor: 'accessing' stamp: ''!
 intersection
 	^ self formFromGraphic: #(137 80 78 71 13 10 26 10 0 0 0 13 73 72 68 82 0 0 0 48 0 0 0 48 16 6 0 0 0 7 146 37 196 0 0 0 6 98 75 71 68 255 255 255 255 255 255 9 88 247 220 0 0 0 9 112 72 89 115 0 0 0 72 0 0 0 72 0 70 201 107 62 0 0 11 48 73 68 65 84 120 218 237 91 91 76 84 231 22 94 123 102 24 174 51 80 112 0 47 132 80 165 197 20 4 163 216 24 19 53 68 171 181 1 155 244 73 49 177 16 105 26 193 32 134 6 212 86 130 137 138 66 50 76 100 30 154 84 211 135 19 209 135 182 52 37 16 155 166 218 23 99 172 161 42 180 160 92 172 145 84 164 168 204 48 195 48 215 125 30 214 249 206 150 61 103 156 97 152 1 60 229 123 217 217 123 246 236 203 250 254 127 253 107 125 107 109 162 69 252 147 32 138 243 253 4 11 13 138 249 126 128 127 58 22 9 152 103 44 18 48 207 152 49 1 54 91 101 101 101 101 160 190 28 231 201 207 247 117 124 17 62 241 211 79 25 25 25 25 162 216 223 159 153 153 153 41 138 179 35 98 209 240 128 16 232 137 31 127 172 209 104 52 162 184 111 223 146 37 75 150 16 165 167 171 84 42 21 209 138 21 187 118 237 218 69 20 29 109 48 24 12 130 143 235 249 50 184 224 243 254 63 252 112 246 236 217 179 162 168 213 62 125 250 244 41 81 92 220 179 103 207 158 17 69 69 77 76 76 76 16 69 68 76 77 77 77 17 41 20 110 183 219 77 228 241 40 149 74 37 145 211 25 21 21 21 69 100 179 105 52 26 13 145 197 146 152 152 152 72 100 54 167 166 166 166 18 21 21 213 212 212 212 8 1 191 247 130 33 32 180 68 120 255 254 203 47 71 142 28 57 34 138 201 201 131 131 131 131 146 129 67 13 135 35 50 50 50 146 104 100 36 35 35 35 131 168 160 224 85 207 27 126 4 124 227 61 123 246 236 217 179 71 20 91 91 91 91 91 91 5 97 118 68 0 210 204 24 24 216 177 99 199 14 239 51 94 188 224 17 254 244 169 203 229 114 17 141 141 241 214 100 242 120 60 30 34 149 138 207 211 106 21 10 133 130 40 37 133 159 35 53 53 34 34 34 130 40 42 138 143 3 10 31 171 222 208 80 86 86 86 22 209 123 239 205 45 33 126 111 36 55 124 176 68 124 243 141 193 96 48 136 226 71 31 85 86 86 86 122 223 167 167 103 251 246 237 219 137 254 250 203 233 116 58 137 6 7 29 14 135 131 232 201 19 222 55 153 216 165 136 34 111 93 174 232 232 232 104 34 183 91 173 86 171 137 212 106 187 221 110 39 138 142 230 153 19 31 63 57 57 57 73 148 158 206 251 105 105 76 136 78 199 207 167 82 9 194 203 102 6 49 47 94 104 181 90 45 209 253 251 235 214 173 91 71 180 111 95 109 109 109 109 248 8 9 122 6 248 34 226 235 175 217 71 203 241 224 1 19 242 214 91 29 29 29 29 222 191 55 55 111 220 184 113 35 209 240 48 143 88 155 77 167 211 233 136 236 118 54 136 219 205 62 30 80 169 96 72 222 42 149 252 187 32 176 97 69 81 20 69 145 72 161 96 98 52 154 177 177 177 49 162 204 76 147 201 100 34 122 231 29 190 79 124 252 244 235 130 8 183 155 127 191 125 59 47 47 47 143 168 184 248 204 153 51 103 66 79 196 140 47 232 143 8 62 43 240 40 231 243 207 243 243 243 243 137 158 63 95 182 108 217 50 162 169 169 164 164 164 164 151 13 200 134 128 161 35 35 217 135 199 198 198 198 198 198 74 251 216 226 124 143 135 93 148 221 206 4 96 59 53 197 51 34 37 229 241 227 199 143 137 222 125 247 249 243 231 207 137 116 58 38 66 173 158 238 178 108 54 190 206 173 91 185 185 185 185 68 101 101 77 77 77 77 161 35 34 232 11 189 154 136 192 175 243 233 167 197 197 197 197 68 118 59 187 18 32 42 138 163 25 181 154 143 107 52 236 122 180 90 158 17 209 209 236 130 14 29 58 116 232 208 33 255 6 57 127 254 252 249 243 231 69 17 4 88 173 86 171 213 74 36 8 28 101 173 94 253 240 225 195 135 68 89 89 188 230 96 237 240 120 120 32 140 140 48 17 191 253 182 126 253 250 245 68 85 85 13 13 13 13 179 39 98 214 23 144 19 113 231 206 222 189 123 247 138 98 94 222 165 75 151 46 249 255 127 73 73 73 73 73 137 52 194 49 130 221 110 54 68 106 42 135 143 216 86 84 84 84 84 84 132 110 4 234 245 122 189 94 47 138 102 51 207 132 188 188 158 158 158 30 162 183 223 102 130 20 10 118 105 14 7 19 112 231 14 175 37 143 30 109 218 180 105 19 209 241 227 199 143 31 63 30 252 243 132 236 69 174 95 175 174 174 174 22 197 21 43 186 187 187 187 137 86 173 186 122 245 234 213 192 255 95 89 201 139 179 201 196 62 26 68 164 167 167 167 167 167 19 213 213 213 213 213 213 133 63 58 105 108 60 125 250 244 105 81 220 188 249 214 173 91 183 136 146 146 108 54 155 141 200 227 225 223 39 38 120 96 92 191 206 65 135 203 181 118 237 218 181 68 53 53 193 229 23 33 211 130 130 53 60 96 48 24 12 6 131 228 171 225 195 205 102 179 217 108 38 106 108 108 108 108 108 12 127 6 253 217 103 199 142 29 59 38 8 191 255 206 62 95 14 141 134 215 138 244 244 39 79 158 60 33 178 90 71 71 71 71 137 154 155 155 155 155 155 103 254 124 179 38 0 9 84 160 134 47 43 43 43 43 43 243 62 206 18 7 209 197 139 201 201 201 201 210 12 152 156 228 112 210 102 227 145 56 87 40 45 173 175 175 175 23 132 251 247 87 173 90 181 202 59 127 64 190 161 84 14 13 13 13 17 141 143 143 143 143 143 207 252 62 179 38 0 153 171 255 23 42 45 45 45 37 234 235 235 235 235 235 147 142 115 248 74 244 232 17 39 88 195 195 28 166 26 141 124 28 139 111 76 76 76 76 76 76 152 173 254 63 240 193 7 70 163 209 40 8 54 27 162 44 62 142 168 73 167 227 181 3 51 181 169 169 169 169 169 41 240 153 16 52 1 208 106 252 73 6 88 100 123 123 123 123 123 123 137 214 172 89 179 102 205 26 162 252 124 14 63 223 120 227 192 129 3 7 136 254 245 47 142 211 229 68 212 215 179 75 170 174 174 174 174 174 158 63 201 96 120 120 229 202 149 43 95 50 220 127 22 231 196 68 142 146 148 74 118 69 22 139 197 98 177 4 126 221 160 9 128 72 6 252 250 235 182 109 219 182 17 157 56 193 134 45 43 219 191 127 255 126 41 49 202 206 206 206 206 206 38 234 234 234 234 234 234 34 218 178 101 203 150 45 91 136 250 251 251 251 251 251 137 56 129 19 4 95 68 204 76 125 13 61 222 127 95 175 215 235 189 7 0 102 130 74 197 193 3 194 219 64 215 132 160 9 128 58 9 64 171 153 152 136 143 143 143 39 114 185 166 39 80 9 9 9 9 9 9 68 133 133 133 133 133 133 68 3 3 3 3 3 3 68 237 237 237 237 237 237 82 30 177 208 137 120 246 44 37 37 37 69 114 69 90 45 18 56 94 171 144 103 96 27 54 2 32 11 3 16 201 60 158 184 184 184 56 105 228 35 97 210 233 88 90 56 118 140 163 140 182 182 182 182 182 54 239 76 122 161 19 97 54 51 1 64 76 12 191 167 82 201 174 210 233 100 237 42 236 4 200 125 63 212 73 232 241 208 102 176 120 130 8 57 124 73 26 11 149 8 171 149 227 127 201 14 60 211 5 129 159 11 9 36 194 233 150 150 150 150 150 22 223 207 23 52 1 40 132 0 144 133 161 78 202 181 27 127 146 193 235 66 196 135 31 202 19 46 94 132 69 145 7 32 242 23 151 11 30 129 247 67 78 0 42 80 0 244 120 200 194 136 227 161 229 4 138 133 78 196 247 223 159 59 119 238 156 116 125 135 131 9 192 154 7 17 17 51 33 108 4 56 157 60 178 1 36 38 208 227 65 0 92 209 76 177 80 137 208 104 56 238 7 172 86 16 192 239 15 128 8 127 8 154 0 155 141 85 73 0 21 40 20 66 192 188 191 17 240 186 17 161 213 142 140 140 140 72 251 38 19 223 207 233 156 62 211 17 132 132 141 0 20 187 1 200 183 168 64 41 149 92 209 194 98 52 91 44 20 34 18 18 88 3 2 70 71 217 213 56 157 92 159 248 175 97 21 88 156 95 77 68 208 4 152 76 211 195 49 0 165 63 84 160 64 0 244 248 215 149 136 159 127 174 173 173 173 149 254 103 183 243 204 70 9 213 110 231 104 15 6 199 26 224 207 21 5 77 192 238 221 92 43 69 151 129 164 145 176 47 68 233 15 34 90 160 113 241 66 37 162 160 160 161 161 161 65 82 123 145 120 254 253 55 27 220 110 231 25 128 232 15 4 32 47 8 57 1 0 218 59 0 20 187 81 115 77 77 29 30 30 30 150 82 244 80 99 110 136 240 254 125 96 128 93 236 228 228 244 18 170 188 54 29 54 23 4 248 234 171 65 177 27 53 87 148 254 80 129 154 27 34 164 138 157 47 34 184 107 67 110 104 81 252 246 219 87 63 231 159 127 50 1 14 7 175 133 48 52 124 127 68 4 187 98 127 97 120 200 212 197 31 127 228 145 244 230 155 44 55 35 242 65 41 239 143 63 152 144 190 190 13 27 54 108 32 58 113 226 228 201 147 39 195 173 110 250 238 200 243 215 197 225 11 122 61 119 111 60 120 192 25 241 212 20 111 97 112 108 147 147 185 174 225 175 146 23 178 138 24 26 154 208 87 131 53 1 93 6 40 118 231 230 114 229 12 165 191 153 25 114 166 91 223 215 195 140 152 233 123 14 13 241 136 134 225 49 242 33 185 204 180 126 17 242 246 116 52 52 161 175 6 64 152 138 98 55 106 174 23 47 214 213 213 213 249 51 24 12 53 211 173 239 235 193 53 125 247 93 115 115 115 115 224 239 103 179 45 93 186 116 233 203 239 197 218 23 164 7 172 117 216 159 115 2 208 73 134 134 38 244 213 160 189 3 133 12 20 187 55 111 190 121 243 230 77 162 246 246 131 7 15 30 12 151 132 32 17 3 195 127 242 73 90 90 90 26 81 78 78 103 103 103 103 224 87 250 234 171 203 151 47 95 246 238 87 66 233 20 97 55 154 11 252 173 121 97 251 64 3 157 100 104 104 66 95 13 214 4 172 17 216 102 101 113 105 179 187 187 168 168 168 72 20 59 59 171 170 170 170 102 75 136 52 19 16 199 127 241 5 90 21 239 222 189 123 55 248 38 130 11 23 46 92 184 112 65 42 69 202 219 106 16 118 251 171 101 207 89 137 79 175 103 3 232 116 247 238 221 187 71 180 122 53 71 17 232 50 0 124 53 207 162 16 2 61 126 114 146 125 240 238 221 172 78 66 36 131 86 3 201 64 158 185 2 129 26 30 53 107 249 98 205 225 43 81 77 13 207 108 52 140 97 6 32 250 89 178 132 159 179 170 170 170 170 170 202 219 53 206 121 141 245 212 169 83 167 78 157 18 197 168 40 94 140 209 222 1 49 15 37 62 184 42 127 196 4 10 100 174 72 160 10 10 174 93 187 118 205 247 249 185 185 60 115 151 47 95 190 124 249 114 162 142 14 206 27 248 67 21 239 38 228 47 191 228 227 24 249 144 225 125 25 126 222 8 0 206 158 229 162 62 250 106 208 222 129 46 3 20 187 65 8 74 127 168 64 161 16 2 61 30 178 48 212 73 136 100 208 106 32 25 140 141 241 255 206 157 187 113 227 198 13 239 231 66 179 64 78 78 78 78 78 14 81 119 55 15 20 16 226 114 93 185 114 229 10 209 236 218 242 23 0 1 0 138 215 232 171 129 79 69 151 1 138 221 168 185 162 244 135 10 20 10 33 208 227 33 11 187 92 60 2 29 14 14 7 161 213 64 50 144 55 255 34 126 71 229 14 134 223 186 117 235 214 173 91 137 110 222 228 96 97 231 206 157 59 119 238 36 186 125 251 232 209 163 71 103 79 132 202 191 137 194 139 195 135 15 31 62 124 88 122 80 244 213 88 44 236 83 17 214 89 44 60 181 161 173 200 11 30 190 68 47 121 134 170 86 243 76 130 193 17 70 202 227 120 142 94 4 33 49 49 49 49 49 81 20 209 60 16 23 23 23 23 23 39 138 151 47 191 156 71 72 223 71 176 179 146 36 14 127 68 204 251 12 240 7 204 16 121 183 1 22 59 196 219 114 245 17 134 135 54 35 47 145 194 240 216 202 7 130 28 193 126 168 146 153 217 223 223 223 255 26 19 224 11 70 163 209 104 52 138 162 220 240 114 2 228 68 148 151 151 151 151 151 7 47 129 204 236 67 149 133 243 49 224 255 29 96 120 95 251 139 152 35 44 26 254 53 199 191 1 200 20 199 16 138 17 10 59 0 0 0 0 73 69 78 68 174 66 96 130)! !
 
-!DrGIcons class methodsFor: 'accessing'!
+!DrGIcons class methodsFor: 'accessing' stamp: ''!
 keep
 	^self formFromGraphic: #(137 80 78 71 13 10 26 10 0 0 0 13 73 72 68 82 0 0 0 48 0 0 0 48 8 6 0 0 0 87 2 249 135 0 0 0 1 115 82 71 66 0 174 206 28 233 0 0 0 6 98 75 71 68 0 255 0 255 0 255 160 189 167 147 0 0 0 9 112 72 89 115 0 0 11 19 0 0 11 19 1 0 154 156 24 0 0 0 7 116 73 77 69 7 219 8 3 7 48 6 165 130 39 32 0 0 10 122 73 68 65 84 104 222 237 153 123 108 92 85 126 199 63 231 220 153 59 47 143 103 252 72 108 39 118 220 96 231 229 216 236 6 26 18 2 41 109 104 96 11 37 2 90 88 22 181 162 149 90 169 42 143 86 72 84 244 189 84 229 31 170 106 89 118 23 45 21 15 117 89 161 21 219 64 23 136 132 182 11 137 67 30 198 36 177 157 196 118 136 99 27 59 30 63 102 226 177 199 243 186 119 230 222 123 250 199 157 216 134 93 90 59 36 20 85 249 74 71 231 92 221 115 175 126 223 223 235 254 206 239 10 150 7 177 104 173 248 10 64 252 111 27 206 130 79 65 117 123 40 20 77 249 253 193 235 76 51 144 243 120 82 246 236 108 66 65 174 27 50 79 129 245 149 35 208 12 190 191 130 77 183 55 52 220 81 190 97 195 206 76 69 69 149 174 105 254 50 159 175 204 200 231 243 230 220 220 120 126 106 106 56 27 139 157 24 136 199 223 249 61 24 251 202 16 120 30 86 174 175 175 223 85 219 214 246 96 195 154 53 191 25 168 171 43 147 32 148 109 131 174 131 109 43 164 68 21 10 142 25 139 165 166 7 7 255 43 61 50 242 250 177 145 145 35 127 12 147 255 167 4 94 133 186 173 215 92 243 200 234 235 175 127 80 111 104 88 37 53 77 39 157 134 98 209 221 224 56 32 4 72 9 161 16 68 163 202 114 28 149 75 38 135 82 111 191 253 179 131 163 163 223 249 35 136 125 89 4 180 197 23 123 32 124 95 67 195 67 141 219 183 255 89 160 169 169 94 228 114 30 230 230 192 178 64 41 119 44 134 101 65 177 40 164 215 43 124 107 214 84 4 34 145 141 101 62 159 186 229 252 249 193 159 66 234 75 37 112 31 104 127 174 105 183 55 93 119 221 227 145 166 166 102 230 230 36 134 1 126 63 4 131 16 14 187 90 119 28 119 128 107 9 77 3 33 16 182 45 60 141 141 254 96 117 245 250 96 60 30 216 50 61 221 253 22 228 190 52 2 223 134 234 77 235 214 61 82 179 109 219 78 41 132 78 161 0 145 8 118 40 84 52 149 74 57 134 145 23 62 159 146 213 213 26 66 128 105 138 121 139 232 58 120 60 8 165 132 103 245 234 178 160 215 187 198 201 100 6 94 154 158 30 0 236 75 201 126 75 133 231 226 34 84 94 254 245 200 218 181 59 101 40 228 39 147 129 186 58 85 72 38 179 163 61 61 135 6 98 177 247 2 201 100 188 174 162 98 195 234 182 182 61 254 13 27 214 123 124 62 157 169 41 215 141 12 195 181 18 32 12 67 248 175 189 182 54 52 59 123 239 99 103 207 118 61 7 3 0 175 131 118 11 172 176 161 62 9 99 173 151 41 216 47 18 208 107 66 161 173 161 166 166 58 233 245 74 85 85 133 157 78 91 201 206 206 125 51 189 189 207 236 207 229 250 247 64 241 92 34 17 152 155 153 249 224 154 153 153 191 168 220 177 227 54 17 137 72 82 41 151 64 62 239 6 181 109 35 170 170 188 181 45 45 55 223 223 210 242 141 135 251 250 114 85 161 80 139 30 137 220 224 105 106 218 158 235 235 139 38 167 167 159 228 114 18 216 11 85 117 171 86 125 205 91 95 31 192 178 80 154 102 39 142 28 233 57 126 226 196 139 119 219 118 23 160 190 227 238 79 255 99 34 241 243 223 237 236 44 115 234 235 235 171 27 26 90 132 101 73 114 57 200 231 81 166 137 8 135 193 178 136 52 55 215 110 222 184 241 17 61 26 189 211 211 214 182 78 108 218 180 198 209 52 235 194 203 47 191 254 202 244 244 217 203 234 66 6 4 236 138 138 106 41 132 80 193 160 178 19 9 51 55 57 185 175 203 182 15 126 182 100 120 10 156 177 76 230 253 63 56 125 122 109 69 85 213 223 120 106 107 35 76 76 184 241 96 154 110 80 43 133 39 24 148 225 251 239 111 82 154 182 78 248 253 66 248 253 42 215 217 57 53 58 59 251 142 23 102 47 23 1 9 16 2 175 45 165 215 17 110 108 25 195 195 99 185 120 252 200 83 80 248 85 15 189 4 51 51 39 79 182 171 145 145 243 132 66 174 235 248 124 96 219 110 134 10 4 16 150 37 132 174 75 169 148 16 166 137 74 165 84 166 183 183 47 62 49 209 249 111 80 188 24 204 81 63 27 87 148 177 85 150 100 209 4 190 101 91 160 25 18 86 44 118 216 60 124 184 205 145 114 58 113 242 228 235 231 19 137 19 191 234 129 65 136 84 193 6 35 26 221 161 138 69 93 8 161 8 135 5 134 225 10 111 154 8 175 23 188 94 112 28 129 166 129 223 143 49 60 108 166 123 123 143 60 95 48 140 230 42 190 181 54 202 125 245 97 118 215 53 172 42 179 109 155 137 216 84 194 171 81 166 9 2 189 113 190 127 248 60 143 46 153 64 43 36 255 179 183 247 123 190 193 193 83 159 120 189 115 31 164 211 31 253 45 92 184 184 105 63 148 109 134 245 254 218 218 237 162 177 241 6 79 115 243 13 129 134 134 70 185 122 181 31 81 50 155 174 187 31 58 203 66 41 229 146 80 10 28 7 5 196 123 186 46 252 96 166 111 119 203 215 121 114 91 164 220 119 253 238 221 108 191 227 14 242 217 44 63 121 230 25 34 229 193 21 235 182 108 97 232 212 41 202 83 115 77 203 78 163 119 195 56 134 241 26 134 33 1 103 177 155 69 96 167 83 89 249 168 190 107 215 54 237 182 219 42 132 166 9 146 73 200 100 22 74 12 41 93 129 139 69 55 43 133 195 238 135 78 215 49 38 199 233 254 248 112 195 230 123 111 106 184 241 158 61 180 238 216 193 248 208 16 255 241 236 179 204 77 79 115 239 163 143 178 101 215 46 132 16 60 251 240 195 28 25 248 240 228 178 9 44 130 243 217 235 126 232 160 88 36 55 58 58 178 242 232 209 59 245 214 214 90 161 105 30 33 165 64 136 133 50 67 8 215 141 50 25 84 101 37 66 215 193 239 167 48 50 200 141 143 255 41 43 239 218 73 54 149 226 71 255 244 247 244 30 61 198 3 79 60 193 245 187 119 35 176 32 125 12 50 93 196 71 134 72 230 56 121 73 181 208 231 225 13 48 94 40 20 206 5 70 71 59 42 187 186 134 69 177 136 208 180 74 189 186 58 36 162 81 65 161 176 80 228 129 75 38 26 69 4 131 168 120 156 76 172 15 255 111 175 32 192 41 94 253 231 167 233 63 118 142 199 95 120 129 13 91 183 34 242 103 33 254 19 200 157 165 224 132 217 251 114 59 199 39 248 118 222 34 126 217 8 92 196 33 200 191 168 212 153 77 177 216 71 7 134 63 174 44 76 12 183 148 235 62 221 87 187 10 225 247 131 109 33 28 199 37 16 14 35 194 101 100 207 157 38 31 236 32 178 46 137 70 134 55 127 124 138 223 248 253 7 184 238 214 91 97 122 31 164 59 92 49 180 32 147 241 0 251 223 254 176 208 17 227 113 165 126 201 19 150 236 66 255 115 222 21 136 189 245 230 191 54 68 204 123 102 242 89 236 49 31 109 90 145 202 112 13 190 154 58 48 13 200 230 192 52 113 76 147 66 106 128 178 27 43 209 67 85 204 165 10 92 152 152 97 251 157 119 130 157 134 194 56 104 17 16 26 8 141 225 115 179 204 26 244 219 206 210 79 120 203 38 240 181 26 158 104 140 114 79 203 246 237 252 201 211 79 227 215 138 100 143 255 156 236 161 15 41 14 86 227 175 220 128 167 102 21 132 130 88 137 73 148 158 36 208 84 79 60 110 242 234 119 223 163 126 253 122 42 107 107 33 63 8 90 216 21 30 13 132 228 227 158 110 166 151 225 255 151 68 224 215 162 220 189 162 190 158 199 158 123 14 145 122 31 210 125 148 55 73 10 117 53 228 123 211 100 79 31 195 123 174 14 255 154 54 138 83 131 196 203 114 188 253 195 118 186 14 245 211 122 243 77 60 244 216 95 186 47 42 76 129 86 182 64 64 11 50 208 221 199 180 113 101 9 4 117 141 234 45 187 118 33 164 0 99 196 213 162 244 160 71 61 232 55 175 34 187 209 96 224 167 61 152 191 232 34 254 201 24 29 229 89 54 239 190 133 191 123 237 31 168 105 108 116 223 98 198 192 201 185 4 144 32 36 249 66 136 153 120 156 68 150 163 87 138 64 8 228 77 66 58 129 178 72 4 236 76 73 131 30 16 30 28 37 121 235 71 237 252 226 141 195 212 172 169 227 218 109 191 78 219 35 15 112 215 45 55 151 14 66 38 20 38 160 152 4 107 22 180 208 188 235 128 100 176 119 4 203 33 55 149 161 243 10 17 208 154 65 248 52 225 120 188 62 31 40 11 60 229 37 2 26 123 127 184 143 51 221 35 60 249 202 43 212 175 223 8 202 6 59 5 230 8 216 179 224 24 11 2 203 64 41 112 101 201 2 26 93 237 31 49 153 225 144 163 230 235 164 203 77 64 249 65 32 193 227 213 245 18 39 55 8 135 251 207 211 117 184 159 191 254 247 31 19 174 172 112 93 171 48 233 30 188 46 10 42 131 37 127 151 139 4 119 103 219 145 28 123 255 16 227 25 14 92 242 137 108 9 13 12 89 170 24 52 175 223 239 10 87 114 131 131 251 58 217 253 135 15 17 174 172 132 66 28 172 36 72 255 167 5 254 140 208 139 215 159 244 15 97 100 179 140 207 177 255 146 202 233 37 90 192 41 17 240 186 22 144 32 67 152 5 73 255 241 62 118 220 181 199 221 98 205 184 46 162 5 92 18 154 191 68 102 241 236 115 135 208 65 234 116 188 123 128 76 129 79 226 89 62 188 146 22 48 1 60 2 143 230 241 148 122 67 1 142 183 119 114 195 55 126 7 95 32 224 6 168 244 254 146 134 221 18 99 209 60 191 22 204 38 102 57 252 214 59 156 185 192 203 151 210 111 93 134 5 156 66 169 157 160 205 87 33 210 71 199 187 7 249 173 111 126 211 213 190 147 255 180 134 165 15 164 14 226 226 92 26 210 11 194 139 227 104 188 246 47 223 165 88 180 204 143 147 188 242 133 186 18 75 128 41 5 218 124 75 68 72 226 177 11 148 87 85 83 177 114 165 91 26 72 189 116 123 65 195 159 94 151 134 144 140 13 12 177 247 251 207 211 123 180 195 126 111 136 111 101 205 75 235 173 46 199 133 10 82 40 239 194 165 198 169 163 39 184 245 193 7 93 237 43 27 132 247 115 4 22 243 233 114 232 84 47 251 94 124 137 211 71 142 96 88 36 14 141 242 240 240 44 111 126 225 190 208 82 44 160 73 225 89 236 125 10 193 218 214 86 55 199 11 207 188 118 23 250 86 174 208 177 193 33 186 15 180 211 125 224 0 163 103 206 160 192 58 61 197 247 142 79 240 84 193 254 98 45 200 229 16 40 104 40 109 113 86 93 219 218 182 112 254 17 222 121 2 150 229 48 216 211 67 247 129 118 122 14 30 100 122 124 156 124 145 100 44 205 193 243 115 252 44 54 199 187 185 226 229 109 108 45 41 136 165 230 241 2 164 103 102 112 108 135 181 155 55 3 2 195 176 25 58 121 146 129 19 93 156 235 238 102 248 244 105 12 163 96 78 100 69 207 88 74 236 31 75 243 102 50 183 252 20 121 217 93 40 95 80 169 162 67 238 131 55 222 8 122 117 157 209 51 103 24 232 234 98 236 236 89 114 69 39 157 200 136 51 147 25 209 51 153 161 61 158 227 93 219 81 23 174 244 159 168 101 54 89 181 93 13 229 106 231 166 21 234 246 160 151 138 164 193 249 169 140 236 139 103 56 58 99 56 199 64 77 2 217 175 212 63 178 207 108 143 128 92 235 86 166 106 14 84 28 212 133 207 233 64 95 197 85 92 197 85 92 197 85 92 197 255 123 252 55 116 190 108 56 154 203 241 187 0 0 0 0 73 69 78 68 174 66 96 130)! !
 
-!DrGIcons class methodsFor: 'accessing'!
+!DrGIcons class methodsFor: 'accessing' stamp: ''!
 line
 	^self formFromGraphic: #(137 80 78 71 13 10 26 10 0 0 0 13 73 72 68 82 0 0 0 48 0 0 0 48 16 6 0 0 0 7 146 37 196 0 0 0 6 98 75 71 68 255 255 255 255 255 255 9 88 247 220 0 0 0 9 112 72 89 115 0 0 0 72 0 0 0 72 0 70 201 107 62 0 0 1 149 73 68 65 84 120 218 237 155 61 174 130 64 20 133 103 172 97 17 20 108 107 98 50 157 49 178 25 151 96 193 10 168 220 137 149 137 37 189 13 201 125 5 121 49 206 123 58 255 204 85 206 215 65 32 145 243 225 56 3 71 33 0 47 136 250 190 239 137 74 127 142 213 113 62 55 77 211 16 93 46 109 219 182 68 16 81 8 83 196 253 222 117 93 7 17 185 216 152 59 78 167 113 28 71 33 174 215 105 154 38 33 110 183 97 24 6 33 32 34 51 74 41 165 212 35 224 237 182 174 235 154 40 238 27 241 123 28 196 189 196 12 62 141 8 51 120 8 176 226 42 98 222 178 5 12 1 193 216 68 204 216 68 32 248 104 222 139 128 128 197 136 21 161 181 214 90 63 206 55 183 129 35 177 67 17 130 79 74 232 80 4 17 38 27 191 195 93 131 147 210 220 51 79 95 133 56 30 171 170 170 74 95 54 31 60 5 216 144 242 249 14 151 114 158 190 98 101 157 136 215 179 28 219 143 109 154 149 53 248 131 45 120 136 200 132 111 240 16 145 136 216 224 243 60 244 91 33 190 11 172 60 15 253 86 200 225 176 223 239 118 225 43 91 136 96 66 168 8 188 42 77 12 68 48 1 67 19 19 32 130 9 16 193 4 136 96 2 68 48 1 34 152 0 17 76 128 8 38 64 4 19 150 17 129 218 141 21 84 46 153 128 202 37 19 80 185 100 66 234 202 37 122 78 129 152 34 158 131 68 193 108 49 254 15 114 57 17 50 244 196 239 36 246 142 150 222 121 38 110 198 125 42 241 149 203 208 5 29 4 56 129 202 101 102 80 185 44 14 154 126 133 136 13 222 85 4 90 28 22 82 255 149 202 20 81 250 250 216 18 219 244 3 31 206 15 224 42 63 94 246 95 66 123 0 0 0 0 73 69 78 68 174 66 96 130)! !
 
-!DrGIcons class methodsFor: 'accessing'!
+!DrGIcons class methodsFor: 'accessing' stamp: ''!
 locus
 	^self formFromGraphic: #(137 80 78 71 13 10 26 10 0 0 0 13 73 72 68 82 0 0 0 48 0 0 0 48 8 6 0 0 0 87 2 249 135 0 0 0 6 98 75 71 68 0 99 0 99 0 99 185 251 243 121 0 0 0 9 112 72 89 115 0 0 11 19 0 0 11 19 1 0 154 156 24 0 0 0 7 116 73 77 69 7 213 11 28 8 18 45 208 0 131 20 0 0 0 29 116 69 88 116 67 111 109 109 101 110 116 0 67 114 101 97 116 101 100 32 119 105 116 104 32 84 104 101 32 71 73 77 80 239 100 37 110 0 0 3 87 73 68 65 84 104 222 237 152 201 139 19 65 20 198 127 17 241 232 93 196 187 127 136 224 217 131 94 20 81 90 16 65 16 84 80 65 208 163 140 163 40 110 12 58 174 131 251 46 138 184 226 134 131 136 136 3 234 136 224 174 227 160 102 50 49 147 69 103 62 15 121 5 25 237 116 58 109 119 18 49 15 138 110 146 234 170 239 171 122 239 213 247 10 218 214 182 182 181 173 109 255 189 149 64 5 208 191 128 53 7 26 174 192 154 114 4 42 59 141 1 63 128 97 96 170 245 9 48 85 142 149 132 141 128 198 128 209 50 86 138 246 44 185 73 243 32 25 112 128 9 246 71 10 248 9 100 170 19 169 36 158 74 98 181 221 98 230 129 172 97 201 216 123 190 218 164 251 65 211 129 41 192 100 96 146 177 159 60 190 91 42 41 2 35 32 183 218 57 96 0 120 14 204 143 50 199 102 208 19 208 183 50 216 106 45 54 203 130 190 130 222 128 238 213 51 182 231 121 129 157 15 39 76 224 59 40 11 26 0 61 14 49 166 47 94 247 227 239 79 31 191 31 215 106 145 15 3 126 8 244 30 116 57 0 124 32 190 106 127 250 116 86 156 36 178 230 158 175 171 0 15 129 167 246 54 213 2 31 213 149 178 160 180 249 251 77 159 239 35 129 174 145 239 199 181 231 21 239 215 35 16 248 6 122 7 186 20 2 124 28 246 199 106 219 224 42 130 62 131 186 234 32 145 1 13 90 134 75 18 116 53 2 227 38 115 169 239 92 29 4 6 65 253 160 3 62 227 37 174 71 126 159 44 109 250 228 33 104 93 72 18 239 65 189 173 0 222 243 60 165 65 35 150 73 14 133 32 240 25 244 10 116 173 34 123 53 13 60 101 209 167 2 232 11 232 10 104 118 13 18 3 160 23 21 46 215 16 240 65 129 150 181 64 30 2 221 5 45 8 32 48 104 7 214 19 219 173 166 131 119 170 177 104 113 112 31 180 40 128 192 71 115 159 7 160 93 205 216 1 63 203 27 129 140 9 176 133 1 4 222 153 251 220 1 109 142 97 7 38 196 65 192 105 220 81 211 232 185 128 190 211 32 85 50 141 63 6 116 119 119 167 154 78 192 85 113 133 242 233 202 113 72 5 173 108 209 14 147 137 173 224 62 148 129 43 103 210 162 51 132 91 244 130 110 129 246 180 74 29 238 2 248 118 29 121 253 1 232 60 104 101 179 73 20 44 128 7 65 61 33 179 138 231 121 234 179 128 63 80 35 232 27 146 129 50 160 62 208 234 58 118 224 145 165 220 11 160 245 205 34 224 192 247 71 212 52 55 64 87 65 251 154 225 74 5 171 97 95 131 142 68 208 52 174 223 101 208 41 59 212 230 52 138 132 3 255 22 116 210 71 207 215 123 178 159 6 29 179 131 109 73 146 36 138 166 58 211 160 151 160 19 49 20 35 174 127 15 232 32 104 27 104 45 104 94 156 68 138 166 54 179 160 79 166 99 58 99 4 239 158 59 173 170 219 14 218 8 90 243 183 36 138 160 60 232 187 73 229 103 230 175 113 214 174 126 223 111 2 109 5 109 1 117 88 219 16 68 166 4 42 89 62 47 84 128 30 178 21 239 3 157 177 52 153 68 225 237 55 206 10 75 175 157 70 100 7 104 183 37 140 75 38 219 31 57 60 14 120 206 238 104 62 128 158 218 85 71 23 104 113 3 110 13 170 141 55 23 180 220 200 116 152 123 237 5 29 5 157 117 184 210 160 143 182 210 23 45 144 150 129 102 132 188 108 74 186 226 115 54 19 52 11 52 31 180 20 180 42 202 221 105 210 53 108 34 243 52 10 252 95 205 27 246 110 180 209 250 189 46 28 173 2 58 18 174 86 5 223 168 4 210 182 168 246 11 175 92 10 76 202 252 154 245 0 0 0 0 73 69 78 68 174 66 96 130)! !
 
-!DrGIcons class methodsFor: 'accessing'!
+!DrGIcons class methodsFor: 'accessing' stamp: ''!
 macroBuild
 	^ self formFromGraphic: #(
 			137
@@ -19246,7 +19246,7 @@ macroBuild
 			130
 		)! !
 
-!DrGIcons class methodsFor: 'accessing'!
+!DrGIcons class methodsFor: 'accessing' stamp: ''!
 macroExecute
 	^ self formFromGraphic: #(
 			137
@@ -24496,83 +24496,83 @@ macroExecute
 			130
 		)! !
 
-!DrGIcons class methodsFor: 'accessing'!
+!DrGIcons class methodsFor: 'accessing' stamp: ''!
 middle
 	^self formFromGraphic: #(137 80 78 71 13 10 26 10 0 0 0 13 73 72 68 82 0 0 0 48 0 0 0 48 16 6 0 0 0 7 146 37 196 0 0 0 6 98 75 71 68 255 255 255 255 255 255 9 88 247 220 0 0 0 9 112 72 89 115 0 0 0 72 0 0 0 72 0 70 201 107 62 0 0 1 193 73 68 65 84 120 218 237 154 75 170 131 48 20 134 79 46 119 168 139 112 224 182 164 224 172 148 186 153 174 197 81 119 210 81 161 123 232 68 200 29 200 69 140 143 228 228 97 212 252 223 36 40 88 234 255 229 101 56 68 0 0 0 0 56 35 82 142 91 160 242 19 230 103 17 184 41 191 118 143 45 5 44 68 236 23 58 26 158 71 64 44 49 199 29 113 129 166 32 96 138 165 0 243 30 93 215 117 93 215 67 15 85 175 185 84 85 85 85 213 113 123 188 103 212 93 206 114 235 26 252 63 243 2 146 19 98 30 188 218 134 25 1 199 21 192 156 130 76 95 116 58 69 189 94 101 89 150 68 143 71 150 101 89 236 215 222 15 158 23 97 33 198 61 92 136 203 37 207 243 156 232 253 238 186 174 35 250 124 218 182 109 137 190 223 166 105 154 227 246 220 72 44 77 45 250 197 182 23 33 229 243 89 20 69 33 101 63 34 164 212 137 88 159 114 116 109 2 232 130 143 35 34 1 184 193 135 17 145 160 0 215 224 213 158 204 21 113 182 93 144 53 220 15 44 53 184 48 34 84 78 40 230 126 191 221 174 87 251 47 91 223 34 230 73 104 74 178 37 140 8 4 207 198 143 136 105 240 56 51 98 194 21 209 223 69 240 222 209 137 232 25 130 183 91 35 128 22 93 240 126 22 107 96 200 16 124 152 93 19 88 96 57 120 136 8 138 121 240 16 17 8 110 240 16 17 8 221 182 18 34 118 2 68 236 4 156 53 237 132 109 206 154 32 64 139 169 136 254 74 23 48 4 88 195 61 226 48 107 1 155 117 17 124 1 190 10 206 146 67 21 49 14 114 187 74 191 228 153 15 114 59 17 168 231 31 225 218 163 249 101 248 40 79 39 34 151 146 203 245 251 122 32 192 136 105 201 101 127 29 251 127 157 6 251 146 75 44 198 158 112 45 56 3 150 184 6 15 17 158 64 176 145 112 173 244 3 7 231 15 70 90 152 213 40 169 61 128 0 0 0 0 73 69 78 68 174 66 96 130)! !
 
-!DrGIcons class methodsFor: 'accessing'!
+!DrGIcons class methodsFor: 'accessing' stamp: ''!
 move
 	^self formFromGraphic: #(137 80 78 71 13 10 26 10 0 0 0 13 73 72 68 82 0 0 0 48 0 0 0 48 16 6 0 0 0 7 146 37 196 0 0 0 6 98 75 71 68 255 255 255 255 255 255 9 88 247 220 0 0 0 9 112 72 89 115 0 0 0 72 0 0 0 72 0 70 201 107 62 0 0 1 153 73 68 65 84 120 218 237 155 73 110 195 48 12 69 227 162 183 211 9 180 11 130 220 77 39 208 249 210 77 181 8 81 69 19 39 169 255 109 12 35 137 197 255 105 81 244 144 219 13 0 0 0 0 0 116 16 66 8 33 188 94 214 113 120 99 214 151 111 238 1 115 206 57 231 235 178 54 68 10 238 19 112 58 1 189 1 238 158 16 233 25 255 37 117 224 221 141 215 210 193 158 128 83 140 215 210 181 156 0 26 216 169 139 180 155 210 218 50 184 124 126 74 34 122 245 204 234 101 207 224 41 221 145 150 14 49 67 118 77 132 118 220 98 93 208 168 64 107 172 226 18 63 19 91 194 172 103 132 117 124 106 194 117 132 210 227 215 143 103 109 124 65 173 4 181 4 173 149 128 254 223 121 49 190 160 190 6 212 4 126 22 94 12 163 91 173 241 229 112 219 141 188 51 106 184 223 46 139 162 62 3 164 137 49 198 24 253 117 89 219 241 183 145 181 82 180 94 154 192 47 212 248 247 253 209 45 152 102 205 120 36 130 137 182 193 159 19 5 22 233 53 158 126 31 48 209 54 190 181 15 8 189 247 215 71 141 174 25 127 218 243 137 105 168 17 53 99 164 140 247 154 8 183 119 67 139 177 41 165 148 210 117 209 125 233 241 181 16 187 18 158 21 254 124 62 30 247 251 186 241 173 113 122 227 148 70 237 145 100 175 33 210 120 139 207 205 237 232 255 22 71 129 45 16 60 3 158 163 123 6 140 214 74 239 198 207 198 201 189 102 12 151 32 26 128 155 23 150 22 105 189 96 38 181 88 31 211 206 113 163 165 151 109 17 182 110 231 118 213 193 222 5 237 154 8 171 184 217 254 31 176 123 9 114 255 146 177 187 128 224 3 0 0 0 0 192 198 252 0 102 116 72 96 211 171 62 8 0 0 0 0 73 69 78 68 174 66 96 130)! !
 
-!DrGIcons class methodsFor: 'accessing'!
+!DrGIcons class methodsFor: 'accessing' stamp: ''!
 moveObject
 	^self formFromGraphic: #(137 80 78 71 13 10 26 10 0 0 0 13 73 72 68 82 0 0 0 24 0 0 0 24 8 2 0 0 0 111 21 170 175 0 0 0 9 112 72 89 115 0 0 11 19 0 0 11 19 1 0 154 156 24 0 0 3 197 73 68 65 84 56 203 205 149 219 107 28 85 28 199 127 51 231 204 206 236 165 201 54 187 221 100 215 166 209 104 188 164 165 193 75 189 165 40 74 109 73 74 8 40 136 79 17 250 32 69 240 81 241 193 23 255 13 125 146 22 4 219 162 105 170 62 72 17 74 235 173 52 77 27 67 211 244 146 205 50 187 217 251 236 206 204 206 204 185 205 241 33 208 37 65 155 60 244 193 207 243 151 15 191 239 57 156 223 81 164 148 240 40 80 225 17 129 119 152 59 250 209 124 143 30 211 176 202 5 56 140 249 150 109 123 246 245 243 199 186 9 185 3 222 154 249 253 212 108 213 44 147 142 207 93 143 175 21 131 175 207 20 15 189 119 233 233 163 103 31 100 182 23 189 48 117 254 199 75 245 82 149 84 155 180 209 98 213 38 45 85 137 89 14 190 255 101 253 153 137 179 185 131 95 110 196 30 86 237 205 183 243 134 210 84 227 70 58 169 149 107 76 195 10 194 32 56 48 46 153 16 153 221 26 235 248 156 213 182 57 163 241 241 149 190 30 45 26 21 133 102 121 238 215 194 232 72 191 142 84 69 129 48 148 52 12 5 97 11 203 117 65 44 230 175 63 76 52 54 182 208 211 151 192 88 134 216 114 156 149 31 102 229 226 232 176 107 94 185 124 225 243 227 51 95 165 250 95 42 212 189 252 106 149 249 235 204 41 255 167 104 242 113 48 98 17 61 136 128 130 72 39 17 58 229 6 15 232 13 59 29 156 243 8 71 8 31 152 248 54 112 37 101 21 226 175 113 97 253 187 104 98 64 244 15 160 38 173 135 24 252 48 17 18 136 134 189 245 218 181 192 94 213 163 46 8 14 0 141 252 13 9 156 122 197 192 94 22 172 189 85 116 226 139 139 157 133 199 162 195 123 244 148 164 5 51 38 4 81 153 8 152 161 140 170 116 201 181 255 220 181 63 199 125 27 0 28 235 55 224 140 179 150 160 14 245 204 77 162 153 79 127 238 77 196 219 54 142 233 160 42 42 230 110 195 206 235 200 17 4 179 0 18 202 225 80 211 24 51 65 208 233 169 201 217 185 159 84 188 75 48 123 235 19 121 247 227 115 42 86 49 82 73 199 226 224 217 190 18 215 211 129 115 183 221 250 187 233 220 33 158 213 114 254 176 91 115 217 108 22 84 24 25 26 12 5 15 185 83 171 86 18 241 216 38 17 37 65 200 67 46 66 139 221 243 220 82 187 99 101 244 215 148 48 225 186 183 3 111 193 37 75 46 185 224 216 246 228 228 59 32 229 129 103 135 1 148 207 62 57 153 78 167 79 126 248 193 233 211 167 186 213 28 171 162 27 8 69 52 137 42 101 47 136 42 54 129 190 92 98 202 164 134 229 93 21 180 14 0 29 167 37 165 20 180 99 54 218 194 107 228 134 246 57 173 154 145 76 155 166 217 157 200 106 220 179 42 69 199 169 169 189 194 229 55 235 244 74 213 191 220 38 215 176 150 233 143 140 247 168 99 0 64 41 221 221 19 167 190 119 228 141 215 87 110 47 77 31 63 86 41 21 78 188 63 29 215 194 238 68 110 179 196 57 37 180 19 207 238 105 212 60 187 115 87 1 13 88 60 20 10 227 62 13 171 8 192 247 188 231 159 27 94 47 87 51 201 56 165 20 243 78 181 92 77 166 50 149 82 177 43 162 196 246 138 101 215 50 141 88 58 154 74 33 22 247 218 235 156 23 4 35 146 10 33 85 0 200 23 10 139 11 243 47 31 28 17 82 18 223 87 85 5 35 124 245 250 197 59 247 215 54 68 202 198 134 236 27 216 79 2 11 33 61 18 77 98 205 64 88 231 196 35 190 37 67 209 110 220 7 128 39 247 13 142 31 126 117 111 110 96 111 54 29 248 68 215 35 24 161 191 230 23 191 249 238 12 167 178 43 2 128 100 102 132 6 118 40 184 162 34 140 12 85 139 168 42 182 42 203 15 46 56 149 76 190 114 232 197 236 64 63 132 52 106 232 102 217 186 121 235 86 97 53 207 55 12 114 199 32 13 48 64 2 33 3 64 7 0 128 167 158 24 66 26 108 191 143 182 32 25 84 204 130 237 56 148 50 35 166 71 227 137 220 208 224 70 175 77 213 254 47 191 200 63 151 156 177 64 253 10 252 215 0 0 0 0 73 69 78 68 174 66 96 130)! !
 
-!DrGIcons class methodsFor: 'accessing'!
+!DrGIcons class methodsFor: 'accessing' stamp: ''!
 open
 	^self formFromGraphic: #(137 80 78 71 13 10 26 10 0 0 0 13 73 72 68 82 0 0 0 48 0 0 0 48 8 6 0 0 0 87 2 249 135 0 0 0 1 115 82 71 66 0 174 206 28 233 0 0 0 6 98 75 71 68 0 255 0 255 0 255 160 189 167 147 0 0 0 9 112 72 89 115 0 0 11 19 0 0 11 19 1 0 154 156 24 0 0 0 7 116 73 77 69 7 219 8 3 7 31 18 173 68 203 48 0 0 10 42 73 68 65 84 104 222 237 152 105 108 92 215 117 199 127 247 190 121 51 67 206 198 25 110 34 69 73 164 101 203 148 69 201 218 98 73 222 106 179 33 100 201 78 209 216 49 156 184 48 210 162 69 139 194 49 90 7 48 144 124 8 2 39 64 81 59 95 220 54 112 55 55 70 18 183 104 221 196 73 92 27 85 1 215 218 44 137 182 36 139 212 70 106 27 238 228 112 246 125 121 219 205 135 161 40 185 176 3 83 142 0 163 224 31 184 120 247 189 119 31 222 255 127 207 57 247 222 115 96 25 203 88 198 50 150 241 25 32 110 228 155 174 103 241 182 151 252 62 205 109 6 106 5 148 85 109 180 189 43 51 149 147 111 82 224 50 38 224 124 30 5 136 13 79 208 213 217 219 210 19 110 110 124 48 220 28 218 238 243 4 219 45 101 40 211 172 97 91 204 204 79 229 7 19 177 204 113 39 146 27 30 124 158 244 231 69 128 184 229 113 130 27 182 118 63 176 170 171 253 15 123 86 247 108 246 250 181 118 209 80 211 209 108 205 193 82 40 148 116 60 170 90 114 138 165 108 53 57 151 158 58 122 121 108 236 159 223 249 86 241 125 192 188 153 2 52 128 223 249 46 222 137 131 88 31 55 160 239 79 233 221 117 207 166 63 217 178 113 227 115 183 246 174 217 165 135 43 77 5 109 66 79 217 81 153 178 162 34 103 207 136 172 61 35 139 42 38 29 119 209 27 12 251 35 45 193 142 62 175 29 90 229 52 102 230 102 134 107 147 55 211 165 180 157 207 210 208 216 44 159 88 255 123 238 21 242 1 59 158 122 7 99 225 157 220 244 251 45 183 245 63 188 245 185 29 155 119 253 81 120 133 183 163 40 102 68 214 156 21 53 39 143 233 84 177 177 80 56 128 194 81 22 134 83 162 104 39 144 110 75 134 195 145 206 72 91 112 149 127 99 126 54 186 191 54 6 168 155 34 160 107 23 122 192 23 121 106 93 247 250 111 132 221 158 150 192 206 76 108 234 29 18 221 143 178 122 247 158 123 254 124 235 157 155 159 12 180 234 145 148 53 46 12 85 198 84 21 170 78 1 75 85 235 19 171 192 37 221 72 52 16 10 133 162 108 231 208 220 142 30 14 180 174 17 150 203 155 45 207 31 75 95 38 255 113 238 217 228 165 55 224 165 167 106 16 83 160 52 129 71 129 253 105 5 184 6 15 97 61 246 72 199 200 125 235 190 242 117 233 82 127 57 60 113 228 190 149 175 124 248 186 199 136 116 109 222 186 241 15 2 205 222 112 214 156 0 192 82 53 74 118 154 154 83 2 165 240 106 1 2 90 155 242 203 118 71 216 186 99 83 147 101 82 178 224 196 68 222 138 35 188 46 173 101 101 224 193 238 109 145 129 203 137 244 107 156 196 116 187 8 174 14 241 112 79 19 143 119 5 24 232 88 213 233 183 109 155 185 153 249 132 174 225 215 4 13 231 226 252 240 200 20 207 124 42 1 156 196 206 14 36 199 115 229 120 233 246 181 125 161 251 131 123 239 93 221 178 110 179 101 27 170 115 101 135 63 99 77 10 144 24 78 153 188 57 79 205 41 2 138 144 187 131 22 122 85 33 101 166 198 226 241 211 217 116 54 233 247 53 69 90 86 4 214 55 183 251 58 147 92 22 69 59 73 184 41 28 110 109 109 122 164 55 147 14 118 223 202 64 87 144 47 6 66 65 207 182 129 1 118 238 221 75 165 84 226 223 95 124 145 80 176 177 245 182 45 91 136 158 57 67 48 151 95 251 169 45 0 56 53 171 58 155 43 228 114 21 171 208 81 19 121 177 166 171 219 167 148 67 193 142 11 16 88 170 74 222 158 195 80 37 52 225 34 172 119 17 52 187 107 83 99 201 51 151 70 162 127 63 117 41 182 127 222 172 101 130 210 19 185 173 119 229 151 238 216 188 250 217 240 170 53 171 147 206 37 97 187 74 174 176 87 251 242 174 181 238 71 119 110 189 159 29 123 247 210 119 247 221 204 70 163 252 236 165 151 200 167 82 60 250 204 51 108 233 239 71 8 193 75 79 63 205 209 75 239 159 94 138 0 52 95 54 94 49 75 51 110 209 176 222 144 69 42 42 35 4 2 77 106 72 160 224 196 176 168 160 187 220 52 106 97 66 214 45 106 124 52 113 248 240 209 193 151 7 15 85 222 226 100 125 169 12 184 107 33 86 69 125 218 238 172 182 227 169 93 34 220 186 2 225 64 199 173 171 197 221 127 253 199 244 111 253 34 133 76 134 159 124 239 59 156 59 118 130 175 62 247 28 219 6 6 16 88 80 56 1 197 83 196 39 162 164 203 44 77 192 153 203 148 119 108 74 79 59 54 74 115 185 132 92 216 30 148 114 200 91 49 202 42 141 203 229 70 8 65 155 188 93 197 38 139 227 231 79 93 124 121 240 141 202 127 55 197 233 233 238 224 177 181 77 60 214 220 200 54 165 192 87 244 81 78 26 248 219 130 152 90 137 134 80 3 150 53 133 74 254 23 255 241 87 63 101 244 116 138 111 254 227 63 209 185 118 45 148 47 64 250 127 192 46 99 208 70 42 150 32 93 89 162 128 244 191 82 74 245 207 70 13 211 176 220 158 6 221 82 85 20 80 181 227 20 156 57 92 46 23 160 227 145 126 244 90 200 154 137 143 76 79 28 158 190 227 113 63 223 15 183 176 1 160 169 173 141 187 30 122 136 29 123 246 224 106 14 240 243 51 63 69 147 6 72 11 71 214 176 74 195 56 165 30 38 174 228 232 255 218 147 117 242 169 183 161 114 177 78 195 21 34 17 211 113 20 70 174 198 232 146 4 0 78 62 85 187 82 169 84 11 141 193 64 196 118 12 76 85 38 109 78 96 170 50 82 104 0 216 212 80 141 37 215 214 190 47 220 19 122 74 191 47 115 60 202 166 85 219 233 223 253 101 122 183 111 71 88 9 40 143 82 204 158 39 104 207 80 52 219 113 121 189 216 182 134 87 132 40 150 221 36 231 50 236 124 248 97 176 11 96 204 130 22 2 161 129 208 24 187 156 37 91 101 196 118 62 126 83 253 77 2 84 124 38 57 59 155 24 47 52 183 222 25 1 69 222 154 35 103 205 162 80 8 177 224 82 216 196 173 243 162 169 101 165 216 178 103 23 249 109 219 144 181 42 25 239 113 42 83 31 208 40 107 32 116 26 164 70 179 108 36 17 175 224 105 9 80 204 166 144 68 120 229 7 239 210 181 110 29 145 21 43 160 114 5 180 64 157 60 26 8 201 133 225 33 82 75 240 127 0 121 181 147 203 171 120 42 19 79 73 165 59 166 170 146 54 199 235 155 149 0 181 176 137 74 116 26 100 19 142 13 142 52 104 137 180 82 85 101 246 93 56 204 233 185 57 28 25 2 87 19 154 39 204 214 142 181 172 53 220 216 231 230 41 29 153 230 245 239 189 133 191 181 155 63 123 225 133 250 15 141 121 208 252 215 154 222 194 165 161 243 164 170 75 19 112 213 2 248 219 237 185 92 57 53 105 89 230 166 2 113 89 180 147 8 161 33 133 70 163 108 194 77 0 175 19 86 170 228 33 151 204 138 28 22 229 210 17 214 55 134 232 191 117 59 157 225 8 210 29 196 52 97 100 104 146 225 99 23 25 26 188 0 186 198 157 119 223 203 238 215 94 164 125 205 154 250 207 106 51 224 148 235 196 145 32 36 21 195 71 38 30 39 81 226 216 13 9 200 155 57 35 153 75 206 229 42 73 167 234 201 227 147 173 202 39 90 176 13 97 219 69 173 154 78 231 18 209 11 103 179 165 147 99 235 238 218 116 151 111 247 151 190 66 179 227 195 231 109 68 211 116 20 26 191 252 201 65 222 121 227 8 29 107 58 185 243 254 123 249 139 191 253 6 171 215 247 45 68 89 13 140 57 48 211 96 101 65 243 45 186 14 72 174 156 155 192 114 40 207 23 249 224 134 4 156 246 83 187 61 95 56 147 45 164 13 191 236 210 138 105 85 153 205 20 167 38 231 162 99 137 249 228 177 115 251 83 51 83 31 86 228 35 17 231 133 59 30 184 205 119 75 103 7 228 219 64 184 64 104 252 236 31 222 102 116 104 130 111 189 250 42 93 235 122 65 217 96 231 160 50 6 118 22 156 234 53 194 178 97 33 112 229 130 5 52 78 29 60 78 172 200 123 142 90 218 241 123 81 0 207 227 164 190 147 60 123 120 104 223 126 77 121 198 231 115 211 231 11 25 227 120 60 81 157 204 228 139 133 137 55 197 102 208 90 245 136 163 185 61 158 133 163 96 61 8 199 70 166 56 117 100 132 111 255 248 53 2 145 48 84 39 192 136 213 211 141 171 68 101 227 66 192 202 235 136 215 175 182 35 57 241 238 123 204 22 57 176 212 211 168 235 186 190 243 238 104 246 104 190 148 125 250 196 235 36 153 166 246 209 115 188 20 0 82 162 233 94 111 157 220 130 27 28 122 251 3 6 158 250 58 129 72 4 140 56 88 105 144 222 143 18 254 63 164 175 239 143 143 68 169 150 74 204 230 217 255 89 4 192 127 98 159 128 169 143 31 170 28 16 72 137 174 187 221 117 2 210 71 173 106 48 114 242 60 95 253 246 247 235 67 172 204 130 139 124 50 97 132 88 120 38 64 72 6 247 29 160 104 48 30 47 241 254 103 19 240 155 51 203 26 128 75 224 210 92 174 58 9 217 192 201 131 31 112 215 67 123 240 52 52 212 3 84 234 159 76 120 145 248 213 190 32 155 200 114 228 205 183 24 77 242 163 27 73 122 228 167 31 234 24 11 73 180 182 152 141 74 15 131 251 14 241 224 19 79 212 103 223 169 128 240 130 244 92 215 220 32 174 94 23 154 212 65 232 56 142 198 191 253 224 111 48 77 171 118 33 205 171 55 146 145 45 193 2 212 164 64 91 44 4 8 73 124 38 73 176 185 133 112 91 91 253 104 32 221 11 175 175 205 240 71 251 98 209 109 166 47 69 249 249 15 95 230 220 177 65 251 127 163 124 173 84 99 250 38 11 16 134 20 74 191 118 171 113 230 216 135 252 238 147 79 214 103 95 217 32 244 79 32 44 22 151 203 232 153 115 188 253 202 191 112 246 232 81 170 22 137 247 38 121 122 44 203 47 110 52 39 94 146 5 52 41 92 215 123 159 66 208 211 215 87 95 227 133 107 113 118 175 85 107 234 164 103 174 68 25 58 112 144 161 3 7 152 28 29 69 129 117 118 158 191 59 57 199 243 134 77 238 179 36 245 75 17 96 104 40 237 154 5 36 61 125 27 175 173 180 66 95 20 96 89 14 87 134 135 25 58 112 144 225 67 135 72 205 206 82 49 73 207 20 56 52 149 231 87 51 121 246 149 77 98 191 141 170 132 107 41 65 44 53 151 14 80 200 100 112 108 135 158 13 27 0 65 181 106 19 61 125 154 75 31 158 226 242 208 16 99 103 207 82 173 26 181 185 146 24 158 206 137 253 211 5 126 145 46 47 125 137 252 173 187 80 197 80 57 211 161 124 248 141 55 26 117 183 155 201 209 81 46 157 58 197 244 197 139 148 77 167 144 40 138 209 88 81 12 199 138 28 140 151 217 103 59 42 121 147 202 65 55 90 220 213 250 87 5 213 125 235 91 213 238 70 157 112 186 202 212 124 81 158 143 23 57 150 169 58 39 64 197 128 210 231 184 58 45 66 32 123 0 31 168 60 168 56 168 36 75 40 68 45 99 25 203 88 198 50 150 177 140 255 79 248 53 249 132 185 253 79 213 252 73 0 0 0 0 73 69 78 68 174 66 96 130)! !
 
-!DrGIcons class methodsFor: 'accessing'!
+!DrGIcons class methodsFor: 'accessing' stamp: ''!
 parallel
 	^self formFromGraphic: #(137 80 78 71 13 10 26 10 0 0 0 13 73 72 68 82 0 0 0 48 0 0 0 48 16 6 0 0 0 7 146 37 196 0 0 0 6 98 75 71 68 255 255 255 255 255 255 9 88 247 220 0 0 0 9 112 72 89 115 0 0 0 72 0 0 0 72 0 70 201 107 62 0 0 1 160 73 68 65 84 120 218 237 217 33 142 194 64 20 198 241 233 250 17 40 116 69 19 36 2 138 168 196 115 3 154 106 18 210 27 204 45 240 156 1 13 178 130 130 64 146 112 2 20 2 129 124 136 221 102 67 147 102 187 48 125 125 109 191 191 33 164 1 166 239 151 161 98 148 66 8 49 182 94 39 201 102 67 84 247 58 164 244 197 245 67 243 185 49 203 37 81 154 158 78 199 35 32 178 216 0 14 135 36 217 239 149 186 223 175 215 219 77 41 64 124 231 112 255 224 96 48 157 250 62 209 120 28 4 147 137 82 90 247 251 189 158 82 190 63 28 142 70 74 69 81 16 204 102 14 251 186 234 138 109 7 24 99 140 49 68 231 243 110 151 166 142 131 29 193 84 54 248 162 247 217 142 200 158 17 139 197 106 101 12 17 32 44 7 8 33 189 14 62 255 10 136 138 43 26 60 17 118 4 107 197 131 7 196 79 143 71 28 199 177 237 27 204 127 95 241 224 59 11 177 221 186 174 235 18 93 46 158 231 121 68 118 32 202 127 190 243 16 81 164 181 214 68 118 32 222 31 8 32 62 130 176 55 128 206 65 132 97 24 134 225 239 194 255 7 81 221 13 183 30 34 63 248 207 32 170 11 16 128 224 9 16 66 2 132 144 0 33 36 64 8 9 16 66 2 132 144 0 33 36 64 8 9 16 66 2 132 144 154 9 209 194 51 107 217 16 29 58 179 110 10 4 254 154 88 33 236 159 89 215 61 223 210 213 11 97 255 204 186 232 186 248 120 33 170 59 179 110 220 224 243 85 11 193 119 102 221 248 236 66 240 157 89 183 46 89 15 235 14 7 8 33 1 66 72 128 16 18 32 132 244 46 68 221 235 110 93 101 33 138 174 35 75 253 5 129 193 51 133 193 11 9 131 71 47 61 1 49 101 139 124 116 26 58 40 0 0 0 0 73 69 78 68 174 66 96 130) ! !
 
-!DrGIcons class methodsFor: 'accessing'!
+!DrGIcons class methodsFor: 'accessing' stamp: ''!
 perpendicular
 	^ self formFromGraphic: #(137 80 78 71 13 10 26 10 0 0 0 13 73 72 68 82 0 0 0 48 0 0 0 48 16 6 0 0 0 7 146 37 196 0 0 0 6 98 75 71 68 255 255 255 255 255 255 9 88 247 220 0 0 0 9 112 72 89 115 0 0 0 72 0 0 0 72 0 70 201 107 62 0 0 2 43 73 68 65 84 120 218 237 154 177 106 194 64 24 199 191 136 171 248 2 5 201 32 244 9 220 83 55 103 87 131 155 80 16 103 151 27 178 244 5 218 221 193 39 112 112 210 209 193 232 208 177 80 40 20 92 74 133 34 25 186 8 215 233 40 124 114 36 198 187 220 93 242 253 22 137 201 93 46 191 63 201 229 114 7 64 16 4 65 16 4 65 16 4 65 16 4 65 84 158 223 223 201 100 50 225 220 116 59 42 199 106 229 251 190 207 249 251 123 187 221 110 115 78 65 220 198 108 182 217 44 22 114 127 53 252 199 124 126 60 30 143 0 159 159 231 243 249 12 112 56 44 151 203 165 237 119 132 125 237 18 226 227 248 245 117 191 7 24 12 24 27 143 47 219 89 187 44 152 36 73 226 121 110 6 97 30 44 62 73 190 190 126 126 0 118 187 205 102 187 189 60 254 34 128 48 12 195 48 228 156 130 184 142 52 241 111 111 235 117 28 123 158 180 2 33 94 182 61 28 54 26 141 6 231 118 246 17 230 206 47 196 63 62 190 188 48 198 185 120 212 220 223 119 187 157 206 127 187 24 99 140 177 12 237 116 51 136 226 207 155 87 124 73 130 16 245 167 253 58 40 30 227 102 16 234 41 92 60 198 141 32 212 99 92 60 198 238 32 212 97 157 120 76 89 131 176 94 60 166 44 65 56 39 30 99 54 136 252 229 157 23 143 41 54 8 124 124 246 242 165 19 143 209 27 68 254 253 165 23 143 81 27 68 254 59 164 114 226 49 166 250 136 202 139 199 20 21 4 137 79 65 87 16 36 254 74 84 5 65 226 111 36 111 16 36 94 49 89 131 32 241 154 145 5 145 38 94 60 154 92 17 239 221 94 133 94 132 248 135 135 209 168 223 7 144 205 185 62 63 127 124 124 127 3 180 90 245 122 189 14 112 119 215 235 245 122 0 79 79 205 102 179 9 16 69 81 20 69 158 117 215 91 187 189 10 189 164 137 23 147 221 178 197 3 211 233 233 116 58 153 190 10 57 214 6 144 117 149 65 16 4 65 16 208 42 14 101 100 237 92 133 120 217 182 43 159 193 173 33 239 91 13 22 239 234 124 132 49 84 189 78 150 101 98 168 48 116 189 199 231 13 194 180 143 194 209 61 128 202 26 132 108 127 105 193 34 117 143 92 211 130 168 140 120 76 154 104 213 35 87 18 47 161 232 79 6 36 94 130 173 223 106 116 243 7 21 204 94 20 55 57 135 172 0 0 0 0 73 69 78 68 174 66 96 130)! !
 
-!DrGIcons class methodsFor: 'accessing'!
+!DrGIcons class methodsFor: 'accessing' stamp: ''!
 pointDefinedByCoordinates
 	^self formFromGraphic: #(137 80 78 71 13 10 26 10 0 0 0 13 73 72 68 82 0 0 0 48 0 0 0 48 16 6 0 0 0 7 146 37 196 0 0 0 6 98 75 71 68 255 255 255 255 255 255 9 88 247 220 0 0 0 9 112 72 89 115 0 0 0 72 0 0 0 72 0 70 201 107 62 0 0 1 180 73 68 65 84 120 218 237 154 193 205 194 48 12 133 211 95 140 192 22 12 193 0 156 184 230 10 136 9 58 69 87 224 156 43 39 6 96 8 182 96 135 254 39 11 41 81 112 210 66 253 76 252 93 162 170 45 181 223 139 157 138 198 57 195 48 12 173 140 163 116 4 218 233 166 221 150 19 190 155 248 123 237 82 41 88 233 140 55 35 22 194 90 208 92 254 164 3 104 157 85 221 229 54 227 193 48 67 230 98 45 72 24 51 64 152 70 215 128 56 15 185 215 230 202 10 160 64 181 190 231 227 77 160 196 128 221 174 239 183 91 188 64 203 160 184 227 17 151 108 5 144 17 186 13 33 112 255 58 73 2 224 4 63 30 135 225 249 148 14 59 101 191 119 238 241 168 78 191 243 222 123 239 199 49 132 16 66 72 143 23 79 36 158 249 239 13 65 173 140 92 43 122 141 36 52 221 17 31 139 81 215 114 0 2 126 27 151 98 35 234 18 69 161 92 248 120 84 34 60 234 91 70 169 208 233 245 74 132 231 18 151 134 23 158 132 190 94 157 219 108 212 183 158 56 113 105 120 225 233 152 12 200 157 87 102 4 110 160 57 97 149 87 0 234 26 240 130 19 150 171 0 101 224 6 206 85 128 116 124 31 2 47 145 243 249 116 58 28 202 43 64 57 250 18 65 51 160 209 239 1 56 52 246 61 0 15 251 36 41 140 25 32 140 173 1 194 216 26 32 140 181 32 97 204 0 97 108 13 16 198 214 0 97 172 5 125 133 242 78 97 6 124 21 222 136 213 212 27 231 93 143 194 82 113 211 115 210 214 157 49 160 180 199 231 126 56 255 192 182 206 243 122 54 215 130 46 151 190 95 175 151 122 26 63 145 103 58 200 205 4 28 114 27 206 110 183 97 184 223 97 182 167 199 130 210 168 181 199 227 243 243 45 136 219 106 9 186 251 27 119 215 131 97 124 148 127 134 246 108 126 47 30 109 160 0 0 0 0 73 69 78 68 174 66 96 130)! !
 
-!DrGIcons class methodsFor: 'accessing'!
+!DrGIcons class methodsFor: 'accessing' stamp: ''!
 polygon
 	^self formFromGraphic: #(137 80 78 71 13 10 26 10 0 0 0 13 73 72 68 82 0 0 0 48 0 0 0 48 16 6 0 0 0 7 146 37 196 0 0 0 6 98 75 71 68 255 255 255 255 255 255 9 88 247 220 0 0 0 9 112 72 89 115 0 0 0 72 0 0 0 72 0 70 201 107 62 0 0 9 92 73 68 65 84 120 218 237 91 107 76 155 101 27 190 74 129 210 195 91 218 66 143 208 150 114 42 39 41 200 32 50 220 208 56 141 75 22 77 22 157 51 51 131 4 231 70 68 102 166 176 17 127 204 68 127 105 162 46 152 37 102 25 78 101 33 217 146 109 49 100 51 134 140 48 53 49 147 127 75 212 132 31 99 39 206 231 210 183 156 74 253 113 231 249 234 247 242 189 225 208 246 165 240 113 253 121 211 62 240 230 121 238 235 62 223 79 129 29 236 64 74 212 214 114 28 199 5 131 236 185 217 251 137 219 236 13 72 5 161 192 11 11 149 74 165 18 184 126 61 43 43 43 43 24 28 25 57 122 244 232 81 233 9 137 223 108 193 68 11 98 26 158 153 153 152 152 152 8 228 230 38 37 37 37 1 46 151 94 175 215 3 193 224 236 236 236 172 244 251 220 182 4 8 161 84 202 229 114 57 224 241 168 213 106 53 224 114 89 44 22 11 160 209 208 103 133 66 165 82 169 164 223 215 182 33 64 76 227 51 50 116 58 157 14 40 40 144 201 100 50 192 225 32 193 3 28 199 113 192 159 127 62 120 240 224 1 80 90 74 150 33 53 182 124 12 88 45 152 122 60 9 9 9 9 64 81 17 9 62 35 163 172 172 172 12 248 226 139 187 119 239 222 5 30 62 244 251 253 126 192 231 27 24 24 24 0 252 254 198 198 198 70 233 98 193 150 37 64 76 240 121 121 228 82 94 125 53 53 53 53 21 40 46 166 207 147 147 46 151 203 5 124 248 225 139 47 126 245 85 232 239 103 102 22 23 23 23 1 158 39 34 252 254 225 225 225 97 233 206 177 229 8 16 19 60 203 106 158 121 134 124 121 81 145 195 225 112 0 28 71 130 111 107 123 227 141 239 191 7 2 129 154 154 212 84 96 121 121 255 254 253 251 129 191 255 38 193 243 60 123 83 48 40 101 46 180 101 8 16 19 188 209 72 46 166 164 132 8 72 75 75 75 75 75 3 244 122 147 201 100 2 90 90 106 107 175 94 253 31 7 143 187 117 235 214 173 208 231 193 193 249 249 249 121 128 231 39 39 39 39 165 59 87 204 19 32 38 120 143 135 130 104 117 53 165 145 78 167 213 106 181 2 41 41 54 155 205 6 156 62 253 230 155 237 237 33 141 103 79 185 252 187 239 198 198 66 79 134 161 33 114 69 126 255 227 199 143 31 3 62 95 125 125 125 125 244 109 33 102 9 16 19 124 101 165 70 163 209 0 79 61 165 213 106 181 64 65 1 9 222 110 175 168 168 168 0 154 154 200 213 172 23 127 252 225 243 249 124 128 207 183 188 188 188 12 44 44 76 77 77 77 69 255 156 49 151 134 138 251 120 242 237 89 89 164 249 110 183 193 96 48 0 106 53 249 250 134 134 231 158 251 252 243 144 166 51 8 53 93 108 157 125 207 243 129 64 32 0 0 148 182 70 27 49 67 128 152 224 159 126 154 178 152 138 10 18 124 90 90 118 118 118 54 160 84 146 207 111 106 122 237 181 111 191 141 220 62 88 44 112 58 165 201 134 54 157 0 49 193 187 221 212 42 200 207 39 65 155 205 233 233 233 233 128 86 75 193 245 212 169 87 94 249 230 155 141 107 188 216 250 232 232 210 210 210 18 192 243 79 158 60 121 2 120 189 199 142 29 59 22 12 114 220 133 11 23 46 68 222 38 54 141 0 49 193 239 221 155 156 156 156 12 216 237 164 241 6 3 249 124 151 171 187 187 187 91 38 171 171 187 118 109 126 62 122 193 241 247 223 169 39 84 89 73 193 61 16 160 52 53 90 144 156 0 161 224 19 19 201 197 60 251 44 245 106 152 111 183 90 73 211 83 83 11 11 11 11 129 186 186 150 150 95 127 13 6 35 173 241 98 235 60 79 174 40 24 140 110 93 32 89 22 36 20 124 106 106 74 74 74 10 224 118 211 1 115 114 40 171 97 189 26 135 163 171 171 171 75 38 123 239 189 234 234 207 62 147 106 151 33 12 12 44 44 44 44 0 60 79 45 138 104 33 234 22 32 222 50 160 188 187 172 140 136 176 90 243 242 242 242 128 143 62 122 235 173 142 14 160 174 238 196 9 64 58 141 23 98 98 130 178 33 191 127 124 124 124 60 122 242 137 154 5 8 5 111 52 82 26 201 242 248 146 18 210 120 163 49 35 35 35 3 224 56 42 160 98 5 191 253 230 245 122 189 192 232 40 41 202 240 112 116 6 54 17 183 128 149 174 38 62 62 62 30 40 47 167 118 175 203 69 77 50 139 133 130 236 217 179 111 191 125 253 122 232 255 165 214 248 213 214 167 167 89 16 102 245 65 140 18 176 82 227 89 254 78 189 26 183 155 124 187 217 76 149 235 233 211 221 221 221 221 128 92 30 249 67 69 18 172 48 91 90 162 22 69 164 17 54 1 66 193 179 1 136 221 78 27 207 205 165 180 210 106 37 23 115 230 76 77 205 149 43 128 92 94 91 11 196 158 198 11 43 227 153 25 106 77 248 253 228 146 34 141 13 199 0 161 224 61 30 242 241 121 121 113 113 113 113 64 101 165 217 108 54 3 54 91 65 65 65 1 208 212 116 251 246 237 219 145 63 64 180 49 60 204 230 5 244 156 157 61 126 252 248 241 200 197 130 117 91 128 80 240 102 51 185 24 155 141 158 133 133 228 227 245 122 106 11 159 57 115 248 240 15 63 0 114 249 225 195 64 236 106 188 216 250 95 127 81 12 216 189 155 10 180 197 197 200 90 194 154 45 64 40 120 135 131 130 106 85 21 5 83 54 0 97 249 125 75 11 249 248 237 130 241 113 114 169 62 95 100 99 193 170 22 32 20 124 102 38 5 87 54 196 206 201 161 30 141 201 68 4 52 53 189 254 250 165 75 128 92 126 226 4 16 123 26 189 209 117 175 151 98 193 220 220 220 220 220 92 228 8 16 181 0 161 224 139 138 40 111 207 207 87 40 20 10 32 39 135 122 37 38 147 221 110 183 3 167 78 117 118 118 118 70 110 99 177 134 135 15 217 196 140 231 121 62 114 195 251 21 22 32 20 124 121 57 107 134 81 87 210 237 166 30 141 78 231 116 58 157 255 214 248 67 135 128 216 209 216 72 173 51 244 245 145 230 79 79 211 224 134 231 7 7 7 7 195 21 255 191 44 64 204 199 103 101 177 155 100 148 199 127 242 201 189 123 247 238 1 31 124 176 189 53 158 225 210 37 175 215 235 13 181 161 167 166 40 22 204 205 141 140 140 140 132 255 126 153 80 240 121 121 164 233 101 101 76 243 73 211 63 253 180 183 183 183 119 243 53 114 179 215 247 237 163 186 166 178 146 92 175 197 82 90 90 90 10 168 213 231 207 159 63 191 254 121 193 138 24 80 89 73 233 99 97 97 113 113 113 49 96 50 101 102 102 102 134 203 243 246 65 87 215 244 244 244 52 192 243 51 51 51 51 64 92 28 165 223 27 197 138 24 48 62 78 21 107 110 46 5 155 184 56 114 61 194 10 145 97 179 53 82 170 245 139 23 15 30 84 40 100 255 241 24 83 83 36 31 159 239 209 163 71 143 194 32 128 249 56 246 226 31 127 188 115 231 206 29 64 161 160 193 136 197 210 223 223 223 15 52 55 247 246 86 85 1 106 117 73 73 73 9 160 82 145 165 40 149 61 61 205 205 128 82 121 238 220 185 115 50 89 172 220 187 143 52 132 231 154 157 141 204 237 137 21 62 75 76 128 123 246 80 193 101 50 81 119 211 96 160 167 94 79 62 145 227 232 169 80 80 157 192 110 43 188 251 110 123 123 123 123 232 61 98 26 37 92 103 136 53 139 96 120 225 5 58 239 238 221 116 78 155 173 188 188 188 60 164 136 107 37 96 133 11 18 70 125 38 160 95 126 17 43 193 71 71 71 71 129 67 135 168 2 214 104 232 58 135 193 208 215 215 215 7 156 61 203 130 20 213 17 9 9 87 175 214 214 2 95 127 125 242 228 201 147 193 96 125 125 91 91 91 91 232 109 140 152 104 207 126 195 197 253 251 148 150 150 148 208 77 186 96 112 99 237 234 176 167 252 171 185 156 151 94 34 77 97 105 173 90 77 4 105 181 228 226 52 26 106 79 199 199 83 129 167 80 80 129 215 208 208 209 209 209 177 249 26 47 182 110 177 80 240 61 112 128 206 231 118 123 60 30 15 96 52 222 184 113 227 70 24 22 176 94 8 45 70 72 204 207 63 83 214 32 68 85 21 5 177 204 204 177 177 177 49 64 167 163 3 113 28 205 136 155 155 119 237 218 181 11 48 24 174 93 171 171 3 146 146 136 184 247 223 15 119 199 145 193 226 34 237 211 239 167 231 70 111 79 72 112 247 235 191 177 214 32 253 242 203 52 87 112 56 168 46 209 235 201 66 212 106 170 79 216 173 103 185 156 214 27 27 175 92 161 57 131 52 49 128 225 249 231 201 181 238 217 67 163 85 171 149 20 103 173 177 64 242 107 41 98 22 195 192 8 250 233 39 202 46 172 86 42 253 157 78 34 192 96 32 159 107 181 14 13 13 13 1 58 29 37 7 31 127 76 67 125 165 242 226 197 131 7 1 173 150 110 208 5 2 71 142 28 57 2 52 52 92 190 124 249 114 248 251 23 166 227 161 30 17 197 194 64 96 125 205 58 201 45 96 189 88 205 98 138 139 105 16 148 158 78 49 70 175 167 251 69 70 35 89 6 199 145 37 41 149 244 119 42 21 197 28 133 130 146 6 161 166 174 55 43 99 120 231 29 163 209 104 4 114 114 168 128 93 107 44 136 121 2 196 32 70 140 78 71 4 104 52 244 100 87 27 141 70 150 54 211 247 201 201 44 9 160 160 159 144 64 4 169 213 212 98 80 169 90 91 91 91 67 2 100 89 153 24 1 53 53 68 64 126 62 89 162 197 114 243 230 205 155 219 152 0 49 172 102 49 108 130 231 116 146 197 184 221 68 16 203 206 146 147 201 213 105 52 212 17 72 74 34 31 239 247 83 125 51 49 65 159 91 91 247 237 251 242 203 144 69 84 87 211 247 213 213 235 139 5 219 142 0 49 172 53 248 23 21 17 33 46 23 17 97 179 209 147 227 104 93 163 161 118 60 35 136 253 182 248 254 253 137 137 137 9 32 59 155 234 1 187 189 167 167 167 231 255 208 2 54 138 213 8 98 191 79 48 155 201 149 49 130 180 90 102 49 116 25 65 163 161 236 204 108 238 236 236 236 220 33 32 108 172 213 114 246 238 101 173 26 114 109 7 14 244 247 247 247 75 241 19 143 29 236 96 43 227 31 155 227 168 4 251 87 97 42 0 0 0 0 73 69 78 68 174 66 96 130)! !
 
-!DrGIcons class methodsFor: 'accessing'!
+!DrGIcons class methodsFor: 'accessing' stamp: ''!
 property
 	^self formFromGraphic: #(137 80 78 71 13 10 26 10 0 0 0 13 73 72 68 82 0 0 0 48 0 0 0 48 16 6 0 0 0 7 146 37 196 0 0 0 6 98 75 71 68 255 255 255 255 255 255 9 88 247 220 0 0 0 9 112 72 89 115 0 0 0 72 0 0 0 72 0 70 201 107 62 0 0 8 232 73 68 65 84 120 218 237 91 71 72 124 189 23 189 118 84 176 160 130 189 128 136 88 113 41 138 5 68 172 8 54 176 131 11 43 130 32 98 69 65 193 130 226 198 133 109 161 27 11 136 136 88 112 225 194 238 194 133 21 43 138 189 96 239 221 247 95 12 135 252 191 153 111 190 153 167 51 234 175 156 77 200 155 188 188 228 156 228 222 228 38 67 244 23 127 241 39 67 129 95 113 142 251 238 6 255 76 40 240 228 241 255 222 148 174 24 35 222 211 211 211 211 211 83 254 93 226 56 142 147 165 220 178 170 111 126 126 126 126 126 158 232 234 234 234 234 234 74 248 87 254 66 72 120 129 53 249 252 252 252 252 252 156 72 71 71 71 71 71 71 118 4 8 63 151 119 57 89 213 63 54 54 54 54 54 70 148 147 147 147 147 147 67 180 176 176 176 176 176 192 95 8 169 5 120 127 127 127 127 127 39 122 122 122 122 122 122 34 122 126 126 126 126 126 230 47 196 239 2 5 5 5 5 5 5 162 203 203 203 203 203 75 162 192 192 192 192 192 64 254 66 240 22 224 230 230 230 230 230 134 165 210 54 84 210 243 95 173 28 242 138 138 138 138 138 138 31 23 66 81 50 133 31 195 79 33 74 94 229 0 12 76 109 109 109 109 109 109 162 190 190 190 190 190 62 34 71 71 71 71 71 71 148 18 239 125 100 46 192 79 35 10 207 219 219 219 219 219 219 137 66 66 66 66 66 66 136 244 244 244 244 244 244 136 172 172 172 172 172 172 136 22 23 23 23 23 23 63 255 93 8 209 219 219 219 219 219 75 228 224 224 224 224 224 32 94 8 153 9 240 211 136 239 232 232 232 232 232 32 114 113 113 113 113 113 33 202 200 200 200 200 200 96 68 39 36 36 36 36 36 176 247 131 131 131 131 131 131 69 133 144 246 187 200 35 133 16 173 173 173 173 173 173 194 181 49 33 62 45 192 79 33 30 196 121 123 123 123 123 123 51 194 177 106 169 170 170 170 170 170 34 218 218 218 218 218 218 34 106 105 105 105 105 105 33 26 30 30 30 30 30 102 245 5 5 5 5 5 5 49 27 46 45 241 226 132 48 51 51 51 51 51 35 114 115 115 115 115 115 19 237 151 242 239 66 60 76 203 245 245 245 245 245 53 81 113 113 113 113 113 49 19 2 56 59 59 59 59 59 99 66 216 216 216 216 216 216 48 33 48 99 6 6 6 6 6 6 136 156 156 156 156 156 156 62 222 94 73 144 90 0 73 27 153 239 38 94 87 87 87 87 87 151 104 104 104 104 104 104 136 200 216 216 216 216 216 152 232 240 240 240 240 240 240 95 58 174 172 172 172 172 76 180 189 189 189 189 189 205 102 8 0 19 242 217 246 74 226 237 195 51 224 187 136 71 190 176 176 176 176 176 144 117 176 161 161 161 161 161 129 17 119 119 119 119 119 119 71 164 170 170 170 170 170 42 190 253 185 185 185 185 185 185 68 221 221 221 221 221 221 68 209 209 209 209 209 209 68 105 105 105 105 105 105 242 35 158 183 0 194 21 126 23 241 192 196 196 196 196 196 4 81 120 120 120 120 120 56 145 173 173 173 173 173 173 180 189 33 202 202 202 202 202 202 18 37 190 174 174 174 174 174 78 118 253 146 153 0 226 240 213 196 11 195 194 194 194 194 194 130 72 77 77 77 77 77 77 114 123 75 74 74 74 74 74 136 186 186 186 186 186 186 228 71 188 220 77 208 119 17 47 252 252 224 224 224 224 224 64 122 1 12 12 12 12 12 12 88 62 53 53 53 53 53 149 255 119 199 199 199 199 199 199 89 76 8 203 88 56 109 105 77 144 212 203 208 175 114 194 210 190 135 229 29 156 49 108 189 164 84 56 154 11 83 38 237 119 177 174 247 247 247 247 247 247 39 42 43 43 43 43 43 35 242 243 243 243 243 243 99 209 82 225 25 32 142 191 15 239 3 240 129 175 38 30 121 119 119 119 119 119 119 182 94 223 223 223 223 223 223 23 141 85 9 167 120 15 192 8 150 150 248 148 148 148 148 148 20 34 103 103 103 103 103 103 230 67 0 8 49 55 55 55 55 55 39 153 71 185 207 0 89 19 15 32 232 37 76 208 206 206 206 206 206 142 248 244 241 241 241 241 241 145 109 184 96 74 96 138 80 15 226 253 226 136 199 190 1 245 32 15 224 249 191 159 27 124 64 0 190 196 203 187 28 4 208 210 210 210 210 210 98 65 48 68 39 197 165 15 15 15 15 15 15 108 21 100 105 105 105 105 105 201 136 134 16 166 166 166 166 166 166 226 137 127 123 123 123 123 123 99 51 16 27 186 204 204 204 204 204 76 182 33 252 103 84 84 134 2 124 23 241 120 222 214 214 214 214 214 198 58 10 66 140 140 140 140 140 140 136 212 213 213 213 213 213 69 83 140 72 56 203 233 233 233 233 233 105 162 139 139 139 139 139 11 102 82 16 43 194 70 79 120 132 31 29 29 29 29 29 49 223 130 13 29 234 195 192 16 23 130 0 62 189 19 254 46 226 211 211 211 211 211 211 69 71 38 108 189 164 85 17 78 248 144 170 168 168 168 168 168 48 31 1 39 139 122 80 239 241 241 241 241 241 177 104 253 24 8 8 97 224 253 95 118 25 202 151 120 13 13 13 13 13 13 70 132 164 29 176 56 220 223 223 223 223 223 179 20 33 139 215 215 215 215 215 87 241 245 246 244 244 244 244 244 176 124 64 64 64 64 64 128 20 60 254 247 207 76 59 56 47 28 73 34 149 55 241 176 161 30 30 30 30 30 30 44 212 48 59 59 59 59 59 75 100 98 98 98 98 98 194 70 50 14 72 190 10 16 220 199 199 199 199 199 135 72 73 73 73 73 73 137 45 71 225 115 66 67 67 67 67 67 137 38 39 39 39 39 39 89 47 127 108 44 8 196 99 131 3 226 49 226 225 36 113 20 40 236 108 191 10 53 53 53 53 53 53 68 123 123 123 123 123 123 68 77 77 77 77 77 77 114 136 5 125 23 241 0 136 199 9 19 108 50 95 194 97 194 224 140 97 42 176 170 130 208 146 80 95 95 95 95 95 79 212 216 216 216 216 216 200 218 27 31 31 31 31 31 207 70 62 32 214 135 254 247 103 216 43 168 16 183 33 144 126 21 241 56 99 189 189 189 189 189 189 229 127 207 7 209 77 28 77 138 3 86 45 248 158 176 32 253 253 253 253 253 253 108 7 14 211 216 217 217 217 217 217 201 174 237 192 100 195 151 192 4 77 77 77 77 77 77 177 222 75 104 54 186 200 113 2 1 56 78 48 114 56 238 244 244 244 244 244 84 52 21 28 120 176 84 96 155 69 83 193 178 143 227 70 71 71 71 71 71 57 78 208 81 150 206 204 204 204 204 204 112 156 192 215 112 156 192 212 240 79 5 235 122 214 15 193 6 137 227 4 49 36 142 19 132 177 57 78 32 60 199 153 155 155 155 155 155 179 242 194 169 32 248 199 113 213 213 213 213 213 213 172 125 72 5 3 147 125 95 112 30 193 113 174 174 174 174 174 174 194 245 241 152 1 80 242 229 229 229 229 229 133 165 242 26 241 118 118 118 118 118 118 108 36 241 5 54 86 24 249 88 247 15 14 14 14 14 14 138 94 48 147 245 170 14 22 3 231 18 97 97 97 97 97 97 162 51 64 238 203 80 225 231 176 189 177 177 177 177 177 177 44 143 13 144 189 189 189 189 189 61 35 94 92 125 63 149 120 228 229 126 32 195 183 193 32 26 35 30 177 153 230 230 230 230 230 102 230 4 63 59 226 17 74 248 46 226 249 242 38 247 88 144 48 241 48 61 32 62 38 38 38 38 38 230 247 35 94 90 200 109 25 42 137 248 200 200 200 200 200 72 230 91 248 2 59 227 239 54 53 146 202 201 76 0 105 99 65 146 136 135 51 250 40 241 184 112 133 235 38 124 137 255 168 239 250 104 185 47 139 5 73 34 94 248 222 14 95 44 45 45 45 45 45 17 21 20 20 20 20 20 176 245 57 110 67 200 138 120 89 9 244 229 78 24 171 26 16 143 139 81 112 174 8 25 240 197 242 242 242 242 242 50 81 84 84 84 84 84 20 235 32 70 60 130 114 95 69 188 172 76 15 111 1 196 1 91 123 156 44 33 142 158 156 156 156 156 156 204 130 100 124 177 178 178 178 178 178 66 20 23 23 23 23 23 199 66 14 63 157 120 228 165 21 228 195 51 0 196 195 25 98 6 20 21 21 21 21 21 17 9 118 198 252 137 95 93 93 93 93 93 37 74 76 76 76 76 76 252 245 136 231 11 222 51 160 188 188 188 188 188 92 148 248 188 188 188 188 188 60 118 178 196 23 107 107 107 107 107 107 68 73 73 73 73 73 73 44 172 251 187 18 207 91 0 216 240 138 138 138 138 138 10 209 107 223 146 14 159 197 97 125 125 125 125 125 157 205 168 63 133 120 222 2 8 31 46 251 250 250 250 250 250 178 152 7 4 64 57 67 67 67 67 67 67 34 107 107 107 107 107 107 209 250 16 213 44 45 45 45 45 45 101 121 220 80 67 216 25 103 189 210 118 88 94 229 96 130 165 125 15 39 104 50 19 64 216 7 232 235 235 235 235 235 139 158 144 33 76 125 114 114 114 114 114 194 46 80 1 8 78 101 103 103 103 103 103 19 109 108 108 108 108 108 16 213 214 214 214 214 214 18 69 68 68 68 68 68 136 238 140 191 250 223 148 146 158 203 10 82 11 0 211 3 192 102 227 82 44 110 29 32 152 134 145 2 65 64 124 126 126 126 126 126 62 209 230 230 230 230 230 38 27 233 187 187 187 187 187 187 68 149 149 149 149 149 149 146 219 35 45 49 178 46 199 23 176 12 255 140 130 50 72 105 197 68 155 166 169 169 169 169 169 201 46 187 226 126 141 48 64 60 86 71 248 99 196 159 13 102 196 62 233 70 56 14 183 17 188 188 188 188 188 188 216 109 101 152 160 145 145 145 145 145 17 150 23 110 192 159 14 25 17 33 237 228 253 75 252 95 252 48 252 15 157 2 91 74 184 1 204 172 0 0 0 0 73 69 78 68 174 66 96 130)! !
 
-!DrGIcons class methodsFor: 'accessing'!
+!DrGIcons class methodsFor: 'accessing' stamp: ''!
 quit
 	^ self formFromGraphic: #(137 80 78 71 13 10 26 10 0 0 0 13 73 72 68 82 0 0 0 48 0 0 0 48 8 6 0 0 0 87 2 249 135 0 0 9 65 73 68 65 84 104 129 237 153 77 140 28 197 21 199 127 85 93 221 211 158 221 153 157 53 96 214 75 108 175 119 253 177 107 28 136 109 226 72 129 196 124 68 202 129 68 33 7 4 138 80 100 37 145 64 138 100 41 68 185 113 8 145 144 34 37 202 1 34 114 136 18 114 8 65 202 1 18 46 32 229 3 69 56 50 182 185 0 254 54 172 237 93 44 99 123 87 242 126 204 206 76 127 84 229 208 93 61 189 227 153 221 157 93 43 39 158 244 212 211 61 93 93 255 255 123 175 170 94 189 18 220 2 49 198 72 64 2 62 80 76 175 62 224 165 207 101 250 170 78 53 0 234 192 66 122 173 3 90 8 161 187 237 91 173 21 124 78 60 18 240 21 96 61 80 78 239 189 150 247 2 18 224 55 114 170 73 72 116 45 2 224 7 63 60 248 251 122 163 254 61 109 186 54 0 82 8 28 71 81 40 120 178 183 183 76 165 82 161 82 169 200 190 114 31 190 239 75 207 243 16 66 0 160 181 38 12 67 106 245 154 158 157 153 225 198 141 27 122 102 102 70 75 41 255 244 235 95 253 230 39 64 96 223 93 169 40 128 90 189 246 163 239 63 117 144 233 233 105 174 93 187 70 24 134 68 81 68 28 199 4 65 64 28 199 132 97 72 28 199 196 113 156 253 23 199 49 198 24 164 148 120 174 71 209 239 161 212 83 102 125 229 54 30 123 236 59 72 233 32 132 192 98 50 6 140 49 104 29 103 237 27 141 6 207 255 226 231 207 0 63 237 218 122 228 66 200 24 67 28 199 104 173 209 90 103 64 237 239 164 227 228 63 251 219 24 131 49 6 0 199 113 112 93 23 223 247 41 149 74 20 10 133 20 188 32 117 52 96 210 54 42 235 203 117 93 104 142 17 73 18 78 221 19 112 93 23 165 20 82 74 164 148 40 165 50 128 22 100 254 94 41 149 145 115 28 7 165 20 74 41 60 207 195 247 253 20 188 76 173 159 15 11 129 49 58 11 43 33 64 74 153 39 209 149 100 4 242 32 44 96 107 101 11 94 41 149 118 42 136 227 56 107 103 213 117 221 204 16 22 28 228 67 72 0 230 166 231 116 25 247 109 9 216 142 29 199 185 41 60 172 68 81 148 17 176 106 199 128 245 158 227 56 169 69 23 91 61 165 128 16 201 88 184 217 51 183 128 128 37 209 26 50 86 236 239 166 251 155 4 172 7 109 8 174 92 196 90 28 208 36 160 148 106 75 160 21 112 62 124 236 53 111 249 86 2 107 1 215 21 1 11 208 18 200 131 238 36 121 15 180 146 248 127 73 219 149 216 113 28 140 49 217 213 74 222 35 214 19 150 172 5 222 156 58 87 47 175 194 102 3 151 128 190 167 96 118 69 4 242 3 211 222 91 171 90 240 246 89 20 69 139 194 76 8 129 227 56 139 136 172 5 188 227 121 71 101 169 68 125 122 186 194 50 4 22 245 148 39 209 170 249 248 182 211 166 157 181 242 106 189 176 26 121 125 96 96 200 81 234 232 87 94 120 97 160 127 231 206 21 229 70 25 129 165 192 119 34 212 142 220 106 193 255 243 192 129 205 225 244 244 145 251 158 123 110 160 255 238 187 87 220 110 17 129 213 16 105 37 179 154 49 80 152 155 99 250 200 145 255 236 125 246 217 219 43 35 35 232 249 121 76 24 118 71 160 19 137 165 238 243 237 58 253 183 156 212 38 39 217 243 198 155 220 251 244 211 183 247 111 223 46 23 142 31 71 47 44 96 244 202 82 162 155 102 33 41 37 58 215 120 169 123 107 253 114 185 204 240 240 48 81 20 117 21 70 11 19 19 252 247 145 111 176 247 241 199 89 63 58 42 171 199 142 65 28 99 130 128 40 138 124 9 151 94 109 191 79 80 6 212 83 32 110 90 7 236 117 37 30 176 235 128 49 6 215 117 169 84 42 185 44 116 121 240 239 62 252 8 219 30 124 144 59 198 118 81 125 239 61 136 34 112 28 132 227 176 255 208 33 0 12 248 89 254 145 170 49 134 119 14 29 138 168 215 111 94 200 86 163 213 106 149 195 135 15 179 123 247 110 198 198 198 114 30 104 207 98 97 98 130 119 190 126 128 145 253 251 185 125 87 2 222 132 97 6 126 230 237 183 155 75 184 49 160 117 18 82 113 140 137 99 202 143 62 10 16 65 155 16 90 45 137 254 254 126 250 250 250 80 74 49 59 219 121 234 174 94 186 196 191 30 248 26 67 187 119 39 224 143 30 197 4 65 2 94 74 140 148 144 243 182 177 150 207 147 8 195 228 217 173 36 176 113 227 70 134 134 134 152 156 156 164 88 44 118 6 127 255 3 108 26 30 230 142 93 187 168 30 59 134 169 215 19 240 74 97 164 68 164 4 22 229 193 54 173 215 26 19 69 152 70 35 91 72 59 18 232 230 190 84 42 49 58 58 202 197 139 23 153 159 159 167 92 46 119 0 127 63 27 7 6 216 176 107 23 213 227 199 49 181 26 40 149 88 62 138 146 171 16 73 248 228 67 200 198 126 234 1 221 104 100 223 237 88 149 88 41 17 165 20 123 246 236 225 202 149 43 76 76 76 48 48 48 144 165 31 86 194 153 25 222 28 30 102 235 142 29 12 220 115 15 11 239 191 143 174 213 18 203 199 113 98 121 199 193 8 129 144 146 184 90 69 207 205 37 64 163 40 9 41 207 67 22 139 200 117 235 48 141 70 231 16 202 131 91 105 232 92 191 126 157 241 241 113 42 149 138 221 227 46 18 213 211 67 113 112 144 234 244 52 225 212 20 70 107 116 173 134 112 93 112 28 140 214 152 70 3 93 173 18 207 206 98 210 141 83 7 203 178 110 255 126 76 154 202 175 153 192 229 203 151 113 28 135 66 161 128 82 170 237 66 38 148 226 209 51 103 248 247 67 15 241 201 145 35 108 29 27 35 154 154 34 152 156 76 94 104 217 249 45 41 198 44 90 232 218 166 141 107 77 39 218 137 92 231 243 213 183 222 66 111 217 194 133 83 167 240 54 111 198 29 24 232 14 188 229 144 243 80 199 188 119 181 179 209 98 2 182 56 144 212 151 180 235 178 231 141 215 9 55 109 226 194 233 211 120 155 54 37 36 186 149 28 129 37 75 139 43 25 200 237 8 231 197 24 178 34 86 24 134 196 202 101 236 181 191 112 242 137 39 25 63 123 150 173 219 183 3 16 126 246 89 214 70 246 244 100 211 105 174 131 230 55 211 248 7 212 146 179 208 114 68 172 182 110 37 147 20 195 190 173 137 99 171 73 49 203 120 5 134 254 248 7 62 57 120 144 11 231 206 177 117 100 4 140 33 188 122 21 128 226 190 125 132 141 6 113 20 65 126 97 19 2 164 164 30 4 73 138 1 114 217 105 116 185 152 79 204 160 178 205 141 148 50 205 143 52 54 149 48 70 167 247 52 255 43 248 108 124 249 101 46 63 243 12 231 207 158 101 251 142 29 24 99 136 174 93 67 87 171 124 116 226 4 81 163 49 5 4 2 116 106 62 157 84 150 154 21 188 21 133 80 43 240 188 135 164 148 184 174 75 161 80 192 117 221 108 203 121 254 252 199 244 247 87 168 84 42 45 223 36 109 39 80 61 69 54 188 244 34 39 158 120 18 121 250 116 48 188 99 135 151 198 28 2 130 95 194 119 79 37 213 235 128 36 247 9 90 84 47 185 121 109 7 222 110 41 45 104 223 247 51 181 4 226 56 102 110 110 150 43 87 174 240 241 199 159 52 219 59 18 233 72 28 229 224 40 7 165 92 220 82 47 239 62 124 128 233 48 28 191 112 238 92 224 110 216 0 169 23 189 230 217 65 144 187 90 50 17 16 173 136 128 13 23 187 15 246 60 47 171 129 90 245 60 47 43 201 84 23 170 212 235 117 170 11 11 212 235 53 98 173 145 142 131 35 37 202 81 77 85 14 158 231 129 87 224 181 109 219 158 152 110 52 206 93 56 127 62 176 131 180 39 57 71 176 218 142 204 242 7 28 150 132 235 186 89 238 159 175 1 217 248 47 20 60 26 141 6 115 115 115 57 162 46 219 70 134 137 162 100 123 40 29 137 66 161 141 198 160 73 206 35 12 142 114 152 189 237 182 169 223 249 254 183 127 92 175 255 157 211 167 71 137 99 214 55 193 235 188 213 201 85 176 151 157 133 172 245 109 249 36 31 74 82 74 124 223 167 209 168 243 89 58 13 58 142 67 169 92 102 240 174 141 220 57 112 39 202 81 89 77 213 26 64 72 145 18 212 144 86 167 119 238 220 185 240 214 248 248 141 191 214 235 143 60 25 4 255 48 240 165 225 38 129 69 160 243 210 49 149 176 224 173 180 18 88 183 110 29 181 90 141 75 151 46 18 69 33 202 117 25 220 56 200 208 208 22 250 251 251 147 54 177 38 140 131 100 50 50 205 239 104 99 207 28 52 82 36 253 189 242 202 43 243 64 36 132 88 248 22 220 95 132 231 251 97 170 19 240 142 4 44 248 214 89 199 18 40 22 139 4 97 192 185 243 231 168 86 231 233 237 237 101 120 100 152 161 161 45 248 190 15 64 16 5 205 239 217 169 148 92 193 88 167 167 52 58 38 142 181 221 99 107 219 247 211 137 213 127 182 20 240 142 4 242 224 243 218 211 211 67 20 69 156 62 115 146 235 215 167 24 28 28 228 190 125 123 25 252 194 93 72 145 144 12 130 160 221 231 72 25 100 52 178 211 158 56 38 214 122 81 209 160 91 89 118 83 95 42 149 144 82 242 225 71 31 242 233 167 147 108 223 177 157 111 238 219 67 95 185 12 66 100 3 116 165 210 60 229 209 233 145 149 185 117 4 242 82 46 151 241 125 159 15 62 248 128 203 87 62 101 108 108 148 251 190 188 39 205 247 5 141 160 59 224 77 49 233 6 75 231 200 24 232 242 108 172 45 1 33 146 205 121 111 111 47 39 79 158 224 234 181 171 140 142 237 228 222 189 95 76 199 161 33 8 151 8 147 149 225 199 164 36 154 135 126 205 114 254 154 8 148 203 37 198 199 199 57 115 246 20 35 219 182 50 188 109 11 2 65 180 86 208 173 98 154 131 26 211 44 219 175 70 50 2 115 243 179 76 76 94 100 195 157 119 208 183 126 27 66 8 162 120 137 173 221 45 16 11 92 74 185 234 65 160 0 252 130 251 183 151 126 251 226 99 157 94 90 173 123 91 165 147 165 123 138 61 127 190 37 29 124 46 159 75 247 242 63 81 5 144 78 154 113 137 92 0 0 0 0 73 69 78 68 174 66 96 130)! !
 
-!DrGIcons class methodsFor: 'accessing'!
+!DrGIcons class methodsFor: 'accessing' stamp: ''!
 ray
 	^self formFromGraphic: #(137 80 78 71 13 10 26 10 0 0 0 13 73 72 68 82 0 0 0 48 0 0 0 48 16 6 0 0 0 7 146 37 196 0 0 0 6 98 75 71 68 255 255 255 255 255 255 9 88 247 220 0 0 0 9 112 72 89 115 0 0 0 72 0 0 0 72 0 70 201 107 62 0 0 1 149 73 68 65 84 120 218 237 154 61 14 130 48 24 134 91 103 56 4 3 215 106 76 186 25 35 151 241 8 14 156 128 201 155 56 153 56 178 187 144 212 161 49 198 250 83 104 191 210 79 121 159 173 4 18 120 31 126 90 242 10 1 120 97 76 219 182 173 49 185 207 99 113 28 143 85 85 85 198 156 78 117 93 215 198 64 68 38 92 17 215 107 211 52 13 68 164 98 229 110 56 28 250 190 239 133 56 159 135 97 24 132 184 92 186 174 235 132 128 136 196 40 165 148 82 143 128 215 235 178 44 75 99 226 158 136 251 126 16 247 17 55 120 26 17 110 240 16 224 101 172 8 59 242 5 12 1 193 248 68 88 124 34 16 124 52 223 69 64 192 108 196 138 208 90 107 173 31 199 187 99 48 146 216 87 17 130 39 37 244 85 4 17 46 171 105 187 143 13 78 74 119 139 157 190 10 177 223 23 69 81 228 190 108 62 76 20 224 67 202 231 59 92 74 59 125 197 202 154 136 207 179 28 223 199 150 102 101 13 94 240 5 15 17 137 152 26 60 68 16 17 27 124 154 159 126 11 100 234 2 43 205 79 191 5 178 219 109 183 155 77 248 202 22 34 152 0 17 76 128 8 38 64 4 19 66 69 160 197 65 12 158 8 38 64 4 19 32 130 9 16 193 4 136 96 2 68 48 1 34 152 48 143 8 212 110 188 160 114 201 4 84 46 153 128 202 37 19 168 43 151 232 57 5 226 138 120 14 18 5 179 217 120 31 228 124 34 100 232 129 255 73 236 29 45 39 231 73 220 140 251 85 194 43 151 223 183 251 129 128 81 188 86 46 237 56 247 121 253 13 225 149 75 124 140 137 136 45 156 129 64 98 131 135 8 34 16 108 38 98 155 126 224 199 185 1 85 109 241 171 221 62 127 106 0 0 0 0 73 69 78 68 174 66 96 130)! !
 
-!DrGIcons class methodsFor: 'accessing'!
+!DrGIcons class methodsFor: 'accessing' stamp: ''!
 redo
 	^ self formFromGraphic: #(137 80 78 71 13 10 26 10 0 0 0 13 73 72 68 82 0 0 0 48 0 0 0 48 8 6 0 0 0 87 2 249 135 0 0 0 6 98 75 71 68 0 255 0 255 0 255 160 189 167 147 0 0 0 9 112 72 89 115 0 0 13 215 0 0 13 215 1 66 40 155 120 0 0 0 7 116 73 77 69 7 215 6 21 14 22 55 133 211 233 232 0 0 8 11 73 68 65 84 104 222 237 152 105 108 84 215 21 199 255 247 222 247 222 204 120 188 225 193 216 198 27 182 176 195 82 108 140 77 73 104 33 64 0 177 101 32 141 147 170 129 46 106 196 180 85 219 168 31 218 170 21 72 84 173 104 20 169 85 104 139 42 58 137 105 17 137 66 128 54 241 184 132 134 134 128 144 193 16 92 28 83 4 49 16 179 120 101 48 227 241 50 51 111 222 123 247 222 126 176 227 96 48 48 4 236 98 201 231 203 147 238 242 206 255 119 238 126 128 49 27 179 49 27 213 70 70 194 137 219 171 217 1 220 0 80 238 243 24 251 31 230 191 233 8 6 203 225 74 200 248 251 234 215 180 239 141 74 0 66 32 126 182 124 187 35 119 252 180 87 87 191 110 123 101 52 142 0 226 181 113 248 241 226 173 142 226 156 121 47 173 169 176 237 113 123 53 117 84 1 0 64 179 254 49 190 61 247 215 246 5 83 203 159 166 140 28 113 123 181 164 81 5 208 99 94 71 99 168 6 79 23 255 208 246 236 151 95 42 165 140 212 185 189 90 246 168 1 0 0 93 244 224 211 208 81 60 145 191 90 93 191 232 229 92 198 104 157 219 171 21 143 26 0 2 10 75 70 113 41 92 131 130 9 37 244 167 43 95 79 177 107 113 71 221 94 109 233 255 253 28 112 123 181 100 0 83 1 20 16 130 41 148 145 153 18 120 204 78 227 39 189 242 220 251 244 116 247 62 80 66 65 41 235 251 18 5 89 142 34 24 134 137 223 191 231 137 116 133 59 126 84 185 62 186 125 196 1 220 94 45 143 50 178 137 17 237 249 130 244 34 115 162 107 178 154 154 152 97 79 113 78 36 201 142 116 36 219 38 160 203 106 131 223 184 0 70 24 8 165 160 132 13 192 164 170 147 97 147 137 216 114 224 7 225 214 96 227 150 119 95 212 55 140 8 128 219 171 77 165 140 252 38 78 75 90 177 168 168 92 157 149 189 88 225 136 66 23 189 48 68 24 166 136 192 148 58 76 17 5 37 12 26 181 131 246 139 39 148 130 17 6 144 62 25 201 44 19 201 44 7 21 213 191 208 207 54 31 127 135 115 241 45 159 199 176 134 5 192 237 213 236 148 145 55 156 90 210 138 167 102 62 103 43 206 92 68 3 230 21 52 71 62 70 84 132 192 136 6 133 104 3 95 149 218 160 82 7 52 102 7 163 234 64 244 9 29 188 12 227 233 120 164 105 83 176 247 212 239 244 234 134 202 90 110 137 21 62 143 209 243 80 1 220 94 45 137 50 114 112 118 225 226 233 75 166 173 179 183 69 207 161 41 124 10 166 212 7 4 43 68 3 163 159 65 216 160 49 59 52 234 128 74 237 80 153 189 127 234 208 33 37 216 105 34 50 181 34 28 186 240 166 89 121 114 219 21 206 197 147 62 143 209 250 80 0 220 94 45 141 50 90 61 111 250 170 156 199 11 86 105 39 3 111 33 204 3 159 71 155 106 183 71 191 95 188 66 85 72 34 0 0 140 41 125 211 8 4 0 1 1 1 35 42 52 18 7 66 24 84 98 71 182 109 22 78 183 30 22 127 61 252 171 0 231 124 161 207 99 156 121 32 0 183 87 203 167 148 84 47 42 121 54 181 56 103 158 114 44 176 3 6 15 221 20 105 21 10 177 129 17 21 92 154 136 138 94 68 69 8 32 22 4 225 0 17 96 84 133 194 84 48 170 220 209 143 74 28 208 168 19 241 108 60 30 79 252 14 142 54 190 35 125 199 43 186 42 215 71 199 221 218 86 185 15 241 132 50 242 207 37 165 207 167 21 100 20 211 15 253 127 130 5 3 10 209 64 37 135 0 135 41 34 136 138 16 162 34 4 33 251 214 30 163 74 159 96 162 66 33 202 192 246 121 55 51 101 4 66 112 76 115 46 195 249 27 199 177 191 118 103 68 74 249 245 161 218 42 247 49 0 223 204 116 229 229 20 101 205 163 251 219 95 134 37 251 196 11 112 68 101 8 134 184 14 46 205 193 167 36 97 253 130 25 24 237 219 46 25 97 32 247 0 80 137 3 101 137 47 160 173 227 170 220 117 228 143 61 220 178 150 250 60 198 137 47 12 224 246 106 113 148 145 87 151 150 172 117 158 233 218 143 168 8 129 128 130 195 132 33 34 144 16 67 44 46 50 32 248 51 8 74 89 255 194 189 179 217 105 34 102 39 174 195 249 150 58 81 89 83 209 201 57 159 231 243 24 231 238 212 62 38 0 74 201 198 226 252 39 156 14 123 28 62 189 86 3 0 144 16 176 164 113 151 62 236 166 19 247 115 136 187 45 59 39 115 97 118 194 90 212 54 30 180 62 56 181 187 141 115 241 85 159 199 184 122 55 109 74 76 91 38 85 126 50 127 106 185 173 54 248 214 144 209 30 28 193 4 100 56 166 97 162 99 26 226 85 23 52 234 132 141 57 192 136 134 70 253 40 174 232 31 13 217 47 81 201 64 89 252 55 112 232 236 94 179 230 220 254 139 156 139 249 62 143 209 113 47 125 177 140 64 201 196 148 92 110 145 8 252 209 11 119 108 148 162 229 160 36 249 25 36 178 12 52 7 63 193 217 198 122 253 70 208 111 232 70 136 134 245 16 181 41 14 237 251 203 55 43 67 1 184 212 73 40 118 150 99 223 169 138 104 253 165 234 58 110 137 37 62 143 209 27 203 236 136 5 160 116 98 106 158 189 211 104 30 178 146 17 21 51 146 86 34 219 86 130 195 231 246 68 78 55 158 32 18 188 150 91 98 23 128 51 0 130 0 34 132 144 179 10 177 221 214 63 77 155 130 233 142 149 216 83 179 69 191 208 90 255 33 183 196 51 62 143 97 196 186 179 220 19 128 41 100 126 250 184 28 165 211 108 26 178 126 78 202 90 24 33 41 183 29 218 160 235 102 168 66 8 249 203 91 163 215 159 149 184 205 178 108 37 152 108 91 128 157 71 126 27 105 234 184 184 155 91 226 187 62 143 33 238 231 108 186 39 128 148 40 77 75 152 132 250 208 127 110 171 43 140 127 18 54 158 140 55 171 55 135 44 203 92 232 243 24 181 177 58 206 179 207 69 150 58 11 21 31 108 138 248 187 91 182 190 251 162 254 243 97 121 208 72 33 211 18 108 41 232 177 252 131 201 137 134 233 9 203 177 187 122 107 196 178 204 23 238 71 252 99 113 139 145 70 191 132 191 188 191 81 247 119 53 111 252 162 226 99 26 1 194 72 83 80 111 207 115 178 20 24 34 60 80 62 78 203 129 191 247 50 186 245 27 23 125 30 163 42 86 135 51 156 110 168 86 18 182 29 216 16 9 71 123 60 149 235 163 111 12 235 163 158 0 117 254 158 171 72 84 211 110 217 117 178 209 28 56 47 36 151 255 142 213 153 148 2 66 87 241 218 191 54 133 67 122 119 249 131 138 143 9 128 91 242 152 63 216 98 58 21 215 160 114 75 68 251 47 145 68 139 213 89 195 245 19 114 251 129 205 61 186 17 89 226 243 24 239 141 84 98 171 206 223 217 162 59 217 96 128 160 217 2 87 98 58 161 20 11 98 139 190 100 187 14 253 161 211 178 204 185 62 143 113 108 36 51 115 117 77 254 70 213 134 4 196 177 228 155 0 90 145 236 76 133 77 137 203 119 123 181 57 49 60 94 27 45 206 75 135 186 211 15 43 128 207 99 116 114 105 236 252 239 229 26 115 82 220 236 129 114 33 45 180 68 79 227 169 210 53 14 202 200 219 110 175 102 187 219 13 25 18 115 125 30 227 242 195 206 130 196 148 23 18 92 110 170 191 240 145 229 144 46 184 180 73 3 151 181 43 145 147 72 117 165 147 130 172 25 19 24 163 59 220 94 77 185 67 16 184 207 99 92 27 142 28 19 139 105 241 85 241 222 194 85 232 108 15 52 47 44 203 91 162 118 154 77 144 68 128 81 138 176 8 160 52 103 153 218 29 238 204 15 134 58 86 20 174 164 123 27 170 120 116 164 146 100 44 230 29 164 138 159 204 93 166 151 70 140 80 254 204 172 133 74 143 184 6 9 14 139 24 8 73 63 74 115 151 170 140 210 180 246 64 211 218 194 149 116 87 67 21 15 61 82 0 0 80 184 138 237 11 246 118 44 13 71 122 93 51 179 23 170 186 236 2 135 1 65 44 116 89 45 40 76 155 205 156 90 82 124 75 199 165 57 159 84 90 127 123 228 0 26 170 184 89 184 138 237 236 10 5 202 110 4 175 103 23 101 63 169 218 85 7 116 217 3 14 19 65 171 25 147 199 151 209 214 246 150 212 204 197 189 167 26 170 248 197 225 6 184 239 228 174 207 99 24 130 203 53 109 29 77 127 254 199 193 29 145 80 64 200 124 199 92 36 43 89 80 136 29 166 140 64 85 84 14 160 115 100 18 197 15 150 86 44 99 10 125 59 115 66 110 122 65 206 244 56 87 82 58 218 59 154 69 77 253 193 144 105 153 89 62 143 209 253 72 3 244 67 168 0 214 41 42 91 14 137 175 72 160 141 91 252 107 247 122 203 142 217 152 141 217 195 177 255 1 144 175 73 88 169 71 12 171 0 0 0 0 73 69 78 68 174 66 96 130)! !
 
-!DrGIcons class methodsFor: 'accessing'!
+!DrGIcons class methodsFor: 'accessing' stamp: ''!
 rotation
 	^self formFromGraphic: #(137 80 78 71 13 10 26 10 0 0 0 13 73 72 68 82 0 0 0 48 0 0 0 48 16 6 0 0 0 7 146 37 196 0 0 0 6 98 75 71 68 255 255 255 255 255 255 9 88 247 220 0 0 0 9 112 72 89 115 0 0 0 72 0 0 0 72 0 70 201 107 62 0 0 3 12 73 68 65 84 120 218 237 155 189 106 181 64 16 134 85 210 89 88 167 144 64 26 193 194 52 22 66 238 64 66 106 123 187 16 115 1 185 128 128 157 96 237 77 132 220 66 192 54 22 150 129 96 145 43 176 246 43 14 131 100 206 217 111 221 31 221 245 231 105 68 61 174 235 59 179 51 235 142 199 48 14 14 14 180 97 24 254 110 183 143 165 186 3 39 246 35 56 230 106 153 219 144 4 54 77 213 2 168 134 83 0 154 199 98 97 89 61 124 63 134 97 28 1 32 228 126 4 154 155 137 57 96 186 240 105 154 166 105 138 61 254 48 24 39 211 67 7 22 254 178 33 240 44 135 182 221 61 236 66 200 17 126 63 134 160 132 6 209 152 63 85 64 104 127 127 161 75 241 123 128 105 254 29 49 32 56 54 200 110 71 136 232 3 146 5 227 205 25 69 81 20 69 177 121 225 177 0 211 161 9 59 77 120 124 255 97 240 60 207 243 188 113 63 8 130 32 8 54 111 8 121 179 32 62 67 144 67 77 24 134 97 24 142 231 227 56 142 227 88 119 131 48 247 79 254 8 224 187 63 249 250 44 203 178 44 211 125 100 144 28 139 249 66 50 47 47 207 207 79 79 178 132 103 239 71 158 231 121 158 15 131 109 219 182 109 235 102 136 5 12 160 11 96 8 232 63 95 104 162 229 36 210 113 218 136 93 32 4 233 2 14 77 114 158 91 154 176 162 29 89 15 144 172 217 66 146 232 8 144 198 250 13 128 67 146 216 115 139 94 207 204 250 13 0 192 123 68 146 36 73 146 208 158 107 57 3 104 82 146 156 159 40 138 162 40 50 140 182 109 219 182 149 221 58 127 8 210 212 0 242 99 170 239 251 190 239 27 70 215 117 93 215 209 126 77 90 4 164 29 199 91 233 130 204 45 212 252 139 109 150 101 89 150 165 79 104 157 56 2 72 203 197 152 169 231 119 179 154 73 133 49 4 201 50 196 212 223 203 27 202 48 27 114 28 199 113 28 89 173 138 195 153 3 104 194 232 87 72 129 228 235 186 174 235 186 170 123 51 34 57 9 143 194 235 86 156 175 235 186 174 235 49 25 111 22 221 138 243 124 47 98 27 64 77 113 158 92 55 208 107 117 116 113 88 5 22 93 68 27 6 177 197 184 233 60 62 190 190 222 223 15 195 221 221 195 195 237 237 106 95 196 104 197 121 118 202 178 44 203 210 48 78 203 209 242 123 12 194 171 80 139 3 209 226 60 110 135 124 159 203 5 25 246 145 0 30 13 66 99 193 177 231 107 55 2 176 71 159 246 225 236 232 241 85 85 85 85 117 190 127 185 85 210 231 42 227 249 190 239 251 190 55 205 166 105 154 166 145 191 68 64 242 252 175 175 143 143 239 111 13 166 223 243 20 231 105 200 143 245 216 179 241 72 16 141 253 179 35 183 56 207 10 187 65 72 253 155 219 0 210 67 16 20 231 217 66 139 108 104 95 216 1 227 113 220 223 169 119 186 185 9 130 235 107 254 164 172 62 102 41 225 92 40 200 81 96 8 146 160 63 63 77 243 251 123 222 34 24 2 120 127 127 123 251 252 164 59 220 206 12 64 255 103 15 205 147 193 0 144 116 113 8 98 77 198 11 253 71 108 189 96 143 7 129 213 132 214 29 128 103 63 216 195 213 78 46 54 204 50 211 229 131 51 14 225 53 225 16 90 17 243 126 84 124 112 112 240 127 254 1 239 98 79 150 168 109 20 16 0 0 0 0 73 69 78 68 174 66 96 130)! !
 
-!DrGIcons class methodsFor: 'accessing'!
+!DrGIcons class methodsFor: 'accessing' stamp: ''!
 scale
 	^ self formFromGraphic: #(137 80 78 71 13 10 26 10 0 0 0 13 73 72 68 82 0 0 0 47 0 0 0 47 16 6 0 0 0 35 183 79 239 0 0 0 6 98 75 71 68 255 255 255 255 255 255 9 88 247 220 0 0 0 9 112 72 89 115 0 0 0 72 0 0 0 72 0 70 201 107 62 0 0 2 19 73 68 65 84 120 218 237 155 221 141 194 48 12 128 219 211 45 193 19 18 3 192 0 172 128 88 162 111 8 49 0 3 176 69 150 64 172 192 0 48 0 18 79 140 209 123 138 170 90 117 157 31 39 78 56 127 47 149 142 107 147 124 117 156 186 132 166 81 50 208 247 227 99 211 252 72 119 233 187 25 68 67 126 165 187 86 55 152 216 182 165 206 36 255 65 153 3 143 232 105 134 27 162 169 70 8 21 239 72 215 117 93 215 193 8 167 83 202 151 1 159 18 176 99 60 80 248 244 13 112 237 15 95 191 50 227 219 241 116 55 96 124 125 255 99 37 83 197 118 56 116 106 199 158 143 93 143 194 182 87 93 138 42 117 106 210 169 100 122 134 20 79 238 14 251 230 96 119 225 243 41 170 24 164 133 227 237 83 66 221 132 75 141 147 20 144 234 186 152 88 90 124 172 240 66 35 62 117 7 248 30 243 252 34 90 122 220 226 13 199 139 63 157 142 199 195 129 123 209 204 46 62 93 131 110 57 181 148 194 38 91 123 249 132 151 93 89 22 35 156 111 224 220 149 101 94 15 217 26 138 253 220 181 125 87 177 249 133 51 191 157 228 46 205 83 209 182 227 25 98 251 203 253 74 33 185 7 174 72 225 190 142 107 41 207 149 114 138 73 41 249 174 19 87 216 168 112 111 120 43 201 208 119 54 201 41 71 56 36 174 178 12 125 254 79 78 238 119 41 238 237 165 169 44 197 169 126 0 181 161 194 83 163 187 12 132 240 20 175 51 129 11 162 178 10 223 162 166 204 147 44 213 236 247 231 243 118 219 247 155 205 110 183 90 233 76 129 32 226 195 69 89 225 210 3 43 29 100 183 48 158 74 108 4 47 151 235 245 98 49 252 253 122 189 92 238 247 225 188 247 251 249 252 124 164 135 87 46 108 169 6 139 244 199 227 118 123 189 116 77 128 4 139 215 136 142 131 20 15 75 112 141 96 30 80 241 86 184 49 198 24 3 191 56 160 177 107 128 46 182 211 144 145 11 111 0 38 18 75 61 212 34 252 95 113 22 64 69 174 21 111 83 17 124 126 215 20 53 38 248 199 103 48 194 173 88 56 67 164 7 88 61 54 130 225 209 126 206 187 197 77 97 222 37 171 144 168 112 97 84 112 102 190 244 187 76 69 81 68 248 3 221 179 150 104 213 141 47 93 0 0 0 0 73 69 78 68 174 66 96 130)! !
 
-!DrGIcons class methodsFor: 'accessing'!
+!DrGIcons class methodsFor: 'accessing' stamp: ''!
 segment
 	^self formFromGraphic: #(137 80 78 71 13 10 26 10 0 0 0 13 73 72 68 82 0 0 0 48 0 0 0 48 16 6 0 0 0 7 146 37 196 0 0 0 6 98 75 71 68 255 255 255 255 255 255 9 88 247 220 0 0 0 9 112 72 89 115 0 0 0 72 0 0 0 72 0 70 201 107 62 0 0 1 123 73 68 65 84 120 218 237 218 61 174 130 64 20 134 225 195 141 37 44 130 130 109 77 76 166 51 70 54 227 90 168 220 137 149 137 123 176 33 153 91 80 220 128 23 231 15 228 104 222 167 33 152 104 228 251 6 144 120 68 0 0 192 55 114 110 188 197 212 207 58 31 75 224 161 118 105 111 155 11 184 40 182 62 160 79 147 24 88 236 10 167 152 57 43 93 130 16 42 177 128 240 21 109 173 181 214 254 157 49 211 125 100 153 254 202 153 223 18 252 162 194 131 159 110 41 98 44 242 18 20 26 220 243 37 234 122 109 154 166 17 57 159 203 178 44 183 62 108 61 22 190 9 23 197 120 133 23 197 126 95 85 85 37 114 187 245 125 223 139 220 239 93 215 117 34 143 71 219 182 45 103 66 164 185 75 139 255 102 59 20 225 220 229 82 215 117 237 220 112 70 56 71 17 153 124 193 83 196 74 98 131 167 136 133 228 6 111 140 49 198 80 68 182 216 7 172 105 240 20 145 232 116 58 30 15 135 244 39 91 138 80 130 34 148 160 8 37 40 66 9 138 80 130 34 148 160 8 37 40 66 9 138 80 130 34 148 160 8 37 40 66 137 247 20 193 200 165 215 58 69 204 255 35 136 25 161 69 12 123 190 128 41 32 153 175 136 65 236 152 13 162 189 46 34 190 0 230 156 18 77 139 24 7 201 128 217 219 252 31 228 251 138 96 108 124 36 119 69 199 143 225 51 158 46 34 57 35 151 175 95 247 163 128 32 207 35 151 195 254 214 223 235 107 164 143 92 114 51 94 72 238 192 25 18 229 6 79 17 11 33 216 141 228 78 250 225 195 253 2 130 11 51 156 184 61 65 99 0 0 0 0 73 69 78 68 174 66 96 130)! !
 
-!DrGIcons class methodsFor: 'accessing'!
+!DrGIcons class methodsFor: 'accessing' stamp: ''!
 style
 	^self formFromGraphic: #(137 80 78 71 13 10 26 10 0 0 0 13 73 72 68 82 0 0 0 48 0 0 0 48 16 6 0 0 0 7 146 37 196 0 0 0 6 98 75 71 68 255 255 255 255 255 255 9 88 247 220 0 0 0 9 112 72 89 115 0 0 0 72 0 0 0 72 0 70 201 107 62 0 0 12 96 73 68 65 84 120 218 237 155 93 108 83 231 29 198 127 254 78 236 99 39 118 18 199 78 26 39 77 8 36 144 16 88 10 101 172 104 131 169 163 21 157 4 148 125 73 211 54 42 173 163 157 52 169 218 197 180 155 169 149 216 214 74 211 46 182 21 181 218 84 58 84 237 134 177 93 180 97 85 183 174 148 22 10 11 4 200 23 249 78 252 17 219 241 71 142 125 252 253 113 236 93 28 101 233 202 118 81 8 132 66 158 27 203 199 246 123 254 239 243 188 239 255 253 191 207 121 13 107 88 195 26 214 176 134 53 172 97 13 247 35 84 183 246 243 114 121 181 59 112 119 65 245 169 249 212 222 234 45 143 31 223 177 227 201 39 87 174 11 135 15 95 184 112 234 20 124 247 187 175 191 254 203 95 174 92 187 127 252 227 247 190 247 211 159 194 231 62 247 242 203 199 142 173 92 187 3 3 63 252 225 179 207 222 252 239 213 43 23 202 26 110 6 107 2 172 50 214 4 88 101 172 9 176 202 88 19 96 149 113 203 85 208 103 21 133 130 40 46 46 66 58 61 61 61 51 3 26 141 201 100 50 129 32 116 118 118 118 222 185 56 238 187 25 32 203 217 108 54 11 129 192 169 83 167 78 193 182 109 178 28 143 67 48 216 215 215 215 7 201 228 196 196 248 248 157 139 231 190 19 32 18 57 113 226 248 113 248 246 183 119 237 234 238 134 39 158 232 234 170 173 133 245 235 237 118 139 5 36 105 100 100 116 244 206 197 115 223 9 240 200 35 205 205 102 51 124 243 155 143 62 186 125 59 216 237 86 171 201 4 62 95 48 24 137 64 69 69 93 93 93 221 157 139 231 190 177 34 186 186 90 91 235 235 225 39 63 121 250 233 253 251 161 162 66 163 41 151 97 108 108 106 202 227 129 159 255 252 181 215 222 125 23 178 217 66 161 80 184 217 187 124 122 43 226 150 5 248 232 163 35 71 30 127 124 229 136 250 252 231 95 121 229 111 127 131 183 222 26 29 125 251 237 155 111 71 146 98 49 73 130 55 222 248 197 47 126 247 59 248 254 247 31 123 236 161 135 96 227 70 69 136 247 222 251 240 195 203 151 161 175 239 210 165 185 57 40 151 183 109 251 202 87 160 171 107 255 254 3 7 192 231 187 122 245 234 85 200 102 37 73 146 160 178 210 106 173 174 134 230 230 222 222 135 30 90 190 207 209 163 61 61 221 221 55 47 192 61 151 130 100 89 150 101 25 94 121 229 133 23 126 243 27 120 230 153 3 7 118 239 134 141 27 91 90 234 234 96 120 248 250 245 153 25 16 197 68 34 157 6 183 59 155 53 24 160 187 251 192 129 131 7 193 227 185 124 249 210 165 101 226 255 67 148 90 163 209 222 134 154 241 158 19 224 79 127 122 249 229 55 222 128 47 127 121 243 230 150 22 104 107 107 106 178 219 193 239 95 88 136 197 192 227 153 159 95 88 128 15 62 152 154 138 199 97 251 246 35 71 158 125 22 226 241 64 32 16 128 124 62 149 74 167 151 219 83 169 212 106 149 10 108 54 151 203 229 90 249 120 239 25 1 66 33 133 88 163 49 155 149 36 248 210 151 182 110 221 184 17 10 133 76 38 145 128 201 201 217 217 217 89 8 4 98 177 108 22 114 185 150 150 238 110 176 219 55 108 232 232 128 104 84 249 252 147 168 173 109 109 109 109 5 147 201 102 179 217 64 165 42 151 101 121 229 226 190 103 4 56 126 252 165 151 94 125 21 158 124 114 215 174 222 94 104 104 168 171 51 155 33 26 141 68 194 97 152 159 95 88 16 69 56 123 214 239 47 22 97 199 142 31 252 224 200 17 16 69 159 207 235 5 89 254 239 197 87 163 209 233 116 58 101 228 55 55 3 148 203 229 178 82 118 168 87 144 181 207 188 0 191 255 253 139 47 190 250 42 236 222 189 126 125 109 45 180 180 212 215 87 85 65 34 17 143 139 34 76 77 121 189 11 11 240 246 219 231 207 143 143 67 103 231 183 190 245 157 239 64 54 155 72 72 18 132 195 83 83 211 211 55 182 107 179 53 55 187 92 74 10 250 111 194 85 170 79 191 212 254 127 124 102 5 240 122 103 102 188 94 176 88 178 217 88 12 190 250 213 71 31 221 181 11 244 122 189 94 163 129 177 177 137 137 185 57 184 120 241 250 245 249 121 24 31 119 187 195 97 176 219 59 58 58 59 97 102 230 220 185 243 231 33 26 157 155 155 157 133 96 112 124 124 108 12 146 201 104 52 26 5 65 168 171 179 219 149 113 175 20 219 43 75 252 18 238 122 47 40 149 74 36 82 41 56 117 234 181 215 78 158 92 190 30 10 77 77 205 206 194 11 47 28 57 242 141 111 128 205 86 93 109 50 193 216 216 232 232 208 16 120 60 126 127 48 8 217 172 78 103 52 66 44 150 76 102 50 240 206 59 47 189 244 226 139 48 53 117 246 236 153 51 80 42 41 244 118 117 237 219 247 196 19 96 48 152 76 70 35 120 189 87 174 92 185 2 109 109 59 119 238 220 249 241 136 238 147 25 176 84 78 30 63 254 171 95 253 225 15 176 103 143 203 37 8 80 89 153 203 37 18 112 248 240 161 67 123 246 64 83 147 211 89 83 3 145 72 32 224 118 67 52 42 138 241 56 140 143 135 66 233 52 24 12 14 135 211 185 220 174 40 94 188 248 254 251 176 110 157 221 46 8 208 208 96 54 107 181 112 253 250 95 254 114 242 36 232 116 21 21 149 149 80 44 42 158 81 38 19 143 199 227 183 175 159 119 237 12 120 243 205 19 39 254 250 87 216 191 191 171 171 190 30 214 173 107 109 109 110 134 116 58 147 41 22 97 231 206 246 118 167 19 74 165 100 50 28 134 120 92 153 41 147 147 74 170 121 231 157 243 231 135 135 97 243 102 149 202 100 2 151 203 225 176 217 192 225 104 111 111 111 135 206 78 155 77 167 131 124 62 155 77 38 225 253 247 7 7 231 231 111 140 163 88 204 231 243 121 184 107 83 208 210 206 117 165 81 81 225 241 40 139 230 129 3 143 63 14 193 96 44 86 40 192 250 245 46 87 125 61 104 181 122 125 85 21 92 187 54 50 210 223 15 181 181 85 85 38 19 244 247 143 140 184 221 160 215 43 21 139 203 37 203 137 4 236 219 119 248 240 99 143 41 52 170 84 240 222 123 23 46 12 13 65 56 28 143 167 82 224 243 249 124 11 11 240 231 63 255 248 199 207 61 183 242 253 185 109 2 44 46 142 142 62 255 252 202 5 212 216 184 117 235 209 163 176 119 239 222 189 123 247 130 94 111 177 56 157 96 54 231 243 225 48 244 244 108 218 180 121 51 164 82 146 20 139 65 169 84 42 21 139 144 205 230 114 217 44 252 232 71 79 63 253 245 175 67 177 152 74 197 227 48 56 56 51 19 141 130 199 163 148 161 209 232 226 98 36 2 115 115 161 80 34 1 225 112 42 85 44 130 209 104 177 88 44 240 212 83 71 143 62 255 60 24 141 102 179 217 12 237 237 189 189 91 183 130 213 106 183 219 237 55 198 123 232 144 195 113 43 27 180 187 110 13 56 120 112 247 238 238 110 168 170 50 155 13 6 72 165 210 233 108 22 218 218 26 26 204 102 144 229 114 185 84 2 143 103 118 118 108 12 212 106 101 68 59 28 74 217 216 217 217 210 226 116 66 79 79 79 207 150 45 160 209 148 74 217 44 140 140 76 76 76 78 194 249 243 202 12 73 38 75 37 173 22 218 219 29 14 65 128 13 27 122 122 54 109 130 107 215 206 156 57 123 86 17 182 84 130 217 217 193 193 225 225 219 215 223 187 102 13 88 92 140 197 210 105 232 234 234 234 218 180 9 156 206 182 182 222 94 152 159 31 31 191 120 17 212 234 124 94 163 1 189 222 96 88 183 14 76 38 131 65 163 1 131 193 106 181 88 64 16 170 170 26 26 64 20 131 65 143 7 74 165 66 193 239 135 142 142 166 38 155 13 250 250 254 249 207 92 14 58 59 187 187 183 108 129 109 219 218 218 172 86 200 231 115 185 92 14 250 251 99 49 173 22 252 126 191 63 28 94 142 107 233 243 123 94 128 191 255 253 204 153 169 41 104 109 117 185 214 173 131 108 54 147 145 36 104 105 105 106 106 108 132 138 138 170 42 101 209 45 151 139 69 176 88 4 193 104 84 4 49 26 193 96 168 174 126 224 1 240 249 46 93 58 119 14 106 106 20 235 96 195 134 142 142 13 27 224 183 191 253 217 207 154 154 224 244 233 115 231 198 199 193 235 117 187 61 30 152 153 9 4 162 81 184 122 213 235 77 36 224 145 71 14 30 220 191 255 99 4 105 149 29 241 237 194 170 167 32 89 150 229 82 9 244 122 149 74 175 7 181 90 167 171 172 132 82 73 146 252 126 133 248 186 58 208 104 42 43 205 102 80 236 50 208 235 117 58 173 22 4 193 225 104 111 135 133 133 217 217 225 97 48 26 141 70 189 30 26 27 93 174 214 86 208 106 203 229 124 30 202 101 89 206 231 193 233 180 88 202 101 37 21 205 205 193 191 254 53 52 52 55 7 22 139 66 115 127 127 95 223 233 211 203 241 217 108 78 167 195 113 15 11 144 203 229 114 178 172 152 101 209 40 152 76 149 149 58 29 84 84 64 38 3 6 131 217 108 183 67 46 39 138 138 103 147 207 103 50 32 8 141 141 93 93 144 201 68 34 110 55 24 141 229 114 44 6 245 245 181 181 181 181 160 86 235 245 38 19 4 2 162 152 201 192 224 224 228 100 32 0 225 112 161 96 48 128 70 35 8 22 11 180 180 56 157 86 43 216 237 213 213 149 149 80 46 231 114 169 212 114 124 161 144 199 227 245 66 38 147 74 125 252 250 74 97 213 83 208 204 140 199 19 141 130 221 94 95 95 83 3 235 215 183 180 52 52 128 32 84 87 215 213 41 35 87 150 149 156 174 8 98 177 56 28 144 201 136 162 207 167 8 146 76 130 78 103 52 86 87 131 217 108 181 186 92 224 118 79 78 14 12 64 36 18 14 43 213 83 87 87 71 135 178 40 167 211 96 179 233 245 178 12 115 115 110 247 252 60 164 211 202 142 217 235 125 247 221 171 87 111 140 51 153 20 197 88 12 42 43 149 211 19 43 133 85 159 1 199 142 189 254 250 71 31 193 190 125 123 246 124 241 139 74 7 5 1 180 90 133 208 92 46 145 8 133 148 7 34 58 29 20 10 233 244 226 34 20 10 202 117 173 214 100 178 217 150 133 73 38 253 254 161 33 16 4 37 165 212 213 89 173 130 0 165 82 62 47 73 240 225 135 74 202 17 69 133 208 37 135 115 124 60 24 76 167 225 193 7 123 123 183 111 191 49 78 163 209 98 81 82 224 202 98 213 102 128 36 37 18 217 44 20 10 197 98 169 4 106 117 38 19 143 131 86 91 83 211 220 12 197 98 46 151 76 42 126 190 40 42 199 73 148 247 74 46 215 106 43 42 204 102 208 235 109 182 166 38 136 197 102 103 7 6 96 201 54 14 4 22 22 162 81 200 231 139 69 89 86 170 172 84 10 22 22 124 190 249 121 101 231 156 201 64 36 34 203 90 45 36 147 90 173 82 247 111 222 188 252 136 17 108 54 135 163 190 30 76 38 101 159 112 207 8 112 225 194 192 128 199 3 79 61 117 240 224 23 190 176 124 125 105 68 150 203 178 92 44 66 46 39 73 161 16 40 142 61 84 84 212 212 180 180 64 62 175 88 4 201 164 219 125 229 10 132 66 225 240 226 34 84 87 91 173 85 85 48 63 31 10 137 34 148 74 202 147 90 73 74 36 146 73 240 122 131 65 81 4 48 26 5 1 166 166 210 105 131 1 106 107 27 27 107 107 193 106 85 8 95 170 126 30 124 80 41 139 111 23 86 253 84 196 201 147 191 254 245 51 207 192 195 15 63 252 240 142 29 160 211 85 86 86 85 45 167 158 76 70 146 194 97 8 6 23 23 51 25 104 106 114 56 172 86 240 122 125 62 191 31 172 214 170 42 65 128 43 87 6 7 39 38 32 145 40 20 74 37 16 197 120 60 153 92 174 150 174 93 27 30 158 155 131 145 145 185 185 64 0 70 70 102 102 66 161 101 55 116 133 232 188 211 127 208 184 85 123 170 92 222 178 165 163 163 185 25 52 26 131 65 16 148 148 19 143 67 161 144 74 45 46 130 86 171 209 104 52 240 192 3 117 117 130 0 233 116 42 149 76 42 150 130 36 65 127 255 208 208 244 52 132 66 209 168 36 129 32 40 251 131 37 55 117 116 116 98 194 235 133 179 103 175 93 155 153 129 96 48 26 77 38 151 18 213 237 176 215 238 168 0 55 143 166 38 197 157 212 235 5 161 182 86 89 36 211 105 200 229 226 241 64 224 198 239 23 10 197 98 177 8 243 243 129 64 56 12 211 211 94 111 32 160 16 13 96 54 11 130 193 160 216 209 137 4 124 240 193 192 192 228 36 132 195 177 88 50 9 129 64 36 146 76 174 62 225 159 196 170 9 240 181 175 237 221 187 109 27 168 84 202 113 143 124 94 25 241 159 196 146 205 188 176 16 14 139 34 204 206 250 124 225 176 146 58 84 42 229 81 227 200 8 228 114 133 130 44 131 86 171 156 98 80 171 149 87 159 47 20 146 164 187 143 248 37 172 154 0 59 119 110 217 210 214 182 188 177 82 169 212 106 141 230 198 239 229 114 185 92 62 15 94 175 226 209 44 157 74 184 126 125 122 218 239 7 183 59 16 88 92 4 183 59 24 140 197 238 94 162 255 31 86 109 31 112 232 208 115 207 29 59 166 82 201 242 210 206 83 113 57 63 137 104 84 20 37 105 121 68 7 2 145 136 36 193 137 19 167 79 95 190 172 82 125 86 137 95 194 170 111 196 202 229 255 125 206 38 157 206 100 178 89 48 24 244 122 157 78 89 100 227 113 248 199 63 46 94 28 27 91 237 168 215 176 134 53 172 12 254 13 220 222 31 79 192 215 34 195 0 0 0 0 73 69 78 68 174 66 96 130)! !
 
-!DrGIcons class methodsFor: 'accessing'!
+!DrGIcons class methodsFor: 'accessing' stamp: ''!
 text 
 	^ self formFromGraphic: #(137 80 78 71 13 10 26 10 0 0 0 13 73 72 68 82 0 0 0 48 0 0 0 48 8 6 0 0 0 87 2 249 135 0 0 0 6 98 75 71 68 0 255 0 255 0 255 160 189 167 147 0 0 0 9 112 72 89 115 0 0 11 19 0 0 11 19 1 0 154 156 24 0 0 0 7 116 73 77 69 7 211 10 23 10 27 53 45 18 57 201 0 0 0 29 116 69 88 116 67 111 109 109 101 110 116 0 67 114 101 97 116 101 100 32 119 105 116 104 32 84 104 101 32 71 73 77 80 239 100 37 110 0 0 7 2 73 68 65 84 120 218 213 153 109 108 83 231 21 199 127 247 250 58 14 37 47 34 162 137 26 8 8 200 232 218 32 85 244 3 74 149 130 131 189 9 146 2 91 165 189 181 27 211 84 74 181 181 171 196 246 161 149 234 177 124 25 234 62 172 133 161 118 221 75 187 85 69 41 41 74 211 109 140 81 66 67 92 84 4 10 66 17 162 82 149 208 208 166 149 105 154 242 22 47 241 181 125 95 158 125 240 181 99 59 126 185 118 46 176 61 210 163 35 251 185 47 231 252 159 255 57 231 57 247 192 255 249 144 138 172 203 214 53 210 77 214 67 100 77 71 198 47 114 60 216 241 185 114 229 202 43 77 77 77 239 0 143 2 75 128 133 22 112 243 26 50 32 70 71 71 197 205 30 145 72 68 12 15 15 139 93 187 118 37 141 90 6 84 217 53 34 31 53 92 128 46 68 249 187 105 247 94 195 48 208 52 13 85 85 185 112 225 2 237 237 237 0 119 3 95 0 51 128 89 12 233 114 124 195 177 161 235 58 227 227 227 212 213 213 177 118 237 90 142 30 61 10 48 2 220 5 220 81 108 39 228 255 133 72 162 105 26 0 53 53 53 172 91 183 142 190 190 62 60 30 207 8 208 88 204 136 124 72 43 128 150 78 131 129 129 129 146 148 242 249 124 182 40 22 139 197 56 121 242 36 155 54 109 194 52 77 100 89 102 108 108 140 51 103 78 243 228 147 79 17 14 135 239 6 46 3 145 98 116 202 54 160 108 199 52 77 115 206 52 12 35 231 156 153 153 22 71 142 28 17 66 8 17 139 197 132 174 235 66 8 33 206 158 61 43 186 187 187 147 142 189 218 138 78 210 77 165 144 16 34 195 121 147 191 51 29 90 100 252 47 4 168 170 202 213 171 87 25 26 26 98 120 120 152 99 199 142 161 170 42 205 205 171 232 233 233 1 120 6 88 12 84 228 66 218 214 40 68 161 92 17 103 174 210 153 235 126 191 63 149 14 132 16 236 220 185 147 72 36 130 16 102 10 232 134 134 122 182 108 217 10 176 3 248 11 16 6 180 116 42 217 246 129 82 67 165 105 154 121 147 110 242 54 33 4 209 104 20 73 146 56 119 238 28 147 147 147 68 34 51 76 78 126 197 141 27 55 8 135 195 140 140 140 112 252 248 113 128 135 128 243 192 151 128 94 242 14 148 18 227 139 161 159 88 79 252 121 234 212 41 58 58 58 50 214 15 29 122 139 229 203 55 48 53 53 69 48 88 147 52 192 147 75 95 71 40 148 174 84 66 217 108 165 179 255 159 93 239 236 236 228 189 127 244 113 254 189 126 154 174 125 65 141 167 146 205 223 251 62 211 211 211 128 64 211 244 130 108 177 109 64 130 179 249 209 46 85 130 224 196 137 65 218 218 218 184 62 254 9 202 7 239 242 177 41 209 177 170 41 195 217 237 156 121 230 125 92 152 69 223 190 20 66 208 217 217 201 190 192 179 252 251 119 123 240 40 110 58 86 53 177 120 243 183 211 34 152 189 120 95 50 133 242 163 74 94 180 179 41 213 219 251 54 109 109 109 76 124 50 198 198 134 90 46 199 117 170 214 220 207 235 35 159 149 116 150 42 153 66 133 169 145 143 235 115 101 103 231 67 124 254 241 40 163 67 167 185 254 200 207 240 93 251 146 5 171 191 206 238 31 237 164 247 79 47 219 54 66 41 143 46 133 80 46 46 247 238 221 71 115 115 51 166 219 67 237 234 22 180 186 6 234 151 47 163 223 218 229 111 254 224 135 57 18 224 60 12 16 66 48 48 48 80 132 50 246 35 80 32 16 96 232 216 235 168 103 118 240 233 231 17 54 248 188 92 17 219 121 236 231 79 243 219 103 126 73 48 24 196 235 245 58 67 161 36 18 62 159 175 44 180 179 229 190 125 191 199 239 247 51 29 158 160 38 237 61 7 14 28 0 224 167 207 237 46 232 95 101 25 96 95 206 85 56 251 154 64 32 192 233 127 237 103 209 204 63 249 208 66 223 93 123 15 207 63 255 99 246 60 251 68 73 202 219 164 80 66 153 217 40 148 63 41 21 91 239 235 235 195 239 247 179 184 202 196 152 153 189 227 149 131 31 1 208 242 64 7 193 96 16 16 172 95 191 1 16 5 142 36 182 119 128 57 20 42 236 200 249 175 217 186 117 43 195 239 247 96 76 188 154 66 255 74 229 118 158 251 213 189 244 254 249 101 188 94 111 234 122 211 52 83 211 1 10 149 207 249 164 28 28 12 226 247 251 185 62 249 41 11 114 112 223 255 221 71 82 239 50 77 129 105 26 232 186 225 148 1 185 40 148 139 50 137 5 171 48 207 64 127 219 182 109 121 185 255 198 107 47 100 212 8 134 97 96 24 6 186 174 99 24 134 51 62 224 243 109 44 27 253 96 48 88 144 251 91 30 254 9 66 36 80 55 12 19 93 215 208 52 221 146 218 252 125 160 52 165 69 14 244 191 197 135 31 252 13 35 212 157 66 191 122 69 130 251 111 247 188 146 66 221 52 77 98 177 24 241 120 28 77 139 163 235 6 170 170 222 26 31 200 231 184 99 99 151 240 251 253 212 214 52 50 19 154 125 238 139 251 95 3 192 251 141 239 164 232 18 141 70 137 199 99 68 163 49 52 45 14 72 40 138 226 12 133 202 221 133 195 135 15 211 210 210 194 64 239 95 185 171 225 107 84 47 128 234 21 219 9 116 221 75 239 193 63 160 235 58 154 22 71 85 163 196 227 113 84 85 69 8 129 44 203 200 178 132 44 203 78 100 98 24 28 60 145 133 118 250 119 217 92 232 39 86 187 186 186 24 232 217 203 165 139 49 0 54 60 250 116 10 125 141 69 244 247 247 19 143 199 137 70 163 214 103 21 23 146 4 173 173 173 184 92 46 92 46 151 51 62 208 222 190 177 44 31 0 136 68 84 154 150 46 165 110 81 53 99 151 198 9 116 189 192 137 119 15 81 191 244 30 84 53 66 60 174 161 40 74 26 234 46 20 69 113 198 128 98 201 201 142 252 234 63 58 245 75 86 80 219 188 140 213 107 188 244 255 253 85 106 239 92 201 212 212 20 146 36 161 40 110 20 101 86 105 183 91 65 8 129 219 237 198 227 241 56 69 161 65 219 71 137 108 231 62 63 26 226 190 170 70 182 172 241 242 199 23 119 243 209 248 52 198 165 247 45 101 43 80 20 151 133 182 140 44 187 144 101 137 7 31 92 143 44 75 78 80 40 153 156 188 101 214 190 112 229 218 117 30 219 241 56 7 223 60 192 146 165 203 144 36 137 202 202 74 60 30 15 110 183 146 218 1 73 146 113 185 18 78 43 73 137 26 222 1 39 46 45 108 166 135 94 93 79 100 209 238 131 135 120 233 165 253 212 55 52 82 81 81 65 117 117 181 69 153 10 20 69 70 146 18 220 7 9 73 74 188 51 41 29 58 141 38 178 105 118 132 41 20 129 132 16 86 44 135 61 123 126 67 107 235 3 120 60 21 44 92 88 149 66 91 146 64 150 93 41 96 102 149 23 206 213 196 201 7 37 43 164 82 234 2 211 52 184 124 57 132 16 38 134 97 166 56 158 173 112 182 191 101 3 115 11 11 154 76 154 73 146 140 162 72 8 225 66 81 210 105 40 89 40 219 15 197 243 174 137 157 168 206 74 247 35 7 107 226 114 191 64 148 47 29 246 1 167 107 99 123 210 94 59 53 239 184 120 241 98 201 159 12 243 161 154 116 80 251 50 161 67 40 20 42 127 7 38 38 38 44 35 110 207 8 133 66 132 195 225 204 152 109 115 184 128 95 115 11 58 245 54 103 15 176 217 234 90 42 118 186 148 50 80 67 162 107 222 8 44 184 149 189 227 57 153 20 84 171 83 249 153 213 102 42 218 98 2 112 91 157 193 59 44 171 111 167 1 186 213 102 157 177 122 100 216 49 32 185 19 210 109 84 62 243 136 155 163 79 252 95 25 186 111 33 126 22 55 5 0 0 0 0 73 69 78 68 174 66 96 130)! !
 
-!DrGIcons class methodsFor: 'accessing'!
+!DrGIcons class methodsFor: 'accessing' stamp: ''!
 translation
 	^ self formFromGraphic: #(137 80 78 71 13 10 26 10 0 0 0 13 73 72 68 82 0 0 0 48 0 0 0 48 16 6 0 0 0 7 146 37 196 0 0 0 6 98 75 71 68 255 255 255 255 255 255 9 88 247 220 0 0 0 9 112 72 89 115 0 0 0 72 0 0 0 72 0 70 201 107 62 0 0 2 82 73 68 65 84 120 218 237 150 191 106 194 80 20 135 175 165 110 250 16 86 66 199 128 139 116 232 35 152 181 72 36 184 20 132 14 78 46 18 16 33 147 62 66 183 46 77 23 31 32 56 185 56 41 100 22 218 161 67 119 151 14 29 110 7 57 4 143 164 73 108 146 147 120 207 183 92 126 33 38 242 157 63 68 8 134 148 10 245 31 160 162 213 178 172 86 75 74 200 219 237 203 203 118 11 169 146 155 151 43 106 17 212 104 218 253 253 237 45 221 251 175 169 5 228 5 238 248 184 247 29 38 35 187 137 80 102 5 129 216 184 29 255 246 246 248 248 250 10 41 191 149 116 225 64 103 7 231 195 195 243 115 183 123 122 253 248 204 14 101 86 208 129 160 147 255 94 73 220 241 137 249 248 152 205 102 179 64 40 100 207 235 118 131 14 15 56 46 64 84 199 71 77 72 246 147 82 24 194 68 67 222 108 122 189 94 47 200 211 105 167 211 233 72 105 219 182 109 219 231 138 82 80 52 128 5 3 88 52 206 97 157 127 30 248 57 10 23 98 179 49 77 211 140 47 62 221 9 136 123 93 1 242 17 15 68 253 94 161 66 124 125 13 6 131 65 184 120 200 147 201 120 60 30 7 215 211 41 68 20 201 159 95 154 207 173 247 247 249 124 62 151 242 230 102 52 26 141 42 21 207 59 172 162 245 122 191 223 239 133 184 187 171 213 106 53 33 86 171 102 179 217 20 162 90 245 125 223 23 226 231 71 215 117 93 8 199 113 28 199 201 235 243 18 10 113 1 159 179 32 30 50 136 159 78 13 195 48 78 87 14 100 220 241 249 76 0 166 196 171 41 174 120 44 246 233 169 221 110 183 169 197 151 152 115 197 39 205 12 162 108 226 191 191 135 195 225 80 74 124 46 151 141 70 163 81 162 66 167 37 30 147 86 33 194 68 239 118 154 166 105 193 9 226 251 253 122 189 94 151 210 178 44 203 178 10 92 136 172 196 99 146 222 31 87 56 22 143 11 64 237 151 92 252 127 73 42 190 240 19 80 22 241 24 22 79 76 148 248 176 213 67 94 136 178 139 199 43 8 139 198 185 48 19 112 233 226 225 190 40 241 185 23 66 21 241 88 44 249 234 81 85 124 210 204 226 89 252 101 137 199 100 94 8 22 31 15 22 143 200 75 124 234 176 120 34 88 60 17 44 158 136 207 207 197 98 177 96 241 228 176 248 130 193 226 11 2 139 87 28 22 79 4 139 39 130 197 19 193 226 137 96 241 68 176 120 34 164 116 93 215 101 241 228 176 248 130 193 226 11 130 106 226 127 1 94 140 135 70 242 90 129 96 0 0 0 0 73 69 78 68 174 66 96 130)! !
 
-!DrGIcons class methodsFor: 'accessing'!
+!DrGIcons class methodsFor: 'accessing' stamp: ''!
 undo
 	^ self formFromGraphic: #(137 80 78 71 13 10 26 10 0 0 0 13 73 72 68 82 0 0 0 48 0 0 0 48 8 6 0 0 0 87 2 249 135 0 0 0 6 98 75 71 68 0 255 0 255 0 255 160 189 167 147 0 0 0 9 112 72 89 115 0 0 13 215 0 0 13 215 1 66 40 155 120 0 0 0 7 116 73 77 69 7 215 6 21 14 22 33 113 7 92 185 0 0 7 60 73 68 65 84 104 222 237 89 107 108 20 215 21 254 238 157 153 125 122 237 181 177 215 15 176 193 177 113 32 161 113 29 40 33 102 72 8 105 72 34 138 148 168 65 233 35 49 83 210 170 106 165 72 105 127 164 162 74 164 86 85 155 164 74 11 149 104 162 40 73 181 38 52 13 105 107 42 34 145 166 136 38 38 107 48 21 41 208 96 108 48 182 99 27 227 7 182 215 235 245 122 119 102 238 220 219 31 187 80 199 216 142 141 119 183 137 228 35 141 102 164 189 115 231 251 238 61 247 156 239 156 5 22 108 193 22 236 11 109 36 85 19 7 252 120 16 32 127 1 196 34 85 67 44 85 223 161 169 152 180 161 150 124 223 225 41 254 43 32 156 169 222 129 164 19 56 246 134 244 130 39 175 114 87 229 131 117 78 66 8 79 53 1 57 137 46 163 72 146 252 102 78 241 189 95 43 191 227 5 7 145 92 105 57 3 52 73 224 179 36 89 62 186 248 150 237 91 203 239 124 209 1 222 158 182 67 44 39 1 124 177 36 201 245 101 107 127 186 36 119 233 54 69 152 231 0 30 1 148 47 0 129 128 31 149 84 146 143 220 114 207 158 108 79 222 58 42 140 51 128 48 210 26 70 229 121 128 223 44 219 220 117 183 109 174 117 57 50 74 72 28 188 149 246 60 112 67 4 26 106 201 14 155 203 183 231 182 205 251 156 138 205 9 97 52 1 16 147 70 9 72 74 38 129 24 111 106 252 35 206 91 140 157 22 66 180 0 104 5 208 172 106 24 249 191 36 178 99 111 72 191 116 121 203 159 186 117 147 223 69 201 56 192 58 167 89 154 18 128 228 128 25 87 96 198 250 97 140 247 136 232 104 103 44 60 212 98 6 47 159 80 0 243 109 139 177 159 171 26 58 210 66 32 224 135 44 73 242 94 111 209 250 135 43 170 119 57 32 250 0 214 55 195 27 102 226 110 3 72 252 34 196 1 16 39 132 144 49 124 233 239 172 227 212 171 166 197 70 15 89 204 124 86 213 208 156 50 2 1 63 60 146 44 31 42 172 216 182 166 184 114 167 3 172 13 176 130 51 188 193 1 48 64 152 16 194 188 246 124 237 78 156 32 202 114 128 248 48 210 123 152 183 127 244 138 206 204 208 33 139 153 143 205 85 118 144 89 128 47 146 100 185 190 180 234 169 165 190 242 26 69 152 205 0 31 251 140 183 174 2 54 33 196 36 240 19 126 3 177 3 114 5 32 149 160 231 220 107 177 203 231 235 154 44 198 238 85 53 132 146 66 32 224 199 42 42 73 239 175 216 240 171 156 172 130 77 84 232 167 33 68 44 30 109 196 56 32 24 0 1 1 145 56 196 2 16 28 32 18 8 20 0 28 2 102 28 240 213 11 137 93 185 74 66 24 32 52 11 212 181 5 253 109 117 70 215 199 111 117 89 22 83 85 13 253 243 38 208 80 75 130 55 173 254 110 86 238 178 175 19 22 122 21 156 13 64 240 49 64 68 103 185 60 87 253 222 14 66 221 0 205 72 4 190 56 240 107 46 38 12 16 234 130 156 249 77 12 117 253 147 117 156 222 119 133 91 92 85 53 180 207 119 7 54 75 178 237 192 10 245 71 46 135 203 1 99 228 181 249 39 42 34 131 16 119 156 16 177 1 194 128 16 70 124 94 98 131 205 187 3 35 125 167 121 251 169 55 207 115 75 220 170 106 215 197 231 57 159 129 59 168 68 255 177 124 237 14 143 219 91 68 98 67 187 33 120 36 73 213 136 18 39 2 154 32 162 131 16 59 156 190 95 160 245 196 174 200 232 149 142 31 170 26 246 38 35 10 173 164 148 124 88 90 245 104 118 86 254 42 26 27 250 13 196 140 81 232 6 52 37 81 18 231 130 67 113 223 3 33 175 67 211 251 207 13 115 142 98 85 195 248 188 212 168 170 161 153 115 113 123 199 169 183 122 134 186 143 51 103 238 78 80 185 32 137 4 56 32 244 68 248 5 204 72 61 20 187 19 190 210 117 110 74 241 76 210 50 113 192 143 92 42 225 104 65 217 221 229 133 21 15 41 177 161 221 224 230 212 153 88 113 127 21 138 103 11 32 24 132 136 2 60 10 110 13 193 210 207 194 138 157 133 224 163 51 126 75 178 175 128 146 249 4 206 28 222 25 229 140 21 78 23 90 231 164 133 84 13 131 1 63 214 246 181 213 31 102 122 164 170 248 75 63 182 235 193 151 97 233 45 215 141 181 101 62 140 166 250 231 25 183 162 134 108 115 114 197 230 230 206 204 60 155 183 224 203 14 151 239 219 16 86 15 244 208 159 192 141 169 149 132 165 183 192 70 34 240 228 44 181 66 3 109 85 0 62 72 138 152 83 53 140 5 252 184 123 240 210 201 3 166 17 217 84 122 251 15 28 102 168 22 44 246 239 73 206 233 68 44 220 77 132 64 149 30 129 19 128 119 164 191 101 213 64 199 135 223 16 144 215 248 150 126 69 20 221 252 164 211 210 255 5 99 180 110 202 232 198 141 78 120 22 149 56 66 3 109 171 167 35 112 67 21 153 170 193 224 22 182 134 6 154 247 95 60 177 59 170 100 62 14 217 181 97 186 225 93 170 134 51 170 134 122 85 195 239 239 124 12 27 56 99 121 3 29 199 95 255 248 200 179 81 93 95 36 236 217 79 76 125 50 204 78 184 50 75 100 73 198 93 73 47 41 85 13 188 250 113 104 99 195 29 123 90 26 126 29 149 220 91 161 100 60 48 235 93 172 174 193 147 166 30 185 171 181 241 149 136 101 229 66 201 184 239 122 55 50 59 225 200 92 6 33 176 58 101 53 113 117 13 158 142 134 123 159 105 174 127 62 70 108 42 108 153 219 230 178 8 39 45 198 190 117 161 241 229 168 146 241 80 92 27 77 172 40 88 63 20 123 30 4 71 126 74 139 250 245 53 248 173 17 29 254 222 185 250 231 162 156 84 192 238 253 206 92 72 188 195 98 131 23 245 72 39 36 91 233 167 67 164 148 11 51 214 11 74 209 157 242 190 208 250 237 216 103 234 145 71 154 143 190 56 110 154 217 115 203 2 28 135 35 193 11 156 42 203 62 13 78 46 64 44 220 9 16 156 74 75 99 75 213 112 136 153 250 125 45 129 223 133 195 87 26 196 28 68 189 141 16 65 38 71 34 42 251 48 62 218 195 44 134 99 105 235 204 169 26 142 89 150 85 221 218 248 135 160 16 144 102 37 36 40 54 58 60 5 196 154 148 20 137 156 135 72 240 114 20 72 211 14 76 32 113 150 115 177 26 248 108 57 28 23 139 238 155 236 174 92 112 243 210 4 255 95 4 1 47 66 131 29 74 218 9 36 72 124 2 160 122 66 113 60 21 120 59 165 216 191 172 242 126 167 21 61 145 208 67 137 12 235 170 198 96 215 113 19 220 216 171 106 8 166 188 55 58 13 137 254 153 154 4 148 162 54 187 240 102 159 59 43 151 232 35 7 255 183 170 182 50 112 228 163 183 237 61 198 57 126 150 150 230 238 92 123 169 84 194 187 217 249 101 149 75 86 110 116 154 225 131 137 242 20 32 82 22 100 231 70 92 60 249 78 68 88 198 211 170 134 222 207 21 129 128 31 249 84 66 99 97 89 85 81 94 73 165 205 28 59 0 206 6 18 224 189 80 50 182 160 231 66 32 22 29 235 127 111 253 118 188 148 182 246 250 172 75 23 9 251 23 47 95 183 36 167 104 137 108 140 254 249 90 117 71 229 124 200 174 77 232 110 57 30 29 233 107 63 195 45 212 164 165 59 61 199 213 127 192 233 41 90 147 93 84 34 27 225 191 37 20 40 133 228 168 4 145 203 241 201 127 62 24 15 7 123 143 112 11 143 168 26 140 207 29 1 0 65 42 201 22 248 24 8 117 131 72 197 144 236 43 17 30 30 18 221 205 7 99 156 233 47 113 142 159 168 26 102 253 207 78 186 9 52 71 66 151 73 112 96 49 207 240 170 52 26 30 196 112 235 71 227 225 225 222 62 110 225 81 85 195 201 148 55 119 147 224 70 37 84 66 29 128 66 66 208 96 49 188 11 96 159 170 77 159 47 22 108 193 22 108 122 251 47 1 167 63 47 137 31 193 98 0 0 0 0 73 69 78 68 174 66 96 130)! !
 
-!DrGIcons class methodsFor: 'accessing'!
+!DrGIcons class methodsFor: 'accessing' stamp: ''!
 vector
 	^self formFromGraphic: #(137 80 78 71 13 10 26 10 0 0 0 13 73 72 68 82 0 0 0 48 0 0 0 48 16 6 0 0 0 7 146 37 196 0 0 0 6 98 75 71 68 255 255 255 255 255 255 9 88 247 220 0 0 0 9 112 72 89 115 0 0 0 72 0 0 0 72 0 70 201 107 62 0 0 1 73 73 68 65 84 120 218 237 213 49 142 130 64 20 128 225 113 59 11 14 65 193 77 188 0 23 152 120 3 206 194 13 204 196 130 154 130 202 214 83 88 16 19 75 58 10 27 34 86 47 36 99 8 236 46 227 51 248 127 141 25 108 204 255 230 161 49 0 0 0 0 0 0 111 179 209 254 1 159 226 126 207 178 44 235 123 255 249 249 92 150 101 105 204 110 87 215 117 189 89 188 215 215 13 96 44 244 237 86 85 85 53 156 175 215 174 235 58 99 142 199 166 105 26 99 30 143 52 77 83 99 156 115 206 185 229 6 177 250 1 204 13 46 36 188 144 1 28 14 109 219 182 203 111 192 143 118 160 208 182 219 60 207 243 33 220 220 240 62 107 173 181 246 117 144 255 181 250 13 240 93 46 73 146 36 67 200 177 240 161 95 61 98 245 27 48 102 234 198 11 9 31 106 3 190 102 0 99 255 5 114 211 199 206 18 62 212 6 172 158 132 151 87 207 233 20 199 113 220 247 251 125 20 69 209 48 16 57 203 167 127 227 67 109 192 106 205 13 239 135 157 250 30 19 254 26 254 183 103 120 8 175 100 169 240 62 6 49 33 84 120 31 225 61 239 10 15 15 225 149 16 94 9 225 149 16 94 9 225 149 16 94 9 225 149 16 94 9 225 149 16 94 9 225 149 16 94 9 225 149 244 125 81 20 5 225 213 17 254 195 16 254 67 16 30 0 0 0 175 158 187 58 229 157 66 156 78 5 0 0 0 0 73 69 78 68 174 66 96 130)! !
 
@@ -24592,17 +24592,17 @@ colorForm: aColor
 			yourself].
 	^ self iconWithBackground: graphic! !
 
-!DrGIcons class methodsFor: 'form'!
+!DrGIcons class methodsFor: 'form' stamp: ''!
 formFromGraphic: anArray
 	^ self formFromPNG: anArray 
 ! !
 
-!DrGIcons class methodsFor: 'form'!
+!DrGIcons class methodsFor: 'form' stamp: ''!
 formFromPNG: anArray
 	^ PNGReadWriter formFromStream: anArray asByteArray readStream
 ! !
 
-!DrGIcons class methodsFor: 'form'!
+!DrGIcons class methodsFor: 'form' stamp: ''!
 iconWith: morphOrForm background: aColor
 	^ self iconWith: morphOrForm extent: self menuExtent inset: self menuInset background: aColor
 ! !
@@ -24623,7 +24623,7 @@ iconWith: morphOrForm extent: extent inset: inset background: aColor
 		rule: Form blend .
 	^ form! !
 
-!DrGIcons class methodsFor: 'form'!
+!DrGIcons class methodsFor: 'form' stamp: ''!
 iconWithBackground: morphOrForm
 	^ self iconWith: morphOrForm background: Color white! !
 
@@ -24645,7 +24645,7 @@ pointMorph: sizeSymbol color: color shape: shapeSymbol
 	^ morph
 	! !
 
-!DrGIcons class methodsFor: 'form'!
+!DrGIcons class methodsFor: 'form' stamp: ''!
 segment: thick color: color dash: dash
 	^ self iconWithBackground: (self segmentMorph: thick color: color dash: dash).
 ! !
@@ -24700,7 +24700,7 @@ iconUI: symbol
 menuExtent
 	^ Theme current scale: 60@12! !
 
-!DrGIcons class methodsFor: 'helpers'!
+!DrGIcons class methodsFor: 'helpers' stamp: ''!
 menuInset
 	^ 4! !
 
@@ -24716,11 +24716,11 @@ scale: symbol to: integer
 				do: [:warning | warning resume].
 			svg imageForm: integer asPoint depth: 32]! !
 
-!DrGIcons class methodsFor: 'initialize-release'!
+!DrGIcons class methodsFor: 'initialize-release' stamp: ''!
 reset
 	forms := nil! !
 
-!DrGUIControlsManager methodsFor: 'accessing'!
+!DrGUIControlsManager methodsFor: 'accessing' stamp: ''!
 presenter: aPresenter
 	presenter := aPresenter! !
 
@@ -24773,15 +24773,15 @@ release
 	view release.
 	view := nil! !
 
-!DrGUIControlsManager methodsFor: 'tools collections'!
+!DrGUIControlsManager methodsFor: 'tools collections' stamp: ''!
 animateTools
 	^ #(#animate1 #animate2 #animate3 #animate4)! !
 
-!DrGUIControlsManager methodsFor: 'tools collections'!
+!DrGUIControlsManager methodsFor: 'tools collections' stamp: ''!
 curveTools
 	^ #(#line #parallel #perpendicular #perpendicularBisector #angleBisector #ray #segment #vector #circle #arc #arcCenter #polygon #polygonRegular #locus)! !
 
-!DrGUIControlsManager methodsFor: 'tools collections'!
+!DrGUIControlsManager methodsFor: 'tools collections' stamp: ''!
 macroTools
 	^ #(#macroBuild #macroExecute)! !
 
@@ -24793,23 +24793,23 @@ miscTools
 	#multipleMode #move
 	#eraser #style #property)! !
 
-!DrGUIControlsManager methodsFor: 'tools collections'!
+!DrGUIControlsManager methodsFor: 'tools collections' stamp: ''!
 numericTools
 	^ #(#distance #angleOriented #angleGeometric #coordinates #text)! !
 
-!DrGUIControlsManager methodsFor: 'tools collections'!
+!DrGUIControlsManager methodsFor: 'tools collections' stamp: ''!
 pointTools
 	^ #(#freePoint #middle #intersection #pointByCoordinates)! !
 
-!DrGUIControlsManager methodsFor: 'tools collections'!
+!DrGUIControlsManager methodsFor: 'tools collections' stamp: ''!
 scriptTools
 	^ #(#scriptRun #scriptEdit #scriptCreate)! !
 
-!DrGUIControlsManager methodsFor: 'tools collections'!
+!DrGUIControlsManager methodsFor: 'tools collections' stamp: ''!
 transformationTools
 	^ #(#symmetry #reflection #translation #rotation #homothety)! !
 
-!DrGUIControlsManager methodsFor: 'tools data'!
+!DrGUIControlsManager methodsFor: 'tools data' stamp: ''!
 angleBisectorButtonData
 	^ {DrGAngleBisectorBuilder  title. #angleBisector. #createAngleBisector. DrGAngleBisectorBuilder description}! !
 
@@ -24821,15 +24821,15 @@ angleGeometricButtonData
 angleOrientedButtonData
 	^ {DrGAngleOrientedBuilder title. #orientedAngle. #createAngleOriented. DrGAngleOrientedBuilder description}! !
 
-!DrGUIControlsManager methodsFor: 'tools data'!
+!DrGUIControlsManager methodsFor: 'tools data' stamp: ''!
 animate1ButtonData
 	^ {'Animate x1' translated. #animate1. #animate1. 'Animate at speed 1.' translated}! !
 
-!DrGUIControlsManager methodsFor: 'tools data'!
+!DrGUIControlsManager methodsFor: 'tools data' stamp: ''!
 animate2ButtonData
 	^ {'Animate x2' translated. #animate2. #animate2. 'Animate at speed 2.' translated}! !
 
-!DrGUIControlsManager methodsFor: 'tools data'!
+!DrGUIControlsManager methodsFor: 'tools data' stamp: ''!
 animate3ButtonData
 	^ {'Animate x3' translated. #animate3. #animate3. 'Animate at speed 3.' translated}! !
 
@@ -24837,11 +24837,11 @@ animate3ButtonData
 animate4ButtonData
 	^ {'Animate x4' translated. #animate3. #animate3. 'Animate at speed 4.' translated}! !
 
-!DrGUIControlsManager methodsFor: 'tools data'!
+!DrGUIControlsManager methodsFor: 'tools data' stamp: ''!
 arcButtonData
 	^ {DrGArcBuilder title. #arc. #createArc. DrGArcBuilder description}! !
 
-!DrGUIControlsManager methodsFor: 'tools data'!
+!DrGUIControlsManager methodsFor: 'tools data' stamp: ''!
 arcCenterButtonData
 	^ {DrGArcCenterBuilder title. #arcCenter. #createArcCenter. DrGArcCenterBuilder description}! !
 
@@ -24849,19 +24849,19 @@ arcCenterButtonData
 axesButtonData
 	^ {#axesWording. #axes. #axesOnOff. 'Show or hide the ox and oy axes.' translated. #isAxesVisible}! !
 
-!DrGUIControlsManager methodsFor: 'tools data'!
+!DrGUIControlsManager methodsFor: 'tools data' stamp: ''!
 circleButtonData
 	^ {DrGCircleBuilder title. #circle. #createCircle. DrGCircleBuilder description}! !
 
-!DrGUIControlsManager methodsFor: 'tools data'!
+!DrGUIControlsManager methodsFor: 'tools data' stamp: ''!
 coordinatesButtonData
 	^ {DrGCoordinatesBuilder title. #coordinates. #createCoordinates. DrGCoordinatesBuilder description}! !
 
-!DrGUIControlsManager methodsFor: 'tools data'!
+!DrGUIControlsManager methodsFor: 'tools data' stamp: ''!
 distanceButtonData
 	^ {DrGValueBuilder title. #distance. #createDistance. DrGValueBuilder description}! !
 
-!DrGUIControlsManager methodsFor: 'tools data'!
+!DrGUIControlsManager methodsFor: 'tools data' stamp: ''!
 eraserButtonData
 	^ {DrGDeleteTool title. #eraser. #eraser. DrGDeleteTool description}! !
 
@@ -24869,7 +24869,7 @@ eraserButtonData
 exportImageButtonData
 	^ {'Save as image' translated. #exportToImage. #exportToImageAs. 'Export this sketch as SVG image.' translated }! !
 
-!DrGUIControlsManager methodsFor: 'tools data'!
+!DrGUIControlsManager methodsFor: 'tools data' stamp: ''!
 freePointButtonData
 	^ {DrGFlyPointBuilder title. #freePoint. #createFreePoint. DrGFlyPointBuilder description}! !
 
@@ -24877,11 +24877,11 @@ freePointButtonData
 gridButtonData
 	^ {#gridWording. #grid. #gridOnOff. 'Show or hide grid.' translated. #isGridVisible}! !
 
-!DrGUIControlsManager methodsFor: 'tools data'!
+!DrGUIControlsManager methodsFor: 'tools data' stamp: ''!
 homothetyButtonData
 	^ {DrGHomothetyBuilder title. #scale. #createHomothety. DrGHomothetyBuilder description}! !
 
-!DrGUIControlsManager methodsFor: 'tools data'!
+!DrGUIControlsManager methodsFor: 'tools data' stamp: ''!
 intersectionButtonData
 	^ {DrGPointIntersectionBuilder title. #intersection. #createPointIntersection. DrGPointIntersectionBuilder description}! !
 
@@ -24889,26 +24889,26 @@ intersectionButtonData
 keepButtonData
 	^ {'Save' translated. #keep. #saveSketch. 'Keep this sketch permanently.' translated}! !
 
-!DrGUIControlsManager methodsFor: 'tools data'!
+!DrGUIControlsManager methodsFor: 'tools data' stamp: ''!
 lineButtonData
 	^ {DrGLineBuilder title. #line. #createLine. DrGLineBuilder description}! !
 
-!DrGUIControlsManager methodsFor: 'tools data'!
+!DrGUIControlsManager methodsFor: 'tools data' stamp: ''!
 locusButtonData
 	^ {DrGLocusBuilder title. #locus. #createLocus. DrGLocusBuilder description}! !
 
-!DrGUIControlsManager methodsFor: 'tools data'!
+!DrGUIControlsManager methodsFor: 'tools data' stamp: ''!
 macroBuildButtonData
 	^ {DrGMacroBuilder title. #macroBuild. #createMacro. DrGMacroBuilder description}! !
 
-!DrGUIControlsManager methodsFor: 'tools data'!
+!DrGUIControlsManager methodsFor: 'tools data' stamp: ''!
 macroDeleteButtonData
 	^ {'Delete macro' translated.
 	#eraser .
 	#deleteMacro .
 	'Delete a macro-construction from the registry.' translated}! !
 
-!DrGUIControlsManager methodsFor: 'tools data'!
+!DrGUIControlsManager methodsFor: 'tools data' stamp: ''!
 macroExecuteButtonData
 	^ {DrGMacroPlayer title. #macroExecute. #executeMacro. DrGMacroPlayer description}! !
 
@@ -24916,15 +24916,15 @@ macroExecuteButtonData
 magneticGridButtonData
 	^ {#magneticGridWording. #gridMagnet. #gridStuckOnOff. 'Snap to grid.' translated. #isGridded}! !
 
-!DrGUIControlsManager methodsFor: 'tools data'!
+!DrGUIControlsManager methodsFor: 'tools data' stamp: ''!
 menuButtonData 
 	^ {'Menu' translated. nil . nil . 'An unobtrusive menu with all Dr. Geo tools.' translated}! !
 
-!DrGUIControlsManager methodsFor: 'tools data'!
+!DrGUIControlsManager methodsFor: 'tools data' stamp: ''!
 middleButtonData
 	^ {DrGMiddleBuilder title. #middle. #createMiddlePoint. DrGMiddleBuilder description}! !
 
-!DrGUIControlsManager methodsFor: 'tools data'!
+!DrGUIControlsManager methodsFor: 'tools data' stamp: ''!
 moveButtonData
 	^ {DrGSelectTool title. #move. #move. DrGSelectTool description}! !
 
@@ -24936,116 +24936,116 @@ multipleModeButtonData
 newButtonData
 	^ {'New' translated. #newSketch. #newFigure. 'Open a new blank sketch.' translated}! !
 
-!DrGUIControlsManager methodsFor: 'tools data'!
+!DrGUIControlsManager methodsFor: 'tools data' stamp: ''!
 openButtonData
 	^ {'Open' translated. #open. #openFigureThumbnail. 'Open a sketch.' translated}! !
 
-!DrGUIControlsManager methodsFor: 'tools data'!
+!DrGUIControlsManager methodsFor: 'tools data' stamp: ''!
 parallelButtonData
 	^ {DrGParallelBuilder title. #parallel. #createParallel. DrGParallelBuilder description}! !
 
-!DrGUIControlsManager methodsFor: 'tools data'!
+!DrGUIControlsManager methodsFor: 'tools data' stamp: ''!
 perpendicularBisectorButtonData
 	^ {DrGPerpendicularBisectorBuilder  title. #perpendicularBisector. #createPerpendicularBisector. DrGPerpendicularBisectorBuilder description}! !
 
-!DrGUIControlsManager methodsFor: 'tools data'!
+!DrGUIControlsManager methodsFor: 'tools data' stamp: ''!
 perpendicularButtonData
 	^ {DrGPerpendicularBuilder title. #perpendicular. #createPerpendicular. DrGPerpendicularBuilder description}! !
 
-!DrGUIControlsManager methodsFor: 'tools data'!
+!DrGUIControlsManager methodsFor: 'tools data' stamp: ''!
 pointByCoordinatesButtonData
 	^ {DrGPointByCoordinatesBuilder title. #pointDefinedByCoordinates. #createPointByCoordinates. DrGPointByCoordinatesBuilder description}! !
 
-!DrGUIControlsManager methodsFor: 'tools data'!
+!DrGUIControlsManager methodsFor: 'tools data' stamp: ''!
 polygonButtonData
 	^ {DrGPolygonBuilder title. #polygon. #createPolygon. DrGPolygonBuilder description}! !
 
-!DrGUIControlsManager methodsFor: 'tools data'!
+!DrGUIControlsManager methodsFor: 'tools data' stamp: ''!
 polygonRegularButtonData
 	^ {DrGPolygonRegularBuilder title. #polygonRegular. #createPolygonRegular. DrGPolygonRegularBuilder  description}! !
 
-!DrGUIControlsManager methodsFor: 'tools data'!
+!DrGUIControlsManager methodsFor: 'tools data' stamp: ''!
 propertyButtonData
 	^ {DrGPropertyTool title.
 	#property .
 	#property .
 	DrGPropertyTool description}! !
 
-!DrGUIControlsManager methodsFor: 'tools data'!
+!DrGUIControlsManager methodsFor: 'tools data' stamp: ''!
 rayButtonData
 	^ {DrGRayBuilder title. #ray. #createRay. DrGRayBuilder description}! !
 
-!DrGUIControlsManager methodsFor: 'tools data'!
+!DrGUIControlsManager methodsFor: 'tools data' stamp: ''!
 redoButtonData
 	^ {'Redo' translated.
 	#redo .
 	#redo .
 	'Redo last action.' translated}! !
 
-!DrGUIControlsManager methodsFor: 'tools data'!
+!DrGUIControlsManager methodsFor: 'tools data' stamp: ''!
 reflectionButtonData
 	^ {DrGReflectionBuilder title. #axialSymmetry. #createReflection.DrGReflectionBuilder description}! !
 
-!DrGUIControlsManager methodsFor: 'tools data'!
+!DrGUIControlsManager methodsFor: 'tools data' stamp: ''!
 rotationButtonData
 	^ {DrGRotationBuilder title. #rotation. #createRotation. DrGRotationBuilder description}! !
 
-!DrGUIControlsManager methodsFor: 'tools data'!
+!DrGUIControlsManager methodsFor: 'tools data' stamp: ''!
 scriptCreateButtonData
 	^ {'Create a script' translated. #createScript . #createScript . 'Create a Smalltalk script.' translated}! !
 
-!DrGUIControlsManager methodsFor: 'tools data'!
+!DrGUIControlsManager methodsFor: 'tools data' stamp: ''!
 scriptEditButtonData
 	^ {'Edit a script' translated.	#editScript.	#editScript .	'Edit a Smalltalk script.' translated}! !
 
-!DrGUIControlsManager methodsFor: 'tools data'!
+!DrGUIControlsManager methodsFor: 'tools data' stamp: ''!
 scriptRunButtonData
 	^ {DrGScriptPlayer title. #useScript. #useScript. DrGScriptPlayer description}! !
 
-!DrGUIControlsManager methodsFor: 'tools data'!
+!DrGUIControlsManager methodsFor: 'tools data' stamp: ''!
 segmentButtonData
 	^ {DrGSegmentBuilder title. #segment. #createSegment. DrGSegmentBuilder description}! !
 
-!DrGUIControlsManager methodsFor: 'tools data'!
+!DrGUIControlsManager methodsFor: 'tools data' stamp: ''!
 styleButtonData
 	^ {DrGStyleTool title. #style. #style. DrGStyleTool description}! !
 
-!DrGUIControlsManager methodsFor: 'tools data'!
+!DrGUIControlsManager methodsFor: 'tools data' stamp: ''!
 symmetryButtonData
 	^ {DrGSymmetryBuilder title. #centralSymmetry. #createSymmetry. DrGSymmetryBuilder description}! !
 
-!DrGUIControlsManager methodsFor: 'tools data'!
+!DrGUIControlsManager methodsFor: 'tools data' stamp: ''!
 textButtonData
 	^ {DrGTextBuilder title. #text. #createText. DrGTextBuilder description}! !
 
-!DrGUIControlsManager methodsFor: 'tools data'!
+!DrGUIControlsManager methodsFor: 'tools data' stamp: ''!
 translationButtonData
 	^ {DrGTranslationBuilder title. #translation. #createTranslation. DrGTranslationBuilder description}! !
 
-!DrGUIControlsManager methodsFor: 'tools data'!
+!DrGUIControlsManager methodsFor: 'tools data' stamp: ''!
 treeButtonData 
 	^ {'Construction tree' translated. nil . nil . 'The hierarchy tree presenting the visible constructed items.' translated}! !
 
-!DrGUIControlsManager methodsFor: 'tools data'!
+!DrGUIControlsManager methodsFor: 'tools data' stamp: ''!
 undoButtonData
 	^ {'Undo' translated.
 	#undo .
 	#undo .
 	'Undo last action' translated}! !
 
-!DrGUIControlsManager methodsFor: 'tools data'!
+!DrGUIControlsManager methodsFor: 'tools data' stamp: ''!
 vectorButtonData
 	^ {DrGVectorBuilder title. #vector. #createVector. DrGVectorBuilder description}! !
 
-!DrGUIControlsManager methodsFor: 'tools data'!
+!DrGUIControlsManager methodsFor: 'tools data' stamp: ''!
 wheelXButtonData 
 	^ {'Horizontal wheel' translated. nil . #moveOx: . 'A wheel to move horizontally the sketch.' translated}! !
 
-!DrGUIControlsManager methodsFor: 'tools data'!
+!DrGUIControlsManager methodsFor: 'tools data' stamp: ''!
 wheelYButtonData
 	 ^ {'Vertical wheel' translated . nil . #moveOy: . 'A wheel to move vertically the sketch.' translated}! !
 
-!DrGUIControlsManager methodsFor: 'tools data'!
+!DrGUIControlsManager methodsFor: 'tools data' stamp: ''!
 wheelZButtonData
 	 ^ {'Zoom wheel' translated . nil . #scale: . 'A wheel to zoom in, zoom out the sketch.' translated}! !
 
@@ -25528,6 +25528,31 @@ openTools
 tools
 	^ tools ifNil: [tools := self mainMenu]! !
 
+!DrGCommandStack methodsFor: 'private' stamp: ''!
+truncate
+	|oldReadLimit|
+	oldReadLimit := readLimit.
+	readLimit := position.
+	oldReadLimit > readLimit ifTrue:
+			[readLimit to: oldReadLimit do:
+				[:index| collection at: index + 1 put: nil]]! !
+
+!DrGCommandStack methodsFor: 'accessing' stamp: ''!
+nextPut: aCommand
+	super nextPut: aCommand.
+	self truncate.
+	^ aCommand ! !
+
+!DrGCommandStack methodsFor: 'accessing' stamp: ''!
+previous
+	self position = 0 ifTrue: [^nil].
+	self position: self position - 1.
+	^self peek.! !
+
+!DrGCommandStack class methodsFor: 'instance creation' stamp: ''!
+new
+	^self on: Array new! !
+
 !DrGeoDomain methodsFor: 'initialize-release' stamp: 'hlsf 3/9/2023 17:26:59'!
 initialize
 	super initialize.
@@ -25541,11 +25566,11 @@ release
 	cmdManager release."
 	factory := cmdManager := nil.! !
 
-!DrGeoDomain methodsFor: 'building'!
+!DrGeoDomain methodsFor: 'building' stamp: ''!
 createCompositeItem: aMathItemSelection
 	cmdManager compositeCommandFor: aMathItemSelection.! !
 
-!DrGeoDomain methodsFor: 'building'!
+!DrGeoDomain methodsFor: 'building' stamp: ''!
 createFromMathItem: aMathItem
 	"return the mathItem (newly created or the one in the pool, 
 in case the caller want to do something with it"
@@ -25571,13 +25596,13 @@ createFromMathItemNoCommandNoFactoryCheck: aMathItem
 	self triggerEvent: #newMathItem with: aMathItem.
 	^aMathItem! !
 
-!DrGeoDomain methodsFor: 'building'!
+!DrGeoDomain methodsFor: 'building' stamp: ''!
 createMacro: aBuilder 
 	(DrGMacroFactory new pushAsLastWhenInPool: (aBuilder getItem: self)) ifFalse: 
 		[ "Create macro and register it in the factory"
 		DrGMacroFactory new add: (aBuilder getItem: self) ]! !
 
-!DrGeoDomain methodsFor: 'building'!
+!DrGeoDomain methodsFor: 'building' stamp: ''!
 createMathItem: aBuilder 
 	"return the mathItem (newly created or the one in the pool, 
 in case the caller want to do something with it"
@@ -25586,19 +25611,19 @@ in case the caller want to do something with it"
 	"create a new command and execute it"
 	^ {  (cmdManager buildCommandWith: aBuilder). true  }! !
 
-!DrGeoDomain methodsFor: 'building'!
+!DrGeoDomain methodsFor: 'building' stamp: ''!
 deleteMathItem: aMathItem 
 	"create a delete command and execute it"
 	cmdManager deleteCommandFor: aMathItem! !
 
-!DrGeoDomain methodsFor: 'building'!
+!DrGeoDomain methodsFor: 'building' stamp: ''!
 in: macroTree replaceParent: item with: newItem 
 	| index |
 	macroTree do: [ :anItem | 
 		(anItem parents notNil and: [ (index := anItem parents indexOf: item) ~= 0 ])
 			ifTrue: [anItem parents at: index put: newItem ] ]! !
 
-!DrGeoDomain methodsFor: 'building'!
+!DrGeoDomain methodsFor: 'building' stamp: ''!
 merge: aMathItem with: aTarget
 	"create a merge command"
 	cmdManager mergeCommandFor: aMathItem with: aTarget! !
@@ -25633,12 +25658,12 @@ playMacro: aBuilder in: presenter
 						replaceParent: item
 						with: answer first ] ]! !
 
-!DrGeoDomain methodsFor: 'building'!
+!DrGeoDomain methodsFor: 'building' stamp: ''!
 propertyCommandFor: aMathItem with: aProperty 
 	"create a move command"
 	cmdManager propertyCommandFor: aMathItem with: aProperty ! !
 
-!DrGeoDomain methodsFor: 'updating'!
+!DrGeoDomain methodsFor: 'updating' stamp: ''!
 moveEvent: aMathItem at: aPoint withDirty: mathItems
 	aMathItem moveAt: aPoint.
 	self updateDirty: mathItems! !
@@ -25689,19 +25714,19 @@ updateDirty: mathItems
 	mathItems do: [:item | item update].
 	self triggerEvent: #updatedDirtyItems! !
 
-!DrGeoDomain methodsFor: 'accessing'!
+!DrGeoDomain methodsFor: 'accessing' stamp: ''!
 factory
 	^factory! !
 
-!DrGeoDomain methodsFor: 'accessing'!
+!DrGeoDomain methodsFor: 'accessing' stamp: ''!
 labelString
 	^ 'Dr. Geo -- ', Date today asString! !
 
-!DrGeoDomain methodsFor: 'accessing'!
+!DrGeoDomain methodsFor: 'accessing' stamp: ''!
 redo
 	cmdManager redo! !
 
-!DrGeoDomain methodsFor: 'accessing'!
+!DrGeoDomain methodsFor: 'accessing' stamp: ''!
 undo
 	cmdManager undo! !
 
@@ -25727,22 +25752,22 @@ isNotInteractive
 "Are we parsing the figure from a file"
 	^ presenter isNotInteractive! !
 
-!DrGMathItemBuilder methodsFor: 'testing'!
+!DrGMathItemBuilder methodsFor: 'testing' stamp: ''!
 isWanted: aMathItemCollection
 "Check if the builder is interested by aMathItem"
 	self subclassResponsibility ! !
 
-!DrGMathItemBuilder methodsFor: 'testing'!
+!DrGMathItemBuilder methodsFor: 'testing' stamp: ''!
 isWanted: aMathItemCollection at: aPoint
 "By default we don't need the point position of the click event'"
 	^ self isWanted: aMathItemCollection ! !
 
-!DrGMathItemBuilder methodsFor: 'testing'!
+!DrGMathItemBuilder methodsFor: 'testing' stamp: ''!
 readyToBuild
 	"Can the builder build the math item now?"
 	self subclassResponsibility ! !
 
-!DrGMathItemBuilder methodsFor: 'accessing'!
+!DrGMathItemBuilder methodsFor: 'accessing' stamp: ''!
 arguments
 "an argument list to give to the MathItem new method"
 	self subclassResponsibility ! !
@@ -25755,7 +25780,7 @@ domain
 drawable
 	^ presenter drawable! !
 
-!DrGMathItemBuilder methodsFor: 'accessing'!
+!DrGMathItemBuilder methodsFor: 'accessing' stamp: ''!
 factory
 	^ self domain factory! !
 
@@ -25843,14 +25868,14 @@ itemFrom: node
 	self postProcess: item from: node.
 	^ {self domain createFromMathItemNoCommandNoFactoryCheck: item. true}! !
 
-!DrGMathItemBuilder methodsFor: 'xml'!
+!DrGMathItemBuilder methodsFor: 'xml' stamp: ''!
 itemInstanceFrom: node
 "build an item from a XML description"
 	(self parentsById: node) do: [:each |	self addItem: {each} at: 0@0].
 	^ self getItem first.
 ! !
 
-!DrGMathItemBuilder methodsFor: 'xml'!
+!DrGMathItemBuilder methodsFor: 'xml' stamp: ''!
 parentsById: node
 "return a collection of the item parent given theirs id in the attribute
 elements <parent id=xxx>"
@@ -25861,18 +25886,18 @@ elements <parent id=xxx>"
 			collection add: (self factory findInPoolById: (each attributeAt: 'ref') asSymbol)]].
 	^collection ! !
 
-!DrGMathItemBuilder methodsFor: 'xml'!
+!DrGMathItemBuilder methodsFor: 'xml' stamp: ''!
 parseValuePosition: node
 	| x y |
 	x := (node contentStringAt: #x) asNumber.
 	y := (node contentStringAt: #y) asNumber.
 	^ x@y.! !
 
-!DrGMathItemBuilder methodsFor: 'xml'!
+!DrGMathItemBuilder methodsFor: 'xml' stamp: ''!
 parseValuePosition: node of: item
 	item position: (self parseValuePosition: node)! !
 
-!DrGMathItemBuilder methodsFor: 'xml'!
+!DrGMathItemBuilder methodsFor: 'xml' stamp: ''!
 postProcess: item from: node
 	item id: (node attributeAt: 'id') asSymbol.
 	(item respondsTo: #isLocked) ifTrue: [
@@ -25880,7 +25905,7 @@ postProcess: item from: node
 			ifTrue: [item locked: true]
 			ifFalse: [item locked: false]]! !
 
-!DrGMathItemBuilder methodsFor: 'constant'!
+!DrGMathItemBuilder methodsFor: 'constant' stamp: ''!
 mathItemClass
 "Answer the MathItem class for this builder (i.e. self FreePointItem,...)"
 	self subclassResponsibility! !
@@ -25892,11 +25917,11 @@ reset
 		[flyingMorph release.
 		flyingMorph := nil]! !
 
-!DrGMathItemBuilder methodsFor: 'private'!
+!DrGMathItemBuilder methodsFor: 'private' stamp: ''!
 addItem: aMathItemCollection at: aPoint
 	point := aPoint.! !
 
-!DrGMathItemBuilder methodsFor: 'private'!
+!DrGMathItemBuilder methodsFor: 'private' stamp: ''!
 addToggleItem: aMathItemCollection in: aCollection
 	aCollection 
 		remove: aMathItemCollection first 
@@ -25908,17 +25933,17 @@ release
 	self releaseActionMap.
 	self reset.! !
 
-!DrGMathItemBuilder class methodsFor: 'documentation'!
+!DrGMathItemBuilder class methodsFor: 'documentation' stamp: ''!
 description
 	"A description how to use the tool"
 	self subclassResponsibility! !
 
-!DrGMathItemBuilder class methodsFor: 'documentation'!
+!DrGMathItemBuilder class methodsFor: 'documentation' stamp: ''!
 title
 	"One or two words describing the builder"
 	self subclassResponsibility ! !
 
-!DrGMathItemBuilder class methodsFor: 'xml'!
+!DrGMathItemBuilder class methodsFor: 'xml' stamp: ''!
 basicItemFrom: node
 "create a basic item (unitialised) from this node and add it to the domain, return an item partially initialized. Used for macro node"
 	| builder |
@@ -25944,12 +25969,12 @@ isWanted: aMathItemCollection
 		and: [aMathItemCollection first ~= pointA
 		and: [aMathItemCollection first ~= pointB]]	]! !
 
-!DrGAngleGeometricBuilder methodsFor: 'testing'!
+!DrGAngleGeometricBuilder methodsFor: 'testing' stamp: ''!
 readyToBuild
 	^ pointA notNil and: [pointB notNil and: [pointC notNil]]
 			! !
 
-!DrGAngleGeometricBuilder methodsFor: 'private'!
+!DrGAngleGeometricBuilder methodsFor: 'private' stamp: ''!
 addItem: aMathItemCollection at: aPoint
 	super addItem: aMathItemCollection at: aPoint.
 	aMathItemCollection first isPointItem
@@ -25962,35 +25987,35 @@ addItem: aMathItemCollection at: aPoint
 				^self].
 			pointC := aMathItemCollection first]! !
 
-!DrGAngleGeometricBuilder methodsFor: 'constant'!
+!DrGAngleGeometricBuilder methodsFor: 'constant' stamp: ''!
 mathItemClass
 	^ DrGAngle3ptsItem ! !
 
-!DrGAngleGeometricBuilder methodsFor: 'accessing'!
+!DrGAngleGeometricBuilder methodsFor: 'accessing' stamp: ''!
 arguments
 	^ {pointA . pointB . pointC. point}! !
 
-!DrGAngleGeometricBuilder class methodsFor: 'as yet unclassified'!
+!DrGAngleGeometricBuilder class methodsFor: 'as yet unclassified' stamp: ''!
 description 
 	^ 'Geometric angle defined by three points, the second point is the vertex. Its measure belongs to [0 ; 180].' translated! !
 
-!DrGAngleGeometricBuilder class methodsFor: 'as yet unclassified'!
+!DrGAngleGeometricBuilder class methodsFor: 'as yet unclassified' stamp: ''!
 title
 	^ 'Geometric angle' translated! !
 
-!DrGAngleOrientedBuilder methodsFor: 'xml'!
+!DrGAngleOrientedBuilder methodsFor: 'xml' stamp: ''!
 postProcess: item from: node
 	super postProcess: item from: node.
 	(node attributeAt: #type) asSymbol == #vectors ifTrue: [
 		self parseValuePosition: node of: item]! !
 
-!DrGAngleOrientedBuilder methodsFor: 'accessing'!
+!DrGAngleOrientedBuilder methodsFor: 'accessing' stamp: ''!
 arguments
 	^pointA 
 		ifNotNil: [{pointA . pointB . pointC. point}]
 		ifNil: [{vectorA . vectorB. point}]! !
 
-!DrGAngleOrientedBuilder methodsFor: 'testing'!
+!DrGAngleOrientedBuilder methodsFor: 'testing' stamp: ''!
 isWanted: aMathItemCollection
 	^aMathItemCollection notEmpty
 		and: [(aMathItemCollection first isPointItem
@@ -26001,7 +26026,7 @@ isWanted: aMathItemCollection
 				and: [pointA isNil 
 				and: [aMathItemCollection first ~= vectorA]]]]! !
 
-!DrGAngleOrientedBuilder methodsFor: 'testing'!
+!DrGAngleOrientedBuilder methodsFor: 'testing' stamp: ''!
 readyToBuild
 	^ super readyToBuild or: [vectorA notNil and: [vectorB notNil]]
 			! !
@@ -26011,7 +26036,7 @@ reset
 	super reset.
 	vectorA := vectorB := nil! !
 
-!DrGAngleOrientedBuilder methodsFor: 'private'!
+!DrGAngleOrientedBuilder methodsFor: 'private' stamp: ''!
 addItem: aMathItemCollection at: aPoint
 	super addItem: aMathItemCollection at: aPoint. "it handles the case of adding a point to the selection"
 	aMathItemCollection first isPointItem
@@ -26021,25 +26046,25 @@ addItem: aMathItemCollection at: aPoint
 				^self].
 			vectorB := aMathItemCollection first]! !
 
-!DrGAngleOrientedBuilder methodsFor: 'constant'!
+!DrGAngleOrientedBuilder methodsFor: 'constant' stamp: ''!
 mathItemClass
 	^pointA 
 		ifNotNil: [DrGAngle3ptsOrientedItem]
 		ifNil: [DrGAngleVectorsItem]! !
 
-!DrGAngleOrientedBuilder class methodsFor: 'documentation'!
+!DrGAngleOrientedBuilder class methodsFor: 'documentation' stamp: ''!
 description 
 	^ 'Oriented angle defined by three points or two vectors. When defined from three points, the second point is the vertex. Its measure belongs to [0 ; 360[ or ]-180 ; 180]. ' translated! !
 
-!DrGAngleOrientedBuilder class methodsFor: 'documentation'!
+!DrGAngleOrientedBuilder class methodsFor: 'documentation' stamp: ''!
 title
 	^ 'Oriented angle' translated! !
 
-!DrGArcBuilder methodsFor: 'constant'!
+!DrGArcBuilder methodsFor: 'constant' stamp: ''!
 mathItemClass
 	^DrGArc3ptsItem! !
 
-!DrGArcBuilder methodsFor: 'accessing'!
+!DrGArcBuilder methodsFor: 'accessing' stamp: ''!
 arguments
 	^{pointA . pointB . pointC}! !
 
@@ -26052,7 +26077,7 @@ flyingMathItemArguments
 flyingMorphClass
 	^ DrGArcMorph! !
 
-!DrGArcBuilder methodsFor: 'private'!
+!DrGArcBuilder methodsFor: 'private' stamp: ''!
 addItem: aMathItemCollection at: aPoint
 	super addItem: aMathItemCollection  at: aPoint.
 	pointA ifNil: [^ pointA := aMathItemCollection first].
@@ -26062,14 +26087,14 @@ addItem: aMathItemCollection at: aPoint
 	pointC ifNil: [pointC := aMathItemCollection first].
 	! !
 
-!DrGArcBuilder methodsFor: 'testing'!
+!DrGArcBuilder methodsFor: 'testing' stamp: ''!
 isWanted: aMathItemCollection 
 	^aMathItemCollection notEmpty
 		and: [aMathItemCollection first isPointItem 
 		and: [aMathItemCollection first ~= pointA 
 		and: [aMathItemCollection first ~= pointB]]]! !
 
-!DrGArcBuilder methodsFor: 'testing'!
+!DrGArcBuilder methodsFor: 'testing' stamp: ''!
 readyToBuild
 	^pointA notNil and: [pointB notNil and: [pointC notNil]]! !
 
@@ -26078,23 +26103,23 @@ reset
 	super reset.
 	pointA := pointB := pointC := nil! !
 
-!DrGArcBuilder class methodsFor: 'documentation'!
+!DrGArcBuilder class methodsFor: 'documentation' stamp: ''!
 description 
 	^  'Arc defined by three points.' translated! !
 
-!DrGArcBuilder class methodsFor: 'documentation'!
+!DrGArcBuilder class methodsFor: 'documentation' stamp: ''!
 title
 	^ 'Arc' translated! !
 
-!DrGArcCenterBuilder methodsFor: 'constant'!
+!DrGArcCenterBuilder methodsFor: 'constant' stamp: ''!
 mathItemClass 
 	^ DrGArcCenterAngleItem ! !
 
-!DrGArcCenterBuilder methodsFor: 'testing'!
+!DrGArcCenterBuilder methodsFor: 'testing' stamp: ''!
 arguments
 	^ {center. origin. extremity}! !
 
-!DrGArcCenterBuilder methodsFor: 'testing'!
+!DrGArcCenterBuilder methodsFor: 'testing' stamp: ''!
 isWanted: aMathItemCollection 
 | item |
 	^ aMathItemCollection notEmpty 
@@ -26102,11 +26127,11 @@ isWanted: aMathItemCollection
 		and: [item ~= center 
 		and: [item ~= origin]]]! !
 
-!DrGArcCenterBuilder methodsFor: 'testing'!
+!DrGArcCenterBuilder methodsFor: 'testing' stamp: ''!
 readyToBuild 
 	^ origin notNil and: [center notNil and: [extremity notNil]]! !
 
-!DrGArcCenterBuilder methodsFor: 'private'!
+!DrGArcCenterBuilder methodsFor: 'private' stamp: ''!
 addItem: aMathItemCollection at: aPoint
 	super addItem: aMathItemCollection at: aPoint.
 	center ifNil: [^ center := aMathItemCollection first].
@@ -26129,15 +26154,15 @@ flyingMathItemArguments
 flyingMorphClass 
 	^ DrGArcMorph! !
 
-!DrGArcCenterBuilder class methodsFor: 'documentation'!
+!DrGArcCenterBuilder class methodsFor: 'documentation' stamp: ''!
 description 
 	^  'Arc defined by its center and two points.' translated! !
 
-!DrGArcCenterBuilder class methodsFor: 'documentation'!
+!DrGArcCenterBuilder class methodsFor: 'documentation' stamp: ''!
 title
 	^'Arc (center)' translated! !
 
-!DrGBitmapBuilder methodsFor: 'xml'!
+!DrGBitmapBuilder methodsFor: 'xml' stamp: ''!
 itemInstanceFrom: node
 	self addItem: #() at: 0@0.
 	^ self getItem first.
@@ -26155,55 +26180,55 @@ postProcess: item from: node
 		data: form
 	! !
 
-!DrGBitmapBuilder methodsFor: 'testing'!
+!DrGBitmapBuilder methodsFor: 'testing' stamp: ''!
 isWanted: aMathItemCollection
 	^ aMathItemCollection isEmpty! !
 
-!DrGBitmapBuilder methodsFor: 'testing'!
+!DrGBitmapBuilder methodsFor: 'testing' stamp: ''!
 readyToBuild 
 	^ point notNil! !
 
-!DrGBitmapBuilder methodsFor: 'accessing'!
+!DrGBitmapBuilder methodsFor: 'accessing' stamp: ''!
 arguments
 	^ {point}! !
 
-!DrGBitmapBuilder methodsFor: 'constant'!
+!DrGBitmapBuilder methodsFor: 'constant' stamp: ''!
 mathItemClass 
 	^DrGBitmapItem ! !
 
-!DrGBitmapBuilder class methodsFor: 'documentation'!
+!DrGBitmapBuilder class methodsFor: 'documentation' stamp: ''!
 description
 	^'Picture: drag and drop a picture in the canvas. It can be moved and scaled.' translated! !
 
-!DrGBitmapBuilder class methodsFor: 'documentation'!
+!DrGBitmapBuilder class methodsFor: 'documentation' stamp: ''!
 title
 	^'Picture' translated! !
 
-!DrGCloneBuilder methodsFor: 'updating'!
+!DrGCloneBuilder methodsFor: 'updating' stamp: ''!
 reset
 	super reset.
 	item := nil! !
 
-!DrGCloneBuilder methodsFor: 'testing'!
+!DrGCloneBuilder methodsFor: 'testing' stamp: ''!
 isWanted: aMathItemCollection 
 	^ aMathItemCollection notEmpty 
 		and: [aMathItemCollection first isCloneable]! !
 
-!DrGCloneBuilder methodsFor: 'testing'!
+!DrGCloneBuilder methodsFor: 'testing' stamp: ''!
 readyToBuild 
 	^ item notNil ! !
 
-!DrGCloneBuilder methodsFor: 'private'!
+!DrGCloneBuilder methodsFor: 'private' stamp: ''!
 addItem: aMathItemCollection at: aPoint
 	super addItem: aMathItemCollection at: aPoint.
 	item := aMathItemCollection first! !
 
-!DrGCloneBuilder methodsFor: 'building'!
+!DrGCloneBuilder methodsFor: 'building' stamp: ''!
 buildItem
 	"clone myself with the necessary parents"
 	^  item clone! !
 
-!DrGCoordinatesBuilder methodsFor: 'private'!
+!DrGCoordinatesBuilder methodsFor: 'private' stamp: ''!
 addItem: aMathItemCollection at: aPoint
 	| item |
 	point := aPoint.
@@ -26213,7 +26238,7 @@ addItem: aMathItemCollection at: aPoint
 	item isLineItem ifTrue: [^ line := item].
 	item isVectorItem ifTrue: [^ vector := item]! !
 
-!DrGCoordinatesBuilder methodsFor: 'as yet unclassified'!
+!DrGCoordinatesBuilder methodsFor: 'as yet unclassified' stamp: ''!
 itemInstanceFrom: node
 "build an item from a XML description"
 "this builder can create multiple item at once (coordinates X and Y), so we need
@@ -26224,12 +26249,12 @@ to select the one we want"
 	^ self getItem detect: [:item | item nodeType = nodeType]
 ! !
 
-!DrGCoordinatesBuilder methodsFor: 'xml'!
+!DrGCoordinatesBuilder methodsFor: 'xml' stamp: ''!
 postProcess: item from: node
 	super postProcess: item from: node.
 	self parseValuePosition: node of: item.! !
 
-!DrGCoordinatesBuilder methodsFor: 'accessing'!
+!DrGCoordinatesBuilder methodsFor: 'accessing' stamp: ''!
 arguments
 	^ Array with: ({pointA. vector . line . circle } detect: [:i | i isNil not] ifNone: [nil]) with: point! !
 
@@ -26238,7 +26263,7 @@ reset
 	super reset.
 	pointA := vector := circle := line := nil! !
 
-!DrGCoordinatesBuilder methodsFor: 'testing'!
+!DrGCoordinatesBuilder methodsFor: 'testing' stamp: ''!
 isWanted: aMathItemCollection 
 	^ aMathItemCollection notEmpty 
 		and: [aMathItemCollection first isPointItem
@@ -26246,39 +26271,39 @@ isWanted: aMathItemCollection
 			or: [aMathItemCollection first isCircleItem
 			or: [aMathItemCollection first isVectorItem]]]]! !
 
-!DrGCoordinatesBuilder methodsFor: 'testing'!
+!DrGCoordinatesBuilder methodsFor: 'testing' stamp: ''!
 readyToBuild 
 	^ {pointA. vector . line . circle } anySatisfy: [:i | i isNil not]
 		! !
 
-!DrGCoordinatesBuilder methodsFor: 'constant'!
+!DrGCoordinatesBuilder methodsFor: 'constant' stamp: ''!
 mathItemClass 
 	pointA ifNotNil: [^{DrGValuePtabscissaItem	. DrGValuePtordinateItem}].
 	vector ifNotNil: [^{DrGValueVectorabscissaItem . DrGValueVectorordinateItem}].
 	circle ifNotNil: [^ DrGEquationCircleItem].
 	line ifNotNil: [^ DrGEquationLineItem]! !
 
-!DrGCoordinatesBuilder class methodsFor: 'documentation'!
+!DrGCoordinatesBuilder class methodsFor: 'documentation' stamp: ''!
 description
 	^ 'Vector or point coordinates, circle or line equation.' translated! !
 
-!DrGCoordinatesBuilder class methodsFor: 'documentation'!
+!DrGCoordinatesBuilder class methodsFor: 'documentation' stamp: ''!
 title
 	^ 'Coordinates, equation' translated! !
 
-!DrGDummyBuilder methodsFor: 'testing'!
+!DrGDummyBuilder methodsFor: 'testing' stamp: ''!
 isWanted: aMathItemCollection
 	^true! !
 
-!DrGDummyBuilder methodsFor: 'testing'!
+!DrGDummyBuilder methodsFor: 'testing' stamp: ''!
 readyToBuild
 	^false! !
 
-!DrGDummyBuilder methodsFor: 'private'!
+!DrGDummyBuilder methodsFor: 'private' stamp: ''!
 addItem: aMathItemCollection at: aPoint
 	super addItem: aMathItemCollection  at: aPoint! !
 
-!DrGFlyPointBuilder methodsFor: 'accessing'!
+!DrGFlyPointBuilder methodsFor: 'accessing' stamp: ''!
 arguments
 	(curveItemA notNil and: [curveItemB notNil])
 		ifTrue: [^{curveItemA . curveItemB . point}].
@@ -26286,7 +26311,7 @@ arguments
 	^{point}
 			! !
 
-!DrGFlyPointBuilder methodsFor: 'constant'!
+!DrGFlyPointBuilder methodsFor: 'constant' stamp: ''!
 mathItemClass
 	(curveItemA notNil and: [curveItemB notNil]) 
 		ifTrue: [^DrGPointIntersectionItem].
@@ -26294,7 +26319,7 @@ mathItemClass
 	point ifNotNil: [^DrGPointFreeItem].
 	self error: 'Should not be there!!'! !
 
-!DrGFlyPointBuilder methodsFor: 'private'!
+!DrGFlyPointBuilder methodsFor: 'private' stamp: ''!
 addItem: aMathItemCollection at: aPoint
 "The behavior is a bit different as we send in the collection all the parent in one shot: 
 to create the interesection the user clicks on two curves at the same time"
@@ -26304,13 +26329,13 @@ to create the interesection the user clicks on two curves at the same time"
 	aMathItemCollection size >= 2 ifTrue:
 		[curveItemB := aMathItemCollection second]! !
 
-!DrGFlyPointBuilder methodsFor: 'private'!
+!DrGFlyPointBuilder methodsFor: 'private' stamp: ''!
 restoreState: anArray
 	curveItemA := anArray first.
 	curveItemB := anArray second.
 	point := anArray third! !
 
-!DrGFlyPointBuilder methodsFor: 'private'!
+!DrGFlyPointBuilder methodsFor: 'private' stamp: ''!
 saveState
 	^Array with: curveItemA with: curveItemB with: point! !
 
@@ -26319,11 +26344,11 @@ reset
 	super reset.
 	curveItemA := curveItemB := nil! !
 
-!DrGFlyPointBuilder methodsFor: 'xml'!
+!DrGFlyPointBuilder methodsFor: 'xml' stamp: ''!
 itemInstanceFrom: node
 	self shouldNotImplement! !
 
-!DrGFlyPointBuilder methodsFor: 'testing'!
+!DrGFlyPointBuilder methodsFor: 'testing' stamp: ''!
 isCurveIntersectionValid: aCollection
 	| item state |
 	state := self saveState.
@@ -26336,7 +26361,7 @@ isCurveIntersectionValid: aCollection
 	^ item anyOne exist
 ! !
 
-!DrGFlyPointBuilder methodsFor: 'testing'!
+!DrGFlyPointBuilder methodsFor: 'testing' stamp: ''!
 isWanted: aMathItemCollection
 	^self isWanted: aMathItemCollection  at: 0@0! !
 
@@ -26352,28 +26377,28 @@ isWanted: aMathItemCollection at: aPoint
 	"click on one curve?"
 	^aMathItemCollection first isCurveItem		! !
 
-!DrGFlyPointBuilder methodsFor: 'testing'!
+!DrGFlyPointBuilder methodsFor: 'testing' stamp: ''!
 readyToBuild
 	^ curveItemA notNil or: [point notNil]! !
 
-!DrGFlyPointBuilder class methodsFor: 'documentation'!
+!DrGFlyPointBuilder class methodsFor: 'documentation' stamp: ''!
 description 
 	^ DrGeoSystem isTablet
 		ifTrue: ['Tap to create a point: free point on the background, on a curve or on two curves intersection.' translated]
 		ifFalse:  ['Click to create a point: free point on the background, on a curve or on two curves intersection.' translated]! !
 
-!DrGFlyPointBuilder class methodsFor: 'documentation'!
+!DrGFlyPointBuilder class methodsFor: 'documentation' stamp: ''!
 title 
 	^ 'Point' translated! !
 
-!DrGFreePointBuilder methodsFor: 'xml'!
+!DrGFreePointBuilder methodsFor: 'xml' stamp: ''!
 itemInstanceFrom: node
 	"works both for free point and free point on a curve"
 	self addItem: (self parentsById: node) at: 0@0.
 	^ self getItem first.
 ! !
 
-!DrGFreePointBuilder methodsFor: 'xml'!
+!DrGFreePointBuilder methodsFor: 'xml' stamp: ''!
 postProcess: item from: node
 	super postProcess: item from: node.
 	(node attributeAt: #type) asSymbol == #Free
@@ -26385,12 +26410,12 @@ postProcess: item from: node
 			item point: x@y]
 ! !
 
-!DrGFreePointBuilder methodsFor: 'updating'!
+!DrGFreePointBuilder methodsFor: 'updating' stamp: ''!
 reset
 	super reset.
 	curveItem := nil.! !
 
-!DrGFreePointBuilder methodsFor: 'accessing'!
+!DrGFreePointBuilder methodsFor: 'accessing' stamp: ''!
 arguments
 	curveItem ifNotNil: 	
 		[^ OrderedCollection new 
@@ -26399,25 +26424,25 @@ arguments
 			yourself].
 	^ OrderedCollection new add: point; yourself! !
 
-!DrGFreePointBuilder methodsFor: 'private'!
+!DrGFreePointBuilder methodsFor: 'private' stamp: ''!
 addItem: aMathItemCollection at: aPoint
 	super addItem: aMathItemCollection  at: aPoint.
 	aMathItemCollection 
 		ifNotEmpty: [curveItem := aMathItemCollection first].! !
 
-!DrGFreePointBuilder methodsFor: 'constant'!
+!DrGFreePointBuilder methodsFor: 'constant' stamp: ''!
 mathItemClass
 	curveItem ifNotNil: [^DrGPointOncurveItem].
 	point ifNotNil: [^DrGPointFreeItem].
 	self error: 'Should not be there!!'! !
 
-!DrGFreePointBuilder methodsFor: 'testing'!
+!DrGFreePointBuilder methodsFor: 'testing' stamp: ''!
 isWanted: aMathItemCollection
 	"the user clicked on the background: we can build a free point" 
 	aMathItemCollection ifEmpty: [^true].
 	^aMathItemCollection first isCurveItem.! !
 
-!DrGFreePointBuilder methodsFor: 'testing'!
+!DrGFreePointBuilder methodsFor: 'testing' stamp: ''!
 readyToBuild
 	^ curveItem ~= nil or: [point ~= nil]! !
 
@@ -26426,7 +26451,7 @@ reset
 	super reset.
 	freePoint := constrainedPoint := nil! !
 
-!DrGLocusBuilder methodsFor: 'private'!
+!DrGLocusBuilder methodsFor: 'private' stamp: ''!
 addItem: aMathItemCollection at: aPoint 
 	super addItem: aMathItemCollection at: aPoint.
 	aMathItemCollection first isPointItemOnCurve
@@ -26441,11 +26466,11 @@ addItem: aMathItemCollection at: aPoint
 			freePoint
 				ifNil: [freePoint := aMathItemCollection first]]! !
 
-!DrGLocusBuilder methodsFor: 'constant'!
+!DrGLocusBuilder methodsFor: 'constant' stamp: ''!
 mathItemClass
 	^ DrGLocus2ptsItem! !
 
-!DrGLocusBuilder methodsFor: 'accessing'!
+!DrGLocusBuilder methodsFor: 'accessing' stamp: ''!
 arguments
 	^ {freePoint. constrainedPoint}! !
 
@@ -26460,61 +26485,61 @@ isWanted: aMathItemCollection
 readyToBuild
 	^ freePoint notNil and: [constrainedPoint notNil]! !
 
-!DrGLocusBuilder class methodsFor: 'documentation'!
+!DrGLocusBuilder class methodsFor: 'documentation' stamp: ''!
 description
 	^ 'Locus defined by a free point on a curve and a relative point.' translated! !
 
-!DrGLocusBuilder class methodsFor: 'documentation'!
+!DrGLocusBuilder class methodsFor: 'documentation' stamp: ''!
 title 
 	^ 'Locus' translated.! !
 
-!DrGMacroBuilder methodsFor: 'testing'!
+!DrGMacroBuilder methodsFor: 'testing' stamp: ''!
 isDescriptionValid
 	^ ((title = self defaultTitle) | (description = self defaultDescription)) not! !
 
-!DrGMacroBuilder methodsFor: 'testing'!
+!DrGMacroBuilder methodsFor: 'testing' stamp: ''!
 isInputMode
 	^ wizard isInputPage! !
 
-!DrGMacroBuilder methodsFor: 'testing'!
+!DrGMacroBuilder methodsFor: 'testing' stamp: ''!
 isLogicValid
 	"check wheter a macro can be deduced from the input/output item collections"
 	^ DrGMacro 
 		isValidWith: input
 		and: output! !
 
-!DrGMacroBuilder methodsFor: 'testing'!
+!DrGMacroBuilder methodsFor: 'testing' stamp: ''!
 isMacroValid 
 	^self isLogicValid & self isDescriptionValid ! !
 
-!DrGMacroBuilder methodsFor: 'testing'!
+!DrGMacroBuilder methodsFor: 'testing' stamp: ''!
 isOutputMode
 	^ wizard isOutputPage! !
 
-!DrGMacroBuilder methodsFor: 'testing'!
+!DrGMacroBuilder methodsFor: 'testing' stamp: ''!
 isWanted: aMathItemCollection 
 	^ aMathItemCollection notEmpty and: 
 		[ self isInputMode &  (output includes: aMathItemCollection first) not or: [ self isOutputMode & (input includes: aMathItemCollection first) not ] ]! !
 
-!DrGMacroBuilder methodsFor: 'testing'!
+!DrGMacroBuilder methodsFor: 'testing' stamp: ''!
 readyToBuild
 "Only when the user clicks on the wizard 'apply' button,
 the system checks wheter the macro can be instiated"
 	^false! !
 
-!DrGMacroBuilder methodsFor: 'accessing'!
+!DrGMacroBuilder methodsFor: 'accessing' stamp: ''!
 arguments
 	self shouldNotImplement! !
 
-!DrGMacroBuilder methodsFor: 'accessing'!
+!DrGMacroBuilder methodsFor: 'accessing' stamp: ''!
 description
 	^description ! !
 
-!DrGMacroBuilder methodsFor: 'accessing'!
+!DrGMacroBuilder methodsFor: 'accessing' stamp: ''!
 description: string
 	description := string asString! !
 
-!DrGMacroBuilder methodsFor: 'accessing'!
+!DrGMacroBuilder methodsFor: 'accessing' stamp: ''!
 input
 	^input! !
 
@@ -26526,7 +26551,7 @@ inputNames
 itemNames: aMathItemCollection
 	^aMathItemCollection collect: [:mathItem | mathItem descriptiveName]! !
 
-!DrGMacroBuilder methodsFor: 'accessing'!
+!DrGMacroBuilder methodsFor: 'accessing' stamp: ''!
 output
 	^output ! !
 
@@ -26534,21 +26559,21 @@ output
 outputNames
 	^ self itemNames: output! !
 
-!DrGMacroBuilder methodsFor: 'accessing'!
+!DrGMacroBuilder methodsFor: 'accessing' stamp: ''!
 title
 	^title! !
 
-!DrGMacroBuilder methodsFor: 'accessing'!
+!DrGMacroBuilder methodsFor: 'accessing' stamp: ''!
 title: string
 	title := string! !
 
-!DrGMacroBuilder methodsFor: 'private'!
+!DrGMacroBuilder methodsFor: 'private' stamp: ''!
 addItem: aMathItemCollection at: aPoint
 	super addItem: aMathItemCollection at: aPoint.
 	self isInputMode ifTrue: [self addToggleItem: aMathItemCollection in: input].
 	self isOutputMode ifTrue: [self addToggleItem: aMathItemCollection in: output]! !
 
-!DrGMacroBuilder methodsFor: 'callback'!
+!DrGMacroBuilder methodsFor: 'callback' stamp: ''!
 apply
 	"the user clicked the apply button, do we have all the needed information
 	to instantiate a new macro construction?"
@@ -26562,13 +26587,13 @@ apply
 	self isDescriptionValid ifFalse: 
 		[self inform: 'Please, enter a proper title and description' translated]! !
 
-!DrGMacroBuilder methodsFor: 'callback'!
+!DrGMacroBuilder methodsFor: 'callback' stamp: ''!
 cancel
 	"the user withdrawn the macro-construction creation"
 	DrGeoSystem showVirtualKeyboard: false.
 	self triggerEvent: #cancel! !
 
-!DrGMacroBuilder methodsFor: 'callback'!
+!DrGMacroBuilder methodsFor: 'callback' stamp: ''!
 page: integer 
 	"we receive notification from the wizard the user change the wizard
 	current page"
@@ -26581,11 +26606,11 @@ page: integer
 		triggerEvent: #changedState
 		with: newState! !
 
-!DrGMacroBuilder methodsFor: 'building'!
+!DrGMacroBuilder methodsFor: 'building' stamp: ''!
 buildItem
 	self shouldNotImplement! !
 
-!DrGMacroBuilder methodsFor: 'building'!
+!DrGMacroBuilder methodsFor: 'building' stamp: ''!
 buildItem: domain 
 	| macro |
 	macro := DrGMacro new
@@ -26593,11 +26618,11 @@ buildItem: domain
 	macro 	from: input to: output 	in: domain.
 	^ macro! !
 
-!DrGMacroBuilder methodsFor: 'building'!
+!DrGMacroBuilder methodsFor: 'building' stamp: ''!
 getItem
 	self shouldNotImplement! !
 
-!DrGMacroBuilder methodsFor: 'building'!
+!DrGMacroBuilder methodsFor: 'building' stamp: ''!
 getItem: domain
 	self isMacroValid ifTrue:
 		[^self buildItem: domain].
@@ -26632,36 +26657,36 @@ reset
 	self changed: #title.
 	self changed: #description! !
 
-!DrGMacroBuilder methodsFor: 'constant'!
+!DrGMacroBuilder methodsFor: 'constant' stamp: ''!
 defaultDescription
 	^'Write down your description there.' asText! !
 
-!DrGMacroBuilder methodsFor: 'constant'!
+!DrGMacroBuilder methodsFor: 'constant' stamp: ''!
 defaultTitle
 	^'Macro name' asText! !
 
-!DrGMacroBuilder methodsFor: 'constant'!
+!DrGMacroBuilder methodsFor: 'constant' stamp: ''!
 mathItemClass
 	self shouldNotImplement! !
 
-!DrGMacroBuilder class methodsFor: 'documentation'!
+!DrGMacroBuilder class methodsFor: 'documentation' stamp: ''!
 description 
 	^ 'Construct a macro-construction with input and output items.' translated! !
 
-!DrGMacroBuilder class methodsFor: 'documentation'!
+!DrGMacroBuilder class methodsFor: 'documentation' stamp: ''!
 title
 	^ 'Build macro' translated.! !
 
-!DrGMacroPlayer methodsFor: 'private'!
+!DrGMacroPlayer methodsFor: 'private' stamp: ''!
 addItem: aMathItemCollection at: aPoint
 	super addItem: aMathItemCollection at: aPoint.
 	self addToggleItem: aMathItemCollection in: input! !
 
-!DrGMacroPlayer methodsFor: 'callback'!
+!DrGMacroPlayer methodsFor: 'callback' stamp: ''!
 cancel
 	self triggerEvent: #cancel! !
 
-!DrGMacroPlayer methodsFor: 'callback'!
+!DrGMacroPlayer methodsFor: 'callback' stamp: ''!
 page: integer 
 	"we receive notification from the wizard the user change the wizard
 	current page"
@@ -26677,7 +26702,7 @@ page: integer
 buildItem
 	^selectedMacro execute: input in: presenter.! !
 
-!DrGMacroPlayer methodsFor: 'accessing'!
+!DrGMacroPlayer methodsFor: 'accessing' stamp: ''!
 constructedNodes
 	^ selectedMacro constructedNodes ! !
 
@@ -26685,23 +26710,23 @@ constructedNodes
 description
 	^ selectedMacro ifNotNil: [selectedMacro description] ifNil: [^'']! !
 
-!DrGMacroPlayer methodsFor: 'accessing'!
+!DrGMacroPlayer methodsFor: 'accessing' stamp: ''!
 description: text 
 	selectedMacro ifNotNil: [selectedMacro description: text asString]! !
 
-!DrGMacroPlayer methodsFor: 'accessing'!
+!DrGMacroPlayer methodsFor: 'accessing' stamp: ''!
 input
 	^input! !
 
-!DrGMacroPlayer methodsFor: 'accessing'!
+!DrGMacroPlayer methodsFor: 'accessing' stamp: ''!
 inputBasicType
 	^input collect: [:i | i basicType]! !
 
-!DrGMacroPlayer methodsFor: 'accessing'!
+!DrGMacroPlayer methodsFor: 'accessing' stamp: ''!
 selectedMacro
 	^selectedMacro ! !
 
-!DrGMacroPlayer methodsFor: 'accessing'!
+!DrGMacroPlayer methodsFor: 'accessing' stamp: ''!
 selectedMacro: aMacro
 	"Some cleaning are needed"
 	selectedMacro := aMacro.
@@ -26724,13 +26749,13 @@ release
 	wizard delete.
 	wizard := nil! !
 
-!DrGMacroPlayer methodsFor: 'testing'!
+!DrGMacroPlayer methodsFor: 'testing' stamp: ''!
 isWanted: aMathItemCollection
 	selectedMacro isNil ifTrue: [^false].
 	^aMathItemCollection notEmpty and: 
 		[(selectedMacro inputBasicType at: input size + 1 ) == aMathItemCollection first basicType]! !
 
-!DrGMacroPlayer methodsFor: 'testing'!
+!DrGMacroPlayer methodsFor: 'testing' stamp: ''!
 readyToBuild
 	^ self inputBasicType = selectedMacro inputBasicType! !
 
@@ -26743,20 +26768,20 @@ reset
 	self flag: #drgeoTodo
 	"wizard changed: #selectedMacro"! !
 
-!DrGMacroPlayer class methodsFor: 'documentation'!
+!DrGMacroPlayer class methodsFor: 'documentation' stamp: ''!
 description 
 	^'Execute a pre-built macro-construction on selected input items. To edit a macro description, edit its text and apply with the keys [alt/ctrl]+s.' translated! !
 
-!DrGMacroPlayer class methodsFor: 'documentation'!
+!DrGMacroPlayer class methodsFor: 'documentation' stamp: ''!
 title
 	^ 'Execute/edit macro' translated! !
 
-!DrGMacroPlayerHeadless methodsFor: 'initialize-release'!
+!DrGMacroPlayerHeadless methodsFor: 'initialize-release' stamp: ''!
 initialize 
 	input := OrderedCollection new.
 ! !
 
-!DrGMacroPlayerHeadless methodsFor: 'initialize-release'!
+!DrGMacroPlayerHeadless methodsFor: 'initialize-release' stamp: ''!
 release! !
 
 !DrGMiddleBuilder methodsFor: 'updating' stamp: 'hlsf 6/20/2021 11:21:14'!
@@ -26764,7 +26789,7 @@ reset
 	super reset.
 	pointA := pointB := segment := nil! !
 
-!DrGMiddleBuilder methodsFor: 'accessing'!
+!DrGMiddleBuilder methodsFor: 'accessing' stamp: ''!
 arguments
 	segment ifNotNil: [^{segment}].
 	^{pointA . pointB}! !
@@ -26776,16 +26801,16 @@ isWanted: aMathItemCollection
 			(aMathItemCollection first isPointItem and: [aMathItemCollection first ~= pointA])
 			or: [aMathItemCollection first isSegmentItem and: [pointA isNil]]]! !
 
-!DrGMiddleBuilder methodsFor: 'testing'!
+!DrGMiddleBuilder methodsFor: 'testing' stamp: ''!
 readyToBuild
 	^ segment notNil or: [pointA notNil and: [pointB notNil]]! !
 
-!DrGMiddleBuilder methodsFor: 'constant'!
+!DrGMiddleBuilder methodsFor: 'constant' stamp: ''!
 mathItemClass
 	segment ifNotNil: [^DrGPointMiddlesegmentItem].
 	^DrGPointMiddle2ptsItem! !
 
-!DrGMiddleBuilder methodsFor: 'private'!
+!DrGMiddleBuilder methodsFor: 'private' stamp: ''!
 addItem: aMathItemCollection at: aPoint
 	super addItem: aMathItemCollection at: aPoint.
 	aMathItemCollection first isPointItem 
@@ -26798,21 +26823,21 @@ addItem: aMathItemCollection at: aPoint
 				^self]]
 		ifFalse: [segment := aMathItemCollection  first]! !
 
-!DrGMiddleBuilder class methodsFor: 'documentation'!
+!DrGMiddleBuilder class methodsFor: 'documentation' stamp: ''!
 description 
 	^ 'The midpoint of a segment or between two points.' translated! !
 
-!DrGMiddleBuilder class methodsFor: 'documentation'!
+!DrGMiddleBuilder class methodsFor: 'documentation' stamp: ''!
 title 
 	^ 'Middle' translated. ! !
 
-!DrGPointByCoordinatesBuilder methodsFor: 'constant'!
+!DrGPointByCoordinatesBuilder methodsFor: 'constant' stamp: ''!
 mathItemClass
 	^script 
 		ifNotNil: [DrGPointScriptItem ]
 		ifNil: [DrGPointCoordinateItem]! !
 
-!DrGPointByCoordinatesBuilder methodsFor: 'private'!
+!DrGPointByCoordinatesBuilder methodsFor: 'private' stamp: ''!
 addItem: aMathItemCollection at: aPoint
 	super addItem: aMathItemCollection at: aPoint.
 	aMathItemCollection first isScriptItem 
@@ -26823,13 +26848,13 @@ addItem: aMathItemCollection at: aPoint
 				ifNil: [valueX := aMathItemCollection first.]
 				ifNotNil: [valueY ifNil: [valueY := aMathItemCollection first]]]! !
 
-!DrGPointByCoordinatesBuilder methodsFor: 'accessing'!
+!DrGPointByCoordinatesBuilder methodsFor: 'accessing' stamp: ''!
 arguments
 	^script 
 		ifNotNil: [{script}]
 		ifNil: [{valueX . valueY}]! !
 
-!DrGPointByCoordinatesBuilder methodsFor: 'testing'!
+!DrGPointByCoordinatesBuilder methodsFor: 'testing' stamp: ''!
 isWanted: aMathItemCollection
 	^ aMathItemCollection notEmpty
 		and: [(aMathItemCollection first isScriptItem
@@ -26839,7 +26864,7 @@ isWanted: aMathItemCollection
 				and: [aMathItemCollection first ~= valueY]]]]
 			! !
 
-!DrGPointByCoordinatesBuilder methodsFor: 'testing'!
+!DrGPointByCoordinatesBuilder methodsFor: 'testing' stamp: ''!
 readyToBuild
 	^ (valueX notNil and: [valueY notNil])
 		or: [script notNil]! !
@@ -26849,19 +26874,19 @@ reset
 	super reset.
 	script := valueX := valueY := nil! !
 
-!DrGPointByCoordinatesBuilder class methodsFor: 'documentation'!
+!DrGPointByCoordinatesBuilder class methodsFor: 'documentation' stamp: ''!
 description
 	^ 'Point given its coordinates: select two numbers or a point coordinates (@).' translated! !
 
-!DrGPointByCoordinatesBuilder class methodsFor: 'documentation'!
+!DrGPointByCoordinatesBuilder class methodsFor: 'documentation' stamp: ''!
 title 
 	^ 'Coordinates' translated! !
 
-!DrGPointIntersectionBuilder methodsFor: 'accessing'!
+!DrGPointIntersectionBuilder methodsFor: 'accessing' stamp: ''!
 arguments 
 	^{curveItemA . curveItemB.  point}! !
 
-!DrGPointIntersectionBuilder methodsFor: 'private'!
+!DrGPointIntersectionBuilder methodsFor: 'private' stamp: ''!
 addItem: aMathItemCollection at: aPoint
 	super addItem: aMathItemCollection at: aPoint.
 	curveItemA ifNil: [
@@ -26870,23 +26895,23 @@ addItem: aMathItemCollection at: aPoint
 	curveItemB ifNil: [curveItemB := aMathItemCollection first]
 ! !
 
-!DrGPointIntersectionBuilder methodsFor: 'testing'!
+!DrGPointIntersectionBuilder methodsFor: 'testing' stamp: ''!
 isArcSelected
 	"does the user selected two arcs ?"
 	^ (curveItemA isCircleItem or: [curveItemA isArcItem]) or: [
 		curveItemB isCircleItem or: [curveItemB isArcItem]]! !
 
-!DrGPointIntersectionBuilder methodsFor: 'testing'!
+!DrGPointIntersectionBuilder methodsFor: 'testing' stamp: ''!
 isWanted: aMathItemCollection 
 	aMathItemCollection ifEmpty: [^false].
 	^ aMathItemCollection first isIntersectableItem 
 		and: [curveItemA isNil or: [curveItemB isNil]]! !
 
-!DrGPointIntersectionBuilder methodsFor: 'testing'!
+!DrGPointIntersectionBuilder methodsFor: 'testing' stamp: ''!
 readyToBuild 
 	^ curveItemA notNil & curveItemB notNil ! !
 
-!DrGPointIntersectionBuilder methodsFor: 'constant'!
+!DrGPointIntersectionBuilder methodsFor: 'constant' stamp: ''!
 mathItemClass 
 	^ DrGPointIntersectionItem! !
 
@@ -26897,7 +26922,7 @@ postProcess: item from: node
 	k :=  (node attributeAt: 'extra') asNumber = 0 ifTrue: [-1] ifFalse: [1].
 	item k: k! !
 
-!DrGPointIntersectionBuilder methodsFor: 'updating'!
+!DrGPointIntersectionBuilder methodsFor: 'updating' stamp: ''!
 buildItem 
 	^ self isArcSelected
 		ifFalse: [super buildItem] 
@@ -26919,11 +26944,11 @@ itemInstanceFrom: node
 	k :=  (node attributeAt: 'extra') asNumber = 0 ifTrue: [-1] ifFalse: [1].
 	^self mathItemClass newWith: arguments k: k.! !
 
-!DrGPointIntersectionBuilder class methodsFor: 'documentation'!
+!DrGPointIntersectionBuilder class methodsFor: 'documentation' stamp: ''!
 description
 	^'Intersection(s) of two curves.' translated! !
 
-!DrGPointIntersectionBuilder class methodsFor: 'documentation'!
+!DrGPointIntersectionBuilder class methodsFor: 'documentation' stamp: ''!
 title
 	^ 'Intersection' translated! !
 
@@ -26946,20 +26971,20 @@ addToFlyingItem: anItem
 flyingMorphClass
 	^ DrGPolygonMorph ! !
 
-!DrGPolygonBuilder methodsFor: 'constant'!
+!DrGPolygonBuilder methodsFor: 'constant' stamp: ''!
 mathItemClass
 	^DrGPolygonNptsItem! !
 
-!DrGPolygonBuilder methodsFor: 'initialize-release'!
+!DrGPolygonBuilder methodsFor: 'initialize-release' stamp: ''!
 initialize
 	points := OrderedCollection new.
 ! !
 
-!DrGPolygonBuilder methodsFor: 'accessing'!
+!DrGPolygonBuilder methodsFor: 'accessing' stamp: ''!
 arguments
 	^points allButLast! !
 
-!DrGPolygonBuilder methodsFor: 'testing'!
+!DrGPolygonBuilder methodsFor: 'testing' stamp: ''!
 isWanted: aMathItemCollection
 ^aMathItemCollection notEmpty
 	and: [aMathItemCollection first isPointItem
@@ -26967,17 +26992,17 @@ isWanted: aMathItemCollection
 		or: [(points first = aMathItemCollection first and: [ points size > 2])
 		or: [(points includes: aMathItemCollection first) not]]]]! !
 
-!DrGPolygonBuilder methodsFor: 'testing'!
+!DrGPolygonBuilder methodsFor: 'testing' stamp: ''!
 readyToBuild
 	^ points size > 2 and: [points first = points last]! !
 
-!DrGPolygonBuilder methodsFor: 'private'!
+!DrGPolygonBuilder methodsFor: 'private' stamp: ''!
 addItem: aMathItemCollection at: aPoint
 	super addItem: aMathItemCollection at: aPoint.
 	points add: aMathItemCollection first.
 	self addToFlyingItem: points last.! !
 
-!DrGPolygonBuilder methodsFor: 'xml'!
+!DrGPolygonBuilder methodsFor: 'xml' stamp: ''!
 parentsById: node
 	|arguments|
 	"To instantiate a polygon we need the first summit to be duplucated at the end of the point collection"
@@ -26985,20 +27010,20 @@ parentsById: node
 	arguments addLast: arguments first.
 	^ arguments ! !
 
-!DrGPolygonBuilder methodsFor: 'updating'!
+!DrGPolygonBuilder methodsFor: 'updating' stamp: ''!
 reset
 	super reset.
 	points := OrderedCollection new! !
 
-!DrGPolygonBuilder class methodsFor: 'documentation'!
+!DrGPolygonBuilder class methodsFor: 'documentation' stamp: ''!
 description
 	^ 'Polygon by n points: last point must be the initial point to terminate.' translated! !
 
-!DrGPolygonBuilder class methodsFor: 'documentation'!
+!DrGPolygonBuilder class methodsFor: 'documentation' stamp: ''!
 title 
 	^ 'Polygon' translated! !
 
-!DrGPolygonRegularBuilder methodsFor: 'private'!
+!DrGPolygonRegularBuilder methodsFor: 'private' stamp: ''!
 addItem: aMathItemCollection at: aPoint
 | item |
 	super addItem: aMathItemCollection at: aPoint.
@@ -27009,17 +27034,17 @@ addItem: aMathItemCollection at: aPoint
 	(item isValueItem and: [value isNil]) ifTrue: [
 		value := item]! !
 
-!DrGPolygonRegularBuilder methodsFor: 'accessing'!
+!DrGPolygonRegularBuilder methodsFor: 'accessing' stamp: ''!
 arguments
 	^ {center. pointA. value}! !
 
-!DrGPolygonRegularBuilder methodsFor: 'testing'!
+!DrGPolygonRegularBuilder methodsFor: 'testing' stamp: ''!
 isWanted: aMathItemCollection
 	^ aMathItemCollection notEmpty and: [
 		(aMathItemCollection first isPointItem and: [center isNil or: [pointA isNil]]) or: [
 			aMathItemCollection first isValueItem and: [value isNil]]]! !
 
-!DrGPolygonRegularBuilder methodsFor: 'testing'!
+!DrGPolygonRegularBuilder methodsFor: 'testing' stamp: ''!
 readyToBuild
 	^(center notNil and: [pointA notNil and: [value notNil ]])! !
 
@@ -27028,23 +27053,23 @@ reset
 	super reset.
 	center := pointA := value := nil! !
 
-!DrGPolygonRegularBuilder methodsFor: 'constant'!
+!DrGPolygonRegularBuilder methodsFor: 'constant' stamp: ''!
 mathItemClass 
 	^ DrGPolygonRegularItem ! !
 
-!DrGPolygonRegularBuilder class methodsFor: 'documentation'!
+!DrGPolygonRegularBuilder class methodsFor: 'documentation' stamp: ''!
 description 
 	^ 'Regular polygon defined by its center, a vertex and its sides number.' translated! !
 
-!DrGPolygonRegularBuilder class methodsFor: 'documentation'!
+!DrGPolygonRegularBuilder class methodsFor: 'documentation' stamp: ''!
 title
 	^ 'Regular polygon' translated! !
 
-!DrGScriptPlayer methodsFor: 'callback'!
+!DrGScriptPlayer methodsFor: 'callback' stamp: ''!
 cancel
 	self triggerEvent: #cancel! !
 
-!DrGScriptPlayer methodsFor: 'callback'!
+!DrGScriptPlayer methodsFor: 'callback' stamp: ''!
 page: integer 
 	"we receive notification from the wizard the user change the wizard
 	current page"
@@ -27056,7 +27081,7 @@ page: integer
 		triggerEvent: #changedState
 		with: newState! !
 
-!DrGScriptPlayer methodsFor: 'xml'!
+!DrGScriptPlayer methodsFor: 'xml' stamp: ''!
 basicItemFrom: node
 "create a scrip item then set its script from the xml node information"
 | item |
@@ -27071,18 +27096,18 @@ itemInstanceFrom: node
 	(self parentsById: node) do: [:each |	self addItem: {each} at: 0@0].
 	^ self getItem first.! !
 
-!DrGScriptPlayer methodsFor: 'xml'!
+!DrGScriptPlayer methodsFor: 'xml' stamp: ''!
 postProcess: item from: node
 	super postProcess: item from: node.
 	self parseValuePosition: node of: item! !
 
-!DrGScriptPlayer methodsFor: 'dependents access'!
+!DrGScriptPlayer methodsFor: 'dependents access' stamp: ''!
 release
 	self removeEvents.
 	wizard delete.
 	wizard := nil! !
 
-!DrGScriptPlayer methodsFor: 'private'!
+!DrGScriptPlayer methodsFor: 'private' stamp: ''!
 addItem: aMathItemCollection at: aPoint
 "Take the point position only when the user clic somewhere in the background"
 	aMathItemCollection ifEmpty: 
@@ -27092,7 +27117,7 @@ addItem: aMathItemCollection at: aPoint
 		ifTrue: [self addToggleItem: aMathItemCollection in: input]
 		ifFalse: [input remove: aMathItemCollection first ifAbsent: []]! !
 
-!DrGScriptPlayer methodsFor: 'testing'!
+!DrGScriptPlayer methodsFor: 'testing' stamp: ''!
 isWanted: aMathItemCollection 
 	"We are now performing type checking for script, we are also interested
 in empty aMathItemCollection, (ie: just get the clic position in the background)"
@@ -27104,21 +27129,21 @@ in empty aMathItemCollection, (ie: just get the clic position in the background)
 		ifFalse: 
 			[aMathItemCollection first class includesBehavior: (scriptClass argumentsType at: input size + 1)]! !
 
-!DrGScriptPlayer methodsFor: 'testing'!
+!DrGScriptPlayer methodsFor: 'testing' stamp: ''!
 mathItemClass
 	^DrGValueScriptItem ! !
 
-!DrGScriptPlayer methodsFor: 'testing'!
+!DrGScriptPlayer methodsFor: 'testing' stamp: ''!
 readyToBuild
 	scriptClass ifNil: [^false].
 	^ input size = scriptClass argumentsType size and: [ point isNil not ]! !
 
-!DrGScriptPlayer methodsFor: 'testing'!
+!DrGScriptPlayer methodsFor: 'testing' stamp: ''!
 reset
 	super reset.
 	input := OrderedCollection new.! !
 
-!DrGScriptPlayer methodsFor: 'accessing'!
+!DrGScriptPlayer methodsFor: 'accessing' stamp: ''!
 arguments
 	^ (OrderedCollection withAll: input)
 		add: scriptClass;
@@ -27141,21 +27166,21 @@ description: aText
 " Not yet implemented, should rewrite the description of the selected scriptClass "
 	self flag: #drgeoTodo! !
 
-!DrGScriptPlayer methodsFor: 'accessing'!
+!DrGScriptPlayer methodsFor: 'accessing' stamp: ''!
 input
 	^input! !
 
-!DrGScriptPlayer methodsFor: 'accessing'!
+!DrGScriptPlayer methodsFor: 'accessing' stamp: ''!
 scriptClass
 	^ scriptClass! !
 
-!DrGScriptPlayer methodsFor: 'accessing'!
+!DrGScriptPlayer methodsFor: 'accessing' stamp: ''!
 scriptClass: anObject
 	scriptClass := anObject.
 	input := OrderedCollection new.
 	self triggerEvent: #changedScript.! !
 
-!DrGScriptPlayer methodsFor: 'initialize-release'!
+!DrGScriptPlayer methodsFor: 'initialize-release' stamp: ''!
 basicInitialize
 	input := OrderedCollection new.! !
 
@@ -27168,11 +27193,11 @@ initialize
 	wizard when: #page send: #page: to: self.
 	wizard when: #cancel send: #cancel to: self.! !
 
-!DrGScriptPlayer methodsFor: 'initialize-release'!
+!DrGScriptPlayer methodsFor: 'initialize-release' stamp: ''!
 removeEvents
 	wizard removeActionsWithReceiver: self! !
 
-!DrGScriptPlayer class methodsFor: 'xml'!
+!DrGScriptPlayer class methodsFor: 'xml' stamp: ''!
 basicItemFrom: node
 "create a basic item (unitialised) from this node and add it to the domain, return an item partially initialized. Use for macro node"
 	| builder |
@@ -27186,28 +27211,28 @@ itemFrom: node in: presenter
 	builder := self basicNew basicInitialize; presenter: 	presenter;  yourself.
 	^ builder itemFrom: node! !
 
-!DrGScriptPlayer class methodsFor: 'documentation'!
+!DrGScriptPlayer class methodsFor: 'documentation' stamp: ''!
 description
 	^ 'Insert a Smalltalk script in the drawing area.' translated! !
 
-!DrGScriptPlayer class methodsFor: 'documentation'!
+!DrGScriptPlayer class methodsFor: 'documentation' stamp: ''!
 title
 	^ 'Use a script' translated! !
 
-!DrGScriptPlayerHeadless methodsFor: 'as yet unclassified'!
+!DrGScriptPlayerHeadless methodsFor: 'as yet unclassified' stamp: ''!
 initialize
 	input := OrderedCollection new.! !
 
-!DrGScriptPlayerHeadless methodsFor: 'as yet unclassified'!
+!DrGScriptPlayerHeadless methodsFor: 'as yet unclassified' stamp: ''!
 release! !
 
-!DrGSegmentBuilder methodsFor: 'testing'!
+!DrGSegmentBuilder methodsFor: 'testing' stamp: ''!
 isWanted: aMathItemCollection
 	^aMathItemCollection notEmpty
 		and: [aMathItemCollection first isPointItem	
 		and: [aMathItemCollection first ~= pointA]]! !
 
-!DrGSegmentBuilder methodsFor: 'testing'!
+!DrGSegmentBuilder methodsFor: 'testing' stamp: ''!
 readyToBuild
 	^ pointA notNil and: [pointB notNil]! !
 
@@ -27216,11 +27241,11 @@ reset
 	super reset.
 	pointA := pointB := nil! !
 
-!DrGSegmentBuilder methodsFor: 'accessing'!
+!DrGSegmentBuilder methodsFor: 'accessing' stamp: ''!
 arguments
 	^{pointA . pointB}! !
 
-!DrGSegmentBuilder methodsFor: 'constant'!
+!DrGSegmentBuilder methodsFor: 'constant' stamp: ''!
 mathItemClass
 	^DrGSegment2ptsItem! !
 
@@ -27243,15 +27268,15 @@ addItem: aMathItemCollection at: aPoint
 	pointB ifNil: [	pointB := aMathItemCollection first]
 	! !
 
-!DrGSegmentBuilder class methodsFor: 'documentation'!
+!DrGSegmentBuilder class methodsFor: 'documentation' stamp: ''!
 description
 	^ 'Segment defined by two points.' translated! !
 
-!DrGSegmentBuilder class methodsFor: 'documentation'!
+!DrGSegmentBuilder class methodsFor: 'documentation' stamp: ''!
 title
 	^ 'Segment' translated! !
 
-!DrGCircleBuilder methodsFor: 'testing'!
+!DrGCircleBuilder methodsFor: 'testing' stamp: ''!
 isWanted: aMathItemCollection 
 	^ aMathItemCollection notEmpty
 		and: [(aMathItemCollection first isPointItem
@@ -27263,13 +27288,13 @@ isWanted: aMathItemCollection
 				and: [pointA isNil not
 				and: [aMathItemCollection first ~= segment]]]]]! !
 
-!DrGCircleBuilder methodsFor: 'testing'!
+!DrGCircleBuilder methodsFor: 'testing' stamp: ''!
 readyToBuild
 	^ (radius notNil and: [pointA notNil])
 		or: [(pointA notNil and: [pointB notNil])
 			or: [pointA notNil and: [segment notNil]]]! !
 
-!DrGCircleBuilder methodsFor: 'private'!
+!DrGCircleBuilder methodsFor: 'private' stamp: ''!
 addItem: aMathItemCollection at: aPoint 
 	|item|
 	point := aPoint.
@@ -27286,7 +27311,7 @@ addItem: aMathItemCollection at: aPoint
 flyingMorphClass
 	^ DrGCircleMorph! !
 
-!DrGCircleBuilder methodsFor: 'accessing'!
+!DrGCircleBuilder methodsFor: 'accessing' stamp: ''!
 arguments
 	pointB
 		ifNil: 
@@ -27294,13 +27319,13 @@ arguments
 			segment ifNotNil: [^{pointA. segment}]]
 		ifNotNil: [^{pointA. pointB}]! !
 
-!DrGCircleBuilder methodsFor: 'updating'!
+!DrGCircleBuilder methodsFor: 'updating' stamp: ''!
 reset
 	super reset.
 	radius := nil.
 	segment := nil.! !
 
-!DrGCircleBuilder methodsFor: 'constant'!
+!DrGCircleBuilder methodsFor: 'constant' stamp: ''!
 mathItemClass
 	^ radius
 		ifNil: [
@@ -27309,15 +27334,15 @@ mathItemClass
 				ifNotNil: [DrGCircleSegmentItem]]
 		ifNotNil: [DrGCircleRadiusItem]! !
 
-!DrGCircleBuilder class methodsFor: 'documentation'!
+!DrGCircleBuilder class methodsFor: 'documentation' stamp: ''!
 description 
 	^ 'Circle defined by its center and a point or by its center and radius, a value.' translated! !
 
-!DrGCircleBuilder class methodsFor: 'documentation'!
+!DrGCircleBuilder class methodsFor: 'documentation' stamp: ''!
 title
 	^ 'Circle' translated ! !
 
-!DrGLineBuilder methodsFor: 'constant'!
+!DrGLineBuilder methodsFor: 'constant' stamp: ''!
 mathItemClass
 	^DrGLine2ptsItem! !
 
@@ -27325,15 +27350,15 @@ mathItemClass
 flyingMorphClass
 	^ DrGLineMorph! !
 
-!DrGLineBuilder class methodsFor: 'documentation'!
+!DrGLineBuilder class methodsFor: 'documentation' stamp: ''!
 description 
 	^ 'Line defined by two points' translated! !
 
-!DrGLineBuilder class methodsFor: 'documentation'!
+!DrGLineBuilder class methodsFor: 'documentation' stamp: ''!
 title
 	^ 'Line' translated! !
 
-!DrGAngleBisectorBuilder methodsFor: 'private'!
+!DrGAngleBisectorBuilder methodsFor: 'private' stamp: ''!
 addItem: aMathItemCollection at: aPoint
 	| item |
 	point := aPoint.
@@ -27345,7 +27370,7 @@ addItem: aMathItemCollection at: aPoint
 				self addToFlyingItem: pointB] 
 			ifNotNil: [pointC := item]]! !
 
-!DrGAngleBisectorBuilder methodsFor: 'accessing'!
+!DrGAngleBisectorBuilder methodsFor: 'accessing' stamp: ''!
 arguments
 	^ angle 
 		ifNotNil: [{angle}] 
@@ -27357,7 +27382,7 @@ reset
 	pointC := angle := nil
 	! !
 
-!DrGAngleBisectorBuilder methodsFor: 'constant'!
+!DrGAngleBisectorBuilder methodsFor: 'constant' stamp: ''!
 mathItemClass 
 	^ angle 
 		ifNotNil: [DrGLineAngleBisectorItem] 
@@ -27367,7 +27392,7 @@ mathItemClass
 flyingMathItemArguments 
 	^ {pointA. pointB. movingPoint}.! !
 
-!DrGAngleBisectorBuilder methodsFor: 'testing'!
+!DrGAngleBisectorBuilder methodsFor: 'testing' stamp: ''!
 isWanted: aMathItemCollection
 	| item |
 	^ aMathItemCollection notEmpty 
@@ -27376,24 +27401,24 @@ isWanted: aMathItemCollection
 				and: [item  ~= pointB]])
 			or:	[item isAngleItem and: [pointA isNil and: [item nodeType = #'3pts']]]]	! !
 
-!DrGAngleBisectorBuilder methodsFor: 'testing'!
+!DrGAngleBisectorBuilder methodsFor: 'testing' stamp: ''!
 readyToBuild 
 	^ angle notNil or:
 		[pointA notNil and: [pointB notNil and: [pointC notNil]]]! !
 
-!DrGAngleBisectorBuilder class methodsFor: 'documentation'!
+!DrGAngleBisectorBuilder class methodsFor: 'documentation' stamp: ''!
 description
 	^ 'Angle bisector defined by three points or an angle defined by three points.' translated! !
 
-!DrGAngleBisectorBuilder class methodsFor: 'documentation'!
+!DrGAngleBisectorBuilder class methodsFor: 'documentation' stamp: ''!
 title
 	^ 'Angle bisector' translated! !
 
-!DrGParallelBuilder methodsFor: 'constant'!
+!DrGParallelBuilder methodsFor: 'constant' stamp: ''!
 mathItemClass
 	^DrGLineParallelItem! !
 
-!DrGParallelBuilder methodsFor: 'testing'!
+!DrGParallelBuilder methodsFor: 'testing' stamp: ''!
 isWanted: aMathItemCollection
 	aMathItemCollection ifEmpty: [^false].
 	^ (aMathItemCollection first isPointItem 
@@ -27401,7 +27426,7 @@ isWanted: aMathItemCollection
 			or: [aMathItemCollection first isDirectionItem and: [direction isNil]] 
 ! !
 
-!DrGParallelBuilder methodsFor: 'testing'!
+!DrGParallelBuilder methodsFor: 'testing' stamp: ''!
 readyToBuild
 	^pointA notNil and: [direction notNil]! !
 
@@ -27415,7 +27440,7 @@ reset
 	super reset.
 	pointA := direction := nil! !
 
-!DrGParallelBuilder methodsFor: 'private'!
+!DrGParallelBuilder methodsFor: 'private' stamp: ''!
 addItem: aMathItemCollection at: aPoint
 	point := aPoint.
 	aMathItemCollection first isPointItem 
@@ -27425,31 +27450,31 @@ addItem: aMathItemCollection at: aPoint
 			self addToFlyingItem: direction].
 	! !
 
-!DrGParallelBuilder methodsFor: 'accessing'!
+!DrGParallelBuilder methodsFor: 'accessing' stamp: ''!
 arguments
 	^{direction . pointA}! !
 
-!DrGParallelBuilder class methodsFor: 'documentation'!
+!DrGParallelBuilder class methodsFor: 'documentation' stamp: ''!
 description 
 	^ 'Line passing through one point and parallel to a line, half-line, etc.' translated! !
 
-!DrGParallelBuilder class methodsFor: 'documentation'!
+!DrGParallelBuilder class methodsFor: 'documentation' stamp: ''!
 title 
 	^ 'Parallel' translated! !
 
-!DrGPerpendicularBuilder methodsFor: 'constant'!
+!DrGPerpendicularBuilder methodsFor: 'constant' stamp: ''!
 mathItemClass
 	^DrGLinePerpendicularItem! !
 
-!DrGPerpendicularBuilder class methodsFor: 'documentation'!
+!DrGPerpendicularBuilder class methodsFor: 'documentation' stamp: ''!
 description 
 	^ 'Line passing through one point and orthogonal to a line, half-line, etc.' translated! !
 
-!DrGPerpendicularBuilder class methodsFor: 'documentation'!
+!DrGPerpendicularBuilder class methodsFor: 'documentation' stamp: ''!
 title 
 	^ 'Perpendicular' translated! !
 
-!DrGPerpendicularBisectorBuilder methodsFor: 'testing'!
+!DrGPerpendicularBisectorBuilder methodsFor: 'testing' stamp: ''!
 isWanted: aMathItemCollection
 | item |
 	^ aMathItemCollection notEmpty 
@@ -27457,23 +27482,23 @@ isWanted: aMathItemCollection
 		and: [item ~= pointA])
 			or: [item isSegmentItem and: [pointA isNil]]]! !
 
-!DrGPerpendicularBisectorBuilder methodsFor: 'testing'!
+!DrGPerpendicularBisectorBuilder methodsFor: 'testing' stamp: ''!
 readyToBuild
 	^ segment notNil or:
 		[pointA notNil and: [pointB notNil]]! !
 
-!DrGPerpendicularBisectorBuilder methodsFor: 'updating'!
+!DrGPerpendicularBisectorBuilder methodsFor: 'updating' stamp: ''!
 reset
 	super reset.
 	segment := nil! !
 
-!DrGPerpendicularBisectorBuilder methodsFor: 'accessing'!
+!DrGPerpendicularBisectorBuilder methodsFor: 'accessing' stamp: ''!
 arguments 
 	^ segment 
 		ifNil: [{pointA . pointB}] 
 		ifNotNil: [{segment}]! !
 
-!DrGPerpendicularBisectorBuilder methodsFor: 'private'!
+!DrGPerpendicularBisectorBuilder methodsFor: 'private' stamp: ''!
 addItem: aMathItemCollection at: aPoint
 	| item |
 	point := aPoint.
@@ -27485,21 +27510,21 @@ addItem: aMathItemCollection at: aPoint
 		ifNotNil: [pointB := item]
 	! !
 
-!DrGPerpendicularBisectorBuilder methodsFor: 'constant'!
+!DrGPerpendicularBisectorBuilder methodsFor: 'constant' stamp: ''!
 mathItemClass 
 	^ segment 
 		ifNotNil: [DrGPerpendicularBisectorItem]
 		ifNil: [DrGLinePerpendicularBisector2ptsItem].! !
 
-!DrGPerpendicularBisectorBuilder class methodsFor: 'documentation'!
+!DrGPerpendicularBisectorBuilder class methodsFor: 'documentation' stamp: ''!
 description
 	^ 'Perpendicular bisector defined by a segment or two points.' translated! !
 
-!DrGPerpendicularBisectorBuilder class methodsFor: 'documentation'!
+!DrGPerpendicularBisectorBuilder class methodsFor: 'documentation' stamp: ''!
 title
 	^ 'Perpendicular bisector' translated! !
 
-!DrGRayBuilder methodsFor: 'constant'!
+!DrGRayBuilder methodsFor: 'constant' stamp: ''!
 mathItemClass
 	^DrGRay2ptsItem! !
 
@@ -27507,11 +27532,11 @@ mathItemClass
 flyingMorphClass
 	^ DrGRayMorph! !
 
-!DrGRayBuilder class methodsFor: 'documentation'!
+!DrGRayBuilder class methodsFor: 'documentation' stamp: ''!
 description 
 	^ 'Half-Line defined by two points, the first selected point is the origin.' translated! !
 
-!DrGRayBuilder class methodsFor: 'documentation'!
+!DrGRayBuilder class methodsFor: 'documentation' stamp: ''!
 title
 	^'Ray' translated ! !
 
@@ -27519,67 +27544,67 @@ title
 flyingMorphClass
 	^ DrGVectorMorph! !
 
-!DrGVectorBuilder methodsFor: 'constant'!
+!DrGVectorBuilder methodsFor: 'constant' stamp: ''!
 mathItemClass
 	^DrGVector2ptsItem! !
 
-!DrGVectorBuilder class methodsFor: 'documentation'!
+!DrGVectorBuilder class methodsFor: 'documentation' stamp: ''!
 description 
 	^'Vector defined by two points.' translated! !
 
-!DrGVectorBuilder class methodsFor: 'documentation'!
+!DrGVectorBuilder class methodsFor: 'documentation' stamp: ''!
 title
 	^'Vector' translated ! !
 
-!DrGTextBuilder methodsFor: 'accessing'!
+!DrGTextBuilder methodsFor: 'accessing' stamp: ''!
 arguments
 	^ {point}! !
 
-!DrGTextBuilder methodsFor: 'xml'!
+!DrGTextBuilder methodsFor: 'xml' stamp: ''!
 itemInstanceFrom: node
 	self addItem: #() at: 0@0.
 	^ self getItem first.
 ! !
 
-!DrGTextBuilder methodsFor: 'xml'!
+!DrGTextBuilder methodsFor: 'xml' stamp: ''!
 postProcess:  item from: node
 	super postProcess: item from: node.
 	self parseValuePosition: node of: item.
 	item text: (node contentStringAt: #contents)! !
 
-!DrGTextBuilder methodsFor: 'constant'!
+!DrGTextBuilder methodsFor: 'constant' stamp: ''!
 mathItemClass 
 	^ DrGTextItem! !
 
-!DrGTextBuilder methodsFor: 'testing'!
+!DrGTextBuilder methodsFor: 'testing' stamp: ''!
 isWanted: aMathItemCollection
 	^ aMathItemCollection isEmpty! !
 
-!DrGTextBuilder methodsFor: 'testing'!
+!DrGTextBuilder methodsFor: 'testing' stamp: ''!
 readyToBuild 
 	^ point notNil! !
 
-!DrGTextBuilder class methodsFor: 'documentation'!
+!DrGTextBuilder class methodsFor: 'documentation' stamp: ''!
 description 
 	^ 'Free text you can edit and move around.' translated! !
 
-!DrGTextBuilder class methodsFor: 'documentation'!
+!DrGTextBuilder class methodsFor: 'documentation' stamp: ''!
 title
 	^ 'Text' translated! !
 
-!DrGTransformationBuilder methodsFor: 'xml'!
+!DrGTransformationBuilder methodsFor: 'xml' stamp: ''!
 parentsById: node
 	^ (super parentsById: node) reverse! !
 
-!DrGTransformationBuilder methodsFor: 'accessing'!
+!DrGTransformationBuilder methodsFor: 'accessing' stamp: ''!
 arguments
 	^self arguments: mathItem! !
 
-!DrGTransformationBuilder methodsFor: 'constant'!
+!DrGTransformationBuilder methodsFor: 'constant' stamp: ''!
 mathItemClass
 	^ self mathItemClass: mathItem! !
 
-!DrGTransformationBuilder methodsFor: 'building'!
+!DrGTransformationBuilder methodsFor: 'building' stamp: ''!
 buildItem
 	mathItem class = DrGCompositeItem 
 		ifTrue:
@@ -27595,11 +27620,11 @@ mathItemClass: aMathItem
 	className := 'DrG', aMathItem basicType capitalized, 'ReflexionItem'.
 	^(Smalltalk classNamed: className)! !
 
-!DrGReflectionBuilder methodsFor: 'accessing'!
+!DrGReflectionBuilder methodsFor: 'accessing' stamp: ''!
 arguments: aMathItem
 	^{aMathItem . axe}! !
 
-!DrGReflectionBuilder methodsFor: 'testing'!
+!DrGReflectionBuilder methodsFor: 'testing' stamp: ''!
 isWanted: aMathItemCollection 
 	^ aMathItemCollection notEmpty 
 		and: [(aMathItemCollection first isLineItem 
@@ -27607,11 +27632,11 @@ isWanted: aMathItemCollection
 			or: [aMathItemCollection first isGeometricItem 
 				and: [mathItem isNil]]]! !
 
-!DrGReflectionBuilder methodsFor: 'testing'!
+!DrGReflectionBuilder methodsFor: 'testing' stamp: ''!
 readyToBuild
 	^axe notNil and: [mathItem notNil]! !
 
-!DrGReflectionBuilder methodsFor: 'private'!
+!DrGReflectionBuilder methodsFor: 'private' stamp: ''!
 addItem: aMathItemCollection at: aPoint
 	super addItem: aMathItemCollection  at: aPoint.
 	(aMathItemCollection first isLineItem and: [axe isNil])
@@ -27623,26 +27648,26 @@ reset
 	super reset.
 	axe := mathItem := nil! !
 
-!DrGReflectionBuilder class methodsFor: 'documentation'!
+!DrGReflectionBuilder class methodsFor: 'documentation' stamp: ''!
 description
 	^ 'Reflexion: select a line and a geometric object. Reflexion axe is the first selected line.' translated! !
 
-!DrGReflectionBuilder class methodsFor: 'documentation'!
+!DrGReflectionBuilder class methodsFor: 'documentation' stamp: ''!
 title
 	^ 'Reflection' translated! !
 
-!DrGRotationBuilder methodsFor: 'testing'!
+!DrGRotationBuilder methodsFor: 'testing' stamp: ''!
 isWanted: aMathItemCollection
 	^ aMathItemCollection notEmpty 
 		and: [(aMathItemCollection first isPointItem and: [center isNil])
 			or: [(aMathItemCollection first isValueItem and: [value isNil])
 			or: [aMathItemCollection first isGeometricItem and: [mathItem isNil]]]]! !
 
-!DrGRotationBuilder methodsFor: 'testing'!
+!DrGRotationBuilder methodsFor: 'testing' stamp: ''!
 readyToBuild
 	^center notNil and: [value notNil and: [mathItem notNil]]! !
 
-!DrGRotationBuilder methodsFor: 'private'!
+!DrGRotationBuilder methodsFor: 'private' stamp: ''!
 addItem: aMathItemCollection at: aPoint
 	super addItem: aMathItemCollection at: aPoint.
 	(aMathItemCollection first isPointItem and: [center isNil])
@@ -27651,7 +27676,7 @@ addItem: aMathItemCollection at: aPoint
 		ifTrue: [value := aMathItemCollection first. ^self].
 	mathItem := aMathItemCollection first! !
 
-!DrGRotationBuilder methodsFor: 'accessing'!
+!DrGRotationBuilder methodsFor: 'accessing' stamp: ''!
 arguments: aMathItem
 	^{aMathItem . center . value}! !
 
@@ -27666,11 +27691,11 @@ mathItemClass: aMathItem
 	className := 'DrG', aMathItem basicType capitalized, 'RotationItem'.
 	^(Smalltalk classNamed: className)! !
 
-!DrGRotationBuilder class methodsFor: 'documentation'!
+!DrGRotationBuilder class methodsFor: 'documentation' stamp: ''!
 description
 	^ 'Rotation: select a point, a value and a geometric object. The first selected point is the rotation center.' translated! !
 
-!DrGRotationBuilder class methodsFor: 'documentation'!
+!DrGRotationBuilder class methodsFor: 'documentation' stamp: ''!
 title 
 	^ 'Rotation' translated! !
 
@@ -27680,15 +27705,15 @@ mathItemClass: aMathItem
 	className := 'DrG', aMathItem basicType capitalized, 'HomothetyItem'.
 	^(Smalltalk classNamed: className)! !
 
-!DrGHomothetyBuilder class methodsFor: 'documentation'!
+!DrGHomothetyBuilder class methodsFor: 'documentation' stamp: ''!
 description
 	^ 'Homothety: select a center, a value and a geometric object. The first selected point is the homothety center.' translated! !
 
-!DrGHomothetyBuilder class methodsFor: 'documentation'!
+!DrGHomothetyBuilder class methodsFor: 'documentation' stamp: ''!
 title 
 	^ 'Homothety (scale)' translated! !
 
-!DrGSymmetryBuilder methodsFor: 'accessing'!
+!DrGSymmetryBuilder methodsFor: 'accessing' stamp: ''!
 arguments: aMathItem
 	^{aMathItem . center}! !
 
@@ -27697,7 +27722,7 @@ reset
 	super reset.
 	mathItem := center := nil! !
 
-!DrGSymmetryBuilder methodsFor: 'testing'!
+!DrGSymmetryBuilder methodsFor: 'testing' stamp: ''!
 isWanted: aMathItemCollection 
 	^ aMathItemCollection notEmpty
 		and: [(aMathItemCollection first isPointItem 
@@ -27705,11 +27730,11 @@ isWanted: aMathItemCollection
 			or:	[aMathItemCollection first isGeometricItem 
 				and: [mathItem isNil]]]! !
 
-!DrGSymmetryBuilder methodsFor: 'testing'!
+!DrGSymmetryBuilder methodsFor: 'testing' stamp: ''!
 readyToBuild
 	^center notNil and: [mathItem notNil]! !
 
-!DrGSymmetryBuilder methodsFor: 'private'!
+!DrGSymmetryBuilder methodsFor: 'private' stamp: ''!
 addItem: aMathItemCollection at: aPoint
 	super addItem: aMathItemCollection at: aPoint.
 	(aMathItemCollection first isPointItem and: [center isNil])
@@ -27722,11 +27747,11 @@ mathItemClass: aMathItem
 	className := 'DrG', aMathItem basicType capitalized, 'SymmetryItem'.
 	^(Smalltalk classNamed: className)! !
 
-!DrGSymmetryBuilder class methodsFor: 'documentation'!
+!DrGSymmetryBuilder class methodsFor: 'documentation' stamp: ''!
 description
 	^ 'Symmetry: select a point and a geometric object. The first selected point is the symmetry center.' translated! !
 
-!DrGSymmetryBuilder class methodsFor: 'documentation'!
+!DrGSymmetryBuilder class methodsFor: 'documentation' stamp: ''!
 title
 	^'Symmetry' translated ! !
 
@@ -27736,11 +27761,11 @@ mathItemClass: aMathItem
 	className := 'DrG', aMathItem basicType capitalized, 'TranslationItem'.
 	^(Smalltalk classNamed: className)! !
 
-!DrGTranslationBuilder methodsFor: 'accessing'!
+!DrGTranslationBuilder methodsFor: 'accessing' stamp: ''!
 arguments: aMathItem
 	^{aMathItem . vector}! !
 
-!DrGTranslationBuilder methodsFor: 'testing'!
+!DrGTranslationBuilder methodsFor: 'testing' stamp: ''!
 isWanted: aMathItemCollection 
 	^ aMathItemCollection notEmpty 
 		and: [(aMathItemCollection first isVectorItem 
@@ -27749,7 +27774,7 @@ isWanted: aMathItemCollection
 				and: [aMathItemCollection first isVectorItem not 
 				and: [mathItem isNil]]]]! !
 
-!DrGTranslationBuilder methodsFor: 'testing'!
+!DrGTranslationBuilder methodsFor: 'testing' stamp: ''!
 readyToBuild
 	^vector notNil and: [mathItem notNil]! !
 
@@ -27758,22 +27783,22 @@ reset
 	super reset.
 	vector := mathItem := nil.! !
 
-!DrGTranslationBuilder methodsFor: 'private'!
+!DrGTranslationBuilder methodsFor: 'private' stamp: ''!
 addItem: aMathItemCollection at: aPoint
 	super addItem: aMathItemCollection at: aPoint.
 	(aMathItemCollection first isVectorItem and: [vector isNil])
 		ifTrue: [vector := aMathItemCollection first]
 		ifFalse: [mathItem := aMathItemCollection first]! !
 
-!DrGTranslationBuilder class methodsFor: 'documentation'!
+!DrGTranslationBuilder class methodsFor: 'documentation' stamp: ''!
 description
 	^ 'Translation: select a vector and a geometric object.' translated! !
 
-!DrGTranslationBuilder class methodsFor: 'documentation'!
+!DrGTranslationBuilder class methodsFor: 'documentation' stamp: ''!
 title
 	^ 'Translation' translated! !
 
-!DrGValueBuilder methodsFor: 'accessing'!
+!DrGValueBuilder methodsFor: 'accessing' stamp: ''!
 arguments
 	(pointA notNil and: [curveItem notNil]) 
 		ifTrue: [^{pointA . curveItem. point}].
@@ -27781,7 +27806,7 @@ arguments
 	pointB ifNotNil: [^{pointA . pointB. point}].
 	^{point}! !
 
-!DrGValueBuilder methodsFor: 'private'!
+!DrGValueBuilder methodsFor: 'private' stamp: ''!
 addItem: aMathItemCollection at: aPoint
 	super addItem: aMathItemCollection at: aPoint.
 	aMathItemCollection ifEmpty: [^self].
@@ -27795,7 +27820,7 @@ addItem: aMathItemCollection at: aPoint
 				^self]]
 		ifFalse: [curveItem := aMathItemCollection first]! !
 
-!DrGValueBuilder methodsFor: 'xml'!
+!DrGValueBuilder methodsFor: 'xml' stamp: ''!
 itemInstanceFrom: node
 	(self parentsById: node) do: [:each |	self addItem: {each} at: 0@0].
 	"give a chance to a Free value (ValueValueItem) to be instantiated, otherwise it does not hurt"
@@ -27803,14 +27828,14 @@ itemInstanceFrom: node
 	^ self getItem first.
 ! !
 
-!DrGValueBuilder methodsFor: 'xml'!
+!DrGValueBuilder methodsFor: 'xml' stamp: ''!
 postProcess: item from: node
 	super postProcess: item from: node.
 	self parseValuePosition: node of: item.
 	(node attributeAt: #type) asSymbol == #value 
 		ifTrue: [item valueItem: (node contentStringAt: #value) asNumber]! !
 
-!DrGValueBuilder methodsFor: 'constant'!
+!DrGValueBuilder methodsFor: 'constant' stamp: ''!
 mathItemClass
 	pointA
 		ifNotNil: [curveItem
@@ -27839,7 +27864,7 @@ reset
 	super reset.
 	pointA := pointB := curveItem := nil! !
 
-!DrGValueBuilder methodsFor: 'testing'!
+!DrGValueBuilder methodsFor: 'testing' stamp: ''!
 isWanted: aMathItemCollection 
 	aMathItemCollection
 		ifEmpty: [^ true].
@@ -27857,7 +27882,7 @@ isWanted: aMathItemCollection
 		ifTrue: [^ true].
 	^ false! !
 
-!DrGValueBuilder methodsFor: 'testing'!
+!DrGValueBuilder methodsFor: 'testing' stamp: ''!
 readyToBuild
 	^(point notNil 
 		and: [curveItem isNil
@@ -27866,89 +27891,64 @@ readyToBuild
 		or: [pointB notNil
 			or: [curveItem notNil]]! !
 
-!DrGValueBuilder class methodsFor: 'documentation'!
+!DrGValueBuilder class methodsFor: 'documentation' stamp: ''!
 description 
 	^ 'Distance between objects, curve length, free value.' translated! !
 
-!DrGValueBuilder class methodsFor: 'documentation'!
+!DrGValueBuilder class methodsFor: 'documentation' stamp: ''!
 title
 	^ 'Distance, length, value' translated! !
 
-!DrGCommandStack methodsFor: 'private'!
-truncate
-	|oldReadLimit|
-	oldReadLimit := readLimit.
-	readLimit := position.
-	oldReadLimit > readLimit ifTrue:
-			[readLimit to: oldReadLimit do:
-				[:index| collection at: index + 1 put: nil]]! !
-
-!DrGCommandStack methodsFor: 'accessing'!
-nextPut: aCommand
-	super nextPut: aCommand.
-	self truncate.
-	^ aCommand ! !
-
-!DrGCommandStack methodsFor: 'accessing'!
-previous
-	self position = 0 ifTrue: [^nil].
-	self position: self position - 1.
-	^self peek.! !
-
-!DrGCommandStack class methodsFor: 'instance creation'!
-new
-	^self on: Array new! !
-
-!DrGLocusSample methodsFor: 'testing'!
+!DrGLocusSample methodsFor: 'testing' stamp: ''!
 isNotValid
 	^ exist not! !
 
-!DrGLocusSample methodsFor: 'testing'!
+!DrGLocusSample methodsFor: 'testing' stamp: ''!
 isValid
 	^ exist! !
 
-!DrGLocusSample methodsFor: 'testing'!
+!DrGLocusSample methodsFor: 'testing' stamp: ''!
 isValidAndOnScreen
 	^ exist and: [offScreen not]! !
 
-!DrGLocusSample methodsFor: 'testing'!
+!DrGLocusSample methodsFor: 'testing' stamp: ''!
 offScreen 
 	^ offScreen ! !
 
-!DrGLocusSample methodsFor: 'accessing'!
+!DrGLocusSample methodsFor: 'accessing' stamp: ''!
 isValid: aBoolean
 	^ exist := aBoolean ! !
 
-!DrGLocusSample methodsFor: 'accessing'!
+!DrGLocusSample methodsFor: 'accessing' stamp: ''!
 offScreen: aBoolean
 	offScreen  := aBoolean ! !
 
-!DrGLocusSample methodsFor: 'accessing'!
+!DrGLocusSample methodsFor: 'accessing' stamp: ''!
 pointScreen
 
 	^ pointScreen! !
 
-!DrGLocusSample methodsFor: 'accessing'!
+!DrGLocusSample methodsFor: 'accessing' stamp: ''!
 pointScreen: anObject
 
 	pointScreen := anObject! !
 
-!DrGLocusSample methodsFor: 'accessing'!
+!DrGLocusSample methodsFor: 'accessing' stamp: ''!
 pointWorld
 
 	^ pointWorld! !
 
-!DrGLocusSample methodsFor: 'accessing'!
+!DrGLocusSample methodsFor: 'accessing' stamp: ''!
 pointWorld: anObject
 
 	pointWorld := anObject! !
 
-!DrGLocusSample methodsFor: 'accessing'!
+!DrGLocusSample methodsFor: 'accessing' stamp: ''!
 x
 
 	^ abscissa! !
 
-!DrGLocusSample methodsFor: 'accessing'!
+!DrGLocusSample methodsFor: 'accessing' stamp: ''!
 x: anObject
 
 	abscissa := anObject! !
@@ -28059,7 +28059,7 @@ printOn: aStream
 	aStream nextPutAll: 'View::'.
 	aStream print: mathItem.! !
 
-!DrGMorph methodsFor: 'event handling'!
+!DrGMorph methodsFor: 'event handling' stamp: ''!
 handlesMouseDown: evt
 	^ false! !
 
@@ -28174,7 +28174,7 @@ step
 		ifFalse: [color := DrGTypeColor blinkingColor].
 	self redrawNeeded! !
 
-!DrGMorph methodsFor: 'stepping and presenter'!
+!DrGMorph methodsFor: 'stepping and presenter' stamp: ''!
 stepTime
 	^500! !
 
@@ -28492,7 +28492,7 @@ canComputeArcData
 	(length := mathItem radianAngle) < 0 ifTrue: [ length := length + Float twoPi].
 	^ true! !
 
-!DrGBitmapMorph methodsFor: 'accessing'!
+!DrGBitmapMorph methodsFor: 'accessing' stamp: ''!
 extent
 "defined by my paint, cannot change"
 	self extent: paintResource getCheckedResource extent.
@@ -28521,7 +28521,7 @@ isAnyCornerIn: aPoint
 myScale
 	^ self drawable scale * mathItem magnifiedScale! !
 
-!DrGBitmapMorph methodsFor: 'accessing'!
+!DrGBitmapMorph methodsFor: 'accessing' stamp: ''!
 paintResource: anAthensPaint
 	paintResource := anAthensPaint .
 	self changed! !
@@ -28758,7 +28758,7 @@ nextToLastPoint
 	"For arrow direction"
 	^ vertices at: vertices size - 1! !
 
-!DrGPolylineMorph methodsFor: 'accessing'!
+!DrGPolylineMorph methodsFor: 'accessing' stamp: ''!
 vertices
 	^ vertices! !
 
@@ -28802,7 +28802,7 @@ arrowSpec: specPt
 
 	self setProperty: #arrowSpec toValue: specPt! !
 
-!DrGPolylineMorph methodsFor: 'arrow'!
+!DrGPolylineMorph methodsFor: 'arrow' stamp: ''!
 hasArrows
 	"Are all the conditions meet for having arrows?"
 	^ (closed or: [arrows == #none or: [vertices size < 2]]) not! !
@@ -28900,7 +28900,7 @@ closestPointTo: aPoint
 					minDist := dist]].
 	^closestPoint! !
 
-!DrGPolylineMorph methodsFor: 'geometry'!
+!DrGPolylineMorph methodsFor: 'geometry' stamp: ''!
 closestSegmentTo: aPoint
 	"Answer the starting index of my (big) segment nearest to aPoint"
 	| closestPoint minDist vertexIndex closestVertexIndex |
@@ -29021,7 +29021,7 @@ vertices: verts color: c borderColor: bc
 		borderColor: Color yellow) openInWorld"
 	^ self new vertices: verts color: c borderColor: bc! !
 
-!DrGPolylineMorph class methodsFor: 'settings'!
+!DrGPolylineMorph class methodsFor: 'settings' stamp: ''!
 defaultArrowSpec
 	^ 5@4! !
 
@@ -29409,7 +29409,7 @@ updateLabelStatus
 getVertices
 	vertices := 	mathItem points collect: [:point | self drawable worldToMorph: point].! !
 
-!DrGPolygonMorph methodsFor: 'initialization'!
+!DrGPolygonMorph methodsFor: 'initialization' stamp: ''!
 initialize
 	super initialize.
 	self makeClosed.! !
@@ -29647,21 +29647,21 @@ mostBehindLabel
 ^ submorphs reverse detect: [:aMorph| aMorph class == DrGLabel] ifNone: [nil].
 		! !
 
-!DrGDrawable methodsFor: 'accessing'!
+!DrGDrawable methodsFor: 'accessing' stamp: ''!
 ox
 "abscisa of the center of the visible canvas, in world coordinates, at start up it is equal 0"
 	^ ox! !
 
-!DrGDrawable methodsFor: 'accessing'!
+!DrGDrawable methodsFor: 'accessing' stamp: ''!
 ox: integer
 	ox := integer asNumber! !
 
-!DrGDrawable methodsFor: 'accessing'!
+!DrGDrawable methodsFor: 'accessing' stamp: ''!
 oy
 "ordinate of the center of the visible canvas, in world coordinates, at start up it is equal 0"
 	^ oy! !
 
-!DrGDrawable methodsFor: 'accessing'!
+!DrGDrawable methodsFor: 'accessing' stamp: ''!
 oy: integer
 	oy := integer asNumber! !
 
@@ -29686,7 +29686,7 @@ previewOn: aStream
 	PNGReadWriter putForm: form onStream: aStream.
 	^ form! !
 
-!DrGDrawable methodsFor: 'accessing'!
+!DrGDrawable methodsFor: 'accessing' stamp: ''!
 scale
 	^ scale! !
 
@@ -29696,7 +29696,7 @@ scale: increment
 	self updateGrid.
 	self redrawNeeded ! !
 
-!DrGDrawable methodsFor: 'accessing'!
+!DrGDrawable methodsFor: 'accessing' stamp: ''!
 scaleNoRedraw: increment
 	scale := (scale + increment) .
 	scale < 1 ifTrue: [scale := 1.0].
@@ -29709,7 +29709,7 @@ setScaleTo: number
 	self updateGrid.
 	self redrawNeeded ! !
 
-!DrGDrawable methodsFor: 'accessing'!
+!DrGDrawable methodsFor: 'accessing' stamp: ''!
 tool
 	^self presenter tool! !
 
@@ -29779,7 +29779,7 @@ morphOrdinateToWorld: ordinate
 	"Transform point coordinate from DrGeo-Morph to World  system"
 	^ oy - ((ordinate  - (extent y / 2.0)) / scale)! !
 
-!DrGDrawable methodsFor: 'coordinates'!
+!DrGDrawable methodsFor: 'coordinates' stamp: ''!
 morphToVector: aPoint
 "Transform vector coordinates in the morph system to the DrGeo system"
 	^ Point 
@@ -29787,27 +29787,27 @@ morphToVector: aPoint
 		y: aPoint y negated asFloat / scale.
 ! !
 
-!DrGDrawable methodsFor: 'coordinates'!
+!DrGDrawable methodsFor: 'coordinates' stamp: ''!
 morphToWorld: aPoint
 	"Transform point coordinate from DrGeo-Morph to World  system"
 	^ Point 
 		x: (self morphAbscissaToWorld: aPoint x)
 		y: (self morphOrdinateToWorld: aPoint y)! !
 
-!DrGDrawable methodsFor: 'coordinates'!
+!DrGDrawable methodsFor: 'coordinates' stamp: ''!
 pixelToWorld: pixels
 "Transform morph pixel unit to Dr. Geo world unit"
 	^ pixels asFloat / scale
 
 ! !
 
-!DrGDrawable methodsFor: 'coordinates'!
+!DrGDrawable methodsFor: 'coordinates' stamp: ''!
 pixelVectorToWorldVector: pixelVector
 "Transform morph pixel unit to Dr. Geo world unit"
 	^ (pixelVector asFloatPoint / scale) * (1 @ -1)
 ! !
 
-!DrGDrawable methodsFor: 'coordinates'!
+!DrGDrawable methodsFor: 'coordinates' stamp: ''!
 vectorToMorph: aVector
 "Transform vector coordinates in the Dr. Geo system to the morph system"
 	^ Point 
@@ -29831,12 +29831,12 @@ worldOrdinateToMorph: y
 	"Transform point ordinate from DrGeo-World to Morph system"
 	^ extent y / 2.0 + (scale * (oy - y))! !
 
-!DrGDrawable methodsFor: 'coordinates'!
+!DrGDrawable methodsFor: 'coordinates' stamp: ''!
 worldToMorph: aPoint
 	"Transform point coordinate from DrGeo-World to Morph system"
 	^ (self worldAbscissaToMorph: aPoint x) @ (self worldOrdinateToMorph: aPoint y)! !
 
-!DrGDrawable methodsFor: 'coordinates'!
+!DrGDrawable methodsFor: 'coordinates' stamp: ''!
 worldToPixel: aFloat
 "Transform Dr. Geo world unit to morph unit"
 	^ aFloat * scale
@@ -29868,7 +29868,7 @@ drawOn: aCanvas
 	self gridVisible ifTrue: [self drawGridOn: aCanvas].
 	self axesVisible ifTrue: [ self drawAxesOn: aCanvas].! !
 
-!DrGDrawable methodsFor: 'drawing'!
+!DrGDrawable methodsFor: 'drawing' stamp: ''!
 removeDottedLinesToParents
 	valueItem ifNil: [^self].
 	dottedLines do: [:line | self removeMorph: line].
@@ -29977,7 +29977,7 @@ drawGridOn: aCanvas
 	start to: end by: step do: [:x |
 		aCanvas line: x @ 0 to: x @ length width: 0.4 color: Color lightGray]! !
 
-!DrGDrawable methodsFor: 'drawing axes & grid'!
+!DrGDrawable methodsFor: 'drawing axes & grid' stamp: ''!
 labelForAxes: number
 	gridScale isFloat 
 		ifTrue: [|integer|
@@ -29997,7 +29997,7 @@ We do not really need a builder to do so but we have to process it in the comman
 		insertAtScale: self scale.
 	self domain createFromMathItem: item.! !
 
-!DrGDrawable methodsFor: 'dropping/grabbing'!
+!DrGDrawable methodsFor: 'dropping/grabbing' stamp: ''!
 resizeImage: aForm
 "Reszie the image to a maximum pixel number"
 	| resizedForm maxPixels size ratio |
@@ -30026,7 +30026,7 @@ handlesMouseDown: evt
 handlesMouseHover
 	^ true! !
 
-!DrGDrawable methodsFor: 'event handling testing'!
+!DrGDrawable methodsFor: 'event handling testing' stamp: ''!
 handlesMouseOver: evt
 	^ true! !
 
@@ -30034,7 +30034,7 @@ handlesMouseOver: evt
 handlesMouseScroll: scrollEvent
 	^ true! !
 
-!DrGDrawable methodsFor: 'event handling testing'!
+!DrGDrawable methodsFor: 'event handling testing' stamp: ''!
 handlesMouseStillDown: evt
 	^ true! !
 
@@ -30080,9 +30080,10 @@ mouseLeave: evt
 	Cursor normalCursorWithMask activateCursor.
 	! !
 
-!DrGDrawable methodsFor: 'events' stamp: 'hlsf 6/21/2021 21:39:02'!
+!DrGDrawable methodsFor: 'events' stamp: 'hlsf 9/23/2025 18:12:15'!
 mouseMove: evt localPosition: localEventPosition
 "Mouse move with pressed button"
+	evt anyButtonPressed ifFalse: [ ^ self ].
 	evt shiftPressed 
 		ifTrue: [self tool handleShiftKeyMouseAt: localEventPosition ]
 		ifFalse: [	
@@ -30121,7 +30122,7 @@ mouseScroll: evt localPosition: localEventPosition
 mouseStillDown
 	self tool handleStillPress: prevMousePos! !
 
-!DrGDrawable methodsFor: 'events'!
+!DrGDrawable methodsFor: 'events' stamp: ''!
 mouseStillDownThreshold 
 	^ 1500! !
 
@@ -30150,25 +30151,25 @@ clipsSubmorphs
 requiresVectorCanvas
 	^ true! !
 
-!DrGDrawable methodsFor: 'gridding'!
+!DrGDrawable methodsFor: 'gridding' stamp: ''!
 gridPoint: ungriddedPoint
 	self presenter isGridded ifFalse: [^ungriddedPoint].
 	"do it the easy way"
 	^self worldToMorph: ((self morphToWorld: ungriddedPoint) roundTo: gridScale)! !
 
-!DrGDrawable methodsFor: 'gridding'!
+!DrGDrawable methodsFor: 'gridding' stamp: ''!
 gridWorldPoint: ungriddedPoint
 	self presenter isGridded ifFalse: [^ self morphToWorld: ungriddedPoint].
 	"do it the easy way"
 	^(self morphToWorld: ungriddedPoint) roundTo: gridScale! !
 
-!DrGDrawable methodsFor: 'gridding'!
+!DrGDrawable methodsFor: 'gridding' stamp: ''!
 gridWorldVector: ungriddedPoint
 	self presenter isGridded ifFalse: [^ self morphToVector: ungriddedPoint].
 	"do it the easy way"
 	^(self morphToVector: ungriddedPoint) roundTo: gridScale! !
 
-!DrGDrawable methodsFor: 'gridding'!
+!DrGDrawable methodsFor: 'gridding' stamp: ''!
 updateGrid
 	self axesVisible 
 		ifTrue: [ self updateGridScaleForAxes]
@@ -30323,11 +30324,11 @@ viewsOf: aMathItemCollection
 	^ aMathItemCollection collect: [:aMathItem | self viewOf: aMathItem]
 ! !
 
-!DrGDrawable methodsFor: 'stepping'!
+!DrGDrawable methodsFor: 'stepping' stamp: ''!
 step
 	self tool animate! !
 
-!DrGDrawable methodsFor: 'stepping'!
+!DrGDrawable methodsFor: 'stepping' stamp: ''!
 stepTime 
 	^ 300! !
 
@@ -30344,7 +30345,7 @@ addMorph: newMorph
 		ifNil: [self addMorphFront: newMorph]  
 		ifNotNil: [self addMorph: newMorph behind: aLabel]! !
 
-!DrGDrawable methodsFor: 'tip'!
+!DrGDrawable methodsFor: 'tip' stamp: ''!
 hideTip
 	balloonTarget deleteBalloon.
 	self removeMorph: balloonTarget.! !
@@ -30359,11 +30360,11 @@ tip: aText at: aPoint
 	balloonTarget setBalloonText: aText.
 	balloonTarget showBalloon: (balloonTarget balloonText)! !
 
-!DrGDrawable methodsFor: 'tip'!
+!DrGDrawable methodsFor: 'tip' stamp: ''!
 toggleTip
 	tipOn := tipOn not! !
 
-!DrGDrawable methodsFor: 'under mouse'!
+!DrGDrawable methodsFor: 'under mouse' stamp: ''!
 showUnderMouseMorph
 	DrGeoSystem ifTablet: [
 		self updateUnderMouseMorphPosition.
@@ -30371,7 +30372,7 @@ showUnderMouseMorph
 			comeToFront;
 			show].! !
 
-!DrGDrawable methodsFor: 'under mouse'!
+!DrGDrawable methodsFor: 'under mouse' stamp: ''!
 updateUnderMouseMorph
 	DrGeoSystem ifTablet: [underMouse changed]! !
 
@@ -30428,7 +30429,7 @@ self flag: #drgeoTodo! !
 defaultColor
 	^ Theme current paneBackgroundFrom: Theme current defaultWindowColor ! !
 
-!DrGeoMiniView methodsFor: 'initialize-release'!
+!DrGeoMiniView methodsFor: 'initialize-release' stamp: ''!
 deleteWithoutConfirmation
 	self delete! !
 
@@ -30500,9 +30501,10 @@ acceptContents
 handlesMouseDown: evt
 	^true! !
 
-!DrGLabel methodsFor: 'event handling' stamp: 'hlsf 5/29/2021 17:19:46'!
+!DrGLabel methodsFor: 'event handling' stamp: 'hlsf 9/23/2025 18:12:02'!
 mouseMove: evt localPosition: deltaVector
-	itemMorph 		ifNotNil: 
+	evt anyButtonPressed ifFalse: [ ^ self ].
+	itemMorph ifNotNil: 
 		["Inform the item about the new position we want in the drawable"
 		itemMorph constrainedLabelPosition: self morphPosition + deltaVector.
 		self morphPosition: itemMorph labelPosition].
@@ -30583,12 +30585,12 @@ step
 		"track device rotation"
 		self fullScreen].! !
 
-!DrGeoView methodsFor: 'stepping'!
+!DrGeoView methodsFor: 'stepping' stamp: ''!
 stepTime
 	^ 1000
 ! !
 
-!DrGeoView methodsFor: 'stepping'!
+!DrGeoView methodsFor: 'stepping' stamp: ''!
 wantsSteps
 	^ DrGeoSystem isTablet! !
 
@@ -32153,7 +32155,7 @@ testPointByCoordinatesUnicity
 	q := sketch pointX: x Y:  (sketch value: -18.1).
 	self shouldnt: p mathItem == q mathItem    ! !
 
-!DrGeoScriptTest methodsFor: 'testing-point'!
+!DrGeoScriptTest methodsFor: 'testing-point' stamp: ''!
 testPointFree
 	| a b |
 	a := sketch point: 55 @ 5.
@@ -32162,7 +32164,7 @@ testPointFree
 	self assert: b coordinates = (-35 @ -45).
 ! !
 
-!DrGeoScriptTest methodsFor: 'testing-point'!
+!DrGeoScriptTest methodsFor: 'testing-point' stamp: ''!
 testPointFreeUnicity
 	| a b |
 	a := sketch point: 788@985.
@@ -32175,7 +32177,7 @@ testPointFreeUnicity
 	self shouldnt: a mathItem == b mathItem.
 	self should: a coordinates = b coordinates.! !
 
-!DrGeoScriptTest methodsFor: 'testing-point'!
+!DrGeoScriptTest methodsFor: 'testing-point' stamp: ''!
 testPointMiddle
 	| a b m s |
 	a := sketch point: 5 @ 5.
@@ -32191,7 +32193,7 @@ testPointMiddle
 	m := sketch middleOf: s.
 	self assert: m coordinates = (-7 / 2 @ (-3 / 2))! !
 
-!DrGeoScriptTest methodsFor: 'testing-point'!
+!DrGeoScriptTest methodsFor: 'testing-point' stamp: ''!
 testPointMiddleUnicity
 	| a b s p q |
 	a := sketch point: 5 @ 5.
@@ -32364,7 +32366,7 @@ testPointOnSegmentUnicity
 	q := sketch pointOnLine: curve at: 0.71.
 	self shouldnt: p mathItem = q mathItem   ! !
 
-!DrGeoScriptTest methodsFor: 'testing-point'!
+!DrGeoScriptTest methodsFor: 'testing-point' stamp: ''!
 testPointReflexion
 	| d a b|
 	d := sketch line: (sketch point: 0@0) to: (sketch point: 1@2).
@@ -32421,7 +32423,7 @@ testPointScale
 	self assert: b coordinates = (-5@ -2).
 ! !
 
-!DrGeoScriptTest methodsFor: 'testing-point'!
+!DrGeoScriptTest methodsFor: 'testing-point' stamp: ''!
 testPointSymmetry
 	| c a b|
 	c := sketch point: 2@2.
@@ -32438,7 +32440,7 @@ testPointSymmetry
 	b := sketch symmetry: a center:  c.
 	self assert: b coordinates = (0@0)! !
 
-!DrGeoScriptTest methodsFor: 'testing-point'!
+!DrGeoScriptTest methodsFor: 'testing-point' stamp: ''!
 testPointTranslation
 	| u a|
 	u := sketch vector: (sketch point: 1@1) to: (sketch point: 3@2).
@@ -32450,21 +32452,21 @@ testPointTranslation
 	self assert: a coordinates = (0@0).
 ! !
 
-!DrGeoScriptTest methodsFor: 'testing-value'!
+!DrGeoScriptTest methodsFor: 'testing-value' stamp: ''!
 testAbscissaOfPoint
 	| coordinate point |
 	point := sketch point: 10@15.
 	coordinate := sketch abscissaOf: point.
 	self should: (coordinate mathItem valueItem closeTo: 10).! !
 
-!DrGeoScriptTest methodsFor: 'testing-value'!
+!DrGeoScriptTest methodsFor: 'testing-value' stamp: ''!
 testAbscissaOfVector
 	| coordinate vector |
 	vector := sketch vector: 10@15.
 	coordinate := sketch abscissaOf: vector.
 	self should: (coordinate mathItem valueItem closeTo: 10).! !
 
-!DrGeoScriptTest methodsFor: 'testing-value'!
+!DrGeoScriptTest methodsFor: 'testing-value' stamp: ''!
 testAngleGeometric
 	| angle |
 	angle := sketch geometricAngle: 1@0 to: 1@1 to: 0@1.
@@ -32476,7 +32478,7 @@ testAngleGeometric
 	self assert: (angle mathItem radianAngle closeTo: Float pi / 4).
 ! !
 
-!DrGeoScriptTest methodsFor: 'testing-value'!
+!DrGeoScriptTest methodsFor: 'testing-value' stamp: ''!
 testAngleOriented3Points
 	| angle |
 	angle := sketch angle: 1@0 to: 1@1 to: 0@1.
@@ -32488,7 +32490,7 @@ testAngleOriented3Points
 	self assert: (angle mathItem radianAngle closeTo: Float pi / 4).
 ! !
 
-!DrGeoScriptTest methodsFor: 'testing-value'!
+!DrGeoScriptTest methodsFor: 'testing-value' stamp: ''!
 testAngleOrientedVector
 "Oriented angle from two vectors"
 	| angle |
@@ -32509,7 +32511,7 @@ testAngleOrientedVector
 	self assert: (angle mathItem radianAngle closeTo: Float pi negated * 3 / 4).
 ! !
 
-!DrGeoScriptTest methodsFor: 'testing-value'!
+!DrGeoScriptTest methodsFor: 'testing-value' stamp: ''!
 testDistancePointLine
 	| distance a d recomputed|
 	a := sketch point: 10@15.
@@ -32518,7 +32520,7 @@ testDistancePointLine
 	recomputed := ((10@15 - (-5 @ -5)) dotProduct: (d mathItem normal)) abs.
 	self should: (distance mathItem valueItem closeTo: recomputed).! !
 
-!DrGeoScriptTest methodsFor: 'testing-value'!
+!DrGeoScriptTest methodsFor: 'testing-value' stamp: ''!
 testDistancePoints
 	| distance a b |
 	a := sketch point: 10@15.
@@ -32526,56 +32528,56 @@ testDistancePoints
 	distance := sketch distance: a to: b.
 	self should: (distance mathItem valueItem closeTo: (400 + 225) sqrt).! !
 
-!DrGeoScriptTest methodsFor: 'testing-value'!
+!DrGeoScriptTest methodsFor: 'testing-value' stamp: ''!
 testLengthArc
 	| length arc |
 	arc := sketch arc: 8@2 to: 6@6 to: 3@7.
 	length := sketch lengthOf: arc.
 	self should: (length mathItem valueItem closeTo: 7.853981633974483).! !
 
-!DrGeoScriptTest methodsFor: 'testing-value'!
+!DrGeoScriptTest methodsFor: 'testing-value' stamp: ''!
 testLengthCircle
 	| length circle |
 	circle := sketch circleCenter: 8@2 to: 6@6.
 	length := sketch lengthOf: circle.
 	self should: (length mathItem valueItem closeTo: 20 sqrt * 2 * Float pi).! !
 
-!DrGeoScriptTest methodsFor: 'testing-value'!
+!DrGeoScriptTest methodsFor: 'testing-value' stamp: ''!
 testLengthPolygon
 	| length polygon |
 	polygon := sketch regularPolygonCenter: 4@1 vertex: 3@2 sides: 4.
 	length := sketch lengthOf: polygon.
 	self should: (length mathItem valueItem closeTo: 8).! !
 
-!DrGeoScriptTest methodsFor: 'testing-value'!
+!DrGeoScriptTest methodsFor: 'testing-value' stamp: ''!
 testLengthSegment
 	| length segment |
 	segment := sketch segment: 8@2 to: 6@6.
 	length := sketch lengthOf: segment.
 	self should: (length mathItem valueItem closeTo: 20 sqrt).! !
 
-!DrGeoScriptTest methodsFor: 'testing-value'!
+!DrGeoScriptTest methodsFor: 'testing-value' stamp: ''!
 testLengthVector
 	| length vector |
 	vector := sketch segment: 8@2 to: 6@6.
 	length := sketch lengthOf: vector.
 	self should: (length mathItem valueItem closeTo: 20 sqrt).! !
 
-!DrGeoScriptTest methodsFor: 'testing-value'!
+!DrGeoScriptTest methodsFor: 'testing-value' stamp: ''!
 testOrdianteOfPoint
 	| coordinate point |
 	point := sketch point: 10@15.
 	coordinate := sketch ordinateOf: point.
 	self should: (coordinate mathItem valueItem closeTo: 15).! !
 
-!DrGeoScriptTest methodsFor: 'testing-value'!
+!DrGeoScriptTest methodsFor: 'testing-value' stamp: ''!
 testOrdianteOfVector
 	| coordinate vector |
 	vector := sketch vector: 10@15.
 	coordinate := sketch ordinateOf: vector.
 	self should: (coordinate mathItem valueItem closeTo: 15).! !
 
-!DrGeoScriptTest methodsFor: 'testing-value'!
+!DrGeoScriptTest methodsFor: 'testing-value' stamp: ''!
 testSlope
 	| slope recomputed|
 	slope := sketch slopeOf: (sketch line: -5 @ -5 to: 2@3).
@@ -32592,7 +32594,7 @@ testValueFree
 	self assert: (v mathItem valueItem closeTo: 0.00001).
 ! !
 
-!DrGeoScriptTest methodsFor: 'testing-circle'!
+!DrGeoScriptTest methodsFor: 'testing-circle' stamp: ''!
 testCircle
 	| c|
 	c := sketch circleCenter: (sketch point: 3@2) to: (sketch point: 6@6).
@@ -32629,7 +32631,7 @@ testCircleRadiusUnicity
 	c2 := sketch circleCenter: a radius: r.  
 	self shouldnt: c1 mathItem == c2 mathItem.! !
 
-!DrGeoScriptTest methodsFor: 'testing-circle'!
+!DrGeoScriptTest methodsFor: 'testing-circle' stamp: ''!
 testCircleReflexion
 	| d c1 c2|
 	d := sketch line: 0@0 to: 1@2.
@@ -32644,7 +32646,7 @@ testCircleReflexion
 	self should: (c2 mathItem center closeTo: (-0.6@0.8)).	
 	! !
 
-!DrGeoScriptTest methodsFor: 'testing-circle'!
+!DrGeoScriptTest methodsFor: 'testing-circle' stamp: ''!
 testCircleRotation
 	| c1 c2|
 	c1 := sketch circleCenter: 3@2 to: 3@12.
@@ -32658,7 +32660,7 @@ testCircleRotation
 	self should: (c2 mathItem center closeTo: 1.13397@3.23205).	
 	! !
 
-!DrGeoScriptTest methodsFor: 'testing-circle'!
+!DrGeoScriptTest methodsFor: 'testing-circle' stamp: ''!
 testCircleScale
 	| c1 c2|
 	c1 := sketch circleCenter: 3@2 to: 3@12.
@@ -32676,7 +32678,7 @@ testCircleScale
 	self should: (c2 mathItem center closeTo: -5@ -2).
 	! !
 
-!DrGeoScriptTest methodsFor: 'testing-circle'!
+!DrGeoScriptTest methodsFor: 'testing-circle' stamp: ''!
 testCircleSegment
 	| c|
 	c := sketch circleCenter: (sketch point: 3@2) segment: (sketch segment: 10@6 to: 20@6).
@@ -32689,7 +32691,7 @@ testCircleSegment
 	self should: (c mathItem contains: 13@2).
 	self should: (c mathItem contains: 3@12)! !
 
-!DrGeoScriptTest methodsFor: 'testing-circle'!
+!DrGeoScriptTest methodsFor: 'testing-circle' stamp: ''!
 testCircleSymmetry
 	| c1 c2|
 	c1 := sketch circleCenter: 3@2 to: 3@12.
@@ -32702,7 +32704,7 @@ testCircleSymmetry
 	self should: (c2 mathItem radius closeTo: 10).
 	self should: (c2 mathItem center closeTo: 1@2).! !
 
-!DrGeoScriptTest methodsFor: 'testing-circle'!
+!DrGeoScriptTest methodsFor: 'testing-circle' stamp: ''!
 testCircleTranslation
 	| c1 c2|
 	c1 := sketch circleCenter: 3@2 to: 3@12.
@@ -32720,7 +32722,7 @@ testCircleTranslation
 	self should: (c2 mathItem center closeTo: 1@1).
 ! !
 
-!DrGeoScriptTest methodsFor: 'testing-circle'!
+!DrGeoScriptTest methodsFor: 'testing-circle' stamp: ''!
 testCircleUnicity
 	| a b c1 c2|
 	a := sketch point: 788@985.
@@ -32737,7 +32739,7 @@ testCircleUnicity
 	self shouldnt: c1 mathItem == c2 mathItem   
 	! !
 
-!DrGeoScriptTest methodsFor: 'testing-ray'!
+!DrGeoScriptTest methodsFor: 'testing-ray' stamp: ''!
 testRay
 	| a b r|
 	a := sketch point: 88@985.
@@ -32753,7 +32755,7 @@ testRay
 	self shouldnt: (r mathItem contains: 87@975).
 	self shouldnt: (r mathItem contains: 5 @4)! !
 
-!DrGeoScriptTest methodsFor: 'testing-ray'!
+!DrGeoScriptTest methodsFor: 'testing-ray' stamp: ''!
 testRayReflexion
 	| axe r1 r2  |
 	axe := sketch line: (sketch point: 0 @ 0) to: (sketch point: 1 @ 2).
@@ -32793,7 +32795,7 @@ testRayScale
 	self assert: (r2 mathItem direction = (r1 mathItem direction * -3))  
 ! !
 
-!DrGeoScriptTest methodsFor: 'testing-ray'!
+!DrGeoScriptTest methodsFor: 'testing-ray' stamp: ''!
 testRaySymmetry
 	| c r1 r2|
 	c := sketch point: 2@2.
@@ -32804,7 +32806,7 @@ testRaySymmetry
 	self assert: r2 mathItem direction = r1 mathItem direction negated 
 ! !
 
-!DrGeoScriptTest methodsFor: 'testing-ray'!
+!DrGeoScriptTest methodsFor: 'testing-ray' stamp: ''!
 testRayTranslation
 	| r1 r2 t |
 	r1 := sketch ray: (sketch point: 3@2) to: (sketch point: 2@4).
@@ -32820,7 +32822,7 @@ testRayTranslation
 	self assert: r2 mathItem direction = r1 mathItem direction.
 ! !
 
-!DrGeoScriptTest methodsFor: 'testing-ray'!
+!DrGeoScriptTest methodsFor: 'testing-ray' stamp: ''!
 testRayUnicity
 	| a b s1 s2|
 	a := sketch point: 788@985.
@@ -32837,7 +32839,7 @@ testRayUnicity
 	self shouldnt: s1 mathItem == s2 mathItem   
 	! !
 
-!DrGeoScriptTest methodsFor: 'testing-line'!
+!DrGeoScriptTest methodsFor: 'testing-line' stamp: ''!
 testAngleBisector
 	| bisector geometricAngle |
 	geometricAngle := sketch angle: 1@0 to: 0@0 to: 0@1.
@@ -32850,7 +32852,7 @@ testAngleBisector
 
 ! !
 
-!DrGeoScriptTest methodsFor: 'testing-line'!
+!DrGeoScriptTest methodsFor: 'testing-line' stamp: ''!
 testAngleBisector3Points
 	| bisector |
 	bisector := sketch angleBisectorSummit: 0@0 side1: 1@0 side2: 0@1.
@@ -32862,7 +32864,7 @@ testAngleBisector3Points
 
 ! !
 
-!DrGeoScriptTest methodsFor: 'testing-line'!
+!DrGeoScriptTest methodsFor: 'testing-line' stamp: ''!
 testAngleBisectorVectors
 "there is no such things as bisector to an angle formed with two vectors"
 	| orientedAngle |
@@ -32871,7 +32873,7 @@ testAngleBisectorVectors
 
 ! !
 
-!DrGeoScriptTest methodsFor: 'testing-line'!
+!DrGeoScriptTest methodsFor: 'testing-line' stamp: ''!
 testLine
 	| a b l|
 	a := sketch point: 88@985.
@@ -32887,7 +32889,7 @@ testLine
 	self should: (l mathItem contains: 188@1985).
 	self shouldnt: (l mathItem contains: 5 @4)    ! !
 
-!DrGeoScriptTest methodsFor: 'testing-line'!
+!DrGeoScriptTest methodsFor: 'testing-line' stamp: ''!
 testLineReflexion
 	| axe l1 l2  |
 	axe := sketch line: (sketch point: 0 @ 0) to: (sketch point: 1 @ 2).
@@ -32927,7 +32929,7 @@ testLineScale
 	self assert: (l2 mathItem direction = (l1 mathItem direction * -3))  
 ! !
 
-!DrGeoScriptTest methodsFor: 'testing-line'!
+!DrGeoScriptTest methodsFor: 'testing-line' stamp: ''!
 testLineSymmetry
 	| c l1 l2|
 	c := sketch point: 2@2.
@@ -32938,7 +32940,7 @@ testLineSymmetry
 	self assert: l2 mathItem direction = l1 mathItem direction negated 
 ! !
 
-!DrGeoScriptTest methodsFor: 'testing-line'!
+!DrGeoScriptTest methodsFor: 'testing-line' stamp: ''!
 testLineTranslation
 	| l1 l2 t |
 	l1 := sketch line: (sketch point: 3@2) to: (sketch point: 2@4).
@@ -32971,7 +32973,7 @@ testLineUnicity
 	self shouldnt: s1 mathItem == s2 mathItem   
 	! !
 
-!DrGeoScriptTest methodsFor: 'testing-line'!
+!DrGeoScriptTest methodsFor: 'testing-line' stamp: ''!
 testParallelLine
 	| l p |
 	l := sketch line: (sketch point: 3@2) to: (sketch point: 2@4).
@@ -32982,7 +32984,7 @@ testParallelLine
 	""  
 ! !
 
-!DrGeoScriptTest methodsFor: 'testing-line'!
+!DrGeoScriptTest methodsFor: 'testing-line' stamp: ''!
 testParallelRay
 	| r p |
 	r := sketch ray: (sketch point: 3@2) to: (sketch point: 2@4).
@@ -32993,7 +32995,7 @@ testParallelRay
 	""  
 ! !
 
-!DrGeoScriptTest methodsFor: 'testing-line'!
+!DrGeoScriptTest methodsFor: 'testing-line' stamp: ''!
 testParallelSegment
 	| s p |
 	s := sketch segment: (sketch point: 3@2) to: (sketch point: 2@4).
@@ -33004,7 +33006,7 @@ testParallelSegment
 	""  
 ! !
 
-!DrGeoScriptTest methodsFor: 'testing-line'!
+!DrGeoScriptTest methodsFor: 'testing-line' stamp: ''!
 testPerpendicularBisector
 	| s p |
 	s := sketch segment: (sketch point: 3@2) to: (sketch point: 2@4).
@@ -33014,7 +33016,7 @@ testPerpendicularBisector
 	self assert: ((p mathItem direction dotProduct: s mathItem direction) closeTo: 0).
 ! !
 
-!DrGeoScriptTest methodsFor: 'testing-line'!
+!DrGeoScriptTest methodsFor: 'testing-line' stamp: ''!
 testPerpendicularBisector2Points
 	| p |
 	p := sketch perpendicularBisector: 3@2 to: 2@4.
@@ -33023,7 +33025,7 @@ testPerpendicularBisector2Points
 	self assert: ((p mathItem direction dotProduct: (2@4 - (3@2))) closeTo: 0).
 ! !
 
-!DrGeoScriptTest methodsFor: 'testing-line'!
+!DrGeoScriptTest methodsFor: 'testing-line' stamp: ''!
 testPerpendicularLine
 	| l p |
 	l := sketch line: (sketch point: 3@2) to: (sketch point: 2@4).
@@ -33034,7 +33036,7 @@ testPerpendicularLine
 	""  
 ! !
 
-!DrGeoScriptTest methodsFor: 'testing-line'!
+!DrGeoScriptTest methodsFor: 'testing-line' stamp: ''!
 testPerpendicularRay
 	| r p |
 	r := sketch ray: (sketch point: 3@2) to: (sketch point: 2@4).
@@ -33044,7 +33046,7 @@ testPerpendicularRay
 	self assert: ((p mathItem direction dotProduct: r mathItem direction) closeTo: 0).
 ! !
 
-!DrGeoScriptTest methodsFor: 'testing-line'!
+!DrGeoScriptTest methodsFor: 'testing-line' stamp: ''!
 testPerpendicularSegment
 	| s p |
 	s := sketch segment: (sketch point: 3@2) to: (sketch point: 2@4).
@@ -33054,15 +33056,15 @@ testPerpendicularSegment
 	self assert: ((p mathItem direction dotProduct: s mathItem direction) closeTo: 0).
 ! !
 
-!DrGeoScriptTest methodsFor: 'running'!
+!DrGeoScriptTest methodsFor: 'running' stamp: ''!
 setUp 
 	sketch := DrGeoScriptTestResource current sketch! !
 
-!DrGeoScriptTest methodsFor: 'running'!
+!DrGeoScriptTest methodsFor: 'running' stamp: ''!
 tearDown 
 	sketch := nil! !
 
-!DrGeoScriptTest methodsFor: 'testing-arc'!
+!DrGeoScriptTest methodsFor: 'testing-arc' stamp: ''!
 testArc
 	| arc|
 	arc := sketch arc: (sketch point: 8@2) to:  (sketch point: 6@6) to: (sketch point: 3@7).
@@ -33077,7 +33079,7 @@ testArc
 	self shouldnt: (arc mathItem contains: 3@ -3).
 	self shouldnt: (arc mathItem contains: -2@ 2).  ! !
 
-!DrGeoScriptTest methodsFor: 'testing-arc'!
+!DrGeoScriptTest methodsFor: 'testing-arc' stamp: ''!
 testArcReflexion
 	| arc1 arc2 d|
 	d := sketch line: 0@0 to: 1@2.
@@ -33092,7 +33094,7 @@ testArcReflexion
 	self should: (arc2 mathItem contains: 1.2@8.4).
 	self should: (arc2 mathItem contains: 3.8@6.6).  ! !
 
-!DrGeoScriptTest methodsFor: 'testing-arc'!
+!DrGeoScriptTest methodsFor: 'testing-arc' stamp: ''!
 testArcRotation
 	| arc1 arc2 |
 	arc1 := sketch arc: 8@2 to: 6@6 to: 3@7.
@@ -33106,7 +33108,7 @@ testArcRotation
 	self should: (arc2 mathItem contains: (-0.8301270189221928@7.830127018922194)).
 	self should: (arc2 mathItem contains: (-3.196152422706631@5.7320508075688785)).  ! !
 
-!DrGeoScriptTest methodsFor: 'testing-arc'!
+!DrGeoScriptTest methodsFor: 'testing-arc' stamp: ''!
 testArcScale
 	| arc1 arc2 |
 	arc1 := sketch arc: 8@2 to: 6@6 to: 3@7.
@@ -33121,7 +33123,7 @@ testArcScale
 	self should: (arc2 mathItem contains: 7@19).
 	! !
 
-!DrGeoScriptTest methodsFor: 'testing-arc'!
+!DrGeoScriptTest methodsFor: 'testing-arc' stamp: ''!
 testArcTranslation
 	| arc1 arc2 |
 	arc1 := sketch arc: 8@2 to: 6@6 to: 3@7.
@@ -33135,7 +33137,7 @@ testArcTranslation
 	self should: (arc2 mathItem contains: 5@8).
 	! !
 
-!DrGeoScriptTest methodsFor: 'testing-arc'!
+!DrGeoScriptTest methodsFor: 'testing-arc' stamp: ''!
 testArcUnicity
 	| arc1 arc2 a b c |
 	a := sketch point: 788@985.
@@ -33154,7 +33156,7 @@ testArcUnicity
 	arc2 := sketch arc: b to: a to: c.   
 	self shouldnt: arc1 mathItem == arc2 mathItem.! !
 
-!DrGeoScriptTest methodsFor: 'testing-polygon'!
+!DrGeoScriptTest methodsFor: 'testing-polygon' stamp: ''!
 testPolygon
 	| polygon summit |
 	summit := Array withAll: {
@@ -33168,7 +33170,7 @@ testPolygon
 	self assert: polygon mathItem isCurveItem.
 	self should: polygon mathItem length = 24.  ! !
 
-!DrGeoScriptTest methodsFor: 'testing-polygon'!
+!DrGeoScriptTest methodsFor: 'testing-polygon' stamp: ''!
 testPolygonReflexion
 	| p1 p2 |
 	p1 := sketch regularPolygonCenter: 3@2 vertex: 2@4 sides: 4.
@@ -33179,7 +33181,7 @@ testPolygonReflexion
 	self should: (p2 mathItem points anySatisfy: [:aPoint | aPoint closeTo: -2.4@3.2]).
 ! !
 
-!DrGeoScriptTest methodsFor: 'testing-polygon'!
+!DrGeoScriptTest methodsFor: 'testing-polygon' stamp: ''!
 testPolygonRegular
 	| polygon vertices|
 	"Test a square as a regular polygon"
@@ -33204,7 +33206,7 @@ testPolygonRegular
 	self should: (vertices anySatisfy: [:aPoint | aPoint closeTo: 4@0]).
 	self should: (vertices anySatisfy: [:aPoint | aPoint closeTo: 1@1]).! !
 
-!DrGeoScriptTest methodsFor: 'testing-polygon'!
+!DrGeoScriptTest methodsFor: 'testing-polygon' stamp: ''!
 testPolygonRotation
 	| p1 p2 |
 	p1 := sketch regularPolygonCenter: 4@1 vertex: 3@2 sides: 4.
@@ -33215,7 +33217,7 @@ testPolygonRotation
 	self should: (p2 mathItem points anySatisfy: [:aPoint | aPoint closeTo: 1.13397@3.23205]).
 ! !
 
-!DrGeoScriptTest methodsFor: 'testing-polygon'!
+!DrGeoScriptTest methodsFor: 'testing-polygon' stamp: ''!
 testPolygonSymmetry
 	| p1 p2 |
 	p1 := sketch regularPolygonCenter: 4@1 vertex: 3@2 sides: 4.
@@ -33226,7 +33228,7 @@ testPolygonSymmetry
 	self should: (p2 mathItem points anySatisfy: [:aPoint | aPoint closeTo: 1@2]).
 ! !
 
-!DrGeoScriptTest methodsFor: 'testing-polygon'!
+!DrGeoScriptTest methodsFor: 'testing-polygon' stamp: ''!
 testPolygonTranslation
 	| p1 p2 |
 	p1 := sketch regularPolygonCenter: 4@1 vertex: 3@2 sides: 4.
@@ -33263,7 +33265,7 @@ testPolygonUnicity
 	p2 := sketch polygon: summit.
 	self deny: p1 mathItem == p2 mathItem   ! !
 
-!DrGeoScriptTest methodsFor: 'testing-direction'!
+!DrGeoScriptTest methodsFor: 'testing-direction' stamp: ''!
 testDirectionCollinear
 	| d1 d2|
 	d1 := sketch segment: (sketch point: 5@5) to: (sketch point: 8 @7).
@@ -33282,7 +33284,7 @@ testDirectionCollinear
 	self should: (d1 mathItem isCollinearWith: d2 mathItem)  
 ! !
 
-!DrGeoScriptTest methodsFor: 'testing-direction'!
+!DrGeoScriptTest methodsFor: 'testing-direction' stamp: ''!
 testDirectionDirection
 	| d n v |
 	d := sketch segment: (sketch point: 5@5) to: (sketch point: 8 @7).
@@ -33292,7 +33294,7 @@ testDirectionDirection
 	self should: ((n dotProduct:  v) closeTo: 0).
 	self should: (n x * n x + (n y * n y) closeTo: 1)  ! !
 
-!DrGeoScriptTest methodsFor: 'testing-direction'!
+!DrGeoScriptTest methodsFor: 'testing-direction' stamp: ''!
 testDirectionIntersection
 	| d1 d2|
 	d1 := sketch segment: (sketch point: -5@ -5) to: (sketch point: 5 @5).
@@ -33303,7 +33305,7 @@ testDirectionIntersection
 	d2 := sketch segment: (sketch point: -4@ -5) to: (sketch point: 6@ 5).
 	self assert: (d1 mathItem intersectionWithDirection: d2 mathItem) isNil! !
 
-!DrGeoScriptTest methodsFor: 'testing-vector'!
+!DrGeoScriptTest methodsFor: 'testing-vector' stamp: ''!
 testVector
 	| a b v|
 	a := sketch point: 88@985.
@@ -33322,7 +33324,7 @@ testVector
 	self should: v mathItem direction = (10@100).
  ! !
 
-!DrGeoScriptTest methodsFor: 'testing-vector'!
+!DrGeoScriptTest methodsFor: 'testing-vector' stamp: ''!
 testVectorUnicity
 	| a b v u|
 	a := sketch point: 2@5.
@@ -33340,7 +33342,7 @@ testVectorUnicity
 	self deny: u mathItem == v mathItem.
 	self assert: u mathItem direction = v mathItem direction   ! !
 
-!DrGeoScriptTest methodsFor: 'testing-segment'!
+!DrGeoScriptTest methodsFor: 'testing-segment' stamp: ''!
 testSegment
 	| a b s|
 	a := sketch point: 88@985.
@@ -33356,7 +33358,7 @@ testSegment
 	self shouldnt: (s mathItem contains: 188@1095).
 	self shouldnt: (s mathItem contains: 5 @4)    ! !
 
-!DrGeoScriptTest methodsFor: 'testing-segment'!
+!DrGeoScriptTest methodsFor: 'testing-segment' stamp: ''!
 testSegmentReflexion
 	| d u v|
 	d := sketch
@@ -33398,7 +33400,7 @@ testSegmentScale
 	self assert: (v mathItem direction = (u mathItem direction * -3))  
 ! !
 
-!DrGeoScriptTest methodsFor: 'testing-segment'!
+!DrGeoScriptTest methodsFor: 'testing-segment' stamp: ''!
 testSegmentSymmetry
 	| c u v|
 	c := sketch point: 2@2.
@@ -33409,7 +33411,7 @@ testSegmentSymmetry
 	self assert: v mathItem direction = u mathItem direction negated 
 ! !
 
-!DrGeoScriptTest methodsFor: 'testing-segment'!
+!DrGeoScriptTest methodsFor: 'testing-segment' stamp: ''!
 testSegmentTranslation
 	| u v t |
 	u := sketch segment: (sketch point: 3@2) to: (sketch point: 2@4).
@@ -33425,7 +33427,7 @@ testSegmentTranslation
 	self assert: v mathItem direction = u mathItem direction.
 ! !
 
-!DrGeoScriptTest methodsFor: 'testing-segment'!
+!DrGeoScriptTest methodsFor: 'testing-segment' stamp: ''!
 testSegmentUnicity
 	| a b s1 s2|
 	a := sketch point: 788@985.
@@ -33442,7 +33444,7 @@ testSegmentUnicity
 	self deny: s1 mathItem == s2 mathItem   
 	! !
 
-!DrGeoScriptTest class methodsFor: 'as yet unclassified'!
+!DrGeoScriptTest class methodsFor: 'as yet unclassified' stamp: ''!
 resources 
 	^ {DrGeoScriptTestResource}! !
 
@@ -33472,7 +33474,7 @@ testArchimedesPI
 testArchimedesPIInterval
 	self testOnSketch: 'Archimedes PI Interval.st'! !
 
-!DrGeoSmalltalkSketchTest methodsFor: 'tests'!
+!DrGeoSmalltalkSketchTest methodsFor: 'tests' stamp: ''!
 testArchimedesSpiral
 	self testOnSketch: 'Archimedes Spiral.st'! !
 
@@ -33480,7 +33482,7 @@ testArchimedesSpiral
 testBernouilliSpiral
 	self launchSketch: 'Bernouilli Spiral.st'! !
 
-!DrGeoSmalltalkSketchTest methodsFor: 'tests'!
+!DrGeoSmalltalkSketchTest methodsFor: 'tests' stamp: ''!
 testBisection
 	self testOnSketch: 'Bisection.st'! !
 
@@ -33488,31 +33490,31 @@ testBisection
 testBranches
 	self testOnSketch: 'Branches.st'.! !
 
-!DrGeoSmalltalkSketchTest methodsFor: 'tests'!
+!DrGeoSmalltalkSketchTest methodsFor: 'tests' stamp: ''!
 testCercleCirconscrit
 	self testOnSketch: 'Cercle circonscrit.st'! !
 
-!DrGeoSmalltalkSketchTest methodsFor: 'tests'!
+!DrGeoSmalltalkSketchTest methodsFor: 'tests' stamp: ''!
 testChaoticSequence
 	self testOnSketch: 'Chaotic sequence.st'! !
 
-!DrGeoSmalltalkSketchTest methodsFor: 'tests'!
+!DrGeoSmalltalkSketchTest methodsFor: 'tests' stamp: ''!
 testCobwebDiagram
 	self testOnSketch: 'Cobweb diagram.st'! !
 
-!DrGeoSmalltalkSketchTest methodsFor: 'tests'!
+!DrGeoSmalltalkSketchTest methodsFor: 'tests' stamp: ''!
 testConwayTesselation
 	self testOnSketch: 'Conway tesselation.st'! !
 
-!DrGeoSmalltalkSketchTest methodsFor: 'tests'!
+!DrGeoSmalltalkSketchTest methodsFor: 'tests' stamp: ''!
 testCotesSpiral
 	self testOnSketch: 'Cotes Spiral.st'! !
 
-!DrGeoSmalltalkSketchTest methodsFor: 'tests'!
+!DrGeoSmalltalkSketchTest methodsFor: 'tests' stamp: ''!
 testDurer
 	self testOnSketch: 'Durer.st'! !
 
-!DrGeoSmalltalkSketchTest methodsFor: 'tests'!
+!DrGeoSmalltalkSketchTest methodsFor: 'tests' stamp: ''!
 testFathauer
 	self testOnSketch: 'Fathauer.st'! !
 
@@ -33520,19 +33522,19 @@ testFathauer
 testFermatSpiral
 	self testOnSketch: 'Fermat Spiral.st'! !
 
-!DrGeoSmalltalkSketchTest methodsFor: 'tests'!
+!DrGeoSmalltalkSketchTest methodsFor: 'tests' stamp: ''!
 testFibonacciSpiral
 	self testOnSketch: 'Fibonacci Spiral.st'! !
 
-!DrGeoSmalltalkSketchTest methodsFor: 'tests'!
+!DrGeoSmalltalkSketchTest methodsFor: 'tests' stamp: ''!
 testGalileoSpiral
 	self testOnSketch: 'Galileo Spiral.st'! !
 
-!DrGeoSmalltalkSketchTest methodsFor: 'tests'!
+!DrGeoSmalltalkSketchTest methodsFor: 'tests' stamp: ''!
 testKoch
 	self testOnSketch: 'Koch.st'! !
 
-!DrGeoSmalltalkSketchTest methodsFor: 'tests'!
+!DrGeoSmalltalkSketchTest methodsFor: 'tests' stamp: ''!
 testNewtonRaphson
 	self testOnSketch: 'Newton-Raphson.st'! !
 
@@ -33540,23 +33542,23 @@ testNewtonRaphson
 testPIMontCarlo
 	self testOnSketch: 'PI-Mont-Carlo.st'! !
 
-!DrGeoSmalltalkSketchTest methodsFor: 'tests'!
+!DrGeoSmalltalkSketchTest methodsFor: 'tests' stamp: ''!
 testSierpinski
 	self testOnSketch: 'sierpinski.st'! !
 
-!DrGeoSmalltalkSketchTest methodsFor: 'tests'!
+!DrGeoSmalltalkSketchTest methodsFor: 'tests' stamp: ''!
 testSierpinskiDragon
 	self testOnSketch: 'Sierpinski Dragon.st'! !
 
-!DrGeoSmalltalkSketchTest methodsFor: 'tests'!
+!DrGeoSmalltalkSketchTest methodsFor: 'tests' stamp: ''!
 testStats
 	self testOnSketch: 'stats.st'! !
 
-!DrGeoSmalltalkSketchTest methodsFor: 'tests'!
+!DrGeoSmalltalkSketchTest methodsFor: 'tests' stamp: ''!
 testTree
 	self testOnSketch: 'Tree.st'! !
 
-!DrGeoSmalltalkSketchTest methodsFor: 'tests'!
+!DrGeoSmalltalkSketchTest methodsFor: 'tests' stamp: ''!
 testWave
 	self testOnSketch: 'wave.st'! !
 
@@ -33629,16 +33631,16 @@ testThai
 setUp
 	sketch := DrGeoSketch new! !
 
-!DrGeoScriptTestResource methodsFor: 'running'!
+!DrGeoScriptTestResource methodsFor: 'running' stamp: ''!
 tearDown
 	sketch release.
 	sketch := nil! !
 
-!DrGeoScriptTestResource methodsFor: 'accessing'!
+!DrGeoScriptTestResource methodsFor: 'accessing' stamp: ''!
 sketch 
 	^ sketch! !
 
-!DrGeoScriptTestResource methodsFor: 'testing'!
+!DrGeoScriptTestResource methodsFor: 'testing' stamp: ''!
 isAvailable 
 	^ sketch notNil! !
 
@@ -34168,6 +34170,20 @@ drgeoButtonColor
 drgeoButtonSelectedColor
 	^ `Color lightGray lighter`! !
 
+!SequenceableCollection methodsFor: '*DrGeo' stamp: 'hlsf 2/24/2022 22:32:55'!
+shiftRight
+	^ self allButFirst, (Array with: self first)! !
+
+!LinkedList methodsFor: '*DrGeo-Link' stamp: 'hlsf 4/11/2024 10:35:30'!
+add: aLink after: otherLink
+	"Add otherLink  after link in the list. Answer aLink."
+	| savedLink |
+	lastLink == otherLink ifTrue: [^ self addLast: aLink].
+	savedLink := otherLink nextLink.
+	otherLink nextLink: aLink.
+	aLink nextLink:  savedLink.
+	^aLink.! !
+
 !Debugger methodsFor: '*DrGeo' stamp: 'hlsf 10/19/2022 21:20:23'!
 openMinimalMorphic
 	"Open a panel debugger"
@@ -34233,24 +34249,6 @@ openMinimalIn: aDialog debuggingProcess: process context: context
 	^ debugger openMinimalMorphicIn: aDialog.
 	! !
 
-!Color methodsFor: '*DrGeo' stamp: 'hlsf 3/18/2023 11:00:59'!
-hexHtml
-	^ '#', self hexStringRGB ! !
-
-!SequenceableCollection methodsFor: '*DrGeo' stamp: 'hlsf 2/24/2022 22:32:55'!
-shiftRight
-	^ self allButFirst, (Array with: self first)! !
-
-!LinkedList methodsFor: '*DrGeo-Link' stamp: 'hlsf 4/11/2024 10:35:30'!
-add: aLink after: otherLink
-	"Add otherLink  after link in the list. Answer aLink."
-	| savedLink |
-	lastLink == otherLink ifTrue: [^ self addLast: aLink].
-	savedLink := otherLink nextLink.
-	otherLink nextLink: aLink.
-	aLink nextLink:  savedLink.
-	^aLink.! !
-
 !Number methodsFor: '*DrGeo' stamp: 'hlsf 5/1/2020 23:32:17'!
 closeTo: num
 	"Tell whether the receiver and arguments are close from each."
@@ -34279,11 +34277,6 @@ printShowingDecimalPlaces: digits
 	^ String 
 		streamContents:  [:str | self printOn: str fractionDigits: digits]
 		estimatedSize: 10 + digits! !
-
-!Fraction methodsFor: '*DrGeo' stamp: 'hlsf 10/19/2022 17:15:34'!
-printParenthesisOn: aStream
-"No need to add parenthesis, it is handled by Fraction>>printOn:"
-	self printOn: aStream ! !
 
 !Float methodsFor: '*DrGeo' stamp: 'hlsf 1/28/2024 17:17:21'!
 asApproximateFraction
@@ -34358,6 +34351,15 @@ printParenthesisOn: aStream
 			self printOn: aStream fractionDigits: 1.
 			aStream nextPut: $)]
 		ifFalse: [self printOn: aStream fractionDigits: 1]! !
+
+!Fraction methodsFor: '*DrGeo' stamp: 'hlsf 10/19/2022 17:15:34'!
+printParenthesisOn: aStream
+"No need to add parenthesis, it is handled by Fraction>>printOn:"
+	self printOn: aStream ! !
+
+!Color methodsFor: '*DrGeo' stamp: 'hlsf 3/18/2023 11:00:59'!
+hexHtml
+	^ '#', self hexStringRGB ! !
 
 !Point methodsFor: '*DrGeo' stamp: 'hlsf 5/1/2020 23:35:38'!
 closeTo: aPoint
