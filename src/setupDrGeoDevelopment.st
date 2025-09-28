@@ -11,6 +11,7 @@ ChangeSet installNewUpdates.
 Utilities setAuthorName: 'Hilaire Fernandes' initials: 'hlsf'.
 Preferences at: #logDebuggerStackToFile put: true.
 Preferences at: #autoNumberUserChanges put: false.
+Preferences at: #focusFollowsMouse put: true.
 "Install DrGeo code"
 Feature require: #'DrGeo'.
 Feature require: #'DrGeoFrench'.
