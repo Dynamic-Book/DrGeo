@@ -1,18 +1,9 @@
-'From Cuis6.3 [latest update: #6319] on 13 April 2024 at 11:23:35 am'!
+'From Cuis7.5 [latest update: #7671] on 26 October 2025 at 12:06:16 pm'!
 'Description '!
-!provides: 'DrGeoFrench' 1 11!
+!provides: 'DrGeoFrench' 1 12!
+!requires: 'CuisFrench' 1 0 nil!
 SystemOrganization addCategory: #DrGeoFrench!
 
-
-!classDefinition: #DrGeoTutorial category: #DrGeoFrench!
-EruditeBook subclass: #DrGeoTutorial
-	instanceVariableNames: ''
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'DrGeoFrench'!
-!classDefinition: 'DrGeoTutorial class' category: #DrGeoFrench!
-DrGeoTutorial class
-	instanceVariableNames: ''!
 
 !classDefinition: #DrGeoFigure category: #DrGeoFrench!
 DrGeoSketch subclass: #DrGeoFigure
@@ -24,10 +15,264 @@ DrGeoSketch subclass: #DrGeoFigure
 DrGeoFigure class
 	instanceVariableNames: ''!
 
+!classDefinition: #DrGeoTutorial category: #DrGeoFrench!
+EruditeBook subclass: #DrGeoTutorial
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'DrGeoFrench'!
+!classDefinition: 'DrGeoTutorial class' category: #DrGeoFrench!
+DrGeoTutorial class
+	instanceVariableNames: ''!
+
 
 !DrGeoFigure commentStamp: '' prior: 0!
 Domain Specific Language (DSL) abstraction to construct programmatically interactive sketch. 
 I come with methods with French names.!
+
+!DrGeoFigure methodsFor: 'user interface' stamp: ''!
+afficherAxes
+	^ self axesOn! !
+
+!DrGeoFigure methodsFor: 'user interface' stamp: ''!
+afficherGrille
+	^ self gridOn! !
+
+!DrGeoFigure methodsFor: 'user interface' stamp: ''!
+centrerVueEn: aPoint
+	^ self centerTo: aPoint! !
+
+!DrGeoFigure methodsFor: 'user interface' stamp: 'hlsf 12/21/2022 14:17:46'!
+échelle: anInteger
+	^ self scale: anInteger ! !
+
+!DrGeoFigure methodsFor: 'user interface' stamp: ''!
+pleinEcran
+	^ self fullscreen ! !
+
+!DrGeoFigure methodsFor: 'text' stamp: ''!
+texte: aText
+	^ self text: aText! !
+
+!DrGeoFigure methodsFor: 'text' stamp: 'hlsf 12/21/2022 14:18:03'!
+texte: aText à: aPosition
+	^ self text: aText at: aPosition! !
+
+!DrGeoFigure methodsFor: 'curve' stamp: 'hlsf 12/21/2022 14:18:13'!
+arcCentre: wrpPt1 de: wrpPt2 à: wrpPt3
+	^ self arcCenter: wrpPt1 from: wrpPt2 to: wrpPt3! !
+
+!DrGeoFigure methodsFor: 'curve' stamp: 'hlsf 12/21/2022 14:18:37'!
+arcDe: wrpPt1 à: wrpPt3 passantPar: wrpPt2
+	^ self arc: wrpPt1 to: wrpPt2 to: wrpPt3! !
+
+!DrGeoFigure methodsFor: 'curve' stamp: ''!
+bissectriceDe: wrpAngle
+	^ self angleBisector: wrpAngle! !
+
+!DrGeoFigure methodsFor: 'curve' stamp: 'hlsf 12/21/2022 14:19:14'!
+bissectriceSommet: wrpSummit côté1: wrpPt1 côté2: wrpPt2
+	^ self angleBisectorSummit: wrpSummit side1: wrpPt1 side2: wrpPt2 ! !
+
+!DrGeoFigure methodsFor: 'curve' stamp: ''!
+cercleCentre: wrpCenter passantPar: wrpPt
+	^ self circleCenter: wrpCenter to: wrpPt! !
+
+!DrGeoFigure methodsFor: 'curve' stamp: ''!
+cercleCentre: wrpCenter rayon: wrpValue
+	^ self circleCenter: wrpCenter radius: wrpValue! !
+
+!DrGeoFigure methodsFor: 'curve' stamp: ''!
+cercleCentre: wrpCenter segment: wrpSegment
+	^ self circleCenter: wrpCenter segment: wrpSegment! !
+
+!DrGeoFigure methodsFor: 'curve' stamp: ''!
+demiDroiteOrigine: wrpPt1 passantPar: wrpPt2
+	^ self ray: wrpPt1 to: wrpPt2 ! !
+
+!DrGeoFigure methodsFor: 'curve' stamp: ''!
+droitePassantPar: wrpPt1 et: wrpPt2
+	^ self line: wrpPt1 to: wrpPt2 ! !
+
+!DrGeoFigure methodsFor: 'curve' stamp: ''!
+lieuDe: wrpPt1 lorsqueBouge: wrpPt2
+	^ self locusOf: wrpPt1 when: wrpPt2 ! !
+
+!DrGeoFigure methodsFor: 'curve' stamp: 'hlsf 12/21/2022 14:19:40'!
+médiatriceDe: wrpSegment
+	^ self perpendicularBisector: wrpSegment! !
+
+!DrGeoFigure methodsFor: 'curve' stamp: 'hlsf 12/21/2022 14:20:00'!
+médiatriceDe: wrpPt1 à: wrpPt2
+	^ self perpendicularBisector: wrpPt1 to: wrpPt2! !
+
+!DrGeoFigure methodsFor: 'curve' stamp: 'hlsf 12/21/2022 14:20:20'!
+parallèleA: wrpDirection passantPar: wrpPtOrPoint
+	^ self parallel: wrpDirection at: wrpPtOrPoint! !
+
+!DrGeoFigure methodsFor: 'curve' stamp: ''!
+perpendiculaireA: wrpDirection passantPar: wrpPtOrPoint
+	^ self perpendicular: wrpDirection at: wrpPtOrPoint! !
+
+!DrGeoFigure methodsFor: 'curve' stamp: ''!
+polygone: collection
+	^ self polygon: collection! !
+
+!DrGeoFigure methodsFor: 'curve' stamp: 'hlsf 12/21/2022 14:21:16'!
+polygoneRégulierCentre: wrpCenter sommet: wrpVertex côtés: wrpValue
+	^ self regularPolygonCenter: wrpCenter vertex: wrpVertex sides: wrpValue! !
+
+!DrGeoFigure methodsFor: 'curve' stamp: 'hlsf 12/21/2022 14:21:33'!
+segmentDe: wrpPt1 à: wrpPt2
+	^ self segment: wrpPt1 to: wrpPt2 ! !
+
+!DrGeoFigure methodsFor: 'curve' stamp: ''!
+vecteur: wrpPt
+	^ self vector: wrpPt! !
+
+!DrGeoFigure methodsFor: 'curve' stamp: 'hlsf 12/21/2022 14:22:07'!
+vecteurOrigine: wrpPt1 extrémité: wrpPt2
+	^ self vector: wrpPt1 to: wrpPt2 ! !
+
+!DrGeoFigure methodsFor: 'helpers' stamp: 'hlsf 12/21/2022 14:19:20'!
+courbeDe: f de: x0 à: x1
+	^ self plot: f from: x0 to: x1! !
+
+!DrGeoFigure methodsFor: 'helpers' stamp: 'hlsf 12/21/2022 14:18:47'!
+décimal: value à: aPoint min: startValue max: endValue
+	^ self float: value at: aPoint from: startValue to: endValue ! !
+
+!DrGeoFigure methodsFor: 'helpers' stamp: 'hlsf 12/21/2022 14:19:49'!
+décimal: value à: aPoint min: startValue max: endValue nom: name
+	^ self float: value at: aPoint from: startValue to: endValue name: name! !
+
+!DrGeoFigure methodsFor: 'helpers' stamp: 'hlsf 12/21/2022 14:20:31'!
+décimal: value à: aPoint min: startValue max: endValue nom: name afficherValeur: isValueDisplay
+	^ self float: value at: aPoint from: startValue to: endValue name: name showValue: isValueDisplay! !
+
+!DrGeoFigure methodsFor: 'helpers' stamp: 'hlsf 12/21/2022 14:21:23'!
+entier: value à: aPoint min: startValue max: endValue
+	^ self integer: value at: aPoint from: startValue to: endValue ! !
+
+!DrGeoFigure methodsFor: 'helpers' stamp: 'hlsf 12/21/2022 14:22:25'!
+entier: value à: aPoint min: startValue max: endValue nom: name
+	^ self integer: value at: aPoint from: startValue to: endValue name: name! !
+
+!DrGeoFigure methodsFor: 'helpers' stamp: 'hlsf 12/21/2022 14:23:22'!
+entier: value à: aPoint min: startValue max: endValue nom: name afficherValeur: isValueDisplay
+	^ self integer: value at: aPoint from: startValue to: endValue name: name showValue: isValueDisplay! !
+
+!DrGeoFigure methodsFor: 'helpers' stamp: 'hlsf 3/13/2023 20:57:36'!
+exporterVersImage: aFilename
+	self exportToImage: aFilename! !
+
+!DrGeoFigure methodsFor: 'helpers' stamp: ''!
+faire: aBlock
+	^ self do: aBlock! !
+
+!DrGeoFigure methodsFor: 'equation' stamp: 'hlsf 12/21/2022 14:18:52'!
+équationDe: wrpLineOrCircle
+	^ self equationOf: wrpLineOrCircle! !
+
+!DrGeoFigure methodsFor: 'initialize-release' stamp: ''!
+supprimer
+	self delete! !
+
+!DrGeoFigure methodsFor: 'point' stamp: ''!
+autreIntersectionDe: wrpCurve1 et: wrpCurve2
+	^ self altIntersectionOf: wrpCurve1 and: wrpCurve2 ! !
+
+!DrGeoFigure methodsFor: 'point' stamp: ''!
+intersectionDe: wrpCurve1 et: wrpCurve2
+	^ self intersectionOf: wrpCurve1 and: wrpCurve2 ! !
+
+!DrGeoFigure methodsFor: 'point' stamp: ''!
+milieuDe: wrpSegment
+	^ self middleOf: wrpSegment ! !
+
+!DrGeoFigure methodsFor: 'point' stamp: ''!
+milieuDe: wrpPoint1 et: wrpPoint2
+	^ self middleOf: wrpPoint1 and: wrpPoint2 ! !
+
+!DrGeoFigure methodsFor: 'point' stamp: 'hlsf 12/21/2022 14:23:41'!
+pointSurLigne: wrpCurve à: abscissa
+	^ self pointOnLine: wrpCurve at: abscissa! !
+
+!DrGeoFigure methodsFor: 'processing' stamp: ''!
+actualiser
+	^ self update! !
+
+!DrGeoFigure methodsFor: 'value' stamp: ''!
+abscisseDe:  wrpPointOrWrpVectorOrPoint
+	^ self abscissaOf: wrpPointOrWrpVectorOrPoint ! !
+
+!DrGeoFigure methodsFor: 'value' stamp: 'hlsf 12/21/2022 15:06:06'!
+angleGéométriqueSommet: wrpPt1 de: wrpPt2 à: wrpPt3
+	^ self geometricAngle: wrpPt2  to: wrpPt1  to: wrpPt3 ! !
+
+!DrGeoFigure methodsFor: 'value' stamp: 'hlsf 12/21/2022 14:25:02'!
+angleSommet: wrpPt1 de: wrpPt2 à: wrpPt3
+	^ self angle: wrpPt2  to: wrpPt1  to: wrpPt3 ! !
+
+!DrGeoFigure methodsFor: 'value' stamp: ''!
+angleVecteur: wrpVecteur1 et: wrpVecteur2
+	^ self angle: wrpVecteur1 to: wrpVecteur2 ! !
+
+!DrGeoFigure methodsFor: 'value' stamp: 'hlsf 12/21/2022 14:25:39'!
+distanceDe: item1 à: item2
+	^ self distance: item1 to: item2! !
+
+!DrGeoFigure methodsFor: 'value' stamp: ''!
+longueurDe: wrpItem
+	^ self lengthOf: wrpItem ! !
+
+!DrGeoFigure methodsFor: 'value' stamp: 'hlsf 12/21/2022 14:25:51'!
+ordonnéeDe: wrpItem
+	^ self ordinateOf: wrpItem ! !
+
+!DrGeoFigure methodsFor: 'value' stamp: ''!
+penteDe: wrpLine
+	^ self slopeOf: wrpLine! !
+
+!DrGeoFigure methodsFor: 'value' stamp: 'hlsf 4/13/2024 11:09:26'!
+valeur: aNumberOrBlock
+	^ self value: aNumberOrBlock ! !
+
+!DrGeoFigure methodsFor: 'value' stamp: 'hlsf 4/13/2024 11:10:53'!
+valeur: aNumberOrBlock parent: wrpValue
+	^ self value: aNumberOrBlock parent: wrpValue! !
+
+!DrGeoFigure methodsFor: 'value' stamp: 'hlsf 4/13/2024 11:10:17'!
+valeur: aNumberOrBlock parents: wrpValueArray à: aPosition
+	^ self value: aNumberOrBlock parents: wrpValueArray at: aPosition! !
+
+!DrGeoFigure methodsFor: 'transformations' stamp: 'hlsf 12/21/2022 14:26:15'!
+homothétieDe: wrpItem centre: wrpCenter facteur: wrpValue
+	^ self scale: wrpItem center: wrpCenter factor: wrpValue! !
+
+!DrGeoFigure methodsFor: 'transformations' stamp: 'hlsf 12/21/2022 14:26:34'!
+rotationDe: wrpItem centre: wrpCenter angle: wrpValue
+	^ self rotate: wrpItem center: wrpCenter angle: wrpValue! !
+
+!DrGeoFigure methodsFor: 'transformations' stamp: 'hlsf 3/9/2023 15:16:04'!
+rotationDe: wrpItem centre: wrpCenter angleDegrés: wrpValue
+	^ self rotate: wrpItem center: wrpCenter angleDegrees: wrpValue! !
+
+!DrGeoFigure methodsFor: 'transformations' stamp: 'hlsf 12/21/2022 14:26:47'!
+symétriqueDe: wrpItem selonAxe: wrpLine
+	^ self reflect: wrpItem axis: wrpLine! !
+
+!DrGeoFigure methodsFor: 'transformations' stamp: 'hlsf 12/21/2022 14:27:01'!
+symétriqueDe: wrpItem selonCentre: wrpCenter
+	^ self symmetry: wrpItem center: wrpCenter ! !
+
+!DrGeoFigure methodsFor: 'transformations' stamp: ''!
+translationDe: wrpItem parVecteur: wrpVecteur
+	^ self translate: wrpItem vector: wrpVecteur! !
+
+!DrGeoFigure class methodsFor: 'instance creation' stamp: ''!
+nouveau
+	^ self new! !
 
 !DrGeoTutorial methodsFor: 'as yet unclassified' stamp: 'hlsf 12/21/2022 22:16:02'!
 initialize
@@ -1390,10 +1635,6 @@ Déplie la section **▶ Transformations** pour les découvrir !!') data: ((Dict
         add: self section_Transformations_Translation;
  yourself); yourself)! !
 
-!DrGeoTutorial methodsFor: 'as yet unclassified' stamp: 'hlsf 11/2/2022 23:15:30'!
-section_TransformationsGéométriques
-^(EruditeBookSection basicNew title: 'Transformations géométriques'; document: ((EruditeDocument contents: '') data: ((Dictionary new)); yourself); subsections: (OrderedCollection new yourself); yourself)! !
-
 !DrGeoTutorial methodsFor: 'as yet unclassified' stamp: 'hlsf 12/21/2022 22:16:02'!
 section_Transformations_Homothétie
 ^(EruditeBookSection basicNew title: 'Homothétie'; document: ((EruditeDocument contents: '!!!!!!Homothétie
@@ -1483,6 +1724,10 @@ c _ fig cercleCentre: 0@0 passantPar: 3@3.
 a _ fig translationDe: c parVecteur: u]]] withDrGeoActions
 ') data: ((Dictionary new)); yourself); subsections: (OrderedCollection new yourself); yourself)! !
 
+!DrGeoTutorial methodsFor: 'as yet unclassified' stamp: 'hlsf 11/2/2022 23:15:30'!
+section_TransformationsGéométriques
+^(EruditeBookSection basicNew title: 'Transformations géométriques'; document: ((EruditeDocument contents: '') data: ((Dictionary new)); yourself); subsections: (OrderedCollection new yourself); yourself)! !
+
 !DrGeoTutorial methodsFor: 'as yet unclassified' stamp: 'hlsf 11/2/2022 15:44:32'!
 section_ValeursNumériques
 ^(EruditeBookSection basicNew title: 'Valeurs numériques'; document: ((EruditeDocument contents: '') data: ((Dictionary new)); yourself); subsections: (OrderedCollection new yourself); yourself)! !
@@ -1511,1225 +1756,19 @@ fig vecteur: -5 @ -5]]] withDrGeoActions
 
 ') data: ((Dictionary new)); yourself); subsections: (OrderedCollection new yourself); yourself)! !
 
-!DrGeoFigure methodsFor: 'user interface'!
-afficherAxes
-	^ self axesOn! !
-
-!DrGeoFigure methodsFor: 'user interface'!
-afficherGrille
-	^ self gridOn! !
-
-!DrGeoFigure methodsFor: 'user interface'!
-centrerVueEn: aPoint
-	^ self centerTo: aPoint! !
-
-!DrGeoFigure methodsFor: 'user interface' stamp: 'hlsf 12/21/2022 14:17:46'!
-échelle: anInteger
-	^ self scale: anInteger ! !
-
-!DrGeoFigure methodsFor: 'user interface'!
-pleinEcran
-	^ self fullscreen ! !
-
-!DrGeoFigure methodsFor: 'text'!
-texte: aText
-	^ self text: aText! !
-
-!DrGeoFigure methodsFor: 'text' stamp: 'hlsf 12/21/2022 14:18:03'!
-texte: aText à: aPosition
-	^ self text: aText at: aPosition! !
-
-!DrGeoFigure methodsFor: 'curve' stamp: 'hlsf 12/21/2022 14:18:13'!
-arcCentre: wrpPt1 de: wrpPt2 à: wrpPt3
-	^ self arcCenter: wrpPt1 from: wrpPt2 to: wrpPt3! !
-
-!DrGeoFigure methodsFor: 'curve' stamp: 'hlsf 12/21/2022 14:18:37'!
-arcDe: wrpPt1 à: wrpPt3 passantPar: wrpPt2
-	^ self arc: wrpPt1 to: wrpPt2 to: wrpPt3! !
-
-!DrGeoFigure methodsFor: 'curve'!
-bissectriceDe: wrpAngle
-	^ self angleBisector: wrpAngle! !
-
-!DrGeoFigure methodsFor: 'curve' stamp: 'hlsf 12/21/2022 14:19:14'!
-bissectriceSommet: wrpSummit côté1: wrpPt1 côté2: wrpPt2
-	^ self angleBisectorSummit: wrpSummit side1: wrpPt1 side2: wrpPt2 ! !
-
-!DrGeoFigure methodsFor: 'curve'!
-cercleCentre: wrpCenter passantPar: wrpPt
-	^ self circleCenter: wrpCenter to: wrpPt! !
-
-!DrGeoFigure methodsFor: 'curve'!
-cercleCentre: wrpCenter rayon: wrpValue
-	^ self circleCenter: wrpCenter radius: wrpValue! !
-
-!DrGeoFigure methodsFor: 'curve'!
-cercleCentre: wrpCenter segment: wrpSegment
-	^ self circleCenter: wrpCenter segment: wrpSegment! !
-
-!DrGeoFigure methodsFor: 'curve'!
-demiDroiteOrigine: wrpPt1 passantPar: wrpPt2
-	^ self ray: wrpPt1 to: wrpPt2 ! !
-
-!DrGeoFigure methodsFor: 'curve'!
-droitePassantPar: wrpPt1 et: wrpPt2
-	^ self line: wrpPt1 to: wrpPt2 ! !
-
-!DrGeoFigure methodsFor: 'curve'!
-lieuDe: wrpPt1 lorsqueBouge: wrpPt2
-	^ self locusOf: wrpPt1 when: wrpPt2 ! !
-
-!DrGeoFigure methodsFor: 'curve' stamp: 'hlsf 12/21/2022 14:19:40'!
-médiatriceDe: wrpSegment
-	^ self perpendicularBisector: wrpSegment! !
-
-!DrGeoFigure methodsFor: 'curve' stamp: 'hlsf 12/21/2022 14:20:00'!
-médiatriceDe: wrpPt1 à: wrpPt2
-	^ self perpendicularBisector: wrpPt1 to: wrpPt2! !
-
-!DrGeoFigure methodsFor: 'curve' stamp: 'hlsf 12/21/2022 14:20:20'!
-parallèleA: wrpDirection passantPar: wrpPtOrPoint
-	^ self parallel: wrpDirection at: wrpPtOrPoint! !
-
-!DrGeoFigure methodsFor: 'curve'!
-perpendiculaireA: wrpDirection passantPar: wrpPtOrPoint
-	^ self perpendicular: wrpDirection at: wrpPtOrPoint! !
-
-!DrGeoFigure methodsFor: 'curve'!
-polygone: collection
-	^ self polygon: collection! !
-
-!DrGeoFigure methodsFor: 'curve' stamp: 'hlsf 12/21/2022 14:21:16'!
-polygoneRégulierCentre: wrpCenter sommet: wrpVertex côtés: wrpValue
-	^ self regularPolygonCenter: wrpCenter vertex: wrpVertex sides: wrpValue! !
-
-!DrGeoFigure methodsFor: 'curve' stamp: 'hlsf 12/21/2022 14:21:33'!
-segmentDe: wrpPt1 à: wrpPt2
-	^ self segment: wrpPt1 to: wrpPt2 ! !
-
-!DrGeoFigure methodsFor: 'curve'!
-vecteur: wrpPt
-	^ self vector: wrpPt! !
-
-!DrGeoFigure methodsFor: 'curve' stamp: 'hlsf 12/21/2022 14:22:07'!
-vecteurOrigine: wrpPt1 extrémité: wrpPt2
-	^ self vector: wrpPt1 to: wrpPt2 ! !
-
-!DrGeoFigure methodsFor: 'helpers' stamp: 'hlsf 12/21/2022 14:19:20'!
-courbeDe: f de: x0 à: x1
-	^ self plot: f from: x0 to: x1! !
-
-!DrGeoFigure methodsFor: 'helpers' stamp: 'hlsf 12/21/2022 14:18:47'!
-décimal: value à: aPoint min: startValue max: endValue
-	^ self float: value at: aPoint from: startValue to: endValue ! !
-
-!DrGeoFigure methodsFor: 'helpers' stamp: 'hlsf 12/21/2022 14:19:49'!
-décimal: value à: aPoint min: startValue max: endValue nom: name
-	^ self float: value at: aPoint from: startValue to: endValue name: name! !
-
-!DrGeoFigure methodsFor: 'helpers' stamp: 'hlsf 12/21/2022 14:20:31'!
-décimal: value à: aPoint min: startValue max: endValue nom: name afficherValeur: isValueDisplay
-	^ self float: value at: aPoint from: startValue to: endValue name: name showValue: isValueDisplay! !
-
-!DrGeoFigure methodsFor: 'helpers' stamp: 'hlsf 12/21/2022 14:21:23'!
-entier: value à: aPoint min: startValue max: endValue
-	^ self integer: value at: aPoint from: startValue to: endValue ! !
-
-!DrGeoFigure methodsFor: 'helpers' stamp: 'hlsf 12/21/2022 14:22:25'!
-entier: value à: aPoint min: startValue max: endValue nom: name
-	^ self integer: value at: aPoint from: startValue to: endValue name: name! !
-
-!DrGeoFigure methodsFor: 'helpers' stamp: 'hlsf 12/21/2022 14:23:22'!
-entier: value à: aPoint min: startValue max: endValue nom: name afficherValeur: isValueDisplay
-	^ self integer: value at: aPoint from: startValue to: endValue name: name showValue: isValueDisplay! !
-
-!DrGeoFigure methodsFor: 'helpers' stamp: 'hlsf 3/13/2023 20:57:36'!
-exporterVersImage: aFilename
-	self exportToImage: aFilename! !
-
-!DrGeoFigure methodsFor: 'helpers'!
-faire: aBlock
-	^ self do: aBlock! !
-
-!DrGeoFigure methodsFor: 'equation' stamp: 'hlsf 12/21/2022 14:18:52'!
-équationDe: wrpLineOrCircle
-	^ self equationOf: wrpLineOrCircle! !
-
-!DrGeoFigure methodsFor: 'initialize-release'!
-supprimer
-	self delete! !
-
-!DrGeoFigure methodsFor: 'point'!
-autreIntersectionDe: wrpCurve1 et: wrpCurve2
-	^ self altIntersectionOf: wrpCurve1 and: wrpCurve2 ! !
-
-!DrGeoFigure methodsFor: 'point'!
-intersectionDe: wrpCurve1 et: wrpCurve2
-	^ self intersectionOf: wrpCurve1 and: wrpCurve2 ! !
-
-!DrGeoFigure methodsFor: 'point'!
-milieuDe: wrpSegment
-	^ self middleOf: wrpSegment ! !
-
-!DrGeoFigure methodsFor: 'point'!
-milieuDe: wrpPoint1 et: wrpPoint2
-	^ self middleOf: wrpPoint1 and: wrpPoint2 ! !
-
-!DrGeoFigure methodsFor: 'point' stamp: 'hlsf 12/21/2022 14:23:41'!
-pointSurLigne: wrpCurve à: abscissa
-	^ self pointOnLine: wrpCurve at: abscissa! !
-
-!DrGeoFigure methodsFor: 'processing'!
-actualiser
-	^ self update! !
-
-!DrGeoFigure methodsFor: 'value'!
-abscisseDe:  wrpPointOrWrpVectorOrPoint
-	^ self abscissaOf: wrpPointOrWrpVectorOrPoint ! !
-
-!DrGeoFigure methodsFor: 'value' stamp: 'hlsf 12/21/2022 15:06:06'!
-angleGéométriqueSommet: wrpPt1 de: wrpPt2 à: wrpPt3
-	^ self geometricAngle: wrpPt2  to: wrpPt1  to: wrpPt3 ! !
-
-!DrGeoFigure methodsFor: 'value' stamp: 'hlsf 12/21/2022 14:25:02'!
-angleSommet: wrpPt1 de: wrpPt2 à: wrpPt3
-	^ self angle: wrpPt2  to: wrpPt1  to: wrpPt3 ! !
-
-!DrGeoFigure methodsFor: 'value'!
-angleVecteur: wrpVecteur1 et: wrpVecteur2
-	^ self angle: wrpVecteur1 to: wrpVecteur2 ! !
-
-!DrGeoFigure methodsFor: 'value' stamp: 'hlsf 12/21/2022 14:25:39'!
-distanceDe: item1 à: item2
-	^ self distance: item1 to: item2! !
-
-!DrGeoFigure methodsFor: 'value'!
-longueurDe: wrpItem
-	^ self lengthOf: wrpItem ! !
-
-!DrGeoFigure methodsFor: 'value' stamp: 'hlsf 12/21/2022 14:25:51'!
-ordonnéeDe: wrpItem
-	^ self ordinateOf: wrpItem ! !
-
-!DrGeoFigure methodsFor: 'value'!
-penteDe: wrpLine
-	^ self slopeOf: wrpLine! !
-
-!DrGeoFigure methodsFor: 'value' stamp: 'hlsf 4/13/2024 11:09:26'!
-valeur: aNumberOrBlock
-	^ self value: aNumberOrBlock ! !
-
-!DrGeoFigure methodsFor: 'value' stamp: 'hlsf 4/13/2024 11:10:53'!
-valeur: aNumberOrBlock parent: wrpValue
-	^ self value: aNumberOrBlock parent: wrpValue! !
-
-!DrGeoFigure methodsFor: 'value' stamp: 'hlsf 4/13/2024 11:10:17'!
-valeur: aNumberOrBlock parents: wrpValueArray à: aPosition
-	^ self value: aNumberOrBlock parents: wrpValueArray at: aPosition! !
-
-!DrGeoFigure methodsFor: 'transformations' stamp: 'hlsf 12/21/2022 14:26:15'!
-homothétieDe: wrpItem centre: wrpCenter facteur: wrpValue
-	^ self scale: wrpItem center: wrpCenter factor: wrpValue! !
-
-!DrGeoFigure methodsFor: 'transformations' stamp: 'hlsf 12/21/2022 14:26:34'!
-rotationDe: wrpItem centre: wrpCenter angle: wrpValue
-	^ self rotate: wrpItem center: wrpCenter angle: wrpValue! !
-
-!DrGeoFigure methodsFor: 'transformations' stamp: 'hlsf 3/9/2023 15:16:04'!
-rotationDe: wrpItem centre: wrpCenter angleDegrés: wrpValue
-	^ self rotate: wrpItem center: wrpCenter angleDegrees: wrpValue! !
-
-!DrGeoFigure methodsFor: 'transformations' stamp: 'hlsf 12/21/2022 14:26:47'!
-symétriqueDe: wrpItem selonAxe: wrpLine
-	^ self reflect: wrpItem axis: wrpLine! !
-
-!DrGeoFigure methodsFor: 'transformations' stamp: 'hlsf 12/21/2022 14:27:01'!
-symétriqueDe: wrpItem selonCentre: wrpCenter
-	^ self symmetry: wrpItem center: wrpCenter ! !
-
-!DrGeoFigure methodsFor: 'transformations'!
-translationDe: wrpItem parVecteur: wrpVecteur
-	^ self translate: wrpItem vector: wrpVecteur! !
-
-!DrGeoFigure class methodsFor: 'instance creation'!
-nouveau
-	^ self new! !
-
-!Object methodsFor: '*DrGeoFrench' stamp: 'hlsf 12/26/2022 16:31:23'!
-afficher
-	self print! !
-
-!Boolean methodsFor: '*DrGeoFrench'!
-contraire
-	"négation booléenne"
-	
-	^self not.! !
-
-!Boolean methodsFor: '*DrGeoFrench'!
-et: UnBloc
-	"et au lieu de and"
-
-	^self and: UnBloc.! !
-
-!Boolean methodsFor: '*DrGeoFrench'!
-ou: UnBloc
-	"ou au lieu de or"
-
-	^self or: UnBloc.! !
-
-!Boolean methodsFor: '*DrGeoFrench'!
-siFaux: UnBloc
-	"test négatif"
-
-	^self ifFalse: UnBloc.! !
-
-!Boolean methodsFor: '*DrGeoFrench'!
-siFaux: leBlocDuFaux siVrai: leBlocDuVrai
-	"test alternatif"
-
-	^self ifFalse: leBlocDuFaux ifTrue: leBlocDuVrai.! !
-
-!Boolean methodsFor: '*DrGeoFrench'!
-siVrai: UnBloc
-	"test positif"
-
-	^self ifTrue: UnBloc.! !
-
-!Boolean methodsFor: '*DrGeoFrench'!
-siVrai: leBlocDuVrai siFaux: leBlocDuFaux
-	"test alternatif"
-
-	^self ifTrue: leBlocDuVrai ifFalse: leBlocDuFaux.! !
-
-!Number methodsFor: '*DrGeoFrench' stamp: 'hlsf 12/26/2022 16:29:20'!
-afficherEnBase: UneBase
-
-	^self printStringBase: UneBase.! !
-
-!Number methodsFor: '*DrGeoFrench'!
-arrondir
-"répond l'arrondi à l'entier le plus proche"
-	^self rounded! !
-
-!Number methodsFor: '*DrGeoFrench'!
-arrondirA: UnNombre
-"répond l'arrondi à UnNombre près.
-Par exemple 2 racine arrondirA:  0.01 répond 1.41"
-
-	^self roundTo: UnNombre .! !
-
-!Number methodsFor: '*DrGeoFrench' stamp: 'hlsf 12/21/2022 14:49:40'!
-arrondirParDéfautA: UnNombre
-"répond l'arrondi par défaut;
-par exemple, 2 racine arrondirExcesA: 0.01 répond 1.41"
-	
-	^self roundDownTo: UnNombre! !
-
-!Number methodsFor: '*DrGeoFrench' stamp: 'hlsf 12/21/2022 14:50:39'!
-arrondirParExcèsA: UnNombre
-"répond l'arrondi à l'excès;
-par exemple, 2 racine arrondirExcesA: 0.01 répond 1.42"
-	^self roundUpTo: UnNombre! !
-
-!Number methodsFor: '*DrGeoFrench' stamp: 'hlsf 12/21/2022 14:43:09'!
-auCarré
-
-	^self squared.! !
-
-!Number methodsFor: '*DrGeoFrench'!
-auCube
-
-	^self puissance: 3.! !
-
-!Number methodsFor: '*DrGeoFrench' stamp: 'hlsf 12/21/2022 14:48:38'!
-à: UnNombre
-
-	^self to: UnNombre.! !
-
-!Number methodsFor: '*DrGeoFrench' stamp: 'hlsf 12/21/2022 14:48:53'!
-à: UnNombre faire: UnBloc
-	"boucle à condition de sortie"
-
-	^self to: UnNombre do: UnBloc.! !
-
-!Number methodsFor: '*DrGeoFrench' stamp: 'hlsf 12/21/2022 14:48:59'!
-à: UnNombre par: UnPas
-"répond un intervalle avec un pas"
-	^self to: UnNombre by: UnPas.! !
-
-!Number methodsFor: '*DrGeoFrench' stamp: 'hlsf 12/21/2022 14:49:09'!
-à: UnNombre par: UnPas faire: UnBloc
-
-	^self to: UnNombre by: UnPas do: UnBloc.! !
-
-!Number methodsFor: '*DrGeoFrench' stamp: 'hlsf 12/21/2022 14:51:03'!
-commeDécimal
-
-	^self asFloat.! !
-
-!Number methodsFor: '*DrGeoFrench'!
-commeEntier
-
-	^self asInteger.! !
-
-!Number methodsFor: '*DrGeoFrench'!
-commeNombre
-
-	^self asNumber.! !
-
-!Number methodsFor: '*DrGeoFrench'!
-cosinus
-	"cosinus en degrés"
-	
-	^self degreeCos.! !
-
-!Number methodsFor: '*DrGeoFrench' stamp: 'hlsf 12/21/2022 14:52:37'!
-degrés
-
-	^self radiansToDegrees.! !
-
-!Number methodsFor: '*DrGeoFrench'!
-enPourcents
-	^ String streamContents: [ :str | 
-			(self * 100) storeOn: str.
-			str nextPutAll: ' %'].! !
-
-!Number methodsFor: '*DrGeoFrench' stamp: 'hlsf 12/21/2022 14:53:03'!
-estDécimal
-
-	^(self isFloat).! !
-
-!Number methodsFor: '*DrGeoFrench'!
-estDivisiblePar: UnNombre
-
-	^self isDivisibleBy: UnNombre.! !
-
-!Number methodsFor: '*DrGeoFrench'!
-estEntier
-
-	^(self isInteger).! !
-
-!Number methodsFor: '*DrGeoFrench'!
-estInfini
-
-	^self isInfinite.! !
-
-!Number methodsFor: '*DrGeoFrench'!
-estNombre
-
-	^self isNumber.! !
-
-!Number methodsFor: '*DrGeoFrench'!
-estNul
-
-	^self isZero.! !
-
-!Number methodsFor: '*DrGeoFrench'!
-estPasNombre
-
-	^self isNaN.! !
-
-!Number methodsFor: '*DrGeoFrench'!
-heures
-
-	^self hours.! !
-
-!Number methodsFor: '*DrGeoFrench'!
-impair
-	
-	^self odd.! !
-
-!Number methodsFor: '*DrGeoFrench'!
-inverse
-
-	^self reciprocal.! !
-
-!Number methodsFor: '*DrGeoFrench'!
-jours
-
-	^self days.! !
-
-!Number methodsFor: '*DrGeoFrench'!
-millisecondes
-
-	^self milliSeconds.! !
-
-!Number methodsFor: '*DrGeoFrench'!
-moyenneAvec: unNombre
-	
-	^((self + unNombre)/2).! !
-
-!Number methodsFor: '*DrGeoFrench'!
-nanosecondes
-
-	^self nanoSeconds.! !
-
-!Number methodsFor: '*DrGeoFrench' stamp: 'hlsf 12/21/2022 14:53:25'!
-négatif
-	
-	^self negative.! !
-
-!Number methodsFor: '*DrGeoFrench' stamp: 'hlsf 12/21/2022 14:53:33'!
-opposé
-
-	^self negated.! !
-
-!Number methodsFor: '*DrGeoFrench'!
-pair
-	
-	^self even.! !
-
-!Number methodsFor: '*DrGeoFrench' stamp: 'hlsf 12/21/2022 14:53:48'!
-partieDécimale
-	^self fractionPart! !
-
-!Number methodsFor: '*DrGeoFrench' stamp: 'hlsf 12/21/2022 14:54:01'!
-partieEntière
-	^self integerPart! !
-
-!Number methodsFor: '*DrGeoFrench'!
-positif
-	
-	^self positive.! !
-
-!Number methodsFor: '*DrGeoFrench'!
-pourcentsDe: UnNombre
-	"répond un pourcentage.
-	Par exemple 6 pourcentsDe: 200 répond 12"
-
-	^self * UnNombre / 100.! !
-
-!Number methodsFor: '*DrGeoFrench'!
-procheDe: UnNombre
-
-	^self closeTo: UnNombre.! !
-
-!Number methodsFor: '*DrGeoFrench'!
-puissance: UnNombre
-
-	^self raisedTo: UnNombre.! !
-
-!Number methodsFor: '*DrGeoFrench'!
-racine
-
-	^self sqrt.! !
-
-!Number methodsFor: '*DrGeoFrench'!
-racineCubique
-	^self nthRoot: 3! !
-
-!Number methodsFor: '*DrGeoFrench' stamp: 'hlsf 12/21/2022 14:54:15'!
-racineNième: unEntier
-	^self nthRoot: unEntier.! !
-
-!Number methodsFor: '*DrGeoFrench'!
-radians
-	
-	^self degreesToRadians.! !
-
-!Number methodsFor: '*DrGeoFrench'!
-reste: UnNombre
-	^self rem: UnNombre! !
-
-!Number methodsFor: '*DrGeoFrench'!
-secondes
-
-	^self seconds.! !
-
-!Number methodsFor: '*DrGeoFrench'!
-semaines
-
-	^self weeks.! !
-
-!Number methodsFor: '*DrGeoFrench'!
-signe
-	
-	^self sign.! !
-
-!Number methodsFor: '*DrGeoFrench'!
-sinus
-	"sinus en degrés"
-	
-	^self degreeSin.! !
-
-!Number methodsFor: '*DrGeoFrench'!
-strictementPositif
-
-	^self strictlyPositive.! !
-
-!Number methodsFor: '*DrGeoFrench'!
-tangente
-	"tangente en degrés"
-	
-	^(self sinus / (self cosinus)).! !
-
-!Number methodsFor: '*DrGeoFrench'!
-tronquer
-	^self floor! !
-
-!Number methodsFor: '*DrGeoFrench'!
-tronquerA: UnNombre
-"affiche le nombre tronqué à UnNombre près.
-Par exemple, 2 racine tronquerA: 0.01 renvoie 1.41"
-	^ self truncateTo: UnNombre! !
-
-!Float methodsFor: '*DrGeoFrench'!
-commeFraction
-
-	^self asFraction.! !
-
-!Float methodsFor: '*DrGeoFrench' stamp: 'hlsf 1/28/2024 17:18:32'!
-commeFractionApprochée
-
-	^self asApproximateFraction ! !
-
-!Float methodsFor: '*DrGeoFrench'!
-commeVraieFraction
-
-	^self asTrueFraction.! !
-
-!Fraction methodsFor: '*DrGeoFrench' stamp: 'hlsf 12/21/2022 14:54:01'!
-aLancienne
-	"répond la fraction à l'ancienne, avec partie entière"
-
-	| a b |
-	a _ self partieEntière.
-	b _ self partieDécimale.
-	^(a asString),'+',(b asString).! !
-
-!Fraction methodsFor: '*DrGeoFrench' stamp: 'hlsf 12/21/2022 14:54:01'!
-aLegyptienne
-	"répond la fraction comme somme de fractions égyptiennes
-	soit de numérateurs 1;
-	algorithme de Fibonacci-Sylvester"
-
-	| liste b c chaine |
-	liste _ #() commeCollectionOrdonnée.
-	liste ajouter: self partieEntière.
-	b _ self partieDécimale.
-	[b numérateur > 1] tantQueVrai: [
-		c _ (b inverse partieEntière + 1) inverse.
-		b _ b-c.
-		liste ajouter: c.
-	].
-	liste ajouter: b.
-	chaine _ (liste commeTableau à: 1) asString.
-	liste _ liste retirerTousLorsque: [ :n | n isInteger].
-	liste _ liste commeTableau.
-	liste faire: [ :elt | chaine _ chaine,' + ',(elt asString)].
-	
-	^chaine.! !
-
-!Fraction methodsFor: '*DrGeoFrench' stamp: 'hlsf 12/21/2022 14:32:14'!
-commePari
-	"répond la fraction comme probabilité"
-
-	| c |
-	c _ self numérateur asString.
-	(self numérateur < 2) siVrai: [
-		c _ c,' chance contre '.
-		] siFaux:[
-		c _ c,' chances contre '.
-		].
-	c _ c,(self dénominateur - self numérateur) asString.
-	^c! !
-
-!Fraction methodsFor: '*DrGeoFrench' stamp: 'hlsf 12/21/2022 14:32:14'!
-commeProba
-	"répond la fraction comme probabilité"
-
-	| c |
-	c _ self numérateur asString.
-	(self numérateur < 2) siVrai: [
-		c _ c,' chance sur '.
-		] siFaux:[
-		c _ c,' chances sur '.
-		].
-	c _ c,self dénominateur asString.
-	^c! !
-
-!Fraction methodsFor: '*DrGeoFrench'!
-de: unNombre
-
-	^self * unNombre.! !
-
-!Fraction methodsFor: '*DrGeoFrench' stamp: 'hlsf 12/21/2022 14:31:40'!
-dénominateur
-
-	^self denominator.! !
-
-!Fraction methodsFor: '*DrGeoFrench'!
-estUnePuissanceDe2
-
-	^self isPowerOfTwo.! !
-
-!Fraction methodsFor: '*DrGeoFrench' stamp: 'hlsf 12/21/2022 14:32:14'!
-numérateur
-
-	^self numerator.! !
-
-!Fraction methodsFor: '*DrGeoFrench' stamp: 'hlsf 12/21/2022 14:30:42'!
-réduite
-
-	^self reduced.! !
-
-!Integer methodsFor: '*DrGeoFrench'!
-auHasard
-
-	^self atRandom.! !
-
-!Integer methodsFor: '*DrGeoFrench'!
-commeFraction
-
-	^self asFraction.! !
-
-!Integer methodsFor: '*DrGeoFrench'!
-diviseurs
-"diviseurs du nombre placés dans une collection" 
-	^ (Array streamContents: [:str |
-		1 to: self sqrtFloor do: [ :i | 
-			(self rem: i) = 0 ifTrue: [ str nextPut: i; nextPut: self // i ]]]) asSet sorted! !
-
-!Integer methodsFor: '*DrGeoFrench'!
-enChiffresRomains
-
-	^self printStringRoman.! !
-
-!Integer methodsFor: '*DrGeoFrench'!
-estDivisiblePar: unEntier
-
-	^(self \\ unEntier) =0.! !
-
-!Integer methodsFor: '*DrGeoFrench'!
-estPremier
-
-	^self isPrime.! !
-
-!Integer methodsFor: '*DrGeoFrench'!
-estPremierAvec: unEntier
-
-	^(self pgdc: unEntier) = 1.! !
-
-!Integer methodsFor: '*DrGeoFrench'!
-estProbablementPremier
-
-	^self isProbablyPrime.! !
-
-!Integer methodsFor: '*DrGeoFrench' stamp: 'hlsf 12/21/2022 14:43:09'!
-estUnCarré
-	
-	^(self auCarré estEntier).! !
-
-!Integer methodsFor: '*DrGeoFrench' stamp: 'hlsf 12/21/2022 14:38:39'!
-facteursPremiers
-	^ Integer primesUpTo: self! !
-
-!Integer methodsFor: '*DrGeoFrench'!
-factorielle
-
-	^self factorial.! !
-
-!Integer methodsFor: '*DrGeoFrench' stamp: 'hlsf 12/26/2022 16:32:43'!
-foisRépéter: unBloc
-
-	^self timesRepeat: unBloc.! !
-
-!Integer methodsFor: '*DrGeoFrench'!
-multiples: n
-"Answer my first n multiple"
-	^ Array streamContents: [:str |
-		1 to: n do: [ :i | str nextPut: i * self ]]! !
-
-!Integer methodsFor: '*DrGeoFrench' stamp: 'hlsf 12/21/2022 14:41:26'!
-nombreDeChiffres
-
-	^self numberOfDigitsInBase: 10! !
-
-!Integer methodsFor: '*DrGeoFrench'!
-nombreDeChiffresEnBase: uneBase
-
-	^self numberOfDigitsInBase: uneBase.! !
-
-!Integer methodsFor: '*DrGeoFrench'!
-pgdc: unEntier
-
-	^self gcd: unEntier.! !
-
-!Integer methodsFor: '*DrGeoFrench'!
-ppmc: unEntier
-
-	^self lcm: unEntier.! !
-
-!Integer methodsFor: '*DrGeoFrench' stamp: 'hlsf 12/21/2022 14:33:59'!
-précèdent
-	"décrémente un entier"
-
-	^self - 1.! !
-
-!Integer methodsFor: '*DrGeoFrench'!
-suivant
-	"incrémente un entier"
-
-	^self + 1.! !
-
-!BlockClosure methodsFor: '*DrGeoFrench'!
-de: unArgument
-	
-	^self value: unArgument.! !
-
-!BlockClosure methodsFor: '*DrGeoFrench'!
-de: unArgument de: unAutre
-	
-	^self value: unArgument value: unAutre.! !
-
-!BlockClosure methodsFor: '*DrGeoFrench'!
-de: unArgument de: unAutre de: unTroisieme
-	^self value: unArgument value: unAutre value: unTroisieme.! !
-
-!BlockClosure methodsFor: '*DrGeoFrench' stamp: 'hlsf 1/3/2024 11:05:57'!
-de: unArgument de: unAutre de: unTroisieme de: unQuatrieme
-	^self value: unArgument value: unAutre value: unTroisieme value: unQuatrieme .! !
-
-!BlockClosure methodsFor: '*DrGeoFrench' stamp: 'hlsf 12/21/2022 14:42:27'!
-jusquàVrai: unBloc
-
-	^self whileFalse: unBloc.! !
-
-!BlockClosure methodsFor: '*DrGeoFrench'!
-tantQueFaux: unBloc
-
-	^self whileFalse: unBloc.! !
-
-!BlockClosure methodsFor: '*DrGeoFrench'!
-tantQueVrai: unBloc
-
-	^self whileTrue: unBloc.! !
-
-!BlockClosure methodsFor: '*DrGeoFrench'!
-tempsPourFaire
-	
-	^self timeToRun.! !
-
-!BlockClosure methodsFor: '*DrGeoFrench'!
-valeur
-	
-	^self value.! !
-
-!BlockClosure methodsFor: '*DrGeoFrench'!
-valeur: unArgument
-	
-	^self value: unArgument.! !
-
-!BlockClosure methodsFor: '*DrGeoFrench'!
-valeur: unArgument valeur: unAutre
-	
-	^self value: unArgument value: unAutre.! !
-
-!BlockClosure methodsFor: '*DrGeoFrench'!
-valeur: unArgument valeur: unAutre valeur: unTroisieme	
-	^self value: unArgument value: unAutre value: unTroisieme.! !
-
-!BlockClosure methodsFor: '*DrGeoFrench' stamp: 'hlsf 1/3/2024 11:06:08'!
-valeur: unArgument valeur: unAutre valeur: unTroisieme	 valeur: unQuatrieme
-	^self value: unArgument value: unAutre value: unTroisieme value: unQuatrieme .! !
-
-!Collection methodsFor: '*DrGeoFrench'!
-ajouter: unObjet
-
-	^self add: unObjet.! !
-
-!Collection methodsFor: '*DrGeoFrench' stamp: 'hlsf 12/26/2022 16:32:43'!
-ajouter: unObjet fois: unEntier
-
-	unEntier foisRépéter: [self ajouter: unObjet].! !
-
-!Collection methodsFor: '*DrGeoFrench'!
-ajouterSiAbsent: unObjet
-
-	^self addIfNotPresent: unObjet.! !
-
-!Collection methodsFor: '*DrGeoFrench'!
-ajouterTout: uneCollection
-
-	^self addAll: uneCollection.! !
-
-!Collection methodsFor: '*DrGeoFrench'!
-arrondir
-
-	^self rounded.! !
-
-!Collection methodsFor: '*DrGeoFrench' stamp: 'hlsf 12/21/2022 14:43:09'!
-auCarré
-
-	^self squared.! !
-
-!Collection methodsFor: '*DrGeoFrench'!
-auHasard
-
-	^self atRandom.! !
-
-!Collection methodsFor: '*DrGeoFrench' stamp: 'hlsf 12/21/2022 14:43:21'!
-aucunNeVérifie: unBloc
-
-	^self noneSatisfy: unBloc.! !
-
-!Collection methodsFor: '*DrGeoFrench'!
-choisir: unBloc
-	
-	^self select: unBloc.! !
-
-!Collection methodsFor: '*DrGeoFrench'!
-choisir: bloc puisFaire: unBloc
-	
-	^self select: bloc thenDo: unBloc.! !
-
-!Collection methodsFor: '*DrGeoFrench'!
-collecter: unBloc
-	
-	^self collect: unBloc.! !
-
-!Collection methodsFor: '*DrGeoFrench'!
-collecter: unBloc dans: uneCollection
-	
-	^self collect: unBloc into: uneCollection.! !
-
-!Collection methodsFor: '*DrGeoFrench'!
-collecter: unBloc puisChoisir: critere
-	^self collect: unBloc thenSelect: critere.! !
-
-!Collection methodsFor: '*DrGeoFrench'!
-collecter: unBloc puisFaire: autreBloc
-	
-	^self collect: unBloc thenDo: autreBloc.! !
-
-!Collection methodsFor: '*DrGeoFrench' stamp: 'hlsf 12/21/2022 14:43:37'!
-commeCollectionOrdonnée
-
-	^self asOrderedCollection.! !
-
-!Collection methodsFor: '*DrGeoFrench' stamp: 'hlsf 12/21/2022 14:43:49'!
-commeCollectionTriée
-
-	^self asSortedCollection.! !
-
-!Collection methodsFor: '*DrGeoFrench'!
-commeDictionnaire
-
-	^self asDictionary.! !
-
-!Collection methodsFor: '*DrGeoFrench'!
-commeEnsemble
-
-	^self asSet.! !
-
-!Collection methodsFor: '*DrGeoFrench'!
-commeSac
-
-	^self asBag.! !
-
-!Collection methodsFor: '*DrGeoFrench'!
-commeTableau
-
-	^self asArray.! !
-
-!Collection methodsFor: '*DrGeoFrench'!
-compter: unBloc
-	
-	^self count: unBloc.! !
-
-!Collection methodsFor: '*DrGeoFrench'!
-contient: unObjet
-	
-	^(self includes: unObjet).! !
-
-!Collection methodsFor: '*DrGeoFrench'!
-cosinus
-	
-	^self degreeCos.! !
-
-!Collection methodsFor: '*DrGeoFrench'!
-effectifs
-	"construit une table d'effectifs"
-
-	| table cles |
-	table _ Dictionary new.
-	cles _ self asSet.
-	cles do: [ :n | table at: n put: (self count: [ :t | t=n])].
-	^table.! !
-
-!Collection methodsFor: '*DrGeoFrench' stamp: 'hlsf 12/21/2022 14:45:02'!
-effectifsEnClasses: unEntier
-	"construit une table pour histogramme"
-
-	| table cles h |
-	h _ self étendue / unEntier.
-	table _ Dictionary new.
-	cles _ self min to: (self max - 1.0e-6) by: h.
-	cles do: [ :n | table at: n put: (self count: [ :t | (t>=n) and: [t<(n+h)]])].
-	^table.! !
-
-!Collection methodsFor: '*DrGeoFrench'!
-estVide
-
-	^self isEmpty.! !
-
-!Collection methodsFor: '*DrGeoFrench' stamp: 'hlsf 12/26/2022 16:32:43'!
-échantillonDeTaille: unEntier 
-
-	"tirage au hasard sans remise"
-	| copie ech t n |
-	n _ unEntier min: (self taille).
-	n _ n max: 0.
-	copie _ self collecter: [ :x | x ].
-	ech _ #() commeSac.
-	n foisRépéter: [ 
-		t _ copie auHasard.
-		ech ajouter: t.
-		copie retirer: t.
-		 ].
-	^ech.! !
-
-!Collection methodsFor: '*DrGeoFrench' stamp: 'hlsf 12/21/2022 14:45:02'!
-étendue
-
-	^self range.! !
-
-!Collection methodsFor: '*DrGeoFrench'!
-faire: unBloc
-	
-	^self do: unBloc.! !
-
-!Collection methodsFor: '*DrGeoFrench' stamp: 'hlsf 12/21/2022 14:45:12'!
-fréquences
-	"construit une table de fréquences"
-
-	| table cles total |
-	total _ self size.
-	table _ Dictionary new.
-	cles _ self asSet.
-	cles do: [ :n | table at: n put: ((self count: [ :t | t=n])/total)].
-	^table.! !
-
-!Collection methodsFor: '*DrGeoFrench' stamp: 'hlsf 12/21/2022 14:45:22'!
-fréquencesEnClasses: unEntier
-	"construit une table pour histogramme"
-
-	| table cles h total |
-	total _ self size.
-	h _ self étendue / unEntier.
-	table _ Dictionary new.
-	cles _ self min to: (self max - 0.000001) by: h.
-	cles do: [ :n | table at: n put: ((self count: [ :t | (t>=n) and: [t<(n+h)]])/total)].
-	^table.! !
-
-!Collection methodsFor: '*DrGeoFrench'!
-grouperPar: unBloc
-
-	^self groupedBy: unBloc.! !
-
-!Collection methodsFor: '*DrGeoFrench'!
-grouperPar: unBloc lorsque: condition
-
-	^self groupedBy: unBloc having: condition.! !
-
-!Collection methodsFor: '*DrGeoFrench'!
-injecter: valeur dans: unBloc
-
-	^self inject: valeur into: unBloc.! !
-
-!Collection methodsFor: '*DrGeoFrench'!
-inter: uneCollection
-	
-	^self intersection: uneCollection.! !
-
-!Collection methodsFor: '*DrGeoFrench'!
-inverses
-
-	^self reciprocal.! !
-
-!Collection methodsFor: '*DrGeoFrench'!
-moyenne
-
-	^self average.! !
-
-!Collection methodsFor: '*DrGeoFrench' stamp: 'hlsf 12/21/2022 14:46:24'!
-opposés
-
-	^self negated.! !
-
-!Collection methodsFor: '*DrGeoFrench' stamp: 'hlsf 12/21/2022 14:43:49'!
-premierQuartile
-
-	^(self commeCollectionTriée Q1).! !
-
-!Collection methodsFor: '*DrGeoFrench'!
-puissances: unExposant
-
-	^self raisedTo: unExposant.! !
-
-!Collection methodsFor: '*DrGeoFrench'!
-racines
-
-	^self sqrt.! !
-
-!Collection methodsFor: '*DrGeoFrench'!
-regrouper: unBloc
-	
-	^self gather: unBloc.! !
-
-!Collection methodsFor: '*DrGeoFrench'!
-rejeter: unBloc
-	
-	^self reject: unBloc.! !
-
-!Collection methodsFor: '*DrGeoFrench'!
-rejeter: bloc puisFaire: unBloc
-	
-	^self reject: bloc thenDo: unBloc.! !
-
-!Collection methodsFor: '*DrGeoFrench'!
-retirer: unBloc
-
-	^self remove: unBloc.! !
-
-!Collection methodsFor: '*DrGeoFrench'!
-retirerTousLorsque: unBloc
-
-	^self removeAllSuchThat: unBloc.! !
-
-!Collection methodsFor: '*DrGeoFrench'!
-retirerTout
-
-	^self removeAll.! !
-
-!Collection methodsFor: '*DrGeoFrench'!
-retirerToutDans: uneCollection
-
-	^self removeAll: uneCollection.! !
-
-!Collection methodsFor: '*DrGeoFrench' stamp: 'hlsf 12/21/2022 14:47:22'!
-réduire: unBloc
-
-	^self reduce: unBloc.! !
-
-!Collection methodsFor: '*DrGeoFrench'!
-sinus
-	
-	^self degreeSin.! !
-
-!Collection methodsFor: '*DrGeoFrench'!
-somme
-
-	^self sum.! !
-
-!Collection methodsFor: '*DrGeoFrench'!
-taille
-
-	^self size.! !
-
-!Collection methodsFor: '*DrGeoFrench'!
-total
-
-	^self sum.! !
-
-!Collection methodsFor: '*DrGeoFrench' stamp: 'hlsf 12/21/2022 14:47:01'!
-tousVérifient: unBloc
-
-	^self allSatisfy: unBloc.! !
-
-!Collection methodsFor: '*DrGeoFrench'!
-trier
-	
-	^self sorted.! !
-
-!Collection methodsFor: '*DrGeoFrench'!
-trierSelon: unBloc
-	
-	^self sorted: unBloc.! !
-
-!Collection methodsFor: '*DrGeoFrench' stamp: 'hlsf 12/21/2022 14:46:38'!
-unVérifie: unBloc
-
-	^self anySatisfy: unBloc.! !
-
-!String methodsFor: '*DrGeoFrench'!
-commeNombre
-	^ self asNumber! !
-
-!String methodsFor: '*DrGeoFrench'!
-contient: unString
-	^self includesSubString: unString! !
-
-!String methodsFor: '*DrGeoFrench'!
-correspond: unTexte
-"
-'toute*' correspond: 'Toute' -> true
-'toute#' correspond: 'Toute' -> false
-'toute#' correspond: 'Toutete' -> false
-'toute*' correspond: 'Toutete' -> true
-'toute#' correspond: 'Toutes' -> true
-"	
-	^self match: unTexte! !
-
-!String methodsFor: '*DrGeoFrench'!
-enMajuscule
-	^self asUppercase! !
-
-!String methodsFor: '*DrGeoFrench'!
-enMinuscule
-	^self asLowercase! !
-
-!String methodsFor: '*DrGeoFrench' stamp: 'hlsf 12/26/2022 16:34:29'!
-formater: uneCollection
-	^ self format: uneCollection! !
-
-!String methodsFor: '*DrGeoFrench'!
-lettrine
-	^self capitalized! !
-
-!Array methodsFor: '*DrGeoFrench' stamp: 'hlsf 12/21/2022 14:48:38'!
-à: unIndice
-	
-	^self at: unIndice.! !
-
-!Array methodsFor: '*DrGeoFrench' stamp: 'hlsf 12/26/2022 16:36:03'!
-à: unIndice mettre: unObjet
-	
-	^self at: unIndice put: unObjet.! !
-
-!Transcript class methodsFor: '*DrGeoFrench' stamp: 'hlsf 12/26/2022 16:36:20'!
-afficher: unObjet
-	^ self show: unObjet; newLine ! !
-
-!Transcript class methodsFor: '*DrGeoFrench' stamp: 'hlsf 12/26/2022 16:37:07'!
-effacer
-	^self clear.! !
-
-!Transcript class methodsFor: '*DrGeoFrench' stamp: 'hlsf 9/28/2022 17:55:34'!
-espace
-	^self space! !
-
-!Transcript class methodsFor: '*DrGeoFrench' stamp: 'hlsf 12/26/2022 16:37:13'!
-montrer: unObjet
-	^self show: unObjet! !
-
-!Transcript class methodsFor: '*DrGeoFrench' stamp: 'hlsf 9/28/2022 17:55:42'!
-retourLigne
-	^ self cr! !
-
-!DrGWrappedItem methodsFor: '*DrGeoFrench'!
+!DrGWrappedItem methodsFor: '*DrGeoFrench' stamp: ''!
 bloquer
 	self lock! !
 
-!DrGWrappedItem methodsFor: '*DrGeoFrench'!
+!DrGWrappedItem methodsFor: '*DrGeoFrench' stamp: ''!
 cacher
 	self hide! !
 
-!DrGWrappedItem methodsFor: '*DrGeoFrench'!
+!DrGWrappedItem methodsFor: '*DrGeoFrench' stamp: ''!
 couleur: aColor
 	self color: aColor! !
 
-!DrGWrappedItem methodsFor: '*DrGeoFrench'!
+!DrGWrappedItem methodsFor: '*DrGeoFrench' stamp: ''!
 decacher
 	self unhide! !
 
@@ -2741,15 +1780,15 @@ débloquer
 déplacerA: aPoint
 	self moveTo: aPoint! !
 
-!DrGWrappedItem methodsFor: '*DrGeoFrench'!
+!DrGWrappedItem methodsFor: '*DrGeoFrench' stamp: ''!
 montrer
 	self show! !
 
-!DrGWrappedItem methodsFor: '*DrGeoFrench'!
+!DrGWrappedItem methodsFor: '*DrGeoFrench' stamp: ''!
 nommer: aString
 	self name: aString! !
 
-!DrGWrappedItem methodsFor: '*DrGeoFrench'!
+!DrGWrappedItem methodsFor: '*DrGeoFrench' stamp: ''!
 renommer: aString
 	self rename: aString! !
 
@@ -2757,11 +1796,11 @@ renommer: aString
 épais
 	self large! !
 
-!DrGWrappedCurve methodsFor: '*DrGeoFrench'!
+!DrGWrappedCurve methodsFor: '*DrGeoFrench' stamp: ''!
 fin
 	self small! !
 
-!DrGWrappedCurve methodsFor: '*DrGeoFrench'!
+!DrGWrappedCurve methodsFor: '*DrGeoFrench' stamp: ''!
 plein
 	self plain! !
 
@@ -2769,7 +1808,7 @@ plein
 pointillé
 	self dotted! !
 
-!DrGWrappedCurve methodsFor: '*DrGeoFrench'!
+!DrGWrappedCurve methodsFor: '*DrGeoFrench' stamp: ''!
 tiret
 	self dashed ! !
 
@@ -2785,39 +1824,39 @@ flècheFin
 flèches
 	self bothArrows ! !
 
-!DrGWrappedFilledCurve methodsFor: '*DrGeoFrench'!
+!DrGWrappedFilledCurve methodsFor: '*DrGeoFrench' stamp: ''!
 remplir
 	self filled! !
 
-!DrGWrappedFilledCurve methodsFor: '*DrGeoFrench'!
+!DrGWrappedFilledCurve methodsFor: '*DrGeoFrench' stamp: ''!
 transparent
 	self translucent! !
 
-!DrGWrappedFilledCurve methodsFor: '*DrGeoFrench'!
+!DrGWrappedFilledCurve methodsFor: '*DrGeoFrench' stamp: ''!
 vider
 	self unfilled! !
 
-!DrGWrappedSegment methodsFor: '*DrGeoFrench'!
+!DrGWrappedSegment methodsFor: '*DrGeoFrench' stamp: ''!
 marquerAucun
 	self noMark ! !
 
-!DrGWrappedSegment methodsFor: '*DrGeoFrench'!
+!DrGWrappedSegment methodsFor: '*DrGeoFrench' stamp: ''!
 marquerAvecCercle
 	self circleMark ! !
 
-!DrGWrappedSegment methodsFor: '*DrGeoFrench'!
+!DrGWrappedSegment methodsFor: '*DrGeoFrench' stamp: ''!
 marquerAvecDisque
 	self discMark ! !
 
-!DrGWrappedSegment methodsFor: '*DrGeoFrench'!
+!DrGWrappedSegment methodsFor: '*DrGeoFrench' stamp: ''!
 marquerAvecDoubleTrait
 	self doubleMark ! !
 
-!DrGWrappedSegment methodsFor: '*DrGeoFrench'!
+!DrGWrappedSegment methodsFor: '*DrGeoFrench' stamp: ''!
 marquerAvecSimpleTrait
 	self simpleMark ! !
 
-!DrGWrappedSegment methodsFor: '*DrGeoFrench'!
+!DrGWrappedSegment methodsFor: '*DrGeoFrench' stamp: ''!
 marquerAvecTripleTrait
 	self tripleMark ! !
 
@@ -2829,34 +1868,34 @@ carré
 coordonnées
 	^ self coordinates! !
 
-!DrGWrappedPoint methodsFor: '*DrGeoFrench'!
+!DrGWrappedPoint methodsFor: '*DrGeoFrench' stamp: ''!
 croix
 	self cross! !
 
-!DrGWrappedPoint methodsFor: '*DrGeoFrench'!
+!DrGWrappedPoint methodsFor: '*DrGeoFrench' stamp: ''!
 moyen
 	self medium! !
 
-!DrGWrappedPoint methodsFor: '*DrGeoFrench'!
+!DrGWrappedPoint methodsFor: '*DrGeoFrench' stamp: ''!
 petit
 	self small! !
 
-!DrGWrappedPoint methodsFor: '*DrGeoFrench'!
+!DrGWrappedPoint methodsFor: '*DrGeoFrench' stamp: ''!
 rond
 	self round! !
 
-!DrGWrappedText methodsFor: '*DrGeoFrench'!
+!DrGWrappedText methodsFor: '*DrGeoFrench' stamp: ''!
 couleurFond: aColor
 	self backgroundColor: aColor! !
 
-!DrGWrappedText methodsFor: '*DrGeoFrench'!
+!DrGWrappedText methodsFor: '*DrGeoFrench' stamp: ''!
 texte: aString
 	self text: aString! !
 
-!DrGWrappedValue methodsFor: '*DrGeoFrench'!
+!DrGWrappedValue methodsFor: '*DrGeoFrench' stamp: ''!
 nommer: aString
 	self name: aString! !
 
-!DrGWrappedValue methodsFor: '*DrGeoFrench'!
+!DrGWrappedValue methodsFor: '*DrGeoFrench' stamp: ''!
 valeur: aNumber
 	self value: aNumber ! !
