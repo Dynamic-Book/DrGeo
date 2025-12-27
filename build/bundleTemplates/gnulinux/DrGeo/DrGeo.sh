@@ -15,7 +15,7 @@ NB_ARG=$#
 
 # Icon (note: gvfs-set-attribute is found in gvfs-bin on Ubuntu
 # systems and it seems to require an absolute filename)
-gvfs-set-attribute \
+gio set \
 	"$0" \
 	"metadata::custom-icon" \
 	"file://$RESOURCES/icons/drgeo.png" \
