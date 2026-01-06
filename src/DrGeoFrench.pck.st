@@ -1756,146 +1756,146 @@ fig vecteur: -5 @ -5]]] withDrGeoActions
 
 ') data: ((Dictionary new)); yourself); subsections: (OrderedCollection new yourself); yourself)! !
 
-!DrGWrappedItem methodsFor: '*DrGeoFrench' stamp: ''!
+!DrGeoItem methodsFor: '*DrGeoFrench' stamp: ''!
 bloquer
 	self lock! !
 
-!DrGWrappedItem methodsFor: '*DrGeoFrench' stamp: ''!
+!DrGeoItem methodsFor: '*DrGeoFrench' stamp: ''!
 cacher
 	self hide! !
 
-!DrGWrappedItem methodsFor: '*DrGeoFrench' stamp: ''!
+!DrGeoItem methodsFor: '*DrGeoFrench' stamp: ''!
 couleur: aColor
 	self color: aColor! !
 
-!DrGWrappedItem methodsFor: '*DrGeoFrench' stamp: ''!
+!DrGeoItem methodsFor: '*DrGeoFrench' stamp: ''!
 decacher
 	self unhide! !
 
-!DrGWrappedItem methodsFor: '*DrGeoFrench' stamp: 'hlsf 12/21/2022 14:55:58'!
+!DrGeoItem methodsFor: '*DrGeoFrench' stamp: 'hlsf 12/21/2022 14:55:58'!
 débloquer
 	self unlock! !
 
-!DrGWrappedItem methodsFor: '*DrGeoFrench' stamp: 'hlsf 12/21/2022 14:56:10'!
+!DrGeoItem methodsFor: '*DrGeoFrench' stamp: 'hlsf 12/21/2022 14:56:10'!
 déplacerA: aPoint
 	self moveTo: aPoint! !
 
-!DrGWrappedItem methodsFor: '*DrGeoFrench' stamp: ''!
+!DrGeoItem methodsFor: '*DrGeoFrench' stamp: ''!
 montrer
 	self show! !
 
-!DrGWrappedItem methodsFor: '*DrGeoFrench' stamp: ''!
+!DrGeoItem methodsFor: '*DrGeoFrench' stamp: ''!
 nommer: aString
 	self name: aString! !
 
-!DrGWrappedItem methodsFor: '*DrGeoFrench' stamp: ''!
+!DrGeoItem methodsFor: '*DrGeoFrench' stamp: ''!
 renommer: aString
 	self rename: aString! !
 
-!DrGWrappedCurve methodsFor: '*DrGeoFrench' stamp: 'hlsf 12/21/2022 14:55:47'!
+!DrGeoCurve methodsFor: '*DrGeoFrench' stamp: 'hlsf 12/21/2022 14:55:47'!
 épais
 	self large! !
 
-!DrGWrappedCurve methodsFor: '*DrGeoFrench' stamp: ''!
+!DrGeoCurve methodsFor: '*DrGeoFrench' stamp: ''!
 fin
 	self small! !
 
-!DrGWrappedCurve methodsFor: '*DrGeoFrench' stamp: ''!
+!DrGeoCurve methodsFor: '*DrGeoFrench' stamp: ''!
 plein
 	self plain! !
 
-!DrGWrappedCurve methodsFor: '*DrGeoFrench' stamp: 'hlsf 12/21/2022 14:55:40'!
+!DrGeoCurve methodsFor: '*DrGeoFrench' stamp: 'hlsf 12/21/2022 14:55:40'!
 pointillé
 	self dotted! !
 
-!DrGWrappedCurve methodsFor: '*DrGeoFrench' stamp: ''!
+!DrGeoCurve methodsFor: '*DrGeoFrench' stamp: ''!
 tiret
 	self dashed ! !
 
-!DrGWrappedFinitCurve methodsFor: '*DrGeoFrench' stamp: 'hlsf 12/21/2022 14:56:28'!
+!DrGeoFinitCurve methodsFor: '*DrGeoFrench' stamp: 'hlsf 12/21/2022 14:56:28'!
 flècheDebut
 	self backArrow! !
 
-!DrGWrappedFinitCurve methodsFor: '*DrGeoFrench' stamp: 'hlsf 12/21/2022 14:56:41'!
+!DrGeoFinitCurve methodsFor: '*DrGeoFrench' stamp: 'hlsf 12/21/2022 14:56:41'!
 flècheFin
 	self forwardArrow! !
 
-!DrGWrappedFinitCurve methodsFor: '*DrGeoFrench' stamp: 'hlsf 12/21/2022 14:56:33'!
+!DrGeoFinitCurve methodsFor: '*DrGeoFrench' stamp: 'hlsf 12/21/2022 14:56:33'!
 flèches
 	self bothArrows ! !
 
-!DrGWrappedFilledCurve methodsFor: '*DrGeoFrench' stamp: ''!
+!DrGeoFilledCurve methodsFor: '*DrGeoFrench' stamp: ''!
 remplir
 	self filled! !
 
-!DrGWrappedFilledCurve methodsFor: '*DrGeoFrench' stamp: ''!
+!DrGeoFilledCurve methodsFor: '*DrGeoFrench' stamp: ''!
 transparent
 	self translucent! !
 
-!DrGWrappedFilledCurve methodsFor: '*DrGeoFrench' stamp: ''!
+!DrGeoFilledCurve methodsFor: '*DrGeoFrench' stamp: ''!
 vider
 	self unfilled! !
 
-!DrGWrappedSegment methodsFor: '*DrGeoFrench' stamp: ''!
+!DrGeoSegment methodsFor: '*DrGeoFrench' stamp: ''!
 marquerAucun
 	self noMark ! !
 
-!DrGWrappedSegment methodsFor: '*DrGeoFrench' stamp: ''!
+!DrGeoSegment methodsFor: '*DrGeoFrench' stamp: ''!
 marquerAvecCercle
 	self circleMark ! !
 
-!DrGWrappedSegment methodsFor: '*DrGeoFrench' stamp: ''!
+!DrGeoSegment methodsFor: '*DrGeoFrench' stamp: ''!
 marquerAvecDisque
 	self discMark ! !
 
-!DrGWrappedSegment methodsFor: '*DrGeoFrench' stamp: ''!
+!DrGeoSegment methodsFor: '*DrGeoFrench' stamp: ''!
 marquerAvecDoubleTrait
 	self doubleMark ! !
 
-!DrGWrappedSegment methodsFor: '*DrGeoFrench' stamp: ''!
+!DrGeoSegment methodsFor: '*DrGeoFrench' stamp: ''!
 marquerAvecSimpleTrait
 	self simpleMark ! !
 
-!DrGWrappedSegment methodsFor: '*DrGeoFrench' stamp: ''!
+!DrGeoSegment methodsFor: '*DrGeoFrench' stamp: ''!
 marquerAvecTripleTrait
 	self tripleMark ! !
 
-!DrGWrappedPoint methodsFor: '*DrGeoFrench' stamp: 'hlsf 12/21/2022 14:56:52'!
+!DrGeoPoint methodsFor: '*DrGeoFrench' stamp: 'hlsf 12/21/2022 14:56:52'!
 carré
 	self square! !
 
-!DrGWrappedPoint methodsFor: '*DrGeoFrench' stamp: 'hlsf 12/21/2022 14:56:58'!
+!DrGeoPoint methodsFor: '*DrGeoFrench' stamp: 'hlsf 12/21/2022 14:56:58'!
 coordonnées
 	^ self coordinates! !
 
-!DrGWrappedPoint methodsFor: '*DrGeoFrench' stamp: ''!
+!DrGeoPoint methodsFor: '*DrGeoFrench' stamp: ''!
 croix
 	self cross! !
 
-!DrGWrappedPoint methodsFor: '*DrGeoFrench' stamp: ''!
+!DrGeoPoint methodsFor: '*DrGeoFrench' stamp: ''!
 moyen
 	self medium! !
 
-!DrGWrappedPoint methodsFor: '*DrGeoFrench' stamp: ''!
+!DrGeoPoint methodsFor: '*DrGeoFrench' stamp: ''!
 petit
 	self small! !
 
-!DrGWrappedPoint methodsFor: '*DrGeoFrench' stamp: ''!
+!DrGeoPoint methodsFor: '*DrGeoFrench' stamp: ''!
 rond
 	self round! !
 
-!DrGWrappedText methodsFor: '*DrGeoFrench' stamp: ''!
+!DrGeoText methodsFor: '*DrGeoFrench' stamp: ''!
 couleurFond: aColor
 	self backgroundColor: aColor! !
 
-!DrGWrappedText methodsFor: '*DrGeoFrench' stamp: ''!
+!DrGeoText methodsFor: '*DrGeoFrench' stamp: ''!
 texte: aString
 	self text: aString! !
 
-!DrGWrappedValue methodsFor: '*DrGeoFrench' stamp: ''!
+!DrGeoValue methodsFor: '*DrGeoFrench' stamp: ''!
 nommer: aString
 	self name: aString! !
 
-!DrGWrappedValue methodsFor: '*DrGeoFrench' stamp: ''!
+!DrGeoValue methodsFor: '*DrGeoFrench' stamp: ''!
 valeur: aNumber
 	self value: aNumber ! !
