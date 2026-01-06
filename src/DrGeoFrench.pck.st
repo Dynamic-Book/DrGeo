@@ -1,6 +1,6 @@
-'From Cuis7.5 [latest update: #7671] on 26 October 2025 at 12:06:16 pm'!
+'From Cuis7.7 [latest update: #7791] on 6 January 2026 at 11:00:14 pm'!
 'Description '!
-!provides: 'DrGeoFrench' 1 12!
+!provides: 'DrGeoFrench' 1 13!
 !requires: 'CuisFrench' 1 0 nil!
 SystemOrganization addCategory: #DrGeoFrench!
 
@@ -38,13 +38,13 @@ afficherAxes
 afficherGrille
 	^ self gridOn! !
 
-!DrGeoFigure methodsFor: 'user interface' stamp: ''!
-centrerVueEn: aPoint
-	^ self centerTo: aPoint! !
+!DrGeoFigure methodsFor: 'user interface' stamp: 'hlsf 6/Jan/2026 22:29:09'!
+centrerVueEn: point
+	^ self centerTo: point! !
 
-!DrGeoFigure methodsFor: 'user interface' stamp: 'hlsf 12/21/2022 14:17:46'!
-échelle: anInteger
-	^ self scale: anInteger ! !
+!DrGeoFigure methodsFor: 'user interface' stamp: 'hlsf 6/Jan/2026 22:29:49'!
+échelle: entier
+	^ self scale: entier ! !
 
 !DrGeoFigure methodsFor: 'user interface' stamp: ''!
 pleinEcran
@@ -54,227 +54,227 @@ pleinEcran
 texte: aText
 	^ self text: aText! !
 
-!DrGeoFigure methodsFor: 'text' stamp: 'hlsf 12/21/2022 14:18:03'!
-texte: aText à: aPosition
-	^ self text: aText at: aPosition! !
+!DrGeoFigure methodsFor: 'text' stamp: 'hlsf 6/Jan/2026 22:30:22'!
+texte: texte à: position
+	^ self text: texte at: position! !
 
-!DrGeoFigure methodsFor: 'curve' stamp: 'hlsf 12/21/2022 14:18:13'!
-arcCentre: wrpPt1 de: wrpPt2 à: wrpPt3
-	^ self arcCenter: wrpPt1 from: wrpPt2 to: wrpPt3! !
+!DrGeoFigure methodsFor: 'curve' stamp: 'hlsf 6/Jan/2026 22:31:55'!
+arcCentre: point1 de: point2 à: point3
+	^ self arcCenter: point1 from: point2 to: point3 ! !
 
-!DrGeoFigure methodsFor: 'curve' stamp: 'hlsf 12/21/2022 14:18:37'!
-arcDe: wrpPt1 à: wrpPt3 passantPar: wrpPt2
-	^ self arc: wrpPt1 to: wrpPt2 to: wrpPt3! !
+!DrGeoFigure methodsFor: 'curve' stamp: 'hlsf 6/Jan/2026 22:33:53'!
+arcDe: centre à: extrémité1 passantPar: extrémité2
+	^ self arc: centre to: extrémité1 to: extrémité2 ! !
 
-!DrGeoFigure methodsFor: 'curve' stamp: ''!
-bissectriceDe: wrpAngle
-	^ self angleBisector: wrpAngle! !
+!DrGeoFigure methodsFor: 'curve' stamp: 'hlsf 6/Jan/2026 22:34:01'!
+bissectriceDe: angle
+	^ self angleBisector: angle ! !
 
-!DrGeoFigure methodsFor: 'curve' stamp: 'hlsf 12/21/2022 14:19:14'!
-bissectriceSommet: wrpSummit côté1: wrpPt1 côté2: wrpPt2
-	^ self angleBisectorSummit: wrpSummit side1: wrpPt1 side2: wrpPt2 ! !
+!DrGeoFigure methodsFor: 'curve' stamp: 'hlsf 6/Jan/2026 22:34:34'!
+bissectriceSommet: sommet côté1: point1 côté2: point2
+	^ self angleBisectorSummit: sommet side1: point1 side2: point2 ! !
 
-!DrGeoFigure methodsFor: 'curve' stamp: ''!
-cercleCentre: wrpCenter passantPar: wrpPt
-	^ self circleCenter: wrpCenter to: wrpPt! !
+!DrGeoFigure methodsFor: 'curve' stamp: 'hlsf 6/Jan/2026 22:34:47'!
+cercleCentre: centre passantPar: point
+	^ self circleCenter: centre to: point ! !
 
-!DrGeoFigure methodsFor: 'curve' stamp: ''!
-cercleCentre: wrpCenter rayon: wrpValue
-	^ self circleCenter: wrpCenter radius: wrpValue! !
+!DrGeoFigure methodsFor: 'curve' stamp: 'hlsf 6/Jan/2026 22:34:59'!
+cercleCentre: center rayon: valeur
+	^ self circleCenter: center radius: valeur ! !
 
-!DrGeoFigure methodsFor: 'curve' stamp: ''!
-cercleCentre: wrpCenter segment: wrpSegment
-	^ self circleCenter: wrpCenter segment: wrpSegment! !
+!DrGeoFigure methodsFor: 'curve' stamp: 'hlsf 6/Jan/2026 22:35:12'!
+cercleCentre: center segment: segment
+	^ self circleCenter: center segment: segment ! !
 
-!DrGeoFigure methodsFor: 'curve' stamp: ''!
-demiDroiteOrigine: wrpPt1 passantPar: wrpPt2
-	^ self ray: wrpPt1 to: wrpPt2 ! !
+!DrGeoFigure methodsFor: 'curve' stamp: 'hlsf 6/Jan/2026 22:35:29'!
+demiDroiteOrigine: origine passantPar: point
+	^ self ray: origine to: point ! !
 
-!DrGeoFigure methodsFor: 'curve' stamp: ''!
-droitePassantPar: wrpPt1 et: wrpPt2
-	^ self line: wrpPt1 to: wrpPt2 ! !
+!DrGeoFigure methodsFor: 'curve' stamp: 'hlsf 6/Jan/2026 22:36:04'!
+droitePassantPar: point1 et: point2
+	^ self line: point1 to: point2 ! !
 
-!DrGeoFigure methodsFor: 'curve' stamp: ''!
-lieuDe: wrpPt1 lorsqueBouge: wrpPt2
-	^ self locusOf: wrpPt1 when: wrpPt2 ! !
+!DrGeoFigure methodsFor: 'curve' stamp: 'hlsf 6/Jan/2026 22:36:58'!
+lieuDe: pointDépendant lorsqueBouge: mobile
+	^ self locusOf: pointDépendant when: mobile ! !
 
-!DrGeoFigure methodsFor: 'curve' stamp: 'hlsf 12/21/2022 14:19:40'!
-médiatriceDe: wrpSegment
-	^ self perpendicularBisector: wrpSegment! !
+!DrGeoFigure methodsFor: 'curve' stamp: 'hlsf 6/Jan/2026 22:37:09'!
+médiatriceDe: segment
+	^ self perpendicularBisector: segment! !
 
-!DrGeoFigure methodsFor: 'curve' stamp: 'hlsf 12/21/2022 14:20:00'!
-médiatriceDe: wrpPt1 à: wrpPt2
-	^ self perpendicularBisector: wrpPt1 to: wrpPt2! !
+!DrGeoFigure methodsFor: 'curve' stamp: 'hlsf 6/Jan/2026 22:37:24'!
+médiatriceDe: point1 à: point2
+	^ self perpendicularBisector: point1 to: point2 ! !
 
-!DrGeoFigure methodsFor: 'curve' stamp: 'hlsf 12/21/2022 14:20:20'!
-parallèleA: wrpDirection passantPar: wrpPtOrPoint
-	^ self parallel: wrpDirection at: wrpPtOrPoint! !
+!DrGeoFigure methodsFor: 'curve' stamp: 'hlsf 6/Jan/2026 22:37:41'!
+parallèleA: direction passantPar: point
+	^ self parallel: direction at: point ! !
 
-!DrGeoFigure methodsFor: 'curve' stamp: ''!
-perpendiculaireA: wrpDirection passantPar: wrpPtOrPoint
-	^ self perpendicular: wrpDirection at: wrpPtOrPoint! !
+!DrGeoFigure methodsFor: 'curve' stamp: 'hlsf 6/Jan/2026 22:37:57'!
+perpendiculaireA: direction passantPar: point
+	^ self perpendicular: direction at: point ! !
 
-!DrGeoFigure methodsFor: 'curve' stamp: ''!
-polygone: collection
-	^ self polygon: collection! !
+!DrGeoFigure methodsFor: 'curve' stamp: 'hlsf 6/Jan/2026 22:38:30'!
+polygone: collectionDePoints
+	^ self polygon: collectionDePoints ! !
 
-!DrGeoFigure methodsFor: 'curve' stamp: 'hlsf 12/21/2022 14:21:16'!
-polygoneRégulierCentre: wrpCenter sommet: wrpVertex côtés: wrpValue
-	^ self regularPolygonCenter: wrpCenter vertex: wrpVertex sides: wrpValue! !
+!DrGeoFigure methodsFor: 'curve' stamp: 'hlsf 6/Jan/2026 22:39:03'!
+polygoneRégulierCentre: centre sommet: sommet côtés: valeur
+	^ self regularPolygonCenter: centre vertex: sommet sides: valeur ! !
 
-!DrGeoFigure methodsFor: 'curve' stamp: 'hlsf 12/21/2022 14:21:33'!
-segmentDe: wrpPt1 à: wrpPt2
-	^ self segment: wrpPt1 to: wrpPt2 ! !
+!DrGeoFigure methodsFor: 'curve' stamp: 'hlsf 6/Jan/2026 22:39:17'!
+segmentDe: point1 à: point2
+	^ self segment: point1 to: point2 ! !
 
-!DrGeoFigure methodsFor: 'curve' stamp: ''!
-vecteur: wrpPt
-	^ self vector: wrpPt! !
+!DrGeoFigure methodsFor: 'curve' stamp: 'hlsf 6/Jan/2026 22:39:25'!
+vecteur: point
+	^ self vector: point ! !
 
-!DrGeoFigure methodsFor: 'curve' stamp: 'hlsf 12/21/2022 14:22:07'!
-vecteurOrigine: wrpPt1 extrémité: wrpPt2
-	^ self vector: wrpPt1 to: wrpPt2 ! !
+!DrGeoFigure methodsFor: 'curve' stamp: 'hlsf 6/Jan/2026 22:40:13'!
+vecteurOrigine: point1 extrémité: point2
+	^ self vector: point1 to: point2 ! !
 
-!DrGeoFigure methodsFor: 'helpers' stamp: 'hlsf 12/21/2022 14:19:20'!
+!DrGeoFigure methodsFor: 'helpers' stamp: 'hlsf 21/Dec/2022 14:19:20'!
 courbeDe: f de: x0 à: x1
 	^ self plot: f from: x0 to: x1! !
 
-!DrGeoFigure methodsFor: 'helpers' stamp: 'hlsf 12/21/2022 14:18:47'!
-décimal: value à: aPoint min: startValue max: endValue
-	^ self float: value at: aPoint from: startValue to: endValue ! !
+!DrGeoFigure methodsFor: 'helpers' stamp: 'hlsf 6/Jan/2026 22:41:53'!
+décimal: valeur à: point min: valueDébut max: valeurFin
+	^ self float: valeur at: point from: valueDébut to: valeurFin ! !
 
-!DrGeoFigure methodsFor: 'helpers' stamp: 'hlsf 12/21/2022 14:19:49'!
-décimal: value à: aPoint min: startValue max: endValue nom: name
-	^ self float: value at: aPoint from: startValue to: endValue name: name! !
+!DrGeoFigure methodsFor: 'helpers' stamp: 'hlsf 6/Jan/2026 22:42:36'!
+décimal: valeur à: point min: valeurDébut max: valeurFin nom: nom
+	^ self float: valeur at: point from: valeurDébut to: valeurFin name: nom ! !
 
-!DrGeoFigure methodsFor: 'helpers' stamp: 'hlsf 12/21/2022 14:20:31'!
-décimal: value à: aPoint min: startValue max: endValue nom: name afficherValeur: isValueDisplay
-	^ self float: value at: aPoint from: startValue to: endValue name: name showValue: isValueDisplay! !
+!DrGeoFigure methodsFor: 'helpers' stamp: 'hlsf 6/Jan/2026 22:44:54'!
+décimal: valeur à: point min: valeurDébut max: valeurFin nom: nom afficherValeur: montrerValeur
+	^ self float: valeur at: point from: valeurDébut to: valeurFin name: nom showValue: montrerValeur ! !
 
-!DrGeoFigure methodsFor: 'helpers' stamp: 'hlsf 12/21/2022 14:21:23'!
-entier: value à: aPoint min: startValue max: endValue
-	^ self integer: value at: aPoint from: startValue to: endValue ! !
+!DrGeoFigure methodsFor: 'helpers' stamp: 'hlsf 6/Jan/2026 22:45:42'!
+entier: valeur à: point min: valeurDébut max: valeurFin
+	^ self integer: valeur at: point from: valeurDébut to: valeurFin ! !
 
-!DrGeoFigure methodsFor: 'helpers' stamp: 'hlsf 12/21/2022 14:22:25'!
-entier: value à: aPoint min: startValue max: endValue nom: name
-	^ self integer: value at: aPoint from: startValue to: endValue name: name! !
+!DrGeoFigure methodsFor: 'helpers' stamp: 'hlsf 6/Jan/2026 22:46:29'!
+entier: valeur à: point min: valeurDébut max: valeurFin nom: nom
+	^ self integer: valeur at: point from: valeurDébut to: valeurFin name: nom ! !
 
-!DrGeoFigure methodsFor: 'helpers' stamp: 'hlsf 12/21/2022 14:23:22'!
-entier: value à: aPoint min: startValue max: endValue nom: name afficherValeur: isValueDisplay
-	^ self integer: value at: aPoint from: startValue to: endValue name: name showValue: isValueDisplay! !
+!DrGeoFigure methodsFor: 'helpers' stamp: 'hlsf 6/Jan/2026 22:47:23'!
+entier: valeur à: point min: valeurDébut max: valeurFin nom: nom afficherValeur: afficherValeur
+	^ self integer: valeur at: point from: valeurDébut to: valeurFin name: nom showValue: afficherValeur ! !
 
-!DrGeoFigure methodsFor: 'helpers' stamp: 'hlsf 3/13/2023 20:57:36'!
-exporterVersImage: aFilename
-	self exportToImage: aFilename! !
+!DrGeoFigure methodsFor: 'helpers' stamp: 'hlsf 6/Jan/2026 22:47:40'!
+exporterVersImage: nomFichier
+	self exportToImage: nomFichier ! !
 
-!DrGeoFigure methodsFor: 'helpers' stamp: ''!
-faire: aBlock
-	^ self do: aBlock! !
+!DrGeoFigure methodsFor: 'helpers' stamp: 'hlsf 6/Jan/2026 22:47:51'!
+faire: unBloc
+	^ self do: unBloc ! !
 
-!DrGeoFigure methodsFor: 'equation' stamp: 'hlsf 12/21/2022 14:18:52'!
-équationDe: wrpLineOrCircle
-	^ self equationOf: wrpLineOrCircle! !
+!DrGeoFigure methodsFor: 'equation' stamp: 'hlsf 6/Jan/2026 22:48:05'!
+équationDe: droiteOuCercle
+	^ self equationOf: droiteOuCercle ! !
 
 !DrGeoFigure methodsFor: 'initialize-release' stamp: ''!
 supprimer
 	self delete! !
 
-!DrGeoFigure methodsFor: 'point' stamp: ''!
-autreIntersectionDe: wrpCurve1 et: wrpCurve2
-	^ self altIntersectionOf: wrpCurve1 and: wrpCurve2 ! !
+!DrGeoFigure methodsFor: 'point' stamp: 'hlsf 6/Jan/2026 22:48:30'!
+autreIntersectionDe: courbe1 et: courbe2
+	^ self altIntersectionOf: courbe1 and: courbe2 ! !
 
-!DrGeoFigure methodsFor: 'point' stamp: ''!
-intersectionDe: wrpCurve1 et: wrpCurve2
-	^ self intersectionOf: wrpCurve1 and: wrpCurve2 ! !
+!DrGeoFigure methodsFor: 'point' stamp: 'hlsf 6/Jan/2026 22:48:51'!
+intersectionDe: courbe1 et: courbe2
+	^ self intersectionOf: courbe1 and: courbe2 ! !
 
-!DrGeoFigure methodsFor: 'point' stamp: ''!
-milieuDe: wrpSegment
-	^ self middleOf: wrpSegment ! !
+!DrGeoFigure methodsFor: 'point' stamp: 'hlsf 6/Jan/2026 22:49:00'!
+milieuDe: segment
+	^ self middleOf: segment ! !
 
-!DrGeoFigure methodsFor: 'point' stamp: ''!
-milieuDe: wrpPoint1 et: wrpPoint2
-	^ self middleOf: wrpPoint1 and: wrpPoint2 ! !
+!DrGeoFigure methodsFor: 'point' stamp: 'hlsf 6/Jan/2026 22:49:17'!
+milieuDe: point1 et: point2
+	^ self middleOf: point1 and: point2 ! !
 
-!DrGeoFigure methodsFor: 'point' stamp: 'hlsf 12/21/2022 14:23:41'!
-pointSurLigne: wrpCurve à: abscissa
-	^ self pointOnLine: wrpCurve at: abscissa! !
+!DrGeoFigure methodsFor: 'point' stamp: 'hlsf 6/Jan/2026 22:49:28'!
+pointSurLigne: courbe à: abscisse
+	^ self pointOnLine: courbe at: abscisse! !
 
 !DrGeoFigure methodsFor: 'processing' stamp: ''!
 actualiser
 	^ self update! !
 
-!DrGeoFigure methodsFor: 'value' stamp: ''!
-abscisseDe:  wrpPointOrWrpVectorOrPoint
-	^ self abscissaOf: wrpPointOrWrpVectorOrPoint ! !
+!DrGeoFigure methodsFor: 'value' stamp: 'hlsf 6/Jan/2026 22:49:51'!
+abscisseDe:  pointOuVecteur
+	^ self abscissaOf: pointOuVecteur ! !
 
-!DrGeoFigure methodsFor: 'value' stamp: 'hlsf 12/21/2022 15:06:06'!
-angleGéométriqueSommet: wrpPt1 de: wrpPt2 à: wrpPt3
-	^ self geometricAngle: wrpPt2  to: wrpPt1  to: wrpPt3 ! !
+!DrGeoFigure methodsFor: 'value' stamp: 'hlsf 6/Jan/2026 22:50:26'!
+angleGéométriqueSommet: sommet de: point1 à: point2
+	^ self geometricAngle: sommet  to: point1  to: point2 ! !
 
-!DrGeoFigure methodsFor: 'value' stamp: 'hlsf 12/21/2022 14:25:02'!
-angleSommet: wrpPt1 de: wrpPt2 à: wrpPt3
-	^ self angle: wrpPt2  to: wrpPt1  to: wrpPt3 ! !
+!DrGeoFigure methodsFor: 'value' stamp: 'hlsf 6/Jan/2026 22:51:09'!
+angleSommet: sommet de: point1 à: point2
+	^ self angle: sommet  to: point1 to: point2 ! !
 
-!DrGeoFigure methodsFor: 'value' stamp: ''!
-angleVecteur: wrpVecteur1 et: wrpVecteur2
-	^ self angle: wrpVecteur1 to: wrpVecteur2 ! !
+!DrGeoFigure methodsFor: 'value' stamp: 'hlsf 6/Jan/2026 22:51:24'!
+angleVecteur: vecteur1 et: vecteur2
+	^ self angle: vecteur1 to: vecteur2 ! !
 
-!DrGeoFigure methodsFor: 'value' stamp: 'hlsf 12/21/2022 14:25:39'!
+!DrGeoFigure methodsFor: 'value' stamp: 'hlsf 21/Dec/2022 14:25:39'!
 distanceDe: item1 à: item2
 	^ self distance: item1 to: item2! !
 
-!DrGeoFigure methodsFor: 'value' stamp: ''!
-longueurDe: wrpItem
-	^ self lengthOf: wrpItem ! !
+!DrGeoFigure methodsFor: 'value' stamp: 'hlsf 6/Jan/2026 22:52:07'!
+longueurDe: ligneFinie
+	^ self lengthOf: ligneFinie ! !
 
-!DrGeoFigure methodsFor: 'value' stamp: 'hlsf 12/21/2022 14:25:51'!
-ordonnéeDe: wrpItem
-	^ self ordinateOf: wrpItem ! !
+!DrGeoFigure methodsFor: 'value' stamp: 'hlsf 6/Jan/2026 22:52:26'!
+ordonnéeDe: pointOuVecteur
+	^ self ordinateOf: pointOuVecteur ! !
 
-!DrGeoFigure methodsFor: 'value' stamp: ''!
-penteDe: wrpLine
-	^ self slopeOf: wrpLine! !
+!DrGeoFigure methodsFor: 'value' stamp: 'hlsf 6/Jan/2026 22:52:33'!
+penteDe: droite
+	^ self slopeOf: droite ! !
 
-!DrGeoFigure methodsFor: 'value' stamp: 'hlsf 4/13/2024 11:09:26'!
-valeur: aNumberOrBlock
-	^ self value: aNumberOrBlock ! !
+!DrGeoFigure methodsFor: 'value' stamp: 'hlsf 6/Jan/2026 22:56:05'!
+valeur: nombreOuBloc
+	^ self value: nombreOuBloc ! !
 
-!DrGeoFigure methodsFor: 'value' stamp: 'hlsf 4/13/2024 11:10:53'!
-valeur: aNumberOrBlock parent: wrpValue
-	^ self value: aNumberOrBlock parent: wrpValue! !
+!DrGeoFigure methodsFor: 'value' stamp: 'hlsf 6/Jan/2026 22:56:22'!
+valeur: nombreOuBloc parent: valeur
+	^ self value: nombreOuBloc parent: valeur ! !
 
-!DrGeoFigure methodsFor: 'value' stamp: 'hlsf 4/13/2024 11:10:17'!
-valeur: aNumberOrBlock parents: wrpValueArray à: aPosition
-	^ self value: aNumberOrBlock parents: wrpValueArray at: aPosition! !
+!DrGeoFigure methodsFor: 'value' stamp: 'hlsf 6/Jan/2026 22:56:59'!
+valeur: nombreOuBloc parents: valeurs à: position
+	^ self value: nombreOuBloc parents: valeurs at: position! !
 
-!DrGeoFigure methodsFor: 'transformations' stamp: 'hlsf 12/21/2022 14:26:15'!
-homothétieDe: wrpItem centre: wrpCenter facteur: wrpValue
-	^ self scale: wrpItem center: wrpCenter factor: wrpValue! !
+!DrGeoFigure methodsFor: 'transformations' stamp: 'hlsf 6/Jan/2026 22:58:00'!
+homothétieDe: itemGéométrique centre: centre facteur: valeur
+	^ self scale: itemGéométrique center: centre factor: valeur ! !
 
-!DrGeoFigure methodsFor: 'transformations' stamp: 'hlsf 12/21/2022 14:26:34'!
-rotationDe: wrpItem centre: wrpCenter angle: wrpValue
-	^ self rotate: wrpItem center: wrpCenter angle: wrpValue! !
+!DrGeoFigure methodsFor: 'transformations' stamp: 'hlsf 6/Jan/2026 22:58:22'!
+rotationDe: itemGéométrique centre: centre angle: valeur
+	^ self rotate: itemGéométrique center: centre angle: valeur ! !
 
-!DrGeoFigure methodsFor: 'transformations' stamp: 'hlsf 3/9/2023 15:16:04'!
-rotationDe: wrpItem centre: wrpCenter angleDegrés: wrpValue
-	^ self rotate: wrpItem center: wrpCenter angleDegrees: wrpValue! !
+!DrGeoFigure methodsFor: 'transformations' stamp: 'hlsf 6/Jan/2026 22:58:45'!
+rotationDe: itemGéométrique centre: center angleDegrés: valeur
+	^ self rotate: itemGéométrique center: center angleDegrees: valeur ! !
 
-!DrGeoFigure methodsFor: 'transformations' stamp: 'hlsf 12/21/2022 14:26:47'!
-symétriqueDe: wrpItem selonAxe: wrpLine
-	^ self reflect: wrpItem axis: wrpLine! !
+!DrGeoFigure methodsFor: 'transformations' stamp: 'hlsf 6/Jan/2026 22:58:58'!
+symétriqueDe: itemGéométrique selonAxe: droite
+	^ self reflect: itemGéométrique axis: droite ! !
 
-!DrGeoFigure methodsFor: 'transformations' stamp: 'hlsf 12/21/2022 14:27:01'!
-symétriqueDe: wrpItem selonCentre: wrpCenter
-	^ self symmetry: wrpItem center: wrpCenter ! !
+!DrGeoFigure methodsFor: 'transformations' stamp: 'hlsf 6/Jan/2026 22:59:12'!
+symétriqueDe: itemGéométrique selonCentre: centre
+	^ self symmetry: itemGéométrique center: centre ! !
 
-!DrGeoFigure methodsFor: 'transformations' stamp: ''!
-translationDe: wrpItem parVecteur: wrpVecteur
-	^ self translate: wrpItem vector: wrpVecteur! !
+!DrGeoFigure methodsFor: 'transformations' stamp: 'hlsf 6/Jan/2026 22:59:23'!
+translationDe: itemGéométrique parVecteur: vecteur
+	^ self translate: itemGéométrique vector: vecteur! !
 
 !DrGeoFigure class methodsFor: 'instance creation' stamp: ''!
 nouveau
 	^ self new! !
 
-!DrGeoTutorial methodsFor: 'as yet unclassified' stamp: 'hlsf 12/21/2022 22:16:02'!
+!DrGeoTutorial methodsFor: 'as yet unclassified' stamp: 'hlsf 21/Dec/2022 22:16:02'!
 initialize
     super initialize.
     title _ 'Dr. Geo Tutorial'.
@@ -289,15 +289,15 @@ initialize
         self addSection: self section_Styles.
 ! !
 
-!DrGeoTutorial methodsFor: 'as yet unclassified' stamp: 'hlsf 11/2/2022 15:44:32'!
+!DrGeoTutorial methodsFor: 'as yet unclassified' stamp: 'hlsf 2/Nov/2022 15:44:32'!
 section_Angles
 ^(EruditeBookSection basicNew title: 'Angles'; document: ((EruditeDocument contents: '') data: ((Dictionary new)); yourself); subsections: (OrderedCollection new yourself); yourself)! !
 
-!DrGeoTutorial methodsFor: 'as yet unclassified' stamp: 'hlsf 11/2/2022 23:15:30'!
+!DrGeoTutorial methodsFor: 'as yet unclassified' stamp: 'hlsf 2/Nov/2022 23:15:30'!
 section_AnglesEtValeurs
 ^(EruditeBookSection basicNew title: 'Angles et valeurs'; document: ((EruditeDocument contents: '') data: ((Dictionary new)); yourself); subsections: (OrderedCollection new yourself); yourself)! !
 
-!DrGeoTutorial methodsFor: 'as yet unclassified' stamp: 'hlsf 12/21/2022 14:28:13'!
+!DrGeoTutorial methodsFor: 'as yet unclassified' stamp: 'hlsf 21/Dec/2022 14:28:13'!
 section_Autres
 ^(EruditeBookSection basicNew title: 'Autres'; document: ((EruditeDocument contents: '!!!!!!Equation
 //<equation>// **equationDe:** //item//
@@ -339,19 +339,19 @@ fig _ DrGeoFigure nouveau.
 monTexte _ fig texte: ''Hello''.
 monTexte texte: ''Au revoir'']]] withDrGeoActions') data: ((Dictionary new)); yourself); subsections: (OrderedCollection new yourself); yourself)! !
 
-!DrGeoTutorial methodsFor: 'as yet unclassified' stamp: 'hlsf 11/24/2022 16:47:27'!
+!DrGeoTutorial methodsFor: 'as yet unclassified' stamp: 'hlsf 24/Nov/2022 16:47:27'!
 section_Autres_Equation
 ^(EruditeBookSection basicNew title: 'Equation'; document: ((EruditeDocument contents: '') data: ((Dictionary new)); yourself); subsections: (OrderedCollection new yourself); yourself)! !
 
-!DrGeoTutorial methodsFor: 'as yet unclassified' stamp: 'hlsf 11/24/2022 16:47:27'!
+!DrGeoTutorial methodsFor: 'as yet unclassified' stamp: 'hlsf 24/Nov/2022 16:47:27'!
 section_Autres_Texte
 ^(EruditeBookSection basicNew title: 'Texte'; document: ((EruditeDocument contents: '') data: ((Dictionary new)); yourself); subsections: (OrderedCollection new yourself); yourself)! !
 
-!DrGeoTutorial methodsFor: 'as yet unclassified' stamp: 'hlsf 11/2/2022 15:44:32'!
+!DrGeoTutorial methodsFor: 'as yet unclassified' stamp: 'hlsf 2/Nov/2022 15:44:32'!
 section_Exemples
 ^(EruditeBookSection basicNew title: 'Exemples'; document: ((EruditeDocument contents: '') data: ((Dictionary new)); yourself); subsections: (OrderedCollection new yourself); yourself)! !
 
-!DrGeoTutorial methodsFor: 'as yet unclassified' stamp: 'hlsf 12/21/2022 22:16:02'!
+!DrGeoTutorial methodsFor: 'as yet unclassified' stamp: 'hlsf 21/Dec/2022 22:16:02'!
 section_Général
 ^(EruditeBookSection basicNew title: 'Général'; document: ((EruditeDocument contents: '!!!!!!Commandes générales
 **faire:** //bloc//
@@ -401,7 +401,7 @@ fig échelle: 5]]] withDrGeoActions
 
 ') data: ((Dictionary new)); yourself); subsections: (OrderedCollection new yourself); yourself)! !
 
-!DrGeoTutorial methodsFor: 'as yet unclassified' stamp: 'hlsf 12/21/2022 22:16:02'!
+!DrGeoTutorial methodsFor: 'as yet unclassified' stamp: 'hlsf 21/Dec/2022 22:16:02'!
 section_Introduction
 ^(EruditeBookSection basicNew title: 'Introduction'; document: ((EruditeDocument contents: 'Les Figures Smalltalk de Dr.Geo – ou plus simplement figure dans la suite de ce texte – sont des figures écrites en langage Smalltalk. Il ne s’agit donc plus de construire une figure à l’aide de l’interface graphique de Dr.Geo mais plutôt de décrire une figure avec le langage Smalltalk et des instructions dédiées. Cette documentation décrit ces instructions.
 
@@ -429,7 +429,7 @@ Les icônes de la barre ont les fonctions suivantes :
 //Sopper la construction d''une figure. Utile lorsqu''une figure prend beaucoup de temps à s''exécuter entièrement.//') data: ((Dictionary new)); yourself); subsections: (OrderedCollection new        add: self section_Introduction_Exemples;
  yourself); yourself)! !
 
-!DrGeoTutorial methodsFor: 'as yet unclassified' stamp: 'hlsf 12/21/2022 22:16:02'!
+!DrGeoTutorial methodsFor: 'as yet unclassified' stamp: 'hlsf 21/Dec/2022 22:16:02'!
 section_Introduction_Exemples
 ^(EruditeBookSection basicNew title: 'Exemples'; document: ((EruditeDocument contents: '!!!!!!Examples simples
 //La figure la plus simple, une figure vide.//
@@ -492,7 +492,7 @@ d tiret]]] withDrGeoActions
 Deux points et une droite sont créés. Ensuite des messages sont envoyés pour modifier l’aspect des objets, voire pour en cacher.
 ') data: ((Dictionary new)); yourself); subsections: (OrderedCollection new yourself); yourself)! !
 
-!DrGeoTutorial methodsFor: 'as yet unclassified' stamp: 'hlsf 12/21/2022 22:16:02'!
+!DrGeoTutorial methodsFor: 'as yet unclassified' stamp: 'hlsf 21/Dec/2022 22:16:02'!
 section_LignesCourbes
 ^(EruditeBookSection basicNew title: 'Lignes courbes'; document: ((EruditeDocument contents: 'La famille des lignes courbres regroupe les cercle, arc de cercle, polygone et lieu de points.
 
@@ -503,7 +503,7 @@ Déplie la section **▶ Lignes courbes** pour explorer ces types de ligne !!') 
         add: self section_LignesCourbes_CourbeFonction;
  yourself); yourself)! !
 
-!DrGeoTutorial methodsFor: 'as yet unclassified' stamp: 'hlsf 12/21/2022 22:16:02'!
+!DrGeoTutorial methodsFor: 'as yet unclassified' stamp: 'hlsf 21/Dec/2022 22:16:02'!
 section_LignesCourbes_ArcDeCercle
 ^(EruditeBookSection basicNew title: 'Arc de cercle'; document: ((EruditeDocument contents: '!!!!!!Arc passant par trois points
 //<arc>// **arcDe:à:passantPar:** //p1 p2 p3//
@@ -531,7 +531,7 @@ a _ fig point: 1@5.
 b _ fig point: 0@5.
 fig arcCentre: a de: b à: -1 @ -2]]] withDrGeoActions') data: ((Dictionary new)); yourself); subsections: (OrderedCollection new yourself); yourself)! !
 
-!DrGeoTutorial methodsFor: 'as yet unclassified' stamp: 'hlsf 12/21/2022 22:16:02'!
+!DrGeoTutorial methodsFor: 'as yet unclassified' stamp: 'hlsf 21/Dec/2022 22:16:02'!
 section_LignesCourbes_Cercle
 ^(EruditeBookSection basicNew title: 'Cercle'; document: ((EruditeDocument contents: '!!!!!!Cercle selon centre et point
 //<cercle>// **cercleCentre:passantPar:** //c p//
@@ -569,7 +569,7 @@ a _ fig point: 1@5.
 s _ fig segmentDe: 0@0 à: 3@0.
 fig cercleCentre: a segment: s]]] withDrGeoActions') data: ((Dictionary new)); yourself); subsections: (OrderedCollection new yourself); yourself)! !
 
-!DrGeoTutorial methodsFor: 'as yet unclassified' stamp: 'hlsf 12/21/2022 22:16:02'!
+!DrGeoTutorial methodsFor: 'as yet unclassified' stamp: 'hlsf 21/Dec/2022 22:16:02'!
 section_LignesCourbes_CourbeFonction
 ^(EruditeBookSection basicNew title: 'Courbe fonction'; document: ((EruditeDocument contents: '!!!!!!Courbe d''une fonction
 //<lieu>// **courbeDe:de:à:** //bloc x0 x1//
@@ -582,7 +582,7 @@ section_LignesCourbes_CourbeFonction
 fig _ DrGeoFigure nouveau.
 fig courbeDe: [:x | x * x] de: -3 à: 3]]] withDrGeoActions') data: ((Dictionary new)); yourself); subsections: (OrderedCollection new yourself); yourself)! !
 
-!DrGeoTutorial methodsFor: 'as yet unclassified' stamp: 'hlsf 12/21/2022 22:16:02'!
+!DrGeoTutorial methodsFor: 'as yet unclassified' stamp: 'hlsf 21/Dec/2022 22:16:02'!
 section_LignesCourbes_LieuDePoint
 ^(EruditeBookSection basicNew title: 'Lieu de point'; document: ((EruditeDocument contents: '!!!!!!Lieu d''un point
 //<lieu>// **lieuDe:lorsqueBouge:** //c m//
@@ -600,7 +600,7 @@ fig lieuDe: c lorsqueBouge: m]]] withDrGeoActions
 
 ') data: ((Dictionary new)); yourself); subsections: (OrderedCollection new yourself); yourself)! !
 
-!DrGeoTutorial methodsFor: 'as yet unclassified' stamp: 'hlsf 12/21/2022 22:16:02'!
+!DrGeoTutorial methodsFor: 'as yet unclassified' stamp: 'hlsf 21/Dec/2022 22:16:02'!
 section_LignesCourbes_Polygone
 ^(EruditeBookSection basicNew title: 'Polygone'; document: ((EruditeDocument contents: '!!!!!!Polygone
 //<polygone>// **polygone:** //collection//
@@ -633,7 +633,7 @@ s _ fig segmentDe: b à: 0@0.
 v _ fig longueurDe: s.
 fig polygoneRégulierCentre: 0@0 sommet: b côtés: v]]] withDrGeoActions') data: ((Dictionary new)); yourself); subsections: (OrderedCollection new yourself); yourself)! !
 
-!DrGeoTutorial methodsFor: 'as yet unclassified' stamp: 'hlsf 12/21/2022 22:16:02'!
+!DrGeoTutorial methodsFor: 'as yet unclassified' stamp: 'hlsf 21/Dec/2022 22:16:02'!
 section_LignesDroites
 ^(EruditeBookSection basicNew title: 'Lignes droites'; document: ((EruditeDocument contents: 'La famille des lignes droites regroupe les droites passant par deux points, parallèle, perpendiculaire,... ainsi que les demi-droites et les segments.
 
@@ -646,7 +646,7 @@ Déplie la section **▶ Lignes droites** pour explorer ces types de ligne !!') 
         add: self section_LignesDroites_Segment;
  yourself); yourself)! !
 
-!DrGeoTutorial methodsFor: 'as yet unclassified' stamp: 'hlsf 12/21/2022 22:16:02'!
+!DrGeoTutorial methodsFor: 'as yet unclassified' stamp: 'hlsf 21/Dec/2022 22:16:02'!
 section_LignesDroites_Bissectrice
 ^(EruditeBookSection basicNew title: 'Bissectrice'; document: ((EruditeDocument contents: '!!!!!!Bissectrice d''un angle
 //<droite>// **bissectriceDe:** //a//
@@ -667,7 +667,7 @@ fig bissectriceDe: angle]]] withDrGeoActions
 
 ') data: ((Dictionary new)); yourself); subsections: (OrderedCollection new yourself); yourself)! !
 
-!DrGeoTutorial methodsFor: 'as yet unclassified' stamp: 'hlsf 12/21/2022 22:16:02'!
+!DrGeoTutorial methodsFor: 'as yet unclassified' stamp: 'hlsf 21/Dec/2022 22:16:02'!
 section_LignesDroites_Demidroite
 ^(EruditeBookSection basicNew title: 'Demi-droite'; document: ((EruditeDocument contents: '!!!!!!Demi-droite
 //<demi-droite>// **demiDroiteOrigine:passantPar:** //o p//
@@ -677,7 +677,7 @@ fig _ DrGeoFigure nouveau.
 a _ fig point: 1@5.
 fig demiDroiteOrigine: 0@0 passantPar: a]]] withDrGeoActions') data: ((Dictionary new)); yourself); subsections: (OrderedCollection new yourself); yourself)! !
 
-!DrGeoTutorial methodsFor: 'as yet unclassified' stamp: 'hlsf 12/21/2022 22:16:02'!
+!DrGeoTutorial methodsFor: 'as yet unclassified' stamp: 'hlsf 21/Dec/2022 22:16:02'!
 section_LignesDroites_Droite
 ^(EruditeBookSection basicNew title: 'Droite'; document: ((EruditeDocument contents: '!!!!!!Passant par deux points
 //<droite>// **droitePassantPar:et:** //p1 p2//
@@ -692,7 +692,7 @@ point _ figure point: 1@2.
 figure droitePassantPar: 0@0 et: point]]] withDrGeoActions
 ') data: ((Dictionary new)); yourself); subsections: (OrderedCollection new yourself); yourself)! !
 
-!DrGeoTutorial methodsFor: 'as yet unclassified' stamp: 'hlsf 12/21/2022 22:16:02'!
+!DrGeoTutorial methodsFor: 'as yet unclassified' stamp: 'hlsf 21/Dec/2022 22:16:02'!
 section_LignesDroites_Médiatrice
 ^(EruditeBookSection basicNew title: 'Médiatrice'; document: ((EruditeDocument contents: '!!!!!!Médiatrice d''un segment
 //<droite>// **médiatriceDe:** //s//
@@ -718,11 +718,11 @@ ptA _ fig pointSurLigne: d à: 0.1.
 fig médiatriceDe: ptA à: (fig point: 0@5)]]] withDrGeoActions
 ') data: ((Dictionary new)); yourself); subsections: (OrderedCollection new yourself); yourself)! !
 
-!DrGeoTutorial methodsFor: 'as yet unclassified' stamp: 'hlsf 11/2/2022 15:44:32'!
+!DrGeoTutorial methodsFor: 'as yet unclassified' stamp: 'hlsf 2/Nov/2022 15:44:32'!
 section_LignesDroites_Parallel
 ^(EruditeBookSection basicNew title: 'Parallel'; document: ((EruditeDocument contents: '') data: ((Dictionary new)); yourself); subsections: (OrderedCollection new yourself); yourself)! !
 
-!DrGeoTutorial methodsFor: 'as yet unclassified' stamp: 'hlsf 12/21/2022 22:16:02'!
+!DrGeoTutorial methodsFor: 'as yet unclassified' stamp: 'hlsf 21/Dec/2022 22:16:02'!
 section_LignesDroites_Parallèle
 ^(EruditeBookSection basicNew title: 'Parallèle'; document: ((EruditeDocument contents: '!!!!!!Droite parallèle
 //<droite>// **parallèleA:passantPar:** //d p//
@@ -741,7 +741,7 @@ fig
 	parallèleA: (fig droitePassantPar: 0@0 et: 5@1)
 	passantPar: 0@3]]] withDrGeoActions') data: ((Dictionary new)); yourself); subsections: (OrderedCollection new yourself); yourself)! !
 
-!DrGeoTutorial methodsFor: 'as yet unclassified' stamp: 'hlsf 12/21/2022 22:16:02'!
+!DrGeoTutorial methodsFor: 'as yet unclassified' stamp: 'hlsf 21/Dec/2022 22:16:02'!
 section_LignesDroites_Perpendiculaire
 ^(EruditeBookSection basicNew title: 'Perpendiculaire'; document: ((EruditeDocument contents: '!!!!!!Droite perpendiculaire
 //<droite>// **perpendiculaireA:passantPar:** //d p//
@@ -754,15 +754,15 @@ p _ fig point: 2@3.
 s _ fig segmentDe: 0@0 à: 5@1.
 fig perpendiculaireA: s passantPar: p]]] withDrGeoActions') data: ((Dictionary new)); yourself); subsections: (OrderedCollection new yourself); yourself)! !
 
-!DrGeoTutorial methodsFor: 'as yet unclassified' stamp: 'hlsf 11/2/2022 15:44:32'!
+!DrGeoTutorial methodsFor: 'as yet unclassified' stamp: 'hlsf 2/Nov/2022 15:44:32'!
 section_LignesDroites_Perpendicular
 ^(EruditeBookSection basicNew title: 'Perpendicular'; document: ((EruditeDocument contents: '') data: ((Dictionary new)); yourself); subsections: (OrderedCollection new yourself); yourself)! !
 
-!DrGeoTutorial methodsFor: 'as yet unclassified' stamp: 'hlsf 11/2/2022 15:44:32'!
+!DrGeoTutorial methodsFor: 'as yet unclassified' stamp: 'hlsf 2/Nov/2022 15:44:32'!
 section_LignesDroites_Ray
 ^(EruditeBookSection basicNew title: 'Ray'; document: ((EruditeDocument contents: '') data: ((Dictionary new)); yourself); subsections: (OrderedCollection new yourself); yourself)! !
 
-!DrGeoTutorial methodsFor: 'as yet unclassified' stamp: 'hlsf 12/21/2022 22:16:02'!
+!DrGeoTutorial methodsFor: 'as yet unclassified' stamp: 'hlsf 21/Dec/2022 22:16:02'!
 section_LignesDroites_Segment
 ^(EruditeBookSection basicNew title: 'Segment'; document: ((EruditeDocument contents: '!!!!!!Segment
 //<segment>// **segmentDe:à:** //p1 p2//
@@ -777,11 +777,11 @@ point _ figure point: 1@2.
 figure segmentDe: 0@0 à: point]]] withDrGeoActions
 ') data: ((Dictionary new)); yourself); subsections: (OrderedCollection new yourself); yourself)! !
 
-!DrGeoTutorial methodsFor: 'as yet unclassified' stamp: 'hlsf 11/2/2022 15:44:32'!
+!DrGeoTutorial methodsFor: 'as yet unclassified' stamp: 'hlsf 2/Nov/2022 15:44:32'!
 section_LignesDroites_StraightLine
 ^(EruditeBookSection basicNew title: 'Straight line'; document: ((EruditeDocument contents: '') data: ((Dictionary new)); yourself); subsections: (OrderedCollection new yourself); yourself)! !
 
-!DrGeoTutorial methodsFor: 'as yet unclassified' stamp: 'hlsf 10/30/2022 21:07:54'!
+!DrGeoTutorial methodsFor: 'as yet unclassified' stamp: 'hlsf 30/Oct/2022 21:07:54'!
 section_Lines
 ^(EruditeBookSection basicNew title: 'Lines'; document: ((EruditeDocument contents: '') data: ((Dictionary new)); yourself); subsections: (OrderedCollection new        add: self section_Lines_Segment;
         add: self section_Lines_StraightLine;
@@ -790,27 +790,27 @@ section_Lines
         add: self section_Lines_Perpendicular;
  yourself); yourself)! !
 
-!DrGeoTutorial methodsFor: 'as yet unclassified' stamp: 'hlsf 10/30/2022 21:07:54'!
+!DrGeoTutorial methodsFor: 'as yet unclassified' stamp: 'hlsf 30/Oct/2022 21:07:54'!
 section_Lines_Parallel
 ^(EruditeBookSection basicNew title: 'Parallel'; document: ((EruditeDocument contents: '') data: ((Dictionary new)); yourself); subsections: (OrderedCollection new yourself); yourself)! !
 
-!DrGeoTutorial methodsFor: 'as yet unclassified' stamp: 'hlsf 10/30/2022 21:07:54'!
+!DrGeoTutorial methodsFor: 'as yet unclassified' stamp: 'hlsf 30/Oct/2022 21:07:54'!
 section_Lines_Perpendicular
 ^(EruditeBookSection basicNew title: 'Perpendicular'; document: ((EruditeDocument contents: '') data: ((Dictionary new)); yourself); subsections: (OrderedCollection new yourself); yourself)! !
 
-!DrGeoTutorial methodsFor: 'as yet unclassified' stamp: 'hlsf 10/30/2022 21:07:54'!
+!DrGeoTutorial methodsFor: 'as yet unclassified' stamp: 'hlsf 30/Oct/2022 21:07:54'!
 section_Lines_Ray
 ^(EruditeBookSection basicNew title: 'Ray'; document: ((EruditeDocument contents: '') data: ((Dictionary new)); yourself); subsections: (OrderedCollection new yourself); yourself)! !
 
-!DrGeoTutorial methodsFor: 'as yet unclassified' stamp: 'hlsf 10/30/2022 21:07:54'!
+!DrGeoTutorial methodsFor: 'as yet unclassified' stamp: 'hlsf 30/Oct/2022 21:07:54'!
 section_Lines_Segment
 ^(EruditeBookSection basicNew title: 'Segment'; document: ((EruditeDocument contents: '') data: ((Dictionary new)); yourself); subsections: (OrderedCollection new yourself); yourself)! !
 
-!DrGeoTutorial methodsFor: 'as yet unclassified' stamp: 'hlsf 10/30/2022 21:07:54'!
+!DrGeoTutorial methodsFor: 'as yet unclassified' stamp: 'hlsf 30/Oct/2022 21:07:54'!
 section_Lines_StraightLine
 ^(EruditeBookSection basicNew title: 'Straight line'; document: ((EruditeDocument contents: '') data: ((Dictionary new)); yourself); subsections: (OrderedCollection new yourself); yourself)! !
 
-!DrGeoTutorial methodsFor: 'as yet unclassified' stamp: 'hlsf 11/24/2022 17:14:16'!
+!DrGeoTutorial methodsFor: 'as yet unclassified' stamp: 'hlsf 24/Nov/2022 17:14:16'!
 section_MesuresEtValeurs
 ^(EruditeBookSection basicNew title: 'Mesures et valeurs'; document: ((EruditeDocument contents: 'Cette section regroupe les commandes pour obtenir des valeurs numériques : angles, coordonnées, pente, distance et valeurs libres.
 
@@ -820,7 +820,7 @@ Déplie la section **▶ Mesures et valeurs** pour explorer ces types de valeurs
         add: self section_MesuresEtValeurs_ValeurRéglette;
  yourself); yourself)! !
 
-!DrGeoTutorial methodsFor: 'as yet unclassified' stamp: 'hlsf 11/24/2022 17:14:16'!
+!DrGeoTutorial methodsFor: 'as yet unclassified' stamp: 'hlsf 24/Nov/2022 17:14:16'!
 section_MesuresEtValeurs_Angle
 ^(EruditeBookSection basicNew title: 'Angle'; document: ((EruditeDocument contents: '!!!!!!Angle géométrique
 //<angle>// **angleGeometriqueCentre:de:a** //a b c//
@@ -866,7 +866,7 @@ v2 _ fig vecteurOrigine: 0@0 extremite: -1@-3.
 a _ fig angleVecteur: v1 et: v2]]] withDrGeoActions
 ') data: ((Dictionary new)); yourself); subsections: (OrderedCollection new yourself); yourself)! !
 
-!DrGeoTutorial methodsFor: 'as yet unclassified' stamp: 'hlsf 11/24/2022 17:14:16'!
+!DrGeoTutorial methodsFor: 'as yet unclassified' stamp: 'hlsf 24/Nov/2022 17:14:16'!
 section_MesuresEtValeurs_Coordonnée
 ^(EruditeBookSection basicNew title: 'Coordonnée'; document: ((EruditeDocument contents: '!!!!!!Abscisse
 //<valeur>// **abscisseDe:** //item//
@@ -897,7 +897,7 @@ p _ fig pointSurLigne: seg a: 0.5.
 c _ p coordonnees.
 c x]]] withDrGeoActions') data: ((Dictionary new)); yourself); subsections: (OrderedCollection new yourself); yourself)! !
 
-!DrGeoTutorial methodsFor: 'as yet unclassified' stamp: 'hlsf 11/24/2022 17:14:16'!
+!DrGeoTutorial methodsFor: 'as yet unclassified' stamp: 'hlsf 24/Nov/2022 17:14:16'!
 section_MesuresEtValeurs_Mesure
 ^(EruditeBookSection basicNew title: 'Mesure'; document: ((EruditeDocument contents: '!!!!!!Longueur
 //<valeur>// **longueurDe:** //objet//
@@ -933,7 +933,7 @@ fig _ DrGeoFigure nouveau.
 d _ fig droitePassantPar: 0@0 et: 3@8.
 p _ fig penteDe: d]]] withDrGeoActions') data: ((Dictionary new)); yourself); subsections: (OrderedCollection new yourself); yourself)! !
 
-!DrGeoTutorial methodsFor: 'as yet unclassified' stamp: 'hlsf 11/24/2022 16:19:18'!
+!DrGeoTutorial methodsFor: 'as yet unclassified' stamp: 'hlsf 24/Nov/2022 16:19:18'!
 section_MesuresEtValeurs_Valeur
 ^(EruditeBookSection basicNew title: 'Valeur'; document: ((EruditeDocument contents: '!!!!!!Valeur libre
 //<valeur>// **valeurLibre:** //v//
@@ -968,7 +968,7 @@ Une réglette est de valeur entière ou décimale.
 
 !!!!!!!!Valeur décimale') data: ((Dictionary new)); yourself); subsections: (OrderedCollection new yourself); yourself)! !
 
-!DrGeoTutorial methodsFor: 'as yet unclassified' stamp: 'hlsf 11/24/2022 17:14:16'!
+!DrGeoTutorial methodsFor: 'as yet unclassified' stamp: 'hlsf 24/Nov/2022 17:14:16'!
 section_MesuresEtValeurs_ValeurRéglette
 ^(EruditeBookSection basicNew title: 'Valeur & Réglette'; document: ((EruditeDocument contents: '!!!!!!Valeur libre
 //<valeur>// **valeurLibre:** //v//
@@ -1023,7 +1023,7 @@ Variante à valeur décimale.
 //<bloc>// **decimal:a:min:max:nom:** //v1 p v2 v3 s//
 //<bloc>// **decimal:a:min:max:nom:affciherValeur:** //v1') data: ((Dictionary new)); yourself); subsections: (OrderedCollection new yourself); yourself)! !
 
-!DrGeoTutorial methodsFor: 'as yet unclassified' stamp: 'hlsf 12/21/2022 22:16:02'!
+!DrGeoTutorial methodsFor: 'as yet unclassified' stamp: 'hlsf 21/Dec/2022 22:16:02'!
 section_NumériqueTexte
 ^(EruditeBookSection basicNew title: 'Numérique & Texte'; document: ((EruditeDocument contents: 'Cette section regroupe les commandes pour obtenir des valeurs numériques et texte : angles, coordonnées, pente, distance, valeurs libres, etc.
 
@@ -1035,7 +1035,7 @@ Déplie la section **▶ Numérique & Texte** pour explorer ces types de valeurs
         add: self section_NumériqueTexte_Texte;
  yourself); yourself)! !
 
-!DrGeoTutorial methodsFor: 'as yet unclassified' stamp: 'hlsf 12/21/2022 22:16:02'!
+!DrGeoTutorial methodsFor: 'as yet unclassified' stamp: 'hlsf 21/Dec/2022 22:16:02'!
 section_NumériqueTexte_Angle
 ^(EruditeBookSection basicNew title: 'Angle'; document: ((EruditeDocument contents: '!!!!!!Angle géométrique
 //<angle>// **angleGéométriqueSommet:de:à** //a b c//
@@ -1081,7 +1081,7 @@ v2 _ fig vecteurOrigine: 0@0 extrémité: -1@-3.
 a _ fig angleVecteur: v1 et: v2]]] withDrGeoActions
 ') data: ((Dictionary new)); yourself); subsections: (OrderedCollection new yourself); yourself)! !
 
-!DrGeoTutorial methodsFor: 'as yet unclassified' stamp: 'hlsf 12/21/2022 22:16:02'!
+!DrGeoTutorial methodsFor: 'as yet unclassified' stamp: 'hlsf 21/Dec/2022 22:16:02'!
 section_NumériqueTexte_Coordonnée
 ^(EruditeBookSection basicNew title: 'Coordonnée'; document: ((EruditeDocument contents: '!!!!!!Abscisse
 //<valeur>// **abscisseDe:** //item//
@@ -1112,7 +1112,7 @@ p _ fig pointSurLigne: seg à: 0.5.
 c _ p coordonnées.
 c x]]] withDrGeoActions') data: ((Dictionary new)); yourself); subsections: (OrderedCollection new yourself); yourself)! !
 
-!DrGeoTutorial methodsFor: 'as yet unclassified' stamp: 'hlsf 12/21/2022 22:16:02'!
+!DrGeoTutorial methodsFor: 'as yet unclassified' stamp: 'hlsf 21/Dec/2022 22:16:02'!
 section_NumériqueTexte_Equation
 ^(EruditeBookSection basicNew title: 'Equation'; document: ((EruditeDocument contents: '!!!!!!Equation
 //<equation>// **équationDe:** //item//
@@ -1126,7 +1126,7 @@ d _ fig droitePassantPar: 0@0 et: 15@13.
 e _ fig équationDe: e]]] withDrGeoActions
 ') data: ((Dictionary new)); yourself); subsections: (OrderedCollection new yourself); yourself)! !
 
-!DrGeoTutorial methodsFor: 'as yet unclassified' stamp: 'hlsf 12/21/2022 22:16:02'!
+!DrGeoTutorial methodsFor: 'as yet unclassified' stamp: 'hlsf 21/Dec/2022 22:16:02'!
 section_NumériqueTexte_Mesure
 ^(EruditeBookSection basicNew title: 'Mesure'; document: ((EruditeDocument contents: '!!!!!!Longueur
 //<valeur>// **longueurDe:** //objet//
@@ -1162,7 +1162,7 @@ fig _ DrGeoFigure nouveau.
 d _ fig droitePassantPar: 0@0 et: 3@8.
 p _ fig penteDe: d]]] withDrGeoActions') data: ((Dictionary new)); yourself); subsections: (OrderedCollection new yourself); yourself)! !
 
-!DrGeoTutorial methodsFor: 'as yet unclassified' stamp: 'hlsf 12/21/2022 22:16:02'!
+!DrGeoTutorial methodsFor: 'as yet unclassified' stamp: 'hlsf 21/Dec/2022 22:16:02'!
 section_NumériqueTexte_Texte
 ^(EruditeBookSection basicNew title: 'Texte'; document: ((EruditeDocument contents: '!!!!!!Texte
 //<texte>// **texte:** //string//
@@ -1193,7 +1193,7 @@ fig _ DrGeoFigure nouveau.
 monTexte _ fig texte: ''Hello''.
 monTexte texte: ''Au revoir'']]] withDrGeoActions') data: ((Dictionary new)); yourself); subsections: (OrderedCollection new yourself); yourself)! !
 
-!DrGeoTutorial methodsFor: 'as yet unclassified' stamp: 'hlsf 12/21/2022 22:16:02'!
+!DrGeoTutorial methodsFor: 'as yet unclassified' stamp: 'hlsf 21/Dec/2022 22:16:02'!
 section_NumériqueTexte_ValeurRéglette
 ^(EruditeBookSection basicNew title: 'Valeur & Réglette'; document: ((EruditeDocument contents: '!!!!!!Valeur libre
 //<valeur>// **valeurLibre:** //v//
@@ -1248,7 +1248,7 @@ Variante à valeur décimale.
 //<bloc>// **décimal:à:min:max:nom:** //v1 p v2 v3 s//
 //<bloc>// **décimal:à:min:max:nom:affciherValeur:** //v1') data: ((Dictionary new)); yourself); subsections: (OrderedCollection new yourself); yourself)! !
 
-!DrGeoTutorial methodsFor: 'as yet unclassified' stamp: 'hlsf 12/21/2022 22:16:02'!
+!DrGeoTutorial methodsFor: 'as yet unclassified' stamp: 'hlsf 21/Dec/2022 22:16:02'!
 section_Point
 ^(EruditeBookSection basicNew title: 'Point'; document: ((EruditeDocument contents: 'Tu peux créer toutes sortes de point : point libre que tu peux ensuite déplacer à la souris, point mobile sur une ligne, point milieu ou d''intersection entre deux lignes. Il est même possible de créer un point dont la position est déterminée par un bloc de code !!
 
@@ -1260,7 +1260,7 @@ Déplie la section **▶ Point** pour explorer ces types de point !!') data: ((D
         add: self section_Point_BlocDeCode;
  yourself); yourself)! !
 
-!DrGeoTutorial methodsFor: 'as yet unclassified' stamp: 'hlsf 12/21/2022 22:16:02'!
+!DrGeoTutorial methodsFor: 'as yet unclassified' stamp: 'hlsf 21/Dec/2022 22:16:02'!
 section_Point_BlocDeCode
 ^(EruditeBookSection basicNew title: 'Bloc de code'; document: ((EruditeDocument contents: '!!!!!!Bloc de code
 Fonctionalité avancée où la position du point est définie par un bloc de code.
@@ -1291,7 +1291,7 @@ p _ figure
 	parents first closestPointTo: parents second point]
    parents: {d . m}]]] withDrGeoActions') data: ((Dictionary new)); yourself); subsections: (OrderedCollection new yourself); yourself)! !
 
-!DrGeoTutorial methodsFor: 'as yet unclassified' stamp: 'hlsf 12/21/2022 22:16:02'!
+!DrGeoTutorial methodsFor: 'as yet unclassified' stamp: 'hlsf 21/Dec/2022 22:16:02'!
 section_Point_Fixe
 ^(EruditeBookSection basicNew title: 'Fixe'; document: ((EruditeDocument contents: '!!!!!!Point valeur
 //<point>// **pointX:Y:** //v1 v2//
@@ -1307,7 +1307,7 @@ fig
 	Y: (fig longueurDe: segment)]]] withDrGeoActions
 ') data: ((Dictionary new)); yourself); subsections: (OrderedCollection new yourself); yourself)! !
 
-!DrGeoTutorial methodsFor: 'as yet unclassified' stamp: 'hlsf 12/21/2022 22:16:02'!
+!DrGeoTutorial methodsFor: 'as yet unclassified' stamp: 'hlsf 21/Dec/2022 22:16:02'!
 section_Point_Intersection
 ^(EruditeBookSection basicNew title: 'Intersection'; document: ((EruditeDocument contents: '!!!!!!Intersection entre deux lignes
 //<point>// **intersectionDe:et:** //l1 l2//
@@ -1330,7 +1330,7 @@ cercle _ f cercleCentre: 0@0 rayon: 5.
 f intersectionDe: droite et: cercle.
 f autreIntersectionDe: droite et: cercle]]] withDrGeoActions') data: ((Dictionary new)); yourself); subsections: (OrderedCollection new yourself); yourself)! !
 
-!DrGeoTutorial methodsFor: 'as yet unclassified' stamp: 'hlsf 12/21/2022 22:16:02'!
+!DrGeoTutorial methodsFor: 'as yet unclassified' stamp: 'hlsf 21/Dec/2022 22:16:02'!
 section_Point_Libre
 ^(EruditeBookSection basicNew title: 'Libre'; document: ((EruditeDocument contents: '!!!!!!Point libre
 //<point>// **point:** //pointOuBloc//
@@ -1341,7 +1341,7 @@ section_Point_Libre
 	point: [ 5 auHasard @ 5 auHasard ] ]]] withDrGeoActions
 ') data: ((Dictionary new)); yourself); subsections: (OrderedCollection new yourself); yourself)! !
 
-!DrGeoTutorial methodsFor: 'as yet unclassified' stamp: 'hlsf 12/21/2022 22:16:02'!
+!DrGeoTutorial methodsFor: 'as yet unclassified' stamp: 'hlsf 21/Dec/2022 22:16:02'!
 section_Point_Milieu
 ^(EruditeBookSection basicNew title: 'Milieu'; document: ((EruditeDocument contents: '!!!!!!Milieu de deux points
 //<point>// **milieuDe:et:** //p1 p2//
@@ -1362,7 +1362,7 @@ s _ f segmentDe: 0@0 à: 5@3.
 f milieuDe: s]]] withDrGeoActions
 ') data: ((Dictionary new)); yourself); subsections: (OrderedCollection new yourself); yourself)! !
 
-!DrGeoTutorial methodsFor: 'as yet unclassified' stamp: 'hlsf 12/21/2022 22:16:02'!
+!DrGeoTutorial methodsFor: 'as yet unclassified' stamp: 'hlsf 21/Dec/2022 22:16:02'!
 section_Point_SurLigne
 ^(EruditeBookSection basicNew title: 'Sur ligne'; document: ((EruditeDocument contents: '!!!!!!Point sur ligne
 //<point>// **pointSurLigne:à:** //curve a//
@@ -1376,7 +1376,7 @@ s _ f segmentDe: 0@0 à: 5@3.
 f pointSurLigne: s à: 0.5]]] withDrGeoActions
 ') data: ((Dictionary new)); yourself); subsections: (OrderedCollection new yourself); yourself)! !
 
-!DrGeoTutorial methodsFor: 'as yet unclassified' stamp: 'hlsf 11/2/2022 23:15:30'!
+!DrGeoTutorial methodsFor: 'as yet unclassified' stamp: 'hlsf 2/Nov/2022 23:15:30'!
 section_Point_fixe
 ^(EruditeBookSection basicNew title: 'fixe'; document: ((EruditeDocument contents: '!!!!!!Point fixe
 //<point>// **pointX:Y:** //v1 v2//
@@ -1385,7 +1385,7 @@ section_Point_fixe
 	pointX: 2 Y: 5]]] withDrGeoActions
 ') data: ((Dictionary new)); yourself); subsections: (OrderedCollection new yourself); yourself)! !
 
-!DrGeoTutorial methodsFor: 'as yet unclassified' stamp: 'hlsf 11/2/2022 23:15:30'!
+!DrGeoTutorial methodsFor: 'as yet unclassified' stamp: 'hlsf 2/Nov/2022 23:15:30'!
 section_Point_intersection
 ^(EruditeBookSection basicNew title: 'intersection'; document: ((EruditeDocument contents: '!!!!!!Point d''Intersection entre deux lignes
 //<point>// **intersectionDe:et:** //l1 l2//
@@ -1397,7 +1397,7 @@ section_Point_intersection
 //<point>// **autreIntersectionDe:et:** //l1 l2//
 ⇒ l’autre point d’intersection des deux lignes, lorsqu’il existe.') data: ((Dictionary new)); yourself); subsections: (OrderedCollection new yourself); yourself)! !
 
-!DrGeoTutorial methodsFor: 'as yet unclassified' stamp: 'hlsf 11/2/2022 23:15:30'!
+!DrGeoTutorial methodsFor: 'as yet unclassified' stamp: 'hlsf 2/Nov/2022 23:15:30'!
 section_Point_milieu
 ^(EruditeBookSection basicNew title: 'milieu'; document: ((EruditeDocument contents: '!!!!!!Milieu de deux points
 //<point>// **milieuDe:et:** //p1 p2//
@@ -1416,7 +1416,7 @@ s _ f segmentDe: 0@0 a: 5@3.
 f milieuDe: s]]] withDrGeoActions
 ') data: ((Dictionary new)); yourself); subsections: (OrderedCollection new yourself); yourself)! !
 
-!DrGeoTutorial methodsFor: 'as yet unclassified' stamp: 'hlsf 11/2/2022 23:15:30'!
+!DrGeoTutorial methodsFor: 'as yet unclassified' stamp: 'hlsf 2/Nov/2022 23:15:30'!
 section_Point_mobile
 ^(EruditeBookSection basicNew title: 'mobile'; document: ((EruditeDocument contents: '!!!!!!Point mobile
 //<point>// **point:** //pointOuBloc//
@@ -1427,7 +1427,7 @@ fig point: 5@2.
 fig point: [ 5 auHasard @ 5 auHasard ] ]]] withDrGeoActions
 ') data: ((Dictionary new)); yourself); subsections: (OrderedCollection new yourself); yourself)! !
 
-!DrGeoTutorial methodsFor: 'as yet unclassified' stamp: 'hlsf 11/2/2022 23:15:30'!
+!DrGeoTutorial methodsFor: 'as yet unclassified' stamp: 'hlsf 2/Nov/2022 23:15:30'!
 section_Point_surLigne
 ^(EruditeBookSection basicNew title: 'sur ligne'; document: ((EruditeDocument contents: '!!!!!!Point sur ligne
 //<point>// **pointSurLigne:a:** //curve a//
@@ -1438,7 +1438,7 @@ s _ f segmentDe: 0@0 a: 5@3.
 f pointSurLigne: s a: 0.5]]] withDrGeoActions
 ') data: ((Dictionary new)); yourself); subsections: (OrderedCollection new yourself); yourself)! !
 
-!DrGeoTutorial methodsFor: 'as yet unclassified' stamp: 'hlsf 12/21/2022 22:16:02'!
+!DrGeoTutorial methodsFor: 'as yet unclassified' stamp: 'hlsf 21/Dec/2022 22:16:02'!
 section_Styles
 ^(EruditeBookSection basicNew title: 'Styles'; document: ((EruditeDocument contents: '!!!!!!Style
 Pour modifier les attributs d’un objet déjà créé, nous lui envoyons le message approprié. La modification des attributs se fait donc toujours à posteriori.
@@ -1504,7 +1504,7 @@ fig actualiser]]] withDrGeoActions') data: ((Dictionary new)); yourself); subsec
         add: self section_Styles_Texte;
  yourself); yourself)! !
 
-!DrGeoTutorial methodsFor: 'as yet unclassified' stamp: 'hlsf 12/21/2022 22:16:02'!
+!DrGeoTutorial methodsFor: 'as yet unclassified' stamp: 'hlsf 21/Dec/2022 22:16:02'!
 section_Styles_Ligne
 ^(EruditeBookSection basicNew title: 'Ligne'; document: ((EruditeDocument contents: '!!!!!!Ligne
 Une ligne est un segment, une droite, une demi-droite, un cercle, un arc de cercle, un polygone ou un lieu géométrique.
@@ -1537,7 +1537,7 @@ c épais tiret.
 r _ fig segmentDe: 0@0 à: 1@0.
 r pointillé]]] withDrGeoActions') data: ((Dictionary new)); yourself); subsections: (OrderedCollection new yourself); yourself)! !
 
-!DrGeoTutorial methodsFor: 'as yet unclassified' stamp: 'hlsf 12/21/2022 22:16:02'!
+!DrGeoTutorial methodsFor: 'as yet unclassified' stamp: 'hlsf 21/Dec/2022 22:16:02'!
 section_Styles_Point
 ^(EruditeBookSection basicNew title: 'Point'; document: ((EruditeDocument contents: '!!!!!!Point
 
@@ -1574,7 +1574,7 @@ fig _ DrGeoFigure nouveau.
 (fig point: 2@0) large ]]] withDrGeoActions
 ') data: ((Dictionary new)); yourself); subsections: (OrderedCollection new yourself); yourself)! !
 
-!DrGeoTutorial methodsFor: 'as yet unclassified' stamp: 'hlsf 12/21/2022 22:16:02'!
+!DrGeoTutorial methodsFor: 'as yet unclassified' stamp: 'hlsf 21/Dec/2022 22:16:02'!
 section_Styles_Segment
 ^(EruditeBookSection basicNew title: 'Segment'; document: ((EruditeDocument contents: '!!!!!!Segment
 
@@ -1612,7 +1612,7 @@ fig _ DrGeoFigure nouveau.
 segment _ fig segmentDe: 0@0 à: 5@1.
 segment flècheDebut]]] withDrGeoActions') data: ((Dictionary new)); yourself); subsections: (OrderedCollection new yourself); yourself)! !
 
-!DrGeoTutorial methodsFor: 'as yet unclassified' stamp: 'hlsf 12/21/2022 22:16:02'!
+!DrGeoTutorial methodsFor: 'as yet unclassified' stamp: 'hlsf 21/Dec/2022 22:16:02'!
 section_Styles_Texte
 ^(EruditeBookSection basicNew title: 'Texte'; document: ((EruditeDocument contents: '!!!!!!Texte
 **couleurFond:** //uneCouleur//
@@ -1624,7 +1624,7 @@ t _ fig texte: ''Hello''.
 t couleurFond: Color green]]] withDrGeoActions
 ') data: ((Dictionary new)); yourself); subsections: (OrderedCollection new yourself); yourself)! !
 
-!DrGeoTutorial methodsFor: 'as yet unclassified' stamp: 'hlsf 12/21/2022 22:16:02'!
+!DrGeoTutorial methodsFor: 'as yet unclassified' stamp: 'hlsf 21/Dec/2022 22:16:02'!
 section_Transformations
 ^(EruditeBookSection basicNew title: 'Transformations'; document: ((EruditeDocument contents: 'Avec les transformations géométriques construis des tranformés d''objets tels des point, segment, droite, demi-droite, vecteur, cercle, arc de cercle, polygone et lieu de point.
 
@@ -1635,7 +1635,7 @@ Déplie la section **▶ Transformations** pour les découvrir !!') data: ((Dict
         add: self section_Transformations_Translation;
  yourself); yourself)! !
 
-!DrGeoTutorial methodsFor: 'as yet unclassified' stamp: 'hlsf 12/21/2022 22:16:02'!
+!DrGeoTutorial methodsFor: 'as yet unclassified' stamp: 'hlsf 21/Dec/2022 22:16:02'!
 section_Transformations_Homothétie
 ^(EruditeBookSection basicNew title: 'Homothétie'; document: ((EruditeDocument contents: '!!!!!!Homothétie
 //<objet>// **homothétieDe:centre:facteur:** //i c k//
@@ -1654,7 +1654,7 @@ l _ fig cercleCentre: 0@0 passantPar: 3@3.
 fig homothétieDe: l centre: c facteur: 1.5.
 fig homothétieDe: l centre: c facteur: n]]] withDrGeoActions') data: ((Dictionary new)); yourself); subsections: (OrderedCollection new yourself); yourself)! !
 
-!DrGeoTutorial methodsFor: 'as yet unclassified' stamp: 'hlsf 3/9/2023 15:22:49'!
+!DrGeoTutorial methodsFor: 'as yet unclassified' stamp: 'hlsf 9/Mar/2023 15:22:49'!
 section_Transformations_Rotation
 ^(EruditeBookSection basicNew title: 'Rotation'; document: ((EruditeDocument contents: '!!!!!!Rotation
 //<objet>// **rotationDe:centre:angle:** //i c a//
@@ -1673,7 +1673,7 @@ l _ fig droitePassantPar: 1@0 et: 5@5.
 fig rotationDe: l centre: c angleDegrés: 30.
 fig rotationDe: l centre: c angle: n]]] withDrGeoActions') data: ((Dictionary new)); yourself); subsections: (OrderedCollection new yourself); yourself)! !
 
-!DrGeoTutorial methodsFor: 'as yet unclassified' stamp: 'hlsf 12/21/2022 22:16:02'!
+!DrGeoTutorial methodsFor: 'as yet unclassified' stamp: 'hlsf 21/Dec/2022 22:16:02'!
 section_Transformations_SymétrieAxiale
 ^(EruditeBookSection basicNew title: 'Symétrie axiale'; document: ((EruditeDocument contents: '!!!!!!Symétrie axiale (réflexion)
 //<objet>// **symétriqueDe:selonAxe:** //o c//
@@ -1688,7 +1688,7 @@ fig
 	symétriqueDe: a 
 	selonAxe: (fig droitePassantPar: 0@0 et: 4@5)]]] withDrGeoActions') data: ((Dictionary new)); yourself); subsections: (OrderedCollection new yourself); yourself)! !
 
-!DrGeoTutorial methodsFor: 'as yet unclassified' stamp: 'hlsf 12/21/2022 22:16:02'!
+!DrGeoTutorial methodsFor: 'as yet unclassified' stamp: 'hlsf 21/Dec/2022 22:16:02'!
 section_Transformations_SymétrieCentrale
 ^(EruditeBookSection basicNew title: 'Symétrie centrale'; document: ((EruditeDocument contents: '!!!!!!Symétrie centrale
 //<objet>// **symétriqueDe:selonCentre:** //o c//
@@ -1701,7 +1701,7 @@ fig _ DrGeoFigure nouveau.
 a _ fig point: 4@2.
 fig symétriqueDe: a selonCentre: 0@0]]] withDrGeoActions') data: ((Dictionary new)); yourself); subsections: (OrderedCollection new yourself); yourself)! !
 
-!DrGeoTutorial methodsFor: 'as yet unclassified' stamp: 'hlsf 12/21/2022 22:16:02'!
+!DrGeoTutorial methodsFor: 'as yet unclassified' stamp: 'hlsf 21/Dec/2022 22:16:02'!
 section_Transformations_Translation
 ^(EruditeBookSection basicNew title: 'Translation'; document: ((EruditeDocument contents: '!!!!!!Translation
 //<objet>// **translationDe:parVecteur:** //o v//
@@ -1724,15 +1724,15 @@ c _ fig cercleCentre: 0@0 passantPar: 3@3.
 a _ fig translationDe: c parVecteur: u]]] withDrGeoActions
 ') data: ((Dictionary new)); yourself); subsections: (OrderedCollection new yourself); yourself)! !
 
-!DrGeoTutorial methodsFor: 'as yet unclassified' stamp: 'hlsf 11/2/2022 23:15:30'!
+!DrGeoTutorial methodsFor: 'as yet unclassified' stamp: 'hlsf 2/Nov/2022 23:15:30'!
 section_TransformationsGéométriques
 ^(EruditeBookSection basicNew title: 'Transformations géométriques'; document: ((EruditeDocument contents: '') data: ((Dictionary new)); yourself); subsections: (OrderedCollection new yourself); yourself)! !
 
-!DrGeoTutorial methodsFor: 'as yet unclassified' stamp: 'hlsf 11/2/2022 15:44:32'!
+!DrGeoTutorial methodsFor: 'as yet unclassified' stamp: 'hlsf 2/Nov/2022 15:44:32'!
 section_ValeursNumériques
 ^(EruditeBookSection basicNew title: 'Valeurs numériques'; document: ((EruditeDocument contents: '') data: ((Dictionary new)); yourself); subsections: (OrderedCollection new yourself); yourself)! !
 
-!DrGeoTutorial methodsFor: 'as yet unclassified' stamp: 'hlsf 12/21/2022 22:16:02'!
+!DrGeoTutorial methodsFor: 'as yet unclassified' stamp: 'hlsf 21/Dec/2022 22:16:02'!
 section_Vecteur
 ^(EruditeBookSection basicNew title: 'Vecteur'; document: ((EruditeDocument contents: '!!!!!!Vecteur par deux points
 //<vecteur>// **vecteurOrigine:extremité:** //o e//
@@ -1772,11 +1772,11 @@ couleur: aColor
 decacher
 	self unhide! !
 
-!DrGeoItem methodsFor: '*DrGeoFrench' stamp: 'hlsf 12/21/2022 14:55:58'!
+!DrGeoItem methodsFor: '*DrGeoFrench' stamp: 'hlsf 21/Dec/2022 14:55:58'!
 débloquer
 	self unlock! !
 
-!DrGeoItem methodsFor: '*DrGeoFrench' stamp: 'hlsf 12/21/2022 14:56:10'!
+!DrGeoItem methodsFor: '*DrGeoFrench' stamp: 'hlsf 21/Dec/2022 14:56:10'!
 déplacerA: aPoint
 	self moveTo: aPoint! !
 
@@ -1792,7 +1792,7 @@ nommer: aString
 renommer: aString
 	self rename: aString! !
 
-!DrGeoCurve methodsFor: '*DrGeoFrench' stamp: 'hlsf 12/21/2022 14:55:47'!
+!DrGeoCurve methodsFor: '*DrGeoFrench' stamp: 'hlsf 21/Dec/2022 14:55:47'!
 épais
 	self large! !
 
@@ -1804,7 +1804,7 @@ fin
 plein
 	self plain! !
 
-!DrGeoCurve methodsFor: '*DrGeoFrench' stamp: 'hlsf 12/21/2022 14:55:40'!
+!DrGeoCurve methodsFor: '*DrGeoFrench' stamp: 'hlsf 21/Dec/2022 14:55:40'!
 pointillé
 	self dotted! !
 
@@ -1812,15 +1812,15 @@ pointillé
 tiret
 	self dashed ! !
 
-!DrGeoFinitCurve methodsFor: '*DrGeoFrench' stamp: 'hlsf 12/21/2022 14:56:28'!
+!DrGeoFinitCurve methodsFor: '*DrGeoFrench' stamp: 'hlsf 21/Dec/2022 14:56:28'!
 flècheDebut
 	self backArrow! !
 
-!DrGeoFinitCurve methodsFor: '*DrGeoFrench' stamp: 'hlsf 12/21/2022 14:56:41'!
+!DrGeoFinitCurve methodsFor: '*DrGeoFrench' stamp: 'hlsf 21/Dec/2022 14:56:41'!
 flècheFin
 	self forwardArrow! !
 
-!DrGeoFinitCurve methodsFor: '*DrGeoFrench' stamp: 'hlsf 12/21/2022 14:56:33'!
+!DrGeoFinitCurve methodsFor: '*DrGeoFrench' stamp: 'hlsf 21/Dec/2022 14:56:33'!
 flèches
 	self bothArrows ! !
 
@@ -1860,11 +1860,11 @@ marquerAvecSimpleTrait
 marquerAvecTripleTrait
 	self tripleMark ! !
 
-!DrGeoPoint methodsFor: '*DrGeoFrench' stamp: 'hlsf 12/21/2022 14:56:52'!
+!DrGeoPoint methodsFor: '*DrGeoFrench' stamp: 'hlsf 21/Dec/2022 14:56:52'!
 carré
 	self square! !
 
-!DrGeoPoint methodsFor: '*DrGeoFrench' stamp: 'hlsf 12/21/2022 14:56:58'!
+!DrGeoPoint methodsFor: '*DrGeoFrench' stamp: 'hlsf 21/Dec/2022 14:56:58'!
 coordonnées
 	^ self coordinates! !
 

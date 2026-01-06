@@ -1,6 +1,6 @@
-'From Cuis7.7 [latest update: #7791] on 6 January 2026 at 8:16:23 pm'!
+'From Cuis7.7 [latest update: #7791] on 6 January 2026 at 11:00:10 pm'!
 'Description '!
-!provides: 'DrGeo' 1 782!
+!provides: 'DrGeo' 1 783!
 !requires: 'Gettext' 1 17 nil!
 !requires: 'SVG' 1 16 nil!
 !requires: 'YAXO' 1 19 nil!
@@ -9963,13 +9963,13 @@ arc: point1 to: point2 to: point3
 			with: (self ensureDrGeoPoint: point2) mathItem
 			with: (self ensureDrGeoPoint: point3 ) mathItem) )! !
 
-!DrGeoSketch methodsFor: 'curve filled' stamp: 'hlsf 6/Jan/2026 19:44:16'!
-arcCenter: point1 from: point2 to: point3
+!DrGeoSketch methodsFor: 'curve filled' stamp: 'hlsf 6/Jan/2026 22:33:24'!
+arcCenter: centre from: extremity1 to: extremity2
 	^ self finalizeFilledCurve: (DrGArcCenterAngleItem newWith: (
 		Array
-			with: (self ensureDrGeoPoint: point1 ) mathItem
-			with: (self ensureDrGeoPoint: point2 ) mathItem
-			with: (self ensureDrGeoPoint: point3 ) mathItem) )! !
+			with: (self ensureDrGeoPoint: centre ) mathItem
+			with: (self ensureDrGeoPoint: extremity1 ) mathItem
+			with: (self ensureDrGeoPoint: extremity2 ) mathItem) )! !
 
 !DrGeoSketch methodsFor: 'curve filled' stamp: 'hlsf 6/Jan/2026 20:11:47'!
 circleCenter: center radius: value
@@ -9996,11 +9996,11 @@ circleCenter: center to: point
 finalizeFilledCurve: mathItem
 	^ DrGeoFilledCurve wrap: (self morphOf: mathItem)! !
 
-!DrGeoSketch methodsFor: 'curve filled' stamp: 'hlsf 6/Jan/2026 19:46:53'!
-polygon: arguments
+!DrGeoSketch methodsFor: 'curve filled' stamp: 'hlsf 6/Jan/2026 22:38:23'!
+polygon: pointCollection
 	^ self finalizeFilledCurve: (
 		DrGPolygonNptsItem newWith: (
-			arguments collect: [:point | (self ensureDrGeoPoint: point ) mathItem]))! !
+			pointCollection collect: [:point | (self ensureDrGeoPoint: point ) mathItem]))! !
 
 !DrGeoSketch methodsFor: 'curve filled' stamp: 'hlsf 6/Jan/2026 20:11:47'!
 regularPolygonCenter: center vertex: vertex sides: value
@@ -10084,12 +10084,12 @@ pointX: value1 Y: value2
 axesOn
 	 presenter axesOnOff ! !
 
-!DrGeoSketch methodsFor: 'user interface' stamp: 'hlsf 4/Aug/2023 20:05:38'!
-centerTo: aPoint
-	"set the center of the visible canvas to this coordinate"
+!DrGeoSketch methodsFor: 'user interface' stamp: 'hlsf 6/Jan/2026 22:29:35'!
+centerTo: point
+" Set the center of the visible canvas to this coordinate "
 	presenter drawable 
-		ox: aPoint x;
-		oy: aPoint y;
+		ox: point x;
+		oy: point y;
 		redrawNeeded! !
 
 !DrGeoSketch methodsFor: 'user interface' stamp: 'hlsf 4/Aug/2023 20:05:38'!
@@ -10100,11 +10100,11 @@ fullScreen
 gridOn
 	 presenter gridOnOff ! !
 
-!DrGeoSketch methodsFor: 'user interface' stamp: 'hlsf 4/Aug/2023 20:05:38'!
-scale: anInteger
+!DrGeoSketch methodsFor: 'user interface' stamp: 'hlsf 6/Jan/2026 22:30:02'!
+scale: integer
 	"set scale of the canvas"
 	presenter drawable 
-		setScaleTo: anInteger! !
+		setScaleTo: integer! !
 
 !DrGeoSketch methodsFor: 'accessing' stamp: ''!
 aPosition
@@ -10387,12 +10387,12 @@ perpendicularBisector: point1 to: point2
 			with: (self ensureDrGeoPoint: point1) mathItem
 			with: (self ensureDrGeoPoint: point2) mathItem) )! !
 
-!DrGeoSketch methodsFor: 'curve' stamp: 'hlsf 6/Jan/2026 19:58:58'!
-ray: point1 to: point2
+!DrGeoSketch methodsFor: 'curve' stamp: 'hlsf 6/Jan/2026 22:35:46'!
+ray: origin to: point
 	^ self finalizeCurve: (DrGRay2ptsItem newWith: (
 		Array 
-			with: (self ensureDrGeoPoint: point1 ) mathItem
-			with: (self ensureDrGeoPoint: point2 ) mathItem) )! !
+			with: (self ensureDrGeoPoint: origin) mathItem
+			with: (self ensureDrGeoPoint: point) mathItem) )! !
 
 !DrGeoSketch methodsFor: 'value' stamp: 'hlsf 6/Jan/2026 20:00:30'!
 abscissaOf: pointOrVector
@@ -10564,11 +10564,11 @@ finalizeText: textItem
 text: aText
 	^ self text:aText at: self aPosition! !
 
-!DrGeoSketch methodsFor: 'text' stamp: 'hlsf 4/Aug/2023 20:05:38'!
-text: aText at: aPosition
+!DrGeoSketch methodsFor: 'text' stamp: 'hlsf 6/Jan/2026 22:30:53'!
+text: text at: position
 	| answer |
 	presenter notInteractive: true.
-	answer := self finalizeText: ((DrGTextItem newWith: {aPosition}) text: aText asText).
+	answer := self finalizeText: ((DrGTextItem newWith: (Array with: position)) text: text asText).
 	presenter notInteractive: false.
 	^ answer! !
 
