@@ -1,6 +1,6 @@
-'From Cuis7.7 [latest update: #7791] on 6 January 2026 at 11:00:14 pm'!
+'From Cuis7.7 [latest update: #7783] on 7 January 2026 at 8:22:26 am'!
 'Description '!
-!provides: 'DrGeoFrench' 1 13!
+!provides: 'DrGeoFrench' 1 14!
 !requires: 'CuisFrench' 1 0 nil!
 SystemOrganization addCategory: #DrGeoFrench!
 
@@ -122,8 +122,14 @@ polygone: collectionDePoints
 polygoneRégulierCentre: centre sommet: sommet côtés: valeur
 	^ self regularPolygonCenter: centre vertex: sommet sides: valeur ! !
 
-!DrGeoFigure methodsFor: 'curve' stamp: 'hlsf 6/Jan/2026 22:39:17'!
+!DrGeoFigure methodsFor: 'curve' stamp: 'hlsf 7/Jan/2026 08:08:16'!
 segmentDe: point1 à: point2
+"Segment d'extrémités les point1 et point2.
+
+	segmentDe: 0 @ 0 à: -10 @ -2
+	
+	pointA := figure point: 5 @ 4.
+	segmentDe: pointA à: 5 @ 2"
 	^ self segment: point1 to: point2 ! !
 
 !DrGeoFigure methodsFor: 'curve' stamp: 'hlsf 6/Jan/2026 22:39:25'!
