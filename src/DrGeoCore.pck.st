@@ -1,9 +1,9 @@
-'From Cuis7.7 [latest update: #7791] on 8 January 2026 at 10:33:38 pm'!
+'From Cuis7.7 [latest update: #7791] on 8 January 2026 at 10:49:02 pm'!
 'Description '!
-!provides: 'DrGeoCore' 1 2!
-!requires: 'Graphics-Files-Additional' 1 30 nil!
-!requires: 'UI-Panel' 1 140 nil!
+!provides: 'DrGeoCore' 1 4!
 !requires: 'YAXO' 1 28 nil!
+!requires: 'UI-Panel' 1 140 nil!
+!requires: 'Graphics-Files-Additional' 1 30 nil!
 SystemOrganization addCategory: #'DrGeoCore-Model'!
 SystemOrganization addCategory: #'DrGeoCore-Model-Smalltalk'!
 SystemOrganization addCategory: #'DrGeoCore-Model-Item'!
@@ -4485,10 +4485,10 @@ parseFigureFrom: drgeoNode
 		]
 	].! !
 
-!DrGeoXml methodsFor: 'xml read' stamp: 'hlsf 8/Jan/2026 22:17:15'!
+!DrGeoXml methodsFor: 'xml read' stamp: 'hlsf 8/Jan/2026 22:41:51'!
 parseOneFigure: node for: constructor
 " Instantiate this node in a DrGeo app and return it"
-	self presenter: (DrGeo perform: constructor).
+	self presenter: (DrGeoApp perform: constructor).
 	presenter notInteractive: true.
 	self parseFigureFrom: node.
 	self drawable forcedVisibility: false.
@@ -12459,7 +12459,7 @@ handleStillPress: aPoint
 isMutantFreePoint
 	^ originalPointClass = DrGPointFreeItem! !
 
-!DrGMutatorToolStateDragged methodsFor: 'handling' stamp: 'hlsf 11/Aug/2025 18:32:02'!
+!DrGMutatorToolStateDragged methodsFor: 'handling' stamp: 'hlsf 8/Jan/2026 22:39:04'!
 handleMouseAt: aPoint
 	| morphs aTip|
 	"First handle the redraw"
@@ -12474,7 +12474,7 @@ handleMouseAt: aPoint
 		aTip := 'Change as this intersection.' translated].
 	aTip 
 		ifNil: [self drawable hideTip]
-		ifNotNil: [self drawable tip: aTip at: aPoint]
+		ifNotNil: [self drawable tip: aTip at: aPoint].
 	^ aTip notNil! !
 
 !DrGMutatorToolStateDragged methodsFor: 'handling' stamp: 'hlsf 11/Aug/2025 18:32:11'!
