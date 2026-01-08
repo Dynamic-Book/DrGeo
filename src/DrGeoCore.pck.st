@@ -1,2962 +1,2664 @@
-'From Cuis7.7 [latest update: #7791] on 7 January 2026 at 4:20:54 pm'!
+'From Cuis7.7 [latest update: #7791] on 8 January 2026 at 10:33:38 pm'!
 'Description '!
-!provides: 'DrGeo' 1 784!
-!requires: 'Gettext' 1 17 nil!
-!requires: 'SVG' 1 16 nil!
-!requires: 'YAXO' 1 19 nil!
-!requires: 'UI-Widgets' 1 0 nil!
-!requires: 'UI-Preference' 1 15 nil!
-!requires: 'UI-Panel' 1 17 nil!
-!requires: 'Erudite' 1 224 nil!
-!requires: 'Commander' 1 4 nil!
-!requires: 'Graphics-Files-Additional' 1 24 nil!
-SystemOrganization addCategory: #'DrGeo-Model'!
-SystemOrganization addCategory: #'DrGeo-Model-Smalltalk'!
-SystemOrganization addCategory: #'DrGeo-Model-Item'!
-SystemOrganization addCategory: #'DrGeo-Model-Style'!
-SystemOrganization addCategory: #'DrGeo-Model-Macro'!
-SystemOrganization addCategory: #'DrGeo-Model-Script'!
-SystemOrganization addCategory: #'DrGeo-View'!
-SystemOrganization addCategory: #'DrGeo-View-Dialog'!
-SystemOrganization addCategory: #'DrGeo-View-Item'!
-SystemOrganization addCategory: #'DrGeo-Presenter'!
-SystemOrganization addCategory: #'DrGeo-Presenter-Builder'!
-SystemOrganization addCategory: #'DrGeo-Presenter-Tool'!
-SystemOrganization addCategory: #'DrGeo-Presenter-Command'!
-SystemOrganization addCategory: #'DrGeo-Factories'!
-SystemOrganization addCategory: #'DrGeo-File'!
-SystemOrganization addCategory: #'DrGeo-System'!
-SystemOrganization addCategory: #'DrGeo-Test'!
-SystemOrganization addCategory: #DrGeo!
+!provides: 'DrGeoCore' 1 2!
+!requires: 'Graphics-Files-Additional' 1 30 nil!
+!requires: 'UI-Panel' 1 140 nil!
+!requires: 'YAXO' 1 28 nil!
+SystemOrganization addCategory: #'DrGeoCore-Model'!
+SystemOrganization addCategory: #'DrGeoCore-Model-Smalltalk'!
+SystemOrganization addCategory: #'DrGeoCore-Model-Item'!
+SystemOrganization addCategory: #'DrGeoCore-Model-Style'!
+SystemOrganization addCategory: #'DrGeoCore-View'!
+SystemOrganization addCategory: #'DrGeoCore-View-Dialog'!
+SystemOrganization addCategory: #'DrGeoCore-View-Item'!
+SystemOrganization addCategory: #'DrGeoCore-Presenter'!
+SystemOrganization addCategory: #'DrGeoCore-Presenter-Builder'!
+SystemOrganization addCategory: #'DrGeoCore-Presenter-Tool'!
+SystemOrganization addCategory: #'DrGeoCore-Presenter-Command'!
+SystemOrganization addCategory: #'DrGeoCore-Factories'!
+SystemOrganization addCategory: #'DrGeoCore-File'!
+SystemOrganization addCategory: #'DrGeoCore-System'!
+SystemOrganization addCategory: #'DrGeoCore-Test'!
+SystemOrganization addCategory: #DrGeoCore!
 
 
-!classDefinition: #DrGFactory category: #'DrGeo-Factories'!
+!classDefinition: #DrGFactory category: #'DrGeoCore-Factories'!
 Object subclass: #DrGFactory
 	instanceVariableNames: 'pool last'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Factories'!
-!classDefinition: 'DrGFactory class' category: #'DrGeo-Factories'!
+	category: 'DrGeoCore-Factories'!
+!classDefinition: 'DrGFactory class' category: #'DrGeoCore-Factories'!
 DrGFactory class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGMacroFactory category: #'DrGeo-Factories'!
-DrGFactory subclass: #DrGMacroFactory
-	instanceVariableNames: ''
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'DrGeo-Factories'!
-!classDefinition: 'DrGMacroFactory class' category: #'DrGeo-Factories'!
-DrGMacroFactory class
-	instanceVariableNames: 'uniqueInstance'!
-
-!classDefinition: #DrGMathItemFactory category: #'DrGeo-Factories'!
+!classDefinition: #DrGMathItemFactory category: #'DrGeoCore-Factories'!
 DrGFactory subclass: #DrGMathItemFactory
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Factories'!
-!classDefinition: 'DrGMathItemFactory class' category: #'DrGeo-Factories'!
+	category: 'DrGeoCore-Factories'!
+!classDefinition: 'DrGMathItemFactory class' category: #'DrGeoCore-Factories'!
 DrGMathItemFactory class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGSvgCanvas category: #'DrGeo-File'!
+!classDefinition: #DrGSvgCanvas category: #'DrGeoCore-File'!
 Object subclass: #DrGSvgCanvas
 	instanceVariableNames: 'presenter svgTree firstPoint currentPoint pathNode'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-File'!
-!classDefinition: 'DrGSvgCanvas class' category: #'DrGeo-File'!
+	category: 'DrGeoCore-File'!
+!classDefinition: 'DrGSvgCanvas class' category: #'DrGeoCore-File'!
 DrGSvgCanvas class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGeoCommandLineHandler category: #'DrGeo-File'!
+!classDefinition: #DrGeoCommandLineHandler category: #'DrGeoCore-File'!
 Object subclass: #DrGeoCommandLineHandler
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-File'!
-!classDefinition: 'DrGeoCommandLineHandler class' category: #'DrGeo-File'!
+	category: 'DrGeoCore-File'!
+!classDefinition: 'DrGeoCommandLineHandler class' category: #'DrGeoCore-File'!
 DrGeoCommandLineHandler class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGeoXml category: #'DrGeo-File'!
+!classDefinition: #DrGeoXml category: #'DrGeoCore-File'!
 Object subclass: #DrGeoXml
 	instanceVariableNames: 'presenter'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-File'!
-!classDefinition: 'DrGeoXml class' category: #'DrGeo-File'!
+	category: 'DrGeoCore-File'!
+!classDefinition: 'DrGeoXml class' category: #'DrGeoCore-File'!
 DrGeoXml class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGeoTree category: #'DrGeo-Model'!
-Object subclass: #DrGeoTree
-	instanceVariableNames: 'selectedItem presenter'
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'DrGeo-Model'!
-!classDefinition: 'DrGeoTree class' category: #'DrGeo-Model'!
-DrGeoTree class
-	instanceVariableNames: ''!
-
-!classDefinition: #DrGMathItem category: #'DrGeo-Model-Item'!
+!classDefinition: #DrGMathItem category: #'DrGeoCore-Model-Item'!
 Object subclass: #DrGMathItem
 	instanceVariableNames: 'parents name exist id hash'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Model-Item'!
-!classDefinition: 'DrGMathItem class' category: #'DrGeo-Model-Item'!
+	category: 'DrGeoCore-Model-Item'!
+!classDefinition: 'DrGMathItem class' category: #'DrGeoCore-Model-Item'!
 DrGMathItem class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGArcItem category: #'DrGeo-Model-Item'!
+!classDefinition: #DrGArcItem category: #'DrGeoCore-Model-Item'!
 DrGMathItem subclass: #DrGArcItem
 	instanceVariableNames: 'radius center origin length'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Model-Item'!
-!classDefinition: 'DrGArcItem class' category: #'DrGeo-Model-Item'!
+	category: 'DrGeoCore-Model-Item'!
+!classDefinition: 'DrGArcItem class' category: #'DrGeoCore-Model-Item'!
 DrGArcItem class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGArc3ptsItem category: #'DrGeo-Model-Item'!
+!classDefinition: #DrGArc3ptsItem category: #'DrGeoCore-Model-Item'!
 DrGArcItem subclass: #DrGArc3ptsItem
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Model-Item'!
-!classDefinition: 'DrGArc3ptsItem class' category: #'DrGeo-Model-Item'!
+	category: 'DrGeoCore-Model-Item'!
+!classDefinition: 'DrGArc3ptsItem class' category: #'DrGeoCore-Model-Item'!
 DrGArc3ptsItem class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGArcCenterAngleItem category: #'DrGeo-Model-Item'!
+!classDefinition: #DrGArcCenterAngleItem category: #'DrGeoCore-Model-Item'!
 DrGArcItem subclass: #DrGArcCenterAngleItem
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Model-Item'!
-!classDefinition: 'DrGArcCenterAngleItem class' category: #'DrGeo-Model-Item'!
+	category: 'DrGeoCore-Model-Item'!
+!classDefinition: 'DrGArcCenterAngleItem class' category: #'DrGeoCore-Model-Item'!
 DrGArcCenterAngleItem class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGArcHomothetyItem category: #'DrGeo-Model-Item'!
+!classDefinition: #DrGArcHomothetyItem category: #'DrGeoCore-Model-Item'!
 DrGArcItem subclass: #DrGArcHomothetyItem
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Model-Item'!
-!classDefinition: 'DrGArcHomothetyItem class' category: #'DrGeo-Model-Item'!
+	category: 'DrGeoCore-Model-Item'!
+!classDefinition: 'DrGArcHomothetyItem class' category: #'DrGeoCore-Model-Item'!
 DrGArcHomothetyItem class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGArcReflexionItem category: #'DrGeo-Model-Item'!
+!classDefinition: #DrGArcReflexionItem category: #'DrGeoCore-Model-Item'!
 DrGArcItem subclass: #DrGArcReflexionItem
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Model-Item'!
-!classDefinition: 'DrGArcReflexionItem class' category: #'DrGeo-Model-Item'!
+	category: 'DrGeoCore-Model-Item'!
+!classDefinition: 'DrGArcReflexionItem class' category: #'DrGeoCore-Model-Item'!
 DrGArcReflexionItem class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGArcRotationItem category: #'DrGeo-Model-Item'!
+!classDefinition: #DrGArcRotationItem category: #'DrGeoCore-Model-Item'!
 DrGArcItem subclass: #DrGArcRotationItem
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Model-Item'!
-!classDefinition: 'DrGArcRotationItem class' category: #'DrGeo-Model-Item'!
+	category: 'DrGeoCore-Model-Item'!
+!classDefinition: 'DrGArcRotationItem class' category: #'DrGeoCore-Model-Item'!
 DrGArcRotationItem class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGArcSymmetryItem category: #'DrGeo-Model-Item'!
+!classDefinition: #DrGArcSymmetryItem category: #'DrGeoCore-Model-Item'!
 DrGArcItem subclass: #DrGArcSymmetryItem
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Model-Item'!
-!classDefinition: 'DrGArcSymmetryItem class' category: #'DrGeo-Model-Item'!
+	category: 'DrGeoCore-Model-Item'!
+!classDefinition: 'DrGArcSymmetryItem class' category: #'DrGeoCore-Model-Item'!
 DrGArcSymmetryItem class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGArcTranslationItem category: #'DrGeo-Model-Item'!
+!classDefinition: #DrGArcTranslationItem category: #'DrGeoCore-Model-Item'!
 DrGArcItem subclass: #DrGArcTranslationItem
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Model-Item'!
-!classDefinition: 'DrGArcTranslationItem class' category: #'DrGeo-Model-Item'!
+	category: 'DrGeoCore-Model-Item'!
+!classDefinition: 'DrGArcTranslationItem class' category: #'DrGeoCore-Model-Item'!
 DrGArcTranslationItem class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGBitmapItem category: #'DrGeo-Model-Item'!
+!classDefinition: #DrGBitmapItem category: #'DrGeoCore-Model-Item'!
 DrGMathItem subclass: #DrGBitmapItem
 	instanceVariableNames: 'data locked position canvasScaleAtInsertion magnifyBy'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Model-Item'!
-!classDefinition: 'DrGBitmapItem class' category: #'DrGeo-Model-Item'!
+	category: 'DrGeoCore-Model-Item'!
+!classDefinition: 'DrGBitmapItem class' category: #'DrGeoCore-Model-Item'!
 DrGBitmapItem class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGCircleItem category: #'DrGeo-Model-Item'!
+!classDefinition: #DrGCircleItem category: #'DrGeoCore-Model-Item'!
 DrGMathItem subclass: #DrGCircleItem
 	instanceVariableNames: 'radius center'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Model-Item'!
-!classDefinition: 'DrGCircleItem class' category: #'DrGeo-Model-Item'!
+	category: 'DrGeoCore-Model-Item'!
+!classDefinition: 'DrGCircleItem class' category: #'DrGeoCore-Model-Item'!
 DrGCircleItem class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGCircle2ptsItem category: #'DrGeo-Model-Item'!
+!classDefinition: #DrGCircle2ptsItem category: #'DrGeoCore-Model-Item'!
 DrGCircleItem subclass: #DrGCircle2ptsItem
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Model-Item'!
-!classDefinition: 'DrGCircle2ptsItem class' category: #'DrGeo-Model-Item'!
+	category: 'DrGeoCore-Model-Item'!
+!classDefinition: 'DrGCircle2ptsItem class' category: #'DrGeoCore-Model-Item'!
 DrGCircle2ptsItem class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGCircleHomothetyItem category: #'DrGeo-Model-Item'!
+!classDefinition: #DrGCircleHomothetyItem category: #'DrGeoCore-Model-Item'!
 DrGCircleItem subclass: #DrGCircleHomothetyItem
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Model-Item'!
-!classDefinition: 'DrGCircleHomothetyItem class' category: #'DrGeo-Model-Item'!
+	category: 'DrGeoCore-Model-Item'!
+!classDefinition: 'DrGCircleHomothetyItem class' category: #'DrGeoCore-Model-Item'!
 DrGCircleHomothetyItem class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGCircleRadiusItem category: #'DrGeo-Model-Item'!
+!classDefinition: #DrGCircleRadiusItem category: #'DrGeoCore-Model-Item'!
 DrGCircleItem subclass: #DrGCircleRadiusItem
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Model-Item'!
-!classDefinition: 'DrGCircleRadiusItem class' category: #'DrGeo-Model-Item'!
+	category: 'DrGeoCore-Model-Item'!
+!classDefinition: 'DrGCircleRadiusItem class' category: #'DrGeoCore-Model-Item'!
 DrGCircleRadiusItem class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGCircleSegmentItem category: #'DrGeo-Model-Item'!
+!classDefinition: #DrGCircleSegmentItem category: #'DrGeoCore-Model-Item'!
 DrGCircleRadiusItem subclass: #DrGCircleSegmentItem
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Model-Item'!
-!classDefinition: 'DrGCircleSegmentItem class' category: #'DrGeo-Model-Item'!
+	category: 'DrGeoCore-Model-Item'!
+!classDefinition: 'DrGCircleSegmentItem class' category: #'DrGeoCore-Model-Item'!
 DrGCircleSegmentItem class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGCircleReflexionItem category: #'DrGeo-Model-Item'!
+!classDefinition: #DrGCircleReflexionItem category: #'DrGeoCore-Model-Item'!
 DrGCircleItem subclass: #DrGCircleReflexionItem
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Model-Item'!
-!classDefinition: 'DrGCircleReflexionItem class' category: #'DrGeo-Model-Item'!
+	category: 'DrGeoCore-Model-Item'!
+!classDefinition: 'DrGCircleReflexionItem class' category: #'DrGeoCore-Model-Item'!
 DrGCircleReflexionItem class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGCircleRotationItem category: #'DrGeo-Model-Item'!
+!classDefinition: #DrGCircleRotationItem category: #'DrGeoCore-Model-Item'!
 DrGCircleItem subclass: #DrGCircleRotationItem
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Model-Item'!
-!classDefinition: 'DrGCircleRotationItem class' category: #'DrGeo-Model-Item'!
+	category: 'DrGeoCore-Model-Item'!
+!classDefinition: 'DrGCircleRotationItem class' category: #'DrGeoCore-Model-Item'!
 DrGCircleRotationItem class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGCircleSymmetryItem category: #'DrGeo-Model-Item'!
+!classDefinition: #DrGCircleSymmetryItem category: #'DrGeoCore-Model-Item'!
 DrGCircleItem subclass: #DrGCircleSymmetryItem
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Model-Item'!
-!classDefinition: 'DrGCircleSymmetryItem class' category: #'DrGeo-Model-Item'!
+	category: 'DrGeoCore-Model-Item'!
+!classDefinition: 'DrGCircleSymmetryItem class' category: #'DrGeoCore-Model-Item'!
 DrGCircleSymmetryItem class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGCircleTranslationItem category: #'DrGeo-Model-Item'!
+!classDefinition: #DrGCircleTranslationItem category: #'DrGeoCore-Model-Item'!
 DrGCircleItem subclass: #DrGCircleTranslationItem
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Model-Item'!
-!classDefinition: 'DrGCircleTranslationItem class' category: #'DrGeo-Model-Item'!
+	category: 'DrGeoCore-Model-Item'!
+!classDefinition: 'DrGCircleTranslationItem class' category: #'DrGeoCore-Model-Item'!
 DrGCircleTranslationItem class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGCompositeItem category: #'DrGeo-Model-Item'!
+!classDefinition: #DrGCompositeItem category: #'DrGeoCore-Model-Item'!
 DrGMathItem subclass: #DrGCompositeItem
 	instanceVariableNames: 'subItems'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Model-Item'!
-!classDefinition: 'DrGCompositeItem class' category: #'DrGeo-Model-Item'!
+	category: 'DrGeoCore-Model-Item'!
+!classDefinition: 'DrGCompositeItem class' category: #'DrGeoCore-Model-Item'!
 DrGCompositeItem class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGDirectionItem category: #'DrGeo-Model-Item'!
+!classDefinition: #DrGDirectionItem category: #'DrGeoCore-Model-Item'!
 DrGMathItem subclass: #DrGDirectionItem
 	instanceVariableNames: 'origin vector'
 	classVariableNames: 'Inv2Pi InvPi'
 	poolDictionaries: ''
-	category: 'DrGeo-Model-Item'!
-!classDefinition: 'DrGDirectionItem class' category: #'DrGeo-Model-Item'!
+	category: 'DrGeoCore-Model-Item'!
+!classDefinition: 'DrGDirectionItem class' category: #'DrGeoCore-Model-Item'!
 DrGDirectionItem class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGLineItem category: #'DrGeo-Model-Item'!
+!classDefinition: #DrGLineItem category: #'DrGeoCore-Model-Item'!
 DrGDirectionItem subclass: #DrGLineItem
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Model-Item'!
-!classDefinition: 'DrGLineItem class' category: #'DrGeo-Model-Item'!
+	category: 'DrGeoCore-Model-Item'!
+!classDefinition: 'DrGLineItem class' category: #'DrGeoCore-Model-Item'!
 DrGLineItem class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGAngleBisector3ptsItem category: #'DrGeo-Model-Item'!
+!classDefinition: #DrGAngleBisector3ptsItem category: #'DrGeoCore-Model-Item'!
 DrGLineItem subclass: #DrGAngleBisector3ptsItem
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Model-Item'!
-!classDefinition: 'DrGAngleBisector3ptsItem class' category: #'DrGeo-Model-Item'!
+	category: 'DrGeoCore-Model-Item'!
+!classDefinition: 'DrGAngleBisector3ptsItem class' category: #'DrGeoCore-Model-Item'!
 DrGAngleBisector3ptsItem class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGLine2ptsItem category: #'DrGeo-Model-Item'!
+!classDefinition: #DrGLine2ptsItem category: #'DrGeoCore-Model-Item'!
 DrGLineItem subclass: #DrGLine2ptsItem
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Model-Item'!
-!classDefinition: 'DrGLine2ptsItem class' category: #'DrGeo-Model-Item'!
+	category: 'DrGeoCore-Model-Item'!
+!classDefinition: 'DrGLine2ptsItem class' category: #'DrGeoCore-Model-Item'!
 DrGLine2ptsItem class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGLineAngleBisectorItem category: #'DrGeo-Model-Item'!
+!classDefinition: #DrGLineAngleBisectorItem category: #'DrGeoCore-Model-Item'!
 DrGLineItem subclass: #DrGLineAngleBisectorItem
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Model-Item'!
-!classDefinition: 'DrGLineAngleBisectorItem class' category: #'DrGeo-Model-Item'!
+	category: 'DrGeoCore-Model-Item'!
+!classDefinition: 'DrGLineAngleBisectorItem class' category: #'DrGeoCore-Model-Item'!
 DrGLineAngleBisectorItem class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGLineHomothetyItem category: #'DrGeo-Model-Item'!
+!classDefinition: #DrGLineHomothetyItem category: #'DrGeoCore-Model-Item'!
 DrGLineItem subclass: #DrGLineHomothetyItem
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Model-Item'!
-!classDefinition: 'DrGLineHomothetyItem class' category: #'DrGeo-Model-Item'!
+	category: 'DrGeoCore-Model-Item'!
+!classDefinition: 'DrGLineHomothetyItem class' category: #'DrGeoCore-Model-Item'!
 DrGLineHomothetyItem class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGLineParallelItem category: #'DrGeo-Model-Item'!
+!classDefinition: #DrGLineParallelItem category: #'DrGeoCore-Model-Item'!
 DrGLineItem subclass: #DrGLineParallelItem
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Model-Item'!
-!classDefinition: 'DrGLineParallelItem class' category: #'DrGeo-Model-Item'!
+	category: 'DrGeoCore-Model-Item'!
+!classDefinition: 'DrGLineParallelItem class' category: #'DrGeoCore-Model-Item'!
 DrGLineParallelItem class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGLinePerpendicularItem category: #'DrGeo-Model-Item'!
+!classDefinition: #DrGLinePerpendicularItem category: #'DrGeoCore-Model-Item'!
 DrGLineParallelItem subclass: #DrGLinePerpendicularItem
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Model-Item'!
-!classDefinition: 'DrGLinePerpendicularItem class' category: #'DrGeo-Model-Item'!
+	category: 'DrGeoCore-Model-Item'!
+!classDefinition: 'DrGLinePerpendicularItem class' category: #'DrGeoCore-Model-Item'!
 DrGLinePerpendicularItem class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGLineReflexionItem category: #'DrGeo-Model-Item'!
+!classDefinition: #DrGLineReflexionItem category: #'DrGeoCore-Model-Item'!
 DrGLineItem subclass: #DrGLineReflexionItem
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Model-Item'!
-!classDefinition: 'DrGLineReflexionItem class' category: #'DrGeo-Model-Item'!
+	category: 'DrGeoCore-Model-Item'!
+!classDefinition: 'DrGLineReflexionItem class' category: #'DrGeoCore-Model-Item'!
 DrGLineReflexionItem class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGLineRotationItem category: #'DrGeo-Model-Item'!
+!classDefinition: #DrGLineRotationItem category: #'DrGeoCore-Model-Item'!
 DrGLineItem subclass: #DrGLineRotationItem
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Model-Item'!
-!classDefinition: 'DrGLineRotationItem class' category: #'DrGeo-Model-Item'!
+	category: 'DrGeoCore-Model-Item'!
+!classDefinition: 'DrGLineRotationItem class' category: #'DrGeoCore-Model-Item'!
 DrGLineRotationItem class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGLineSymmetryItem category: #'DrGeo-Model-Item'!
+!classDefinition: #DrGLineSymmetryItem category: #'DrGeoCore-Model-Item'!
 DrGLineItem subclass: #DrGLineSymmetryItem
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Model-Item'!
-!classDefinition: 'DrGLineSymmetryItem class' category: #'DrGeo-Model-Item'!
+	category: 'DrGeoCore-Model-Item'!
+!classDefinition: 'DrGLineSymmetryItem class' category: #'DrGeoCore-Model-Item'!
 DrGLineSymmetryItem class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGLineTranslationItem category: #'DrGeo-Model-Item'!
+!classDefinition: #DrGLineTranslationItem category: #'DrGeoCore-Model-Item'!
 DrGLineItem subclass: #DrGLineTranslationItem
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Model-Item'!
-!classDefinition: 'DrGLineTranslationItem class' category: #'DrGeo-Model-Item'!
+	category: 'DrGeoCore-Model-Item'!
+!classDefinition: 'DrGLineTranslationItem class' category: #'DrGeoCore-Model-Item'!
 DrGLineTranslationItem class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGPerpendicularBisectorItem category: #'DrGeo-Model-Item'!
+!classDefinition: #DrGPerpendicularBisectorItem category: #'DrGeoCore-Model-Item'!
 DrGLineItem subclass: #DrGPerpendicularBisectorItem
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Model-Item'!
-!classDefinition: 'DrGPerpendicularBisectorItem class' category: #'DrGeo-Model-Item'!
+	category: 'DrGeoCore-Model-Item'!
+!classDefinition: 'DrGPerpendicularBisectorItem class' category: #'DrGeoCore-Model-Item'!
 DrGPerpendicularBisectorItem class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGLinePerpendicularBisector2ptsItem category: #'DrGeo-Model-Item'!
+!classDefinition: #DrGLinePerpendicularBisector2ptsItem category: #'DrGeoCore-Model-Item'!
 DrGPerpendicularBisectorItem subclass: #DrGLinePerpendicularBisector2ptsItem
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Model-Item'!
-!classDefinition: 'DrGLinePerpendicularBisector2ptsItem class' category: #'DrGeo-Model-Item'!
+	category: 'DrGeoCore-Model-Item'!
+!classDefinition: 'DrGLinePerpendicularBisector2ptsItem class' category: #'DrGeoCore-Model-Item'!
 DrGLinePerpendicularBisector2ptsItem class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGRayItem category: #'DrGeo-Model-Item'!
+!classDefinition: #DrGRayItem category: #'DrGeoCore-Model-Item'!
 DrGDirectionItem subclass: #DrGRayItem
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Model-Item'!
-!classDefinition: 'DrGRayItem class' category: #'DrGeo-Model-Item'!
+	category: 'DrGeoCore-Model-Item'!
+!classDefinition: 'DrGRayItem class' category: #'DrGeoCore-Model-Item'!
 DrGRayItem class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGRay2ptsItem category: #'DrGeo-Model-Item'!
+!classDefinition: #DrGRay2ptsItem category: #'DrGeoCore-Model-Item'!
 DrGRayItem subclass: #DrGRay2ptsItem
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Model-Item'!
-!classDefinition: 'DrGRay2ptsItem class' category: #'DrGeo-Model-Item'!
+	category: 'DrGeoCore-Model-Item'!
+!classDefinition: 'DrGRay2ptsItem class' category: #'DrGeoCore-Model-Item'!
 DrGRay2ptsItem class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGRayHomothetyItem category: #'DrGeo-Model-Item'!
+!classDefinition: #DrGRayHomothetyItem category: #'DrGeoCore-Model-Item'!
 DrGRayItem subclass: #DrGRayHomothetyItem
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Model-Item'!
-!classDefinition: 'DrGRayHomothetyItem class' category: #'DrGeo-Model-Item'!
+	category: 'DrGeoCore-Model-Item'!
+!classDefinition: 'DrGRayHomothetyItem class' category: #'DrGeoCore-Model-Item'!
 DrGRayHomothetyItem class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGRayReflexionItem category: #'DrGeo-Model-Item'!
+!classDefinition: #DrGRayReflexionItem category: #'DrGeoCore-Model-Item'!
 DrGRayItem subclass: #DrGRayReflexionItem
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Model-Item'!
-!classDefinition: 'DrGRayReflexionItem class' category: #'DrGeo-Model-Item'!
+	category: 'DrGeoCore-Model-Item'!
+!classDefinition: 'DrGRayReflexionItem class' category: #'DrGeoCore-Model-Item'!
 DrGRayReflexionItem class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGRayRotationItem category: #'DrGeo-Model-Item'!
+!classDefinition: #DrGRayRotationItem category: #'DrGeoCore-Model-Item'!
 DrGRayItem subclass: #DrGRayRotationItem
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Model-Item'!
-!classDefinition: 'DrGRayRotationItem class' category: #'DrGeo-Model-Item'!
+	category: 'DrGeoCore-Model-Item'!
+!classDefinition: 'DrGRayRotationItem class' category: #'DrGeoCore-Model-Item'!
 DrGRayRotationItem class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGRaySymmetryItem category: #'DrGeo-Model-Item'!
+!classDefinition: #DrGRaySymmetryItem category: #'DrGeoCore-Model-Item'!
 DrGRayItem subclass: #DrGRaySymmetryItem
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Model-Item'!
-!classDefinition: 'DrGRaySymmetryItem class' category: #'DrGeo-Model-Item'!
+	category: 'DrGeoCore-Model-Item'!
+!classDefinition: 'DrGRaySymmetryItem class' category: #'DrGeoCore-Model-Item'!
 DrGRaySymmetryItem class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGRayTranslationItem category: #'DrGeo-Model-Item'!
+!classDefinition: #DrGRayTranslationItem category: #'DrGeoCore-Model-Item'!
 DrGRayItem subclass: #DrGRayTranslationItem
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Model-Item'!
-!classDefinition: 'DrGRayTranslationItem class' category: #'DrGeo-Model-Item'!
+	category: 'DrGeoCore-Model-Item'!
+!classDefinition: 'DrGRayTranslationItem class' category: #'DrGeoCore-Model-Item'!
 DrGRayTranslationItem class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGSegmentItem category: #'DrGeo-Model-Item'!
+!classDefinition: #DrGSegmentItem category: #'DrGeoCore-Model-Item'!
 DrGDirectionItem subclass: #DrGSegmentItem
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Model-Item'!
-!classDefinition: 'DrGSegmentItem class' category: #'DrGeo-Model-Item'!
+	category: 'DrGeoCore-Model-Item'!
+!classDefinition: 'DrGSegmentItem class' category: #'DrGeoCore-Model-Item'!
 DrGSegmentItem class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGSegment2ptsItem category: #'DrGeo-Model-Item'!
+!classDefinition: #DrGSegment2ptsItem category: #'DrGeoCore-Model-Item'!
 DrGSegmentItem subclass: #DrGSegment2ptsItem
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Model-Item'!
-!classDefinition: 'DrGSegment2ptsItem class' category: #'DrGeo-Model-Item'!
+	category: 'DrGeoCore-Model-Item'!
+!classDefinition: 'DrGSegment2ptsItem class' category: #'DrGeoCore-Model-Item'!
 DrGSegment2ptsItem class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGSegmentHomothetyItem category: #'DrGeo-Model-Item'!
+!classDefinition: #DrGSegmentHomothetyItem category: #'DrGeoCore-Model-Item'!
 DrGSegmentItem subclass: #DrGSegmentHomothetyItem
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Model-Item'!
-!classDefinition: 'DrGSegmentHomothetyItem class' category: #'DrGeo-Model-Item'!
+	category: 'DrGeoCore-Model-Item'!
+!classDefinition: 'DrGSegmentHomothetyItem class' category: #'DrGeoCore-Model-Item'!
 DrGSegmentHomothetyItem class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGSegmentReflexionItem category: #'DrGeo-Model-Item'!
+!classDefinition: #DrGSegmentReflexionItem category: #'DrGeoCore-Model-Item'!
 DrGSegmentItem subclass: #DrGSegmentReflexionItem
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Model-Item'!
-!classDefinition: 'DrGSegmentReflexionItem class' category: #'DrGeo-Model-Item'!
+	category: 'DrGeoCore-Model-Item'!
+!classDefinition: 'DrGSegmentReflexionItem class' category: #'DrGeoCore-Model-Item'!
 DrGSegmentReflexionItem class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGSegmentRotationItem category: #'DrGeo-Model-Item'!
+!classDefinition: #DrGSegmentRotationItem category: #'DrGeoCore-Model-Item'!
 DrGSegmentItem subclass: #DrGSegmentRotationItem
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Model-Item'!
-!classDefinition: 'DrGSegmentRotationItem class' category: #'DrGeo-Model-Item'!
+	category: 'DrGeoCore-Model-Item'!
+!classDefinition: 'DrGSegmentRotationItem class' category: #'DrGeoCore-Model-Item'!
 DrGSegmentRotationItem class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGSegmentSymmetryItem category: #'DrGeo-Model-Item'!
+!classDefinition: #DrGSegmentSymmetryItem category: #'DrGeoCore-Model-Item'!
 DrGSegmentItem subclass: #DrGSegmentSymmetryItem
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Model-Item'!
-!classDefinition: 'DrGSegmentSymmetryItem class' category: #'DrGeo-Model-Item'!
+	category: 'DrGeoCore-Model-Item'!
+!classDefinition: 'DrGSegmentSymmetryItem class' category: #'DrGeoCore-Model-Item'!
 DrGSegmentSymmetryItem class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGSegmentTranslationItem category: #'DrGeo-Model-Item'!
+!classDefinition: #DrGSegmentTranslationItem category: #'DrGeoCore-Model-Item'!
 DrGSegmentItem subclass: #DrGSegmentTranslationItem
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Model-Item'!
-!classDefinition: 'DrGSegmentTranslationItem class' category: #'DrGeo-Model-Item'!
+	category: 'DrGeoCore-Model-Item'!
+!classDefinition: 'DrGSegmentTranslationItem class' category: #'DrGeoCore-Model-Item'!
 DrGSegmentTranslationItem class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGVectorItem category: #'DrGeo-Model-Item'!
+!classDefinition: #DrGVectorItem category: #'DrGeoCore-Model-Item'!
 DrGSegmentItem subclass: #DrGVectorItem
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Model-Item'!
-!classDefinition: 'DrGVectorItem class' category: #'DrGeo-Model-Item'!
+	category: 'DrGeoCore-Model-Item'!
+!classDefinition: 'DrGVectorItem class' category: #'DrGeoCore-Model-Item'!
 DrGVectorItem class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGVector2ptsItem category: #'DrGeo-Model-Item'!
+!classDefinition: #DrGVector2ptsItem category: #'DrGeoCore-Model-Item'!
 DrGVectorItem subclass: #DrGVector2ptsItem
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Model-Item'!
-!classDefinition: 'DrGVector2ptsItem class' category: #'DrGeo-Model-Item'!
+	category: 'DrGeoCore-Model-Item'!
+!classDefinition: 'DrGVector2ptsItem class' category: #'DrGeoCore-Model-Item'!
 DrGVector2ptsItem class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGVectorHomothetyItem category: #'DrGeo-Model-Item'!
+!classDefinition: #DrGVectorHomothetyItem category: #'DrGeoCore-Model-Item'!
 DrGVectorItem subclass: #DrGVectorHomothetyItem
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Model-Item'!
-!classDefinition: 'DrGVectorHomothetyItem class' category: #'DrGeo-Model-Item'!
+	category: 'DrGeoCore-Model-Item'!
+!classDefinition: 'DrGVectorHomothetyItem class' category: #'DrGeoCore-Model-Item'!
 DrGVectorHomothetyItem class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGVectorReflexionItem category: #'DrGeo-Model-Item'!
+!classDefinition: #DrGVectorReflexionItem category: #'DrGeoCore-Model-Item'!
 DrGVectorItem subclass: #DrGVectorReflexionItem
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Model-Item'!
-!classDefinition: 'DrGVectorReflexionItem class' category: #'DrGeo-Model-Item'!
+	category: 'DrGeoCore-Model-Item'!
+!classDefinition: 'DrGVectorReflexionItem class' category: #'DrGeoCore-Model-Item'!
 DrGVectorReflexionItem class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGVectorRotationItem category: #'DrGeo-Model-Item'!
+!classDefinition: #DrGVectorRotationItem category: #'DrGeoCore-Model-Item'!
 DrGVectorItem subclass: #DrGVectorRotationItem
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Model-Item'!
-!classDefinition: 'DrGVectorRotationItem class' category: #'DrGeo-Model-Item'!
+	category: 'DrGeoCore-Model-Item'!
+!classDefinition: 'DrGVectorRotationItem class' category: #'DrGeoCore-Model-Item'!
 DrGVectorRotationItem class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGVectorSymmetryItem category: #'DrGeo-Model-Item'!
+!classDefinition: #DrGVectorSymmetryItem category: #'DrGeoCore-Model-Item'!
 DrGVectorItem subclass: #DrGVectorSymmetryItem
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Model-Item'!
-!classDefinition: 'DrGVectorSymmetryItem class' category: #'DrGeo-Model-Item'!
+	category: 'DrGeoCore-Model-Item'!
+!classDefinition: 'DrGVectorSymmetryItem class' category: #'DrGeoCore-Model-Item'!
 DrGVectorSymmetryItem class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGLocus2ptsItem category: #'DrGeo-Model-Item'!
+!classDefinition: #DrGLocus2ptsItem category: #'DrGeoCore-Model-Item'!
 DrGMathItem subclass: #DrGLocus2ptsItem
 	instanceVariableNames: 'samplesQty p'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Model-Item'!
-!classDefinition: 'DrGLocus2ptsItem class' category: #'DrGeo-Model-Item'!
+	category: 'DrGeoCore-Model-Item'!
+!classDefinition: 'DrGLocus2ptsItem class' category: #'DrGeoCore-Model-Item'!
 DrGLocus2ptsItem class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGLocusTranslationItem category: #'DrGeo-Model-Item'!
+!classDefinition: #DrGLocusTranslationItem category: #'DrGeoCore-Model-Item'!
 DrGLocus2ptsItem subclass: #DrGLocusTranslationItem
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Model-Item'!
-!classDefinition: 'DrGLocusTranslationItem class' category: #'DrGeo-Model-Item'!
+	category: 'DrGeoCore-Model-Item'!
+!classDefinition: 'DrGLocusTranslationItem class' category: #'DrGeoCore-Model-Item'!
 DrGLocusTranslationItem class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGLocusHomothetyItem category: #'DrGeo-Model-Item'!
+!classDefinition: #DrGLocusHomothetyItem category: #'DrGeoCore-Model-Item'!
 DrGLocusTranslationItem subclass: #DrGLocusHomothetyItem
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Model-Item'!
-!classDefinition: 'DrGLocusHomothetyItem class' category: #'DrGeo-Model-Item'!
+	category: 'DrGeoCore-Model-Item'!
+!classDefinition: 'DrGLocusHomothetyItem class' category: #'DrGeoCore-Model-Item'!
 DrGLocusHomothetyItem class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGLocusReflexionItem category: #'DrGeo-Model-Item'!
+!classDefinition: #DrGLocusReflexionItem category: #'DrGeoCore-Model-Item'!
 DrGLocusTranslationItem subclass: #DrGLocusReflexionItem
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Model-Item'!
-!classDefinition: 'DrGLocusReflexionItem class' category: #'DrGeo-Model-Item'!
+	category: 'DrGeoCore-Model-Item'!
+!classDefinition: 'DrGLocusReflexionItem class' category: #'DrGeoCore-Model-Item'!
 DrGLocusReflexionItem class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGLocusRotationItem category: #'DrGeo-Model-Item'!
+!classDefinition: #DrGLocusRotationItem category: #'DrGeoCore-Model-Item'!
 DrGLocusTranslationItem subclass: #DrGLocusRotationItem
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Model-Item'!
-!classDefinition: 'DrGLocusRotationItem class' category: #'DrGeo-Model-Item'!
+	category: 'DrGeoCore-Model-Item'!
+!classDefinition: 'DrGLocusRotationItem class' category: #'DrGeoCore-Model-Item'!
 DrGLocusRotationItem class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGLocusSymmetryItem category: #'DrGeo-Model-Item'!
+!classDefinition: #DrGLocusSymmetryItem category: #'DrGeoCore-Model-Item'!
 DrGLocusTranslationItem subclass: #DrGLocusSymmetryItem
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Model-Item'!
-!classDefinition: 'DrGLocusSymmetryItem class' category: #'DrGeo-Model-Item'!
+	category: 'DrGeoCore-Model-Item'!
+!classDefinition: 'DrGLocusSymmetryItem class' category: #'DrGeoCore-Model-Item'!
 DrGLocusSymmetryItem class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGPointItem category: #'DrGeo-Model-Item'!
+!classDefinition: #DrGPointItem category: #'DrGeoCore-Model-Item'!
 DrGMathItem subclass: #DrGPointItem
 	instanceVariableNames: 'point'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Model-Item'!
-!classDefinition: 'DrGPointItem class' category: #'DrGeo-Model-Item'!
+	category: 'DrGeoCore-Model-Item'!
+!classDefinition: 'DrGPointItem class' category: #'DrGeoCore-Model-Item'!
 DrGPointItem class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGPointBlockItem category: #'DrGeo-Model-Item'!
+!classDefinition: #DrGPointBlockItem category: #'DrGeoCore-Model-Item'!
 DrGPointItem subclass: #DrGPointBlockItem
 	instanceVariableNames: 'pointBlock'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Model-Item'!
-!classDefinition: 'DrGPointBlockItem class' category: #'DrGeo-Model-Item'!
+	category: 'DrGeoCore-Model-Item'!
+!classDefinition: 'DrGPointBlockItem class' category: #'DrGeoCore-Model-Item'!
 DrGPointBlockItem class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGPointCoordinateItem category: #'DrGeo-Model-Item'!
+!classDefinition: #DrGPointCoordinateItem category: #'DrGeoCore-Model-Item'!
 DrGPointItem subclass: #DrGPointCoordinateItem
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Model-Item'!
-!classDefinition: 'DrGPointCoordinateItem class' category: #'DrGeo-Model-Item'!
+	category: 'DrGeoCore-Model-Item'!
+!classDefinition: 'DrGPointCoordinateItem class' category: #'DrGeoCore-Model-Item'!
 DrGPointCoordinateItem class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGPointFreeItem category: #'DrGeo-Model-Item'!
+!classDefinition: #DrGPointFreeItem category: #'DrGeoCore-Model-Item'!
 DrGPointItem subclass: #DrGPointFreeItem
 	instanceVariableNames: 'locked'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Model-Item'!
-!classDefinition: 'DrGPointFreeItem class' category: #'DrGeo-Model-Item'!
+	category: 'DrGeoCore-Model-Item'!
+!classDefinition: 'DrGPointFreeItem class' category: #'DrGeoCore-Model-Item'!
 DrGPointFreeItem class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGPointHomothetyItem category: #'DrGeo-Model-Item'!
+!classDefinition: #DrGPointHomothetyItem category: #'DrGeoCore-Model-Item'!
 DrGPointItem subclass: #DrGPointHomothetyItem
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Model-Item'!
-!classDefinition: 'DrGPointHomothetyItem class' category: #'DrGeo-Model-Item'!
+	category: 'DrGeoCore-Model-Item'!
+!classDefinition: 'DrGPointHomothetyItem class' category: #'DrGeoCore-Model-Item'!
 DrGPointHomothetyItem class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGPointIntersectionItem category: #'DrGeo-Model-Item'!
+!classDefinition: #DrGPointIntersectionItem category: #'DrGeoCore-Model-Item'!
 DrGPointItem subclass: #DrGPointIntersectionItem
 	instanceVariableNames: 'k'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Model-Item'!
-!classDefinition: 'DrGPointIntersectionItem class' category: #'DrGeo-Model-Item'!
+	category: 'DrGeoCore-Model-Item'!
+!classDefinition: 'DrGPointIntersectionItem class' category: #'DrGeoCore-Model-Item'!
 DrGPointIntersectionItem class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGPointMiddle2ptsItem category: #'DrGeo-Model-Item'!
+!classDefinition: #DrGPointMiddle2ptsItem category: #'DrGeoCore-Model-Item'!
 DrGPointItem subclass: #DrGPointMiddle2ptsItem
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Model-Item'!
-!classDefinition: 'DrGPointMiddle2ptsItem class' category: #'DrGeo-Model-Item'!
+	category: 'DrGeoCore-Model-Item'!
+!classDefinition: 'DrGPointMiddle2ptsItem class' category: #'DrGeoCore-Model-Item'!
 DrGPointMiddle2ptsItem class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGPointMiddlesegmentItem category: #'DrGeo-Model-Item'!
+!classDefinition: #DrGPointMiddlesegmentItem category: #'DrGeoCore-Model-Item'!
 DrGPointMiddle2ptsItem subclass: #DrGPointMiddlesegmentItem
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Model-Item'!
-!classDefinition: 'DrGPointMiddlesegmentItem class' category: #'DrGeo-Model-Item'!
+	category: 'DrGeoCore-Model-Item'!
+!classDefinition: 'DrGPointMiddlesegmentItem class' category: #'DrGeoCore-Model-Item'!
 DrGPointMiddlesegmentItem class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGPointOncurveItem category: #'DrGeo-Model-Item'!
+!classDefinition: #DrGPointOncurveItem category: #'DrGeoCore-Model-Item'!
 DrGPointItem subclass: #DrGPointOncurveItem
 	instanceVariableNames: 'abscissa locked'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Model-Item'!
-!classDefinition: 'DrGPointOncurveItem class' category: #'DrGeo-Model-Item'!
+	category: 'DrGeoCore-Model-Item'!
+!classDefinition: 'DrGPointOncurveItem class' category: #'DrGeoCore-Model-Item'!
 DrGPointOncurveItem class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGPointReflexionItem category: #'DrGeo-Model-Item'!
+!classDefinition: #DrGPointReflexionItem category: #'DrGeoCore-Model-Item'!
 DrGPointItem subclass: #DrGPointReflexionItem
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Model-Item'!
-!classDefinition: 'DrGPointReflexionItem class' category: #'DrGeo-Model-Item'!
+	category: 'DrGeoCore-Model-Item'!
+!classDefinition: 'DrGPointReflexionItem class' category: #'DrGeoCore-Model-Item'!
 DrGPointReflexionItem class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGPointRotationItem category: #'DrGeo-Model-Item'!
+!classDefinition: #DrGPointRotationItem category: #'DrGeoCore-Model-Item'!
 DrGPointItem subclass: #DrGPointRotationItem
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Model-Item'!
-!classDefinition: 'DrGPointRotationItem class' category: #'DrGeo-Model-Item'!
+	category: 'DrGeoCore-Model-Item'!
+!classDefinition: 'DrGPointRotationItem class' category: #'DrGeoCore-Model-Item'!
 DrGPointRotationItem class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGPointScriptItem category: #'DrGeo-Model-Item'!
+!classDefinition: #DrGPointScriptItem category: #'DrGeoCore-Model-Item'!
 DrGPointItem subclass: #DrGPointScriptItem
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Model-Item'!
-!classDefinition: 'DrGPointScriptItem class' category: #'DrGeo-Model-Item'!
+	category: 'DrGeoCore-Model-Item'!
+!classDefinition: 'DrGPointScriptItem class' category: #'DrGeoCore-Model-Item'!
 DrGPointScriptItem class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGPointSymmetryItem category: #'DrGeo-Model-Item'!
+!classDefinition: #DrGPointSymmetryItem category: #'DrGeoCore-Model-Item'!
 DrGPointItem subclass: #DrGPointSymmetryItem
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Model-Item'!
-!classDefinition: 'DrGPointSymmetryItem class' category: #'DrGeo-Model-Item'!
+	category: 'DrGeoCore-Model-Item'!
+!classDefinition: 'DrGPointSymmetryItem class' category: #'DrGeoCore-Model-Item'!
 DrGPointSymmetryItem class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGPointTranslationItem category: #'DrGeo-Model-Item'!
+!classDefinition: #DrGPointTranslationItem category: #'DrGeoCore-Model-Item'!
 DrGPointItem subclass: #DrGPointTranslationItem
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Model-Item'!
-!classDefinition: 'DrGPointTranslationItem class' category: #'DrGeo-Model-Item'!
+	category: 'DrGeoCore-Model-Item'!
+!classDefinition: 'DrGPointTranslationItem class' category: #'DrGeoCore-Model-Item'!
 DrGPointTranslationItem class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGPolygonItem category: #'DrGeo-Model-Item'!
+!classDefinition: #DrGPolygonItem category: #'DrGeoCore-Model-Item'!
 DrGMathItem subclass: #DrGPolygonItem
 	instanceVariableNames: 'points length sidesLength'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Model-Item'!
-!classDefinition: 'DrGPolygonItem class' category: #'DrGeo-Model-Item'!
+	category: 'DrGeoCore-Model-Item'!
+!classDefinition: 'DrGPolygonItem class' category: #'DrGeoCore-Model-Item'!
 DrGPolygonItem class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGPolygonHomothetyItem category: #'DrGeo-Model-Item'!
+!classDefinition: #DrGPolygonHomothetyItem category: #'DrGeoCore-Model-Item'!
 DrGPolygonItem subclass: #DrGPolygonHomothetyItem
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Model-Item'!
-!classDefinition: 'DrGPolygonHomothetyItem class' category: #'DrGeo-Model-Item'!
+	category: 'DrGeoCore-Model-Item'!
+!classDefinition: 'DrGPolygonHomothetyItem class' category: #'DrGeoCore-Model-Item'!
 DrGPolygonHomothetyItem class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGPolygonNptsItem category: #'DrGeo-Model-Item'!
+!classDefinition: #DrGPolygonNptsItem category: #'DrGeoCore-Model-Item'!
 DrGPolygonItem subclass: #DrGPolygonNptsItem
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Model-Item'!
-!classDefinition: 'DrGPolygonNptsItem class' category: #'DrGeo-Model-Item'!
+	category: 'DrGeoCore-Model-Item'!
+!classDefinition: 'DrGPolygonNptsItem class' category: #'DrGeoCore-Model-Item'!
 DrGPolygonNptsItem class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGPolygonReflexionItem category: #'DrGeo-Model-Item'!
+!classDefinition: #DrGPolygonReflexionItem category: #'DrGeoCore-Model-Item'!
 DrGPolygonItem subclass: #DrGPolygonReflexionItem
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Model-Item'!
-!classDefinition: 'DrGPolygonReflexionItem class' category: #'DrGeo-Model-Item'!
+	category: 'DrGeoCore-Model-Item'!
+!classDefinition: 'DrGPolygonReflexionItem class' category: #'DrGeoCore-Model-Item'!
 DrGPolygonReflexionItem class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGPolygonRegularItem category: #'DrGeo-Model-Item'!
+!classDefinition: #DrGPolygonRegularItem category: #'DrGeoCore-Model-Item'!
 DrGPolygonItem subclass: #DrGPolygonRegularItem
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Model-Item'!
-!classDefinition: 'DrGPolygonRegularItem class' category: #'DrGeo-Model-Item'!
+	category: 'DrGeoCore-Model-Item'!
+!classDefinition: 'DrGPolygonRegularItem class' category: #'DrGeoCore-Model-Item'!
 DrGPolygonRegularItem class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGPolygonRotationItem category: #'DrGeo-Model-Item'!
+!classDefinition: #DrGPolygonRotationItem category: #'DrGeoCore-Model-Item'!
 DrGPolygonItem subclass: #DrGPolygonRotationItem
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Model-Item'!
-!classDefinition: 'DrGPolygonRotationItem class' category: #'DrGeo-Model-Item'!
+	category: 'DrGeoCore-Model-Item'!
+!classDefinition: 'DrGPolygonRotationItem class' category: #'DrGeoCore-Model-Item'!
 DrGPolygonRotationItem class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGPolygonSymmetryItem category: #'DrGeo-Model-Item'!
+!classDefinition: #DrGPolygonSymmetryItem category: #'DrGeoCore-Model-Item'!
 DrGPolygonItem subclass: #DrGPolygonSymmetryItem
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Model-Item'!
-!classDefinition: 'DrGPolygonSymmetryItem class' category: #'DrGeo-Model-Item'!
+	category: 'DrGeoCore-Model-Item'!
+!classDefinition: 'DrGPolygonSymmetryItem class' category: #'DrGeoCore-Model-Item'!
 DrGPolygonSymmetryItem class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGPolygonTranslationItem category: #'DrGeo-Model-Item'!
+!classDefinition: #DrGPolygonTranslationItem category: #'DrGeoCore-Model-Item'!
 DrGPolygonItem subclass: #DrGPolygonTranslationItem
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Model-Item'!
-!classDefinition: 'DrGPolygonTranslationItem class' category: #'DrGeo-Model-Item'!
+	category: 'DrGeoCore-Model-Item'!
+!classDefinition: 'DrGPolygonTranslationItem class' category: #'DrGeoCore-Model-Item'!
 DrGPolygonTranslationItem class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGTextItem category: #'DrGeo-Model-Item'!
+!classDefinition: #DrGTextItem category: #'DrGeoCore-Model-Item'!
 DrGMathItem subclass: #DrGTextItem
 	instanceVariableNames: 'text position locked'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Model-Item'!
-!classDefinition: 'DrGTextItem class' category: #'DrGeo-Model-Item'!
+	category: 'DrGeoCore-Model-Item'!
+!classDefinition: 'DrGTextItem class' category: #'DrGeoCore-Model-Item'!
 DrGTextItem class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGValueItem category: #'DrGeo-Model-Item'!
+!classDefinition: #DrGValueItem category: #'DrGeoCore-Model-Item'!
 DrGMathItem subclass: #DrGValueItem
 	instanceVariableNames: 'value position locked'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Model-Item'!
-!classDefinition: 'DrGValueItem class' category: #'DrGeo-Model-Item'!
+	category: 'DrGeoCore-Model-Item'!
+!classDefinition: 'DrGValueItem class' category: #'DrGeoCore-Model-Item'!
 DrGValueItem class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGAngleItem category: #'DrGeo-Model-Item'!
+!classDefinition: #DrGAngleItem category: #'DrGeoCore-Model-Item'!
 DrGValueItem subclass: #DrGAngleItem
 	instanceVariableNames: 'radianValue degreeValue'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Model-Item'!
-!classDefinition: 'DrGAngleItem class' category: #'DrGeo-Model-Item'!
+	category: 'DrGeoCore-Model-Item'!
+!classDefinition: 'DrGAngleItem class' category: #'DrGeoCore-Model-Item'!
 DrGAngleItem class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGAngle3ptsOrientedItem category: #'DrGeo-Model-Item'!
+!classDefinition: #DrGAngle3ptsOrientedItem category: #'DrGeoCore-Model-Item'!
 DrGAngleItem subclass: #DrGAngle3ptsOrientedItem
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Model-Item'!
-!classDefinition: 'DrGAngle3ptsOrientedItem class' category: #'DrGeo-Model-Item'!
+	category: 'DrGeoCore-Model-Item'!
+!classDefinition: 'DrGAngle3ptsOrientedItem class' category: #'DrGeoCore-Model-Item'!
 DrGAngle3ptsOrientedItem class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGAngle3ptsItem category: #'DrGeo-Model-Item'!
+!classDefinition: #DrGAngle3ptsItem category: #'DrGeoCore-Model-Item'!
 DrGAngle3ptsOrientedItem subclass: #DrGAngle3ptsItem
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Model-Item'!
-!classDefinition: 'DrGAngle3ptsItem class' category: #'DrGeo-Model-Item'!
+	category: 'DrGeoCore-Model-Item'!
+!classDefinition: 'DrGAngle3ptsItem class' category: #'DrGeoCore-Model-Item'!
 DrGAngle3ptsItem class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGAngleVectorsItem category: #'DrGeo-Model-Item'!
+!classDefinition: #DrGAngleVectorsItem category: #'DrGeoCore-Model-Item'!
 DrGAngleItem subclass: #DrGAngleVectorsItem
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Model-Item'!
-!classDefinition: 'DrGAngleVectorsItem class' category: #'DrGeo-Model-Item'!
+	category: 'DrGeoCore-Model-Item'!
+!classDefinition: 'DrGAngleVectorsItem class' category: #'DrGeoCore-Model-Item'!
 DrGAngleVectorsItem class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGComputedValueItem category: #'DrGeo-Model-Item'!
+!classDefinition: #DrGComputedValueItem category: #'DrGeoCore-Model-Item'!
 DrGValueItem subclass: #DrGComputedValueItem
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Model-Item'!
-!classDefinition: 'DrGComputedValueItem class' category: #'DrGeo-Model-Item'!
+	category: 'DrGeoCore-Model-Item'!
+!classDefinition: 'DrGComputedValueItem class' category: #'DrGeoCore-Model-Item'!
 DrGComputedValueItem class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGEquationItem category: #'DrGeo-Model-Item'!
+!classDefinition: #DrGEquationItem category: #'DrGeoCore-Model-Item'!
 DrGComputedValueItem subclass: #DrGEquationItem
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Model-Item'!
-!classDefinition: 'DrGEquationItem class' category: #'DrGeo-Model-Item'!
+	category: 'DrGeoCore-Model-Item'!
+!classDefinition: 'DrGEquationItem class' category: #'DrGeoCore-Model-Item'!
 DrGEquationItem class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGEquationCircleItem category: #'DrGeo-Model-Item'!
+!classDefinition: #DrGEquationCircleItem category: #'DrGeoCore-Model-Item'!
 DrGEquationItem subclass: #DrGEquationCircleItem
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Model-Item'!
-!classDefinition: 'DrGEquationCircleItem class' category: #'DrGeo-Model-Item'!
+	category: 'DrGeoCore-Model-Item'!
+!classDefinition: 'DrGEquationCircleItem class' category: #'DrGeoCore-Model-Item'!
 DrGEquationCircleItem class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGEquationLineItem category: #'DrGeo-Model-Item'!
+!classDefinition: #DrGEquationLineItem category: #'DrGeoCore-Model-Item'!
 DrGEquationItem subclass: #DrGEquationLineItem
 	instanceVariableNames: 'a b c'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Model-Item'!
-!classDefinition: 'DrGEquationLineItem class' category: #'DrGeo-Model-Item'!
+	category: 'DrGeoCore-Model-Item'!
+!classDefinition: 'DrGEquationLineItem class' category: #'DrGeoCore-Model-Item'!
 DrGEquationLineItem class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGValueArclengthItem category: #'DrGeo-Model-Item'!
+!classDefinition: #DrGValueArclengthItem category: #'DrGeoCore-Model-Item'!
 DrGComputedValueItem subclass: #DrGValueArclengthItem
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Model-Item'!
-!classDefinition: 'DrGValueArclengthItem class' category: #'DrGeo-Model-Item'!
+	category: 'DrGeoCore-Model-Item'!
+!classDefinition: 'DrGValueArclengthItem class' category: #'DrGeoCore-Model-Item'!
 DrGValueArclengthItem class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGValueBlockItem category: #'DrGeo-Model-Item'!
+!classDefinition: #DrGValueBlockItem category: #'DrGeoCore-Model-Item'!
 DrGComputedValueItem subclass: #DrGValueBlockItem
 	instanceVariableNames: 'valueBlock'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Model-Item'!
-!classDefinition: 'DrGValueBlockItem class' category: #'DrGeo-Model-Item'!
+	category: 'DrGeoCore-Model-Item'!
+!classDefinition: 'DrGValueBlockItem class' category: #'DrGeoCore-Model-Item'!
 DrGValueBlockItem class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGValueCircleperimeterItem category: #'DrGeo-Model-Item'!
+!classDefinition: #DrGValueCircleperimeterItem category: #'DrGeoCore-Model-Item'!
 DrGComputedValueItem subclass: #DrGValueCircleperimeterItem
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Model-Item'!
-!classDefinition: 'DrGValueCircleperimeterItem class' category: #'DrGeo-Model-Item'!
+	category: 'DrGeoCore-Model-Item'!
+!classDefinition: 'DrGValueCircleperimeterItem class' category: #'DrGeoCore-Model-Item'!
 DrGValueCircleperimeterItem class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGValueDistance2ptsItem category: #'DrGeo-Model-Item'!
+!classDefinition: #DrGValueDistance2ptsItem category: #'DrGeoCore-Model-Item'!
 DrGComputedValueItem subclass: #DrGValueDistance2ptsItem
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Model-Item'!
-!classDefinition: 'DrGValueDistance2ptsItem class' category: #'DrGeo-Model-Item'!
+	category: 'DrGeoCore-Model-Item'!
+!classDefinition: 'DrGValueDistance2ptsItem class' category: #'DrGeoCore-Model-Item'!
 DrGValueDistance2ptsItem class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGValueDistanceptlineItem category: #'DrGeo-Model-Item'!
+!classDefinition: #DrGValueDistanceptlineItem category: #'DrGeoCore-Model-Item'!
 DrGComputedValueItem subclass: #DrGValueDistanceptlineItem
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Model-Item'!
-!classDefinition: 'DrGValueDistanceptlineItem class' category: #'DrGeo-Model-Item'!
+	category: 'DrGeoCore-Model-Item'!
+!classDefinition: 'DrGValueDistanceptlineItem class' category: #'DrGeoCore-Model-Item'!
 DrGValueDistanceptlineItem class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGValuePolygonperimeterItem category: #'DrGeo-Model-Item'!
+!classDefinition: #DrGValuePolygonperimeterItem category: #'DrGeoCore-Model-Item'!
 DrGComputedValueItem subclass: #DrGValuePolygonperimeterItem
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Model-Item'!
-!classDefinition: 'DrGValuePolygonperimeterItem class' category: #'DrGeo-Model-Item'!
+	category: 'DrGeoCore-Model-Item'!
+!classDefinition: 'DrGValuePolygonperimeterItem class' category: #'DrGeoCore-Model-Item'!
 DrGValuePolygonperimeterItem class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGValuePtabscissaItem category: #'DrGeo-Model-Item'!
+!classDefinition: #DrGValuePtabscissaItem category: #'DrGeoCore-Model-Item'!
 DrGComputedValueItem subclass: #DrGValuePtabscissaItem
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Model-Item'!
-!classDefinition: 'DrGValuePtabscissaItem class' category: #'DrGeo-Model-Item'!
+	category: 'DrGeoCore-Model-Item'!
+!classDefinition: 'DrGValuePtabscissaItem class' category: #'DrGeoCore-Model-Item'!
 DrGValuePtabscissaItem class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGValuePtordinateItem category: #'DrGeo-Model-Item'!
+!classDefinition: #DrGValuePtordinateItem category: #'DrGeoCore-Model-Item'!
 DrGComputedValueItem subclass: #DrGValuePtordinateItem
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Model-Item'!
-!classDefinition: 'DrGValuePtordinateItem class' category: #'DrGeo-Model-Item'!
+	category: 'DrGeoCore-Model-Item'!
+!classDefinition: 'DrGValuePtordinateItem class' category: #'DrGeoCore-Model-Item'!
 DrGValuePtordinateItem class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGValueSegmentlengthItem category: #'DrGeo-Model-Item'!
+!classDefinition: #DrGValueSegmentlengthItem category: #'DrGeoCore-Model-Item'!
 DrGComputedValueItem subclass: #DrGValueSegmentlengthItem
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Model-Item'!
-!classDefinition: 'DrGValueSegmentlengthItem class' category: #'DrGeo-Model-Item'!
+	category: 'DrGeoCore-Model-Item'!
+!classDefinition: 'DrGValueSegmentlengthItem class' category: #'DrGeoCore-Model-Item'!
 DrGValueSegmentlengthItem class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGValueVectornormItem category: #'DrGeo-Model-Item'!
+!classDefinition: #DrGValueVectornormItem category: #'DrGeoCore-Model-Item'!
 DrGValueSegmentlengthItem subclass: #DrGValueVectornormItem
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Model-Item'!
-!classDefinition: 'DrGValueVectornormItem class' category: #'DrGeo-Model-Item'!
+	category: 'DrGeoCore-Model-Item'!
+!classDefinition: 'DrGValueVectornormItem class' category: #'DrGeoCore-Model-Item'!
 DrGValueVectornormItem class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGValueSlopeItem category: #'DrGeo-Model-Item'!
+!classDefinition: #DrGValueSlopeItem category: #'DrGeoCore-Model-Item'!
 DrGComputedValueItem subclass: #DrGValueSlopeItem
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Model-Item'!
-!classDefinition: 'DrGValueSlopeItem class' category: #'DrGeo-Model-Item'!
+	category: 'DrGeoCore-Model-Item'!
+!classDefinition: 'DrGValueSlopeItem class' category: #'DrGeoCore-Model-Item'!
 DrGValueSlopeItem class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGValueVectorabscissaItem category: #'DrGeo-Model-Item'!
+!classDefinition: #DrGValueVectorabscissaItem category: #'DrGeoCore-Model-Item'!
 DrGComputedValueItem subclass: #DrGValueVectorabscissaItem
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Model-Item'!
-!classDefinition: 'DrGValueVectorabscissaItem class' category: #'DrGeo-Model-Item'!
+	category: 'DrGeoCore-Model-Item'!
+!classDefinition: 'DrGValueVectorabscissaItem class' category: #'DrGeoCore-Model-Item'!
 DrGValueVectorabscissaItem class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGValueVectorordinateItem category: #'DrGeo-Model-Item'!
+!classDefinition: #DrGValueVectorordinateItem category: #'DrGeoCore-Model-Item'!
 DrGComputedValueItem subclass: #DrGValueVectorordinateItem
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Model-Item'!
-!classDefinition: 'DrGValueVectorordinateItem class' category: #'DrGeo-Model-Item'!
+	category: 'DrGeoCore-Model-Item'!
+!classDefinition: 'DrGValueVectorordinateItem class' category: #'DrGeoCore-Model-Item'!
 DrGValueVectorordinateItem class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGValueScriptItem category: #'DrGeo-Model-Item'!
+!classDefinition: #DrGValueScriptItem category: #'DrGeoCore-Model-Item'!
 DrGValueItem subclass: #DrGValueScriptItem
 	instanceVariableNames: 'script parentMorphs'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Model-Item'!
-!classDefinition: 'DrGValueScriptItem class' category: #'DrGeo-Model-Item'!
+	category: 'DrGeoCore-Model-Item'!
+!classDefinition: 'DrGValueScriptItem class' category: #'DrGeoCore-Model-Item'!
 DrGValueScriptItem class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGValueValueItem category: #'DrGeo-Model-Item'!
+!classDefinition: #DrGValueValueItem category: #'DrGeoCore-Model-Item'!
 DrGValueItem subclass: #DrGValueValueItem
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Model-Item'!
-!classDefinition: 'DrGValueValueItem class' category: #'DrGeo-Model-Item'!
+	category: 'DrGeoCore-Model-Item'!
+!classDefinition: 'DrGValueValueItem class' category: #'DrGeoCore-Model-Item'!
 DrGValueValueItem class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGMacro category: #'DrGeo-Model-Macro'!
-Object subclass: #DrGMacro
-	instanceVariableNames: 'nodes title description saved'
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'DrGeo-Model-Macro'!
-!classDefinition: 'DrGMacro class' category: #'DrGeo-Model-Macro'!
-DrGMacro class
-	instanceVariableNames: ''!
-
-!classDefinition: #DrGMacroMathItem category: #'DrGeo-Model-Macro'!
-Object subclass: #DrGMacroMathItem
-	instanceVariableNames: 'basicType id'
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'DrGeo-Model-Macro'!
-!classDefinition: 'DrGMacroMathItem class' category: #'DrGeo-Model-Macro'!
-DrGMacroMathItem class
-	instanceVariableNames: ''!
-
-!classDefinition: #DrGMacroNode category: #'DrGeo-Model-Macro'!
-Object subclass: #DrGMacroNode
-	instanceVariableNames: 'itemTemplate'
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'DrGeo-Model-Macro'!
-!classDefinition: 'DrGMacroNode class' category: #'DrGeo-Model-Macro'!
-DrGMacroNode class
-	instanceVariableNames: ''!
-
-!classDefinition: #DrGMacroHiddenNode category: #'DrGeo-Model-Macro'!
-DrGMacroNode subclass: #DrGMacroHiddenNode
-	instanceVariableNames: 'parentNodes'
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'DrGeo-Model-Macro'!
-!classDefinition: 'DrGMacroHiddenNode class' category: #'DrGeo-Model-Macro'!
-DrGMacroHiddenNode class
-	instanceVariableNames: ''!
-
-!classDefinition: #DrGMacroOutputNode category: #'DrGeo-Model-Macro'!
-DrGMacroHiddenNode subclass: #DrGMacroOutputNode
-	instanceVariableNames: ''
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'DrGeo-Model-Macro'!
-!classDefinition: 'DrGMacroOutputNode class' category: #'DrGeo-Model-Macro'!
-DrGMacroOutputNode class
-	instanceVariableNames: ''!
-
-!classDefinition: #DrGMacroInputNode category: #'DrGeo-Model-Macro'!
-DrGMacroNode subclass: #DrGMacroInputNode
-	instanceVariableNames: ''
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'DrGeo-Model-Macro'!
-!classDefinition: 'DrGMacroInputNode class' category: #'DrGeo-Model-Macro'!
-DrGMacroInputNode class
-	instanceVariableNames: ''!
-
-!classDefinition: #DrGeoUserScript category: #'DrGeo-Model-Script'!
-Object subclass: #DrGeoUserScript
-	instanceVariableNames: 'arguments costume'
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'DrGeo-Model-Script'!
-!classDefinition: 'DrGeoUserScript class' category: #'DrGeo-Model-Script'!
-DrGeoUserScript class
-	instanceVariableNames: 'argumentsType'!
-
-!classDefinition: #DrGeoItem category: #'DrGeo-Model-Smalltalk'!
+!classDefinition: #DrGeoItem category: #'DrGeoCore-Model-Smalltalk'!
 Object subclass: #DrGeoItem
 	instanceVariableNames: 'morph'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Model-Smalltalk'!
-!classDefinition: 'DrGeoItem class' category: #'DrGeo-Model-Smalltalk'!
+	category: 'DrGeoCore-Model-Smalltalk'!
+!classDefinition: 'DrGeoItem class' category: #'DrGeoCore-Model-Smalltalk'!
 DrGeoItem class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGeoCurve category: #'DrGeo-Model-Smalltalk'!
+!classDefinition: #DrGeoCurve category: #'DrGeoCore-Model-Smalltalk'!
 DrGeoItem subclass: #DrGeoCurve
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Model-Smalltalk'!
-!classDefinition: 'DrGeoCurve class' category: #'DrGeo-Model-Smalltalk'!
+	category: 'DrGeoCore-Model-Smalltalk'!
+!classDefinition: 'DrGeoCurve class' category: #'DrGeoCore-Model-Smalltalk'!
 DrGeoCurve class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGeoFinitCurve category: #'DrGeo-Model-Smalltalk'!
+!classDefinition: #DrGeoFinitCurve category: #'DrGeoCore-Model-Smalltalk'!
 DrGeoCurve subclass: #DrGeoFinitCurve
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Model-Smalltalk'!
-!classDefinition: 'DrGeoFinitCurve class' category: #'DrGeo-Model-Smalltalk'!
+	category: 'DrGeoCore-Model-Smalltalk'!
+!classDefinition: 'DrGeoFinitCurve class' category: #'DrGeoCore-Model-Smalltalk'!
 DrGeoFinitCurve class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGeoFilledCurve category: #'DrGeo-Model-Smalltalk'!
+!classDefinition: #DrGeoFilledCurve category: #'DrGeoCore-Model-Smalltalk'!
 DrGeoFinitCurve subclass: #DrGeoFilledCurve
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Model-Smalltalk'!
-!classDefinition: 'DrGeoFilledCurve class' category: #'DrGeo-Model-Smalltalk'!
+	category: 'DrGeoCore-Model-Smalltalk'!
+!classDefinition: 'DrGeoFilledCurve class' category: #'DrGeoCore-Model-Smalltalk'!
 DrGeoFilledCurve class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGeoSegment category: #'DrGeo-Model-Smalltalk'!
+!classDefinition: #DrGeoSegment category: #'DrGeoCore-Model-Smalltalk'!
 DrGeoFinitCurve subclass: #DrGeoSegment
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Model-Smalltalk'!
-!classDefinition: 'DrGeoSegment class' category: #'DrGeo-Model-Smalltalk'!
+	category: 'DrGeoCore-Model-Smalltalk'!
+!classDefinition: 'DrGeoSegment class' category: #'DrGeoCore-Model-Smalltalk'!
 DrGeoSegment class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGeoPoint category: #'DrGeo-Model-Smalltalk'!
+!classDefinition: #DrGeoPoint category: #'DrGeoCore-Model-Smalltalk'!
 DrGeoItem subclass: #DrGeoPoint
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Model-Smalltalk'!
-!classDefinition: 'DrGeoPoint class' category: #'DrGeo-Model-Smalltalk'!
+	category: 'DrGeoCore-Model-Smalltalk'!
+!classDefinition: 'DrGeoPoint class' category: #'DrGeoCore-Model-Smalltalk'!
 DrGeoPoint class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGeoText category: #'DrGeo-Model-Smalltalk'!
+!classDefinition: #DrGeoText category: #'DrGeoCore-Model-Smalltalk'!
 DrGeoItem subclass: #DrGeoText
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Model-Smalltalk'!
-!classDefinition: 'DrGeoText class' category: #'DrGeo-Model-Smalltalk'!
+	category: 'DrGeoCore-Model-Smalltalk'!
+!classDefinition: 'DrGeoText class' category: #'DrGeoCore-Model-Smalltalk'!
 DrGeoText class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGeoValue category: #'DrGeo-Model-Smalltalk'!
+!classDefinition: #DrGeoValue category: #'DrGeoCore-Model-Smalltalk'!
 DrGeoItem subclass: #DrGeoValue
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Model-Smalltalk'!
-!classDefinition: 'DrGeoValue class' category: #'DrGeo-Model-Smalltalk'!
+	category: 'DrGeoCore-Model-Smalltalk'!
+!classDefinition: 'DrGeoValue class' category: #'DrGeoCore-Model-Smalltalk'!
 DrGeoValue class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGeoSketch category: #'DrGeo-Model-Smalltalk'!
+!classDefinition: #DrGeoSketch category: #'DrGeoCore-Model-Smalltalk'!
 Object subclass: #DrGeoSketch
 	instanceVariableNames: 'presenter doProcess'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Model-Smalltalk'!
-!classDefinition: 'DrGeoSketch class' category: #'DrGeo-Model-Smalltalk'!
+	category: 'DrGeoCore-Model-Smalltalk'!
+!classDefinition: 'DrGeoSketch class' category: #'DrGeoCore-Model-Smalltalk'!
 DrGeoSketch class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGStyle category: #'DrGeo-Model-Style'!
+!classDefinition: #DrGStyle category: #'DrGeoCore-Model-Style'!
 Object subclass: #DrGStyle
 	instanceVariableNames: 'morph color hidden feedback'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Model-Style'!
-!classDefinition: 'DrGStyle class' category: #'DrGeo-Model-Style'!
+	category: 'DrGeoCore-Model-Style'!
+!classDefinition: 'DrGStyle class' category: #'DrGeoCore-Model-Style'!
 DrGStyle class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGCurveStyle category: #'DrGeo-Model-Style'!
+!classDefinition: #DrGCurveStyle category: #'DrGeoCore-Model-Style'!
 DrGStyle subclass: #DrGCurveStyle
 	instanceVariableNames: 'thickness lineStyle'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Model-Style'!
-!classDefinition: 'DrGCurveStyle class' category: #'DrGeo-Model-Style'!
+	category: 'DrGeoCore-Model-Style'!
+!classDefinition: 'DrGCurveStyle class' category: #'DrGeoCore-Model-Style'!
 DrGCurveStyle class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGFinitCurveStyle category: #'DrGeo-Model-Style'!
+!classDefinition: #DrGFinitCurveStyle category: #'DrGeoCore-Model-Style'!
 DrGCurveStyle subclass: #DrGFinitCurveStyle
 	instanceVariableNames: 'arrow'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Model-Style'!
-!classDefinition: 'DrGFinitCurveStyle class' category: #'DrGeo-Model-Style'!
+	category: 'DrGeoCore-Model-Style'!
+!classDefinition: 'DrGFinitCurveStyle class' category: #'DrGeoCore-Model-Style'!
 DrGFinitCurveStyle class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGCompositeStyle category: #'DrGeo-Model-Style'!
+!classDefinition: #DrGCompositeStyle category: #'DrGeoCore-Model-Style'!
 DrGFinitCurveStyle subclass: #DrGCompositeStyle
 	instanceVariableNames: 'shape'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Model-Style'!
-!classDefinition: 'DrGCompositeStyle class' category: #'DrGeo-Model-Style'!
+	category: 'DrGeoCore-Model-Style'!
+!classDefinition: 'DrGCompositeStyle class' category: #'DrGeoCore-Model-Style'!
 DrGCompositeStyle class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGFilledStyle category: #'DrGeo-Model-Style'!
+!classDefinition: #DrGFilledStyle category: #'DrGeoCore-Model-Style'!
 DrGFinitCurveStyle subclass: #DrGFilledStyle
 	instanceVariableNames: 'fill translucent'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Model-Style'!
-!classDefinition: 'DrGFilledStyle class' category: #'DrGeo-Model-Style'!
+	category: 'DrGeoCore-Model-Style'!
+!classDefinition: 'DrGFilledStyle class' category: #'DrGeoCore-Model-Style'!
 DrGFilledStyle class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGArcStyle category: #'DrGeo-Model-Style'!
+!classDefinition: #DrGArcStyle category: #'DrGeoCore-Model-Style'!
 DrGFilledStyle subclass: #DrGArcStyle
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Model-Style'!
-!classDefinition: 'DrGArcStyle class' category: #'DrGeo-Model-Style'!
+	category: 'DrGeoCore-Model-Style'!
+!classDefinition: 'DrGArcStyle class' category: #'DrGeoCore-Model-Style'!
 DrGArcStyle class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGCircleStyle category: #'DrGeo-Model-Style'!
+!classDefinition: #DrGCircleStyle category: #'DrGeoCore-Model-Style'!
 DrGFilledStyle subclass: #DrGCircleStyle
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Model-Style'!
-!classDefinition: 'DrGCircleStyle class' category: #'DrGeo-Model-Style'!
+	category: 'DrGeoCore-Model-Style'!
+!classDefinition: 'DrGCircleStyle class' category: #'DrGeoCore-Model-Style'!
 DrGCircleStyle class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGPolygonStyle category: #'DrGeo-Model-Style'!
+!classDefinition: #DrGPolygonStyle category: #'DrGeoCore-Model-Style'!
 DrGFilledStyle subclass: #DrGPolygonStyle
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Model-Style'!
-!classDefinition: 'DrGPolygonStyle class' category: #'DrGeo-Model-Style'!
+	category: 'DrGeoCore-Model-Style'!
+!classDefinition: 'DrGPolygonStyle class' category: #'DrGeoCore-Model-Style'!
 DrGPolygonStyle class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGSegmentStyle category: #'DrGeo-Model-Style'!
+!classDefinition: #DrGSegmentStyle category: #'DrGeoCore-Model-Style'!
 DrGFinitCurveStyle subclass: #DrGSegmentStyle
 	instanceVariableNames: 'mark'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Model-Style'!
-!classDefinition: 'DrGSegmentStyle class' category: #'DrGeo-Model-Style'!
+	category: 'DrGeoCore-Model-Style'!
+!classDefinition: 'DrGSegmentStyle class' category: #'DrGeoCore-Model-Style'!
 DrGSegmentStyle class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGLineStyle category: #'DrGeo-Model-Style'!
+!classDefinition: #DrGLineStyle category: #'DrGeoCore-Model-Style'!
 DrGCurveStyle subclass: #DrGLineStyle
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Model-Style'!
-!classDefinition: 'DrGLineStyle class' category: #'DrGeo-Model-Style'!
+	category: 'DrGeoCore-Model-Style'!
+!classDefinition: 'DrGLineStyle class' category: #'DrGeoCore-Model-Style'!
 DrGLineStyle class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGLocusStyle category: #'DrGeo-Model-Style'!
+!classDefinition: #DrGLocusStyle category: #'DrGeoCore-Model-Style'!
 DrGCurveStyle subclass: #DrGLocusStyle
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Model-Style'!
-!classDefinition: 'DrGLocusStyle class' category: #'DrGeo-Model-Style'!
+	category: 'DrGeoCore-Model-Style'!
+!classDefinition: 'DrGLocusStyle class' category: #'DrGeoCore-Model-Style'!
 DrGLocusStyle class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGRayStyle category: #'DrGeo-Model-Style'!
+!classDefinition: #DrGRayStyle category: #'DrGeoCore-Model-Style'!
 DrGCurveStyle subclass: #DrGRayStyle
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Model-Style'!
-!classDefinition: 'DrGRayStyle class' category: #'DrGeo-Model-Style'!
+	category: 'DrGeoCore-Model-Style'!
+!classDefinition: 'DrGRayStyle class' category: #'DrGeoCore-Model-Style'!
 DrGRayStyle class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGVectorStyle category: #'DrGeo-Model-Style'!
+!classDefinition: #DrGVectorStyle category: #'DrGeoCore-Model-Style'!
 DrGCurveStyle subclass: #DrGVectorStyle
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Model-Style'!
-!classDefinition: 'DrGVectorStyle class' category: #'DrGeo-Model-Style'!
+	category: 'DrGeoCore-Model-Style'!
+!classDefinition: 'DrGVectorStyle class' category: #'DrGeoCore-Model-Style'!
 DrGVectorStyle class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGPointStyle category: #'DrGeo-Model-Style'!
+!classDefinition: #DrGPointStyle category: #'DrGeoCore-Model-Style'!
 DrGStyle subclass: #DrGPointStyle
 	instanceVariableNames: 'shape pointSize extent'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Model-Style'!
-!classDefinition: 'DrGPointStyle class' category: #'DrGeo-Model-Style'!
+	category: 'DrGeoCore-Model-Style'!
+!classDefinition: 'DrGPointStyle class' category: #'DrGeoCore-Model-Style'!
 DrGPointStyle class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGTextStyle category: #'DrGeo-Model-Style'!
+!classDefinition: #DrGTextStyle category: #'DrGeoCore-Model-Style'!
 DrGStyle subclass: #DrGTextStyle
 	instanceVariableNames: 'backgroundColor borderColor fontSize'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Model-Style'!
-!classDefinition: 'DrGTextStyle class' category: #'DrGeo-Model-Style'!
+	category: 'DrGeoCore-Model-Style'!
+!classDefinition: 'DrGTextStyle class' category: #'DrGeoCore-Model-Style'!
 DrGTextStyle class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGValueStyle category: #'DrGeo-Model-Style'!
+!classDefinition: #DrGValueStyle category: #'DrGeoCore-Model-Style'!
 DrGTextStyle subclass: #DrGValueStyle
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Model-Style'!
-!classDefinition: 'DrGValueStyle class' category: #'DrGeo-Model-Style'!
+	category: 'DrGeoCore-Model-Style'!
+!classDefinition: 'DrGValueStyle class' category: #'DrGeoCore-Model-Style'!
 DrGValueStyle class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGeo category: #'DrGeo-Presenter'!
+!classDefinition: #DrGeo category: #'DrGeoCore-Presenter'!
 Object subclass: #DrGeo
 	instanceVariableNames: 'domain controlsManager tool gridStuck isCreateMultipleMode selectedTool selection sketchName exportImageName saved notInteractive stSketch'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Presenter'!
-!classDefinition: 'DrGeo class' category: #'DrGeo-Presenter'!
+	category: 'DrGeoCore-Presenter'!
+!classDefinition: 'DrGeo class' category: #'DrGeoCore-Presenter'!
 DrGeo class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGCommand category: #'DrGeo-Presenter-Command'!
+!classDefinition: #DrGCommand category: #'DrGeoCore-Presenter-Command'!
 Object subclass: #DrGCommand
 	instanceVariableNames: 'domain'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Presenter-Command'!
-!classDefinition: 'DrGCommand class' category: #'DrGeo-Presenter-Command'!
+	category: 'DrGeoCore-Presenter-Command'!
+!classDefinition: 'DrGCommand class' category: #'DrGeoCore-Presenter-Command'!
 DrGCommand class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGCompositeCommand category: #'DrGeo-Presenter-Command'!
+!classDefinition: #DrGCompositeCommand category: #'DrGeoCore-Presenter-Command'!
 DrGCommand subclass: #DrGCompositeCommand
 	instanceVariableNames: 'compositeItem mathItems'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Presenter-Command'!
-!classDefinition: 'DrGCompositeCommand class' category: #'DrGeo-Presenter-Command'!
+	category: 'DrGeoCore-Presenter-Command'!
+!classDefinition: 'DrGCompositeCommand class' category: #'DrGeoCore-Presenter-Command'!
 DrGCompositeCommand class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGDeleteCommand category: #'DrGeo-Presenter-Command'!
+!classDefinition: #DrGDeleteCommand category: #'DrGeoCore-Presenter-Command'!
 DrGCommand subclass: #DrGDeleteCommand
 	instanceVariableNames: 'mathItems'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Presenter-Command'!
-!classDefinition: 'DrGDeleteCommand class' category: #'DrGeo-Presenter-Command'!
+	category: 'DrGeoCore-Presenter-Command'!
+!classDefinition: 'DrGDeleteCommand class' category: #'DrGeoCore-Presenter-Command'!
 DrGDeleteCommand class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGMathItemCommand category: #'DrGeo-Presenter-Command'!
+!classDefinition: #DrGMathItemCommand category: #'DrGeoCore-Presenter-Command'!
 DrGCommand subclass: #DrGMathItemCommand
 	instanceVariableNames: 'mathItems'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Presenter-Command'!
-!classDefinition: 'DrGMathItemCommand class' category: #'DrGeo-Presenter-Command'!
+	category: 'DrGeoCore-Presenter-Command'!
+!classDefinition: 'DrGMathItemCommand class' category: #'DrGeoCore-Presenter-Command'!
 DrGMathItemCommand class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGMergeCommand category: #'DrGeo-Presenter-Command'!
+!classDefinition: #DrGMergeCommand category: #'DrGeoCore-Presenter-Command'!
 DrGCommand subclass: #DrGMergeCommand
 	instanceVariableNames: 'mathItem target directChildren mathItemIndex'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Presenter-Command'!
-!classDefinition: 'DrGMergeCommand class' category: #'DrGeo-Presenter-Command'!
+	category: 'DrGeoCore-Presenter-Command'!
+!classDefinition: 'DrGMergeCommand class' category: #'DrGeoCore-Presenter-Command'!
 DrGMergeCommand class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGMoveCommand category: #'DrGeo-Presenter-Command'!
+!classDefinition: #DrGMoveCommand category: #'DrGeoCore-Presenter-Command'!
 DrGCommand subclass: #DrGMoveCommand
 	instanceVariableNames: 'vector mathItem'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Presenter-Command'!
-!classDefinition: 'DrGMoveCommand class' category: #'DrGeo-Presenter-Command'!
+	category: 'DrGeoCore-Presenter-Command'!
+!classDefinition: 'DrGMoveCommand class' category: #'DrGeoCore-Presenter-Command'!
 DrGMoveCommand class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGPropertyCommand category: #'DrGeo-Presenter-Command'!
+!classDefinition: #DrGPropertyCommand category: #'DrGeoCore-Presenter-Command'!
 DrGCommand subclass: #DrGPropertyCommand
 	instanceVariableNames: 'property mathItem'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Presenter-Command'!
-!classDefinition: 'DrGPropertyCommand class' category: #'DrGeo-Presenter-Command'!
+	category: 'DrGeoCore-Presenter-Command'!
+!classDefinition: 'DrGPropertyCommand class' category: #'DrGeoCore-Presenter-Command'!
 DrGPropertyCommand class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGCommandManager category: #'DrGeo-Presenter-Command'!
+!classDefinition: #DrGCommandManager category: #'DrGeoCore-Presenter-Command'!
 Object subclass: #DrGCommandManager
 	instanceVariableNames: 'stack domain'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Presenter-Command'!
-!classDefinition: 'DrGCommandManager class' category: #'DrGeo-Presenter-Command'!
+	category: 'DrGeoCore-Presenter-Command'!
+!classDefinition: 'DrGCommandManager class' category: #'DrGeoCore-Presenter-Command'!
 DrGCommandManager class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGTool category: #'DrGeo-Presenter-Tool'!
+!classDefinition: #DrGTool category: #'DrGeoCore-Presenter-Tool'!
 Object subclass: #DrGTool
 	instanceVariableNames: 'state presenter spot last morph mathItemUnderMouse'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Presenter-Tool'!
-!classDefinition: 'DrGTool class' category: #'DrGeo-Presenter-Tool'!
+	category: 'DrGeoCore-Presenter-Tool'!
+!classDefinition: 'DrGTool class' category: #'DrGeoCore-Presenter-Tool'!
 DrGTool class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGAnimateTool category: #'DrGeo-Presenter-Tool'!
+!classDefinition: #DrGAnimateTool category: #'DrGeoCore-Presenter-Tool'!
 DrGTool subclass: #DrGAnimateTool
 	instanceVariableNames: 'animateStep'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Presenter-Tool'!
-!classDefinition: 'DrGAnimateTool class' category: #'DrGeo-Presenter-Tool'!
+	category: 'DrGeoCore-Presenter-Tool'!
+!classDefinition: 'DrGAnimateTool class' category: #'DrGeoCore-Presenter-Tool'!
 DrGAnimateTool class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGBuildTool category: #'DrGeo-Presenter-Tool'!
+!classDefinition: #DrGBuildTool category: #'DrGeoCore-Presenter-Tool'!
 DrGTool subclass: #DrGBuildTool
 	instanceVariableNames: 'selectedMorphs builder'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Presenter-Tool'!
-!classDefinition: 'DrGBuildTool class' category: #'DrGeo-Presenter-Tool'!
+	category: 'DrGeoCore-Presenter-Tool'!
+!classDefinition: 'DrGBuildTool class' category: #'DrGeoCore-Presenter-Tool'!
 DrGBuildTool class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGFlyPointBuildTool category: #'DrGeo-Presenter-Tool'!
-DrGBuildTool subclass: #DrGFlyPointBuildTool
-	instanceVariableNames: ''
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'DrGeo-Presenter-Tool'!
-!classDefinition: 'DrGFlyPointBuildTool class' category: #'DrGeo-Presenter-Tool'!
-DrGFlyPointBuildTool class
-	instanceVariableNames: ''!
-
-!classDefinition: #DrGMacroBuildTool category: #'DrGeo-Presenter-Tool'!
-DrGBuildTool subclass: #DrGMacroBuildTool
-	instanceVariableNames: ''
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'DrGeo-Presenter-Tool'!
-!classDefinition: 'DrGMacroBuildTool class' category: #'DrGeo-Presenter-Tool'!
-DrGMacroBuildTool class
-	instanceVariableNames: ''!
-
-!classDefinition: #DrGMacroPlayTool category: #'DrGeo-Presenter-Tool'!
-DrGMacroBuildTool subclass: #DrGMacroPlayTool
-	instanceVariableNames: ''
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'DrGeo-Presenter-Tool'!
-!classDefinition: 'DrGMacroPlayTool class' category: #'DrGeo-Presenter-Tool'!
-DrGMacroPlayTool class
-	instanceVariableNames: ''!
-
-!classDefinition: #DrGScriptPlayTool category: #'DrGeo-Presenter-Tool'!
+!classDefinition: #DrGScriptPlayTool category: #'DrGeoCore-Presenter-Tool'!
 DrGMacroBuildTool subclass: #DrGScriptPlayTool
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Presenter-Tool'!
-!classDefinition: 'DrGScriptPlayTool class' category: #'DrGeo-Presenter-Tool'!
+	category: 'DrGeoCore-Presenter-Tool'!
+!classDefinition: 'DrGScriptPlayTool class' category: #'DrGeoCore-Presenter-Tool'!
 DrGScriptPlayTool class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGFlyBuildTool category: #'DrGeo-Presenter-Tool'!
+!classDefinition: #DrGFlyPointBuildTool category: #'DrGeoCore-Presenter-Tool'!
+DrGBuildTool subclass: #DrGFlyPointBuildTool
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'DrGeoCore-Presenter-Tool'!
+!classDefinition: 'DrGFlyPointBuildTool class' category: #'DrGeoCore-Presenter-Tool'!
+DrGFlyPointBuildTool class
+	instanceVariableNames: ''!
+
+!classDefinition: #DrGFlyBuildTool category: #'DrGeoCore-Presenter-Tool'!
 DrGTool subclass: #DrGFlyBuildTool
 	instanceVariableNames: 'flyPointTool mathItemTool'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Presenter-Tool'!
-!classDefinition: 'DrGFlyBuildTool class' category: #'DrGeo-Presenter-Tool'!
+	category: 'DrGeoCore-Presenter-Tool'!
+!classDefinition: 'DrGFlyBuildTool class' category: #'DrGeoCore-Presenter-Tool'!
 DrGFlyBuildTool class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGFlyBuildTouchTool category: #'DrGeo-Presenter-Tool'!
+!classDefinition: #DrGFlyBuildTouchTool category: #'DrGeoCore-Presenter-Tool'!
 DrGFlyBuildTool subclass: #DrGFlyBuildTouchTool
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Presenter-Tool'!
-!classDefinition: 'DrGFlyBuildTouchTool class' category: #'DrGeo-Presenter-Tool'!
+	category: 'DrGeoCore-Presenter-Tool'!
+!classDefinition: 'DrGFlyBuildTouchTool class' category: #'DrGeoCore-Presenter-Tool'!
 DrGFlyBuildTouchTool class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGSelectTool category: #'DrGeo-Presenter-Tool'!
+!classDefinition: #DrGSelectTool category: #'DrGeoCore-Presenter-Tool'!
 DrGTool subclass: #DrGSelectTool
 	instanceVariableNames: 'start mathItems morphs builder'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Presenter-Tool'!
-!classDefinition: 'DrGSelectTool class' category: #'DrGeo-Presenter-Tool'!
+	category: 'DrGeoCore-Presenter-Tool'!
+!classDefinition: 'DrGSelectTool class' category: #'DrGeoCore-Presenter-Tool'!
 DrGSelectTool class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGPropertyTool category: #'DrGeo-Presenter-Tool'!
+!classDefinition: #DrGPropertyTool category: #'DrGeoCore-Presenter-Tool'!
 DrGSelectTool subclass: #DrGPropertyTool
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Presenter-Tool'!
-!classDefinition: 'DrGPropertyTool class' category: #'DrGeo-Presenter-Tool'!
+	category: 'DrGeoCore-Presenter-Tool'!
+!classDefinition: 'DrGPropertyTool class' category: #'DrGeoCore-Presenter-Tool'!
 DrGPropertyTool class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGStyleTool category: #'DrGeo-Presenter-Tool'!
+!classDefinition: #DrGStyleTool category: #'DrGeoCore-Presenter-Tool'!
 DrGTool subclass: #DrGStyleTool
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Presenter-Tool'!
-!classDefinition: 'DrGStyleTool class' category: #'DrGeo-Presenter-Tool'!
+	category: 'DrGeoCore-Presenter-Tool'!
+!classDefinition: 'DrGStyleTool class' category: #'DrGeoCore-Presenter-Tool'!
 DrGStyleTool class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGDeleteTool category: #'DrGeo-Presenter-Tool'!
+!classDefinition: #DrGDeleteTool category: #'DrGeoCore-Presenter-Tool'!
 DrGStyleTool subclass: #DrGDeleteTool
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Presenter-Tool'!
-!classDefinition: 'DrGDeleteTool class' category: #'DrGeo-Presenter-Tool'!
+	category: 'DrGeoCore-Presenter-Tool'!
+!classDefinition: 'DrGDeleteTool class' category: #'DrGeoCore-Presenter-Tool'!
 DrGDeleteTool class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGToolState category: #'DrGeo-Presenter-Tool'!
+!classDefinition: #DrGToolState category: #'DrGeoCore-Presenter-Tool'!
 Object subclass: #DrGToolState
 	instanceVariableNames: 'context'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Presenter-Tool'!
-!classDefinition: 'DrGToolState class' category: #'DrGeo-Presenter-Tool'!
+	category: 'DrGeoCore-Presenter-Tool'!
+!classDefinition: 'DrGToolState class' category: #'DrGeoCore-Presenter-Tool'!
 DrGToolState class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGBuildToolState category: #'DrGeo-Presenter-Tool'!
+!classDefinition: #DrGBuildToolState category: #'DrGeoCore-Presenter-Tool'!
 DrGToolState subclass: #DrGBuildToolState
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Presenter-Tool'!
-!classDefinition: 'DrGBuildToolState class' category: #'DrGeo-Presenter-Tool'!
+	category: 'DrGeoCore-Presenter-Tool'!
+!classDefinition: 'DrGBuildToolState class' category: #'DrGeoCore-Presenter-Tool'!
 DrGBuildToolState class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGFlyPointBuildToolState category: #'DrGeo-Presenter-Tool'!
+!classDefinition: #DrGFlyPointBuildToolState category: #'DrGeoCore-Presenter-Tool'!
 DrGBuildToolState subclass: #DrGFlyPointBuildToolState
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Presenter-Tool'!
-!classDefinition: 'DrGFlyPointBuildToolState class' category: #'DrGeo-Presenter-Tool'!
+	category: 'DrGeoCore-Presenter-Tool'!
+!classDefinition: 'DrGFlyPointBuildToolState class' category: #'DrGeoCore-Presenter-Tool'!
 DrGFlyPointBuildToolState class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGMacroBuildToolStateInput category: #'DrGeo-Presenter-Tool'!
-DrGBuildToolState subclass: #DrGMacroBuildToolStateInput
-	instanceVariableNames: ''
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'DrGeo-Presenter-Tool'!
-!classDefinition: 'DrGMacroBuildToolStateInput class' category: #'DrGeo-Presenter-Tool'!
-DrGMacroBuildToolStateInput class
-	instanceVariableNames: ''!
-
-!classDefinition: #DrGMacroPlayToolStateSelect category: #'DrGeo-Presenter-Tool'!
-DrGMacroBuildToolStateInput subclass: #DrGMacroPlayToolStateSelect
-	instanceVariableNames: ''
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'DrGeo-Presenter-Tool'!
-!classDefinition: 'DrGMacroPlayToolStateSelect class' category: #'DrGeo-Presenter-Tool'!
-DrGMacroPlayToolStateSelect class
-	instanceVariableNames: ''!
-
-!classDefinition: #DrGMacroBuildToolStateOutput category: #'DrGeo-Presenter-Tool'!
-DrGBuildToolState subclass: #DrGMacroBuildToolStateOutput
-	instanceVariableNames: ''
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'DrGeo-Presenter-Tool'!
-!classDefinition: 'DrGMacroBuildToolStateOutput class' category: #'DrGeo-Presenter-Tool'!
-DrGMacroBuildToolStateOutput class
-	instanceVariableNames: ''!
-
-!classDefinition: #DrGFlyBuildToolState category: #'DrGeo-Presenter-Tool'!
+!classDefinition: #DrGFlyBuildToolState category: #'DrGeoCore-Presenter-Tool'!
 DrGToolState subclass: #DrGFlyBuildToolState
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Presenter-Tool'!
-!classDefinition: 'DrGFlyBuildToolState class' category: #'DrGeo-Presenter-Tool'!
+	category: 'DrGeoCore-Presenter-Tool'!
+!classDefinition: 'DrGFlyBuildToolState class' category: #'DrGeoCore-Presenter-Tool'!
 DrGFlyBuildToolState class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGFlyBuildTouchToolState category: #'DrGeo-Presenter-Tool'!
+!classDefinition: #DrGFlyBuildTouchToolState category: #'DrGeoCore-Presenter-Tool'!
 DrGFlyBuildToolState subclass: #DrGFlyBuildTouchToolState
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Presenter-Tool'!
-!classDefinition: 'DrGFlyBuildTouchToolState class' category: #'DrGeo-Presenter-Tool'!
+	category: 'DrGeoCore-Presenter-Tool'!
+!classDefinition: 'DrGFlyBuildTouchToolState class' category: #'DrGeoCore-Presenter-Tool'!
 DrGFlyBuildTouchToolState class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGFlyBuildTouchToolStateGrabbed category: #'DrGeo-Presenter-Tool'!
+!classDefinition: #DrGFlyBuildTouchToolStateGrabbed category: #'DrGeoCore-Presenter-Tool'!
 DrGFlyBuildTouchToolState subclass: #DrGFlyBuildTouchToolStateGrabbed
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Presenter-Tool'!
-!classDefinition: 'DrGFlyBuildTouchToolStateGrabbed class' category: #'DrGeo-Presenter-Tool'!
+	category: 'DrGeoCore-Presenter-Tool'!
+!classDefinition: 'DrGFlyBuildTouchToolStateGrabbed class' category: #'DrGeoCore-Presenter-Tool'!
 DrGFlyBuildTouchToolStateGrabbed class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGFlyBuildTouchToolStateSlided category: #'DrGeo-Presenter-Tool'!
+!classDefinition: #DrGFlyBuildTouchToolStateSlided category: #'DrGeoCore-Presenter-Tool'!
 DrGFlyBuildTouchToolState subclass: #DrGFlyBuildTouchToolStateSlided
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Presenter-Tool'!
-!classDefinition: 'DrGFlyBuildTouchToolStateSlided class' category: #'DrGeo-Presenter-Tool'!
+	category: 'DrGeoCore-Presenter-Tool'!
+!classDefinition: 'DrGFlyBuildTouchToolStateSlided class' category: #'DrGeoCore-Presenter-Tool'!
 DrGFlyBuildTouchToolStateSlided class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGMacroToolStateNeutral category: #'DrGeo-Presenter-Tool'!
-DrGToolState subclass: #DrGMacroToolStateNeutral
-	instanceVariableNames: ''
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'DrGeo-Presenter-Tool'!
-!classDefinition: 'DrGMacroToolStateNeutral class' category: #'DrGeo-Presenter-Tool'!
-DrGMacroToolStateNeutral class
-	instanceVariableNames: ''!
-
-!classDefinition: #DrGSelectToolState category: #'DrGeo-Presenter-Tool'!
+!classDefinition: #DrGSelectToolState category: #'DrGeoCore-Presenter-Tool'!
 DrGToolState subclass: #DrGSelectToolState
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Presenter-Tool'!
-!classDefinition: 'DrGSelectToolState class' category: #'DrGeo-Presenter-Tool'!
+	category: 'DrGeoCore-Presenter-Tool'!
+!classDefinition: 'DrGSelectToolState class' category: #'DrGeoCore-Presenter-Tool'!
 DrGSelectToolState class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGSelectToolStateDragged category: #'DrGeo-Presenter-Tool'!
+!classDefinition: #DrGSelectToolStateDragged category: #'DrGeoCore-Presenter-Tool'!
 DrGSelectToolState subclass: #DrGSelectToolStateDragged
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Presenter-Tool'!
-!classDefinition: 'DrGSelectToolStateDragged class' category: #'DrGeo-Presenter-Tool'!
+	category: 'DrGeoCore-Presenter-Tool'!
+!classDefinition: 'DrGSelectToolStateDragged class' category: #'DrGeoCore-Presenter-Tool'!
 DrGSelectToolStateDragged class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGMutatorToolStateDragged category: #'DrGeo-Presenter-Tool'!
+!classDefinition: #DrGMutatorToolStateDragged category: #'DrGeoCore-Presenter-Tool'!
 DrGSelectToolStateDragged subclass: #DrGMutatorToolStateDragged
 	instanceVariableNames: 'mutator originalPointClass'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Presenter-Tool'!
-!classDefinition: 'DrGMutatorToolStateDragged class' category: #'DrGeo-Presenter-Tool'!
+	category: 'DrGeoCore-Presenter-Tool'!
+!classDefinition: 'DrGMutatorToolStateDragged class' category: #'DrGeoCore-Presenter-Tool'!
 DrGMutatorToolStateDragged class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGSelectToolStateDraggedBitmap category: #'DrGeo-Presenter-Tool'!
+!classDefinition: #DrGSelectToolStateDraggedBitmap category: #'DrGeoCore-Presenter-Tool'!
 DrGSelectToolStateDragged subclass: #DrGSelectToolStateDraggedBitmap
 	instanceVariableNames: 'isDraggingCorner draggedCorner corner originalMagnifyBy'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Presenter-Tool'!
-!classDefinition: 'DrGSelectToolStateDraggedBitmap class' category: #'DrGeo-Presenter-Tool'!
+	category: 'DrGeoCore-Presenter-Tool'!
+!classDefinition: 'DrGSelectToolStateDraggedBitmap class' category: #'DrGeoCore-Presenter-Tool'!
 DrGSelectToolStateDraggedBitmap class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGSelectToolStateGrabbed category: #'DrGeo-Presenter-Tool'!
+!classDefinition: #DrGSelectToolStateGrabbed category: #'DrGeoCore-Presenter-Tool'!
 DrGSelectToolState subclass: #DrGSelectToolStateGrabbed
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Presenter-Tool'!
-!classDefinition: 'DrGSelectToolStateGrabbed class' category: #'DrGeo-Presenter-Tool'!
+	category: 'DrGeoCore-Presenter-Tool'!
+!classDefinition: 'DrGSelectToolStateGrabbed class' category: #'DrGeoCore-Presenter-Tool'!
 DrGSelectToolStateGrabbed class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGMutatorToolStateGrabbed category: #'DrGeo-Presenter-Tool'!
+!classDefinition: #DrGMutatorToolStateGrabbed category: #'DrGeoCore-Presenter-Tool'!
 DrGSelectToolStateGrabbed subclass: #DrGMutatorToolStateGrabbed
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Presenter-Tool'!
-!classDefinition: 'DrGMutatorToolStateGrabbed class' category: #'DrGeo-Presenter-Tool'!
+	category: 'DrGeoCore-Presenter-Tool'!
+!classDefinition: 'DrGMutatorToolStateGrabbed class' category: #'DrGeoCore-Presenter-Tool'!
 DrGMutatorToolStateGrabbed class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGSelectToolStateNeutral category: #'DrGeo-Presenter-Tool'!
+!classDefinition: #DrGSelectToolStateNeutral category: #'DrGeoCore-Presenter-Tool'!
 DrGSelectToolState subclass: #DrGSelectToolStateNeutral
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Presenter-Tool'!
-!classDefinition: 'DrGSelectToolStateNeutral class' category: #'DrGeo-Presenter-Tool'!
+	category: 'DrGeoCore-Presenter-Tool'!
+!classDefinition: 'DrGSelectToolStateNeutral class' category: #'DrGeoCore-Presenter-Tool'!
 DrGSelectToolStateNeutral class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGSelectToolStateSelected category: #'DrGeo-Presenter-Tool'!
+!classDefinition: #DrGSelectToolStateSelected category: #'DrGeoCore-Presenter-Tool'!
 DrGSelectToolState subclass: #DrGSelectToolStateSelected
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Presenter-Tool'!
-!classDefinition: 'DrGSelectToolStateSelected class' category: #'DrGeo-Presenter-Tool'!
+	category: 'DrGeoCore-Presenter-Tool'!
+!classDefinition: 'DrGSelectToolStateSelected class' category: #'DrGeoCore-Presenter-Tool'!
 DrGSelectToolStateSelected class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGStyleToolState category: #'DrGeo-Presenter-Tool'!
+!classDefinition: #DrGStyleToolState category: #'DrGeoCore-Presenter-Tool'!
 DrGSelectToolState subclass: #DrGStyleToolState
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Presenter-Tool'!
-!classDefinition: 'DrGStyleToolState class' category: #'DrGeo-Presenter-Tool'!
+	category: 'DrGeoCore-Presenter-Tool'!
+!classDefinition: 'DrGStyleToolState class' category: #'DrGeoCore-Presenter-Tool'!
 DrGStyleToolState class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGAnimateToolState category: #'DrGeo-Presenter-Tool'!
+!classDefinition: #DrGAnimateToolState category: #'DrGeoCore-Presenter-Tool'!
 DrGStyleToolState subclass: #DrGAnimateToolState
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Presenter-Tool'!
-!classDefinition: 'DrGAnimateToolState class' category: #'DrGeo-Presenter-Tool'!
+	category: 'DrGeoCore-Presenter-Tool'!
+!classDefinition: 'DrGAnimateToolState class' category: #'DrGeoCore-Presenter-Tool'!
 DrGAnimateToolState class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGAnimateToolStateSelected category: #'DrGeo-Presenter-Tool'!
+!classDefinition: #DrGAnimateToolStateSelected category: #'DrGeoCore-Presenter-Tool'!
 DrGAnimateToolState subclass: #DrGAnimateToolStateSelected
 	instanceVariableNames: 'abscissa'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Presenter-Tool'!
-!classDefinition: 'DrGAnimateToolStateSelected class' category: #'DrGeo-Presenter-Tool'!
+	category: 'DrGeoCore-Presenter-Tool'!
+!classDefinition: 'DrGAnimateToolStateSelected class' category: #'DrGeoCore-Presenter-Tool'!
 DrGAnimateToolStateSelected class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGDeleteToolState category: #'DrGeo-Presenter-Tool'!
+!classDefinition: #DrGDeleteToolState category: #'DrGeoCore-Presenter-Tool'!
 DrGStyleToolState subclass: #DrGDeleteToolState
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Presenter-Tool'!
-!classDefinition: 'DrGDeleteToolState class' category: #'DrGeo-Presenter-Tool'!
+	category: 'DrGeoCore-Presenter-Tool'!
+!classDefinition: 'DrGDeleteToolState class' category: #'DrGeoCore-Presenter-Tool'!
 DrGDeleteToolState class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGPropertyToolState category: #'DrGeo-Presenter-Tool'!
+!classDefinition: #DrGPropertyToolState category: #'DrGeoCore-Presenter-Tool'!
 DrGStyleToolState subclass: #DrGPropertyToolState
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Presenter-Tool'!
-!classDefinition: 'DrGPropertyToolState class' category: #'DrGeo-Presenter-Tool'!
+	category: 'DrGeoCore-Presenter-Tool'!
+!classDefinition: 'DrGPropertyToolState class' category: #'DrGeoCore-Presenter-Tool'!
 DrGPropertyToolState class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGPlatform category: #'DrGeo-System'!
+!classDefinition: #DrGPlatform category: #'DrGeoCore-System'!
 Object subclass: #DrGPlatform
 	instanceVariableNames: 'toolbarIconSize canWeDisplaySpinner preferences fontManager'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-System'!
-!classDefinition: 'DrGPlatform class' category: #'DrGeo-System'!
+	category: 'DrGeoCore-System'!
+!classDefinition: 'DrGPlatform class' category: #'DrGeoCore-System'!
 DrGPlatform class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGDevelopment category: #'DrGeo-System'!
+!classDefinition: #DrGDevelopment category: #'DrGeoCore-System'!
 DrGPlatform subclass: #DrGDevelopment
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-System'!
-!classDefinition: 'DrGDevelopment class' category: #'DrGeo-System'!
+	category: 'DrGeoCore-System'!
+!classDefinition: 'DrGDevelopment class' category: #'DrGeoCore-System'!
 DrGDevelopment class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGWorkstation category: #'DrGeo-System'!
+!classDefinition: #DrGWorkstation category: #'DrGeoCore-System'!
 DrGPlatform subclass: #DrGWorkstation
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-System'!
-!classDefinition: 'DrGWorkstation class' category: #'DrGeo-System'!
+	category: 'DrGeoCore-System'!
+!classDefinition: 'DrGWorkstation class' category: #'DrGeoCore-System'!
 DrGWorkstation class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGeoSystem category: #'DrGeo-System'!
+!classDefinition: #DrGeoSystem category: #'DrGeoCore-System'!
 Object subclass: #DrGeoSystem
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-System'!
-!classDefinition: 'DrGeoSystem class' category: #'DrGeo-System'!
+	category: 'DrGeoCore-System'!
+!classDefinition: 'DrGeoSystem class' category: #'DrGeoCore-System'!
 DrGeoSystem class
 	instanceVariableNames: 'platform'!
 
-!classDefinition: #LanguageFont category: #'DrGeo-System'!
+!classDefinition: #LanguageFont category: #'DrGeoCore-System'!
 Object subclass: #LanguageFont
 	instanceVariableNames: 'locales family file'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-System'!
-!classDefinition: 'LanguageFont class' category: #'DrGeo-System'!
+	category: 'DrGeoCore-System'!
+!classDefinition: 'LanguageFont class' category: #'DrGeoCore-System'!
 LanguageFont class
 	instanceVariableNames: ''!
 
-!classDefinition: #LanguageFontManager category: #'DrGeo-System'!
+!classDefinition: #LanguageFontManager category: #'DrGeoCore-System'!
 Object subclass: #LanguageFontManager
 	instanceVariableNames: 'languageFonts'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-System'!
-!classDefinition: 'LanguageFontManager class' category: #'DrGeo-System'!
+	category: 'DrGeoCore-System'!
+!classDefinition: 'LanguageFontManager class' category: #'DrGeoCore-System'!
 LanguageFontManager class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGAbstractControlsManager category: #'DrGeo-View'!
+!classDefinition: #DrGAbstractControlsManager category: #'DrGeoCore-View'!
 Object subclass: #DrGAbstractControlsManager
 	instanceVariableNames: 'presenter view editPanel statusBar tools'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-View'!
-!classDefinition: 'DrGAbstractControlsManager class' category: #'DrGeo-View'!
+	category: 'DrGeoCore-View'!
+!classDefinition: 'DrGAbstractControlsManager class' category: #'DrGeoCore-View'!
 DrGAbstractControlsManager class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGControlsManager category: #'DrGeo-View'!
-DrGAbstractControlsManager subclass: #DrGControlsManager
-	instanceVariableNames: 'tree treeView quickToolbar'
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'DrGeo-View'!
-!classDefinition: 'DrGControlsManager class' category: #'DrGeo-View'!
-DrGControlsManager class
-	instanceVariableNames: ''!
-
-!classDefinition: #DrGMinControlsManager category: #'DrGeo-View'!
-DrGAbstractControlsManager subclass: #DrGMinControlsManager
+!classDefinition: #DrGMinimalControlsManager category: #'DrGeoCore-View'!
+DrGAbstractControlsManager subclass: #DrGMinimalControlsManager
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-View'!
-!classDefinition: 'DrGMinControlsManager class' category: #'DrGeo-View'!
-DrGMinControlsManager class
+	category: 'DrGeoCore-View'!
+!classDefinition: 'DrGMinimalControlsManager class' category: #'DrGeoCore-View'!
+DrGMinimalControlsManager class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGIcons category: #'DrGeo-View'!
+!classDefinition: #DrGIcons category: #'DrGeoCore-View'!
 Object subclass: #DrGIcons
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-View'!
-!classDefinition: 'DrGIcons class' category: #'DrGeo-View'!
+	category: 'DrGeoCore-View'!
+!classDefinition: 'DrGIcons class' category: #'DrGeoCore-View'!
 DrGIcons class
 	instanceVariableNames: 'forms'!
 
-!classDefinition: #DrGCommandStack category: #'DrGeo-Presenter-Command'!
+!classDefinition: #DrGCommandStack category: #'DrGeoCore-Presenter-Command'!
 ReadWriteStream subclass: #DrGCommandStack
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Presenter-Command'!
-!classDefinition: 'DrGCommandStack class' category: #'DrGeo-Presenter-Command'!
+	category: 'DrGeoCore-Presenter-Command'!
+!classDefinition: 'DrGCommandStack class' category: #'DrGeoCore-Presenter-Command'!
 DrGCommandStack class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGeoDomain category: #'DrGeo-Model'!
+!classDefinition: #DrGeoDomain category: #'DrGeoCore-Model'!
 ActiveModel subclass: #DrGeoDomain
 	instanceVariableNames: 'factory cmdManager pointNameIndex'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Model'!
-!classDefinition: 'DrGeoDomain class' category: #'DrGeo-Model'!
+	category: 'DrGeoCore-Model'!
+!classDefinition: 'DrGeoDomain class' category: #'DrGeoCore-Model'!
 DrGeoDomain class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGMathItemBuilder category: #'DrGeo-Presenter-Builder'!
+!classDefinition: #DrGMathItemBuilder category: #'DrGeoCore-Presenter-Builder'!
 ActiveModel subclass: #DrGMathItemBuilder
 	instanceVariableNames: 'point flyingItem flyingMorph movingPoint presenter'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Presenter-Builder'!
-!classDefinition: 'DrGMathItemBuilder class' category: #'DrGeo-Presenter-Builder'!
+	category: 'DrGeoCore-Presenter-Builder'!
+!classDefinition: 'DrGMathItemBuilder class' category: #'DrGeoCore-Presenter-Builder'!
 DrGMathItemBuilder class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGAngleGeometricBuilder category: #'DrGeo-Presenter-Builder'!
+!classDefinition: #DrGAngleGeometricBuilder category: #'DrGeoCore-Presenter-Builder'!
 DrGMathItemBuilder subclass: #DrGAngleGeometricBuilder
 	instanceVariableNames: 'pointA pointB pointC'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Presenter-Builder'!
-!classDefinition: 'DrGAngleGeometricBuilder class' category: #'DrGeo-Presenter-Builder'!
+	category: 'DrGeoCore-Presenter-Builder'!
+!classDefinition: 'DrGAngleGeometricBuilder class' category: #'DrGeoCore-Presenter-Builder'!
 DrGAngleGeometricBuilder class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGAngleOrientedBuilder category: #'DrGeo-Presenter-Builder'!
+!classDefinition: #DrGAngleOrientedBuilder category: #'DrGeoCore-Presenter-Builder'!
 DrGAngleGeometricBuilder subclass: #DrGAngleOrientedBuilder
 	instanceVariableNames: 'vectorA vectorB'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Presenter-Builder'!
-!classDefinition: 'DrGAngleOrientedBuilder class' category: #'DrGeo-Presenter-Builder'!
+	category: 'DrGeoCore-Presenter-Builder'!
+!classDefinition: 'DrGAngleOrientedBuilder class' category: #'DrGeoCore-Presenter-Builder'!
 DrGAngleOrientedBuilder class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGArcBuilder category: #'DrGeo-Presenter-Builder'!
+!classDefinition: #DrGArcBuilder category: #'DrGeoCore-Presenter-Builder'!
 DrGMathItemBuilder subclass: #DrGArcBuilder
 	instanceVariableNames: 'pointA pointB pointC'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Presenter-Builder'!
-!classDefinition: 'DrGArcBuilder class' category: #'DrGeo-Presenter-Builder'!
+	category: 'DrGeoCore-Presenter-Builder'!
+!classDefinition: 'DrGArcBuilder class' category: #'DrGeoCore-Presenter-Builder'!
 DrGArcBuilder class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGArcCenterBuilder category: #'DrGeo-Presenter-Builder'!
+!classDefinition: #DrGArcCenterBuilder category: #'DrGeoCore-Presenter-Builder'!
 DrGMathItemBuilder subclass: #DrGArcCenterBuilder
 	instanceVariableNames: 'center origin extremity'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Presenter-Builder'!
-!classDefinition: 'DrGArcCenterBuilder class' category: #'DrGeo-Presenter-Builder'!
+	category: 'DrGeoCore-Presenter-Builder'!
+!classDefinition: 'DrGArcCenterBuilder class' category: #'DrGeoCore-Presenter-Builder'!
 DrGArcCenterBuilder class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGBitmapBuilder category: #'DrGeo-Presenter-Builder'!
+!classDefinition: #DrGBitmapBuilder category: #'DrGeoCore-Presenter-Builder'!
 DrGMathItemBuilder subclass: #DrGBitmapBuilder
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Presenter-Builder'!
-!classDefinition: 'DrGBitmapBuilder class' category: #'DrGeo-Presenter-Builder'!
+	category: 'DrGeoCore-Presenter-Builder'!
+!classDefinition: 'DrGBitmapBuilder class' category: #'DrGeoCore-Presenter-Builder'!
 DrGBitmapBuilder class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGCloneBuilder category: #'DrGeo-Presenter-Builder'!
+!classDefinition: #DrGCloneBuilder category: #'DrGeoCore-Presenter-Builder'!
 DrGMathItemBuilder subclass: #DrGCloneBuilder
 	instanceVariableNames: 'item'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Presenter-Builder'!
-!classDefinition: 'DrGCloneBuilder class' category: #'DrGeo-Presenter-Builder'!
+	category: 'DrGeoCore-Presenter-Builder'!
+!classDefinition: 'DrGCloneBuilder class' category: #'DrGeoCore-Presenter-Builder'!
 DrGCloneBuilder class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGCoordinatesBuilder category: #'DrGeo-Presenter-Builder'!
+!classDefinition: #DrGCoordinatesBuilder category: #'DrGeoCore-Presenter-Builder'!
 DrGMathItemBuilder subclass: #DrGCoordinatesBuilder
 	instanceVariableNames: 'pointA vector circle line'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Presenter-Builder'!
-!classDefinition: 'DrGCoordinatesBuilder class' category: #'DrGeo-Presenter-Builder'!
+	category: 'DrGeoCore-Presenter-Builder'!
+!classDefinition: 'DrGCoordinatesBuilder class' category: #'DrGeoCore-Presenter-Builder'!
 DrGCoordinatesBuilder class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGDummyBuilder category: #'DrGeo-Presenter-Builder'!
+!classDefinition: #DrGDummyBuilder category: #'DrGeoCore-Presenter-Builder'!
 DrGMathItemBuilder subclass: #DrGDummyBuilder
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Presenter-Builder'!
-!classDefinition: 'DrGDummyBuilder class' category: #'DrGeo-Presenter-Builder'!
+	category: 'DrGeoCore-Presenter-Builder'!
+!classDefinition: 'DrGDummyBuilder class' category: #'DrGeoCore-Presenter-Builder'!
 DrGDummyBuilder class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGFlyPointBuilder category: #'DrGeo-Presenter-Builder'!
+!classDefinition: #DrGFlyPointBuilder category: #'DrGeoCore-Presenter-Builder'!
 DrGMathItemBuilder subclass: #DrGFlyPointBuilder
 	instanceVariableNames: 'curveItemA curveItemB'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Presenter-Builder'!
-!classDefinition: 'DrGFlyPointBuilder class' category: #'DrGeo-Presenter-Builder'!
+	category: 'DrGeoCore-Presenter-Builder'!
+!classDefinition: 'DrGFlyPointBuilder class' category: #'DrGeoCore-Presenter-Builder'!
 DrGFlyPointBuilder class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGFreePointBuilder category: #'DrGeo-Presenter-Builder'!
+!classDefinition: #DrGFreePointBuilder category: #'DrGeoCore-Presenter-Builder'!
 DrGMathItemBuilder subclass: #DrGFreePointBuilder
 	instanceVariableNames: 'curveItem'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Presenter-Builder'!
-!classDefinition: 'DrGFreePointBuilder class' category: #'DrGeo-Presenter-Builder'!
+	category: 'DrGeoCore-Presenter-Builder'!
+!classDefinition: 'DrGFreePointBuilder class' category: #'DrGeoCore-Presenter-Builder'!
 DrGFreePointBuilder class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGLocusBuilder category: #'DrGeo-Presenter-Builder'!
+!classDefinition: #DrGLocusBuilder category: #'DrGeoCore-Presenter-Builder'!
 DrGMathItemBuilder subclass: #DrGLocusBuilder
 	instanceVariableNames: 'freePoint constrainedPoint'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Presenter-Builder'!
-!classDefinition: 'DrGLocusBuilder class' category: #'DrGeo-Presenter-Builder'!
+	category: 'DrGeoCore-Presenter-Builder'!
+!classDefinition: 'DrGLocusBuilder class' category: #'DrGeoCore-Presenter-Builder'!
 DrGLocusBuilder class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGMacroBuilder category: #'DrGeo-Presenter-Builder'!
-DrGMathItemBuilder subclass: #DrGMacroBuilder
-	instanceVariableNames: 'wizard input output description title'
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'DrGeo-Presenter-Builder'!
-!classDefinition: 'DrGMacroBuilder class' category: #'DrGeo-Presenter-Builder'!
-DrGMacroBuilder class
-	instanceVariableNames: ''!
-
-!classDefinition: #DrGMacroPlayer category: #'DrGeo-Presenter-Builder'!
-DrGMathItemBuilder subclass: #DrGMacroPlayer
-	instanceVariableNames: 'wizard selectedMacro input'
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'DrGeo-Presenter-Builder'!
-!classDefinition: 'DrGMacroPlayer class' category: #'DrGeo-Presenter-Builder'!
-DrGMacroPlayer class
-	instanceVariableNames: ''!
-
-!classDefinition: #DrGMacroPlayerHeadless category: #'DrGeo-Presenter-Builder'!
-DrGMacroPlayer subclass: #DrGMacroPlayerHeadless
-	instanceVariableNames: ''
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'DrGeo-Presenter-Builder'!
-!classDefinition: 'DrGMacroPlayerHeadless class' category: #'DrGeo-Presenter-Builder'!
-DrGMacroPlayerHeadless class
-	instanceVariableNames: ''!
-
-!classDefinition: #DrGMiddleBuilder category: #'DrGeo-Presenter-Builder'!
+!classDefinition: #DrGMiddleBuilder category: #'DrGeoCore-Presenter-Builder'!
 DrGMathItemBuilder subclass: #DrGMiddleBuilder
 	instanceVariableNames: 'pointA pointB segment'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Presenter-Builder'!
-!classDefinition: 'DrGMiddleBuilder class' category: #'DrGeo-Presenter-Builder'!
+	category: 'DrGeoCore-Presenter-Builder'!
+!classDefinition: 'DrGMiddleBuilder class' category: #'DrGeoCore-Presenter-Builder'!
 DrGMiddleBuilder class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGPointByCoordinatesBuilder category: #'DrGeo-Presenter-Builder'!
+!classDefinition: #DrGPointByCoordinatesBuilder category: #'DrGeoCore-Presenter-Builder'!
 DrGMathItemBuilder subclass: #DrGPointByCoordinatesBuilder
 	instanceVariableNames: 'valueX valueY script'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Presenter-Builder'!
-!classDefinition: 'DrGPointByCoordinatesBuilder class' category: #'DrGeo-Presenter-Builder'!
+	category: 'DrGeoCore-Presenter-Builder'!
+!classDefinition: 'DrGPointByCoordinatesBuilder class' category: #'DrGeoCore-Presenter-Builder'!
 DrGPointByCoordinatesBuilder class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGPointIntersectionBuilder category: #'DrGeo-Presenter-Builder'!
+!classDefinition: #DrGPointIntersectionBuilder category: #'DrGeoCore-Presenter-Builder'!
 DrGMathItemBuilder subclass: #DrGPointIntersectionBuilder
 	instanceVariableNames: 'curveItemA curveItemB'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Presenter-Builder'!
-!classDefinition: 'DrGPointIntersectionBuilder class' category: #'DrGeo-Presenter-Builder'!
+	category: 'DrGeoCore-Presenter-Builder'!
+!classDefinition: 'DrGPointIntersectionBuilder class' category: #'DrGeoCore-Presenter-Builder'!
 DrGPointIntersectionBuilder class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGPolygonBuilder category: #'DrGeo-Presenter-Builder'!
+!classDefinition: #DrGPolygonBuilder category: #'DrGeoCore-Presenter-Builder'!
 DrGMathItemBuilder subclass: #DrGPolygonBuilder
 	instanceVariableNames: 'points'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Presenter-Builder'!
-!classDefinition: 'DrGPolygonBuilder class' category: #'DrGeo-Presenter-Builder'!
+	category: 'DrGeoCore-Presenter-Builder'!
+!classDefinition: 'DrGPolygonBuilder class' category: #'DrGeoCore-Presenter-Builder'!
 DrGPolygonBuilder class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGPolygonRegularBuilder category: #'DrGeo-Presenter-Builder'!
+!classDefinition: #DrGPolygonRegularBuilder category: #'DrGeoCore-Presenter-Builder'!
 DrGMathItemBuilder subclass: #DrGPolygonRegularBuilder
 	instanceVariableNames: 'center pointA value'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Presenter-Builder'!
-!classDefinition: 'DrGPolygonRegularBuilder class' category: #'DrGeo-Presenter-Builder'!
+	category: 'DrGeoCore-Presenter-Builder'!
+!classDefinition: 'DrGPolygonRegularBuilder class' category: #'DrGeoCore-Presenter-Builder'!
 DrGPolygonRegularBuilder class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGScriptPlayer category: #'DrGeo-Presenter-Builder'!
+!classDefinition: #DrGScriptPlayer category: #'DrGeoCore-Presenter-Builder'!
 DrGMathItemBuilder subclass: #DrGScriptPlayer
 	instanceVariableNames: 'wizard input scriptClass'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Presenter-Builder'!
-!classDefinition: 'DrGScriptPlayer class' category: #'DrGeo-Presenter-Builder'!
+	category: 'DrGeoCore-Presenter-Builder'!
+!classDefinition: 'DrGScriptPlayer class' category: #'DrGeoCore-Presenter-Builder'!
 DrGScriptPlayer class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGScriptPlayerHeadless category: #'DrGeo-Presenter-Builder'!
+!classDefinition: #DrGScriptPlayerHeadless category: #'DrGeoCore-Presenter-Builder'!
 DrGScriptPlayer subclass: #DrGScriptPlayerHeadless
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Presenter-Builder'!
-!classDefinition: 'DrGScriptPlayerHeadless class' category: #'DrGeo-Presenter-Builder'!
+	category: 'DrGeoCore-Presenter-Builder'!
+!classDefinition: 'DrGScriptPlayerHeadless class' category: #'DrGeoCore-Presenter-Builder'!
 DrGScriptPlayerHeadless class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGSegmentBuilder category: #'DrGeo-Presenter-Builder'!
+!classDefinition: #DrGSegmentBuilder category: #'DrGeoCore-Presenter-Builder'!
 DrGMathItemBuilder subclass: #DrGSegmentBuilder
 	instanceVariableNames: 'pointA pointB'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Presenter-Builder'!
-!classDefinition: 'DrGSegmentBuilder class' category: #'DrGeo-Presenter-Builder'!
+	category: 'DrGeoCore-Presenter-Builder'!
+!classDefinition: 'DrGSegmentBuilder class' category: #'DrGeoCore-Presenter-Builder'!
 DrGSegmentBuilder class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGCircleBuilder category: #'DrGeo-Presenter-Builder'!
+!classDefinition: #DrGCircleBuilder category: #'DrGeoCore-Presenter-Builder'!
 DrGSegmentBuilder subclass: #DrGCircleBuilder
 	instanceVariableNames: 'radius segment'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Presenter-Builder'!
-!classDefinition: 'DrGCircleBuilder class' category: #'DrGeo-Presenter-Builder'!
+	category: 'DrGeoCore-Presenter-Builder'!
+!classDefinition: 'DrGCircleBuilder class' category: #'DrGeoCore-Presenter-Builder'!
 DrGCircleBuilder class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGLineBuilder category: #'DrGeo-Presenter-Builder'!
+!classDefinition: #DrGLineBuilder category: #'DrGeoCore-Presenter-Builder'!
 DrGSegmentBuilder subclass: #DrGLineBuilder
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Presenter-Builder'!
-!classDefinition: 'DrGLineBuilder class' category: #'DrGeo-Presenter-Builder'!
+	category: 'DrGeoCore-Presenter-Builder'!
+!classDefinition: 'DrGLineBuilder class' category: #'DrGeoCore-Presenter-Builder'!
 DrGLineBuilder class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGAngleBisectorBuilder category: #'DrGeo-Presenter-Builder'!
+!classDefinition: #DrGAngleBisectorBuilder category: #'DrGeoCore-Presenter-Builder'!
 DrGLineBuilder subclass: #DrGAngleBisectorBuilder
 	instanceVariableNames: 'pointC angle'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Presenter-Builder'!
-!classDefinition: 'DrGAngleBisectorBuilder class' category: #'DrGeo-Presenter-Builder'!
+	category: 'DrGeoCore-Presenter-Builder'!
+!classDefinition: 'DrGAngleBisectorBuilder class' category: #'DrGeoCore-Presenter-Builder'!
 DrGAngleBisectorBuilder class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGParallelBuilder category: #'DrGeo-Presenter-Builder'!
+!classDefinition: #DrGParallelBuilder category: #'DrGeoCore-Presenter-Builder'!
 DrGLineBuilder subclass: #DrGParallelBuilder
 	instanceVariableNames: 'direction'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Presenter-Builder'!
-!classDefinition: 'DrGParallelBuilder class' category: #'DrGeo-Presenter-Builder'!
+	category: 'DrGeoCore-Presenter-Builder'!
+!classDefinition: 'DrGParallelBuilder class' category: #'DrGeoCore-Presenter-Builder'!
 DrGParallelBuilder class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGPerpendicularBuilder category: #'DrGeo-Presenter-Builder'!
+!classDefinition: #DrGPerpendicularBuilder category: #'DrGeoCore-Presenter-Builder'!
 DrGParallelBuilder subclass: #DrGPerpendicularBuilder
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Presenter-Builder'!
-!classDefinition: 'DrGPerpendicularBuilder class' category: #'DrGeo-Presenter-Builder'!
+	category: 'DrGeoCore-Presenter-Builder'!
+!classDefinition: 'DrGPerpendicularBuilder class' category: #'DrGeoCore-Presenter-Builder'!
 DrGPerpendicularBuilder class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGPerpendicularBisectorBuilder category: #'DrGeo-Presenter-Builder'!
+!classDefinition: #DrGPerpendicularBisectorBuilder category: #'DrGeoCore-Presenter-Builder'!
 DrGLineBuilder subclass: #DrGPerpendicularBisectorBuilder
 	instanceVariableNames: 'segment'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Presenter-Builder'!
-!classDefinition: 'DrGPerpendicularBisectorBuilder class' category: #'DrGeo-Presenter-Builder'!
+	category: 'DrGeoCore-Presenter-Builder'!
+!classDefinition: 'DrGPerpendicularBisectorBuilder class' category: #'DrGeoCore-Presenter-Builder'!
 DrGPerpendicularBisectorBuilder class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGRayBuilder category: #'DrGeo-Presenter-Builder'!
+!classDefinition: #DrGRayBuilder category: #'DrGeoCore-Presenter-Builder'!
 DrGSegmentBuilder subclass: #DrGRayBuilder
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Presenter-Builder'!
-!classDefinition: 'DrGRayBuilder class' category: #'DrGeo-Presenter-Builder'!
+	category: 'DrGeoCore-Presenter-Builder'!
+!classDefinition: 'DrGRayBuilder class' category: #'DrGeoCore-Presenter-Builder'!
 DrGRayBuilder class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGVectorBuilder category: #'DrGeo-Presenter-Builder'!
+!classDefinition: #DrGVectorBuilder category: #'DrGeoCore-Presenter-Builder'!
 DrGSegmentBuilder subclass: #DrGVectorBuilder
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Presenter-Builder'!
-!classDefinition: 'DrGVectorBuilder class' category: #'DrGeo-Presenter-Builder'!
+	category: 'DrGeoCore-Presenter-Builder'!
+!classDefinition: 'DrGVectorBuilder class' category: #'DrGeoCore-Presenter-Builder'!
 DrGVectorBuilder class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGTextBuilder category: #'DrGeo-Presenter-Builder'!
+!classDefinition: #DrGTextBuilder category: #'DrGeoCore-Presenter-Builder'!
 DrGMathItemBuilder subclass: #DrGTextBuilder
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Presenter-Builder'!
-!classDefinition: 'DrGTextBuilder class' category: #'DrGeo-Presenter-Builder'!
+	category: 'DrGeoCore-Presenter-Builder'!
+!classDefinition: 'DrGTextBuilder class' category: #'DrGeoCore-Presenter-Builder'!
 DrGTextBuilder class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGTransformationBuilder category: #'DrGeo-Presenter-Builder'!
+!classDefinition: #DrGTransformationBuilder category: #'DrGeoCore-Presenter-Builder'!
 DrGMathItemBuilder subclass: #DrGTransformationBuilder
 	instanceVariableNames: 'mathItem'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Presenter-Builder'!
-!classDefinition: 'DrGTransformationBuilder class' category: #'DrGeo-Presenter-Builder'!
+	category: 'DrGeoCore-Presenter-Builder'!
+!classDefinition: 'DrGTransformationBuilder class' category: #'DrGeoCore-Presenter-Builder'!
 DrGTransformationBuilder class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGReflectionBuilder category: #'DrGeo-Presenter-Builder'!
+!classDefinition: #DrGReflectionBuilder category: #'DrGeoCore-Presenter-Builder'!
 DrGTransformationBuilder subclass: #DrGReflectionBuilder
 	instanceVariableNames: 'axe'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Presenter-Builder'!
-!classDefinition: 'DrGReflectionBuilder class' category: #'DrGeo-Presenter-Builder'!
+	category: 'DrGeoCore-Presenter-Builder'!
+!classDefinition: 'DrGReflectionBuilder class' category: #'DrGeoCore-Presenter-Builder'!
 DrGReflectionBuilder class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGRotationBuilder category: #'DrGeo-Presenter-Builder'!
+!classDefinition: #DrGRotationBuilder category: #'DrGeoCore-Presenter-Builder'!
 DrGTransformationBuilder subclass: #DrGRotationBuilder
 	instanceVariableNames: 'center value'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Presenter-Builder'!
-!classDefinition: 'DrGRotationBuilder class' category: #'DrGeo-Presenter-Builder'!
+	category: 'DrGeoCore-Presenter-Builder'!
+!classDefinition: 'DrGRotationBuilder class' category: #'DrGeoCore-Presenter-Builder'!
 DrGRotationBuilder class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGHomothetyBuilder category: #'DrGeo-Presenter-Builder'!
+!classDefinition: #DrGHomothetyBuilder category: #'DrGeoCore-Presenter-Builder'!
 DrGRotationBuilder subclass: #DrGHomothetyBuilder
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Presenter-Builder'!
-!classDefinition: 'DrGHomothetyBuilder class' category: #'DrGeo-Presenter-Builder'!
+	category: 'DrGeoCore-Presenter-Builder'!
+!classDefinition: 'DrGHomothetyBuilder class' category: #'DrGeoCore-Presenter-Builder'!
 DrGHomothetyBuilder class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGSymmetryBuilder category: #'DrGeo-Presenter-Builder'!
+!classDefinition: #DrGSymmetryBuilder category: #'DrGeoCore-Presenter-Builder'!
 DrGTransformationBuilder subclass: #DrGSymmetryBuilder
 	instanceVariableNames: 'center'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Presenter-Builder'!
-!classDefinition: 'DrGSymmetryBuilder class' category: #'DrGeo-Presenter-Builder'!
+	category: 'DrGeoCore-Presenter-Builder'!
+!classDefinition: 'DrGSymmetryBuilder class' category: #'DrGeoCore-Presenter-Builder'!
 DrGSymmetryBuilder class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGTranslationBuilder category: #'DrGeo-Presenter-Builder'!
+!classDefinition: #DrGTranslationBuilder category: #'DrGeoCore-Presenter-Builder'!
 DrGTransformationBuilder subclass: #DrGTranslationBuilder
 	instanceVariableNames: 'vector'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Presenter-Builder'!
-!classDefinition: 'DrGTranslationBuilder class' category: #'DrGeo-Presenter-Builder'!
+	category: 'DrGeoCore-Presenter-Builder'!
+!classDefinition: 'DrGTranslationBuilder class' category: #'DrGeoCore-Presenter-Builder'!
 DrGTranslationBuilder class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGValueBuilder category: #'DrGeo-Presenter-Builder'!
+!classDefinition: #DrGValueBuilder category: #'DrGeoCore-Presenter-Builder'!
 DrGMathItemBuilder subclass: #DrGValueBuilder
 	instanceVariableNames: 'curveItem pointA pointB'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Presenter-Builder'!
-!classDefinition: 'DrGValueBuilder class' category: #'DrGeo-Presenter-Builder'!
+	category: 'DrGeoCore-Presenter-Builder'!
+!classDefinition: 'DrGValueBuilder class' category: #'DrGeoCore-Presenter-Builder'!
 DrGValueBuilder class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGLocusSample category: #'DrGeo-Model-Item'!
+!classDefinition: #DrGLocusSample category: #'DrGeoCore-Model-Item'!
 Link subclass: #DrGLocusSample
 	instanceVariableNames: 'abscissa pointScreen pointWorld offScreen exist'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Model-Item'!
-!classDefinition: 'DrGLocusSample class' category: #'DrGeo-Model-Item'!
+	category: 'DrGeoCore-Model-Item'!
+!classDefinition: 'DrGLocusSample class' category: #'DrGeoCore-Model-Item'!
 DrGLocusSample class
 	instanceVariableNames: ''!
 
-!classDefinition: #UnderMouseMorph category: #'DrGeo-View'!
+!classDefinition: #UnderMouseMorph category: #'DrGeoCore-View'!
 Morph subclass: #UnderMouseMorph
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-View'!
-!classDefinition: 'UnderMouseMorph class' category: #'DrGeo-View'!
+	category: 'DrGeoCore-View'!
+!classDefinition: 'UnderMouseMorph class' category: #'DrGeoCore-View'!
 UnderMouseMorph class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGMorph category: #'DrGeo-View-Item'!
+!classDefinition: #DrGMorph category: #'DrGeoCore-View-Item'!
 Morph subclass: #DrGMorph
 	instanceVariableNames: 'mathItem color style labelMorph'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-View-Item'!
-!classDefinition: 'DrGMorph class' category: #'DrGeo-View-Item'!
+	category: 'DrGeoCore-View-Item'!
+!classDefinition: 'DrGMorph class' category: #'DrGeoCore-View-Item'!
 DrGMorph class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGAngleGeometricMorph category: #'DrGeo-View-Item'!
+!classDefinition: #DrGAngleGeometricMorph category: #'DrGeoCore-View-Item'!
 DrGMorph subclass: #DrGAngleGeometricMorph
 	instanceVariableNames: 'origin length center vector1 vector2 screenCenter'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-View-Item'!
-!classDefinition: 'DrGAngleGeometricMorph class' category: #'DrGeo-View-Item'!
+	category: 'DrGeoCore-View-Item'!
+!classDefinition: 'DrGAngleGeometricMorph class' category: #'DrGeoCore-View-Item'!
 DrGAngleGeometricMorph class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGAngleOrientedMorph category: #'DrGeo-View-Item'!
+!classDefinition: #DrGAngleOrientedMorph category: #'DrGeoCore-View-Item'!
 DrGAngleGeometricMorph subclass: #DrGAngleOrientedMorph
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-View-Item'!
-!classDefinition: 'DrGAngleOrientedMorph class' category: #'DrGeo-View-Item'!
+	category: 'DrGeoCore-View-Item'!
+!classDefinition: 'DrGAngleOrientedMorph class' category: #'DrGeoCore-View-Item'!
 DrGAngleOrientedMorph class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGBitmapMorph category: #'DrGeo-View-Item'!
+!classDefinition: #DrGBitmapMorph category: #'DrGeoCore-View-Item'!
 DrGMorph subclass: #DrGBitmapMorph
 	instanceVariableNames: 'previousScale previousMagnify paintResource'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-View-Item'!
-!classDefinition: 'DrGBitmapMorph class' category: #'DrGeo-View-Item'!
+	category: 'DrGeoCore-View-Item'!
+!classDefinition: 'DrGBitmapMorph class' category: #'DrGeoCore-View-Item'!
 DrGBitmapMorph class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGCurveMorph category: #'DrGeo-View-Item'!
+!classDefinition: #DrGCurveMorph category: #'DrGeoCore-View-Item'!
 DrGMorph subclass: #DrGCurveMorph
 	instanceVariableNames: 'borderColor borderWidth anchorAbscissa dashedBorder'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-View-Item'!
-!classDefinition: 'DrGCurveMorph class' category: #'DrGeo-View-Item'!
+	category: 'DrGeoCore-View-Item'!
+!classDefinition: 'DrGCurveMorph class' category: #'DrGeoCore-View-Item'!
 DrGCurveMorph class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGArcMorph category: #'DrGeo-View-Item'!
+!classDefinition: #DrGArcMorph category: #'DrGeoCore-View-Item'!
 DrGCurveMorph subclass: #DrGArcMorph
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-View-Item'!
-!classDefinition: 'DrGArcMorph class' category: #'DrGeo-View-Item'!
+	category: 'DrGeoCore-View-Item'!
+!classDefinition: 'DrGArcMorph class' category: #'DrGeoCore-View-Item'!
 DrGArcMorph class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGCircleMorph category: #'DrGeo-View-Item'!
+!classDefinition: #DrGCircleMorph category: #'DrGeoCore-View-Item'!
 DrGCurveMorph subclass: #DrGCircleMorph
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-View-Item'!
-!classDefinition: 'DrGCircleMorph class' category: #'DrGeo-View-Item'!
+	category: 'DrGeoCore-View-Item'!
+!classDefinition: 'DrGCircleMorph class' category: #'DrGeoCore-View-Item'!
 DrGCircleMorph class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGPolylineMorph category: #'DrGeo-View-Item'!
+!classDefinition: #DrGPolylineMorph category: #'DrGeoCore-View-Item'!
 DrGCurveMorph subclass: #DrGPolylineMorph
 	instanceVariableNames: 'vertices closed arrows'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-View-Item'!
-!classDefinition: 'DrGPolylineMorph class' category: #'DrGeo-View-Item'!
+	category: 'DrGeoCore-View-Item'!
+!classDefinition: 'DrGPolylineMorph class' category: #'DrGeoCore-View-Item'!
 DrGPolylineMorph class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGCurveStraightMorph category: #'DrGeo-View-Item'!
+!classDefinition: #DrGCurveStraightMorph category: #'DrGeoCore-View-Item'!
 DrGPolylineMorph subclass: #DrGCurveStraightMorph
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-View-Item'!
-!classDefinition: 'DrGCurveStraightMorph class' category: #'DrGeo-View-Item'!
+	category: 'DrGeoCore-View-Item'!
+!classDefinition: 'DrGCurveStraightMorph class' category: #'DrGeoCore-View-Item'!
 DrGCurveStraightMorph class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGLineMorph category: #'DrGeo-View-Item'!
+!classDefinition: #DrGLineMorph category: #'DrGeoCore-View-Item'!
 DrGCurveStraightMorph subclass: #DrGLineMorph
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-View-Item'!
-!classDefinition: 'DrGLineMorph class' category: #'DrGeo-View-Item'!
+	category: 'DrGeoCore-View-Item'!
+!classDefinition: 'DrGLineMorph class' category: #'DrGeoCore-View-Item'!
 DrGLineMorph class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGRayMorph category: #'DrGeo-View-Item'!
+!classDefinition: #DrGRayMorph category: #'DrGeoCore-View-Item'!
 DrGCurveStraightMorph subclass: #DrGRayMorph
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-View-Item'!
-!classDefinition: 'DrGRayMorph class' category: #'DrGeo-View-Item'!
+	category: 'DrGeoCore-View-Item'!
+!classDefinition: 'DrGRayMorph class' category: #'DrGeoCore-View-Item'!
 DrGRayMorph class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGSegmentMorph category: #'DrGeo-View-Item'!
+!classDefinition: #DrGSegmentMorph category: #'DrGeoCore-View-Item'!
 DrGCurveStraightMorph subclass: #DrGSegmentMorph
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-View-Item'!
-!classDefinition: 'DrGSegmentMorph class' category: #'DrGeo-View-Item'!
+	category: 'DrGeoCore-View-Item'!
+!classDefinition: 'DrGSegmentMorph class' category: #'DrGeoCore-View-Item'!
 DrGSegmentMorph class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGIconSegmentMorph category: #'DrGeo-View'!
+!classDefinition: #DrGIconSegmentMorph category: #'DrGeoCore-View'!
 DrGSegmentMorph subclass: #DrGIconSegmentMorph
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-View'!
-!classDefinition: 'DrGIconSegmentMorph class' category: #'DrGeo-View'!
+	category: 'DrGeoCore-View'!
+!classDefinition: 'DrGIconSegmentMorph class' category: #'DrGeoCore-View'!
 DrGIconSegmentMorph class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGVectorMorph category: #'DrGeo-View-Item'!
+!classDefinition: #DrGVectorMorph category: #'DrGeoCore-View-Item'!
 DrGCurveStraightMorph subclass: #DrGVectorMorph
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-View-Item'!
-!classDefinition: 'DrGVectorMorph class' category: #'DrGeo-View-Item'!
+	category: 'DrGeoCore-View-Item'!
+!classDefinition: 'DrGVectorMorph class' category: #'DrGeoCore-View-Item'!
 DrGVectorMorph class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGLocusMorph category: #'DrGeo-View-Item'!
+!classDefinition: #DrGLocusMorph category: #'DrGeoCore-View-Item'!
 DrGPolylineMorph subclass: #DrGLocusMorph
 	instanceVariableNames: 'free constrained minAbscissaDelta maxScreenDelta maxAbscissaDelta freeIndex constrainedIndex samples worldBound'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-View-Item'!
-!classDefinition: 'DrGLocusMorph class' category: #'DrGeo-View-Item'!
+	category: 'DrGeoCore-View-Item'!
+!classDefinition: 'DrGLocusMorph class' category: #'DrGeoCore-View-Item'!
 DrGLocusMorph class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGLocusTransformedMorph category: #'DrGeo-View-Item'!
+!classDefinition: #DrGLocusTransformedMorph category: #'DrGeoCore-View-Item'!
 DrGLocusMorph subclass: #DrGLocusTransformedMorph
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-View-Item'!
-!classDefinition: 'DrGLocusTransformedMorph class' category: #'DrGeo-View-Item'!
+	category: 'DrGeoCore-View-Item'!
+!classDefinition: 'DrGLocusTransformedMorph class' category: #'DrGeoCore-View-Item'!
 DrGLocusTransformedMorph class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGPolygonMorph category: #'DrGeo-View-Item'!
+!classDefinition: #DrGPolygonMorph category: #'DrGeoCore-View-Item'!
 DrGPolylineMorph subclass: #DrGPolygonMorph
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-View-Item'!
-!classDefinition: 'DrGPolygonMorph class' category: #'DrGeo-View-Item'!
+	category: 'DrGeoCore-View-Item'!
+!classDefinition: 'DrGPolygonMorph class' category: #'DrGeoCore-View-Item'!
 DrGPolygonMorph class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGPointMorph category: #'DrGeo-View-Item'!
+!classDefinition: #DrGPointMorph category: #'DrGeoCore-View-Item'!
 DrGMorph subclass: #DrGPointMorph
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-View-Item'!
-!classDefinition: 'DrGPointMorph class' category: #'DrGeo-View-Item'!
+	category: 'DrGeoCore-View-Item'!
+!classDefinition: 'DrGPointMorph class' category: #'DrGeoCore-View-Item'!
 DrGPointMorph class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGIconPointMorph category: #'DrGeo-View'!
+!classDefinition: #DrGIconPointMorph category: #'DrGeoCore-View'!
 DrGPointMorph subclass: #DrGIconPointMorph
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-View'!
-!classDefinition: 'DrGIconPointMorph class' category: #'DrGeo-View'!
+	category: 'DrGeoCore-View'!
+!classDefinition: 'DrGIconPointMorph class' category: #'DrGeoCore-View'!
 DrGIconPointMorph class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGTextMorph category: #'DrGeo-View-Item'!
+!classDefinition: #DrGTextMorph category: #'DrGeoCore-View-Item'!
 DrGMorph subclass: #DrGTextMorph
 	instanceVariableNames: 'textComposition extent'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-View-Item'!
-!classDefinition: 'DrGTextMorph class' category: #'DrGeo-View-Item'!
+	category: 'DrGeoCore-View-Item'!
+!classDefinition: 'DrGTextMorph class' category: #'DrGeoCore-View-Item'!
 DrGTextMorph class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGValueMorph category: #'DrGeo-View-Item'!
+!classDefinition: #DrGValueMorph category: #'DrGeoCore-View-Item'!
 DrGTextMorph subclass: #DrGValueMorph
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-View-Item'!
-!classDefinition: 'DrGValueMorph class' category: #'DrGeo-View-Item'!
+	category: 'DrGeoCore-View-Item'!
+!classDefinition: 'DrGValueMorph class' category: #'DrGeoCore-View-Item'!
 DrGValueMorph class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGScriptMorph category: #'DrGeo-View-Item'!
+!classDefinition: #DrGScriptMorph category: #'DrGeoCore-View-Item'!
 DrGValueMorph subclass: #DrGScriptMorph
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-View-Item'!
-!classDefinition: 'DrGScriptMorph class' category: #'DrGeo-View-Item'!
+	category: 'DrGeoCore-View-Item'!
+!classDefinition: 'DrGScriptMorph class' category: #'DrGeoCore-View-Item'!
 DrGScriptMorph class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGDrawable category: #'DrGeo-View'!
+!classDefinition: #DrGDrawable category: #'DrGeoCore-View'!
 ColoredBoxMorph subclass: #DrGDrawable
 	instanceVariableNames: 'balloonTarget tipOn selection ox oy scale underMouse prevMousePos valueItem dottedLines gridScale itemViews undoneViews lastView presenter'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-View'!
-!classDefinition: 'DrGDrawable class' category: #'DrGeo-View'!
+	category: 'DrGeoCore-View'!
+!classDefinition: 'DrGDrawable class' category: #'DrGeoCore-View'!
 DrGDrawable class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGeoMiniView category: #'DrGeo-View'!
+!classDefinition: #DrGeoMiniView category: #'DrGeoCore-View'!
 LinearLayoutMorph subclass: #DrGeoMiniView
 	instanceVariableNames: 'drawable presenter'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-View'!
-!classDefinition: 'DrGeoMiniView class' category: #'DrGeo-View'!
+	category: 'DrGeoCore-View'!
+!classDefinition: 'DrGeoMiniView class' category: #'DrGeoCore-View'!
 DrGeoMiniView class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGDrawableMenu category: #'DrGeo-View'!
+!classDefinition: #DrGDrawableMenu category: #'DrGeoCore-View'!
 MenuMorph subclass: #DrGDrawableMenu
 	instanceVariableNames: 'tool'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-View'!
-!classDefinition: 'DrGDrawableMenu class' category: #'DrGeo-View'!
+	category: 'DrGeoCore-View'!
+!classDefinition: 'DrGDrawableMenu class' category: #'DrGeoCore-View'!
 DrGDrawableMenu class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGLabel category: #'DrGeo-View'!
+!classDefinition: #DrGLabel category: #'DrGeoCore-View'!
 LabelMorph subclass: #DrGLabel
 	instanceVariableNames: 'blink itemMorph delta'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-View'!
-!classDefinition: 'DrGLabel class' category: #'DrGeo-View'!
+	category: 'DrGeoCore-View'!
+!classDefinition: 'DrGLabel class' category: #'DrGeoCore-View'!
 DrGLabel class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGeoView category: #'DrGeo-View'!
-SystemWindow subclass: #DrGeoView
-	instanceVariableNames: 'presenter drawable'
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'DrGeo-View'!
-!classDefinition: 'DrGeoView class' category: #'DrGeo-View'!
-DrGeoView class
-	instanceVariableNames: ''!
-
-!classDefinition: #DrGDebuggerWindow category: #'DrGeo-View-Dialog'!
-DebuggerWindow subclass: #DrGDebuggerWindow
-	instanceVariableNames: ''
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'DrGeo-View-Dialog'!
-!classDefinition: 'DrGDebuggerWindow class' category: #'DrGeo-View-Dialog'!
-DrGDebuggerWindow class
-	instanceVariableNames: ''!
-
-!classDefinition: #DrGStylePanel category: #'DrGeo-View-Dialog'!
+!classDefinition: #DrGStylePanel category: #'DrGeoCore-View-Dialog'!
 Panel subclass: #DrGStylePanel
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-View-Dialog'!
-!classDefinition: 'DrGStylePanel class' category: #'DrGeo-View-Dialog'!
+	category: 'DrGeoCore-View-Dialog'!
+!classDefinition: 'DrGStylePanel class' category: #'DrGeoCore-View-Dialog'!
 DrGStylePanel class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGFileOpenMorph category: #'DrGeo-View-Dialog'!
-DialogPanel subclass: #DrGFileOpenMorph
-	instanceVariableNames: 'previews panel'
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'DrGeo-View-Dialog'!
-!classDefinition: 'DrGFileOpenMorph class' category: #'DrGeo-View-Dialog'!
-DrGFileOpenMorph class
-	instanceVariableNames: ''!
-
-!classDefinition: #DrGScriptDesignerDialog category: #'DrGeo-View-Dialog'!
-DialogPanel subclass: #DrGScriptDesignerDialog
-	instanceVariableNames: 'scriptName description argumentsMorph'
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'DrGeo-View-Dialog'!
-!classDefinition: 'DrGScriptDesignerDialog class' category: #'DrGeo-View-Dialog'!
-DrGScriptDesignerDialog class
-	instanceVariableNames: ''!
-
-!classDefinition: #DrGSmalltalkSketchBrowser category: #'DrGeo-View-Dialog'!
-DialogPanel subclass: #DrGSmalltalkSketchBrowser
-	instanceVariableNames: 'selectedFile drgeoView codeView sketches sketchesListMorph pane'
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'DrGeo-View-Dialog'!
-!classDefinition: 'DrGSmalltalkSketchBrowser class' category: #'DrGeo-View-Dialog'!
-DrGSmalltalkSketchBrowser class
-	instanceVariableNames: ''!
-
-!classDefinition: #DrGSmalltalkSketchEditor category: #'DrGeo-View-Dialog'!
-DialogPanel subclass: #DrGSmalltalkSketchEditor
-	instanceVariableNames: 'file drgeoView codeView pane sketchProcess playButton codeAndViewPanel debugger docView'
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'DrGeo-View-Dialog'!
-!classDefinition: 'DrGSmalltalkSketchEditor class' category: #'DrGeo-View-Dialog'!
-DrGSmalltalkSketchEditor class
-	instanceVariableNames: ''!
-
-!classDefinition: #DrGWizardMacroBuild category: #'DrGeo-View-Dialog'!
-WizardPanel subclass: #DrGWizardMacroBuild
-	instanceVariableNames: ''
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'DrGeo-View-Dialog'!
-!classDefinition: 'DrGWizardMacroBuild class' category: #'DrGeo-View-Dialog'!
-DrGWizardMacroBuild class
-	instanceVariableNames: ''!
-
-!classDefinition: #DrGWizardMacroPlay category: #'DrGeo-View-Dialog'!
-WizardPanel subclass: #DrGWizardMacroPlay
-	instanceVariableNames: 'macroFactories'
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'DrGeo-View-Dialog'!
-!classDefinition: 'DrGWizardMacroPlay class' category: #'DrGeo-View-Dialog'!
-DrGWizardMacroPlay class
-	instanceVariableNames: ''!
-
-!classDefinition: #DrGWizardScript category: #'DrGeo-View-Dialog'!
-WizardPanel subclass: #DrGWizardScript
-	instanceVariableNames: 'scripts'
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'DrGeo-View-Dialog'!
-!classDefinition: 'DrGWizardScript class' category: #'DrGeo-View-Dialog'!
-DrGWizardScript class
-	instanceVariableNames: ''!
-
-!classDefinition: #DrGeoTreeNode category: #'DrGeo-Model'!
-ListItemWrapper subclass: #DrGeoTreeNode
-	instanceVariableNames: 'hasContents'
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'DrGeo-Model'!
-!classDefinition: 'DrGeoTreeNode class' category: #'DrGeo-Model'!
-DrGeoTreeNode class
-	instanceVariableNames: ''!
-
-!classDefinition: #DrGeoScriptTest category: #'DrGeo-Test'!
+!classDefinition: #DrGeoScriptTest category: #'DrGeoCore-Test'!
 TestCase subclass: #DrGeoScriptTest
 	instanceVariableNames: 'sketch'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Test'!
-!classDefinition: 'DrGeoScriptTest class' category: #'DrGeo-Test'!
+	category: 'DrGeoCore-Test'!
+!classDefinition: 'DrGeoScriptTest class' category: #'DrGeoCore-Test'!
 DrGeoScriptTest class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGeoSmalltalkSketchTest category: #'DrGeo-Test'!
+!classDefinition: #DrGeoSmalltalkSketchTest category: #'DrGeoCore-Test'!
 TestCase subclass: #DrGeoSmalltalkSketchTest
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Test'!
-!classDefinition: 'DrGeoSmalltalkSketchTest class' category: #'DrGeo-Test'!
+	category: 'DrGeoCore-Test'!
+!classDefinition: 'DrGeoSmalltalkSketchTest class' category: #'DrGeoCore-Test'!
 DrGeoSmalltalkSketchTest class
 	instanceVariableNames: ''!
 
-!classDefinition: #LanguageFontTest category: #'DrGeo-Test'!
+!classDefinition: #LanguageFontTest category: #'DrGeoCore-Test'!
 TestCase subclass: #LanguageFontTest
 	instanceVariableNames: 'fontManager'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Test'!
-!classDefinition: 'LanguageFontTest class' category: #'DrGeo-Test'!
+	category: 'DrGeoCore-Test'!
+!classDefinition: 'LanguageFontTest class' category: #'DrGeoCore-Test'!
 LanguageFontTest class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGeoScriptTestResource category: #'DrGeo-Test'!
+!classDefinition: #DrGeoScriptTestResource category: #'DrGeoCore-Test'!
 TestResource subclass: #DrGeoScriptTestResource
 	instanceVariableNames: 'sketch'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Test'!
-!classDefinition: 'DrGeoScriptTestResource class' category: #'DrGeo-Test'!
+	category: 'DrGeoCore-Test'!
+!classDefinition: 'DrGeoScriptTestResource class' category: #'DrGeoCore-Test'!
 DrGeoScriptTestResource class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGTypeArrow category: #'DrGeo-Model-Style'!
+!classDefinition: #DrGTypeArrow category: #'DrGeoCore-Model-Style'!
 PreferenceType subclass: #DrGTypeArrow
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Model-Style'!
-!classDefinition: 'DrGTypeArrow class' category: #'DrGeo-Model-Style'!
+	category: 'DrGeoCore-Model-Style'!
+!classDefinition: 'DrGTypeArrow class' category: #'DrGeoCore-Model-Style'!
 DrGTypeArrow class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGTypeColor category: #'DrGeo-Model-Style'!
+!classDefinition: #DrGTypeColor category: #'DrGeoCore-Model-Style'!
 PreferenceType subclass: #DrGTypeColor
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Model-Style'!
-!classDefinition: 'DrGTypeColor class' category: #'DrGeo-Model-Style'!
+	category: 'DrGeoCore-Model-Style'!
+!classDefinition: 'DrGTypeColor class' category: #'DrGeoCore-Model-Style'!
 DrGTypeColor class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGTypeMark category: #'DrGeo-Model-Style'!
+!classDefinition: #DrGTypeMark category: #'DrGeoCore-Model-Style'!
 PreferenceType subclass: #DrGTypeMark
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Model-Style'!
-!classDefinition: 'DrGTypeMark class' category: #'DrGeo-Model-Style'!
+	category: 'DrGeoCore-Model-Style'!
+!classDefinition: 'DrGTypeMark class' category: #'DrGeoCore-Model-Style'!
 DrGTypeMark class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGTypePointShape category: #'DrGeo-Model-Style'!
+!classDefinition: #DrGTypePointShape category: #'DrGeoCore-Model-Style'!
 PreferenceType subclass: #DrGTypePointShape
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Model-Style'!
-!classDefinition: 'DrGTypePointShape class' category: #'DrGeo-Model-Style'!
+	category: 'DrGeoCore-Model-Style'!
+!classDefinition: 'DrGTypePointShape class' category: #'DrGeoCore-Model-Style'!
 DrGTypePointShape class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGTypePointSize category: #'DrGeo-Model-Style'!
+!classDefinition: #DrGTypePointSize category: #'DrGeoCore-Model-Style'!
 PreferenceType subclass: #DrGTypePointSize
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Model-Style'!
-!classDefinition: 'DrGTypePointSize class' category: #'DrGeo-Model-Style'!
+	category: 'DrGeoCore-Model-Style'!
+!classDefinition: 'DrGTypePointSize class' category: #'DrGeoCore-Model-Style'!
 DrGTypePointSize class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGTypeStyle category: #'DrGeo-Model-Style'!
+!classDefinition: #DrGTypeStyle category: #'DrGeoCore-Model-Style'!
 PreferenceType subclass: #DrGTypeStyle
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Model-Style'!
-!classDefinition: 'DrGTypeStyle class' category: #'DrGeo-Model-Style'!
+	category: 'DrGeoCore-Model-Style'!
+!classDefinition: 'DrGTypeStyle class' category: #'DrGeoCore-Model-Style'!
 DrGTypeStyle class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGTypeThickness category: #'DrGeo-Model-Style'!
+!classDefinition: #DrGTypeThickness category: #'DrGeoCore-Model-Style'!
 PreferenceType subclass: #DrGTypeThickness
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Model-Style'!
-!classDefinition: 'DrGTypeThickness class' category: #'DrGeo-Model-Style'!
+	category: 'DrGeoCore-Model-Style'!
+!classDefinition: 'DrGTypeThickness class' category: #'DrGeoCore-Model-Style'!
 DrGTypeThickness class
 	instanceVariableNames: ''!
 
@@ -2972,12 +2674,6 @@ the original copy somewhere in the pool.
 When manufacturing a new item it checks for its unicity.
 It works with the help of the MathItem and macro Builder.
 Related patterns: flyweight.!
-
-!DrGMacroFactory commentStamp: '' prior: 0!
-DrGMacroFactory is a unique factory to hold macro construction definition.
-
-Class Instance Variables:
-	uniqueInstance	is the unique macro factory instance!
 
 !DrGMathItemFactory commentStamp: '' prior: 0!
 See superclass comments.
@@ -3002,10 +2698,6 @@ pharo drgeo.image drgeo --sketch=sketch.fgeo!
 !DrGeoXml commentStamp: 'hlsf 3/15/2023 16:34:05' prior: 0!
 A DrGeoXml is an helper to load or save as an XML representation a DrGeo instance, including export to SVG.
 !
-
-!DrGeoTree commentStamp: 'hlsf 2/10/2022 11:29:00' prior: 0!
-I am a model to present the constructed math item in a hierarchy list.
-- app: the DrGeo instance!
 
 !DrGMathItem commentStamp: '' prior: 0!
 This is the root class of the mathematic items hierarchy.
@@ -3114,46 +2806,6 @@ Script
 !DrGValueValueItem commentStamp: '' prior: 0!
 Free value!
 
-!DrGMacro commentStamp: '' prior: 0!
-A DrGMacro is a macro-construction definition
-
-Instance Variables
-	nodes:		<Object>
-
-nodes
-	- xxxxx
-!
-
-!DrGMacroMathItem commentStamp: '' prior: 0!
-A class to represent input math item template when reloading from a XML representation.!
-
-!DrGMacroInputNode commentStamp: '' prior: 0!
-A DrGMacroNode is a node in a macro-construction. It represents an abstracted math item in the macro-construction tree.
-
-Instance Variables
-!
-
-!DrGeoUserScript commentStamp: '<historical>' prior: 0!
-I am an abstract user script. 
-My subclass 'DrGeoScriptXXXXXXX' are created from the Dr. Geo script wizard, menu: Script>Create a Script.
-
-From the wizard, the user set :
-- the script name (script class side method #scriptName)
-- the scritp description (script class side method #description)
-- the argumentType (script sclass side method #newArgumentType)
-
-Next, from the source code browser (class browser), the user write the scription computation in the script  method #compute
-
-A set of helpers are present to use in the #compute method:
-- #arg1 to #arg4: to access first to fourth mathItem arguments as selected by the user
-- #costume1 to #costume4: to access the first to fourth mathitem's view (morph)
-
-
-Instance Variables
-- arguments : Array of DrGCostum, arguments this script uses in its computation
-- cosutme : the morph representing this script on the canvas, access only from its #costume message.
-		!
-
 !DrGeoItem commentStamp: '<historical>' prior: 0!
 A class to encapsulate math item for user friendly use when doing Smalltalk figure!
 
@@ -3238,17 +2890,8 @@ A tool to delete the mathItem. With subclass from StyleTool to have hidden costu
 I a represent the state of the user selected tool.
 The context is the tool (selectTool, buildTool, ...) where the state operate.!
 
-!DrGMacroBuildToolStateInput commentStamp: '' prior: 0!
-When user selects input page, blink the cosumes related to this state. In this state the user can select items as input parameters for the macro. He can also unselect items.!
-
-!DrGMacroBuildToolStateOutput commentStamp: '' prior: 0!
-When user selects  output page, blink the cosumes related to this state. In this state the user can select items as output parameters for the macro. He can also unselect items.!
-
 !DrGFlyBuildTouchToolStateGrabbed commentStamp: '' prior: 0!
 I am grabbing: i.e. the mouse move with bouton pressed or the user finger is moving on the touch screen!
-
-!DrGMacroToolStateNeutral commentStamp: '' prior: 0!
-When user switch to info pages (info and description pages), we unselect all selected costumes. In this state the user can't select any items.!
 
 !DrGSelectToolState commentStamp: '' prior: 0!
 An abstract state for the select tool and derivate.!
@@ -3279,13 +2922,6 @@ Associate several LocaleIDs (fr_FR, zh_TW, zh_CN, ko) (with or without country c
 - locales : a collection of LocaleID
 - family : a String, font family name
 - file : a String, file name of the font!
-
-!DrGControlsManager commentStamp: 'hlsf 4/10/2022 14:39:21' prior: 0!
-A manager for the DrGeo user interface controls (main view, menu, button, tree, etc.). 
-- My subclasses may change how the tools are presented and accessed
-- I hold the data and methods to build the UI
-- I build the main Dr. Geo view (Window or simpler view)
-!
 
 !DrGIcons commentStamp: 'hlsf 4/26/2020 15:34:30' prior: 0!
 I hold icons (in PNG format) and I can build dedicated graphics for the UI.
@@ -3338,26 +2974,6 @@ A Builder to build nothing. Used in the select mode!
 
 !DrGFlyPointBuilder commentStamp: '' prior: 0!
 To build free point and intersection point, it is also used to construct on the fly those point categories.!
-
-!DrGMacroBuilder commentStamp: '' prior: 0!
-A DrGMacroBuilder is builder to construct a macro-construction.
-The builder needs an appropriate list of:
- - input & output mathItems selected in the drawing area
- - a macro-construction name & description
-
-The builder checks the validity of the macro-construction, ie it checks if the outputs
-items are deductible from the input items
-
-Instance Variables
-!
-
-!DrGMacroPlayer commentStamp: '<historical>' prior: 0!
-A DrGMacroPlayer is a builder used to play a macro-construction against a user provided list of input items.
-It chekcs the validity of the input items against the macro-construction definition.
-The input parameters type must be user selected in the same order as they appear in the macro inputNodes definition.!
-
-!DrGMacroPlayerHeadless commentStamp: '' prior: 0!
-This is the macro player activated when the user directly selects a macro from the macro-menu in the toolbar. This player does not show up the usual wizard to select the macro to play as it is already selected from the menu.!
 
 !DrGPointIntersectionBuilder commentStamp: '' prior: 0!
 The build the intersection between two curves. One or two output may be created!
@@ -3447,61 +3063,8 @@ I can be dragged arround the objet and renammed from the Style tool.
 - itemMorph is the view of a math Item I am attached too
 - delta : my x@y delta to the reference point of the itemMorph I am attached to!
 
-!DrGeoView commentStamp: '<historical>' prior: 0!
-I am full featured view of a DrGeo app!
-
-!DrGDebuggerWindow commentStamp: '<historical>' prior: 0!
-A simplified Debugger window, with translated labels and helps.!
-
 !DrGStylePanel commentStamp: '<historical>' prior: 0!
 A panel to edit the style of items in the DrGeo canvas (drawable)!
-
-!DrGFileOpenMorph commentStamp: '<historical>' prior: 0!
-I am a dialog window to browse, select and open a sketch.
-My model is a DirectoryEntry instance. 
-Possible models are:
-- DrGeoSystem examplesPath,
-- DrGeoSystem mySketchesPath!
-
-!DrGScriptDesignerDialog commentStamp: 'hlsf 8/4/2023 17:39:27' prior: 0!
-I am a dialog to design a DrGeo script: 
-- my model is the presenter of my DrGeo app instance
-- its name
-- its description
-- its attributes types (class of math items)!
-
-!DrGSmalltalkSketchBrowser commentStamp: '<historical>' prior: 0!
-A browser to visualize Smalltalk sketches
-- model : DirectoryEntry where to find the Smallltalk sketch files
-- selectedFile : the selected Smalltalk sketch file
-- sketches : the name of the Smalltalk Sketches in the path (name file without extention)
-- drgeoView : a DrGeo view of the smalltalkSketchFile, it is plugged in the browser
-- codeView : a code view of the smalltalkSketchFile, it is plugged in the browser when check button code!
-
-!DrGSmalltalkSketchEditor commentStamp: '<historical>' prior: 0!
-An editor to edit Smalltalk sketch. 
-- There is an editor view to edit the Smalltalk code of the sketch and a DrGeo view where is rendered the sketch resulting from the compilation and execution of the Smalltalk code.
-- There is a tool bar to load, save and execute the code.
-- model : source code of the edited Smalltalk sketch
-- file : file entry of the Smalltalk sketch
-- drgeoView : a morph where to plug the view of the compiled model
-- codeView : editor of the model
-- docView : view of the Erudite DrGeo tutorial
-- sketchProcess: the Smalltalk sketch is executed in its own thread
-- playButton: the button to play and pause the Smalltalk sketch execution
-- debugger: a debugger window whose content is plug in the editor when appropriate
-!
-
-!DrGWizardMacroBuild commentStamp: 'hlsf 11/18/2021 21:23:19' prior: 0!
-A wizard to define a macro-construction. 
-My model is a macro-construction builder (DrGMacroBuilder instance)!
-
-!DrGWizardMacroPlay commentStamp: '<historical>' prior: 0!
-A wizard to play (execute) a macro-construction. 
-My model is a macro-construction player (DrGMacroPlayer instance)!
-
-!DrGWizardScript commentStamp: '<historical>' prior: 0!
-A wizard to plug a script instance in the canvas.!
 
 !DrGeoScriptTest commentStamp: '' prior: 0!
 These tests are based on the Smalltalk Sketch API to construct programmatically geometric sketches.!
@@ -3646,24 +3209,6 @@ isAnyInPool: itemList
 !DrGFactory methodsFor: 'testing' stamp: ''!
 isInPool: item
 	^ (self findInPool: item) isNil not! !
-
-!DrGMacroFactory methodsFor: 'accessing' stamp: ''!
-addUnique: aMacro
-	^ (self findInPool: aMacro) 
-		ifNil: [self add: aMacro].! !
-
-!DrGMacroFactory methodsFor: 'accessing' stamp: ''!
-titles
-	^ self pool collect: [:m | m title]! !
-
-!DrGMacroFactory class methodsFor: 'as yet unclassified' stamp: ''!
-purge
-	"self purge"
-	self new purge! !
-
-!DrGMacroFactory class methodsFor: 'instance creation' stamp: ''!
-new
-	^ uniqueInstance ifNil: [uniqueInstance := super new]! !
 
 !DrGMathItemFactory methodsFor: 'testing' stamp: ''!
 is: item parentWithTest: testSelector
@@ -4911,14 +4456,14 @@ loadMacroFrom: doc
 		do: [:each | DrGMacroFactory new addUnique: (self parseOneMacro: each)].
 ! !
 
-!DrGeoXml methodsFor: 'xml read' stamp: ''!
+!DrGeoXml methodsFor: 'xml read' stamp: 'hlsf 8/Jan/2026 22:12:35'!
 loadOnlyFigureFrom: stream for: constructor
 "One XML document may contain several drgeo figure instances, parse it all,
 and return a DrGeo for each one"
 	| doc |
 	doc := XMLDOMParser parseDocumentFrom: stream.
 	stream close.
-	^ self loadFigureFrom: doc	for: constructor! !
+	^ self loadFigureFrom: doc for: constructor! !
 
 !DrGeoXml methodsFor: 'xml read' stamp: 'hlsf 4/Aug/2023 18:08:40'!
 parseFigureFrom: drgeoNode
@@ -4940,16 +4485,16 @@ parseFigureFrom: drgeoNode
 		]
 	].! !
 
-!DrGeoXml methodsFor: 'xml read' stamp: 'hlsf 8/Aug/2023 19:13:55'!
+!DrGeoXml methodsFor: 'xml read' stamp: 'hlsf 8/Jan/2026 22:17:15'!
 parseOneFigure: node for: constructor
 " Instantiate this node in a DrGeo app and return it"
 	self presenter: (DrGeo perform: constructor).
 	presenter notInteractive: true.
 	self parseFigureFrom: node.
 	self drawable forcedVisibility: false.
-	presenter 	notInteractive: false.
+	presenter notInteractive: false.
 	self drawable redrawNeeded .
-	presenter 	saved: true.
+	presenter saved: true.
 	^ presenter! !
 
 !DrGeoXml methodsFor: 'xml read' stamp: 'hlsf 27/Sep/2021 22:57:06'!
@@ -5025,20 +4570,6 @@ parseOutput: node inMacro: macro
 					parentNodes: (self parentMacroNodesIn: macro from: child);
 					yourself)]]! !
 
-!DrGeoXml methodsFor: 'xml write' stamp: 'hlsf 4/Aug/2023 17:28:58'!
-saveMultiple: sketchesAndMacros on: stream
-	| doc writer root |
-	doc := XMLDocument new version: '1.0'.
-	writer := XMLWriter on: stream.
-	root := XMLElement named: #drgenius.
-	(sketchesAndMacros select: [:each | each class = DrGeoView]) do: [:view |
-		self presenter: view presenter.
-		self writeFigureAsXmlTo: root].
-	(sketchesAndMacros select: [:each | each class = DrGMacro]) do: [:macro |
-		macro writeAsXmlTo: root].
-	doc addElement: root.
-	doc printXMLOn: writer.! !
-
 !DrGeoXml methodsFor: 'xml write' stamp: ''!
 saveOn: stream
 	| doc writer root |
@@ -5065,53 +4596,6 @@ writeFigureAsXmlTo: aNode
 	self factory pool do: [:anItem |
 		(self drawable viewOf: anItem) writeAsXmlTo: drgeoNode].
 	aNode addElement: drgeoNode! !
-
-!DrGeoTree methodsFor: 'accessing' stamp: 'hlsf 10/Feb/2022 11:51:56'!
-mathItem: aMathItem
-"select given a math item"
-	selectedItem := self pool detect: [:wrappedItem | wrappedItem item == aMathItem] ifNone: [nil].
-	self changed: #selectedItem.! !
-
-!DrGeoTree methodsFor: 'accessing' stamp: 'hlsf 4/Aug/2023 12:50:29'!
-pool
-	^ presenter drawable itemViews 
-		select: [:aMorph | aMorph itemExist and: [aMorph style isNotHidden]] 
-		thenCollect: [:aMorph | 
-			(DrGeoTreeNode with: aMorph mathItem)
-				hasContents: aMorph mathItem parents isNil not ;
-				yourself]! !
-
-!DrGeoTree methodsFor: 'accessing' stamp: 'hlsf 4/Aug/2023 12:49:59'!
-presenter: aPresenter
-	presenter := aPresenter .
-	presenter domain
-		when: #updatedItems
-		send: #changed:
-		to: self
-		with: #pool
-	
-	! !
-
-!DrGeoTree methodsFor: 'accessing' stamp: 'hlsf 10/Feb/2022 09:54:14'!
-selectedItem
-	^ selectedItem! !
-
-!DrGeoTree methodsFor: 'accessing' stamp: 'hlsf 4/Aug/2023 12:50:06'!
-selectedItem: anItemWrapper
-	selectedItem := anItemWrapper.
-	self changed: #selectedItem.
-	presenter updateSelection ! !
-
-!DrGeoTree methodsFor: 'updating' stamp: 'hlsf 8/Jun/2024 13:01:17'!
-update: symbol
-"pass on the notified change to my observing view (hierarchy list)"
-	self changed: symbol! !
-
-!DrGeoTree class methodsFor: 'instance creation' stamp: 'hlsf 4/Aug/2023 12:49:23'!
-on: aPresenter
-	^ self new
-		presenter: aPresenter ;
-		yourself! !
 
 !DrGMathItem methodsFor: 'accessing' stamp: ''!
 basicType
@@ -9302,464 +8786,6 @@ doParentsExist
 isPropertyEditable
 	^ true! !
 
-!DrGMacro methodsFor: 'xml writting' stamp: ''!
-writeAsXmlTo: aNode
-	| node |
-	self saved: true.
-	self cleanNodes.
-	node := XMLElement named: 'macro' attributes: Dictionary new.
-	node attributeAt: #name put: title asString.
-	node addElement: ((XMLElement named: #description) addContent: (XMLStringNode string: description asString)).
-	node 
-		addElement: self writeInputAsXml;
-		addElement: self writeOutputAsXml.
-	aNode addElement: node.
-	^node
-		! !
-
-!DrGMacro methodsFor: 'xml writting' stamp: ''!
-writeInputAsXml
-	| element |
-	element := XMLElement named: 'input'.
-	self inputNodes do: [:aMacroNode | aMacroNode writeAsXmlTo: element].
-	^ element ! !
-
-!DrGMacro methodsFor: 'xml writting' stamp: ''!
-writeOutputAsXml
-	| element |
-	element := XMLElement named: 'output'.
-	self allButInputNodes do: [:aMacroNode | aMacroNode writeAsXmlTo: element].
-	^ element 
-! !
-
-!DrGMacro methodsFor: 'as yet unclassified' stamp: 'hlsf 4/Aug/2023 17:11:41'!
-execute: inputs in: presenter
-	self cleanNodes.
-	self inputNodes 
-		with: inputs
-		do: [ :node :item | node itemTemplate: item ].
-	self allButInputNodes do: [:node | 
-		node itemTemplate 
-			parents: (node parentNodes collect: [:aNode | aNode itemTemplate])
-			in: presenter .
-		node itemTemplate update; rehash.].
-	^ self constructedNodes collect: [ :n | n itemTemplate ]! !
-
-!DrGMacro methodsFor: 'accessing' stamp: ''!
-addNode: aNode
-	nodes add: aNode! !
-
-!DrGMacro methodsFor: 'accessing' stamp: ''!
-allButInputNodes
-	^ nodes reject: [:node | node isInputNode]! !
-
-!DrGMacro methodsFor: 'accessing' stamp: ''!
-constructedNodes
-	^ nodes select: [:node | node isInputNode not]! !
-
-!DrGMacro methodsFor: 'accessing' stamp: ''!
-description
-	^ description! !
-
-!DrGMacro methodsFor: 'accessing' stamp: ''!
-description: anObject
-	description := anObject. 
-	self saved: false.! !
-
-!DrGMacro methodsFor: 'accessing' stamp: ''!
-detectId: anId
-	^ nodes detect: [:node | node isId: anId]! !
-
-!DrGMacro methodsFor: 'accessing' stamp: ''!
-hiddenNodes
-	^ nodes select: [:node | node isHiddenNode]! !
-
-!DrGMacro methodsFor: 'accessing' stamp: ''!
-inputBasicType
-"The basic type of the input parameters"
-	^self inputNodes collect: [:n | n itemTemplate basicType]! !
-
-!DrGMacro methodsFor: 'accessing' stamp: ''!
-inputNodes
-	^ nodes select: [:node | node isInputNode]! !
-
-!DrGMacro methodsFor: 'accessing' stamp: ''!
-nodes
-	^nodes! !
-
-!DrGMacro methodsFor: 'accessing' stamp: ''!
-outputNodes
-	^ nodes select: [:node | node isOutputNode]! !
-
-!DrGMacro methodsFor: 'accessing' stamp: ''!
-saved: bool
-	saved := bool.! !
-
-!DrGMacro methodsFor: 'accessing' stamp: ''!
-title
-	^ title! !
-
-!DrGMacro methodsFor: 'accessing' stamp: ''!
-title: anObject
-	title := anObject! !
-
-!DrGMacro methodsFor: 'private' stamp: ''!
-cleanNodes
-	nodes do: [ :node | 
-		node itemTemplate: 
-			((node itemTemplate copy) 
-				parents: nil;
-				yourself).
-		node itemTemplate releaseActionMap.]! !
-
-!DrGMacro methodsFor: 'private' stamp: 'hlsf 18/Nov/2021 21:06:11'!
-extractItemsFrom: inputs to: outputs in: domain
-	"extract the items to define the whole macro structure"
-
-	| items parents tmp |
-	items := (Set withAll: inputs)
-		addAll: outputs;
-		yourself.
-	parents := outputs.
-	[ (inputs includesAllOf: parents) | parents isEmpty ]
-		whileFalse: [ tmp := parents.
-			parents := Set new.
-			tmp
-				do: [ :item | item parents ifNotNil: [ parents addAll: item parents ] ].
-			items addAll: parents ].
-	^ domain factory ordered: items! !
-
-!DrGMacro methodsFor: 'private' stamp: ''!
-itemToNode: item
-	^ nodes detect: [:node |node itemTemplate = item]! !
-
-!DrGMacro methodsFor: 'private' stamp: ''!
-updateParentNodes
-	nodes do: 
-		[ :node | 
-		node isInputNode | node itemTemplate parents isNil ifFalse: 
-			[ node parentNodes: (node itemTemplate parents collect: [ :item | self itemToNode: item ]) ] ]! !
-
-!DrGMacro methodsFor: 'testing' stamp: ''!
-isSaved
-	^ saved! !
-
-!DrGMacro methodsFor: 'initialize-release' stamp: ''!
-from: inputs to: outputs in: domain 
-	"build the tree nodes"
-	| items |
-	items := self 
-		extractItemsFrom: inputs
-		to: outputs
-		in: domain.
-	nodes := items collect: 
-		[ :item | 
-		DrGMacroNode 
-			on: item
-			from: inputs
-			to: outputs ].
-	self updateParentNodes.
-	self cleanNodes! !
-
-!DrGMacro methodsFor: 'initialize-release' stamp: ''!
-initialize 
-	nodes := OrderedCollection new.
-	saved := false! !
-
-!DrGMacro methodsFor: 'initialize-release' stamp: 'hlsf 5/Aug/2023 14:35:47'!
-release! !
-
-!DrGMacro methodsFor: 'comparing' stamp: ''!
-= aMacro
-	^ nodes size = aMacro nodes size 
-		and: 
-			[nodes with: aMacro nodes do: [:n1 :n2 |
-				n1 = n2 ifFalse: [^false]].
-			true]! !
-
-!DrGMacro methodsFor: 'comparing' stamp: ''!
-hash
-	^nodes hash! !
-
-!DrGMacro class methodsFor: 'testing' stamp: 'hlsf 18/Nov/2021 21:05:19'!
-isValidWith: inputs and: outputs
-	"check the validity of a macro defined with these input and output items"
-
-	| parents |
-	parents := Set new.
-	outputs
-		do: [ :item | 
-			(inputs includes: item)
-				ifTrue:
-					[ "item is an input, we don't go to parents, we keep it" parents add: item ]
-				ifFalse:
-					[ "item isn't an input, we go to its parents" item parents ifNotNil: [ parents addAll: item parents ] ] ].
-	parents isEmpty
-		ifTrue: [ ^ false ].
-	(inputs includesAllOf: parents)
-		ifTrue: [ ^ true ].
-	^ self isValidWith: inputs and: parents! !
-
-!DrGMacroMathItem methodsFor: 'accessing' stamp: ''!
-basicType 
-	^ basicType ! !
-
-!DrGMacroMathItem methodsFor: 'accessing' stamp: ''!
-basicType: symbol
-	basicType := symbol ! !
-
-!DrGMacroMathItem methodsFor: 'accessing' stamp: ''!
-id 
-	^ id! !
-
-!DrGMacroMathItem methodsFor: 'accessing' stamp: ''!
-id: aSymbol
-	id := aSymbol ! !
-
-!DrGMacroMathItem methodsFor: 'accessing' stamp: ''!
-parents
-	^ #()! !
-
-!DrGMacroMathItem methodsFor: 'accessing' stamp: ''!
-parents: object
-! !
-
-!DrGMacroMathItem methodsFor: 'xml writing' stamp: ''!
-writeAsXmlTo: aNode
-	"return the newly created element"
-	| node |
-	node :=  XMLElement named: self basicType attributes: Dictionary new.
-	node attributeAt: #type put: 'inputMacroMathItem';
-		attributeAt: #id put: self id.
-	aNode addElement: node.
-	^node! !
-
-!DrGMacroNode methodsFor: 'testing' stamp: ''!
-isHiddenNode
-	^false! !
-
-!DrGMacroNode methodsFor: 'testing' stamp: ''!
-isId: anID
-	^ itemTemplate id = anID ! !
-
-!DrGMacroNode methodsFor: 'testing' stamp: ''!
-isInputNode
-	^false! !
-
-!DrGMacroNode methodsFor: 'testing' stamp: ''!
-isOutputNode
-	^false! !
-
-!DrGMacroNode methodsFor: 'accessing' stamp: ''!
-basicType
-	^#macroNode! !
-
-!DrGMacroNode methodsFor: 'accessing' stamp: ''!
-itemTemplate
-	^itemTemplate! !
-
-!DrGMacroNode methodsFor: 'accessing' stamp: ''!
-itemTemplate: anItem
-	itemTemplate := anItem! !
-
-!DrGMacroNode methodsFor: 'xml writting' stamp: ''!
-writeAsXmlTo: aNode
-	^ itemTemplate writeAsXmlTo: aNode! !
-
-!DrGMacroNode methodsFor: 'comparing' stamp: ''!
-= aNode
-"This is what we expect for input item of the macro.
-Handle carrefully when this is a script node"
-
-| answer |
-	answer := self basicType = aNode basicType 
-		and: [itemTemplate basicType = aNode itemTemplate basicType
-			and: [itemTemplate  nodeType = aNode itemTemplate nodeType]].
-	^ answer & itemTemplate isScriptItem 
-		ifTrue: [itemTemplate script == aNode itemTemplate script]
-		ifFalse: [answer]
-		! !
-
-!DrGMacroNode methodsFor: 'comparing' stamp: ''!
-hash
-| hash |
-	hash := itemTemplate basicType hash bitXor: 
-		(itemTemplate nodeType hash bitXor: self basicType hash).
-	itemTemplate isScriptItem ifTrue: [hash := hash bitXor: itemTemplate script hash].
-	^ hash! !
-
-!DrGMacroNode class methodsFor: 'as yet unclassified' stamp: ''!
-on: item from: inputs to: outputs
-"return the appropriate nodes depending on the item is an input, output or intermediate item"
-	| class |
-	class := DrGMacroHiddenNode.
-	(inputs includes: item) ifTrue: [class := DrGMacroInputNode].
-	(outputs includes: item) ifTrue: [class := DrGMacroOutputNode].
-	^ class new itemTemplate: item! !
-
-!DrGMacroHiddenNode methodsFor: 'initialize-release' stamp: ''!
-initialize 
-	super initialize.
-	parentNodes := OrderedCollection new.! !
-
-!DrGMacroHiddenNode methodsFor: 'xml writting' stamp: ''!
-statusElement
-	^ XMLElement named: 'hidden'.
-! !
-
-!DrGMacroHiddenNode methodsFor: 'xml writting' stamp: ''!
-writeAsXmlTo: aNode
-	| element statusElement|
-	statusElement := self statusElement.
-	aNode addElement: statusElement.
-	itemTemplate parents: (parentNodes collect: [:each | each itemTemplate]).
-	element := itemTemplate writeAsXmlTo: statusElement.
-	^ statusElement ! !
-
-!DrGMacroHiddenNode methodsFor: 'accessing' stamp: ''!
-basicType
-	^#hiddenMacroNode! !
-
-!DrGMacroHiddenNode methodsFor: 'accessing' stamp: ''!
-parentNodes
-	^ parentNodes! !
-
-!DrGMacroHiddenNode methodsFor: 'accessing' stamp: ''!
-parentNodes: anObject
-	parentNodes := anObject! !
-
-!DrGMacroHiddenNode methodsFor: 'testing' stamp: ''!
-isHiddenNode
-	^true! !
-
-!DrGMacroHiddenNode methodsFor: 'comparing' stamp: ''!
-= aNode
-	^ super = aNode and:
-		[parentNodes = aNode parentNodes]! !
-
-!DrGMacroHiddenNode methodsFor: 'comparing' stamp: ''!
-hash
-	^(super hash) bitXor: parentNodes hash! !
-
-!DrGMacroOutputNode methodsFor: 'accessing' stamp: ''!
-basicType
-	^#outputMacroNode! !
-
-!DrGMacroOutputNode methodsFor: 'testing' stamp: ''!
-isHiddenNode
-	^false! !
-
-!DrGMacroOutputNode methodsFor: 'testing' stamp: ''!
-isOutputNode
-	^true! !
-
-!DrGMacroOutputNode methodsFor: 'xml writting' stamp: ''!
-statusElement
-	^ XMLElement named: 'final'.
-! !
-
-!DrGMacroInputNode methodsFor: 'testing' stamp: ''!
-isInputNode
-	^true! !
-
-!DrGMacroInputNode methodsFor: 'accessing' stamp: ''!
-basicType
-	^#inputMacroNode! !
-
-!DrGMacroInputNode methodsFor: 'comparing' stamp: ''!
-= aNode
-"this is what we expect for input item of the macro"
-	^ self basicType = aNode basicType 
-		and: [itemTemplate basicType = aNode itemTemplate basicType]
-		! !
-
-!DrGMacroInputNode methodsFor: 'comparing' stamp: ''!
-hash
-	^ itemTemplate basicType hash bitXor: self basicType hash! !
-
-!DrGeoUserScript methodsFor: 'helpers' stamp: ''!
-arg1
-	^ arguments first mathItem! !
-
-!DrGeoUserScript methodsFor: 'helpers' stamp: ''!
-arg2
-	^ arguments second mathItem! !
-
-!DrGeoUserScript methodsFor: 'helpers' stamp: ''!
-arg3
-	^ arguments third mathItem! !
-
-!DrGeoUserScript methodsFor: 'helpers' stamp: ''!
-arg4
-	^ arguments fourth mathItem! !
-
-!DrGeoUserScript methodsFor: 'helpers' stamp: 'hlsf 9/Apr/2024 15:52:16'!
-costume
-"Search for the morph of my instance, then cache it"
-	^ costume ifNil: [ 
-		DrGDrawable allInstances 
-			detect: [ :aDrawable | 
-				aDrawable itemViews 
-					detect: [:aMorph | aMorph mathItem isScriptItem and: [ aMorph mathItem script == self] ]
-					ifFound: [ :theCostume | costume := theCostume. true]
-					ifNone: [ false ] ]		
-			ifFound: [costume ]
-			ifNone: [ nil ]
-		 ]! !
-
-!DrGeoUserScript methodsFor: 'helpers' stamp: ''!
-costume1
-	^ arguments first! !
-
-!DrGeoUserScript methodsFor: 'helpers' stamp: ''!
-costume2
-	^ arguments second! !
-
-!DrGeoUserScript methodsFor: 'helpers' stamp: ''!
-costume3
-	^ arguments third! !
-
-!DrGeoUserScript methodsFor: 'helpers' stamp: ''!
-costume4
-	^ arguments fourth! !
-
-!DrGeoUserScript methodsFor: 'helpers' stamp: 'hlsf 4/Aug/2023 13:04:00'!
-presenter
-"Access to the presenter handling my instance"
-	^ self costume ifNotNil: [ costume presenter ]! !
-
-!DrGeoUserScript methodsFor: 'private' stamp: 'hlsf 13/Apr/2024 09:44:05'!
-arguments: aCollectionOfMorph
-	arguments := aCollectionOfMorph ! !
-
-!DrGeoUserScript methodsFor: 'public' stamp: ''!
-compute
-	"return a value, the returned value by the script"
-	self subclassResponsibility ! !
-
-!DrGeoUserScript class methodsFor: 'private' stamp: ''!
-argumentsType
-"return a collection of Math item, one for each argument type for this script"
-	^ argumentsType ifNil: [ argumentsType := self newArgumentsType ]! !
-
-!DrGeoUserScript class methodsFor: 'private' stamp: 'hlsf 7/Apr/2022 15:12:50'!
-newArgumentsType
-"The arguments type I need to work"
-	self subclassResponsibility ! !
-
-!DrGeoUserScript class methodsFor: 'private' stamp: ''!
-reset
-	argumentsType := nil.! !
-
-!DrGeoUserScript class methodsFor: 'public' stamp: ''!
-description
-	^ 'I am the description of this script. Please edit me.' translated! !
-
-!DrGeoUserScript class methodsFor: 'public' stamp: ''!
-scriptName
-"I appear in the scripts menu"
-	^ 'A script' translated! !
-
 !DrGeoItem methodsFor: 'updating' stamp: ''!
 color: aColor
 	self style color: aColor! !
@@ -11693,14 +10719,6 @@ exportToImageAs
 		morphCenter: self view fullBoundsInOwner center;
 		setProperty: #layerNumber toValue: 20! !
 
-!DrGeo methodsFor: 'callback UI' stamp: 'hlsf 8/Aug/2023 19:13:55'!
-newFigure
-	DrGeo new! !
-
-!DrGeo methodsFor: 'callback UI' stamp: 'hlsf 2/Dec/2021 10:00:04'!
-openFigureThumbnail
-	DrGFileOpenMorph open! !
-
 !DrGeo methodsFor: 'callback UI' stamp: 'hlsf 4/Aug/2023 17:25:03'!
 save
 "Save the sketch with the current filename"
@@ -11901,11 +10919,6 @@ createLocus
 	self selectTool: DrGBuildTool with: DrGLocusBuilder
 ! !
 
-!DrGeo methodsFor: 'callback create' stamp: 'hlsf 5/Apr/2025 12:03:01'!
-createMacro
-	selectedTool := #macroBuild.
-	self selectTool: DrGMacroBuildTool with: DrGMacroBuilder! !
-
 !DrGeo methodsFor: 'callback create' stamp: 'hlsf 5/Apr/2025 12:03:11'!
 createMiddlePoint
 	selectedTool := #middle.
@@ -11961,12 +10974,6 @@ createRotation
 	selectedTool := #rotation.
 	self selectTool: DrGBuildTool with: DrGRotationBuilder! !
 
-!DrGeo methodsFor: 'callback create' stamp: 'hlsf 5/Apr/2025 12:04:52'!
-createScript
-	"We force to select/move mode as we do not interact with the sketch"	
-	self move.
-	DrGScriptDesignerDialog open: self label: 'Build a new script' translated! !
-
 !DrGeo methodsFor: 'callback create' stamp: 'hlsf 5/Apr/2025 12:05:02'!
 createSegment
 	selectedTool := #segment.
@@ -11992,70 +10999,16 @@ createVector
 	selectedTool := #vector.
 	self selectTool: DrGFlyBuildTouchTool with: DrGVectorBuilder! !
 
-!DrGeo methodsFor: 'callback create' stamp: 'hlsf 5/Apr/2025 11:55:52'!
-deleteMacro
-	selectedTool := #deleteMacro.
-	self selectTool: DrGSelectTool.
-! !
-
-!DrGeo methodsFor: 'callback create' stamp: 'hlsf 5/Apr/2025 12:05:54'!
-editScript
-	| menu |
-	"We force to select mode, then open a browser on the script classes"
-	self move.
-	menu := MenuMorph entitled: 'Edit or create scripts' translated.
-	DrGWizardScript sortedScripts do: [:aScriptClass |
-		(menu 
-			add: aScriptClass scriptName 
-			target: self 
-			action: #editScript: 
-			argument: aScriptClass)
-			setBalloonText: aScriptClass description].
-	menu popUpInWorld! !
-
-!DrGeo methodsFor: 'callback create' stamp: 'hlsf 9/Apr/2024 15:54:00'!
-editScript: aScriptClass
-	|  browser |
-	browser := Browser new setClass: aScriptClass selector: #compute.
-	browser when: #annotationChanged send: #updateAllMathItems to: self domain.
-	^ BrowserWindow openNoSysCat: browser label:  'Edit or create scripts' translated
-		
-	! !
-
 !DrGeo methodsFor: 'callback create' stamp: 'hlsf 5/Apr/2025 11:55:43'!
 eraser
 	selectedTool := #eraser.
 	self selectTool: DrGDeleteTool.
 ! !
 
-!DrGeo methodsFor: 'callback create' stamp: 'hlsf 5/Apr/2025 12:06:09'!
-executeMacro
-	selectedTool := #macroExecute.
-	self selectTool: DrGMacroPlayTool with: DrGMacroPlayer! !
-
-!DrGeo methodsFor: 'callback create' stamp: 'hlsf 5/Apr/2025 12:06:24'!
-executeMacro: aMacro
-	selectedTool := #macroExecute. 
-	self selectTool: DrGMacroPlayTool with: DrGMacroPlayerHeadless.
-	self tool builder selectedMacro: aMacro.
-	self tool switchState: DrGMacroPlayToolStateSelect! !
-
 !DrGeo methodsFor: 'callback create' stamp: 'hlsf 5/Apr/2025 11:55:17'!
 property 
 	selectedTool := #property.
 	self selectTool: DrGPropertyTool.! !
-
-!DrGeo methodsFor: 'callback create' stamp: 'hlsf 5/Apr/2025 12:06:33'!
-useScript
-	selectedTool := #useScript.
-	self selectTool: DrGScriptPlayTool with: DrGScriptPlayer! !
-
-!DrGeo methodsFor: 'callback create' stamp: 'hlsf 5/Apr/2025 12:06:43'!
-useScript: aScript
-	selectedTool := #useScript.
-	self selectTool: DrGScriptPlayTool with: DrGScriptPlayerHeadless.	
-	self tool builder scriptClass: aScript.
-	self tool switchState: DrGMacroPlayToolStateSelect! !
 
 !DrGeo methodsFor: 'canvas' stamp: 'hlsf 3/Aug/2023 23:22:11'!
 previewOnFile: aFileEntry
@@ -12070,13 +11023,6 @@ previewOnFile: aFileEntry
 		 
 ! !
 
-!DrGeo methodsFor: 'initialize-release' stamp: 'hlsf 7/Jan/2026 16:10:42'!
-initialize
-	self initializeBasic.
-	self controlsManager: DrGControlsManager.
-	self move.
-	self view openInWorld ! !
-
 !DrGeo methodsFor: 'initialize-release' stamp: 'hlsf 4/Aug/2023 18:16:58'!
 initializeBasic
 	super initialize.
@@ -12087,10 +11033,10 @@ initializeBasic
 	notInteractive := false.
 	domain := DrGeoDomain new.! !
 
-!DrGeo methodsFor: 'initialize-release' stamp: 'hlsf 7/Jan/2026 16:12:11'!
+!DrGeo methodsFor: 'initialize-release' stamp: 'hlsf 7/Jan/2026 15:33:59'!
 initializeService
 	self initializeBasic.
-	self controlsManager: DrGMinControlsManager.
+	self controlsManager: DrGMinimalControlsManager.
 	self move.! !
 
 !DrGeo methodsFor: 'initialize-release' stamp: 'hlsf 14/Nov/2023 00:18:55'!
@@ -12201,18 +11147,6 @@ readyToBuildClone
 	answer := self domain createMathItem: self tool builder.
 	self tool grabClone: answer first last.! !
 
-!DrGeo methodsFor: 'updating' stamp: ''!
-readyToBuildMacro
-	"readyToBuild event, the builder is ready to build a macro, request to the domain the construction of the math item under the builder"
-	self domain createMacro: self tool builder.
-	self move! !
-
-!DrGeo methodsFor: 'updating' stamp: 'hlsf 4/Aug/2023 17:33:11'!
-readyToPlayMacro
-	"readyToBuild event, the builder is ready to play a macro (enought input items), request to the domain the construction of the math items under the builder"
-	self domain playMacro: self tool builder in: self.
-	self move! !
-
 !DrGeo methodsFor: 'updating' stamp: 'hlsf 4/Aug/2023 12:19:10'!
 updateSelection
 	(self isTool: #move) ifTrue: [|aMathItem| 
@@ -12241,11 +11175,11 @@ service
 		initializeService;
 		yourself! !
 
-!DrGeo class methodsFor: 'saved status' stamp: 'hlsf 4/Aug/2023 17:40:53'!
+!DrGeo class methodsFor: 'saved status' stamp: 'hlsf 8/Jan/2026 21:56:18'!
 figuresArray
 	|items activeViews|
 	activeViews := OrderedCollection new.
-	DrGeoView allInstances do: [:each | 
+	DrGeoAppView allInstances do: [:each | 
 		each owner isNil ifFalse: [activeViews add: each]].
 	items := OrderedCollection new.
 	activeViews do: [:aView |
@@ -12256,44 +11190,32 @@ figuresArray
 	^ items
 ! !
 
-!DrGeo class methodsFor: 'saved status' stamp: 'hlsf 3/Aug/2023 21:40:18'!
-macrosArray
-	|items|
-	items := OrderedCollection new.
-	DrGMacroFactory new pool do: [:macro |
-		items add: (Array 
-			with: macro 
-			with: 'Macro - ' translated, macro title 
-			with: (ValueHolder with: macro isSaved not) )].
-	^ items! !
-
-!DrGeo class methodsFor: 'saved status' stamp: 'hlsf 3/Aug/2023 21:40:27'!
+!DrGeo class methodsFor: 'saved status' stamp: 'hlsf 8/Jan/2026 22:04:37'!
 unsavedData
 "Answer a collection of unsaved data"
 	| unsavedData |
 	unsavedData := OrderedCollection new.
 	unsavedData 
-		addAll: (self figuresArray select: [:each | each third propertyValue]);
-		addAll: (self macrosArray select: [:each | each third propertyValue]).
+		addAll: (self figuresArray select: [:each | each third propertyValue]).
 	^ unsavedData! !
 
-!DrGeo class methodsFor: 'user interface' stamp: 'hlsf 3/Aug/2023 21:46:41'!
+!DrGeo class methodsFor: 'user interface' stamp: 'hlsf 8/Jan/2026 22:05:51'!
 aboutDrgeo
 	UISupervisor whenUIinSafeState: [
 		(PopUpMenu labels: ' Ok ' icons: {DrGIcons drgeo}) 
 			startUpNonModalWithCaption:  self drgeoInformationString ]! !
 
-!DrGeo class methodsFor: 'user interface' stamp: 'hlsf 19/May/2024 09:47:44'!
+!DrGeo class methodsFor: 'user interface' stamp: 'hlsf 8/Jan/2026 22:05:47'!
 cuisVersion
 	^ SystemVersion current versionString, ' #', SystemVersion current highestUpdate printString! !
 
-!DrGeo class methodsFor: 'user interface' stamp: 'hlsf 5/Apr/2025 11:39:28'!
+!DrGeo class methodsFor: 'user interface' stamp: 'hlsf 8/Jan/2026 22:05:55'!
 drgeoCopyright
 	^ 'Source code application: Copyright 1996-2025 Hilaire Fernandes
 Icons: Copyright 1999 Frédéric Toussaint
 Icons: Copyright 2021-2022 David Caula (imppao)'! !
 
-!DrGeo class methodsFor: 'user interface' stamp: 'hlsf 19/May/2024 09:48:57'!
+!DrGeo class methodsFor: 'user interface' stamp: 'hlsf 8/Jan/2026 22:05:58'!
 drgeoInformationString
 	|text |
 	text := 'Dr. Geo is about interactive geometry and programming.
@@ -12317,113 +11239,6 @@ drgeoVersion
 		'25.08a beta (code revision ', 
 		(String streamContents: [:str | 
 			(CodePackage installedPackages at: 'DrGeo') featureSpec provides printVersionRevisionOn: str]), ')'! !
-
-!DrGeo class methodsFor: 'user interface' stamp: 'hlsf 3/Aug/2023 21:47:35'!
-getMenuIn: aWorld at: aHand
-	| menu |
-	menu :=  (CommandBuilder on: #drgeoWorldMenu) getMenu.
-	menu addStayUpIcons ;
-		addTitle: 'System menu' translated.
-	^ menu! !
-
-!DrGeo class methodsFor: 'user interface' stamp: 'hlsf 3/Apr/2024 17:11:51'!
-preferencesMenu: builder
-	<drgeoWorldMenu>
-	(builder newEntry: 'Settings' translated in: 'Preferences' translated)
-		icon: #graphicsIcon;
-		action: [PreferenceBrowser open: DrGeoSystem preferences label: 'Dr. Geo Preferences' translated.];
-		order: 1.
-	(builder newEntry: 'Size of GUI elements' translated in: 'Preferences' translated)
-		target: Theme; selector: #changeFontSizes;
-		icon: #preferencesDesktopFontIcon;
-		order: 2.
-	(builder newEntry: 'Theme' translated in: 'Preferences' translated)
-		target: Theme; selector: #changeTheme;
-		icon: #appearanceIcon;
-		order: 3.
-		! !
-
-!DrGeo class methodsFor: 'user interface' stamp: 'hlsf 3/Aug/2023 21:44:17'!
-quit
-	self unsavedData isEmpty ifFalse: [ 
-		(self confirm: 'There is unsaved data!! 
-Are you sure to quit Dr. Geo environment?' translated) ifFalse: [ ^ self]].
-	Smalltalk quitPrimitive! !
-
-!DrGeo class methodsFor: 'user interface' stamp: 'hlsf 26/May/2024 11:23:04'!
-toolsMenu: builder
-	<drgeoWorldMenu>
-	(builder newEntry: 'System Browser' translated in: 'Tools' translated)
-		icon: #developmentIcon;
-		action: [HierarchyBrowserWindow onClass: DrGeoSketch selector: nil];
-		help:'A source code browser to view, edit and save Dr. Geo code. I open the browser on the DrGeoSketch class you can study to design your own Smalltalk sketch.' translated;
-		order: 40.
-
-	(builder newEntry: 'Smalltalk Sketch Editor' translated in: 'Tools' translated)
-		icon: #textEditorIcon;
-		help: 'An editor to write and to test new Smalltalk sketch.' 	translated;
-		action: [DrGSmalltalkSketchEditor open: '' label: 'Edit Smalltalk Sketch' translated.];
-		order: 20.
-
-	(builder newEntry: 'Browse Smalltalk Sketches' translated in: 'Tools' translated)
-		icon: #scriptIcon;
-		help: 'A tool to browse and to test both system and personal Smalltalk Sketches.' 	translated;
-		action: [DrGSmalltalkSketchBrowser open: DrGeoSystem smalltalkSketchesPath label: 'Browse' translated.];
-		order: 10.
-
-	(builder newEntry: 'Workspace' translated in: 'Tools' translated)
-		icon: #terminalIcon;
-		action: [Workspace open ];
-		help: 'A window used as a scratchpad area where fragments of Cuis-Smalltalk code can be entered, stored, edited, and evaluated. To edit Smalltalk sketch, use the Smalltalk Sketch Editor tool above.'	translated;
-		order: 30.
-
-	(builder newEntry: 'Transcript' translated in: 'Tools' translated)
-		icon: #printerIcon;
-		action: [Transcript open ];
-		help: 'A window used to print information from the code - text output. Any object receiving the message #print is output in the Transcript: ''hello'' print, (k * 5) print. Use the Transcript class for more elaborated output.' 	translated;
-		order: 35.
-
-		
-	(builder newEntry: 'Open a file' translated in: 'Tools' translated)
-		icon: #systemFileManagerIcon;
-		action: [FileList open];
-		help: 'Open the filer on your personal sketches collection.' translated;
-		order: 50.
-		
-	(builder newEntry: 'Save session' translated in: 'Tools' translated)
-		order: 999;
-		action: [Smalltalk saveImage];
-		icon:	 #saveIcon;
-		help: 'Save this Dr. Geo session.' translated! !
-
-!DrGeo class methodsFor: 'user interface' stamp: 'hlsf 3/Apr/2024 17:10:15'!
-worldMenu: builder
-	<drgeoWorldMenu>
-	(builder newEntry: 'New sketch' translated)
-		icon: #newIcon;
-		action: [DrGeo new];
-		order: 0.
-	(builder newEntry: 'Open a sketch' translated)
-		icon: #openIcon;
-		action: [DrGFileOpenMorph open];
-		order: 1.
-	(builder newEntry: 'Preferences' translated)
-		icon: #preferencesIcon;
-		order: 2.
-	(builder newEntry: 'Toggle full screen mode' translated)
-		icon: #viewFullscreenIcon;
-		action: [DrGeoSystem toggleFullscreen];
-		help: 'Turn full screen mode on when it is off, off when it is on.'	translated;
-		order: 3.
-	(builder newEntry: 'Tools' translated)
-		icon:	 #systemIcon.
-	(builder newEntry: 'About' translated)
-		action: [ DrGeo aboutDrgeo ];
-		order: 7.
-	(builder newEntry:  'Quit' translated)
-		action: [ DrGeo quit ];
-		icon: #quitIcon;
-		order: 999! !
 
 !DrGCommand methodsFor: 'command' stamp: ''!
 execute
@@ -13012,6 +11827,19 @@ builder: aBuilderClassName presenter: aPresenter
 		initialize;
 		yourself! !
 
+!DrGScriptPlayTool methodsFor: 'initialize-release' stamp: ''!
+registerDependant: anObject
+	builder when: #changedState send: #switchState: to: self.
+	builder when: #cancel send: #cancel to: self.
+	builder when: #readyToBuild send: #readyToBuild to: anObject.
+	builder when: #changedScript send: #changedScript to: self! !
+
+!DrGScriptPlayTool methodsFor: 'updating' stamp: 'hlsf 11/Apr/2021 12:31:09'!
+changedScript
+" the builder inform us the user selected another script,
+do some cleaning"
+	self selectNoMorph! !
+
 !DrGFlyPointBuildTool methodsFor: 'initialize' stamp: ''!
 initialize
 	super initialize.
@@ -13041,81 +11869,6 @@ relevantMorphsNear: aPoint
 		curves size > 1 
 			ifTrue: [ #() ]
 			ifFalse: [ curves]]! !
-
-!DrGMacroBuildTool methodsFor: 'accessing' stamp: 'hlsf 23/Jun/2021 15:52:50'!
-relevantMorphsNear: aPoint
-	^self pointMorphsFirstNear: aPoint ! !
-
-!DrGMacroBuildTool methodsFor: 'accessing' stamp: 'hlsf 11/Apr/2021 13:52:07'!
-selectInputMorph
-	self selectMorphsFrom: builder input! !
-
-!DrGMacroBuildTool methodsFor: 'accessing' stamp: 'hlsf 4/Aug/2023 12:18:22'!
-selectMorphsFrom: aMathItemCollection 
-	presenter ifNil: [^self].
-	self stopBlinking.
-	selectedMorphs := self drawable viewsOf: aMathItemCollection.
-	self startBlinking! !
-
-!DrGMacroBuildTool methodsFor: 'accessing' stamp: 'hlsf 11/Apr/2021 12:31:09'!
-selectNoMorph
-	self selectMorphsFrom: OrderedCollection new! !
-
-!DrGMacroBuildTool methodsFor: 'accessing' stamp: 'hlsf 11/Apr/2021 12:31:25'!
-selectOutputMorph
-	self selectMorphsFrom: builder output! !
-
-!DrGMacroBuildTool methodsFor: 'updating' stamp: ''!
-cancel
-	"the builder informs us the user wants to cancel the macro building process"
-	presenter move.! !
-
-!DrGMacroBuildTool methodsFor: 'initialize-release' stamp: ''!
-initialize
-	super initialize.
-	self switchState: DrGMacroToolStateNeutral ! !
-
-!DrGMacroBuildTool methodsFor: 'initialize-release' stamp: ''!
-registerDependant: anObject
-	builder when: #changedState send: #switchState: to: self.
-	builder when: #cancel send: #cancel to: self.
-	builder when: #readyToBuild send: #readyToBuildMacro to: anObject! !
-
-!DrGMacroPlayTool methodsFor: 'updating' stamp: 'hlsf 11/Apr/2021 12:31:09'!
-changedMacro
-" the builder inform us the user selected another macro-construction,
-do some cleaning"
-	self selectNoMorph! !
-
-!DrGMacroPlayTool methodsFor: 'accessing' stamp: 'hlsf 3/Aug/2023 21:18:06'!
-presenter: aPresenter
-	super presenter: aPresenter.
-	presenter notInteractive: true.! !
-
-!DrGMacroPlayTool methodsFor: 'initialize-release' stamp: ''!
-registerDependant: anObject
-	builder when: #changedState send: #switchState: to: self.
-	builder when: #cancel send: #cancel to: self.
-	builder when: #readyToBuild send: #readyToPlayMacro to: anObject.
-	builder when: #changedMacro send: #changedMacro to: self! !
-
-!DrGMacroPlayTool methodsFor: 'initialize-release' stamp: 'hlsf 3/Aug/2023 21:18:23'!
-release
-	super release.
-	presenter notInteractive: false! !
-
-!DrGScriptPlayTool methodsFor: 'initialize-release' stamp: ''!
-registerDependant: anObject
-	builder when: #changedState send: #switchState: to: self.
-	builder when: #cancel send: #cancel to: self.
-	builder when: #readyToBuild send: #readyToBuild to: anObject.
-	builder when: #changedScript send: #changedScript to: self! !
-
-!DrGScriptPlayTool methodsFor: 'updating' stamp: 'hlsf 11/Apr/2021 12:31:09'!
-changedScript
-" the builder inform us the user selected another script,
-do some cleaning"
-	self selectNoMorph! !
 
 !DrGFlyBuildTool methodsFor: 'adding' stamp: 'hlsf 11/Apr/2021 12:32:36'!
 add: aMorph
@@ -13545,39 +12298,6 @@ handlePress: aPoint
 	self handleChoice: (context relevantMorphsNear: aPoint).
 	^ true! !
 
-!DrGMacroBuildToolStateInput methodsFor: 'handling' stamp: 'hlsf 31/May/2025 15:49:00'!
-handleChoice: aMorphCollection 
-	context builder
-		add: (aMorphCollection collect: [ :c | c mathItem ])	
-			at: (self drawable gridWorldPoint: context last);
-		changed: #inputNames.
-	context selectInputMorph! !
-
-!DrGMacroBuildToolStateInput methodsFor: 'accessing' stamp: 'hlsf 31/May/2025 15:48:43'!
-context: aContext
-	super context: aContext.
-	context selectInputMorph ! !
-
-!DrGMacroPlayToolStateSelect methodsFor: 'handling' stamp: 'hlsf 31/May/2025 15:49:07'!
-handleChoice: aMorphCollection 
-	context builder 
-		add: (aMorphCollection collect: [ :c | c mathItem ])
-		at: (self drawable gridWorldPoint: context last).
-	context selectInputMorph! !
-
-!DrGMacroBuildToolStateOutput methodsFor: 'handling' stamp: 'hlsf 31/May/2025 15:49:16'!
-context: aContext
-	super context: aContext.
-	context selectOutputMorph ! !
-
-!DrGMacroBuildToolStateOutput methodsFor: 'handling' stamp: 'hlsf 31/May/2025 15:49:24'!
-handleChoice: aMorphCollection 
-	context builder
-		add: (aMorphCollection collect: [ :c | c mathItem ])
-			at: (self drawable gridWorldPoint: context last);
-		changed: #outputNames.
-	context selectOutputMorph! !
-
 !DrGFlyBuildToolState methodsFor: 'processing' stamp: 'hlsf 31/May/2025 15:49:36'!
 addFlyingPointToBuiltItemAt: aPoint
 	context mathItemTool 
@@ -13661,15 +12381,6 @@ handleRelease: aPoint
 	(self isFlyingPointConstructedAt: aPoint) ifFalse: [^false].
 	self addFlyingPointToBuiltItemAt: aPoint.
 	^ true! !
-
-!DrGMacroToolStateNeutral methodsFor: 'as yet unclassified' stamp: ''!
-handleMouseAt: aPoint
-	^false! !
-
-!DrGMacroToolStateNeutral methodsFor: 'accessing' stamp: 'hlsf 31/May/2025 15:50:56'!
-context: aContext
-	super context: aContext.
-	context selectNoMorph! !
 
 !DrGSelectToolState methodsFor: 'accessing' stamp: 'hlsf 31/May/2025 15:51:08'!
 mathItem 
@@ -14461,12 +13172,12 @@ setFontPreferences
 	Preferences at: #defaultFontSize put: 14.
 ! !
 
-!DrGWorkstation methodsFor: 'initialize-release' stamp: 'hlsf 3/Apr/2024 12:12:01'!
+!DrGWorkstation methodsFor: 'initialize-release' stamp: 'hlsf 8/Jan/2026 22:18:13'!
 initialize
 	self initFontManager.
 	canWeDisplaySpinner := true.
 	Preferences 
-		at: #worldMenu put: DrGeo;
+		at: #worldMenu put: DrGeoApp;
 		at: #fullScreenLeavesDeskMargins put: false.
 	UISupervisor ui taskbar scale: 1/2.! !
 
@@ -14511,10 +13222,10 @@ initialize
 	"Erudite extention for Dr. Geo"
 	EruditeMarkupGrammar addCodeAction: 'withDrGeoActions'! !
 
-!DrGeoSystem class methodsFor: 'class initialization' stamp: 'hlsf 3/Jul/2022 12:50:46'!
+!DrGeoSystem class methodsFor: 'class initialization' stamp: 'hlsf 8/Jan/2026 21:24:09'!
 reset
 	platform reset.
-	DrGIcons reset.  "flush icons cach"! !
+	DrGIcons reset.  "flush icons cache"! !
 
 !DrGeoSystem class methodsFor: 'user interface' stamp: 'hlsf 3/Jul/2022 13:36:53'!
 preferences
@@ -14752,17 +13463,18 @@ initialize
 presenter: aPresenter
 	presenter := aPresenter! !
 
-!DrGAbstractControlsManager methodsFor: 'accessing' stamp: 'hlsf 7/Jan/2026 16:16:31'!
-tree
-	^ nil! !
+!DrGAbstractControlsManager methodsFor: 'accessing' stamp: 'hlsf 8/Jan/2026 21:52:40'!
+tools
+	self subclassResponsibility ! !
 
 !DrGAbstractControlsManager methodsFor: 'accessing' stamp: 'hlsf 7/Jan/2026 15:36:35'!
 view
 	^ view! !
 
-!DrGAbstractControlsManager methodsFor: 'initialization' stamp: 'hlsf 7/Jan/2026 15:53:01'!
+!DrGAbstractControlsManager methodsFor: 'initialization' stamp: 'hlsf 8/Jan/2026 21:53:11'!
 installTools
-	self subclassResponsibility ! !
+
+	self subclassResponsibility! !
 
 !DrGAbstractControlsManager methodsFor: 'initialization' stamp: 'hlsf 7/Jan/2026 15:37:11'!
 release
@@ -14781,10 +13493,6 @@ animateTools
 curveTools
 	^ #(#line #parallel #perpendicular #perpendicularBisector #angleBisector #ray #segment #vector #circle #arc #arcCenter #polygon #polygonRegular #locus)! !
 
-!DrGAbstractControlsManager methodsFor: 'tools collections' stamp: 'hlsf 7/Jan/2026 15:38:43'!
-macroTools
-	^ #(#macroBuild #macroExecute)! !
-
 !DrGAbstractControlsManager methodsFor: 'tools collections' stamp: 'hlsf 7/Jan/2026 15:38:49'!
 miscTools
 	^ #(#new #open #keep #exportImage
@@ -14800,10 +13508,6 @@ numericTools
 !DrGAbstractControlsManager methodsFor: 'tools collections' stamp: 'hlsf 7/Jan/2026 15:38:53'!
 pointTools
 	^ #(#freePoint #middle #intersection #pointByCoordinates)! !
-
-!DrGAbstractControlsManager methodsFor: 'tools collections' stamp: 'hlsf 7/Jan/2026 15:39:06'!
-scriptTools
-	^ #(#scriptRun #scriptEdit #scriptCreate)! !
 
 !DrGAbstractControlsManager methodsFor: 'tools collections' stamp: 'hlsf 7/Jan/2026 15:39:11'!
 transformationTools
@@ -14897,21 +13601,6 @@ lineButtonData
 locusButtonData
 	^ {DrGLocusBuilder title. #locus. #createLocus. DrGLocusBuilder description}! !
 
-!DrGAbstractControlsManager methodsFor: 'tools data' stamp: 'hlsf 7/Jan/2026 15:39:49'!
-macroBuildButtonData
-	^ {DrGMacroBuilder title. #macroBuild. #createMacro. DrGMacroBuilder description}! !
-
-!DrGAbstractControlsManager methodsFor: 'tools data' stamp: 'hlsf 7/Jan/2026 15:46:21'!
-macroDeleteButtonData
-	^ {'Delete macro' translated.
-	#eraser .
-	#deleteMacro .
-	'Delete a macro-construction from the registry.' translated}! !
-
-!DrGAbstractControlsManager methodsFor: 'tools data' stamp: 'hlsf 7/Jan/2026 15:46:22'!
-macroExecuteButtonData
-	^ {DrGMacroPlayer title. #macroExecute. #executeMacro. DrGMacroPlayer description}! !
-
 !DrGAbstractControlsManager methodsFor: 'tools data' stamp: 'hlsf 7/Jan/2026 15:46:23'!
 magneticGridButtonData
 	^ {#magneticGridWording. #gridMagnet. #gridStuckOnOff. 'Snap to grid.' translated. #isGridded}! !
@@ -14990,18 +13679,6 @@ reflectionButtonData
 rotationButtonData
 	^ {DrGRotationBuilder title. #rotation. #createRotation. DrGRotationBuilder description}! !
 
-!DrGAbstractControlsManager methodsFor: 'tools data' stamp: 'hlsf 7/Jan/2026 15:46:46'!
-scriptCreateButtonData
-	^ {'Create a script' translated. #createScript . #createScript . 'Create a Smalltalk script.' translated}! !
-
-!DrGAbstractControlsManager methodsFor: 'tools data' stamp: 'hlsf 7/Jan/2026 15:46:48'!
-scriptEditButtonData
-	^ {'Edit a script' translated.	#editScript.	#editScript .	'Edit a Smalltalk script.' translated}! !
-
-!DrGAbstractControlsManager methodsFor: 'tools data' stamp: 'hlsf 7/Jan/2026 15:46:49'!
-scriptRunButtonData
-	^ {DrGScriptPlayer title. #useScript. #useScript. DrGScriptPlayer description}! !
-
 !DrGAbstractControlsManager methodsFor: 'tools data' stamp: 'hlsf 7/Jan/2026 15:46:50'!
 segmentButtonData
 	^ {DrGSegmentBuilder title. #segment. #createSegment. DrGSegmentBuilder description}! !
@@ -15021,10 +13698,6 @@ textButtonData
 !DrGAbstractControlsManager methodsFor: 'tools data' stamp: 'hlsf 7/Jan/2026 15:46:55'!
 translationButtonData
 	^ {DrGTranslationBuilder title. #translation. #createTranslation. DrGTranslationBuilder description}! !
-
-!DrGAbstractControlsManager methodsFor: 'tools data' stamp: 'hlsf 7/Jan/2026 15:46:56'!
-treeButtonData 
-	^ {'Construction tree' translated. nil . nil . 'The hierarchy tree presenting the visible constructed items.' translated}! !
 
 !DrGAbstractControlsManager methodsFor: 'tools data' stamp: 'hlsf 7/Jan/2026 15:46:57'!
 undoButtonData
@@ -15049,7 +13722,7 @@ wheelYButtonData
 wheelZButtonData
 	 ^ {'Zoom wheel' translated . nil . #scale: . 'A wheel to zoom in, zoom out the sketch.' translated}! !
 
-!DrGAbstractControlsManager methodsFor: 'widget access' stamp: 'hlsf 7/Jan/2026 15:47:35'!
+!DrGAbstractControlsManager methodsFor: 'widget access' stamp: 'hlsf 8/Jan/2026 21:50:46'!
 horizontalWheel 
 	| array |
 	array := self wheelXButtonData.
@@ -15062,22 +13735,23 @@ horizontalWheel
 		borderColor: Theme current drgeoButtonColor muchDarker;
 		yourself! !
 
-!DrGAbstractControlsManager methodsFor: 'widget access' stamp: 'hlsf 7/Jan/2026 15:51:43'!
+!DrGAbstractControlsManager methodsFor: 'widget access' stamp: 'hlsf 8/Jan/2026 21:54:28'!
 openTools
-	self subclassResponsibility ! !
 
-!DrGAbstractControlsManager methodsFor: 'widget access' stamp: 'hlsf 7/Jan/2026 15:48:07'!
+	self subclassResponsibility! !
+
+!DrGAbstractControlsManager methodsFor: 'widget access' stamp: 'hlsf 8/Jan/2026 21:50:30'!
 propertyFor: aMathItem
 "Open a property Panel to edit the math item"
-	editPanel 	ifNotNil: [
+	editPanel ifNotNil: [
 		editPanel delete.
 		editPanel := nil].
 	aMathItem ifNotNil: [
-		editPanel := 		aMathItem editPropertyIn: presenter.
+		editPanel := 	aMathItem editPropertyIn: presenter.
 		self contextualEditingFor: editPanel]
 		! !
 
-!DrGAbstractControlsManager methodsFor: 'widget access' stamp: 'hlsf 7/Jan/2026 15:49:34'!
+!DrGAbstractControlsManager methodsFor: 'widget access' stamp: 'hlsf 8/Jan/2026 21:51:13'!
 setStatusBarMessage: aString
 	statusBar ifNotNil: [
 		statusBar contents: aString;
@@ -15085,7 +13759,7 @@ setStatusBarMessage: aString
 			redrawNeeded]
 		! !
 
-!DrGAbstractControlsManager methodsFor: 'widget access' stamp: 'hlsf 7/Jan/2026 15:49:44'!
+!DrGAbstractControlsManager methodsFor: 'widget access' stamp: 'hlsf 8/Jan/2026 21:51:17'!
 statusBar
 "A bar to print contextual information"
 	^ statusBar ifNil: [
@@ -15097,7 +13771,7 @@ statusBar
 	
 	! !
 
-!DrGAbstractControlsManager methodsFor: 'widget access' stamp: 'hlsf 7/Jan/2026 15:49:46'!
+!DrGAbstractControlsManager methodsFor: 'widget access' stamp: 'hlsf 8/Jan/2026 21:51:23'!
 statusBarInScroller
 	^ PluggableScrollPane new scroller: self statusBar; 
 		borderWidth: 2;
@@ -15105,23 +13779,18 @@ statusBarInScroller
 		color: Color transparent;
 		yourself! !
 
-!DrGAbstractControlsManager methodsFor: 'widget access' stamp: 'hlsf 7/Jan/2026 15:50:11'!
+!DrGAbstractControlsManager methodsFor: 'widget access' stamp: 'hlsf 8/Jan/2026 21:50:05'!
 stylerFor: aStyle
 "Open a style Panel to edit aStyle"
-	editPanel 	ifNotNil: [
+	editPanel ifNotNil: [
 		editPanel delete.
 		editPanel := nil].
 	aStyle ifNotNil: [
-		editPanel := 		DrGStylePanel open: aStyle label: 'Edit style' translated.
+		editPanel :=	DrGStylePanel open: aStyle label: 'Edit style' translated.
 		self contextualEditingFor: editPanel ]
 		! !
 
-!DrGAbstractControlsManager methodsFor: 'widget access' stamp: 'hlsf 7/Jan/2026 15:54:30'!
-tools
-
-	self subclassResponsibility! !
-
-!DrGAbstractControlsManager methodsFor: 'widget access' stamp: 'hlsf 7/Jan/2026 15:51:57'!
+!DrGAbstractControlsManager methodsFor: 'widget access' stamp: 'hlsf 8/Jan/2026 21:51:30'!
 verticalWheel 
 	| array |
 	array := self wheelYButtonData.
@@ -15135,7 +13804,7 @@ verticalWheel
 		yourself		
 		! !
 
-!DrGAbstractControlsManager methodsFor: 'widget access' stamp: 'hlsf 7/Jan/2026 15:52:01'!
+!DrGAbstractControlsManager methodsFor: 'widget access' stamp: 'hlsf 8/Jan/2026 21:51:34'!
 zoomWheel 
 	| array |
 	array := self wheelZButtonData.
@@ -15148,7 +13817,7 @@ zoomWheel
 		borderColor: Color black;
 		yourself! !
 
-!DrGAbstractControlsManager methodsFor: 'widget helpers' stamp: 'hlsf 7/Jan/2026 15:52:14'!
+!DrGAbstractControlsManager methodsFor: 'widget helpers' stamp: 'hlsf 8/Jan/2026 21:52:17'!
 contextualEditingFor: panel
 "Ensure the panel is located close to the user mouse action"
 	| mousePosition |
@@ -15160,22 +13829,22 @@ contextualEditingFor: panel
 			+ (20@ (panel morphHeight // -2) )].
 	(panel respondsTo: #fitInWorld) ifTrue: [panel fitInWorld]! !
 
-!DrGAbstractControlsManager methodsFor: 'widget helpers' stamp: 'hlsf 7/Jan/2026 15:52:27'!
+!DrGAbstractControlsManager methodsFor: 'widget helpers' stamp: 'hlsf 8/Jan/2026 21:52:03'!
 transparentMorph
 	^ ColoredBoxMorph new 
 		color: Color transparent; 
 		yourself! !
 
-!DrGAbstractControlsManager methodsFor: 'widget helpers' stamp: 'hlsf 7/Jan/2026 15:52:37'!
+!DrGAbstractControlsManager methodsFor: 'widget helpers' stamp: 'hlsf 8/Jan/2026 21:50:17'!
 updateStylerFor: aStyle
 "Update the styler if any matching the given style"
-	(editPanel 	notNil and: [editPanel model == aStyle]) ifTrue: [ | position |
+	(editPanel notNil and: [editPanel model == aStyle]) ifTrue: [ | position |
 		position := editPanel morphPosition.
 		self stylerFor: aStyle.
 		editPanel morphPosition: position]
 		! !
 
-!DrGAbstractControlsManager class methodsFor: 'instance creation' stamp: 'hlsf 7/Jan/2026 16:13:37'!
+!DrGAbstractControlsManager class methodsFor: 'instance creation' stamp: 'hlsf 8/Jan/2026 21:55:20'!
 exportIconSet
 "Export the icon set: name, description and icon as a PNG file
  See addButton:to: for icon data description"
@@ -15198,144 +13867,13 @@ exportIconSet
 			onFile: path / iconName // (iconName, '.png')	 ].
 	! !
 
-!DrGAbstractControlsManager class methodsFor: 'instance creation' stamp: 'hlsf 7/Jan/2026 16:13:27'!
+!DrGAbstractControlsManager class methodsFor: 'instance creation' stamp: 'hlsf 8/Jan/2026 21:55:23'!
 for: aPresenter
 	^ self basicNew
 		presenter: aPresenter;
 		initialize! !
 
-!DrGControlsManager methodsFor: 'widget access' stamp: 'hlsf 30/Mar/2022 18:08:59'!
-addChevron: symbolOrArray to: aToolbar
-	"array first = menu label or button label
-	array second = button form = selection mode
-	array third = symbol callback
-	array fourth = help string	"	
-	| array |
-	symbolOrArray isSymbol 
-		ifTrue: [	array := self perform: (symbolOrArray, #ButtonData) asSymbol]
-		ifFalse: [ array := symbolOrArray].
-	^ (aToolbar addButton: (DrGIcons for: array second))
-		model: presenter;
-		action: array third;
-		state: (array at: 5 ifAbsent: [ #isTool: ]);
-		argument: array second;
-		setBalloonText: array fourth;
-		yourself	! !
-
-!DrGControlsManager methodsFor: 'widget access' stamp: 'hlsf 23/Aug/2025 12:23:27'!
-button: symbolOrArray
-	"array first = menu label or button label
-	array second = button form = selection mode
-	array third = symbol callback
-	array fourth = help string	"	
-	| array stateGetter |
-	array := self perform: (symbolOrArray, #ButtonData) asSymbol.
-	^ (ButtonMorph 
-		model: presenter
-		stateGetter: (stateGetter := array at: 5 ifAbsent: [ #isTool: ])
-		action: array third)
-		stateArgument: (stateGetter isUnary ifTrue: [nil] ifFalse: [array second]);
-		icon: (DrGIcons for: array second);
-		setBalloonText: array fourth;
-		color: Theme current drgeoButtonColor ;
-		selectedColor: Theme current drgeoButtonSelectedColor ;
-		borderColor: Theme current drgeoButtonColor muchDarker;
-		borderWidth: 2;
-		buttonStyle: #rectangle;
-		morphExtent: (Theme current toolbarIconSize + 4) asPoint;
-		yourself	! !
-
-!DrGControlsManager methodsFor: 'widget access' stamp: 'hlsf 7/Jan/2026 15:50:36'!
-openTools
-" Open the toolbox to manipulate items in the canvas "
-	self tools 
-		morphPosition: self activeHand morphPosition ;
-		openInWorld! !
-
-!DrGControlsManager methodsFor: 'widget access' stamp: 'hlsf 7/Jan/2026 15:34:59'!
-quickToolbar
-	quickToolbar ifNotNil: [^ quickToolbar].
-	quickToolbar := LayoutMorph newRow
-		separation: 5;
-		yourself.
-	self miscTools do: [:dataTool | quickToolbar addMorph: (self button: dataTool )	 ].
-	^ quickToolbar
-	
-! !
-
-!DrGControlsManager methodsFor: 'widget access' stamp: 'hlsf 7/Jan/2026 15:54:30'!
-tools
-	| toolsData dropDown |
-	tools ifNotNil: [^ tools].
-	toolsData := OrderedCollection new
-		add: self pointTools; add: self curveTools; add: self transformationTools;
-		add: self numericTools; add: self scriptTools; add: self macroTools;
-		add: self animateTools; yourself.
-	tools := CircularToolbarMorph new.
-	tools 
-		color: Theme current drgeoButtonColor;
-		selectedColor: Theme current drgeoButtonSelectedColor;
-		buttonSize: Theme current toolbarIconSize;
-		dropDownHeight: Theme current circularToolbarDropDownHeight ;
-		dropDownGap: Theme current circularToolbarDropDownGap ;
-		extent: Theme current circularToolbarExtent.
-	toolsData do: [:dataTool | 
-		dropDown := (self addChevron: dataTool first to: tools) addDropDown.
-		dataTool do: [:tool | self addChevron: tool to: dropDown subtoolbar]].
-	^ tools
-	
-! !
-
-!DrGControlsManager methodsFor: 'widget access' stamp: 'hlsf 4/Aug/2023 12:48:55'!
-tree
-" I am the model of a tree presenting the math item "
-	^ tree ifNil: [ tree := DrGeoTree on: presenter]! !
-
-!DrGControlsManager methodsFor: 'widget access' stamp: 'hlsf 10/Aug/2024 15:49:19'!
-treeView
-	^ treeView ifNil: [treeView := HierarchicalListMorph 
-		withModel: self tree
-		listGetter: #pool
-		indexGetter: #selectedItem
-		indexSetter: #selectedItem:]! !
-
-!DrGControlsManager methodsFor: 'initialization' stamp: 'hlsf 7/Jan/2026 15:55:23'!
-installTools
-" Install menu, toolbar, tree, wheels, statusbar "
-	| row col wheelHeight wheelWidth |
-	wheelHeight := Theme current wheelHeight .
-	wheelWidth := Theme current wheelWidth.
-	view := DrGeoView for: presenter.
-	view 
-		addMorph: self quickToolbar layoutSpec: (LayoutSpec fixedHeight: Theme current toolbarIconSize + 4).
-	row := LayoutMorph newRow.
-	row 
-		addMorph: self treeView proportionalWidth: 0.1;
-		addAdjusterMorph;
-		addMorphUseAll: view drawable.
-	"Install the wheels at the right"
-	col := LayoutMorph newColumn name: #wheelsYZ.
-	col addMorph: self zoomWheel layoutSpec: (
-		LayoutSpec fixedExtent: wheelWidth @ wheelHeight).
-	col addMorphUseAll: self transparentMorph.
-	col addMorph: self verticalWheel layoutSpec: (
-		LayoutSpec fixedExtent: wheelWidth @ wheelHeight).			
-	""	
-	row addMorph: col layoutSpec: (LayoutSpec fixedWidth: (wheelWidth + 1) proportionalHeight: 1).	
-	view addMorph: row.
-	"Install wheel at the bottom"
-	
-	row := LayoutMorph newRow name: #wheelX; yourself.
-	row addMorphUseAll: self statusBarInScroller;
-		addMorph:self horizontalWheel layoutSpec: 
-			(LayoutSpec fixedExtent:  wheelHeight @ wheelWidth);
-		addMorph: self transparentMorph layoutSpec: 
-			(LayoutSpec fixedExtent: wheelWidth asPoint) .
-	
-	view addMorph: row layoutSpec: (LayoutSpec fixedHeight: wheelWidth)
-! !
-
-!DrGMinControlsManager methodsFor: 'menus' stamp: 'hlsf 10/Apr/2022 14:55:40'!
+!DrGMinimalControlsManager methodsFor: 'menus' stamp: 'hlsf 10/Apr/2022 14:55:40'!
 addMenuItem: toolSymbol to: menu
 	| array |
 	"access the buttonData method from the tool symbol"
@@ -15347,12 +13885,12 @@ addMenuItem: toolSymbol to: menu
 	(DrGIcons respondsTo: array second)
 		ifTrue: [	 menu lastItem setIcon: (DrGIcons perform: array second) ]! !
 
-!DrGMinControlsManager methodsFor: 'menus' stamp: 'hlsf 13/Aug/2023 15:06:36'!
+!DrGMinimalControlsManager methodsFor: 'menus' stamp: 'hlsf 13/Aug/2023 15:06:36'!
 addUpdatingMenuItem: array to: menu
 	(menu addUpdating: array first action: array third)
 		setBalloonText: array fourth.! !
 
-!DrGMinControlsManager methodsFor: 'menus' stamp: 'hlsf 10/Apr/2022 14:55:54'!
+!DrGMinimalControlsManager methodsFor: 'menus' stamp: 'hlsf 10/Apr/2022 14:55:54'!
 animateMenu
 	| menu |
 	menu := self newMenu.
@@ -15360,14 +13898,14 @@ animateMenu
 	^ menu
 		! !
 
-!DrGMinControlsManager methodsFor: 'menus' stamp: 'hlsf 10/Apr/2022 14:55:59'!
+!DrGMinimalControlsManager methodsFor: 'menus' stamp: 'hlsf 10/Apr/2022 14:55:59'!
 curveMenu
 	| lineMenu |
 	lineMenu := self newMenu.
 	self curveTools  do: [ :symbol | self addMenuItem: symbol to: lineMenu ].
 	^ lineMenu! !
 
-!DrGMinControlsManager methodsFor: 'menus' stamp: 'hlsf 10/Apr/2022 14:56:06'!
+!DrGMinimalControlsManager methodsFor: 'menus' stamp: 'hlsf 10/Apr/2022 14:56:06'!
 editMenu
 	| menu |
 	menu := self newMenu.
@@ -15397,30 +13935,16 @@ editMenu
 	^ menu
 		! !
 
-!DrGMinControlsManager methodsFor: 'menus' stamp: 'hlsf 7/Jan/2026 16:18:11'!
+!DrGMinimalControlsManager methodsFor: 'menus' stamp: 'hlsf 8/Jan/2026 22:22:38'!
 fileMenu
 	| fileMenu |
 	fileMenu := self newMenu.
-	self addMenuItem: #new to: fileMenu.
-	self addMenuItem: #open to: fileMenu.
-	self addMenuItem: #keep to: fileMenu.
-	(fileMenu add: 'Save as...' translated action: #saveSketchAs)
-		setBalloonText: 'Keep this sketch under a different name.' translated.
-	self addMenuItem: #exportImage to: fileMenu.
-"	fileMenu addLine.
-	fileMenu add: 'Close sketch' translated target: self window action: #delete.
-	self addMenuItem: #quit to: fileMenu."
+	self addMenuItem: #saveSketch to: fileMenu.
+	self addMenuItem: #exportToImageAs to: fileMenu.
 	^ fileMenu
 		! !
 
-!DrGMinControlsManager methodsFor: 'menus' stamp: 'hlsf 10/Apr/2022 14:56:14'!
-macroconstructionMenu
-	| menu |
-	self view macroMenu: (menu := self newMenu).
-	 self macroTools do: [ :symbol | self addMenuItem: symbol to: menu].
-	^ menu! !
-
-!DrGMinControlsManager methodsFor: 'menus' stamp: 'hlsf 10/Apr/2022 14:56:18'!
+!DrGMinimalControlsManager methodsFor: 'menus' stamp: 'hlsf 8/Jan/2026 21:31:58'!
 mainMenu
 	| mainMenu menu |
 	mainMenu := MenuMorph entitled: self view label.
@@ -15442,29 +13966,19 @@ mainMenu
 	" Numerics and Text menu "
 	mainMenu add: 'Numerics & Text' translated subMenu: self numericMenu.
 	menu setBalloonText: 'Create several numeric objects: free value, distance, length, angle, coordinates, equation and text.' translated.
-	" Script menu "
-	menu := mainMenu add: 'Script' translated subMenu: self scriptMenu.
-	menu setBalloonText: 'Script: use, edit or create script to plug in the sketch.' translated.
-	self flag: #drgeoTodo.
-	"menu	on: #mouseEnter send: #updateScriptMenu	to: self."	
-	" Macro-construction menu "	
-	menu := mainMenu add: 'Macro-construction' translated 		subMenu: self macroconstructionMenu.
-	menu setBalloonText: 'Build or execute macro-construction. A macro is a construction template you can apply to items in the sketch area.' translated.
-	self flag: #drgeoTodo.
-	"menu	on: #mouseEnter send: #updateMacroMenu to: self."
 	" Animation menu "	
 	menu := mainMenu add: 'Animate' translated subMenu: self animateMenu.
 	menu setBalloonText: 'Animate a free point on curve.' translated.
 	^ mainMenu 
 ! !
 
-!DrGMinControlsManager methodsFor: 'menus' stamp: 'hlsf 10/Apr/2022 14:56:21'!
+!DrGMinimalControlsManager methodsFor: 'menus' stamp: 'hlsf 10/Apr/2022 14:56:21'!
 newMenu
 	^ MenuMorph new 
 		defaultTarget: presenter;
 		yourself! !
 
-!DrGMinControlsManager methodsFor: 'menus' stamp: 'hlsf 10/Apr/2022 14:56:25'!
+!DrGMinimalControlsManager methodsFor: 'menus' stamp: 'hlsf 10/Apr/2022 14:56:25'!
 numericMenu
 	| menu |
 	menu := self newMenu.
@@ -15472,7 +13986,7 @@ numericMenu
 	^ menu
 		! !
 
-!DrGMinControlsManager methodsFor: 'menus' stamp: 'hlsf 10/Apr/2022 14:56:28'!
+!DrGMinimalControlsManager methodsFor: 'menus' stamp: 'hlsf 10/Apr/2022 14:56:28'!
 pointMenu
 	| pointMenu |
 	pointMenu := self newMenu.
@@ -15480,15 +13994,7 @@ pointMenu
 	^ pointMenu
 		! !
 
-!DrGMinControlsManager methodsFor: 'menus' stamp: 'hlsf 10/Apr/2022 14:56:31'!
-scriptMenu
-	| menu |
-	self view scriptMenu: (menu := self newMenu).
-	 self scriptTools do: [ :symbol | self addMenuItem: symbol to: menu].
-	^ menu 
-		! !
-
-!DrGMinControlsManager methodsFor: 'menus' stamp: 'hlsf 10/Apr/2022 14:56:36'!
+!DrGMinimalControlsManager methodsFor: 'menus' stamp: 'hlsf 10/Apr/2022 14:56:36'!
 transformationMenu
 	| menu |
 	menu := self newMenu.
@@ -15496,43 +14002,7 @@ transformationMenu
 	^ menu
 		! !
 
-!DrGMinControlsManager methodsFor: 'menus' stamp: 'hlsf 10/Apr/2022 14:56:40'!
-updateMacroMenu
-	| macroMenu |
-	macroMenu := self view macroMenu.
-	macroMenu removeAllMorphs.
-	self macroTools do: [ :symbol |  self addMenuItem: symbol to: macroMenu].
-	DrGMacroFactory new pool ifNotEmpty: [ macroMenu addLine ].
-	DrGMacroFactory new pool do: [:aMacro |
-		macroMenu 
-			add: aMacro title  
-			target: presenter 
-			selector: #executeMacro:
-			argument: aMacro.
-		macroMenu lastItem
-			setBalloonText: aMacro description]
-! !
-
-!DrGMinControlsManager methodsFor: 'menus' stamp: 'hlsf 10/Apr/2022 14:56:44'!
-updateScriptMenu
-	| scripts scriptMenu |
-	scriptMenu := self view scriptMenu.
-	scriptMenu removeAllMorphs.
-	self scriptTools do: [ :symbol |  self addMenuItem: symbol to: scriptMenu].
-	scripts := DrGeoUserScript subclasses sorted: [:script1 :script2 | 
-		script1 scriptName asLowercase < script2 scriptName asLowercase].
-	scripts ifNotEmpty: [scriptMenu addLine].
-	scripts do: [:aScript |
-		scriptMenu 
-			add: aScript scriptName  
-			target: presenter 
-			selector: #useScript:
-			argument: aScript.
-		scriptMenu lastItem
-			setBalloonText: aScript description]
-! !
-
-!DrGMinControlsManager methodsFor: 'initialization' stamp: 'hlsf 7/Jan/2026 15:48:57'!
+!DrGMinimalControlsManager methodsFor: 'initialization' stamp: 'hlsf 10/Aug/2025 11:52:13'!
 installTools
 " Install menu, toolbar, tree, wheels, statusbar "
 	| row col wheelHeight wheelWidth |
@@ -15558,17 +14028,17 @@ installTools
 	row := LayoutMorph newRow name: #wheelX; color: view defaultColor; yourself.
 	row addMorphUseAll: self statusBarInScroller;
 		addMorph: (self horizontalWheel borderWidth: 2) 
-		layoutSpec: 	(LayoutSpec 	fixedExtent:  wheelHeight @ wheelWidth );
+		layoutSpec: 		(LayoutSpec 	fixedExtent:  wheelHeight @ wheelWidth );
 		addMorph: self transparentMorph 
-		layoutSpec: 	(LayoutSpec fixedExtent: wheelWidth asPoint) .
+		layoutSpec: 	(LayoutSpec 		fixedExtent: wheelWidth asPoint) .
 	
 	view addMorph: row layoutSpec: (LayoutSpec fixedHeight: wheelWidth)! !
 
-!DrGMinControlsManager methodsFor: 'widget access' stamp: 'hlsf 10/Apr/2022 16:36:58'!
+!DrGMinimalControlsManager methodsFor: 'widget access' stamp: 'hlsf 10/Apr/2022 16:36:58'!
 openTools
 	self tools popUpInWorld ! !
 
-!DrGMinControlsManager methodsFor: 'widget access' stamp: 'hlsf 10/Apr/2022 16:25:16'!
+!DrGMinimalControlsManager methodsFor: 'widget access' stamp: 'hlsf 10/Apr/2022 16:25:16'!
 tools
 	^ tools ifNil: [tools := self mainMenu]! !
 
@@ -26533,297 +25003,6 @@ description
 title 
 	^ 'Locus' translated.! !
 
-!DrGMacroBuilder methodsFor: 'testing' stamp: ''!
-isDescriptionValid
-	^ ((title = self defaultTitle) | (description = self defaultDescription)) not! !
-
-!DrGMacroBuilder methodsFor: 'testing' stamp: ''!
-isInputMode
-	^ wizard isInputPage! !
-
-!DrGMacroBuilder methodsFor: 'testing' stamp: ''!
-isLogicValid
-	"check wheter a macro can be deduced from the input/output item collections"
-	^ DrGMacro 
-		isValidWith: input
-		and: output! !
-
-!DrGMacroBuilder methodsFor: 'testing' stamp: ''!
-isMacroValid 
-	^self isLogicValid & self isDescriptionValid ! !
-
-!DrGMacroBuilder methodsFor: 'testing' stamp: ''!
-isOutputMode
-	^ wizard isOutputPage! !
-
-!DrGMacroBuilder methodsFor: 'testing' stamp: ''!
-isWanted: aMathItemCollection 
-	^ aMathItemCollection notEmpty and: 
-		[ self isInputMode &  (output includes: aMathItemCollection first) not or: [ self isOutputMode & (input includes: aMathItemCollection first) not ] ]! !
-
-!DrGMacroBuilder methodsFor: 'testing' stamp: ''!
-readyToBuild
-"Only when the user clicks on the wizard 'apply' button,
-the system checks wheter the macro can be instiated"
-	^false! !
-
-!DrGMacroBuilder methodsFor: 'accessing' stamp: ''!
-arguments
-	self shouldNotImplement! !
-
-!DrGMacroBuilder methodsFor: 'accessing' stamp: ''!
-description
-	^description ! !
-
-!DrGMacroBuilder methodsFor: 'accessing' stamp: ''!
-description: string
-	description := string asString! !
-
-!DrGMacroBuilder methodsFor: 'accessing' stamp: ''!
-input
-	^input! !
-
-!DrGMacroBuilder methodsFor: 'accessing' stamp: 'hlsf 3/Nov/2021 19:11:47'!
-inputNames
-	^ self itemNames: input! !
-
-!DrGMacroBuilder methodsFor: 'accessing' stamp: 'hlsf 3/Nov/2021 19:11:47'!
-itemNames: aMathItemCollection
-	^aMathItemCollection collect: [:mathItem | mathItem descriptiveName]! !
-
-!DrGMacroBuilder methodsFor: 'accessing' stamp: ''!
-output
-	^output ! !
-
-!DrGMacroBuilder methodsFor: 'accessing' stamp: 'hlsf 3/Nov/2021 19:11:47'!
-outputNames
-	^ self itemNames: output! !
-
-!DrGMacroBuilder methodsFor: 'accessing' stamp: ''!
-title
-	^title! !
-
-!DrGMacroBuilder methodsFor: 'accessing' stamp: ''!
-title: string
-	title := string! !
-
-!DrGMacroBuilder methodsFor: 'private' stamp: ''!
-addItem: aMathItemCollection at: aPoint
-	super addItem: aMathItemCollection at: aPoint.
-	self isInputMode ifTrue: [self addToggleItem: aMathItemCollection in: input].
-	self isOutputMode ifTrue: [self addToggleItem: aMathItemCollection in: output]! !
-
-!DrGMacroBuilder methodsFor: 'callback' stamp: ''!
-apply
-	"the user clicked the apply button, do we have all the needed information
-	to instantiate a new macro construction?"
-	DrGeoSystem showVirtualKeyboard: false.
-	self isMacroValid ifTrue: 
-		[ "we can instantiate a macro"
-		self triggerEvent: #readyToBuild.
-		^self].
-	self isLogicValid ifFalse: 
-		[self inform: 'Input and output items don''t match' translated].
-	self isDescriptionValid ifFalse: 
-		[self inform: 'Please, enter a proper title and description' translated]! !
-
-!DrGMacroBuilder methodsFor: 'callback' stamp: ''!
-cancel
-	"the user withdrawn the macro-construction creation"
-	DrGeoSystem showVirtualKeyboard: false.
-	self triggerEvent: #cancel! !
-
-!DrGMacroBuilder methodsFor: 'callback' stamp: ''!
-page: integer 
-	"we receive notification from the wizard the user change the wizard
-	current page"
-	| newState |
-	(integer = 1 or: [ integer = 4 ]) ifTrue: [ newState := DrGMacroToolStateNeutral ].
-	integer = 2 ifTrue: [ newState := DrGMacroBuildToolStateInput ].
-	integer = 3 ifTrue: [ newState := DrGMacroBuildToolStateOutput ].
-	integer = 4 ifTrue: [DrGeoSystem showVirtualKeyboard: true].
-	self 
-		triggerEvent: #changedState
-		with: newState! !
-
-!DrGMacroBuilder methodsFor: 'building' stamp: ''!
-buildItem
-	self shouldNotImplement! !
-
-!DrGMacroBuilder methodsFor: 'building' stamp: ''!
-buildItem: domain 
-	| macro |
-	macro := DrGMacro new
-		title: title; description: description.
-	macro 	from: input to: output 	in: domain.
-	^ macro! !
-
-!DrGMacroBuilder methodsFor: 'building' stamp: ''!
-getItem
-	self shouldNotImplement! !
-
-!DrGMacroBuilder methodsFor: 'building' stamp: ''!
-getItem: domain
-	self isMacroValid ifTrue:
-		[^self buildItem: domain].
-	^nil! !
-
-!DrGMacroBuilder methodsFor: 'initialize-release' stamp: 'hlsf 6/Apr/2022 16:35:50'!
-initialize
-	self reset.
-	wizard := (DrGWizardMacroBuild open: self) 
-		addPages;
-		openInWorld.
-	wizard morphPosition: 0@0.
-	wizard when: #page send: #page: to: self.
-	wizard when: #apply send: #apply to: self.
-	wizard when: #cancel send: #cancel to: self! !
-
-!DrGMacroBuilder methodsFor: 'initialize-release' stamp: 'hlsf 27/Dec/2021 10:59:17'!
-release
-	wizard removeActionsWithReceiver: self.
-	wizard delete.
-	wizard := nil! !
-
-!DrGMacroBuilder methodsFor: 'updating' stamp: 'hlsf 3/Nov/2021 19:07:55'!
-reset
-	super reset.
-	input := OrderedCollection new.
-	output := OrderedCollection new.
-	title := self defaultTitle.
-	description := self defaultDescription.
-	self changed: #inputNames.
-	self changed: #ouputNames.
-	self changed: #title.
-	self changed: #description! !
-
-!DrGMacroBuilder methodsFor: 'constant' stamp: ''!
-defaultDescription
-	^'Write down your description there.' asText! !
-
-!DrGMacroBuilder methodsFor: 'constant' stamp: ''!
-defaultTitle
-	^'Macro name' asText! !
-
-!DrGMacroBuilder methodsFor: 'constant' stamp: ''!
-mathItemClass
-	self shouldNotImplement! !
-
-!DrGMacroBuilder class methodsFor: 'documentation' stamp: ''!
-description 
-	^ 'Construct a macro-construction with input and output items.' translated! !
-
-!DrGMacroBuilder class methodsFor: 'documentation' stamp: ''!
-title
-	^ 'Build macro' translated.! !
-
-!DrGMacroPlayer methodsFor: 'private' stamp: ''!
-addItem: aMathItemCollection at: aPoint
-	super addItem: aMathItemCollection at: aPoint.
-	self addToggleItem: aMathItemCollection in: input! !
-
-!DrGMacroPlayer methodsFor: 'callback' stamp: ''!
-cancel
-	self triggerEvent: #cancel! !
-
-!DrGMacroPlayer methodsFor: 'callback' stamp: ''!
-page: integer 
-	"we receive notification from the wizard the user change the wizard
-	current page"
-	| newState |
-	integer = 1 
-		ifTrue: [ newState := DrGMacroToolStateNeutral ]
-		ifFalse: [ newState := DrGMacroPlayToolStateSelect].
-	self 
-		triggerEvent: #changedState
-		with: newState! !
-
-!DrGMacroPlayer methodsFor: 'building' stamp: 'hlsf 4/Aug/2023 17:12:55'!
-buildItem
-	^selectedMacro execute: input in: presenter.! !
-
-!DrGMacroPlayer methodsFor: 'accessing' stamp: ''!
-constructedNodes
-	^ selectedMacro constructedNodes ! !
-
-!DrGMacroPlayer methodsFor: 'accessing' stamp: 'hlsf 19/Nov/2021 10:57:19'!
-description
-	^ selectedMacro ifNotNil: [selectedMacro description] ifNil: [^'']! !
-
-!DrGMacroPlayer methodsFor: 'accessing' stamp: ''!
-description: text 
-	selectedMacro ifNotNil: [selectedMacro description: text asString]! !
-
-!DrGMacroPlayer methodsFor: 'accessing' stamp: ''!
-input
-	^input! !
-
-!DrGMacroPlayer methodsFor: 'accessing' stamp: ''!
-inputBasicType
-	^input collect: [:i | i basicType]! !
-
-!DrGMacroPlayer methodsFor: 'accessing' stamp: ''!
-selectedMacro
-	^selectedMacro ! !
-
-!DrGMacroPlayer methodsFor: 'accessing' stamp: ''!
-selectedMacro: aMacro
-	"Some cleaning are needed"
-	selectedMacro := aMacro.
-	input := OrderedCollection new.
-	self triggerEvent: #changedMacro.! !
-
-!DrGMacroPlayer methodsFor: 'initialize-release' stamp: 'hlsf 6/Apr/2022 16:34:27'!
-initialize
-	wizard := (DrGWizardMacroPlay open: self) 
-		addPages;
-		openInWorld.
-	wizard morphPosition: 0@0.
-	input := OrderedCollection new.
-	wizard when: #page send: #page: to: self.
-	wizard when: #cancel send: #cancel to: self! !
-
-!DrGMacroPlayer methodsFor: 'initialize-release' stamp: 'hlsf 27/Dec/2021 10:57:41'!
-release
-	wizard removeActionsWithReceiver: self.
-	wizard delete.
-	wizard := nil! !
-
-!DrGMacroPlayer methodsFor: 'testing' stamp: ''!
-isWanted: aMathItemCollection
-	selectedMacro isNil ifTrue: [^false].
-	^aMathItemCollection notEmpty and: 
-		[(selectedMacro inputBasicType at: input size + 1 ) == aMathItemCollection first basicType]! !
-
-!DrGMacroPlayer methodsFor: 'testing' stamp: ''!
-readyToBuild
-	^ self inputBasicType = selectedMacro inputBasicType! !
-
-!DrGMacroPlayer methodsFor: 'updating' stamp: 'hlsf 19/Nov/2021 11:01:22'!
-reset
-	super reset.
-	input := OrderedCollection new.
-	selectedMacro := nil.
-	self changed: #description.
-	self flag: #drgeoTodo
-	"wizard changed: #selectedMacro"! !
-
-!DrGMacroPlayer class methodsFor: 'documentation' stamp: ''!
-description 
-	^'Execute a pre-built macro-construction on selected input items. To edit a macro description, edit its text and apply with the keys [alt/ctrl]+s.' translated! !
-
-!DrGMacroPlayer class methodsFor: 'documentation' stamp: ''!
-title
-	^ 'Execute/edit macro' translated! !
-
-!DrGMacroPlayerHeadless methodsFor: 'initialize-release' stamp: ''!
-initialize 
-	input := OrderedCollection new.
-! !
-
-!DrGMacroPlayerHeadless methodsFor: 'initialize-release' stamp: ''!
-release! !
-
 !DrGMiddleBuilder methodsFor: 'updating' stamp: 'hlsf 20/Jun/2021 11:21:14'!
 reset
 	super reset.
@@ -30461,10 +28640,6 @@ setLabel: aString
 macroMenu: aMenuMorph 
 	self flag: #drgeoTodo! !
 
-!DrGeoMiniView methodsFor: 'menus' stamp: 'hlsf 21/Oct/2021 21:23:12'!
-scriptMenu: aMenu
-self flag: #drgeoTodo! !
-
 !DrGeoMiniView methodsFor: 'initialize-release' stamp: 'hlsf 30/Mar/2024 16:45:35'!
 defaultColor
 	^ Theme current paneBackgroundFrom: Theme current defaultWindowColor ! !
@@ -30601,133 +28776,6 @@ stepTime
 includeInNewMorphMenu
 	^ false! !
 
-!DrGeoView methodsFor: 'initialization' stamp: 'hlsf 4/Aug/2023 12:40:38'!
-initialize
-	super initialize.
-	self model: self domain.
-	self setLabel: 'Dr. Geo --  ' , Date today yyyymmdd.
-	drawable := DrGDrawable newOn: presenter! !
-
-!DrGeoView methodsFor: 'initialization' stamp: 'hlsf 4/Aug/2023 17:06:40'!
-release
-	presenter ifNotNil: [presenter removeActionsWithReceiver: self].
-	drawable release.
-	drawable := nil.
-	presenter := nil! !
-
-!DrGeoView methodsFor: 'initialization' stamp: 'hlsf 30/Mar/2024 16:10:30'!
-windowColor
-	^Theme current browser! !
-
-!DrGeoView methodsFor: 'stepping' stamp: 'hlsf 5/Jun/2021 11:00:04'!
-step
-	DrGeoSystem ifTablet: [
-		"track device rotation"
-		self fullScreen].! !
-
-!DrGeoView methodsFor: 'stepping' stamp: ''!
-stepTime
-	^ 1000
-! !
-
-!DrGeoView methodsFor: 'stepping' stamp: ''!
-wantsSteps
-	^ DrGeoSystem isTablet! !
-
-!DrGeoView methodsFor: 'accessing' stamp: 'hlsf 4/Aug/2023 12:40:16'!
-domain
-	^ presenter domain ! !
-
-!DrGeoView methodsFor: 'accessing' stamp: 'hlsf 19/Jun/2021 10:07:28'!
-drawable
-	^ drawable! !
-
-!DrGeoView methodsFor: 'accessing' stamp: 'hlsf 4/Aug/2023 17:05:12'!
-presenter 
-	^ presenter! !
-
-!DrGeoView methodsFor: 'accessing' stamp: 'hlsf 4/Aug/2023 17:08:28'!
-presenter: aPresenter
-	presenter := aPresenter ! !
-
-!DrGeoView methodsFor: 'open/close' stamp: 'hlsf 4/Aug/2023 17:04:50'!
-delete
-	super delete.
-	presenter ifNotNil: [presenter release]! !
-
-!DrGeoView methodsFor: 'open/close' stamp: 'hlsf 4/Aug/2023 12:40:10'!
-deleteWithoutConfirmation
-	super delete.
-	presenter ifNotNil: [presenter release]! !
-
-!DrGeoView methodsFor: 'label' stamp: 'hlsf 28/Mar/2022 11:45:46'!
-relabel
-" Not authorized. Label is changed accordingly to the sketch name "! !
-
-!DrGeoView class methodsFor: 'initialize-release' stamp: 'hlsf 4/Aug/2023 17:08:00'!
-for: aPresenter
-	"A new model with an existing domain. For multiple MVP on a same
-	Domain "
-	^ super basicNew presenter: aPresenter ;
-		 initialize! !
-
-!DrGDebuggerWindow methodsFor: 'GUI building' stamp: 'hlsf 13/Oct/2022 15:09:14'!
-buildLowerPanes
-	^ LayoutMorph newColumn 
-		addMorph: self customButtonRow fixedHeight: self defaultButtonPaneHeight;
-		addMorph: self buildMorphicCodePane proportionalHeight: 1.0;
-		yourself! !
-
-!DrGDebuggerWindow methodsFor: 'GUI building' stamp: 'hlsf 28/Apr/2024 15:42:11'!
-buildMorphicWindow
-	"Open a full morphic debugger with the given label"
-
-	| bottomMorph |
-
-	self receiverInspector doubleClickSelector: #inspectSelection.
-	self contextVariableInspector doubleClickSelector: #inspectSelection.
-	"Instantiate, but not used on the GUI"
-	self receiverInspectorText.
-	
-	bottomMorph := LayoutMorph newRow.
-	bottomMorph
-		addAdjusterAndMorph: self contextVariableInspector proportionalWidth: 0.30;
-		addAdjusterAndMorph: self contextVariableInspectorText proportionalWidth: 0.70.
-
-	self layoutMorph
-		addMorph: self stackList proportionalHeight: 0.1;
-		addAdjusterAndMorph: self buildLowerPanes proportionalHeight: 0.6;
-		addAdjusterAndMorph: bottomMorph proportionalHeight: 0.3.! !
-
-!DrGDebuggerWindow methodsFor: 'GUI building' stamp: 'hlsf 10/Apr/2024 16:46:52'!
-customButtonSpecs
-	"Answer an array of elements of the form wording, selector, help-message, that characterize the custom button row of a debugger."
-
-	^{
-		{'Restart' translated . #restart	 . 		'Restart the step by step execution from its start.' translated } .
-		{'Step'	 translated . 	#doStep .			 'Execute the current message and go to the next message.' translated } .
-		{'Step into'		 translated . #stepIntoBlock		 . 'Step into a block.' translated } .
-		{'Run to Cursor' translated . #runToCursor	 . 	'Execute the code up to the cursor position.' translated }
-	}! !
-
-!DrGDebuggerWindow methodsFor: 'GUI building' stamp: 'hlsf 13/Oct/2022 15:20:08'!
-initialExtent
-	^ 600 @ 400! !
-
-!DrGDebuggerWindow methodsFor: 'accessing' stamp: 'hlsf 13/Oct/2022 15:37:01'!
-layerNumber
-	^ 50! !
-
-!DrGDebuggerWindow class methodsFor: 'instance creation' stamp: 'hlsf 28/Apr/2024 15:41:23'!
-open: model
-	| debuggerWindow |
-	debuggerWindow := self new
-		model: model;
-		buildMorphicWindow.
-	debuggerWindow widgetsColor: debuggerWindow windowColor.
-	^ debuggerWindow 	
-! !
-
 !DrGStylePanel methodsFor: 'GUI building' stamp: 'hlsf 23/Aug/2025 12:33:08'!
 buildMorphicWindow
 	| labelWidth widgets |
@@ -30760,1421 +28808,6 @@ searchLabelIn: aMorph
 !DrGStylePanel methodsFor: 'initialization' stamp: 'hlsf 28/Jul/2024 10:24:21'!
 defaultColor
 	^ Theme current transcript ! !
-
-!DrGFileOpenMorph methodsFor: 'GUI building' stamp: 'hlsf 21/Jul/2024 23:06:29'!
-buildMorphicWindow
-	super buildMorphicWindow .
-	layoutMorph adoptWidgetsColor: self widgetsColor! !
-
-!DrGFileOpenMorph methodsFor: 'GUI building' stamp: 'hlsf 2/May/2023 20:51:08'!
-buildPane
-	| sketches row |
-	DrGeoSystem startSpinner.
-	panel 
-		ifNil: [panel := LayoutMorph newColumn] 
-		ifNotNil: [	panel removeAllMorphs; morphExtent: panel minimumExtent ].
-	previews do: [:each | each breakDependents].
-	previews := OrderedCollection new.
-	sketches := (	model 	filesMatches: [:file | '*.fgeo' match: file name]) 
-		sort: [:f1 :f2 | f1 name asLowercase < f2 name asLowercase ].
-	sketches groupsOf: 3 atATimeDo: [:sketchesBy3 | 
-		row := LayoutMorph newRow 	separation: 8; adoptWidgetsColor: self widgetsColor.
-		panel addMorph: row.
-		sketchesBy3 do: [:sketch |		
-			row addMorph: (self previewMorphFor: sketch) ]] .
-	sketches size \\ 3 ifNotZero: ["there are some left over"
-		row := LayoutMorph newRow separation: 8; adoptWidgetsColor: self widgetsColor.
-		panel addMorph: row.
-		(sketches allButFirst: (	sketches size // 3 * 3)) do: [:sketch|
-			row addMorph: (self previewMorphFor: sketch )]	].
-	DrGeoSystem stopSpinner.
-	^ panel! !
-
-!DrGFileOpenMorph methodsFor: 'GUI building' stamp: 'hlsf 23/Nov/2023 17:50:41'!
-computePreviewFor: aSketchFile
-	| stream drgeo form |
-	stream := aSketchFile readStream.
-	[[drgeo := (DrGeoXml new loadOnlyFigureFrom: stream for: #service) first]
-		on: Error do: []] 
-		ensure: [stream close].
-	drgeo 
-		ifNil: [form := Form extent: 1@1] 
-		ifNotNil: [drgeo previewOnFile: ((aSketchFile pathName allButLast: 4), 'png') asFileEntry	].
-	^ form! !
-
-!DrGFileOpenMorph methodsFor: 'GUI building' stamp: 'hlsf 11/Apr/2022 21:24:20'!
-newButtonArea
-	| rowLeft rowRight |	
-	buttonArea := LayoutMorph newRow 
-		separation: 8@0; 
-		yourself.
-	rowLeft := LayoutMorph newRow.
-	rowLeft 
-		axisEdgeWeight: #rowLeft;
-		addMorph: (PluggableButtonMorph 
-			model: self 
-			stateGetter: #isExamples 
-			action: #switchToExamples 
-			label: 'Examples' translated);
-		addMorph: (PluggableButtonMorph 
-			model: self
-			stateGetter: #isMySketches
-			action: #switchToMySketches
-			label: 'My Sketches' translated).
-	rowRight := LayoutMorph newRow.
-	rowRight 
-		axisEdgeWeight: #rowRight;		
-		addMorph: (PluggableButtonMorph
-			model: self
-			action: #ok
-			label: 'Open' translated).
-	rowRight 
-		addMorph: (PluggableButtonMorph
-			model: self
-			action: #delete
-			label: 'Cancel' translated).
-	rowRight 
-		addMorph: ((PluggableButtonMorph 
-			model: self
-			action: #deleteSketch) icon: Theme current deleteIcon).		
-	buttonArea 
-		addMorph: rowLeft;
-		addMorph: rowRight.
-	^ buttonArea! !
-
-!DrGFileOpenMorph methodsFor: 'GUI building' stamp: 'hlsf 25/Dec/2021 16:48:00'!
-newPane
-	^ PluggableScrollPane new scroller: self buildPane; 
-		scrollDeltaHeight: 80; 
-		yourself! !
-
-!DrGFileOpenMorph methodsFor: 'GUI building' stamp: 'hlsf 2/Apr/2024 18:53:40'!
-previewFor: aSketchEntry
-	| imageFilename form |
-	imageFilename := ((aSketchEntry pathName allButLast: 4), 'png') asFileEntry.
-	imageFilename exists 
-		ifTrue: [	form := Form fromFileEntry: imageFilename]
-		ifFalse: [form := self computePreviewFor: aSketchEntry ].
-	^ form magnifyBy: (Theme current scale: Theme current previewSize x) / form width! !
-
-!DrGFileOpenMorph methodsFor: 'GUI building' stamp: 'hlsf 12/Jan/2025 12:57:47'!
-previewMorphFor: sketchEntry
-	| preview  |
-	preview := (FilePreviewMorph 		
-		file: sketchEntry 
-		image: (self previewFor: sketchEntry ) 
-		buttons: nil)
-		when: #selected send: #update: to: self;
-		when: #doubleClick send: #open: to: self.
-	previews add: preview.
-	^ preview
-! !
-
-!DrGFileOpenMorph methodsFor: 'accessing' stamp: 'hlsf 1/May/2023 17:13:25'!
-selectedFile
-	^ self selectedPreview ifNotNil: [:aPreview | aPreview fileEntry]! !
-
-!DrGFileOpenMorph methodsFor: 'accessing' stamp: 'hlsf 25/Oct/2021 10:01:23'!
-selectedPreview
-"Detect the selected preview morph, if any"
-	^ previews detect: [:preview | preview isSelected] ifFound: [:preview | preview] ifNone: [nil]! !
-
-!DrGFileOpenMorph methodsFor: 'actions' stamp: 'hlsf 25/Oct/2021 10:04:45'!
-deleteSketch
-"Delete the selected sketch"
-	self canDelete ifTrue: [ | file |
-		file := self selectedFile.
-		file delete.
-		((file pathName allButLast: 4), 'png') asFileEntry delete.
-		self selectedPreview delete		]
-	
-	
-	! !
-
-!DrGFileOpenMorph methodsFor: 'actions' stamp: 'hlsf 8/Aug/2023 19:13:55'!
-ok
-"Open the selected sketch"
-	self selectedFile ifNotNil: [:selectedFile |
-		self delete.
-		DrGeo file: selectedFile]! !
-
-!DrGFileOpenMorph methodsFor: 'actions' stamp: 'hlsf 8/Aug/2023 19:13:55'!
-open: previewMorph
-"Open the selected sketch"
-	self delete.
-	DrGeo file: previewMorph fileEntry! !
-
-!DrGFileOpenMorph methodsFor: 'actions' stamp: 'hlsf 17/Oct/2021 12:29:46'!
-switchToExamples
-	model := DrGeoSystem examplesPath.
-	self updateButtonsAndPreviews ! !
-
-!DrGFileOpenMorph methodsFor: 'actions' stamp: 'hlsf 17/Oct/2021 12:30:00'!
-switchToMySketches
-	model := DrGeoSystem mySketchesPath.
-	self updateButtonsAndPreviews ! !
-
-!DrGFileOpenMorph methodsFor: 'states' stamp: 'hlsf 25/Oct/2021 09:46:28'!
-canDelete
-	^ self isMySketches and: [self selectedFile notNil ]! !
-
-!DrGFileOpenMorph methodsFor: 'states' stamp: 'hlsf 14/Oct/2021 21:13:20'!
-isExamples
-	^ model asString includesSubString: 'examples'! !
-
-!DrGFileOpenMorph methodsFor: 'states' stamp: 'hlsf 14/Oct/2021 21:13:57'!
-isMySketches
-	^ model asString includesSubString: 'MySketches'! !
-
-!DrGFileOpenMorph methodsFor: 'update' stamp: 'hlsf 25/Oct/2021 09:50:49'!
-update: aPreview
- "aPreview is now the user selected preview, update all the previews accordingly"
-	previews do: [:each | each selected: each == aPreview].
-	self redrawNeeded ! !
-
-!DrGFileOpenMorph methodsFor: 'update' stamp: 'hlsf 25/Dec/2021 16:48:00'!
-updateButtonsAndPreviews
-	self changed: #isExamples.
-	self changed: #isMySketches.
-	self buildPane! !
-
-!DrGFileOpenMorph methodsFor: 'initialization' stamp: 'hlsf 28/Jul/2024 10:24:43'!
-defaultColor
-	^ Theme current transcript ! !
-
-!DrGFileOpenMorph methodsFor: 'initialization' stamp: 'hlsf 29/Oct/2021 12:12:00'!
-initialize
-	super initialize.
-	previews := #()! !
-
-!DrGFileOpenMorph methodsFor: 'geometry' stamp: 'hlsf 2/Apr/2024 18:44:39'!
-minimumExtent
-	^ Theme current scale: 1000@500! !
-
-!DrGFileOpenMorph class methodsFor: 'instance creation' stamp: 'hlsf 14/Oct/2021 21:04:26'!
-open
-	^ self open: DrGeoSystem examplesPath label: 'Open a sketch' translated! !
-
-!DrGScriptDesignerDialog methodsFor: 'accessing' stamp: 'hlsf 4/Apr/2022 21:52:06'!
-arguments 
-"The arguments as selected by the user"
-|alignments|
-	alignments := argumentsMorph submorphs select: [ :morph | morph class = LayoutMorph].
-	^  alignments reverse collect: [ :each | each submorphs first selectedItem].
-	! !
-
-!DrGScriptDesignerDialog methodsFor: 'accessing' stamp: 'hlsf 5/Apr/2022 21:45:00'!
-argumentsClass
-"The arguments type as selected by the user, tpye=class from the MathItem hierarchy"
-|dict|
-	dict := self class labelsAndClasses .
-	^ self arguments collect: [:aLabel | dict at: aLabel]! !
-
-!DrGScriptDesignerDialog methodsFor: 'accessing' stamp: 'hlsf 6/Apr/2022 14:52:28'!
-description
-	^ description asString! !
-
-!DrGScriptDesignerDialog methodsFor: 'accessing' stamp: 'hlsf 2/Apr/2022 09:10:06'!
-description: aString
-	description := aString ! !
-
-!DrGScriptDesignerDialog methodsFor: 'accessing' stamp: 'hlsf 6/Apr/2022 14:52:35'!
-scriptName
-	^ scriptName asString! !
-
-!DrGScriptDesignerDialog methodsFor: 'accessing' stamp: 'hlsf 2/Apr/2022 09:09:41'!
-scriptName: aString
-	scriptName := aString ! !
-
-!DrGScriptDesignerDialog methodsFor: 'GUI building' stamp: 'hlsf 21/Jul/2024 23:14:31'!
-buildMorphicWindow
-	super buildMorphicWindow .
-	self adoptWidgetsColor: self widgetsColor! !
-
-!DrGScriptDesignerDialog methodsFor: 'GUI building' stamp: 'hlsf 28/Jul/2024 10:25:05'!
-defaultColor
-	^ Theme current workspace ! !
-
-!DrGScriptDesignerDialog methodsFor: 'GUI building' stamp: 'hlsf 23/Aug/2025 12:23:51'!
-newAddArgumentButton
-	^ (PluggableButtonMorph model: self action: #addArgument)
-			icon: Theme current listAddIcon ;
-			buttonStyle: #none;
-			setBalloonText: 'Add an argument to this script.' translated;
-			yourself! !
-
-!DrGScriptDesignerDialog methodsFor: 'GUI building' stamp: 'hlsf 27/May/2023 12:02:16'!
-newArgumentMorph
-	^ LayoutMorph newRow
-		color: Color transparent ;
-		addMorph: self newAddArgumentButton;
-		separation: 4@0;
-		yourself! !
-
-!DrGScriptDesignerDialog methodsFor: 'GUI building' stamp: 'hlsf 10/Aug/2025 11:17:11'!
-newButtonArea
-	buttonArea := LayoutMorph newRow
-		separation: 8@0;
-		addMorph: ((PluggableButtonMorph model: self action: #build label: 'Build' translated)
-				enableSelector: #isValid; 
-				setBalloonText: 'Build a script with these settings.' translated;
-				yourself)
-		layoutSpec: (LayoutSizeSpec new
-			useMorphWidth ;
-			proportionalHeight:  1;
-			offAxisEdgeWeight: #center);
-		addMorph: (PluggableButtonMorph model: self action:  #cancel label: 'Cancel' translated)
-		layoutSpec: (LayoutSizeSpec new
-			useMorphWidth ;
-			proportionalHeight:  1;
-			offAxisEdgeWeight: #center);
-		axisEdgeWeight: #rowRight;
-		color: Color transparent.
-	^ buttonArea ! !
-
-!DrGScriptDesignerDialog methodsFor: 'GUI building' stamp: 'hlsf 10/Aug/2025 11:18:05'!
-newDescriptionMorph
-| morph |
-	morph := (TextModelMorph textProvider: self textGetter: #description textSetter: #description:)
-		askBeforeDiscardingEdits: false;
-		borderWidth: 1;
-		setBalloonText:  'A description of the script. To help the user, describe carefully what the script does and the input arguments to select to use it.' translated;
-		yourself	.
-	morph scroller setProperty: #keyStroke: toValue: [:event | 
-		morph scroller acceptContents.
-		self changed: #isValid]. 
-	^ morph! !
-
-!DrGScriptDesignerDialog methodsFor: 'GUI building' stamp: 'hlsf 10/Aug/2025 11:05:06'!
-newPane
-	| group |
-	group := LabelGroup with: {
-		'Name' translated -> self newScriptNameMorph .
-		'Description' translated -> self newDescriptionMorph .
-		'Arguments' translated -> (argumentsMorph :=  self newArgumentMorph)}.
-	group doAdoptWidgetsColor.
-	^ group! !
-
-!DrGScriptDesignerDialog methodsFor: 'GUI building' stamp: 'hlsf 10/Aug/2025 11:18:31'!
-newScriptNameMorph
-| morph |
-	morph := (TextModelMorph textProvider: self textGetter: #scriptName textSetter:  #scriptName:)
-		hideScrollBarsIndefinitely;
-		askBeforeDiscardingEdits: false;
-		acceptOnCR: true;
-		morphHeight: FontFamily defaultPointSize;
-		setBalloonText:  'The name of the script.' translated;
-		borderWidth: 1
-		yourself	.
-	morph scroller setProperty: #keyStroke: toValue: [:event | 
-		morph scroller acceptContents.
-		self changed: #isValid]. 
-	^ morph! !
-
-!DrGScriptDesignerDialog methodsFor: 'initialization' stamp: 'hlsf 5/Apr/2022 21:02:25'!
-initialize
-	super initialize.
-	scriptName := ''.
-	description := ''! !
-
-!DrGScriptDesignerDialog methodsFor: 'action' stamp: 'hlsf 10/Aug/2025 22:53:45'!
-addArgument
-	| newArgument |
-	newArgument := LayoutMorph newRow
-		adoptWidgetsColor: self widgetsColor;
-		borderWidth: 1;
-		yourself.
-	newArgument addMorph: ((PluggableButtonMorph model: self action: #removeArgument:)
-			icon: Theme current deleteIcon;
-			actionArgument: newArgument;
-			noButtonShape ;
-			color: Color transparent;
-			setBalloonText:  'Remove this script argument.' translated;
-			yourself);		
-		addMorph: ((DropDownListMorph 
-			withModel: (ListModel with: self class labels)
-			listGetter: #list
-			indexGetter:  #listIndex
-			indexSetter: #listIndex:)
-			adoptWidgetsColor: self widgetsColor).
-	argumentsMorph addMorphFront: newArgument.
-	self morphExtent: self minimumExtent ! !
-
-!DrGScriptDesignerDialog methodsFor: 'action' stamp: 'hlsf 4/Aug/2023 17:38:35'!
-build
-	| scriptClass stream |
-	self delete.
-	"Build a new script from the user specification"
-	scriptClass := DrGeoUserScript 
-		subclass: ('DrGeoScript', self scriptName hash printString) asSymbol
-		instanceVariableNames: '' 
-		classVariableNames: '' 
-		poolDictionaries: ''
-		category:  'DrGeo-Model-Script'.
-	"name"
-	stream := WriteStream on: String new.
-	stream nextPutAll: 'scriptName';
-		newLineTab: 1 ;
-		nextPut: $^ ;
-		nextPutAll: self scriptName printString.
-	scriptClass class compile: stream contents classified: 'public'.
-	"description"
-	stream := WriteStream on: String new.
-	stream nextPutAll: 'description';
-		newLineTab: 1;
-		nextPut:  $^ ;
-		nextPutAll: self description printString.
-	scriptClass class compile: stream contents classified: 'public'.
-	"argumentsType"
-	stream := WriteStream on: String new.
-	stream nextPutAll: 'newArgumentsType';
-		newLineTab: 1;
-		nextPut: 	$^; nextPut: ${.
-	self argumentsClass 
-		do: [:aClass| stream nextPutAll: aClass printString] 
-		separatedBy: [stream nextPut: $.].
-	stream nextPut: $}.
-	scriptClass class compile: stream contents classified: 'private'.
-	"compute"
-	stream := WriteStream on: String new.
-	stream nextPutAll: 'compute';
-		newLine;
-		nextPutAll: '"Edit me"';
-		newLineTab: 1;
-		nextPut: $^;
-		nextPutAll: '1+1'.
-	scriptClass compile: stream contents classified: 'public'.
-	"Browse the newly created script"
-	model editScript: scriptClass! !
-
-!DrGScriptDesignerDialog methodsFor: 'action' stamp: 'hlsf 4/Apr/2022 18:50:59'!
-cancel
-	self delete! !
-
-!DrGScriptDesignerDialog methodsFor: 'action' stamp: 'hlsf 4/Apr/2022 19:28:41'!
-isValid
-"respond wheter the given input data is valid to build a script"
-	scriptName asString withBlanksCondensed isEmpty ifTrue: [ ^ false ].
-	description asString withBlanksCondensed isEmpty ifTrue: [ ^ false ].
-	(Smalltalk hasClassNamed: #DrGeoScript, scriptName asString hash printString) ifTrue: [ ^ false ].
-	^ true! !
-
-!DrGScriptDesignerDialog methodsFor: 'action' stamp: 'hlsf 4/Apr/2022 21:49:52'!
-removeArgument: aRowArgument
-	argumentsMorph removeMorph: aRowArgument .
-	self morphExtent: self minimumExtent ! !
-
-!DrGScriptDesignerDialog methodsFor: 'as yet unclassified' stamp: 'hlsf 10/Aug/2025 11:35:21'!
-minimumExtent
-	^ (Theme current scale: 400@250) max: (super minimumExtent )! !
-
-!DrGScriptDesignerDialog class methodsFor: 'labels and classes' stamp: 'hlsf 2/Apr/2022 12:50:48'!
-classesAndLabels
-	| dict |
-	dict := Dictionary new.
-	self labelsAndClasses associationsDo: [ :assoc | 
-		dict add: assoc value -> assoc key ].
-	^ dict
-	! !
-
-!DrGScriptDesignerDialog class methodsFor: 'labels and classes' stamp: 'hlsf 2/Apr/2022 12:49:47'!
-indexOfLabel: string
-	self labels withIndexDo: [:label :i |
-		label = string ifTrue: [ ^ i ]].
-	self errorNotFound: string! !
-
-!DrGScriptDesignerDialog class methodsFor: 'labels and classes' stamp: 'hlsf 2/Apr/2022 12:49:05'!
-labels
-	^ self labelsAndClasses keys sorted! !
-
-!DrGScriptDesignerDialog class methodsFor: 'labels and classes' stamp: 'hlsf 7/Apr/2022 18:41:41'!
-labelsAndClasses
-	^ Dictionary newFrom: {
-		'Any type' translated -> DrGMathItem.
-		'Point' translated -> DrGPointItem.
-		'Direction' translated -> DrGDirectionItem.
-		'Line' translated -> DrGLineItem.
-		'Ray' translated -> DrGRayItem.
-		'Segment' translated -> DrGSegmentItem.
-		'Polygon' translated -> DrGPolygonItem.
-		'Vector' translated -> DrGVectorItem.
-		'Circle' translated -> DrGCircleItem.
-		'Arc' translated -> DrGArcItem.
-		'Locus' translated -> DrGLocus2ptsItem.
-		'Value' translated -> DrGValueItem.
-		'Angle' translated -> DrGAngleItem}! !
-
-!DrGSmalltalkSketchBrowser methodsFor: 'accessing' stamp: 'hlsf 25/May/2023 17:55:31'!
-compiledSketch: aSketch
-	| oldView |
-	self releaseMiniView.
-	oldView := drgeoView.
-	drgeoView := aSketch view.
-	pane replaceSubmorph: oldView by: drgeoView.
-	self runningWorld doOneCycleNow.! !
-
-!DrGSmalltalkSketchBrowser methodsFor: 'accessing' stamp: 'hlsf 11/Apr/2022 21:52:55'!
-deleteSketch
-	self canDelete ifTrue: [
-		selectedFile delete.
-		self sketch: 0]! !
-
-!DrGSmalltalkSketchBrowser methodsFor: 'accessing' stamp: 'hlsf 16/Apr/2022 11:43:15'!
-edit
-" Inform any interested party the user wants to edit the selected sketch "
-	self triggerEvent: #editSmalltalkSketch with: 	selectedFile.
-	self delete.! !
-
-!DrGSmalltalkSketchBrowser methodsFor: 'accessing' stamp: 'hlsf 9/Apr/2025 20:56:47'!
-layerNumber
-" Lower it a bit, the user may want to open alternate window as Browser "
-	^ 100! !
-
-!DrGSmalltalkSketchBrowser methodsFor: 'accessing' stamp: 'hlsf 9/Apr/2022 11:05:19'!
-model: aDirectoryEntry
-	model := aDirectoryEntry .
-	sketches := nil! !
-
-!DrGSmalltalkSketchBrowser methodsFor: 'accessing' stamp: 'hlsf 12/Apr/2022 21:24:54'!
-showCode: aCheckButtonMorph 
-| drgeoFraction |
-	aCheckButtonMorph isSelected 
-		ifTrue: 	[
-			drgeoFraction := 0.7.
-			pane addMorph: codeView proportionalHeight: 1 - drgeoFraction.
-			codeView adoptWidgetsColor: self widgetsColor ]
-		 ifFalse: [
-			drgeoFraction := 1.
-			pane removeMorph: codeView].
-	drgeoView layoutSpec: (LayoutSpec proportionalHeight: drgeoFraction)! !
-
-!DrGSmalltalkSketchBrowser methodsFor: 'accessing' stamp: 'hlsf 11/Apr/2022 21:47:52'!
-sketch
-	^ selectedFile 
-		ifNil: [0] 
-		ifNotNil: [	sketches indexOf: selectedFile baseName]! !
-
-!DrGSmalltalkSketchBrowser methodsFor: 'accessing' stamp: 'hlsf 8/Jun/2024 16:20:56'!
-sketch: anIndex
-	ActiveModel flushEventSystem.
-	anIndex = 0 
-		ifTrue:  [	| oldView |
-			self releaseMiniView.
-			oldView := drgeoView.
-			drgeoView := self emptyView .
-			pane replaceSubmorph: oldView by: drgeoView.
-			selectedFile := nil.
-			self changed: #sourceCode]
-		ifFalse: [
-			selectedFile := model // ( (sketches at: anIndex) , '.st' ).
-			self changed: #sourceCode.
-			DrGeoSketch when: #newSmalltalkSketch send: #compiledSketch: to: self.
-			selectedFile readStream fileIn	.
-			DrGeoSketch removeActionsForEvent: #newSmalltalkSketch	]! !
-
-!DrGSmalltalkSketchBrowser methodsFor: 'accessing' stamp: 'hlsf 28/Sep/2022 16:32:35'!
-sketches
-" The skteches files in the current path"
-	^ sketches ifNil: [sketches := (model files 
-			select: [:aFile | aFile extension = 'st']
-			thenCollect: [:aFile | aFile baseName ]) sorted ]
-			! !
-
-!DrGSmalltalkSketchBrowser methodsFor: 'accessing' stamp: 'hlsf 22/Feb/2023 11:28:15'!
-sourceCode
-	^ selectedFile 
-		ifNotNil: [	selectedFile fileContents]
-		ifNil: ['']! !
-
-!DrGSmalltalkSketchBrowser methodsFor: 'accessing' stamp: 'hlsf 11/Apr/2022 21:54:35'!
-switchToExamples
-	model := DrGeoSystem smalltalkSketchesPath.
-	self updateButtonsAndPreviews! !
-
-!DrGSmalltalkSketchBrowser methodsFor: 'accessing' stamp: 'hlsf 11/Apr/2022 21:55:43'!
-switchToMySketches
-	model := DrGeoSystem mySmalltalkSketchesPath.
-	self updateButtonsAndPreviews! !
-
-!DrGSmalltalkSketchBrowser methodsFor: 'GUI building' stamp: 'hlsf 21/Jul/2024 23:00:23'!
-buildMorphicWindow
-	super buildMorphicWindow.
-	titleMorph showButtonsNamed: #(close expand).
-	layoutMorph adoptWidgetsColor: self widgetsColor! !
-
-!DrGSmalltalkSketchBrowser methodsFor: 'GUI building' stamp: 'hlsf 4/Apr/2024 12:54:48'!
-newButtonArea
-	| rowLeft rowRight |	
-	buttonArea := LayoutMorph newRow 
-		separation: 8@0; 
-		yourself.
-	rowLeft := LayoutMorph newRow.
-	rowLeft 
-		axisEdgeWeight: #rowLeft;
-		addMorph: (PluggableButtonMorph 
-			model: self 
-			stateGetter: #isExamples 
-			action: #switchToExamples 
-			label: 'Examples' translated);
-		addMorph: ((PluggableButtonMorph 
-			model: self
-			stateGetter: #isMySketches
-			action: #switchToMySketches
-			label: 'My Sketches' translated) 
-				setBalloonText: 'Browse my collection of Smalltalk sketches.' translated;
-				yourself).
-	rowRight := LayoutMorph newRow.
-	rowRight 
-		axisEdgeWeight: #rowRight;		
-		addMorph: ((PluggableButtonMorph
-			model: self
-			action: #edit
-			label: 'Edit' translated) enableSelector: #canEdit; yourself).
-	rowRight 
-		addMorph: (PluggableButtonMorph
-			model: self
-			action: #delete
-			label: 'Cancel' translated).
-	rowRight 
-		addMorph: ((PluggableButtonMorph 
-			model: self
-			action: #deleteSketch
-			label: 'Delete' translated) 
-				setBalloonText: 'Delete permanently this Smalltalk Sketch from disk.' translated;
-				enableSelector: #canDelete; 
-				yourself).		
-	buttonArea 
-		addMorph: rowLeft;
-		addMorph: rowRight.
-	^ buttonArea! !
-
-!DrGSmalltalkSketchBrowser methodsFor: 'GUI building' stamp: 'hlsf 12/Apr/2022 23:31:48'!
-newDrGeoColumn
-" the DrGeo view and an optional code view"
-	^ pane := LayoutMorph newColumn
-		addMorph: drgeoView proportionalHeight: 1;
-		addAdjusterMorph ;
-		yourself! !
-
-!DrGSmalltalkSketchBrowser methodsFor: 'GUI building' stamp: 'hlsf 10/Aug/2025 11:56:01'!
-newPane
-	^ LayoutMorph newRow
-		separation: self defaultSeparation ;
-		addMorph: self newSketchesColumn layoutSpec: (LayoutSizeSpec new useMorphWidth );
-		addMorphUseAll: self newDrGeoColumn;
-		yourself! !
-
-!DrGSmalltalkSketchBrowser methodsFor: 'GUI building' stamp: 'hlsf 10/Aug/2025 11:56:10'!
-newSketchesColumn
-" The list of the sketch and an option to view the code"
-	| checkGtoup |
-	checkGtoup := CheckGroup fromList: {'Code' translated}.
-	checkGtoup buttons first when: #checkSelection send: #showCode: to: self.
-	^ LayoutMorph newColumn
-		addMorph: sketchesListMorph layoutSpec: (LayoutSizeSpec new useMorphWidth);
-		addMorphKeepMorphHeight: checkGtoup ;
-		yourself
-		! !
-
-!DrGSmalltalkSketchBrowser methodsFor: 'initialization' stamp: 'hlsf 28/Jul/2024 10:25:31'!
-defaultColor
-	^ Theme current transcript ! !
-
-!DrGSmalltalkSketchBrowser methodsFor: 'initialization' stamp: 'hlsf 18/Sep/2024 21:00:24'!
-emptyView
-	^ BorderedBoxMorph new
-		color: self color;
-		borderWidth: 1;
-		layoutSpec: LayoutSpec useAll! !
-
-!DrGSmalltalkSketchBrowser methodsFor: 'initialization' stamp: 'hlsf 20/May/2024 15:32:05'!
-initialize
-	super initialize.
-	sketchesListMorph := PluggableListMorph 
-		withModel: self 		listGetter: #sketches 		indexGetter: #sketch indexSetter: #sketch:.
-	drgeoView := self emptyView.
-	codeView := (TextModelMorph textProvider: self textGetter: #sourceCode)
-		disableEditing;
-		yourself.! !
-
-!DrGSmalltalkSketchBrowser methodsFor: 'geometry' stamp: 'hlsf 2/Apr/2024 19:01:40'!
-minimumExtent
-	^ Theme current scale: 800@600! !
-
-!DrGSmalltalkSketchBrowser methodsFor: 'update' stamp: 'hlsf 9/Jul/2022 12:07:45'!
-updateButtonsAndPreviews
-	sketches := nil.
-	self changed: #isExamples.
-	self changed: #isMySketches.
-	self changed: #sketches.
-	self changed: #sourceCode.
-	self changed: #canDelete.
-	self sketch: 0! !
-
-!DrGSmalltalkSketchBrowser methodsFor: 'states' stamp: 'hlsf 11/Apr/2022 21:56:14'!
-canDelete
-	^ self isMySketches and: [selectedFile notNil ]! !
-
-!DrGSmalltalkSketchBrowser methodsFor: 'states' stamp: 'hlsf 18/Sep/2024 21:10:18'!
-canEdit
-" Is there any editor listening to edit a selected Smalltalk Sketch? "
-	^ self actionMap 
-		ifNotNil: [:map | map  includesKey: #editSmalltalkSketch]
-		ifNil: [false]! !
-
-!DrGSmalltalkSketchBrowser methodsFor: 'states' stamp: 'hlsf 11/Apr/2022 21:57:32'!
-isExamples
-	^ self isMySketches not! !
-
-!DrGSmalltalkSketchBrowser methodsFor: 'states' stamp: 'hlsf 11/Apr/2022 21:57:17'!
-isMySketches
-	^ model asString includesSubString: 'MySmalltalk'! !
-
-!DrGSmalltalkSketchBrowser methodsFor: 'user interface support' stamp: 'hlsf 12/Apr/2022 23:28:08'!
-shouldStyle: aText with: aSHTextStylerST80 
-	
-	^true! !
-
-!DrGSmalltalkSketchBrowser methodsFor: 'user interface support' stamp: 'hlsf 23/Nov/2023 17:27:51'!
-styleByParagraphs
-	^ false! !
-
-!DrGSmalltalkSketchBrowser methodsFor: 'user interface support' stamp: 'hlsf 12/Apr/2022 23:25:32'!
-textStylerClassFor: object
-	^ SHTextStylerST80 ! !
-
-!DrGSmalltalkSketchBrowser methodsFor: 'menus' stamp: 'hlsf 23/Apr/2022 14:19:49'!
-expand
-	super expand.
-	self fullScreen! !
-
-!DrGSmalltalkSketchBrowser methodsFor: 'testing' stamp: 'hlsf 18/May/2023 17:09:55'!
-shouldAutoHighlight
-	^ false! !
-
-!DrGSmalltalkSketchBrowser methodsFor: 'testing' stamp: 'hlsf 18/May/2023 17:10:10'!
-shoutMustKeepContentsSize
-	^ true! !
-
-!DrGSmalltalkSketchBrowser methodsFor: 'submorphs-add/remove' stamp: 'hlsf 12/Apr/2024 17:54:59'!
-delete
-	super delete.
-	self releaseMiniView! !
-
-!DrGSmalltalkSketchBrowser methodsFor: 'submorphs-add/remove' stamp: 'hlsf 4/Aug/2023 12:58:33'!
-releaseMiniView
-	(drgeoView respondsTo: #presenter) 
-		ifTrue: [drgeoView presenter ifNotNil: [:pres | pres release] ]! !
-
-!DrGSmalltalkSketchBrowser methodsFor: 'as yet unclassified' stamp: 'hlsf 18/Sep/2024 21:02:40'!
-aboutToStyleWith: aSHTextStylerST80 
-! !
-
-!DrGSmalltalkSketchBrowser methodsFor: 'as yet unclassified' stamp: 'hlsf 18/Sep/2024 21:02:02'!
-allowsStylingFor: aSymbol isTextDirty: aFalse 
-	^ true! !
-
-!DrGSmalltalkSketchEditor methodsFor: 'GUI building' stamp: 'hlsf 21/Jul/2024 23:00:38'!
-buildMorphicWindow
-	super buildMorphicWindow.
-	titleMorph showButtonsNamed: #(close collapse expand).
-	self toggleHelp.
-	self activeHand newKeyboardFocus: codeView scroller.
-	layoutMorph adoptWidgetsColor: self widgetsColor! !
-
-!DrGSmalltalkSketchEditor methodsFor: 'GUI building' stamp: 'hlsf 30/Mar/2024 08:48:53'!
-button: iconSymbol action: actionSelector help: helpString
-	^ (ButtonMorph model: self action: actionSelector)
-			icon: (DrGIcons for: iconSymbol );
-			setBalloonText: helpString ;
-			color: Theme current drgeoButtonColor;
-			selectedColor: Theme current drgeoButtonSelectedColor;
-			borderColor: Theme current drgeoButtonColor muchDarker;
-			borderWidth: 2;
-			morphExtent: (Theme current toolbarIconSize + 4) asPoint;
-			yourself! !
-
-!DrGSmalltalkSketchEditor methodsFor: 'GUI building' stamp: 'hlsf 30/Mar/2024 08:49:06'!
-button: iconSymbol action: actionSelector state: getStateSel help: helpString
-	^ (ButtonMorph model: self stateGetter: getStateSel action: actionSelector)
-			icon: (DrGIcons for: iconSymbol );
-			setBalloonText: helpString ;
-			color: Theme current drgeoButtonColor;
-			selectedColor: Theme current drgeoButtonSelectedColor;
-			borderColor: Theme current drgeoButtonColor muchDarker;
-			borderWidth: 2;
-			morphExtent: (Theme current toolbarIconSize + 4) asPoint;
-			yourself! !
-
-!DrGSmalltalkSketchEditor methodsFor: 'GUI building' stamp: 'hlsf 14/Apr/2022 16:43:31'!
-newButtonArea
-	buttonArea := LayoutMorph newRow 
-		axisEdgeWeight: #rowRight;
-		addMorph: (PluggableButtonMorph
-			model: self
-			action: #delete
-			label: 'Cancel' translated).
-	^ buttonArea! !
-
-!DrGSmalltalkSketchEditor methodsFor: 'GUI building' stamp: 'hlsf 2/Nov/2022 19:39:02'!
-newCodeAndView
-	^ LayoutMorph newRow
-		separation: self defaultSeparation;
-		addMorph: (codeAndViewPanel := LayoutMorph newColumn
-			addMorph: codeView proportionalHeight: 0.7;
-			addAdjusterMorph;
-			addMorph: docView proportionalHeight: 0.3) 
-		proportionalWidth: 0.5;
-		addAdjusterMorph ;
-		addMorph: drgeoView proportionalWidth: 0.5;
-		yourself! !
-
-!DrGSmalltalkSketchEditor methodsFor: 'GUI building' stamp: 'hlsf 19/Oct/2022 21:31:20'!
-newPane
-	^ LayoutMorph newColumn
-		separation: self defaultSeparation ;
-		addMorphKeepMorphHeight: self newToolbar;
-		addMorphUseAll: self newCodeAndView;
-		yourself! !
-
-!DrGSmalltalkSketchEditor methodsFor: 'GUI building' stamp: 'hlsf 28/Oct/2022 11:15:20'!
-newToolbar
-	^ LayoutMorph newRow
-		separation: 5@0 ;
-		addMorph: (self button: #open action: #browseSketches help: 'Edit a Smalltalk sketch.' translated);
-		addMorph: (self button: #keep action: #keepSketch help: 'Save this Smalltalk sketch.' translated);
-		addMorph: (playButton := self button: #play action: #executeSketch help: 'Play the Smalltalk sketch.' translated);
-		addMorph: (self button: #debug action: #debugSketch help: 'Debug the Smalltalk sketch.' translated);
-		addMorph: (self button: #stop action: #stopSketch help: 'Stop the execution of the Smalltalk sketch.' translated);
-		addMorph: self transparentMorph layoutSpec: (LayoutSpec proportionalWidth: 1.0);
-		addMorph: (self button: #doc action: #toggleHelp state: #isDocVisible help: 'Dr. Geo tutorial' translated)
-		yourself! !
-
-!DrGSmalltalkSketchEditor methodsFor: 'GUI building' stamp: 'hlsf 1/May/2024 11:08:16'!
-plugDebugger
-" Install the debugger window at the place of the code viewer "
-	debugger layoutMorph borderWidth: 1.
-	codeAndViewPanel replaceSubmorph: codeView by: debugger layoutMorph.			
-	debugger model when: #closeViews send: #stopDebbuger to: self.! !
-
-!DrGSmalltalkSketchEditor methodsFor: 'GUI building' stamp: 'hlsf 9/May/2024 11:20:31'!
-plugDebugger: aDebugger
-	self stopDebbuger.
-	debugger := aDebugger.
-	self plugDebugger ! !
-
-!DrGSmalltalkSketchEditor methodsFor: 'GUI building' stamp: 'hlsf 6/Oct/2022 12:44:50'!
-switchToPauseButton
-" 
-Switch to pause sketch action 
-"
-	playButton 
-		icon: (DrGIcons for: #pause);
-		action: #pauseSketch;
-		setBalloonText: 'Pause the Smalltalk sketch.' translated;
-		redrawNeeded ! !
-
-!DrGSmalltalkSketchEditor methodsFor: 'GUI building' stamp: 'hlsf 20/Mar/2024 16:20:14'!
-switchToPlayButton
-" 
-Switch to play sketch action 
-"
-	playButton 
-		icon: (DrGIcons for: #play);
-		action: #executeSketch;
-		setBalloonText: 'Play the Smalltalk sketch.' translated;
-		redrawNeeded.! !
-
-!DrGSmalltalkSketchEditor methodsFor: 'GUI building' stamp: 'hlsf 6/Oct/2022 12:44:44'!
-switchToResumeButton
-" 
-Switch to resume sketch action
-"
-	playButton 
-		icon: (DrGIcons for: #resume);
-		action: #resumeSketch;
-		setBalloonText: 'Resume the Smalltalk sketch.' translated;
-		redrawNeeded ! !
-
-!DrGSmalltalkSketchEditor methodsFor: 'GUI building' stamp: 'hlsf 18/Sep/2024 21:03:16'!
-transparentMorph
-	^ ColoredBoxMorph new 
-		color: Color transparent; 
-		yourself! !
-
-!DrGSmalltalkSketchEditor methodsFor: 'initialization' stamp: 'hlsf 28/Jul/2024 10:25:47'!
-defaultColor
-	^ Theme current workspace ! !
-
-!DrGSmalltalkSketchEditor methodsFor: 'initialization' stamp: 'hlsf 10/Aug/2024 15:53:38'!
-initialize
-	| book |
-	super initialize.
-	book := EruditeBookReaderMorph new.
-	docView := book
-		model: DrGeoTutorial new; 
-		buildMorphicWindow;
-		layoutMorph.
-	book when: #askToCopyCode send: #sourceCode: to: self.
-	
-	codeView := (TextModelMorph textProvider: self textGetter: #sourceCode textSetter: #sourceCode:)
-		askBeforeDiscardingEdits: false;
-		yourself.
-	drgeoView :=  LayoutMorph newRow
-		color: self color;
-		borderWidth: 1;
-		layoutSpec: LayoutSpec useAll! !
-
-!DrGSmalltalkSketchEditor methodsFor: 'accessing' stamp: 'hlsf 30/Oct/2022 20:39:21'!
-isDocVisible
-	^ docView visible! !
-
-!DrGSmalltalkSketchEditor methodsFor: 'accessing' stamp: 'hlsf 9/Apr/2025 20:57:24'!
-layerNumber
-" Lower it a bit, the user may want to open alternate window as Browser "
-	^ 100! !
-
-!DrGSmalltalkSketchEditor methodsFor: 'accessing' stamp: 'hlsf 14/Apr/2022 16:35:00'!
-model: sourceCode
-"Set an initial source code (string)"
-	model := sourceCode
-! !
-
-!DrGSmalltalkSketchEditor methodsFor: 'accessing' stamp: 'hlsf 30/Oct/2022 20:45:35'!
-separator
-"The adjuster/separator between the codeView and docView"
-	^ codeView owner submorphs second
-! !
-
-!DrGSmalltalkSketchEditor methodsFor: 'accessing' stamp: 'hlsf 15/Apr/2022 21:09:07'!
-sketchName
-	^ file 	ifNil: [''] ifNotNil: [file baseName]! !
-
-!DrGSmalltalkSketchEditor methodsFor: 'accessing' stamp: 'hlsf 14/Apr/2022 16:36:21'!
-sourceCode
-	^ model 
-		ifNotNil: [model]
-		ifNil: ['']! !
-
-!DrGSmalltalkSketchEditor methodsFor: 'accessing' stamp: 'hlsf 25/May/2023 15:31:43'!
-sourceCode: aText
-	self model: aText asString.
-	self changed: #clearUserEdits.
-	self changed: #acceptedContents.
-	self releaseMiniView.
-	drgeoView removeAllMorphs
-! !
-
-!DrGSmalltalkSketchEditor methodsFor: 'user interface support' stamp: 'hlsf 15/Apr/2022 15:12:50'!
-autoCompleterClassFor: textGetter
-	^SmalltalkCompleter! !
-
-!DrGSmalltalkSketchEditor methodsFor: 'user interface support' stamp: 'hlsf 22/Dec/2022 21:45:04'!
-computeMessageEntriesIn: aDynamicTypingSmalltalkCompleter ofBlockArgNamed: aString 
-	aDynamicTypingSmalltalkCompleter 
-		computeMessageEntriesForClassOrNil: (DrGeoSystem preferences at: #programmingCodeCompletion)! !
-
-!DrGSmalltalkSketchEditor methodsFor: 'user interface support' stamp: 'hlsf 22/Dec/2022 21:45:36'!
-computeMessageEntriesIn: aDynamicTypingSmalltalkCompleter ofBlockTempVarNamed: aString 
-	aDynamicTypingSmalltalkCompleter 
-		computeMessageEntriesForClassOrNil: (DrGeoSystem preferences at: #programmingCodeCompletion)! !
-
-!DrGSmalltalkSketchEditor methodsFor: 'user interface support' stamp: 'hlsf 22/Dec/2022 21:45:25'!
-computeMessageEntriesIn: aDynamicTypingSmalltalkCompleter ofInstVarNamed: aString 
-	aDynamicTypingSmalltalkCompleter 
-		computeMessageEntriesForClassOrNil: (DrGeoSystem preferences at: #programmingCodeCompletion)! !
-
-!DrGSmalltalkSketchEditor methodsFor: 'user interface support' stamp: 'hlsf 22/Dec/2022 21:40:20'!
-computeMessageEntriesIn: aDynamicTypingSmalltalkCompleter ofTempVarNamed: aString 
-	aDynamicTypingSmalltalkCompleter 
-		computeMessageEntriesForClassOrNil: (DrGeoSystem preferences at: #programmingCodeCompletion)! !
-
-!DrGSmalltalkSketchEditor methodsFor: 'user interface support' stamp: 'hlsf 15/Apr/2022 15:10:56'!
-editorClassFor: textGetter
-    ^SmalltalkEditor! !
-
-!DrGSmalltalkSketchEditor methodsFor: 'user interface support' stamp: 'hlsf 14/Apr/2022 16:40:23'!
-shouldStyle: aText with: aSHTextStylerST80 
-	
-	^true! !
-
-!DrGSmalltalkSketchEditor methodsFor: 'user interface support' stamp: 'hlsf 23/Nov/2023 17:27:30'!
-styleByParagraphs
-	^ false! !
-
-!DrGSmalltalkSketchEditor methodsFor: 'user interface support' stamp: 'hlsf 14/Apr/2022 16:40:27'!
-textStylerClassFor: object
-	^ SHTextStylerST80 ! !
-
-!DrGSmalltalkSketchEditor methodsFor: 'actions' stamp: 'hlsf 18/May/2023 17:35:00'!
-browseSketches
-| browser |
-	self stopSketch.
-	browser := DrGSmalltalkSketchBrowser 
-		open: DrGeoSystem smalltalkSketchesPath 
-		label: 'Select a Smalltalk sketch' translated.
-	browser when: #editSmalltalkSketch send: #loadSketch: to: self.! !
-
-!DrGSmalltalkSketchEditor methodsFor: 'actions' stamp: 'hlsf 20/Mar/2024 17:07:38'!
-compiledSketch: aSketch
-	self releaseMiniView.
-	drgeoView 
-		removeAllMorphs;
-		addMorph: aSketch view.! !
-
-!DrGSmalltalkSketchEditor methodsFor: 'actions' stamp: 'hlsf 12/Jan/2025 13:08:18'!
-debugSketch
-" Execute the sketch step by step in a debugger "
-	model ifEmpty: [^ self].
-	self stopSketch.
-	self isDocVisible ifTrue: [self toggleHelp].
-	codeView scroller acceptContents.
-	DrGeoSketch when: #newSmalltalkSketch send: #compiledSketch: to: self.
-	codeView editor 
-		afterCompiling: model 
-		do:  [ :compiler :method :receiver :context | 
-			(method notNil and: [method isQuick not]) ifTrue: [
-				debugger := Debugger 
-					openMinimalDebugging: [
-						method
-							valueWithReceiver: receiver 
-							arguments: (context ifNil: [ #() ] ifNotNil: [ { context } ])]
-					to: method.
-				self plugDebugger ]]
-		ifFail: []! !
-
-!DrGSmalltalkSketchEditor methodsFor: 'actions' stamp: 'hlsf 9/May/2024 12:21:15'!
-executeSketch
-	self stopSketch.
-	codeView scroller acceptContents.
-	self switchToPauseButton.
-	DrGeoSketch when: #newSmalltalkSketch send: #compiledSketch: to: self.
-	sketchProcess := [ | t |
-		t := DateAndTime now.
-		(DrGeoSystem preferences at: #advancedDebugger) 
-			ifTrue: [Compiler evaluate: model]
-			ifFalse: [
-				[Compiler evaluate: model] 
-					on: Error, Halt
-					do: [:ex | 
-						self setLabel: ex description.
-						debugger ifNil: [" We can't help if debugger already active "
-							Debugger 		
-								openMinimalIn: self
-								debuggingProcess: sketchProcess 			
-								context: ex signalerContext.
-							ex resume ]
-							ifNotNil: [ 
-								self inform: 'Too many errors. Fix it!!
-Sketch stopped' translated.
-								self stopSketch ]							
-						 ] ].
-		" When we get there, sketch has been entirely executed, switch back to play button "
-		self switchToPlayButton.
-		Transcript show: DateAndTime now - t ;cr] newProcess.
-	sketchProcess 
-		priority: Processor userBackgroundPriority ;
-		name: '[DrGeo] Smalltalk Sketch execution';
-		resume.! !
-
-!DrGSmalltalkSketchEditor methodsFor: 'actions' stamp: 'hlsf 15/Apr/2022 21:31:52'!
-keepSketch
-| modelName |
-	DrGeoSystem showVirtualKeyboard: true.
-	codeView scroller acceptContents.
-	modelName := (ValueHolder with: self sketchName)
-	action: [:aString | 
-		self setLabel: aString.
-		file := DrGeoSystem mySmalltalkSketchesPath // (aString, '.st').
-		file < model].
-	(StringEntryPanel openWide: modelName label: 'Name the sketch to keep.' translated)
-		morphCenter: self fullBoundsInOwner center;
-		setProperty: #layerNumber toValue: 20! !
-
-!DrGSmalltalkSketchEditor methodsFor: 'actions' stamp: 'hlsf 22/Feb/2023 11:31:05'!
-loadSketch: afileEntry
-" we are informed by the browser we want a file "
-	file := afileEntry.
-	self setLabel: self sketchName.
-	self sourceCode: file fileContents! !
-
-!DrGSmalltalkSketchEditor methodsFor: 'actions' stamp: 'Install-DrGeoFrench 7/Dec/2022 16:12:01'!
-pauseSketch
-    sketchProcess isTerminated ifTrue: [
-        self stopSketch.
-        ^self ].
-    sketchProcess suspend.
-    self switchToResumeButton.! !
-
-!DrGSmalltalkSketchEditor methodsFor: 'actions' stamp: 'hlsf 6/Oct/2022 12:28:58'!
-resumeSketch
-	sketchProcess resume.
-	self switchToPauseButton! !
-
-!DrGSmalltalkSketchEditor methodsFor: 'actions' stamp: 'hlsf 9/May/2024 11:26:05'!
-stopDebbuger
-	debugger ifNotNil: [
-		codeAndViewPanel replaceSubmorph: debugger layoutMorph by: codeView.
-		debugger closeView.
-		debugger := nil.
-		self restoreLabel ]
-		
-		! !
-
-!DrGSmalltalkSketchEditor methodsFor: 'actions' stamp: 'hlsf 8/Jun/2024 16:21:22'!
-stopSketch
-	ActiveModel flushEventSystem.
-	DrGeoSketch removeActionsForEvent: #newSmalltalkSketch.
-	sketchProcess 	ifNotNil: [
-		sketchProcess terminate.
-		sketchProcess := nil	].
-	self switchToPlayButton .
-	self stopDebbuger 
-	! !
-
-!DrGSmalltalkSketchEditor methodsFor: 'actions' stamp: 'hlsf 2/Nov/2022 19:48:07'!
-toggleHelp
-"Show/unshow the doc pane"
-	debugger ifNotNil: [^ self]. "No doc while debugging, the pane does not like it"
-	self isDocVisible 		ifTrue: [
-		docView hide.
-		codeView layoutSpec proportionalHeight: 1.0.
-		docView layoutSpec proportionalHeight: 0.
-		self separator hide			]
-	ifFalse: [
-		docView show.
-		docView layoutSpec proportionalHeight: 0.3.
-		codeView layoutSpec proportionalHeight: 0.7.
-		self separator show		].
-	self changed: #isDocVisible
-! !
-
-!DrGSmalltalkSketchEditor methodsFor: 'geometry' stamp: 'hlsf 23/Apr/2022 14:19:25'!
-expand
-	super expand.
-	self fullScreen! !
-
-!DrGSmalltalkSketchEditor methodsFor: 'geometry' stamp: 'hlsf 2/Apr/2024 18:58:11'!
-minimumExtent
-	^ Theme current scale: 800@600! !
-
-!DrGSmalltalkSketchEditor methodsFor: 'testing' stamp: 'hlsf 18/May/2023 17:07:27'!
-shouldAutoHighlight
-	^ false! !
-
-!DrGSmalltalkSketchEditor methodsFor: 'testing' stamp: 'hlsf 18/May/2023 17:09:35'!
-shoutMustKeepContentsSize
-	^ true! !
-
-!DrGSmalltalkSketchEditor methodsFor: 'submorphs-add/remove' stamp: 'hlsf 25/May/2023 18:03:51'!
-delete
-	self stopSketch .
-	super delete.
-	self releaseMiniView ! !
-
-!DrGSmalltalkSketchEditor methodsFor: 'submorphs-add/remove' stamp: 'hlsf 6/Jun/2024 17:34:07'!
-releaseMiniView
-	drgeoView submorphCount = 1 ifTrue: [
-		drgeoView firstSubmorph ifNotNil: [:miniView| 	miniView release]]! !
-
-!DrGSmalltalkSketchEditor methodsFor: 'label' stamp: 'hlsf 1/May/2024 11:36:19'!
-restoreLabel
-	| defaultLabel |
-	defaultLabel := self sketchName ifEmpty: ['Edit Smalltalk Sketch' translated].
-	self label == defaultLabel 		ifFalse: [self setLabel: defaultLabel]! !
-
-!DrGSmalltalkSketchEditor methodsFor: 'shout' stamp: 'hlsf 8/Sep/2024 19:55:01'!
-aboutToStyleWith: aSHTextStylerST80 
-	! !
-
-!DrGSmalltalkSketchEditor methodsFor: 'shout' stamp: 'hlsf 8/Sep/2024 19:54:15'!
-allowsStylingFor: aSymbol isTextDirty: aFalse 
-	^ true! !
-
-!DrGSmalltalkSketchEditor methodsFor: 'evaluation' stamp: 'hlsf 12/Jan/2025 13:10:44'!
-doItContext
-	^ nil! !
-
-!DrGSmalltalkSketchEditor methodsFor: 'evaluation' stamp: 'hlsf 12/Jan/2025 13:09:57'!
-doItReceiver
-	^ nil! !
-
-!DrGWizardMacroBuild methodsFor: 'pages' stamp: 'hlsf 27/Dec/2021 10:00:29'!
-firstPage
-	^ (WizardPage firstPage: 'Build a macro-construction' translated on: self) contents:
-'To build a macro-construction,
-
- 1. First select the input paramaters,
- 2. Next select the output parameters,
- 3. Next chose a name and a description,
- 4. Last apply the selection.' translated
-		! !
-
-!DrGWizardMacroBuild methodsFor: 'pages' stamp: 'hlsf 10/Aug/2025 11:47:21'!
-fourthPage
-	| page tMorph descrMorph |
-	tMorph := (TextModelMorph textProvider: model textGetter: #title textSetter: #title:)
-		hideScrollBarsIndefinitely; 
-		borderWidth: 1;
-		askBeforeDiscardingEdits: false.
-	tMorph scroller 
-		setProperty: #keyStroke: 
-		toValue: [:event | 
-			tMorph scroller acceptContents.
-			self changed: #isReadyToApply].
-	descrMorph := (TextModelMorph textProvider: model textGetter: #description textSetter: #description:)
-		borderWidth: 1;
-		askBeforeDiscardingEdits: false.
-	descrMorph scroller 
-		setProperty: #keyStroke: 
-		toValue: [:event | 
-			descrMorph scroller acceptContents.
-			self changed: #isReadyToApply].
-	page := LabelGroup with: {
-		'Name' translated -> tMorph.
-		'Description' translated -> descrMorph }.
-	page doAdoptWidgetsColor.
-	^(WizardPage applyPage: 'Give a name and a description' translated on: self)
-		contents: page;
-		yourself! !
-
-!DrGWizardMacroBuild methodsFor: 'pages' stamp: 'hlsf 10/Aug/2025 11:36:43'!
-secondPage
-| list pane |
-	list := PluggableListMorph 
-		withModel: model
-		listGetter: #inputNames
-		indexGetter:  nil
-		indexSetter: nil.
-	list borderWidth: 1.
-	pane := self emptyPane 
-		addMorphUseAll: list;
-		yourself.
-	^ (WizardPage standardPage: 'Select input parameters' translated on: self)
-		contents: pane;
-		yourself
-	! !
-
-!DrGWizardMacroBuild methodsFor: 'pages' stamp: 'hlsf 10/Aug/2025 11:36:55'!
-thirdPage
-| list pane |
-	list := PluggableListMorph 
-		withModel: model
-		listGetter: #outputNames
-		indexGetter:  nil
-		indexSetter: nil.
-	list borderWidth: 1.
-	pane := self emptyPane 
-		addMorphUseAll: list;
-		yourself.
-	^ (WizardPage standardPage: 'Select output parameters' translated on: self)
-		contents: pane;
-		yourself
-	! !
-
-!DrGWizardMacroBuild methodsFor: 'testing' stamp: 'hlsf 4/Nov/2021 19:30:31'!
-isInputPage
-	^ currentPageIndex = 2! !
-
-!DrGWizardMacroBuild methodsFor: 'testing' stamp: 'hlsf 4/Nov/2021 19:30:13'!
-isOutputPage
-	^ currentPageIndex = 3! !
-
-!DrGWizardMacroBuild methodsFor: 'testing' stamp: 'hlsf 19/Nov/2021 10:44:38'!
-isReadyToApply
-"Can we apply the macro-construction to the selected geometric items?"
-	^ model isMacroValid ! !
-
-!DrGWizardMacroBuild methodsFor: 'initialize-release' stamp: 'hlsf 27/Dec/2021 11:03:49'!
-addPages
-	self addPage: self firstPage;
-		addPage: self secondPage ;
-		addPage: self thirdPage ;
-		addPage: self fourthPage ! !
-
-!DrGWizardMacroBuild methodsFor: 'initialization' stamp: 'hlsf 28/Jul/2024 10:26:04'!
-defaultColor
-	^ Theme current workspace ! !
-
-!DrGWizardMacroPlay methodsFor: 'initialize-release' stamp: 'hlsf 27/Dec/2021 11:03:07'!
-addPages
-
-	^ self
-		addPage: self firstPage;
-		addPage: self secondPage! !
-
-!DrGWizardMacroPlay methodsFor: 'initialize-release' stamp: 'hlsf 27/Dec/2021 11:03:24'!
-initialize
-	super initialize.
-	macroFactories := DrGMacroFactory new! !
-
-!DrGWizardMacroPlay methodsFor: 'pages' stamp: 'hlsf 27/Dec/2021 10:00:29'!
-firstPage
-	^ (WizardPage firstPage: 'Execute a macro-construction' translated on: self) 	contents: 
-'To execute a macro-construction,
-
- 1. First select a macro-construction from the list,
- 2. Select items on the figure. Only items relevant
- to the selected macro-construction are selectable.
- Once enough items are selected, the macro is
- automaticly executed.
- To start press the ''next'' button.' translated! !
-
-!DrGWizardMacroPlay methodsFor: 'pages' stamp: 'hlsf 10/Aug/2025 11:48:26'!
-secondPage
-| page list description  |
-	list := PluggableListMorph 
-		withModel: self listGetter: #macroList 	indexGetter: #selectedMacro indexSetter: #selectedMacro:.
-	list borderWidth: 1.
-	description := TextModelMorph textProvider: model textGetter: #description textSetter: #description:.
-	description borderWidth: 1.
-	description hideScrollBarsIndefinitely; askBeforeDiscardingEdits: false.
-	page := LabelGroup with: {
-		'Name' translated -> list.
-		'Description' translated -> description }.
-	page doAdoptWidgetsColor .
-	^ (WizardPage applyPage: 'Select a macro-construction then the figure items' translated on: self)
-		contents: page ;
-		yourself
-	! !
-
-!DrGWizardMacroPlay methodsFor: 'accessing' stamp: 'hlsf 18/Nov/2021 21:31:41'!
-macroList
-	^ macroFactories titles! !
-
-!DrGWizardMacroPlay methodsFor: 'accessing' stamp: 'hlsf 18/Nov/2021 21:32:00'!
-selectedMacro
-	^ macroFactories indexOf: model selectedMacro! !
-
-!DrGWizardMacroPlay methodsFor: 'accessing' stamp: 'hlsf 18/Nov/2021 21:32:37'!
-selectedMacro: anIndex
-	model selectedMacro: (macroFactories at: anIndex).
-	self changed: #selectedMacro.
-	model changed: #description.! !
-
-!DrGWizardMacroPlay methodsFor: 'testing' stamp: 'hlsf 19/Nov/2021 10:50:20'!
-isReadyToApply
-"It is not relevant, apply button disabled"
-	^ false! !
-
-!DrGWizardMacroPlay methodsFor: 'testing' stamp: 'hlsf 18/Nov/2021 21:31:31'!
-isSelectPage
-	^ currentPageIndex = 2! !
-
-!DrGWizardMacroPlay methodsFor: 'initialization' stamp: 'hlsf 28/Jul/2024 10:26:24'!
-defaultColor
-	^ Theme current workspace ! !
-
-!DrGWizardScript methodsFor: 'accessing' stamp: 'hlsf 7/Apr/2022 15:17:16'!
-argumentsName
-	| labels |
-	^ model scriptClass 
-		ifNil: [ #() ]
-		ifNotNil: [
-			labels := DrGScriptDesignerDialog classesAndLabels.
-			model scriptClass argumentsType collect: [ :type | labels at: type ]
-		]! !
-
-!DrGWizardScript methodsFor: 'accessing' stamp: 'hlsf 7/Apr/2022 15:40:01'!
-scripts
-	^ scripts 	ifNil: [ 	scripts := DrGWizardScript sortedScripts ]! !
-
-!DrGWizardScript methodsFor: 'accessing' stamp: 'hlsf 6/Apr/2022 16:55:26'!
-scriptsName
-	^ self scripts collect: [:class | class scriptName]! !
-
-!DrGWizardScript methodsFor: 'accessing' stamp: 'hlsf 7/Apr/2022 15:18:28'!
-selectedScript
-	^ model scriptClass
-		ifNil: [0]
-		ifNotNil: [self scripts indexOf: model scriptClass]! !
-
-!DrGWizardScript methodsFor: 'accessing' stamp: 'hlsf 7/Apr/2022 15:19:44'!
-selectedScript: anIndex 
-	model scriptClass: (self scripts at: anIndex ifAbsent: [nil]).
-	self changed: #selectedScript.
-	self changed: #argumentsName.
-	model changed: #description! !
-
-!DrGWizardScript methodsFor: 'pages' stamp: 'hlsf 7/Apr/2022 15:28:50'!
-addPages
-	self addPage: self firstPage ;
-		addPage: self secondPage ! !
-
-!DrGWizardScript methodsFor: 'pages' stamp: 'hlsf 7/Apr/2022 15:29:09'!
-firstPage
-	^ (WizardPage firstPage: 'Use a script in the sketch' translated on: self) 	contents: 
-'To use a script,
-
- 1. First select a script from the list,
- 2. Select items in the sketch,
- 3. Click somewhere in the background. 
- Once enough items are selected, the script is
- inserted in the sketch, at the user selected position.
- To start press the ''next'' button.' translated! !
-
-!DrGWizardScript methodsFor: 'pages' stamp: 'hlsf 10/Aug/2025 11:47:41'!
-secondPage
-	| list argumentList page textMorph |
-	list := (PluggableListMorph 
-		withModel: self listGetter: #scriptsName indexGetter: #selectedScript indexSetter: #selectedScript:)
-			borderWidth: 1;
-			yourself. 
-	argumentList := (PluggableListMorph 
-		withModel: self listGetter: #argumentsName indexGetter: nil indexSetter: nil)
-		setBalloonText: 'The arguments accepted by this script.' translated;
-		borderWidth: 1;
-		yourself.
-	textMorph := (TextModelMorph textProvider: model textGetter: #description textSetter: #description:)
-		askBeforeDiscardingEdits: false;
-		borderWidth: 1;
-		yourself.
-	page := LabelGroup with: { 
-		'Name' translated -> list.
-		'Description' translated -> textMorph.
-		'Arguments' translated -> argumentList}.
-	page doAdoptWidgetsColor.
-	^ (WizardPage applyPage: 'Select a script then items in the sketch' translated on: self)
-		 contents: page! !
-
-!DrGWizardScript methodsFor: 'open/close' stamp: 'hlsf 7/Apr/2022 12:34:54'!
-delete
-	super delete.
-	model := nil! !
-
-!DrGWizardScript methodsFor: 'navigation' stamp: 'hlsf 7/Apr/2022 15:54:58'!
-goPage: integer
-	super goPage: integer.
-	self changed: #scriptsName! !
-
-!DrGWizardScript methodsFor: 'GUI building' stamp: 'hlsf 28/Jul/2024 10:26:47'!
-defaultColor
-	^ Theme current workspace ! !
-
-!DrGWizardScript class methodsFor: 'as yet unclassified' stamp: 'hlsf 7/Apr/2022 15:39:42'!
-sortedScripts
-" Return a list of the user script sorted by their scriptName "
-	^ DrGeoUserScript subclasses 
-		sorted: [:script1 :script2 | script1 scriptName asLowercase < script2 scriptName asLowercase]! !
-
-!DrGeoTreeNode methodsFor: 'as yet unclassified' stamp: 'hlsf 10/Feb/2022 17:06:51'!
-contents
-	^ item parents 
-		ifNotNil: [:array | array collect: [:each | DrGeoTreeNode with: each] ]
-		ifNil: [`#()`]! !
-
-!DrGeoTreeNode methodsFor: 'as yet unclassified' stamp: 'hlsf 10/Feb/2022 17:12:39'!
-hasContents
-	^ hasContents! !
-
-!DrGeoTreeNode methodsFor: 'as yet unclassified' stamp: 'hlsf 10/Feb/2022 17:10:52'!
-hasContents: boolean
-	hasContents := boolean ! !
-
-!DrGeoTreeNode methodsFor: 'initialization' stamp: 'hlsf 10/Feb/2022 17:09:34'!
-initialize
-	super initialize.
-	hasContents := false.! !
 
 !DrGeoScriptTest methodsFor: 'testing-point' stamp: 'hlsf 13/Apr/2024 10:35:57'!
 testPointByCoordinates
@@ -33493,11 +30126,11 @@ launchSketch: aScriptFile
 "Launch a test"
 	(DrGeoSystem smalltalkSketchesPath // aScriptFile) readStream fileIn! !
 
-!DrGeoSmalltalkSketchTest methodsFor: 'helpers' stamp: 'hlsf 10/Apr/2022 15:04:23'!
+!DrGeoSmalltalkSketchTest methodsFor: 'helpers' stamp: 'hlsf 8/Jan/2026 21:56:18'!
 tearDown
 	(Delay forMilliseconds: 200) wait.
 	DrGeoSketch allInstancesDo: [:aSketch | aSketch terminateDo ].
-	DrGeoView allInstancesDo: [:drMorph | drMorph deleteWithoutConfirmation ].! !
+	DrGeoAppView allInstancesDo: [:drMorph | drMorph deleteWithoutConfirmation ].! !
 
 !DrGeoSmalltalkSketchTest methodsFor: 'helpers' stamp: 'hlsf 13/Jun/2021 11:03:31'!
 testOnSketch: aScriptFile
@@ -33933,685 +30566,5 @@ thicknessMorphCollection
 !DrGTypeThickness class methodsFor: 'accessing' stamp: 'hlsf 5/Jun/2022 12:01:35'!
 thicknessSymbols
 	^ `#(#small #medium #large)`! !
-
-!Object methodsFor: '*DrGeo' stamp: 'hlsf 20/Jun/2021 11:37:54'!
-isAngleItem
-	^false! !
-
-!Object methodsFor: '*DrGeo' stamp: 'hlsf 20/Jun/2021 11:38:03'!
-isArcItem
-	^false! !
-
-!Object methodsFor: '*DrGeo' stamp: 'hlsf 20/Jun/2021 11:38:10'!
-isBitmapItem
-	^false! !
-
-!Object methodsFor: '*DrGeo' stamp: 'hlsf 20/Jun/2021 11:38:15'!
-isCircleItem
-	^false! !
-
-!Object methodsFor: '*DrGeo' stamp: 'hlsf 20/Jun/2021 11:39:10'!
-isCompositeItem
-	^false! !
-
-!Object methodsFor: '*DrGeo' stamp: 'hlsf 20/Jun/2021 11:39:16'!
-isConstrainedPointItem
-	^false! !
-
-!Object methodsFor: '*DrGeo' stamp: 'hlsf 20/Jun/2021 11:39:24'!
-isCurveItem
-"When true, free point can be constrained on this item line"
-	^false! !
-
-!Object methodsFor: '*DrGeo' stamp: 'hlsf 20/Jun/2021 11:39:38'!
-isDirectionItem
-"When true, this item are straight line with normal and unit vector"
-	^false! !
-
-!Object methodsFor: '*DrGeo' stamp: 'hlsf 20/Jun/2021 11:39:45'!
-isEquation
-	^ false! !
-
-!Object methodsFor: '*DrGeo' stamp: 'hlsf 20/Jun/2021 11:39:50'!
-isFreePointItem
-	^false! !
-
-!Object methodsFor: '*DrGeo' stamp: 'hlsf 20/Jun/2021 11:39:56'!
-isFreePointOnPlaneItem
-	^false! !
-
-!Object methodsFor: '*DrGeo' stamp: 'hlsf 20/Jun/2021 11:40:02'!
-isGeometricItem
-	^false! !
-
-!Object methodsFor: '*DrGeo' stamp: 'hlsf 20/Jun/2021 11:40:10'!
-isIntersectableItem
-"When true, this curve can be intersected"
-	^self isCurveItem! !
-
-!Object methodsFor: '*DrGeo' stamp: 'hlsf 20/Jun/2021 11:40:15'!
-isIntersectionPointItem
-	^false! !
-
-!Object methodsFor: '*DrGeo' stamp: 'hlsf 20/Jun/2021 11:40:21'!
-isLineItem
-	^false! !
-
-!Object methodsFor: '*DrGeo' stamp: 'hlsf 20/Jun/2021 11:40:26'!
-isLocusItem
-	^false! !
-
-!Object methodsFor: '*DrGeo' stamp: 'hlsf 20/Jun/2021 11:40:32'!
-isMathItem
-	^false! !
-
-!Object methodsFor: '*DrGeo' stamp: 'hlsf 20/Jun/2021 11:40:38'!
-isNumberItem
-	^false! !
-
-!Object methodsFor: '*DrGeo' stamp: 'hlsf 20/Jun/2021 11:40:43'!
-isPointItem
-	^false! !
-
-!Object methodsFor: '*DrGeo' stamp: 'hlsf 20/Jun/2021 11:40:49'!
-isPointItemOnCurve
-	^false! !
-
-!Object methodsFor: '*DrGeo' stamp: 'hlsf 20/Jun/2021 11:40:54'!
-isPolygonItem
-	^false! !
-
-!Object methodsFor: '*DrGeo' stamp: 'hlsf 20/Jun/2021 11:40:59'!
-isRayItem
-	^false! !
-
-!Object methodsFor: '*DrGeo' stamp: 'hlsf 20/Jun/2021 11:41:04'!
-isScriptItem
-	^false! !
-
-!Object methodsFor: '*DrGeo' stamp: 'hlsf 20/Jun/2021 11:41:09'!
-isSegmentItem
-	^false! !
-
-!Object methodsFor: '*DrGeo' stamp: 'hlsf 20/Jun/2021 11:41:16'!
-isTextItem
-	^false! !
-
-!Object methodsFor: '*DrGeo' stamp: 'hlsf 20/Jun/2021 11:41:32'!
-isValueItem
-	^false! !
-
-!Object methodsFor: '*DrGeo' stamp: 'hlsf 20/Jun/2021 11:41:37'!
-isVectorItem
-	^false! !
-
-!MorphicEruditeDocRenderer methodsFor: '*DrGeo' stamp: 'MM 27/Oct/2022 11:00:56'!
-createButton: aForm action: aBlock balloonText: balloonText
-
-	| button |
-	
-	button := ImageMorph new image: aForm; yourself.
-	button setBalloonText: balloonText.
-	button setProperty: #handlesMouseDown: toValue: true.
-	button setProperty: #'mouseButton1Down:localPosition:' toValue: [:keyEvent :pos | aBlock value].
-	
-	^ button
-
-	! !
-
-!MorphicEruditeDocRenderer methodsFor: '*DrGeo' stamp: 'hlsf 27/Oct/2022 23:43:29'!
-renderCodeCopyToDrGeo: aDocCode
-	self deprecatedMethod.
-	self renderCodeWithDrGeoActions: aDocCode ! !
-
-!MorphicEruditeDocRenderer methodsFor: '*DrGeo' stamp: 'hlsf 14/Dec/2022 15:39:08'!
-renderCodeWithDrGeoActions: aDocCode
-
-	|text button textModel |
-	
-	text := Text string: aDocCode code.							.
-							
-	textModel := EruditeSmalltalkTextModel withText: text.
-	textModel formatAndStyle.
-		
-	stream nextPut: textModel actualContents.
-	stream nextPut: ' '.
-	
-	"Add as many buttons as you need here: "
-	
-	button := self createButton: Theme current openIcon 
-			action: [requestor triggerEvent: #askToCopyCode with: aDocCode code]
-			balloonText: 'Copy to the code editor.' translated. 
-	stream nextPut: (Text streamContents: [:s | button printOn: s]).
-	
-	stream nextPut: ' '. "separation between buttons"
-	" No additional DrGeo action for now...
-	button := self createButton: Theme current imageIcon 
-			action: [ self someDrGeoAction: aDocCode]
-			balloonText: 'Preview the resulting Sketch when this code is executed.' translated. 
-	stream nextPut: (Text streamContents: [:s | button printOn: s]).
-	"! !
-
-!MorphicEruditeDocRenderer methodsFor: '*DrGeo' stamp: 'hlsf 14/Dec/2022 15:38:23'!
-someDrGeoAction: aDocCode
-
-	^ self shouldBeImplemented ! !
-
-!Theme methodsFor: '*DrGeo-canvas' stamp: 'hlsf 30/Mar/2024 11:00:26'!
-adjustColor: aColor
-"Depending on the current Theme, 
-we want to adjust the black or white color used to display an item view"
-	^ self isDarkTheme 
-		ifTrue: [
-			(aColor alpha: 1) = `Color black` 
-				ifTrue: [Color white alpha: aColor alpha] ifFalse: [aColor] 	]
-		ifFalse: [
-			(aColor alpha: 1) = `Color white` 
-				ifTrue: [Color black alpha: aColor alpha] ifFalse: [aColor] ]
-		! !
-
-!Theme methodsFor: '*DrGeo-canvas' stamp: 'hlsf 3/Apr/2024 17:07:44'!
-canvasBackground
-	^ `Color white`! !
-
-!Theme methodsFor: '*DrGeo-UI' stamp: 'hlsf 26/Mar/2024 21:35:54'!
-circularToolbarDropDownGap
-	^ self scale: 5! !
-
-!Theme methodsFor: '*DrGeo-UI' stamp: 'hlsf 26/Mar/2024 21:36:11'!
-circularToolbarDropDownHeight
-	^ self scale: 15! !
-
-!Theme methodsFor: '*DrGeo-UI' stamp: 'hlsf 26/Mar/2024 21:37:58'!
-circularToolbarExtent
-	^ self scale: 300! !
-
-!Theme methodsFor: '*DrGeo-UI' stamp: 'hlsf 3/Apr/2024 17:07:52'!
-drgeoButtonColor
-"Blue Ukraine"
-	^ `Color fromHexString: '#0057b7'`! !
-
-!Theme methodsFor: '*DrGeo-UI' stamp: 'hlsf 3/Apr/2024 17:07:56'!
-drgeoButtonSelectedColor
-"Yellow Ukraine"
-	^ Color fromHexString: '#ffd700'! !
-
-!Theme methodsFor: '*DrGeo-UI' stamp: 'hlsf 30/Mar/2024 15:45:44'!
-isDarkTheme
-	^ self canvasBackground = `Color black`! !
-
-!Theme methodsFor: '*DrGeo-canvas' stamp: 'hlsf 27/May/2025 18:14:19'!
-lineStyleDataFor: aStyle
-	"possible lineStyle"
-	aStyle = #dot ifTrue: [^ self scale: #(1 6)].
-	aStyle = #dash ifTrue: [^ self scale: #(8 8)].
-	^ nil! !
-
-!Theme methodsFor: '*DrGeo-canvas' stamp: 'hlsf 29/Mar/2024 10:03:10'!
-lineWidthFor: thickness
-" width of line  view "
-	^ thickness == #small 
-		ifTrue: [self scale: 1]
-		ifFalse: [
-			thickness == #medium
-				ifTrue:[self scale: 2]					
-				ifFalse:[self scale: 3]	]! !
-
-!Theme methodsFor: '*DrGeo-canvas' stamp: 'hlsf 26/Mar/2024 21:55:20'!
-pointExtentFor: pointSize
-" Extent of point view "
-	^ (pointSize == #small 
-		ifTrue: [self scale: 6]
-		ifFalse: [
-			pointSize == #large
-				ifTrue:[self scale: 10]					
-				ifFalse:[self scale: 8]	]) asPoint! !
-
-!Theme methodsFor: '*DrGeo-UI' stamp: 'hlsf 2/Apr/2024 18:47:14'!
-previewSize
-	^ 300@200! !
-
-!Theme methodsFor: '*DrGeo-UI' stamp: 'hlsf 30/Jul/2024 09:32:34'!
-scale: anIntegerOrCollection
-" Scale the length represented by anInteger to the display density "
-	^ (self scaled: anIntegerOrCollection) rounded! !
-
-!Theme methodsFor: '*DrGeo-UI' stamp: 'hlsf 26/Mar/2024 22:06:34'!
-scaled: aFloat
-" Scale the length represented by anInteger to the display density "
-	^ aFloat * FontFamily defaultPointSize / 12! !
-
-!Theme methodsFor: '*DrGeo-UI' stamp: 'hlsf 24/Mar/2024 15:42:17'!
-smWheelWidth
-	^ (self wheelWidth / 1.5) rounded max: 1! !
-
-!Theme methodsFor: '*DrGeo-UI' stamp: 'hlsf 24/Mar/2024 15:38:21'!
-toolbarIconSize
-	^ (FontFamily defaultPointSize + 1) * 4! !
-
-!Theme methodsFor: '*DrGeo-UI' stamp: 'hlsf 26/Mar/2024 21:41:25'!
-wheelHeight
-	^ self scale: 120! !
-
-!Theme methodsFor: '*DrGeo-UI' stamp: 'hlsf 26/Mar/2024 21:40:56'!
-wheelWidth
-	^ self scale: 24! !
-
-!DarkTheme methodsFor: '*DrGeo-canvas' stamp: 'hlsf 30/Mar/2024 15:45:27'!
-canvasBackground
-	^ `Color black`! !
-
-!DarkTheme methodsFor: '*DrGeo-UI' stamp: 'hlsf 30/Mar/2024 16:22:36'!
-drgeoButtonColor
-	^ `Color black lighter lighter lighter`
-! !
-
-!DarkTheme methodsFor: '*DrGeo-UI' stamp: 'hlsf 30/Mar/2024 16:22:30'!
-drgeoButtonSelectedColor
-	^ `Color lightGray lighter`! !
-
-!SequenceableCollection methodsFor: '*DrGeo' stamp: 'hlsf 24/Feb/2022 22:32:55'!
-shiftRight
-	^ self allButFirst, (Array with: self first)! !
-
-!LinkedList methodsFor: '*DrGeo-Link' stamp: 'hlsf 11/Apr/2024 10:35:30'!
-add: aLink after: otherLink
-	"Add otherLink  after link in the list. Answer aLink."
-	| savedLink |
-	lastLink == otherLink ifTrue: [^ self addLast: aLink].
-	savedLink := otherLink nextLink.
-	otherLink nextLink: aLink.
-	aLink nextLink:  savedLink.
-	^aLink.! !
-
-!Debugger methodsFor: '*DrGeo' stamp: 'hlsf 19/Oct/2022 21:20:23'!
-openMinimalMorphic
-	"Open a panel debugger"
-
-	| oldContextStackIndex window |
-	oldContextStackIndex := contextStackIndex.
-	self expandStack. "Sets contextStackIndex to zero."
-
-	window := DrGDebuggerWindow open: self .
-	self toggleContextStackIndex: oldContextStackIndex.
-	^ window! !
-
-!Debugger methodsFor: '*DrGeo' stamp: 'hlsf 1/May/2024 11:09:22'!
-openMinimalMorphicIn: aDialog
-	"Open a panel debugger on process"
-
-	| safeBlockAlreadyRan doItIndex |
-	Sensor flushKeyboard.
-	savedCursor := Cursor currentCursor.
-	Cursor defaultCursor activateCursor.
-	"In case an error in Morphic code got us here, ensure mouse focus has been released"
-	self runningWorld ifNotNil: [ :rWorld |
-		rWorld activeHand ifNotNil: [ :aHand |
-			aHand releaseMouseFocus ]].
-
-	safeBlockAlreadyRan := false.
-	UISupervisor whenUIinSafeState: [
-		safeBlockAlreadyRan ifFalse: [
-			safeBlockAlreadyRan := true.
-			"Suspend it as early as possible"	
-			interruptedProcess suspend ].
-			self expandStack. "Sets contextStackIndex to zero."
-			aDialog plugDebugger: (DrGDebuggerWindow open: self).
-			doItIndex := contextStackList findFirst: [:each | each includesSubString: 'DoIt'].
-			doItIndex > 0 ifTrue: [self toggleContextStackIndex: doItIndex] 			 ].
-	"Ensure the Debugger is opened in a new UI process.
-	This avoid unresponsive UI if the interruptedProcess is the UI current UI process, but also if the UI is busy, blocked or suspended."
-	UISupervisor newUIProcess.
-	"Suspend it as early as possible"
-	safeBlockAlreadyRan ifFalse: [
-		safeBlockAlreadyRan := true.
-		interruptedProcess suspend ]! !
-
-!Debugger class methodsFor: '*DrGeo' stamp: 'hlsf 23/Apr/2024 22:47:43'!
-openMinimalDebugging: aBlock to: aCompiledMethod 
-	"Create a new process to debug aBlock, and step into it."
-
-	| debugger window |
-	debugger := self newDebugging: aBlock.
-	window := debugger openMinimalMorphic.
-	[debugger interruptedContext method == aCompiledMethod]
-		whileFalse: [debugger send].
-	^ window ! !
-
-!Debugger class methodsFor: '*DrGeo' stamp: 'hlsf 28/Apr/2024 15:54:22'!
-openMinimalIn: aDialog debuggingProcess: process context: context
-"Open a Minimal Debugger on an existing process."
-	| debugger |
-	<primitive: 19> "Simulation guard"
-
-	debugger := self new.
-	debugger process: process context: context.
-	^ debugger openMinimalMorphicIn: aDialog.
-	! !
-
-!Number methodsFor: '*DrGeo' stamp: 'hlsf 1/May/2020 23:32:17'!
-closeTo: num
-	"Tell whether the receiver and arguments are close from each."
-
-	num isFloat ifTrue: [ ^ num closeTo: self asFloat ].
-	^ [ self = num ] ifError: [ false ]! !
-
-!Number methodsFor: '*DrGeo' stamp: 'hlsf 1/May/2020 23:31:58'!
-closeTo: num precision: aPrecision
-	"are these two numbers close?"
-
-	num isFloat ifTrue: [ ^ num closeTo: self asFloat precision: aPrecision ].
-	^ [ self = num ] ifError: [ false ]! !
-
-!Number methodsFor: '*DrGeo' stamp: 'hlsf 19/Oct/2022 17:11:44'!
-printParenthesisOn: aStream
-"Add parenthesis when the value is negative"
-	self < 0 
-		ifTrue:  [aStream nextPut: $(.
-			self printOn: aStream.
-			aStream nextPut: $)]
-		ifFalse: [self printOn: aStream]! !
-
-!Number methodsFor: '*DrGeo' stamp: 'hlsf 2/May/2020 12:52:46'!
-printShowingDecimalPlaces: digits
-	^ String 
-		streamContents:  [:str | self printOn: str fractionDigits: digits]
-		estimatedSize: 10 + digits! !
-
-!Float methodsFor: '*DrGeo' stamp: 'hlsf 28/Jan/2024 17:17:21'!
-asApproximateFraction
-	"Answer a Fraction approximating the receiver. This conversion uses the 
-	continued fraction method to approximate a floating point number."
-
-	^ self asApproximateFractionAtOrder: 0! !
-
-!Float methodsFor: '*DrGeo' stamp: 'hlsf 28/Jan/2024 17:16:56'!
-asApproximateFractionAtOrder: maxOrder
-	"Answer a Fraction approximating the receiver. This conversion uses the 
-	continued fraction method to approximate a floating point number. If maxOrder
-	is zero, use maximum order"
-
-	| num1 denom1 num2 denom2 int frac newD temp order |
-	num1 := self asInteger.	"The first of two alternating numerators"
-	denom1 := 1.		"The first of two alternating denominators"
-	num2 := 1.		"The second numerator"
-	denom2 := 0.		"The second denominator--will update"
-	int := num1.		"The integer part of self"
-	frac := self fractionPart.		"The fractional part of self"
-	order := maxOrder = 0 ifTrue: [-1] ifFalse: [maxOrder].
-	[frac = 0 or: [order = 0] ]
-		whileFalse: 
-			["repeat while the fractional part is not zero and max order is not reached"
-			order := order - 1.
-			newD := 1.0 / frac.			"Take reciprocal of the fractional part"
-			int := newD asInteger.		"get the integer part of this"
-			frac := newD fractionPart.	"and save the fractional part for next time"
-			temp := num2.				"Get old numerator and save it"
-			num2 := num1.				"Set second numerator to first"
-			num1 := num1 * int + temp.	"Update first numerator"
-			temp := denom2.				"Get old denominator and save it"
-			denom2 := denom1.			"Set second denominator to first"
-			denom1 := int * denom1 + temp.		"Update first denominator"
-			10000000000.0 < denom1
-				ifTrue: 
-					["Is ratio past float precision?  If so, pick which 
-					of the two ratios to use"
-					num2 = 0.0 
-						ifTrue: ["Is second denominator 0?"
-								^ Fraction numerator: num1 denominator: denom1].
-					^ Fraction numerator: num2 denominator: denom2]].
-	"If fractional part is zero, return the first ratio"
-	denom1 = 1
-		ifTrue: ["Am I really an Integer?"
-				^ num1 "Yes, return Integer result"]
-		ifFalse: ["Otherwise return Fraction result"
-				^ Fraction numerator: num1 denominator: denom1]! !
-
-!Float methodsFor: '*DrGeo' stamp: 'hlsf 1/May/2020 23:30:53'!
-closeTo: num
- 	"Tell whether the receiver and arguments are close from each."
-	
-	^ self closeTo: num precision: 0.0001! !
-
-!Float methodsFor: '*DrGeo' stamp: 'hlsf 1/May/2020 23:29:55'!
-closeTo: num precision: aPrecision
- 	"Tell whether the receiver and arguments are close from each other given a precision"
-	
-	num isNumber ifFalse: [ ^ [self = num] ifError: [false]].
-	self = 0.0 ifTrue: [^ num abs < aPrecision].
-	num = 0 ifTrue: [^self abs < aPrecision].
-	^self = num asFloat
-		or: [(self - num) abs / (self abs max: num abs) < aPrecision]! !
-
-!Float methodsFor: '*DrGeo' stamp: 'hlsf 19/Oct/2022 17:14:12'!
-printParenthesisOn: aStream
-"Add parenthesis when the value is negative"
-	self < 0 
-		ifTrue:  [aStream nextPut: $(.
-			self printOn: aStream fractionDigits: 1.
-			aStream nextPut: $)]
-		ifFalse: [self printOn: aStream fractionDigits: 1]! !
-
-!Fraction methodsFor: '*DrGeo' stamp: 'hlsf 19/Oct/2022 17:15:34'!
-printParenthesisOn: aStream
-"No need to add parenthesis, it is handled by Fraction>>printOn:"
-	self printOn: aStream ! !
-
-!Color methodsFor: '*DrGeo' stamp: 'hlsf 18/Mar/2023 11:00:59'!
-hexHtml
-	^ '#', self hexStringRGB ! !
-
-!Point methodsFor: '*DrGeo' stamp: 'hlsf 1/May/2020 23:35:38'!
-closeTo: aPoint
- 	^ (x closeTo: aPoint x) and: [ y closeTo: aPoint y ]! !
-
-!Point methodsFor: '*DrGeo' stamp: 'hlsf 18/Mar/2023 16:31:42'!
-printCouple
-	^ String streamContents: [:str | self printCoupleOn: str]
-! !
-
-!Point methodsFor: '*DrGeo' stamp: 'hlsf 18/Mar/2023 14:17:55'!
-printCoupleOn: aStream
-" print as 'x,y' "
-	x printOn: aStream.
-	aStream nextPut: $,.
-	y printOn: aStream! !
-
-!Point methodsFor: '*DrGeo' stamp: 'hlsf 18/Mar/2023 15:52:02'!
-printMini
-	^ String streamContents: [:str | self printMinimumOn: str]
-! !
-
-!Point methodsFor: '*DrGeo' stamp: 'hlsf 18/Mar/2023 15:51:01'!
-printMinimumOn: aStream
-" print as 'x,y' "
-	x printOn: aStream.
-	aStream nextPut: Character space.
-	y printOn: aStream! !
-
-!Point methodsFor: '*DrGeo' stamp: 'hlsf 31/May/2021 18:40:16'!
-printShowingDecimalPlaces: placeDesired 
-"do not round when coordinate is a fraction"
-	|stringX stringY|
-	x isFraction
-		ifTrue: [stringX := x printString]
-		ifFalse: [stringX := x printShowingDecimalPlaces: placeDesired].
-	y isFraction
-		ifTrue: [stringY := y printString] 
-		ifFalse: [stringY := y printShowingDecimalPlaces: placeDesired].		
-	^ stringX, '@', stringY! !
-
-!Point methodsFor: '*DrGeo' stamp: 'hlsf 31/May/2021 18:38:18'!
-reflexionBy: aPoint direction: aDirection
-"the reflected point according to the axe defined by aPoint and aDirection"
-	^ ((self - aPoint) vectorReflexionBy: aDirection) + aPoint! !
-
-!Point methodsFor: '*DrGeo' stamp: 'hlsf 31/May/2021 18:44:12'!
-rotateBy: angle about: center 
-	"This method returns the point obtained after rotating myself (counter clockwise) 
-	around the #center point of an #angle given as parameter. The #angle provided as 
-	parameter is interpreted as being in radian."
-	| p r theta |
-	p := self - center.
-	r := p r.
-	theta := angle asFloat - p theta.
-	^ (center x asFloat + (r * theta cos)) @ (center y asFloat - (r * theta sin))! !
-
-!Point methodsFor: '*DrGeo' stamp: 'hlsf 31/May/2021 18:39:43'!
-rotateVector: anAngle
-|cosa sina|
-	cosa := anAngle cos.
-	sina := anAngle sin.
-	^ (x * cosa - (y * sina))@(x * sina + (y * cosa))! !
-
-!Point methodsFor: '*DrGeo' stamp: 'hlsf 4/Aug/2021 12:08:01'!
-roundTo: quantum
-	^ (x roundTo: quantum) @ (y roundTo: quantum)! !
-
-!Point methodsFor: '*DrGeo' stamp: 'hlsf 31/May/2021 18:37:51'!
-vectorReflexionBy: aDirection
-"the reflected vector according to the direction"
-	| unit normal |
-	[unit := aDirection normalized.
-	normal := unit normal] 
-		on: ZeroDivide 
-		do: [	unit := 0@0.
-			normal := 0@0].
-	^((self dotProduct: unit) * unit) - ((self dotProduct: normal) * normal)
-! !
-
-!BoxMorph methodsFor: '*DrGeo' stamp: 'hlsf 18/Sep/2024 20:57:09'!
-morphCenter
-	^ extent // 2! !
-
-!BoxMorph methodsFor: '*DrGeo' stamp: 'hlsf 18/Sep/2024 20:57:21'!
-morphCenter: aPoint
-"Positionning centered in its owner, according to its extent"
-	self morphPosition: aPoint - (extent // 2) + (`1@1`)! !
-
-!MenuItemMorph methodsFor: '*DrGeo' stamp: 'hlsf 3/Jan/2022 09:01:34'!
-arguments
-	^ arguments! !
-
-!WorldMorph methodsFor: '*DrGeo-testing' stamp: 'hlsf 12/Apr/2024 12:15:36'!
-isStepping: aMorph
-" Does this morph stepping? "
-	^ stepList 		anySatisfy: [:aStepMessage | aStepMessage receiver == aMorph] ! !
-
-!AbstractVectorCanvas methodsFor: '*DrGeo' stamp: 'hlsf 27/May/2025 17:49:22'!
-strokeWidth: borderWidth color: borderColor strokeDashArray: dashedBorder 	do: pathCommandsBlock
-"
-dashedBorder = array of 2 element, for example #(1 6), one pixel on, 6 off 
-"
-	dashedBorder 
-		ifNil: [
-			self 
-			strokeWidth: borderWidth 
-			color:  borderColor 
-			do: pathCommandsBlock]
-		ifNotNil: [
-			self 
-			strokeWidth: borderWidth 
-			color:  borderColor 
-			dashedStrokeBits:  (2 raisedTo: dashedBorder first) - 1  << dashedBorder second
-			do: pathCommandsBlock ]! !
-
-!RealEstateAgent class methodsFor: '*DrGeo' stamp: 'hlsf 24/Apr/2020 12:36:51'!
-leftMaximumUsableArea
-"Return the left half of the usable area"
-	| rectangle |
-	rectangle := self maximumUsableArea.
-	^ rectangle origin corner: rectangle bottomCenter! !
-
-!RealEstateAgent class methodsFor: '*DrGeo' stamp: 'hlsf 24/Apr/2020 12:36:28'!
-rightMaximumUsableArea
-	"Return the left half of the usable area"
-	| rectangle |
-	rectangle := self maximumUsableArea.
-	^ rectangle topCenter corner: rectangle corner! !
-
-!PreferenceBrowserVisitor methodsFor: '*DrGeo-visitors type' stamp: 'hlsf 20/May/2024 15:28:52'!
-visitDrGTypeArrowPreference: aPref
-	| listMorph |
-	listMorph  := (DropDownButtonMorph 
-		withModel: aPref type 
-		listGetter: #arrowMorphCollection 
-		indexGetter: #arrowIndex 
-		indexSetter: #arrowIndex:)
-		autoDeselect: false;
-		setBalloonText: aPref description.
-	views at: aPref nameDetailed put: listMorph! !
-
-!PreferenceBrowserVisitor methodsFor: '*DrGeo-visitors type' stamp: 'hlsf 20/May/2024 15:29:03'!
-visitDrGTypeColorPreference: aPref
-	| listMorph |
-	listMorph  := (DropDownButtonMorph 
-		withModel: aPref type 
-		listGetter: #colorMorphCollection 
-		indexGetter: #colorIndex 
-		indexSetter: #colorIndex:)
-		autoDeselect: false;
-		setBalloonText: aPref description.
-	views at: aPref nameDetailed put: listMorph! !
-
-!PreferenceBrowserVisitor methodsFor: '*DrGeo-visitors type' stamp: 'hlsf 20/May/2024 15:29:14'!
-visitDrGTypeMarkPreference: aPref
-	| listMorph |
-	listMorph  := (DropDownButtonMorph 
-		withModel: aPref type 
-		listGetter: #markMorphCollection 
-		indexGetter: #markIndex 
-		indexSetter: #markIndex:)
-		autoDeselect: false;
-		setBalloonText: aPref description.
-	views at: aPref nameDetailed put: listMorph! !
-
-!PreferenceBrowserVisitor methodsFor: '*DrGeo-visitors type' stamp: 'hlsf 20/May/2024 15:29:26'!
-visitDrGTypePointShapePreference: aPref
-	| listMorph |
-	listMorph  := (DropDownButtonMorph 
-		withModel: aPref type 
-		listGetter: #shapeMorphCollection 
-		indexGetter: #pointShapeIndex 
-		indexSetter: #pointShapeIndex:)
-		autoDeselect: false;
-		setBalloonText: aPref description.
-	views at: aPref nameDetailed put: listMorph! !
-
-!PreferenceBrowserVisitor methodsFor: '*DrGeo-visitors type' stamp: 'hlsf 20/May/2024 15:29:31'!
-visitDrGTypePointSizePreference: aPref
-	| listMorph |
-	listMorph  := (DropDownButtonMorph 
-		withModel: aPref type 
-		listGetter: #sizeMorphCollection 
-		indexGetter: #pointSizeIndex 
-		indexSetter: #pointSizeIndex:)
-		autoDeselect: false;
-		setBalloonText: aPref description.
-	views at: aPref nameDetailed put: listMorph! !
-
-!PreferenceBrowserVisitor methodsFor: '*DrGeo-visitors type' stamp: 'hlsf 20/May/2024 15:29:34'!
-visitDrGTypeStylePreference: aPref
-	| listMorph |
-	listMorph  := (DropDownButtonMorph 
-		withModel: aPref type 
-		listGetter: #styleMorphCollection 
-		indexGetter: #styleIndex 
-		indexSetter: #styleIndex:)
-		autoDeselect: false;
-		setBalloonText: aPref description.
-	views at: aPref nameDetailed put: listMorph! !
-
-!PreferenceBrowserVisitor methodsFor: '*DrGeo-visitors type' stamp: 'hlsf 20/May/2024 15:29:51'!
-visitDrGTypeThicknessPreference: aPref
-	| listMorph |
-	listMorph  := (DropDownButtonMorph 
-		withModel: aPref type 
-		listGetter: #thicknessMorphCollection 
-		indexGetter: #thicknessIndex 
-		indexSetter: #thicknessIndex:)
-		autoDeselect: false;
-		setBalloonText: aPref description.
-	views at: aPref nameDetailed put: listMorph! !
 DrGDirectionItem initialize!
 DrGeoSystem initialize!
