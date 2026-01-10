@@ -1,6 +1,6 @@
-'From Cuis7.7 [latest update: #7791] on 8 January 2026 at 10:33:35 pm'!
+'From Cuis7.7 [latest update: #7791] on 10 January 2026 at 8:35:39 pm'!
 'Description '!
-!provides: 'DrGeoApp' 1 2!
+!provides: 'DrGeoApp' 1 5!
 !requires: 'Gettext' 1 31 nil!
 !requires: 'SVG' 1 24 nil!
 !requires: 'UI-Widgets' 1 62 nil!
@@ -18,6 +18,7 @@ SystemOrganization addCategory: #'DrGeoApp-Presenter-Tool'!
 SystemOrganization addCategory: #'DrGeoApp-Presenter-Builder'!
 SystemOrganization addCategory: #'DrGeoApp-Presenter'!
 SystemOrganization addCategory: #'DrGeoApp-View-Dialog'!
+SystemOrganization addCategory: #'DrGeoApp-System'!
 
 
 !classDefinition: #DrGeoTree category: #'DrGeoApp-Model'!
@@ -100,6 +101,26 @@ Object subclass: #DrGeoUserScript
 DrGeoUserScript class
 	instanceVariableNames: 'argumentsType'!
 
+!classDefinition: #LanguageFont category: #'DrGeoApp-System'!
+Object subclass: #LanguageFont
+	instanceVariableNames: 'locales family file'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'DrGeoApp-System'!
+!classDefinition: 'LanguageFont class' category: #'DrGeoApp-System'!
+LanguageFont class
+	instanceVariableNames: ''!
+
+!classDefinition: #LanguageFontManager category: #'DrGeoApp-System'!
+Object subclass: #LanguageFontManager
+	instanceVariableNames: 'languageFonts'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'DrGeoApp-System'!
+!classDefinition: 'LanguageFontManager class' category: #'DrGeoApp-System'!
+LanguageFontManager class
+	instanceVariableNames: ''!
+
 !classDefinition: #DrGMacroFactory category: #'DrGeoApp-Factories'!
 DrGFactory subclass: #DrGMacroFactory
 	instanceVariableNames: ''
@@ -178,6 +199,46 @@ DrGBuildToolState subclass: #DrGMacroBuildToolStateOutput
 	category: 'DrGeoApp-Presenter-Tool'!
 !classDefinition: 'DrGMacroBuildToolStateOutput class' category: #'DrGeoApp-Presenter-Tool'!
 DrGMacroBuildToolStateOutput class
+	instanceVariableNames: ''!
+
+!classDefinition: #DrGAppPlatform category: #'DrGeoApp-System'!
+DrGCorePlatform subclass: #DrGAppPlatform
+	instanceVariableNames: 'fontManager toolbarIconSize'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'DrGeoApp-System'!
+!classDefinition: 'DrGAppPlatform class' category: #'DrGeoApp-System'!
+DrGAppPlatform class
+	instanceVariableNames: ''!
+
+!classDefinition: #DrGDevelopment category: #'DrGeoApp-System'!
+DrGAppPlatform subclass: #DrGDevelopment
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'DrGeoApp-System'!
+!classDefinition: 'DrGDevelopment class' category: #'DrGeoApp-System'!
+DrGDevelopment class
+	instanceVariableNames: ''!
+
+!classDefinition: #DrGWorkstation category: #'DrGeoApp-System'!
+DrGAppPlatform subclass: #DrGWorkstation
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'DrGeoApp-System'!
+!classDefinition: 'DrGWorkstation class' category: #'DrGeoApp-System'!
+DrGWorkstation class
+	instanceVariableNames: ''!
+
+!classDefinition: #DrGeoSystem category: #'DrGeoApp-System'!
+DrGeoCoreSystem subclass: #DrGeoSystem
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'DrGeoApp-System'!
+!classDefinition: 'DrGeoSystem class' category: #'DrGeoApp-System'!
+DrGeoSystem class
 	instanceVariableNames: ''!
 
 !classDefinition: #DrGControlsManager category: #'DrGeoApp-View'!
@@ -365,6 +426,12 @@ Instance Variables
 - cosutme : the morph representing this script on the canvas, access only from its #costume message.
 		!
 
+!LanguageFont commentStamp: 'hlsf 11/17/2023 22:53:20' prior: 0!
+Associate several LocaleIDs (fr_FR, zh_TW, zh_CN, ko) (with or without country code) with an appropriate font.
+- locales : a collection of LocaleID
+- family : a String, font family name
+- file : a String, file name of the font!
+
 !DrGMacroFactory commentStamp: '' prior: 0!
 DrGMacroFactory is a unique factory to hold macro construction definition.
 
@@ -379,6 +446,16 @@ When user selects input page, blink the cosumes related to this state. In this s
 
 !DrGMacroBuildToolStateOutput commentStamp: '' prior: 0!
 When user selects  output page, blink the cosumes related to this state. In this state the user can select items as output parameters for the macro. He can also unselect items.!
+
+!DrGDevelopment commentStamp: '' prior: 0!
+Preferences for a Dr. Geo development environment!
+
+!DrGWorkstation commentStamp: '' prior: 0!
+Preferences for workstation (Linux, Mac, Windows)!
+
+!DrGeoSystem commentStamp: '<historical>' prior: 0!
+I map settings/preferences to the underneath hardware/os plateform
+Pattern: strategy!
 
 !DrGControlsManager commentStamp: 'hlsf 4/10/2022 14:39:21' prior: 0!
 A manager for the DrGeo user interface controls (main view, menu, button, tree, etc.). 
@@ -965,6 +1042,76 @@ scriptName
 "I appear in the scripts menu"
 	^ 'A script' translated! !
 
+!LanguageFont methodsFor: 'accessing' stamp: 'hlsf 16/Nov/2023 23:00:43'!
+addLocale: aLocaleID
+	locales add: aLocaleID ! !
+
+!LanguageFont methodsFor: 'accessing' stamp: 'hlsf 16/Nov/2023 23:29:35'!
+family
+	^ family! !
+
+!LanguageFont methodsFor: 'accessing' stamp: 'hlsf 16/Nov/2023 23:28:48'!
+family: aFamilyFont
+	family := aFamilyFont ! !
+
+!LanguageFont methodsFor: 'accessing' stamp: 'hlsf 16/Nov/2023 23:29:41'!
+file
+	^ file ! !
+
+!LanguageFont methodsFor: 'accessing' stamp: 'hlsf 16/Nov/2023 23:29:11'!
+file: aFontFile
+	file := aFontFile ! !
+
+!LanguageFont methodsFor: 'accessing' stamp: 'hlsf 17/Nov/2023 22:46:50'!
+handles: aLocaleID
+	^  aLocaleID isoCountry 
+		ifNotNil:  [
+			(locales includes: aLocaleID) or: [
+				"may be some locale indicate not country, check if it is a match for aLocaleID "
+				locales anySatisfy: [:each |
+					each isoCountry isNil and: [each isoLanguage = aLocaleID isoLanguage] ] ]
+				]
+		ifNil: [locales anySatisfy: [:each | each isoLanguage = aLocaleID isoLanguage] ].
+! !
+
+!LanguageFont methodsFor: 'initialization' stamp: 'hlsf 16/Nov/2023 23:01:36'!
+initialize
+	super initialize.
+	locales := OrderedCollection new! !
+
+!LanguageFont methodsFor: 'printing' stamp: 'hlsf 16/Nov/2023 23:47:01'!
+printOn: str
+	str nextPutAll: 'LanguageFont for '.
+	locales 
+		do: [:each |str nextPutAll: each isoString] 
+		separatedBy: [str nextPut: Character space]
+	! !
+
+!LanguageFont class methodsFor: 'instance creation' stamp: 'hlsf 16/Nov/2023 23:30:43'!
+family: aString1 file: aString2
+	^ self new
+		family: aString1;
+		file: aString2 ;
+		yourself! !
+
+!LanguageFontManager methodsFor: 'accessing' stamp: 'hlsf 16/Nov/2023 23:28:15'!
+add: aLanguageFont
+	languageFonts add: aLanguageFont ! !
+
+!LanguageFontManager methodsFor: 'accessing' stamp: 'hlsf 16/Nov/2023 23:13:02'!
+europeanLang
+	^ `#(#ast #ca #cs #da #de #en #es #fi #fr #it #nl #pt #ru #sv #tr #uk)`! !
+
+!LanguageFontManager methodsFor: 'accessing' stamp: 'hlsf 16/Nov/2023 23:21:55'!
+languageFontFor: aLocaleID
+	(self europeanLang includes: aLocaleID isoLanguage asSymbol) 		ifTrue: [^ nil]. "Use Deja Vu font within Cuis"
+	^ languageFonts detect: [:each | each handles: aLocaleID] ifNone: [nil]! !
+
+!LanguageFontManager methodsFor: 'initialization' stamp: 'hlsf 16/Nov/2023 23:07:06'!
+initialize
+	super initialize.
+	languageFonts := OrderedCollection new! !
+
 !DrGMacroFactory methodsFor: 'accessing' stamp: ''!
 addUnique: aMacro
 	^ (self findInPool: aMacro) 
@@ -1303,6 +1450,323 @@ handleChoice: aMorphCollection
 		changed: #outputNames.
 	context selectOutputMorph! !
 
+!DrGAppPlatform methodsFor: 'initialize-release' stamp: 'hlsf 10/Jan/2026 19:37:55'!
+backgroundImage
+	WorldMorph allInstances first backgroundImageData: 	
+		(DrGeoSystem backgroundsPath files 
+			atRandom: (Random  seed: Time now nanoSecond))  binaryContents ! !
+
+!DrGAppPlatform methodsFor: 'initialize-release' stamp: 'hlsf 10/Jan/2026 19:38:13'!
+launch
+	self setFontPreferences.
+	Transcript show: '[DrGeo] Font installed'; cr.
+	self setCodeCompletion.
+	Transcript show: '[DrGeo] Code completion set'; cr! !
+
+!DrGAppPlatform methodsFor: 'initialize-release' stamp: 'hlsf 10/Jan/2026 19:38:49'!
+setCodeCompletion
+	| class |
+	class := Locale current isoLanguage asSymbol 
+		caseOf: {
+			[#fr] -> [DrGeoFigure].
+			[#es] -> [DrGeoFigura]
+			}
+		 otherwise: [DrGeoSketch].
+	DrGeoSystem preferences at: #programmingCodeCompletion put: class! !
+
+!DrGAppPlatform methodsFor: 'initialize-release' stamp: 'hlsf 10/Jan/2026 19:38:59'!
+splash
+| splash copy  background position path |
+	path := 	DrGeoSystem iconsPath.
+	splash := ImageReadWriter formFromFileEntry: path // 'splash.png'.
+	position := Display center - (splash extent // 2).
+	background := Form fromDisplay: (position extent: splash extent).
+	0.0 to: 1.0 by: 0.2 do: [:t |
+		copy := Form extent: splash extent  depth: 32.
+		copy copyBits: splash at: 0@0 translucent: t.
+		copy displayAt:  position.
+		(Delay forMilliseconds: 100) wait].
+	(Delay forSeconds: 2) wait.
+	background displayAt: position! !
+
+!DrGAppPlatform methodsFor: 'path' stamp: 'hlsf 10/Jan/2026 19:40:07'!
+backgroundsPath
+	^ self iconsPath / 'backgrounds'! !
+
+!DrGAppPlatform methodsFor: 'path' stamp: 'hlsf 10/Jan/2026 19:40:17'!
+examplesPath
+	^ self resourcesPath / 'Sketches'! !
+
+!DrGAppPlatform methodsFor: 'path' stamp: 'hlsf 10/Jan/2026 19:40:28'!
+fontPath
+	^  self resourcesPath / 'fonts'! !
+
+!DrGAppPlatform methodsFor: 'path' stamp: 'hlsf 10/Jan/2026 19:39:24'!
+iconsPath
+	^ self resourcesPath / 'icons'! !
+
+!DrGAppPlatform methodsFor: 'path' stamp: 'hlsf 10/Jan/2026 19:42:19'!
+mySmalltalkSketchesPath
+	^self userPath / 'MySmalltalkSketches'! !
+
+!DrGAppPlatform methodsFor: 'path' stamp: 'hlsf 10/Jan/2026 19:40:53'!
+resourcesPath
+"Where are located folders for icons, fonts, sketches, scripts, documentation, images, user created resources"
+	^ self rootPath / 'Resources'! !
+
+!DrGAppPlatform methodsFor: 'path' stamp: 'hlsf 10/Jan/2026 19:47:46'!
+rootPath
+
+	self subclassResponsibility! !
+
+!DrGAppPlatform methodsFor: 'path' stamp: 'hlsf 10/Jan/2026 19:42:07'!
+smalltalkSketchesPath
+	^self resourcesPath / 'SmalltalkSketches'! !
+
+!DrGAppPlatform methodsFor: 'path' stamp: 'hlsf 10/Jan/2026 19:41:51'!
+userPath
+"Where are located user created resources as sketch, Smalltalk sketch and exported sketch to image
+Global variable userPath may be set by DrGeo start-up script "
+	^ Smalltalk at: #userPath ifAbsent: [self userPathFromPreference]! !
+
+!DrGAppPlatform methodsFor: 'path' stamp: 'hlsf 10/Jan/2026 19:41:27'!
+userPathFromPreference
+" Is there a user prefrerence set to save user data ?
+(e.g. sketch, Smalltalk sketch and exported sketch to picture) "
+	^ (self preferences at: #userPath) 
+		ifNotEmpty: [:userPath | | userDirectoryEntry |
+			userDirectoryEntry := userPath asDirectoryEntry .
+			" Check if it is a relative path or an absolute path "
+			userDirectoryEntry pathName = userPath
+				ifTrue: [userDirectoryEntry "Absolute path"]
+				ifFalse: ["Relative path, append the home/user directory if any"
+					Smalltalk at: #home 
+						ifPresent: [:home | home / userPath]
+						ifAbsent: [userDirectoryEntry ] ] ]
+		ifEmpty: [self resourcesPath]
+		! !
+
+!DrGAppPlatform methodsFor: 'user interface' stamp: 'hlsf 10/Jan/2026 19:43:31'!
+toggleFullscreen
+	| isFullscreen |
+	isFullscreen := [ Preferences at: #fullscreen ] 
+		on: Error 
+		do: [Preferences name: #fullscreen category: #gui value: true.
+			true].
+	Preferences at: #fullscreen put: isFullscreen not.
+	Display fullScreenMode: isFullscreen not! !
+
+!DrGAppPlatform methodsFor: 'font' stamp: 'hlsf 10/Jan/2026 19:43:51'!
+fontManager
+	^ fontManager ifNil: [fontManager := self initFontManager]! !
+
+!DrGAppPlatform methodsFor: 'font' stamp: 'hlsf 10/Jan/2026 19:43:58'!
+initFontManager
+	| font |
+	fontManager := LanguageFontManager new.
+	font := LanguageFont family: 'IPAexGothic' file: 'ipaexg.ttf'.
+	font addLocale: (LocaleID isoLanguage: 'ja').
+	fontManager add: font.
+	font := LanguageFont family: 'WenQuanYi Zen Hei Sharp' file: 'WenQuanYiZenHeiSharpRegular.ttf'.
+	font 
+		addLocale:(LocaleID isoLanguage: 'zh');
+		addLocale: (LocaleID isoLanguage: 'ko').
+	fontManager add: font.
+! !
+
+!DrGAppPlatform methodsFor: 'font' stamp: 'hlsf 10/Jan/2026 19:44:08'!
+setFontPreferences
+	| languageFont |
+	" Pick an appropriate font file for the current locale, if necessary "
+	languageFont := self fontManager languageFontFor: Locale current.
+	languageFont ifNotNil: [
+		TrueTypeFontFamily readTrueTypeFontEntry: self fontPath // languageFont file.
+		PreferenceSet setDefaultFont: languageFont family	].
+	Preferences at: #defaultFontSize put: 12! !
+
+!DrGAppPlatform methodsFor: 'as yet unclassified' stamp: 'hlsf 10/Jan/2026 19:47:00'!
+reset
+	super reset.
+	toolbarIconSize := nil! !
+
+!DrGDevelopment methodsFor: 'initialization' stamp: 'hlsf 10/Jan/2026 20:35:08'!
+initialize
+	self initFontManager.
+	self flag: #drgeoTodo.
+	Preferences 
+		at: #fullScreenLeavesDeskMargins put: true;
+		at: #worldMenu put: TheWorldMenu.! !
+
+!DrGDevelopment methodsFor: 'testing' stamp: 'hlsf 10/Jan/2026 20:34:47'!
+canWeDisplaySpinner
+	^ false! !
+
+!DrGDevelopment methodsFor: 'path' stamp: 'hlsf 24/May/2023 16:15:16'!
+backgroundsPath
+	^ self resourcesPath / 'graphics' / 'backgrounds'! !
+
+!DrGDevelopment methodsFor: 'path' stamp: 'hlsf 17/Aug/2022 15:13:41'!
+iconsPath
+	^ self resourcesPath / 'graphics' / 'iconsSVG'! !
+
+!DrGDevelopment methodsFor: 'path' stamp: 'hlsf 17/Aug/2022 15:13:13'!
+resourcesPath
+"	The resources are in the Dr. Geo source code local repository "
+	^ self rootPath / 'drgeo' / 'resources'! !
+
+!DrGDevelopment methodsFor: 'path' stamp: 'hlsf 21/Jan/2024 18:42:11'!
+rootPath
+"	Regarding the development environement, we consider the root path to be 
+	Cuis-Smalltalk-Dev from where is taking place the DrGeo development "
+
+	^ DirectoryEntry smalltalkImageDirectory parent! !
+
+!DrGDevelopment methodsFor: 'font' stamp: 'hlsf 10/Aug/2025 10:38:48'!
+setFontPreferences
+	PreferenceSet setDefaultFont: 'DejaVu Sans'.
+	Preferences at: #defaultFontSize put: 14.
+! !
+
+!DrGWorkstation methodsFor: 'initialize-release' stamp: 'hlsf 10/Jan/2026 20:35:15'!
+initialize
+	self initFontManager.
+	Preferences 
+		at: #worldMenu put: DrGeoApp;
+		at: #fullScreenLeavesDeskMargins put: false.
+	UISupervisor ui taskbar scale: 1/2.! !
+
+!DrGWorkstation methodsFor: 'initialize-release' stamp: 'hlsf 17/May/2025 20:40:48'!
+launch
+	super launch.
+	Utilities setAuthorName: 'DrGeoUser' initials: 'drgeo'.
+	self splash.
+	Transcript show: '[DrGeo] Splash done'; cr.! !
+
+!DrGWorkstation methodsFor: 'testing' stamp: ''!
+isWorkstation
+	^ true! !
+
+!DrGWorkstation methodsFor: 'path' stamp: 'drgeo 17/Aug/2022 17:14:00'!
+rootPath
+" 	Test purpose, point to the bundle "
+"	^ DirectoryEntry smalltalkImageDirectory / 'drgeo' / 'build' / 'bundles' / 'gnulinux' / 'DrGeo'"
+	^ super rootPath! !
+
+!DrGeoSystem class methodsFor: 'system startup' stamp: 'hlsf 17/May/2025 20:42:27'!
+launch
+	Transcript show: '[DrGeo] launching started'; cr.
+	platform launch.
+	Transcript show: '[DrGeo] launching ended'; cr.
+	! !
+
+!DrGeoSystem class methodsFor: 'class initialization' stamp: 'hlsf 1/Jun/2025 11:59:39'!
+beDevelopment
+	" Be like the Cuis environment for DrGeo development "
+	"self beDevelopment"
+	platform := DrGDevelopment new.
+	platform launch. "manual launch for additional initialization occuring right after system start up"! !
+
+!DrGeoSystem class methodsFor: 'class initialization' stamp: 'hlsf 17/May/2025 20:38:29'!
+beWorkstation
+	"self beWorkstation"
+	platform := DrGWorkstation new! !
+
+!DrGeoSystem class methodsFor: 'class initialization' stamp: 'Install-DrGeoFrench 7/Dec/2022 16:16:08'!
+initialize
+	"Erudite extention for Dr. Geo"
+	EruditeMarkupGrammar addCodeAction: 'withDrGeoActions'! !
+
+!DrGeoSystem class methodsFor: 'class initialization' stamp: 'hlsf 8/Jan/2026 21:24:09'!
+reset
+	platform reset.
+	DrGIcons reset.  "flush icons cache"! !
+
+!DrGeoSystem class methodsFor: 'user interface' stamp: 'hlsf 4/Aug/2022 22:55:40'!
+toggleFullscreen
+	platform toggleFullscreen ! !
+
+!DrGeoSystem class methodsFor: 'path' stamp: 'hlsf 24/May/2023 16:13:51'!
+backgroundsPath
+	^ platform backgroundsPath! !
+
+!DrGeoSystem class methodsFor: 'path' stamp: ''!
+examplesPath
+	^ platform examplesPath! !
+
+!DrGeoSystem class methodsFor: 'path' stamp: 'hlsf 4/Dec/2021 19:40:05'!
+iconsPath
+	^ platform iconsPath! !
+
+!DrGeoSystem class methodsFor: 'path' stamp: 'hlsf 12/Jan/2025 13:33:00'!
+mySmalltalkSketchesPath
+"Access to my Script files. There are Smalltalk scripts computing geometry sketches."
+	^ platform mySmalltalkSketchesPath assureExistence ! !
+
+!DrGeoSystem class methodsFor: 'path' stamp: 'hlsf 11/Apr/2022 21:44:47'!
+smalltalkSketchesPath
+"Path to the Smalltalk sketches examples. There are written with Smalltalk code."
+	^ platform smalltalkSketchesPath ! !
+
+!DrGeoSystem class methodsFor: 'install' stamp: 'hlsf 7/Aug/2022 13:18:13'!
+cleanUp
+	"Smalltalk reduceCuis "! !
+
+!DrGeoSystem class methodsFor: 'install' stamp: 'hlsf 18/May/2025 10:56:21'!
+install
+	| world |
+	"Report by any mean installation and run time"
+	Transcript
+		showOnDisplay: false;
+		logToFile: true;
+		logToStdout: true.
+	Smalltalk at: #LogStartupDebugAids put: true.
+	'Installing updates...' print.
+	Feature require: #'DrGeoFrench'.
+	Feature require: #'DrGeoSpanish'.
+	Smalltalk condenseChanges.
+	"Focus does not follow mouse, it is annoying when editing Smalltalk sketch"
+	Preferences at: #focusFollowsMouse put: false.
+	"Adjust font size"
+	Preferences at: #defaultFontSize put: 12.
+	'Font preferences set' print.
+	"Preferences at: #logDebuggerStackToFile put: true."
+	Preferences at: #warnAndOfferLastUserChanges put: false.
+	Preferences at: #autoNumberUserChanges put: false.
+	"Set Locale and text domains"
+	Preferences at: #useLocale put: true.
+	TextDomainManager registerCategoryPrefix: 'DrGeo' domain: 'drgeo'.
+	TextDomainManager registerCategoryPrefix: 'cuis' domain: 'cuis'.	
+	"Set a default name for authoring"
+	Utilities setAuthorName: 'Dr. Geo User' initials: 'drgeo'.
+
+	'Finalizing installation...' print.
+	world := UISupervisor ui.
+[
+	(Delay forSeconds: 1) wait.
+	UISupervisor whenUIinSafeState: 	[
+		"Adjust taskbar size"
+		world showTaskbar 
+		world taskbar scale: 1/2.
+		'Task bar rescaled' print.
+		Display fullScreenMode: true.
+		"Be quiet"
+		self cleanUp.
+		self beWorkstation.
+		"Remove all morphs"
+		(world submorphs reject: [:aMorph | aMorph is: #TaskbarMorph]) 
+			do: [:each | each delete].
+		'Morphs deleted' print.
+		'Installing App luanch sequence...' print.
+		Smalltalk at: #drgeoApp put: DrGeoSystem.
+		AppLauncher appGlobalName: #drgeoApp appSelector: #launch.
+		'Cleaning image' print.
+		Smalltalk garbageCollect.
+		'Installation ended' print.
+		'Saving image...' print.
+		Smalltalk saveAndQuit ]
+] fork
+! !
+
 !DrGControlsManager methodsFor: 'widget access' stamp: 'hlsf 30/Mar/2022 18:08:59'!
 addChevron: symbolOrArray to: aToolbar
 	"array first = menu label or button label
@@ -1547,11 +2011,11 @@ addItem: aMathItemCollection at: aPoint
 	self isInputMode ifTrue: [self addToggleItem: aMathItemCollection in: input].
 	self isOutputMode ifTrue: [self addToggleItem: aMathItemCollection in: output]! !
 
-!DrGMacroBuilder methodsFor: 'callback' stamp: ''!
+!DrGMacroBuilder methodsFor: 'callback' stamp: 'hlsf 10/Jan/2026 19:58:53'!
 apply
 	"the user clicked the apply button, do we have all the needed information
 	to instantiate a new macro construction?"
-	DrGeoSystem showVirtualKeyboard: false.
+	DrGeoCoreSystem showVirtualKeyboard: false.
 	self isMacroValid ifTrue: 
 		[ "we can instantiate a macro"
 		self triggerEvent: #readyToBuild.
@@ -1561,13 +2025,13 @@ apply
 	self isDescriptionValid ifFalse: 
 		[self inform: 'Please, enter a proper title and description' translated]! !
 
-!DrGMacroBuilder methodsFor: 'callback' stamp: ''!
+!DrGMacroBuilder methodsFor: 'callback' stamp: 'hlsf 10/Jan/2026 19:58:56'!
 cancel
 	"the user withdrawn the macro-construction creation"
-	DrGeoSystem showVirtualKeyboard: false.
+	DrGeoCoreSystem showVirtualKeyboard: false.
 	self triggerEvent: #cancel! !
 
-!DrGMacroBuilder methodsFor: 'callback' stamp: ''!
+!DrGMacroBuilder methodsFor: 'callback' stamp: 'hlsf 10/Jan/2026 19:59:00'!
 page: integer 
 	"we receive notification from the wizard the user change the wizard
 	current page"
@@ -1575,7 +2039,7 @@ page: integer
 	(integer = 1 or: [ integer = 4 ]) ifTrue: [ newState := DrGMacroToolStateNeutral ].
 	integer = 2 ifTrue: [ newState := DrGMacroBuildToolStateInput ].
 	integer = 3 ifTrue: [ newState := DrGMacroBuildToolStateOutput ].
-	integer = 4 ifTrue: [DrGeoSystem showVirtualKeyboard: true].
+	integer = 4 ifTrue: [DrGeoCoreSystem showVirtualKeyboard: true].
 	self 
 		triggerEvent: #changedState
 		with: newState! !
@@ -1776,7 +2240,7 @@ release
 windowColor
 	^Theme current browser! !
 
-!DrGeoAppView methodsFor: 'stepping' stamp: 'hlsf 5/Jun/2021 11:00:04'!
+!DrGeoAppView methodsFor: 'stepping' stamp: 'hlsf 10/Jan/2026 20:01:46'!
 step
 	DrGeoSystem ifTablet: [
 		"track device rotation"
@@ -1787,7 +2251,7 @@ stepTime
 	^ 1000
 ! !
 
-!DrGeoAppView methodsFor: 'stepping' stamp: ''!
+!DrGeoAppView methodsFor: 'stepping' stamp: 'hlsf 10/Jan/2026 20:01:40'!
 wantsSteps
 	^ DrGeoSystem isTablet! !
 
@@ -1890,27 +2354,27 @@ buildMorphicWindow
 	super buildMorphicWindow .
 	layoutMorph adoptWidgetsColor: self widgetsColor! !
 
-!DrGFileOpenMorph methodsFor: 'GUI building' stamp: 'hlsf 2/May/2023 20:51:08'!
+!DrGFileOpenMorph methodsFor: 'GUI building' stamp: 'hlsf 10/Jan/2026 20:01:33'!
 buildPane
 	| sketches row |
 	DrGeoSystem startSpinner.
 	panel 
 		ifNil: [panel := LayoutMorph newColumn] 
-		ifNotNil: [	panel removeAllMorphs; morphExtent: panel minimumExtent ].
+		ifNotNil: [panel removeAllMorphs; morphExtent: panel minimumExtent ].
 	previews do: [:each | each breakDependents].
 	previews := OrderedCollection new.
-	sketches := (	model 	filesMatches: [:file | '*.fgeo' match: file name]) 
+	sketches := (model filesMatches: [:file | '*.fgeo' match: file name]) 
 		sort: [:f1 :f2 | f1 name asLowercase < f2 name asLowercase ].
 	sketches groupsOf: 3 atATimeDo: [:sketchesBy3 | 
-		row := LayoutMorph newRow 	separation: 8; adoptWidgetsColor: self widgetsColor.
+		row := LayoutMorph newRow separation: 8; adoptWidgetsColor: self widgetsColor.
 		panel addMorph: row.
 		sketchesBy3 do: [:sketch |		
 			row addMorph: (self previewMorphFor: sketch) ]] .
 	sketches size \\ 3 ifNotZero: ["there are some left over"
 		row := LayoutMorph newRow separation: 8; adoptWidgetsColor: self widgetsColor.
 		panel addMorph: row.
-		(sketches allButFirst: (	sketches size // 3 * 3)) do: [:sketch|
-			row addMorph: (self previewMorphFor: sketch )]	].
+		(sketches allButFirst: (sketches size // 3 * 3)) do: [:sketch|
+			row addMorph: (self previewMorphFor: sketch )] ].
 	DrGeoSystem stopSpinner.
 	^ panel! !
 
@@ -3313,3 +3777,183 @@ saveMultiple: sketchesAndMacros on: stream
 		macro writeAsXmlTo: root].
 	doc addElement: root.
 	doc printXMLOn: writer.! !
+
+!MorphicEruditeDocRenderer methodsFor: '*DrGeoApp' stamp: 'MM 27/Oct/2022 11:00:56'!
+createButton: aForm action: aBlock balloonText: balloonText
+
+	| button |
+	
+	button := ImageMorph new image: aForm; yourself.
+	button setBalloonText: balloonText.
+	button setProperty: #handlesMouseDown: toValue: true.
+	button setProperty: #'mouseButton1Down:localPosition:' toValue: [:keyEvent :pos | aBlock value].
+	
+	^ button
+
+	! !
+
+!MorphicEruditeDocRenderer methodsFor: '*DrGeoApp' stamp: 'hlsf 27/Oct/2022 23:43:29'!
+renderCodeCopyToDrGeo: aDocCode
+	self deprecatedMethod.
+	self renderCodeWithDrGeoActions: aDocCode ! !
+
+!MorphicEruditeDocRenderer methodsFor: '*DrGeoApp' stamp: 'hlsf 14/Dec/2022 15:39:08'!
+renderCodeWithDrGeoActions: aDocCode
+
+	|text button textModel |
+	
+	text := Text string: aDocCode code.							.
+							
+	textModel := EruditeSmalltalkTextModel withText: text.
+	textModel formatAndStyle.
+		
+	stream nextPut: textModel actualContents.
+	stream nextPut: ' '.
+	
+	"Add as many buttons as you need here: "
+	
+	button := self createButton: Theme current openIcon 
+			action: [requestor triggerEvent: #askToCopyCode with: aDocCode code]
+			balloonText: 'Copy to the code editor.' translated. 
+	stream nextPut: (Text streamContents: [:s | button printOn: s]).
+	
+	stream nextPut: ' '. "separation between buttons"
+	" No additional DrGeo action for now...
+	button := self createButton: Theme current imageIcon 
+			action: [ self someDrGeoAction: aDocCode]
+			balloonText: 'Preview the resulting Sketch when this code is executed.' translated. 
+	stream nextPut: (Text streamContents: [:s | button printOn: s]).
+	"! !
+
+!MorphicEruditeDocRenderer methodsFor: '*DrGeoApp' stamp: 'hlsf 14/Dec/2022 15:38:23'!
+someDrGeoAction: aDocCode
+
+	^ self shouldBeImplemented ! !
+
+!Debugger methodsFor: '*DrGeoApp' stamp: 'hlsf 19/Oct/2022 21:20:23'!
+openMinimalMorphic
+	"Open a panel debugger"
+
+	| oldContextStackIndex window |
+	oldContextStackIndex := contextStackIndex.
+	self expandStack. "Sets contextStackIndex to zero."
+
+	window := DrGDebuggerWindow open: self .
+	self toggleContextStackIndex: oldContextStackIndex.
+	^ window! !
+
+!Debugger methodsFor: '*DrGeoApp' stamp: 'hlsf 1/May/2024 11:09:22'!
+openMinimalMorphicIn: aDialog
+	"Open a panel debugger on process"
+
+	| safeBlockAlreadyRan doItIndex |
+	Sensor flushKeyboard.
+	savedCursor := Cursor currentCursor.
+	Cursor defaultCursor activateCursor.
+	"In case an error in Morphic code got us here, ensure mouse focus has been released"
+	self runningWorld ifNotNil: [ :rWorld |
+		rWorld activeHand ifNotNil: [ :aHand |
+			aHand releaseMouseFocus ]].
+
+	safeBlockAlreadyRan := false.
+	UISupervisor whenUIinSafeState: [
+		safeBlockAlreadyRan ifFalse: [
+			safeBlockAlreadyRan := true.
+			"Suspend it as early as possible"	
+			interruptedProcess suspend ].
+			self expandStack. "Sets contextStackIndex to zero."
+			aDialog plugDebugger: (DrGDebuggerWindow open: self).
+			doItIndex := contextStackList findFirst: [:each | each includesSubString: 'DoIt'].
+			doItIndex > 0 ifTrue: [self toggleContextStackIndex: doItIndex] 			 ].
+	"Ensure the Debugger is opened in a new UI process.
+	This avoid unresponsive UI if the interruptedProcess is the UI current UI process, but also if the UI is busy, blocked or suspended."
+	UISupervisor newUIProcess.
+	"Suspend it as early as possible"
+	safeBlockAlreadyRan ifFalse: [
+		safeBlockAlreadyRan := true.
+		interruptedProcess suspend ]! !
+
+!PreferenceBrowserVisitor methodsFor: '*DrGeoApp-visitors type' stamp: 'hlsf 20/May/2024 15:28:52'!
+visitDrGTypeArrowPreference: aPref
+	| listMorph |
+	listMorph  := (DropDownButtonMorph 
+		withModel: aPref type 
+		listGetter: #arrowMorphCollection 
+		indexGetter: #arrowIndex 
+		indexSetter: #arrowIndex:)
+		autoDeselect: false;
+		setBalloonText: aPref description.
+	views at: aPref nameDetailed put: listMorph! !
+
+!PreferenceBrowserVisitor methodsFor: '*DrGeoApp-visitors type' stamp: 'hlsf 20/May/2024 15:29:03'!
+visitDrGTypeColorPreference: aPref
+	| listMorph |
+	listMorph  := (DropDownButtonMorph 
+		withModel: aPref type 
+		listGetter: #colorMorphCollection 
+		indexGetter: #colorIndex 
+		indexSetter: #colorIndex:)
+		autoDeselect: false;
+		setBalloonText: aPref description.
+	views at: aPref nameDetailed put: listMorph! !
+
+!PreferenceBrowserVisitor methodsFor: '*DrGeoApp-visitors type' stamp: 'hlsf 20/May/2024 15:29:14'!
+visitDrGTypeMarkPreference: aPref
+	| listMorph |
+	listMorph  := (DropDownButtonMorph 
+		withModel: aPref type 
+		listGetter: #markMorphCollection 
+		indexGetter: #markIndex 
+		indexSetter: #markIndex:)
+		autoDeselect: false;
+		setBalloonText: aPref description.
+	views at: aPref nameDetailed put: listMorph! !
+
+!PreferenceBrowserVisitor methodsFor: '*DrGeoApp-visitors type' stamp: 'hlsf 20/May/2024 15:29:26'!
+visitDrGTypePointShapePreference: aPref
+	| listMorph |
+	listMorph  := (DropDownButtonMorph 
+		withModel: aPref type 
+		listGetter: #shapeMorphCollection 
+		indexGetter: #pointShapeIndex 
+		indexSetter: #pointShapeIndex:)
+		autoDeselect: false;
+		setBalloonText: aPref description.
+	views at: aPref nameDetailed put: listMorph! !
+
+!PreferenceBrowserVisitor methodsFor: '*DrGeoApp-visitors type' stamp: 'hlsf 20/May/2024 15:29:31'!
+visitDrGTypePointSizePreference: aPref
+	| listMorph |
+	listMorph  := (DropDownButtonMorph 
+		withModel: aPref type 
+		listGetter: #sizeMorphCollection 
+		indexGetter: #pointSizeIndex 
+		indexSetter: #pointSizeIndex:)
+		autoDeselect: false;
+		setBalloonText: aPref description.
+	views at: aPref nameDetailed put: listMorph! !
+
+!PreferenceBrowserVisitor methodsFor: '*DrGeoApp-visitors type' stamp: 'hlsf 20/May/2024 15:29:34'!
+visitDrGTypeStylePreference: aPref
+	| listMorph |
+	listMorph  := (DropDownButtonMorph 
+		withModel: aPref type 
+		listGetter: #styleMorphCollection 
+		indexGetter: #styleIndex 
+		indexSetter: #styleIndex:)
+		autoDeselect: false;
+		setBalloonText: aPref description.
+	views at: aPref nameDetailed put: listMorph! !
+
+!PreferenceBrowserVisitor methodsFor: '*DrGeoApp-visitors type' stamp: 'hlsf 20/May/2024 15:29:51'!
+visitDrGTypeThicknessPreference: aPref
+	| listMorph |
+	listMorph  := (DropDownButtonMorph 
+		withModel: aPref type 
+		listGetter: #thicknessMorphCollection 
+		indexGetter: #thicknessIndex 
+		indexSetter: #thicknessIndex:)
+		autoDeselect: false;
+		setBalloonText: aPref description.
+	views at: aPref nameDetailed put: listMorph! !
+DrGeoSystem initialize!
