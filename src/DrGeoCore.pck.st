@@ -1,6 +1,6 @@
-'From Cuis7.7 [latest update: #7791] on 10 January 2026 at 8:35:36 pm'!
+'From Cuis7.7 [latest update: #7791] on 12 January 2026 at 8:36:29 pm'!
 'Description '!
-!provides: 'DrGeoCore' 1 10!
+!provides: 'DrGeoCore' 1 11!
 !requires: 'YAXO' 1 28 nil!
 !requires: 'UI-Panel' 1 140 nil!
 !requires: 'UI-Preference' 1 28 nil!
@@ -8936,136 +8936,11 @@ value: aNumber
 	(self mathItem respondsTo: #valueItem:) 
 		ifTrue: [self mathItem valueItem: aNumber]! !
 
-!DrGeoSketch methodsFor: 'curve filled' stamp: 'hlsf 6/Jan/2026 19:43:25'!
-arc: point1 to: point2 to: point3
-	^ self finalizeFilledCurve: (DrGArc3ptsItem newWith: (
-		Array
-			with: (self ensureDrGeoPoint: point1) mathItem
-			with: (self ensureDrGeoPoint: point2) mathItem
-			with: (self ensureDrGeoPoint: point3 ) mathItem) )! !
-
-!DrGeoSketch methodsFor: 'curve filled' stamp: 'hlsf 6/Jan/2026 22:33:24'!
-arcCenter: centre from: extremity1 to: extremity2
-	^ self finalizeFilledCurve: (DrGArcCenterAngleItem newWith: (
-		Array
-			with: (self ensureDrGeoPoint: centre ) mathItem
-			with: (self ensureDrGeoPoint: extremity1 ) mathItem
-			with: (self ensureDrGeoPoint: extremity2 ) mathItem) )! !
-
-!DrGeoSketch methodsFor: 'curve filled' stamp: 'hlsf 6/Jan/2026 20:11:47'!
-circleCenter: center radius: value
-	^ self finalizeFilledCurve: (DrGCircleRadiusItem  newWith: (
-		Array
-			with: (self ensureDrGeoPoint: center) mathItem
-			with: (self ensureDrGeoValue: value) mathItem) )! !
-
-!DrGeoSketch methodsFor: 'curve filled' stamp: 'hlsf 6/Jan/2026 19:45:42'!
-circleCenter: center segment: segment
-	^ self finalizeFilledCurve: (DrGCircleSegmentItem  newWith: (
-		Array 
-			with: (self ensureDrGeoPoint: center) mathItem 
-			with: segment mathItem) )! !
-
-!DrGeoSketch methodsFor: 'curve filled' stamp: 'hlsf 6/Jan/2026 19:46:16'!
-circleCenter: center to: point
-	^ self finalizeFilledCurve: (DrGCircle2ptsItem newWith: (
-		Array
-			with: (self ensureDrGeoPoint: center ) mathItem
-			with: (self ensureDrGeoPoint: point ) mathItem) )! !
-
-!DrGeoSketch methodsFor: 'curve filled' stamp: 'hlsf 6/Jan/2026 15:14:59'!
-finalizeFilledCurve: mathItem
-	^ DrGeoFilledCurve wrap: (self morphOf: mathItem)! !
-
-!DrGeoSketch methodsFor: 'curve filled' stamp: 'hlsf 6/Jan/2026 22:38:23'!
-polygon: pointCollection
-	^ self finalizeFilledCurve: (
-		DrGPolygonNptsItem newWith: (
-			pointCollection collect: [:point | (self ensureDrGeoPoint: point ) mathItem]))! !
-
-!DrGeoSketch methodsFor: 'curve filled' stamp: 'hlsf 6/Jan/2026 20:11:47'!
-regularPolygonCenter: center vertex: vertex sides: value
-	^ self finalizeFilledCurve: (DrGPolygonRegularItem newWith: (
-		Array
-			with: (self ensureDrGeoPoint: center ) mathItem
-			with: (self ensureDrGeoPoint: vertex ) mathItem
-			with: (self ensureDrGeoValue: value ) mathItem) )! !
-
-!DrGeoSketch methodsFor: 'point' stamp: 'hlsf 6/Jan/2026 19:48:45'!
-altIntersectionOf: curve1 and: curve2 
-"use this one when you want the intersection point when non straight line are involved"
-	| item |
-	item := DrGPointIntersectionItem newWith: (
-		Array with: curve1 mathItem with: curve2 mathItem with: 0 @ 0).
-	item k: 1.
-	^ self finalizePoint: item! !
-
-!DrGeoSketch methodsFor: 'point' stamp: 'hlsf 6/Jan/2026 15:29:06'!
-ensureDrGeoPoint: aPointOrDrGeoPoint
-	^ aPointOrDrGeoPoint isPoint 
-		ifTrue: [(self point: aPointOrDrGeoPoint ) hide] 
-		ifFalse:   [aPointOrDrGeoPoint ]! !
-
-!DrGeoSketch methodsFor: 'point' stamp: 'hlsf 6/Jan/2026 15:29:23'!
-finalizePoint: mathItem
-	| drgeoPoint |
-	drgeoPoint := DrGeoPoint wrap: (self morphOf: mathItem).
-	drgeoPoint square.
-	^ drgeoPoint ! !
-
-!DrGeoSketch methodsFor: 'point' stamp: 'hlsf 6/Jan/2026 19:49:28'!
-intersectionOf: curve1 and: curve2 
-	| item |
-	item := DrGPointIntersectionItem newWith: (
-		Array with: curve1 mathItem with: curve2 mathItem with: 0 @ 0).
-	item k: -1.
-	^ self finalizePoint: item! !
-
-!DrGeoSketch methodsFor: 'point' stamp: 'hlsf 6/Jan/2026 19:49:43'!
-middleOf: segment
-	^ self
-		finalizePoint: (DrGPointMiddlesegmentItem newWith: {segment mathItem})! !
-
-!DrGeoSketch methodsFor: 'point' stamp: 'hlsf 6/Jan/2026 19:50:03'!
-middleOf: point1 and: point2 
-	^ self finalizePoint: (DrGPointMiddle2ptsItem newWith: (
-		Array 
-			with: (self ensureDrGeoPoint: point1) mathItem 
-			with: (self ensureDrGeoPoint: point2) mathItem) )! !
-
-!DrGeoSketch methodsFor: 'point' stamp: 'hlsf 13/Apr/2024 10:11:18'!
-point: aPointOrBlock
-	^ aPointOrBlock isPoint 
-		ifTrue:  [self finalizePoint: (DrGPointFreeItem newWith: {aPointOrBlock})]
-		ifFalse: [self finalizePoint: (DrGPointBlockItem newWith: (Array with: aPointOrBlock)	)]! !
-
-!DrGeoSketch methodsFor: 'point' stamp: 'hlsf 6/Jan/2026 19:50:27'!
-point: block parent: value
-	^  self point: block parents: (Array with: value )! !
-
-!DrGeoSketch methodsFor: 'point' stamp: 'hlsf 6/Jan/2026 19:50:45'!
-point: block parents: valueArray
-	| array |
-	array := Array with: block withAll: (valueArray collect: [:value | value mathItem]).
-	^ self finalizePoint: (DrGPointBlockItem newWith: array)! !
-
-!DrGeoSketch methodsFor: 'point' stamp: 'hlsf 6/Jan/2026 19:50:57'!
-pointOnLine: curve at: abscissa 
-	| mathItem |
-	mathItem := DrGPointOncurveItem newWith: (Array with:curve mathItem with: 0 @ 0).
-	mathItem setCurveAbscissa: abscissa.
-	^ self finalizePoint: mathItem ! !
-
-!DrGeoSketch methodsFor: 'point' stamp: 'hlsf 6/Jan/2026 19:51:19'!
-pointX: value1 Y: value2
-	^ self finalizePoint: (DrGPointCoordinateItem  newWith: (
-		Array with: value1 mathItem with:  value2 mathItem) )! !
-
-!DrGeoSketch methodsFor: 'user interface' stamp: 'hlsf 4/Aug/2023 20:05:38'!
+!DrGeoSketch methodsFor: 'DSL canvas' stamp: 'hlsf 4/Aug/2023 20:05:38'!
 axesOn
 	 presenter axesOnOff ! !
 
-!DrGeoSketch methodsFor: 'user interface' stamp: 'hlsf 6/Jan/2026 22:29:35'!
+!DrGeoSketch methodsFor: 'DSL canvas' stamp: 'hlsf 6/Jan/2026 22:29:35'!
 centerTo: point
 " Set the center of the visible canvas to this coordinate "
 	presenter drawable 
@@ -9073,144 +8948,38 @@ centerTo: point
 		oy: point y;
 		redrawNeeded! !
 
-!DrGeoSketch methodsFor: 'user interface' stamp: 'hlsf 4/Aug/2023 20:05:38'!
+!DrGeoSketch methodsFor: 'DSL canvas' stamp: 'hlsf 4/Aug/2023 20:05:38'!
 fullScreen
 	presenter view fullScreen! !
 
-!DrGeoSketch methodsFor: 'user interface' stamp: 'hlsf 4/Aug/2023 20:05:38'!
+!DrGeoSketch methodsFor: 'DSL canvas' stamp: 'hlsf 4/Aug/2023 20:05:38'!
 gridOn
 	 presenter gridOnOff ! !
 
-!DrGeoSketch methodsFor: 'user interface' stamp: 'hlsf 6/Jan/2026 22:30:02'!
+!DrGeoSketch methodsFor: 'DSL canvas' stamp: 'hlsf 6/Jan/2026 22:30:02'!
 scale: integer
 	"set scale of the canvas"
 	presenter drawable 
 		setScaleTo: integer! !
 
-!DrGeoSketch methodsFor: 'accessing' stamp: ''!
-aPosition
-	^ 10 atRandom - 5 @ (10 atRandom - 5)! !
+!DrGeoSketch methodsFor: 'DSL canvas' stamp: 'hlsf 14/Apr/2022 10:46:54'!
+update
+	self domain updateAllMathItems! !
 
-!DrGeoSketch methodsFor: 'accessing' stamp: 'hlsf 4/Aug/2023 20:05:38'!
-domain
-	^ presenter domain! !
-
-!DrGeoSketch methodsFor: 'accessing' stamp: 'hlsf 4/Aug/2023 20:05:38'!
-drawable
-	^ presenter drawable ! !
-
-!DrGeoSketch methodsFor: 'accessing' stamp: 'hlsf 6/Jan/2026 15:34:40'!
-morphOf: mathItem
-	| finalItem |
-	finalItem := self domain createFromMathItemNoCommand: mathItem .
-	^ finalItem == mathItem 
-		ifTrue: [	self drawable lastItemView ] "We create a new one, get its morph just created"
-		ifFalse: [	self drawable viewOf: finalItem] "For twin items, search for the former item"! !
-
-!DrGeoSketch methodsFor: 'accessing' stamp: 'hlsf 4/Aug/2023 20:05:38'!
-presenter
-	^ presenter ! !
-
-!DrGeoSketch methodsFor: 'accessing' stamp: 'hlsf 4/Aug/2023 20:05:38'!
+!DrGeoSketch methodsFor: 'DSL canvas' stamp: 'hlsf 4/Aug/2023 20:05:38'!
 view
 	^ presenter view! !
 
-!DrGeoSketch methodsFor: 'transformations' stamp: 'hlsf 6/Jan/2026 15:34:54'!
-canTransform: drgeoItem
-	drgeoItem mathItem isGeometricItem
-		ifFalse: [self error: 'Only geometric object can be transformed.' translated].! !
-
-!DrGeoSketch methodsFor: 'transformations' stamp: 'hlsf 20/May/2024 14:33:28'!
-finalizeTransformation: string with: arguments 
-	| class item |
-	class := Smalltalk classNamed: 'DrG', arguments first basicType capitalized, string, 'Item'.
-	item := class newWith: arguments.
-	^ item isPointItem
-		ifTrue: [self finalizePoint: item]
-		ifFalse: [| finalizedCurve | 
-			finalizedCurve := self finalizeCurve: item.
-			item isLocusItem ifTrue: [
-				self runningWorld ifNotNil: [:w | w doOneMinimalCycleNow].
-				self domain updateAllMathItems].
-			finalizedCurve ]! !
-
-!DrGeoSketch methodsFor: 'transformations' stamp: 'hlsf 6/Jan/2026 19:52:25'!
-reflect: geometricItem axis: line
-	self canTransform: geometricItem .
-	^ self 
-		finalizeTransformation: 'Reflexion' 
-		with: (Array with: geometricItem mathItem with: line mathItem)! !
-
-!DrGeoSketch methodsFor: 'transformations' stamp: 'hlsf 6/Jan/2026 20:11:47'!
-rotate: geometricItem center: center angle: value 
-	self canTransform: geometricItem .
-	^ self 
-		finalizeTransformation: 'Rotation' 
-		with:  (
-			Array 
-				with: geometricItem mathItem 
-				with: (self ensureDrGeoPoint: center) mathItem 
-				with: (self ensureDrGeoValue: value) mathItem) 	! !
-
-!DrGeoSketch methodsFor: 'transformations' stamp: 'hlsf 6/Jan/2026 19:52:48'!
-rotate: geometricItem center: center angleDegrees: value 
-"Only work when value is a number and not an already existing value item, otherwise no conversion "
-	| convertedValue |
-	convertedValue := value isNumber ifTrue: [value degreesToRadians] ifFalse: [value].
-	^ self rotate: geometricItem center: center angle: convertedValue ! !
-
-!DrGeoSketch methodsFor: 'transformations' stamp: 'hlsf 6/Jan/2026 20:11:47'!
-scale: geometricItem center: center factor: value 
-	self canTransform: geometricItem.
-	^ self 
-		finalizeTransformation: 'Homothety' 
-		with: (Array 
-			with: geometricItem mathItem
-			with: (self ensureDrGeoPoint: center) mathItem
-			with: (self ensureDrGeoValue: value) mathItem)
-! !
-
-!DrGeoSketch methodsFor: 'transformations' stamp: 'hlsf 6/Jan/2026 19:53:02'!
-symmetry: geometricItem center: center 
-	self canTransform: geometricItem .
-	^ self 
-		finalizeTransformation: 'Symmetry' 
-		with: (Array 
-			with: geometricItem mathItem 
-			with: (self ensureDrGeoPoint: center) mathItem)! !
-
-!DrGeoSketch methodsFor: 'transformations' stamp: 'hlsf 6/Jan/2026 19:53:08'!
-translate: geometricItem vector: drgeoVector 
-	self canTransform: geometricItem .
-	^ self 
-		finalizeTransformation: 'Translation' 
-		with: (Array
-			with: geometricItem mathItem
-			with: (self ensureVector: drgeoVector) mathItem)! !
-
-!DrGeoSketch methodsFor: 'helpers' stamp: 'hlsf 13/Jun/2021 22:22:33'!
-do: aBlock
-	"Execute the given construction in a forked process so the user can see the on going construction or animation"
-	doProcess ifNotNil: [doProcess terminate].
-	doProcess := aBlock newProcess.
-	doProcess priority: Processor userBackgroundPriority.
-	doProcess resume! !
-
-!DrGeoSketch methodsFor: 'helpers' stamp: 'hlsf 4/Aug/2023 20:05:38'!
-exportToImage: aFilename
-"Export to a SVG file"
-	presenter exportToImage: aFilename! !
-
-!DrGeoSketch methodsFor: 'helpers' stamp: ''!
+!DrGeoSketch methodsFor: 'DSL digital ruler' stamp: ''!
 float: value at: aPoint from: startValue to: endValue 
 	^ self float: value at: aPoint from: startValue to: endValue name: ''! !
 
-!DrGeoSketch methodsFor: 'helpers' stamp: ''!
+!DrGeoSketch methodsFor: 'DSL digital ruler' stamp: ''!
 float: aValue at: aPoint from: startValue to: endValue name: name
 "A valueslider ranging between startValue and endValue"
 	^ self float: aValue at: aPoint from: startValue to: endValue name: name showValue: false! !
 
-!DrGeoSketch methodsFor: 'helpers' stamp: 'hlsf 4/Aug/2023 20:05:38'!
+!DrGeoSketch methodsFor: 'DSL digital ruler' stamp: 'hlsf 4/Aug/2023 20:05:38'!
 float: aValue at: aPoint from: startValue to: endValue name: name showValue: isValueDisplay
 "A valueslider ranging between startValue and endValue"
 	| segment mobile|
@@ -9229,16 +8998,16 @@ float: aValue at: aPoint from: startValue to: endValue name: name showValue: isV
 		ifFalse: [[mobile mathItem abscissa * ( endValue - startValue) + startValue]]  	
 	! !
 
-!DrGeoSketch methodsFor: 'helpers' stamp: ''!
+!DrGeoSketch methodsFor: 'DSL digital ruler' stamp: ''!
 integer: value at: aPoint from: startValue to: endValue 
 	^ self integer: value at: aPoint from: startValue to: endValue name: ''! !
 
-!DrGeoSketch methodsFor: 'helpers' stamp: ''!
+!DrGeoSketch methodsFor: 'DSL digital ruler' stamp: ''!
 integer: aValue at: aPoint from: startValue to: endValue name: name
 "A valueslider ranging between startValue and endValue"
 	^ self integer: aValue at: aPoint from: startValue to: endValue name: name showValue: false! !
 
-!DrGeoSketch methodsFor: 'helpers' stamp: 'hlsf 4/Aug/2023 20:05:38'!
+!DrGeoSketch methodsFor: 'DSL digital ruler' stamp: 'hlsf 4/Aug/2023 20:05:38'!
 integer: aValue at: aPoint from: startValue to: endValue name: name showValue: isValueDisplay
 "A valueslider ranging between startValue and endValue"
 	| segment mobile|
@@ -9257,7 +9026,139 @@ integer: aValue at: aPoint from: startValue to: endValue name: name showValue: i
 		ifFalse: [[(mobile mathItem abscissa * ( endValue - startValue) + startValue) floor]]  	
 	! !
 
-!DrGeoSketch methodsFor: 'helpers' stamp: ''!
+!DrGeoSketch methodsFor: 'DSL equation' stamp: 'hlsf 6/Jan/2026 20:15:56'!
+equationOf: lineOrCircle
+	| class |
+	lineOrCircle mathItem isLineItem 
+		ifTrue: [class := DrGEquationLineItem ].
+	lineOrCircle mathItem isCircleItem
+		ifTrue: [class := DrGEquationCircleItem].
+	^ self finalizeValue: (class newWith: (
+		Array with: lineOrCircle mathItem with: self aPosition) )! !
+
+!DrGeoSketch methodsFor: 'DSL helpers' stamp: ''!
+aPosition
+	^ 10 atRandom - 5 @ (10 atRandom - 5)! !
+
+!DrGeoSketch methodsFor: 'DSL helpers' stamp: 'hlsf 13/Jun/2021 22:22:33'!
+do: aBlock
+	"Execute the given construction in a forked process so the user can see the on going construction or animation"
+	doProcess ifNotNil: [doProcess terminate].
+	doProcess := aBlock newProcess.
+	doProcess priority: Processor userBackgroundPriority.
+	doProcess resume! !
+
+!DrGeoSketch methodsFor: 'DSL helpers' stamp: 'hlsf 4/Aug/2023 20:05:38'!
+exportToImage: aFilename
+"Export to a SVG file"
+	presenter exportToImage: aFilename! !
+
+!DrGeoSketch methodsFor: 'DSL line' stamp: 'hlsf 6/Jan/2026 19:55:00'!
+angleBisector: angle
+	^ self finalizeCurve: 
+		(DrGLineAngleBisectorItem newWith: (Array with: angle mathItem))! !
+
+!DrGeoSketch methodsFor: 'DSL line' stamp: 'hlsf 6/Jan/2026 19:55:34'!
+angleBisectorSummit: summit side1: point1 side2: point2
+	^ self finalizeCurve: (DrGAngleBisector3ptsItem newWith: (
+		Array
+			with: (self ensureDrGeoPoint: point1 ) mathItem
+			with: (self ensureDrGeoPoint: summit) mathItem
+			with: (self ensureDrGeoPoint: point2 ) mathItem) )! !
+
+!DrGeoSketch methodsFor: 'DSL line' stamp: 'hlsf 6/Jan/2026 19:55:56'!
+line: point1 to: point2
+	^ self finalizeCurve: (DrGLine2ptsItem newWith: (
+		Array
+			with: (self ensureDrGeoPoint: point1 ) mathItem
+			with: (self ensureDrGeoPoint: point2 ) mathItem) )! !
+
+!DrGeoSketch methodsFor: 'DSL line' stamp: 'hlsf 6/Jan/2026 19:57:31'!
+parallel: direction at: point
+	^ self finalizeCurve: (DrGLineParallelItem newWith: (
+		Array 
+			with: direction mathItem
+			with: (self ensureDrGeoPoint: point) mathItem) )! !
+
+!DrGeoSketch methodsFor: 'DSL line' stamp: 'hlsf 6/Jan/2026 19:58:05'!
+perpendicular: drection at: point 
+	^ self finalizeCurve: (DrGLinePerpendicularItem newWith: (
+		Array
+			with: drection mathItem
+			with: (self ensureDrGeoPoint: point) mathItem) )! !
+
+!DrGeoSketch methodsFor: 'DSL line' stamp: 'hlsf 6/Jan/2026 19:58:19'!
+perpendicularBisector: segment
+	^ self finalizeCurve: (
+		DrGPerpendicularBisectorItem newWith: (Array with: segment mathItem) )! !
+
+!DrGeoSketch methodsFor: 'DSL line' stamp: 'hlsf 6/Jan/2026 19:58:40'!
+perpendicularBisector: point1 to: point2
+	^ self finalizeCurve: (DrGLinePerpendicularBisector2ptsItem newWith: (
+		Array 
+			with: (self ensureDrGeoPoint: point1) mathItem
+			with: (self ensureDrGeoPoint: point2) mathItem) )! !
+
+!DrGeoSketch methodsFor: 'DSL line' stamp: 'hlsf 6/Jan/2026 22:35:46'!
+ray: origin to: point
+	^ self finalizeCurve: (DrGRay2ptsItem newWith: (
+		Array 
+			with: (self ensureDrGeoPoint: origin) mathItem
+			with: (self ensureDrGeoPoint: point) mathItem) )! !
+
+!DrGeoSketch methodsFor: 'DSL line' stamp: 'hlsf 6/Jan/2026 19:54:00'!
+segment: point1 to: point2
+	^ self finalizeSegment: (
+		DrGSegment2ptsItem newWith: (
+			Array 
+				with: (self ensureDrGeoPoint: point1) mathItem	
+				with: (self ensureDrGeoPoint: point2) mathItem) )! !
+
+!DrGeoSketch methodsFor: 'DSL line curved' stamp: 'hlsf 6/Jan/2026 19:43:25'!
+arc: point1 to: point2 to: point3
+	^ self finalizeFilledCurve: (DrGArc3ptsItem newWith: (
+		Array
+			with: (self ensureDrGeoPoint: point1) mathItem
+			with: (self ensureDrGeoPoint: point2) mathItem
+			with: (self ensureDrGeoPoint: point3 ) mathItem) )! !
+
+!DrGeoSketch methodsFor: 'DSL line curved' stamp: 'hlsf 6/Jan/2026 22:33:24'!
+arcCenter: centre from: extremity1 to: extremity2
+	^ self finalizeFilledCurve: (DrGArcCenterAngleItem newWith: (
+		Array
+			with: (self ensureDrGeoPoint: centre ) mathItem
+			with: (self ensureDrGeoPoint: extremity1 ) mathItem
+			with: (self ensureDrGeoPoint: extremity2 ) mathItem) )! !
+
+!DrGeoSketch methodsFor: 'DSL line curved' stamp: 'hlsf 6/Jan/2026 20:11:47'!
+circleCenter: center radius: value
+	^ self finalizeFilledCurve: (DrGCircleRadiusItem  newWith: (
+		Array
+			with: (self ensureDrGeoPoint: center) mathItem
+			with: (self ensureDrGeoValue: value) mathItem) )! !
+
+!DrGeoSketch methodsFor: 'DSL line curved' stamp: 'hlsf 6/Jan/2026 19:45:42'!
+circleCenter: center segment: segment
+	^ self finalizeFilledCurve: (DrGCircleSegmentItem  newWith: (
+		Array 
+			with: (self ensureDrGeoPoint: center) mathItem 
+			with: segment mathItem) )! !
+
+!DrGeoSketch methodsFor: 'DSL line curved' stamp: 'hlsf 6/Jan/2026 19:46:16'!
+circleCenter: center to: point
+	^ self finalizeFilledCurve: (DrGCircle2ptsItem newWith: (
+		Array
+			with: (self ensureDrGeoPoint: center ) mathItem
+			with: (self ensureDrGeoPoint: point ) mathItem) )! !
+
+!DrGeoSketch methodsFor: 'DSL line curved' stamp: 'hlsf 6/Jan/2026 19:56:50'!
+locusOf: dependentPoint when: mobilePoint
+	mobilePoint mathItem isPointItemOnCurve 
+		ifFalse: [self error: 'The second point provided in the call must be on a curve.'].
+	^ self finalizeCurve: (
+		DrGLocus2ptsItem newWith: (Array with: mobilePoint mathItem with: dependentPoint mathItem) )! !
+
+!DrGeoSketch methodsFor: 'DSL line curved' stamp: ''!
 plot: f from: x0 to: x1
 | mobile s pen|
 	s := self segment: x0@0 to: x1@0.
@@ -9268,114 +9169,158 @@ plot: f from: x0 to: x1
 	^ (self locusOf: pen when: mobile) color: Color blue
 ! !
 
-!DrGeoSketch methodsFor: 'helpers' stamp: 'hlsf 13/Jun/2021 22:39:05'!
-terminateDo
-	doProcess  ifNotNil: [
-		doProcess terminate.
-		doProcess := nil]! !
+!DrGeoSketch methodsFor: 'DSL point' stamp: 'hlsf 6/Jan/2026 19:48:45'!
+altIntersectionOf: curve1 and: curve2 
+"use this one when you want the intersection point when non straight line are involved"
+	| item |
+	item := DrGPointIntersectionItem newWith: (
+		Array with: curve1 mathItem with: curve2 mathItem with: 0 @ 0).
+	item k: 1.
+	^ self finalizePoint: item! !
 
-!DrGeoSketch methodsFor: 'curve finit' stamp: 'hlsf 6/Jan/2026 19:53:34'!
-ensureVector: aPointOrDrGeoItem
-"ensure a DrGeo Item vector"
-	^ aPointOrDrGeoItem isPoint 
-		ifTrue: [(self vector: aPointOrDrGeoItem ) hide] 
-		ifFalse:   [aPointOrDrGeoItem ]! !
+!DrGeoSketch methodsFor: 'DSL point' stamp: 'hlsf 6/Jan/2026 19:49:28'!
+intersectionOf: curve1 and: curve2 
+	| item |
+	item := DrGPointIntersectionItem newWith: (
+		Array with: curve1 mathItem with: curve2 mathItem with: 0 @ 0).
+	item k: -1.
+	^ self finalizePoint: item! !
 
-!DrGeoSketch methodsFor: 'curve finit' stamp: 'hlsf 6/Jan/2026 15:14:28'!
-finalizeFinitCurve: mathItem
-	^ DrGeoFinitCurve wrap: (self morphOf: mathItem )! !
+!DrGeoSketch methodsFor: 'DSL point' stamp: 'hlsf 6/Jan/2026 19:49:43'!
+middleOf: segment
+	^ self
+		finalizePoint: (DrGPointMiddlesegmentItem newWith: {segment mathItem})! !
 
-!DrGeoSketch methodsFor: 'curve finit' stamp: 'hlsf 6/Jan/2026 15:15:28'!
-finalizeSegment: mathItem
-	^ DrGeoSegment wrap: (self morphOf: mathItem )! !
+!DrGeoSketch methodsFor: 'DSL point' stamp: 'hlsf 6/Jan/2026 19:50:03'!
+middleOf: point1 and: point2 
+	^ self finalizePoint: (DrGPointMiddle2ptsItem newWith: (
+		Array 
+			with: (self ensureDrGeoPoint: point1) mathItem 
+			with: (self ensureDrGeoPoint: point2) mathItem) )! !
 
-!DrGeoSketch methodsFor: 'curve finit' stamp: 'hlsf 6/Jan/2026 19:54:00'!
-segment: point1 to: point2
-	^ self finalizeSegment: (
-		DrGSegment2ptsItem newWith: (
+!DrGeoSketch methodsFor: 'DSL point' stamp: 'hlsf 13/Apr/2024 10:11:18'!
+point: aPointOrBlock
+	^ aPointOrBlock isPoint 
+		ifTrue:  [self finalizePoint: (DrGPointFreeItem newWith: {aPointOrBlock})]
+		ifFalse: [self finalizePoint: (DrGPointBlockItem newWith: (Array with: aPointOrBlock)	)]! !
+
+!DrGeoSketch methodsFor: 'DSL point' stamp: 'hlsf 6/Jan/2026 19:50:27'!
+point: block parent: value
+	^  self point: block parents: (Array with: value )! !
+
+!DrGeoSketch methodsFor: 'DSL point' stamp: 'hlsf 6/Jan/2026 19:50:45'!
+point: block parents: valueArray
+	| array |
+	array := Array with: block withAll: (valueArray collect: [:value | value mathItem]).
+	^ self finalizePoint: (DrGPointBlockItem newWith: array)! !
+
+!DrGeoSketch methodsFor: 'DSL point' stamp: 'hlsf 6/Jan/2026 19:50:57'!
+pointOnLine: curve at: abscissa 
+	| mathItem |
+	mathItem := DrGPointOncurveItem newWith: (Array with:curve mathItem with: 0 @ 0).
+	mathItem setCurveAbscissa: abscissa.
+	^ self finalizePoint: mathItem ! !
+
+!DrGeoSketch methodsFor: 'DSL point' stamp: 'hlsf 6/Jan/2026 19:51:19'!
+pointX: value1 Y: value2
+	^ self finalizePoint: (DrGPointCoordinateItem  newWith: (
+		Array with: value1 mathItem with:  value2 mathItem) )! !
+
+!DrGeoSketch methodsFor: 'DSL polygon' stamp: 'hlsf 6/Jan/2026 22:38:23'!
+polygon: pointCollection
+	^ self finalizeFilledCurve: (
+		DrGPolygonNptsItem newWith: (
+			pointCollection collect: [:point | (self ensureDrGeoPoint: point ) mathItem]))! !
+
+!DrGeoSketch methodsFor: 'DSL polygon' stamp: 'hlsf 6/Jan/2026 20:11:47'!
+regularPolygonCenter: center vertex: vertex sides: value
+	^ self finalizeFilledCurve: (DrGPolygonRegularItem newWith: (
+		Array
+			with: (self ensureDrGeoPoint: center ) mathItem
+			with: (self ensureDrGeoPoint: vertex ) mathItem
+			with: (self ensureDrGeoValue: value ) mathItem) )! !
+
+!DrGeoSketch methodsFor: 'DSL text' stamp: ''!
+text: aText
+	^ self text:aText at: self aPosition! !
+
+!DrGeoSketch methodsFor: 'DSL text' stamp: 'hlsf 6/Jan/2026 22:30:53'!
+text: text at: position
+	| answer |
+	presenter notInteractive: true.
+	answer := self finalizeText: ((DrGTextItem newWith: (Array with: position)) text: text asText).
+	presenter notInteractive: false.
+	^ answer! !
+
+!DrGeoSketch methodsFor: 'DSL transformations' stamp: 'hlsf 6/Jan/2026 19:52:25'!
+reflect: geometricItem axis: line
+	self canTransform: geometricItem .
+	^ self 
+		finalizeTransformation: 'Reflexion' 
+		with: (Array with: geometricItem mathItem with: line mathItem)! !
+
+!DrGeoSketch methodsFor: 'DSL transformations' stamp: 'hlsf 6/Jan/2026 20:11:47'!
+rotate: geometricItem center: center angle: value 
+	self canTransform: geometricItem .
+	^ self 
+		finalizeTransformation: 'Rotation' 
+		with:  (
 			Array 
-				with: (self ensureDrGeoPoint: point1) mathItem	
-				with: (self ensureDrGeoPoint: point2) mathItem) )! !
+				with: geometricItem mathItem 
+				with: (self ensureDrGeoPoint: center) mathItem 
+				with: (self ensureDrGeoValue: value) mathItem) 	! !
 
-!DrGeoSketch methodsFor: 'curve finit' stamp: 'hlsf 6/Jan/2026 19:54:17'!
+!DrGeoSketch methodsFor: 'DSL transformations' stamp: 'hlsf 6/Jan/2026 19:52:48'!
+rotate: geometricItem center: center angleDegrees: value 
+"Only work when value is a number and not an already existing value item, otherwise no conversion "
+	| convertedValue |
+	convertedValue := value isNumber ifTrue: [value degreesToRadians] ifFalse: [value].
+	^ self rotate: geometricItem center: center angle: convertedValue ! !
+
+!DrGeoSketch methodsFor: 'DSL transformations' stamp: 'hlsf 6/Jan/2026 20:11:47'!
+scale: geometricItem center: center factor: value 
+	self canTransform: geometricItem.
+	^ self 
+		finalizeTransformation: 'Homothety' 
+		with: (Array 
+			with: geometricItem mathItem
+			with: (self ensureDrGeoPoint: center) mathItem
+			with: (self ensureDrGeoValue: value) mathItem)
+! !
+
+!DrGeoSketch methodsFor: 'DSL transformations' stamp: 'hlsf 6/Jan/2026 19:53:02'!
+symmetry: geometricItem center: center 
+	self canTransform: geometricItem .
+	^ self 
+		finalizeTransformation: 'Symmetry' 
+		with: (Array 
+			with: geometricItem mathItem 
+			with: (self ensureDrGeoPoint: center) mathItem)! !
+
+!DrGeoSketch methodsFor: 'DSL transformations' stamp: 'hlsf 6/Jan/2026 19:53:08'!
+translate: geometricItem vector: drgeoVector 
+	self canTransform: geometricItem .
+	^ self 
+		finalizeTransformation: 'Translation' 
+		with: (Array
+			with: geometricItem mathItem
+			with: (self ensureVector: drgeoVector) mathItem)! !
+
+!DrGeoSketch methodsFor: 'DSL transformations' stamp: 'hlsf 6/Jan/2026 19:54:17'!
 vector: point
 	^ self finalizeCurve: (DrGVector2ptsItem newWith: (
 		Array
 			with: (self ensureDrGeoPoint: 0@0) mathItem
 			with: (self ensureDrGeoPoint: point) mathItem) )! !
 
-!DrGeoSketch methodsFor: 'curve finit' stamp: 'hlsf 6/Jan/2026 19:54:42'!
+!DrGeoSketch methodsFor: 'DSL transformations' stamp: 'hlsf 6/Jan/2026 19:54:42'!
 vector: point1 to: point2 
 	^ self finalizeCurve: (DrGVector2ptsItem newWith: (
 		Array
 			with: (self ensureDrGeoPoint: point1 ) mathItem
 			with: (self ensureDrGeoPoint: point2 ) mathItem) )! !
 
-!DrGeoSketch methodsFor: 'curve' stamp: 'hlsf 6/Jan/2026 19:55:00'!
-angleBisector: angle
-	^ self finalizeCurve: 
-		(DrGLineAngleBisectorItem newWith: (Array with: angle mathItem))! !
-
-!DrGeoSketch methodsFor: 'curve' stamp: 'hlsf 6/Jan/2026 19:55:34'!
-angleBisectorSummit: summit side1: point1 side2: point2
-	^ self finalizeCurve: (DrGAngleBisector3ptsItem newWith: (
-		Array
-			with: (self ensureDrGeoPoint: point1 ) mathItem
-			with: (self ensureDrGeoPoint: summit) mathItem
-			with: (self ensureDrGeoPoint: point2 ) mathItem) )! !
-
-!DrGeoSketch methodsFor: 'curve' stamp: 'hlsf 6/Jan/2026 15:13:07'!
-finalizeCurve: mathItem
-	^ DrGeoCurve wrap: (self morphOf: mathItem ) ! !
-
-!DrGeoSketch methodsFor: 'curve' stamp: 'hlsf 6/Jan/2026 19:55:56'!
-line: point1 to: point2
-	^ self finalizeCurve: (DrGLine2ptsItem newWith: (
-		Array
-			with: (self ensureDrGeoPoint: point1 ) mathItem
-			with: (self ensureDrGeoPoint: point2 ) mathItem) )! !
-
-!DrGeoSketch methodsFor: 'curve' stamp: 'hlsf 6/Jan/2026 19:56:50'!
-locusOf: dependentPoint when: mobilePoint
-	mobilePoint mathItem isPointItemOnCurve 
-		ifFalse: [self error: 'The second point provided in the call must be on a curve.'].
-	^ self finalizeCurve: (
-		DrGLocus2ptsItem newWith: (Array with: mobilePoint mathItem with: dependentPoint mathItem) )! !
-
-!DrGeoSketch methodsFor: 'curve' stamp: 'hlsf 6/Jan/2026 19:57:31'!
-parallel: direction at: point
-	^ self finalizeCurve: (DrGLineParallelItem newWith: (
-		Array 
-			with: direction mathItem
-			with: (self ensureDrGeoPoint: point) mathItem) )! !
-
-!DrGeoSketch methodsFor: 'curve' stamp: 'hlsf 6/Jan/2026 19:58:05'!
-perpendicular: drection at: point 
-	^ self finalizeCurve: (DrGLinePerpendicularItem newWith: (
-		Array
-			with: drection mathItem
-			with: (self ensureDrGeoPoint: point) mathItem) )! !
-
-!DrGeoSketch methodsFor: 'curve' stamp: 'hlsf 6/Jan/2026 19:58:19'!
-perpendicularBisector: segment
-	^ self finalizeCurve: (
-		DrGPerpendicularBisectorItem newWith: (Array with: segment mathItem) )! !
-
-!DrGeoSketch methodsFor: 'curve' stamp: 'hlsf 6/Jan/2026 19:58:40'!
-perpendicularBisector: point1 to: point2
-	^ self finalizeCurve: (DrGLinePerpendicularBisector2ptsItem newWith: (
-		Array 
-			with: (self ensureDrGeoPoint: point1) mathItem
-			with: (self ensureDrGeoPoint: point2) mathItem) )! !
-
-!DrGeoSketch methodsFor: 'curve' stamp: 'hlsf 6/Jan/2026 22:35:46'!
-ray: origin to: point
-	^ self finalizeCurve: (DrGRay2ptsItem newWith: (
-		Array 
-			with: (self ensureDrGeoPoint: origin) mathItem
-			with: (self ensureDrGeoPoint: point) mathItem) )! !
-
-!DrGeoSketch methodsFor: 'value' stamp: 'hlsf 6/Jan/2026 20:00:30'!
+!DrGeoSketch methodsFor: 'DSL value' stamp: 'hlsf 6/Jan/2026 20:00:30'!
 abscissaOf: pointOrVector
 	| class drgeoItem |
 	drgeoItem := self ensureDrGeoPoint: pointOrVector .
@@ -9386,7 +9331,7 @@ abscissaOf: pointOrVector
 	^ self finalizeValue: (class newWith: (
 		Array with: drgeoItem mathItem with:  self aPosition) )! !
 
-!DrGeoSketch methodsFor: 'value' stamp: 'hlsf 6/Jan/2026 20:01:24'!
+!DrGeoSketch methodsFor: 'DSL value' stamp: 'hlsf 6/Jan/2026 20:01:24'!
 angle: vector1 to: vectoe2
 	^ self finalizeValue: (DrGAngleVectorsItem newWith: (
 		Array 
@@ -9395,7 +9340,7 @@ angle: vector1 to: vectoe2
 			with: self aPosition) )
 		hide: false! !
 
-!DrGeoSketch methodsFor: 'value' stamp: 'hlsf 6/Jan/2026 20:03:13'!
+!DrGeoSketch methodsFor: 'DSL value' stamp: 'hlsf 6/Jan/2026 20:03:13'!
 angle: summit to: point1 to: point2
 	^ self finalizeValue: (DrGAngle3ptsOrientedItem newWith: (
 		Array
@@ -9405,7 +9350,7 @@ angle: summit to: point1 to: point2
 			with: self aPosition) )
 		hide: false! !
 
-!DrGeoSketch methodsFor: 'value' stamp: 'hlsf 6/Jan/2026 20:06:16'!
+!DrGeoSketch methodsFor: 'DSL value' stamp: 'hlsf 6/Jan/2026 20:06:16'!
 distance: item1 to: item2 
 	"Distance from a point to a line or another point"
 	| arg class drgeoItem1 drgeoItem2 |
@@ -9420,37 +9365,17 @@ distance: item1 to: item2
 	arg addLast: self aPosition.
 	^ self finalizeValue: (class newWith: arg)! !
 
-!DrGeoSketch methodsFor: 'value' stamp: 'hlsf 6/Jan/2026 20:11:47'!
-ensureDrGeoValue: aNumberOrWrappedValueItem
-"ensure a wrapped value"
-	^ aNumberOrWrappedValueItem  isNumber 
-		ifTrue: [(self value: aNumberOrWrappedValueItem ) hide] 
-		ifFalse:   [aNumberOrWrappedValueItem]! !
-
-!DrGeoSketch methodsFor: 'value' stamp: ''!
-finalizeValue: item
-"By default we don't hide the value"
-	^ self finalizeValue: item hide: false! !
-
-!DrGeoSketch methodsFor: 'value' stamp: 'hlsf 6/Jan/2026 15:16:48'!
-finalizeValue: mathItem hide: hide
-" Optionally hide the value "
-	| drgeoValue |
-	drgeoValue := DrGeoValue wrap: (self morphOf: mathItem ).
-	 hide ifTrue: [ drgeoValue hide ].
-	^ drgeoValue ! !
-
-!DrGeoSketch methodsFor: 'value' stamp: 'hlsf 13/Apr/2024 11:09:36'!
+!DrGeoSketch methodsFor: 'DSL value' stamp: 'hlsf 13/Apr/2024 11:09:36'!
 freeValue: aNumberOrBlock
 " Obsolete use #value: message"
 	^ self value: aNumberOrBlock ! !
 
-!DrGeoSketch methodsFor: 'value' stamp: 'hlsf 13/Apr/2024 11:19:35'!
+!DrGeoSketch methodsFor: 'DSL value' stamp: 'hlsf 13/Apr/2024 11:19:35'!
 freeValue: aNumberOrBlock at: aPosition
 " obsolete "
 	^ self value: aNumberOrBlock parents: {} at: aPosition! !
 
-!DrGeoSketch methodsFor: 'value' stamp: 'hlsf 6/Jan/2026 20:08:04'!
+!DrGeoSketch methodsFor: 'DSL value' stamp: 'hlsf 6/Jan/2026 20:08:04'!
 geometricAngle: summit to: point1 to: point2
 	^ self finalizeValue: (DrGAngle3ptsItem newWith: (
 		Array
@@ -9460,7 +9385,7 @@ geometricAngle: summit to: point1 to: point2
 			with: self aPosition) )
 		hide: false! !
 
-!DrGeoSketch methodsFor: 'value' stamp: 'hlsf 6/Jan/2026 20:08:58'!
+!DrGeoSketch methodsFor: 'DSL value' stamp: 'hlsf 6/Jan/2026 20:08:58'!
 lengthOf: finitCurve
 	| class |
 	finitCurve mathItem isSegmentItem
@@ -9476,7 +9401,7 @@ lengthOf: finitCurve
 
 	^ self finalizeValue: (class newWith: (Array with: finitCurve mathItem with: self aPosition) )! !
 
-!DrGeoSketch methodsFor: 'value' stamp: 'hlsf 6/Jan/2026 20:09:49'!
+!DrGeoSketch methodsFor: 'DSL value' stamp: 'hlsf 6/Jan/2026 20:09:49'!
 ordinateOf: pointOrVector 
 	| class drgeoItem |
 	drgeoItem := self ensureDrGeoPoint: pointOrVector .
@@ -9487,24 +9412,24 @@ ordinateOf: pointOrVector
 	^ self
 		finalizeValue: (class newWith: (Array with: drgeoItem mathItem with: self aPosition) )! !
 
-!DrGeoSketch methodsFor: 'value' stamp: 'hlsf 6/Jan/2026 20:10:24'!
+!DrGeoSketch methodsFor: 'DSL value' stamp: 'hlsf 6/Jan/2026 20:10:24'!
 slopeOf: line
 	^ self finalizeValue: (DrGValueSlopeItem newWith: (
 		Array with: line mathItem with: self aPosition) )! !
 
-!DrGeoSketch methodsFor: 'value' stamp: 'hlsf 13/Apr/2024 10:31:34'!
+!DrGeoSketch methodsFor: 'DSL value' stamp: 'hlsf 13/Apr/2024 10:31:34'!
 value: aNumberOrBlock
 	^ self value: aNumberOrBlock parents: {} at: self aPosition ! !
 
-!DrGeoSketch methodsFor: 'value' stamp: 'hlsf 21/Jul/2024 23:58:29'!
+!DrGeoSketch methodsFor: 'DSL value' stamp: 'hlsf 21/Jul/2024 23:58:29'!
 value: aNumberOrBlock at: aPosition
 	^ self value: aNumberOrBlock parents: {} at: aPosition! !
 
-!DrGeoSketch methodsFor: 'value' stamp: 'hlsf 6/Jan/2026 20:15:10'!
+!DrGeoSketch methodsFor: 'DSL value' stamp: 'hlsf 6/Jan/2026 20:15:10'!
 value: aNumberOrBlock parent: value
 	^ self value: aNumberOrBlock parents: (Array with: value ) at: self aPosition ! !
 
-!DrGeoSketch methodsFor: 'value' stamp: 'hlsf 6/Jan/2026 20:14:52'!
+!DrGeoSketch methodsFor: 'DSL value' stamp: 'hlsf 6/Jan/2026 20:14:52'!
 value: aNumberOrBlock parents: valueArray at: aPosition
 	| answer |
 	presenter notInteractive: true.
@@ -9520,36 +9445,6 @@ value: aNumberOrBlock parents: valueArray at: aPosition
 	ifFalse: [" Value defined by a number, there is no parents "
 		answer := self finalizeValue: (
 			( DrGValueValueItem newWith: (Array with: aPosition) ) valueItem: aNumberOrBlock)	 ].	
-	presenter notInteractive: false.
-	^ answer! !
-
-!DrGeoSketch methodsFor: 'equation' stamp: 'hlsf 6/Jan/2026 20:15:56'!
-equationOf: lineOrCircle
-	| class |
-	lineOrCircle mathItem isLineItem 
-		ifTrue: [class := DrGEquationLineItem ].
-	lineOrCircle mathItem isCircleItem
-		ifTrue: [class := DrGEquationCircleItem].
-	^ self finalizeValue: (class newWith: (
-		Array with: lineOrCircle mathItem with: self aPosition) )! !
-
-!DrGeoSketch methodsFor: 'processing' stamp: 'hlsf 14/Apr/2022 10:46:54'!
-update
-	self domain updateAllMathItems! !
-
-!DrGeoSketch methodsFor: 'text' stamp: 'hlsf 6/Jan/2026 15:17:56'!
-finalizeText: textItem
-	^ DrGeoText wrap: (self morphOf: textItem)! !
-
-!DrGeoSketch methodsFor: 'text' stamp: ''!
-text: aText
-	^ self text:aText at: self aPosition! !
-
-!DrGeoSketch methodsFor: 'text' stamp: 'hlsf 6/Jan/2026 22:30:53'!
-text: text at: position
-	| answer |
-	presenter notInteractive: true.
-	answer := self finalizeText: ((DrGTextItem newWith: (Array with: position)) text: text asText).
 	presenter notInteractive: false.
 	^ answer! !
 
@@ -9575,6 +9470,111 @@ release
 !DrGeoSketch methodsFor: 'obsolete' stamp: 'hlsf 10/Apr/2022 20:30:29'!
 fullscreen
 	! !
+
+!DrGeoSketch methodsFor: 'private' stamp: 'hlsf 6/Jan/2026 15:34:54'!
+canTransform: drgeoItem
+	drgeoItem mathItem isGeometricItem
+		ifFalse: [self error: 'Only geometric object can be transformed.' translated].! !
+
+!DrGeoSketch methodsFor: 'private' stamp: 'hlsf 4/Aug/2023 20:05:38'!
+domain
+	^ presenter domain! !
+
+!DrGeoSketch methodsFor: 'private' stamp: 'hlsf 4/Aug/2023 20:05:38'!
+drawable
+	^ presenter drawable ! !
+
+!DrGeoSketch methodsFor: 'private' stamp: 'hlsf 6/Jan/2026 15:29:06'!
+ensureDrGeoPoint: aPointOrDrGeoPoint
+	^ aPointOrDrGeoPoint isPoint 
+		ifTrue: [(self point: aPointOrDrGeoPoint ) hide] 
+		ifFalse:   [aPointOrDrGeoPoint ]! !
+
+!DrGeoSketch methodsFor: 'private' stamp: 'hlsf 6/Jan/2026 20:11:47'!
+ensureDrGeoValue: aNumberOrWrappedValueItem
+"ensure a wrapped value"
+	^ aNumberOrWrappedValueItem  isNumber 
+		ifTrue: [(self value: aNumberOrWrappedValueItem ) hide] 
+		ifFalse:   [aNumberOrWrappedValueItem]! !
+
+!DrGeoSketch methodsFor: 'private' stamp: 'hlsf 6/Jan/2026 19:53:34'!
+ensureVector: aPointOrDrGeoItem
+"ensure a DrGeo Item vector"
+	^ aPointOrDrGeoItem isPoint 
+		ifTrue: [(self vector: aPointOrDrGeoItem ) hide] 
+		ifFalse:   [aPointOrDrGeoItem ]! !
+
+!DrGeoSketch methodsFor: 'private' stamp: 'hlsf 6/Jan/2026 15:13:07'!
+finalizeCurve: mathItem
+	^ DrGeoCurve wrap: (self morphOf: mathItem ) ! !
+
+!DrGeoSketch methodsFor: 'private' stamp: 'hlsf 6/Jan/2026 15:14:59'!
+finalizeFilledCurve: mathItem
+	^ DrGeoFilledCurve wrap: (self morphOf: mathItem)! !
+
+!DrGeoSketch methodsFor: 'private' stamp: 'hlsf 6/Jan/2026 15:14:28'!
+finalizeFinitCurve: mathItem
+	^ DrGeoFinitCurve wrap: (self morphOf: mathItem )! !
+
+!DrGeoSketch methodsFor: 'private' stamp: 'hlsf 6/Jan/2026 15:29:23'!
+finalizePoint: mathItem
+	| drgeoPoint |
+	drgeoPoint := DrGeoPoint wrap: (self morphOf: mathItem).
+	drgeoPoint square.
+	^ drgeoPoint ! !
+
+!DrGeoSketch methodsFor: 'private' stamp: 'hlsf 6/Jan/2026 15:15:28'!
+finalizeSegment: mathItem
+	^ DrGeoSegment wrap: (self morphOf: mathItem )! !
+
+!DrGeoSketch methodsFor: 'private' stamp: 'hlsf 6/Jan/2026 15:17:56'!
+finalizeText: textItem
+	^ DrGeoText wrap: (self morphOf: textItem)! !
+
+!DrGeoSketch methodsFor: 'private' stamp: 'hlsf 20/May/2024 14:33:28'!
+finalizeTransformation: string with: arguments 
+	| class item |
+	class := Smalltalk classNamed: 'DrG', arguments first basicType capitalized, string, 'Item'.
+	item := class newWith: arguments.
+	^ item isPointItem
+		ifTrue: [self finalizePoint: item]
+		ifFalse: [| finalizedCurve | 
+			finalizedCurve := self finalizeCurve: item.
+			item isLocusItem ifTrue: [
+				self runningWorld ifNotNil: [:w | w doOneMinimalCycleNow].
+				self domain updateAllMathItems].
+			finalizedCurve ]! !
+
+!DrGeoSketch methodsFor: 'private' stamp: ''!
+finalizeValue: item
+"By default we don't hide the value"
+	^ self finalizeValue: item hide: false! !
+
+!DrGeoSketch methodsFor: 'private' stamp: 'hlsf 6/Jan/2026 15:16:48'!
+finalizeValue: mathItem hide: hide
+" Optionally hide the value "
+	| drgeoValue |
+	drgeoValue := DrGeoValue wrap: (self morphOf: mathItem ).
+	 hide ifTrue: [ drgeoValue hide ].
+	^ drgeoValue ! !
+
+!DrGeoSketch methodsFor: 'private' stamp: 'hlsf 6/Jan/2026 15:34:40'!
+morphOf: mathItem
+	| finalItem |
+	finalItem := self domain createFromMathItemNoCommand: mathItem .
+	^ finalItem == mathItem 
+		ifTrue: [	self drawable lastItemView ] "We create a new one, get its morph just created"
+		ifFalse: [	self drawable viewOf: finalItem] "For twin items, search for the former item"! !
+
+!DrGeoSketch methodsFor: 'private' stamp: 'hlsf 4/Aug/2023 20:05:38'!
+presenter
+	^ presenter ! !
+
+!DrGeoSketch methodsFor: 'private' stamp: 'hlsf 13/Jun/2021 22:39:05'!
+terminateDo
+	doProcess  ifNotNil: [
+		doProcess terminate.
+		doProcess := nil]! !
 
 !DrGStyle methodsFor: 'accessing' stamp: 'hlsf 9/Apr/2024 10:22:38'!
 arrow: boolean
