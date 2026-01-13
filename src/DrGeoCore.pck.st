@@ -1,10 +1,10 @@
-'From Cuis7.7 [latest update: #7791] on 12 January 2026 at 8:36:29 pm'!
+'From Cuis7.7 [latest update: #7797] on 13 January 2026 at 4:06:45 pm'!
 'Description '!
-!provides: 'DrGeoCore' 1 11!
-!requires: 'YAXO' 1 28 nil!
-!requires: 'UI-Panel' 1 140 nil!
+!provides: 'DrGeoCore' 1 12!
 !requires: 'UI-Preference' 1 28 nil!
+!requires: 'UI-Panel' 1 140 nil!
 !requires: 'Graphics-Files-Additional' 1 30 nil!
+!requires: 'YAXO' 1 28 nil!
 SystemOrganization addCategory: #'DrGeoCore-Model'!
 SystemOrganization addCategory: #'DrGeoCore-Model-Smalltalk'!
 SystemOrganization addCategory: #'DrGeoCore-Model-Item'!
@@ -22,6 +22,16 @@ SystemOrganization addCategory: #'DrGeoCore-System'!
 SystemOrganization addCategory: #'DrGeoCore-Test'!
 SystemOrganization addCategory: #DrGeoCore!
 
+
+!classDefinition: #DrGScriptPlayTool category: #'DrGeoCore-Presenter-Tool'!
+ProtoObject subclass: #DrGScriptPlayTool
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'DrGeoCore-Presenter-Tool'!
+!classDefinition: 'DrGScriptPlayTool class' category: #'DrGeoCore-Presenter-Tool'!
+DrGScriptPlayTool class
+	instanceVariableNames: ''!
 
 !classDefinition: #DrGFactory category: #'DrGeoCore-Factories'!
 Object subclass: #DrGFactory
@@ -1511,16 +1521,6 @@ DrGTool subclass: #DrGBuildTool
 	category: 'DrGeoCore-Presenter-Tool'!
 !classDefinition: 'DrGBuildTool class' category: #'DrGeoCore-Presenter-Tool'!
 DrGBuildTool class
-	instanceVariableNames: ''!
-
-!classDefinition: #DrGScriptPlayTool category: #'DrGeoCore-Presenter-Tool'!
-DrGMacroBuildTool subclass: #DrGScriptPlayTool
-	instanceVariableNames: ''
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'DrGeoCore-Presenter-Tool'!
-!classDefinition: 'DrGScriptPlayTool class' category: #'DrGeoCore-Presenter-Tool'!
-DrGScriptPlayTool class
 	instanceVariableNames: ''!
 
 !classDefinition: #DrGFlyPointBuildTool category: #'DrGeoCore-Presenter-Tool'!
@@ -3040,6 +3040,19 @@ A preference type representing the different possible style of a line.!
 
 !DrGTypeThickness commentStamp: '<historical>' prior: 0!
 A preference type representing the different possible thickness of a line.!
+
+!DrGScriptPlayTool methodsFor: 'initialize-release' stamp: ''!
+registerDependant: anObject
+	builder when: #changedState send: #switchState: to: self.
+	builder when: #cancel send: #cancel to: self.
+	builder when: #readyToBuild send: #readyToBuild to: anObject.
+	builder when: #changedScript send: #changedScript to: self! !
+
+!DrGScriptPlayTool methodsFor: 'updating' stamp: 'hlsf 11/Apr/2021 12:31:09'!
+changedScript
+" the builder inform us the user selected another script,
+do some cleaning"
+	self selectNoMorph! !
 
 !DrGFactory methodsFor: 'accessing' stamp: 'hlsf 10/Feb/2022 10:03:01'!
 add: item 
@@ -8936,13 +8949,14 @@ value: aNumber
 	(self mathItem respondsTo: #valueItem:) 
 		ifTrue: [self mathItem valueItem: aNumber]! !
 
-!DrGeoSketch methodsFor: 'DSL canvas' stamp: 'hlsf 4/Aug/2023 20:05:38'!
+!DrGeoSketch methodsFor: 'DSL canvas' stamp: 'hlsf 13/Jan/2026 15:26:42'!
 axesOn
+"Show the x-axis and y-axis"
 	 presenter axesOnOff ! !
 
-!DrGeoSketch methodsFor: 'DSL canvas' stamp: 'hlsf 6/Jan/2026 22:29:35'!
+!DrGeoSketch methodsFor: 'DSL canvas' stamp: 'hlsf 13/Jan/2026 15:27:18'!
 centerTo: point
-" Set the center of the visible canvas to this coordinate "
+"Center the view on this point"
 	presenter drawable 
 		ox: point x;
 		oy: point y;
@@ -8952,13 +8966,15 @@ centerTo: point
 fullScreen
 	presenter view fullScreen! !
 
-!DrGeoSketch methodsFor: 'DSL canvas' stamp: 'hlsf 4/Aug/2023 20:05:38'!
+!DrGeoSketch methodsFor: 'DSL canvas' stamp: 'hlsf 13/Jan/2026 15:27:52'!
 gridOn
+"Show the grid on the view"
 	 presenter gridOnOff ! !
 
-!DrGeoSketch methodsFor: 'DSL canvas' stamp: 'hlsf 6/Jan/2026 22:30:02'!
+!DrGeoSketch methodsFor: 'DSL canvas' stamp: 'hlsf 13/Jan/2026 15:33:35'!
 scale: integer
-	"set scale of the canvas"
+"Scale: the number of pixels used to represent one unit.
+The larger this number, the larger the figure."
 	presenter drawable 
 		setScaleTo: integer! !
 
@@ -8974,14 +8990,21 @@ view
 float: value at: aPoint from: startValue to: endValue 
 	^ self float: value at: aPoint from: startValue to: endValue name: ''! !
 
-!DrGeoSketch methodsFor: 'DSL digital ruler' stamp: ''!
+!DrGeoSketch methodsFor: 'DSL digital ruler' stamp: 'hlsf 13/Jan/2026 15:42:52'!
 float: aValue at: aPoint from: startValue to: endValue name: name
-"A valueslider ranging between startValue and endValue"
+"Construct a ruler at the given position with a decimal value in the interval [startValue ; endValue] 
+aValue: initial value
+aPoint: left position of the ruler
+startValue: minimum value
+endValue: maximum value
+name: name of the value
+⇒ block of code returning the current value of the ruler"
 	^ self float: aValue at: aPoint from: startValue to: endValue name: name showValue: false! !
 
-!DrGeoSketch methodsFor: 'DSL digital ruler' stamp: 'hlsf 4/Aug/2023 20:05:38'!
+!DrGeoSketch methodsFor: 'DSL digital ruler' stamp: 'hlsf 13/Jan/2026 15:41:25'!
 float: aValue at: aPoint from: startValue to: endValue name: name showValue: isValueDisplay
-"A valueslider ranging between startValue and endValue"
+"See method float:at:from:to:name:
+isValueDisplay: true when to show the current value along the ruler"
 	| segment mobile|
 	segment := self segment: aPoint to: aPoint + (170 / presenter drawable scale @0).
 	mobile := self pointOnLine:  segment at: (aValue - startValue) / (endValue - startValue).
@@ -11771,19 +11794,6 @@ builder: aBuilderClassName presenter: aPresenter
 		presenter: aPresenter;
 		initialize;
 		yourself! !
-
-!DrGScriptPlayTool methodsFor: 'initialize-release' stamp: ''!
-registerDependant: anObject
-	builder when: #changedState send: #switchState: to: self.
-	builder when: #cancel send: #cancel to: self.
-	builder when: #readyToBuild send: #readyToBuild to: anObject.
-	builder when: #changedScript send: #changedScript to: self! !
-
-!DrGScriptPlayTool methodsFor: 'updating' stamp: 'hlsf 11/Apr/2021 12:31:09'!
-changedScript
-" the builder inform us the user selected another script,
-do some cleaning"
-	self selectNoMorph! !
 
 !DrGFlyPointBuildTool methodsFor: 'initialize' stamp: ''!
 initialize
