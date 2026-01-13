@@ -2,7 +2,7 @@
 @c %**start of header
 @documentlanguage fr
 @documentencoding UTF-8
-@settitle  Dr.Geo, soit un géomètre
+@settitle  Dr.Geo, sois un géomètre
 @set drgeoVersion 19.06
 @setfilename drgeo.info
 @include ../drgeoMacro.texinfo
