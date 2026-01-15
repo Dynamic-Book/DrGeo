@@ -1,6 +1,6 @@
-'From Cuis7.7 [latest update: #7797] on 15 January 2026 at 6:12:52 pm'!
+'From Cuis7.7 [latest update: #7797] on 15 January 2026 at 7:16:09 pm'!
 'Description '!
-!provides: 'DrGeoCore' 1 15!
+!provides: 'DrGeoCore' 1 16!
 !requires: 'UI-Preference' 1 28 nil!
 !requires: 'UI-Panel' 1 140 nil!
 !requires: 'Graphics-Files-Additional' 1 30 nil!
@@ -8359,11 +8359,11 @@ valueBlock: aBlock
 rehash
 	^ hash := super rehash bitXor: valueBlock hash! !
 
-!DrGValueBlockItem methodsFor: 'updating' stamp: 'hlsf 20/May/2024 12:37:42'!
+!DrGValueBlockItem methodsFor: 'updating' stamp: 'hlsf 15/Jan/2026 18:56:25'!
 update
 	| evaluator |
 	self doParentsExist ifFalse: [^ self exist: false].
-	evaluator := parents  		ifEmpty: [ [ valueBlock value ] ]
+	evaluator := parents ifEmpty: [ [ valueBlock value ] ]
 		ifNotEmpty: [
 			parents size = 1
 				ifTrue: [ [ valueBlock value: parents first ] ] 
@@ -9515,9 +9515,9 @@ angle: vector1 to: vector2
 			with: self aPosition) )
 		hide: false! !
 
-!DrGeoSketch methodsFor: 'DSL value' stamp: 'hlsf 15/Jan/2026 18:08:11'!
+!DrGeoSketch methodsFor: 'DSL value' stamp: 'hlsf 15/Jan/2026 18:49:18'!
 angle: vertex to: point1 to: point2
-"Geometric angle defined by three points
+"Oriented angle defined by three points
 -vertex: a point, vertex of the angle
 -point1: a point in one side of the angle
 -point2: a point  in the other side of the angle"
@@ -9558,8 +9558,12 @@ freeValue: aNumberOrBlock at: aPosition
 " obsolete "
 	^ self value: aNumberOrBlock parents: {} at: aPosition! !
 
-!DrGeoSketch methodsFor: 'DSL value' stamp: 'hlsf 6/Jan/2026 20:08:04'!
+!DrGeoSketch methodsFor: 'DSL value' stamp: 'hlsf 15/Jan/2026 18:50:03'!
 geometricAngle: summit to: point1 to: point2
+"Geometric angle defined by three points
+-vertex: a point, vertex of the angle
+-point1: a point in one side of the angle
+-point2: a point  in the other side of the angle"
 	^ self finalizeValue: (DrGAngle3ptsItem newWith: (
 		Array
 			with: (self ensureDrGeoPoint: summit) mathItem
@@ -9568,8 +9572,10 @@ geometricAngle: summit to: point1 to: point2
 			with: self aPosition) )
 		hide: false! !
 
-!DrGeoSketch methodsFor: 'DSL value' stamp: 'hlsf 6/Jan/2026 20:08:58'!
+!DrGeoSketch methodsFor: 'DSL value' stamp: 'hlsf 15/Jan/2026 18:51:07'!
 lengthOf: finitCurve
+"Length of a curve
+-finitCurve: a segment, circle, arc, polygon or vector"
 	| class |
 	finitCurve mathItem isSegmentItem
 		ifTrue: [class := DrGValueSegmentlengthItem].
@@ -9584,8 +9590,11 @@ lengthOf: finitCurve
 
 	^ self finalizeValue: (class newWith: (Array with: finitCurve mathItem with: self aPosition) )! !
 
-!DrGeoSketch methodsFor: 'DSL value' stamp: 'hlsf 6/Jan/2026 20:09:49'!
-ordinateOf: pointOrVector 
+!DrGeoSketch methodsFor: 'DSL value' stamp: 'hlsf 15/Jan/2026 18:51:38'!
+ordinateOf: pointOrVector
+"Ordinate of a point or vector
+-point: a DrGeo point
+-vector: a DrGeo vector" 
 	| class drgeoItem |
 	drgeoItem := self ensureDrGeoPoint: pointOrVector .
 	drgeoItem mathItem isPointItem
@@ -9595,39 +9604,55 @@ ordinateOf: pointOrVector
 	^ self
 		finalizeValue: (class newWith: (Array with: drgeoItem mathItem with: self aPosition) )! !
 
-!DrGeoSketch methodsFor: 'DSL value' stamp: 'hlsf 6/Jan/2026 20:10:24'!
+!DrGeoSketch methodsFor: 'DSL value' stamp: 'hlsf 15/Jan/2026 18:52:22'!
 slopeOf: line
+"Slope of a straight line
+-line: a straight line"
 	^ self finalizeValue: (DrGValueSlopeItem newWith: (
 		Array with: line mathItem with: self aPosition) )! !
 
-!DrGeoSketch methodsFor: 'DSL value' stamp: 'hlsf 13/Apr/2024 10:31:34'!
+!DrGeoSketch methodsFor: 'DSL value' stamp: 'hlsf 15/Jan/2026 18:57:52'!
 value: aNumberOrBlock
+"Value object pinned at a random position
+-number: a direct number
+-block: block of code returning a number"
 	^ self value: aNumberOrBlock parents: {} at: self aPosition ! !
 
-!DrGeoSketch methodsFor: 'DSL value' stamp: 'hlsf 21/Jul/2024 23:58:29'!
-value: aNumberOrBlock at: aPosition
-	^ self value: aNumberOrBlock parents: {} at: aPosition! !
+!DrGeoSketch methodsFor: 'DSL value' stamp: 'hlsf 15/Jan/2026 18:54:52'!
+value: aNumberOrBlock at: point
+"Value object
+-number: a direct number
+-block: block of code returning a number
+-point: the position where the value is pinned"
+	^ self value: aNumberOrBlock parents: {} at: point ! !
 
 !DrGeoSketch methodsFor: 'DSL value' stamp: 'hlsf 6/Jan/2026 20:15:10'!
 value: aNumberOrBlock parent: value
 	^ self value: aNumberOrBlock parents: (Array with: value ) at: self aPosition ! !
 
-!DrGeoSketch methodsFor: 'DSL value' stamp: 'hlsf 6/Jan/2026 20:14:52'!
-value: aNumberOrBlock parents: valueArray at: aPosition
+!DrGeoSketch methodsFor: 'DSL value' stamp: 'hlsf 15/Jan/2026 19:05:21'!
+value: numberOrBlock parents: drgeoItems at: point
+"Value object
+-number: a direct number
+-block: a direct number or
+   a block of code whose argument is a MathItem collection
+   It computes a number
+-drgeoItems: a collection of DrGeoItem the mathItems are extracted from
+-point: the position where the value is pinned"
 	| answer |
 	presenter notInteractive: true.
-	aNumberOrBlock isBlock 
+	numberOrBlock isBlock 
 	ifTrue: [ " Value defined by a block of code "
 		| collection |
 		collection := OrderedCollection new.
 		collection 
-			addAll: (valueArray collect: [:value | value mathItem]);
-			add: aNumberOrBlock ;
-			add: aPosition.
+			addAll: (drgeoItems collect: [:value | value mathItem]);
+			add: numberOrBlock ;
+			add: point.
 		answer := self finalizeValue: (DrGValueBlockItem newWith: collection asArray) 		] 
 	ifFalse: [" Value defined by a number, there is no parents "
 		answer := self finalizeValue: (
-			( DrGValueValueItem newWith: (Array with: aPosition) ) valueItem: aNumberOrBlock)	 ].	
+			( DrGValueValueItem newWith: (Array with: point) ) valueItem: numberOrBlock)	 ].	
 	presenter notInteractive: false.
 	^ answer! !
 
