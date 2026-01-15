@@ -1,10 +1,10 @@
-'From Cuis7.7 [latest update: #7797] on 13 January 2026 at 4:06:45 pm'!
+'From Cuis7.7 [latest update: #7791] on 15 January 2026 at 12:17:42 pm'!
 'Description '!
-!provides: 'DrGeoCore' 1 12!
+!provides: 'DrGeoCore' 1 13!
 !requires: 'UI-Preference' 1 28 nil!
 !requires: 'UI-Panel' 1 140 nil!
-!requires: 'Graphics-Files-Additional' 1 30 nil!
 !requires: 'YAXO' 1 28 nil!
+!requires: 'Graphics-Files-Additional' 1 30 nil!
 SystemOrganization addCategory: #'DrGeoCore-Model'!
 SystemOrganization addCategory: #'DrGeoCore-Model-Smalltalk'!
 SystemOrganization addCategory: #'DrGeoCore-Model-Item'!
@@ -8954,12 +8954,13 @@ axesOn
 "Show the x-axis and y-axis"
 	 presenter axesOnOff ! !
 
-!DrGeoSketch methodsFor: 'DSL canvas' stamp: 'hlsf 13/Jan/2026 15:27:18'!
-centerTo: point
-"Center the view on this point"
+!DrGeoSketch methodsFor: 'DSL canvas' stamp: 'hlsf 15/Jan/2026 11:43:41'!
+centerTo: center
+"Center the view to a given position
+-center: the point to centered the view on"
 	presenter drawable 
-		ox: point x;
-		oy: point y;
+		ox: center x;
+		oy: center y;
 		redrawNeeded! !
 
 !DrGeoSketch methodsFor: 'DSL canvas' stamp: 'hlsf 4/Aug/2023 20:05:38'!
@@ -8971,10 +8972,11 @@ gridOn
 "Show the grid on the view"
 	 presenter gridOnOff ! !
 
-!DrGeoSketch methodsFor: 'DSL canvas' stamp: 'hlsf 13/Jan/2026 15:33:35'!
+!DrGeoSketch methodsFor: 'DSL canvas' stamp: 'hlsf 15/Jan/2026 11:42:19'!
 scale: integer
-"Scale: the number of pixels used to represent one unit.
-The larger this number, the larger the figure."
+"Change the scale of the sketch
+-integer: the number of pixels used to represent one unit.
+The larger this number, the larger the sketch."
 	presenter drawable 
 		setScaleTo: integer! !
 
@@ -8986,19 +8988,20 @@ update
 view
 	^ presenter view! !
 
-!DrGeoSketch methodsFor: 'DSL digital ruler' stamp: ''!
+!DrGeoSketch methodsFor: 'DSL digital ruler' stamp: 'hlsf 15/Jan/2026 10:51:49'!
 float: value at: aPoint from: startValue to: endValue 
+"See method float:at:from:to:name:"
 	^ self float: value at: aPoint from: startValue to: endValue name: ''! !
 
-!DrGeoSketch methodsFor: 'DSL digital ruler' stamp: 'hlsf 13/Jan/2026 15:42:52'!
+!DrGeoSketch methodsFor: 'DSL digital ruler' stamp: 'hlsf 15/Jan/2026 11:41:05'!
 float: aValue at: aPoint from: startValue to: endValue name: name
-"Construct a ruler at the given position with a decimal value in the interval [startValue ; endValue] 
-aValue: initial value
-aPoint: left position of the ruler
-startValue: minimum value
-endValue: maximum value
-name: name of the value
-⇒ block of code returning the current value of the ruler"
+"Ruler for decimal value in the interval [startValue ; endValue] 
+-aValue: initial value
+-aPoint: left position of the ruler
+-startValue: minimum value
+-endValue: maximum value
+-name: name of the value
+⇒ block of code, request its current value by sending the message #value"
 	^ self float: aValue at: aPoint from: startValue to: endValue name: name showValue: false! !
 
 !DrGeoSketch methodsFor: 'DSL digital ruler' stamp: 'hlsf 13/Jan/2026 15:41:25'!
@@ -9021,18 +9024,22 @@ isValueDisplay: true when to show the current value along the ruler"
 		ifFalse: [[mobile mathItem abscissa * ( endValue - startValue) + startValue]]  	
 	! !
 
-!DrGeoSketch methodsFor: 'DSL digital ruler' stamp: ''!
+!DrGeoSketch methodsFor: 'DSL digital ruler' stamp: 'hlsf 15/Jan/2026 10:52:36'!
 integer: value at: aPoint from: startValue to: endValue 
+"A ruler for integer value
+See method float:at:from:to:name:"
 	^ self integer: value at: aPoint from: startValue to: endValue name: ''! !
 
-!DrGeoSketch methodsFor: 'DSL digital ruler' stamp: ''!
+!DrGeoSketch methodsFor: 'DSL digital ruler' stamp: 'hlsf 15/Jan/2026 10:52:46'!
 integer: aValue at: aPoint from: startValue to: endValue name: name
-"A valueslider ranging between startValue and endValue"
+"A ruler for integer value
+See method float:at:from:to:name:"
 	^ self integer: aValue at: aPoint from: startValue to: endValue name: name showValue: false! !
 
-!DrGeoSketch methodsFor: 'DSL digital ruler' stamp: 'hlsf 4/Aug/2023 20:05:38'!
+!DrGeoSketch methodsFor: 'DSL digital ruler' stamp: 'hlsf 15/Jan/2026 10:52:50'!
 integer: aValue at: aPoint from: startValue to: endValue name: name showValue: isValueDisplay
-"A valueslider ranging between startValue and endValue"
+"A ruler for integer value
+See method float:at:from:to:name:"
 	| segment mobile|
 	segment := self segment: aPoint to: aPoint + (170 / presenter drawable scale @0).
 	mobile := self pointOnLine:  segment at: (aValue - startValue) / (endValue - startValue).
@@ -9049,8 +9056,11 @@ integer: aValue at: aPoint from: startValue to: endValue name: name showValue: i
 		ifFalse: [[(mobile mathItem abscissa * ( endValue - startValue) + startValue) floor]]  	
 	! !
 
-!DrGeoSketch methodsFor: 'DSL equation' stamp: 'hlsf 6/Jan/2026 20:15:56'!
+!DrGeoSketch methodsFor: 'DSL equation' stamp: 'hlsf 15/Jan/2026 11:46:04'!
 equationOf: lineOrCircle
+"Equation of a line or a circle
+-lineOrCirlce: a straight line or
+  circle object (see DSL line and DSL line curved)"
 	| class |
 	lineOrCircle mathItem isLineItem 
 		ifTrue: [class := DrGEquationLineItem ].
@@ -9059,130 +9069,189 @@ equationOf: lineOrCircle
 	^ self finalizeValue: (class newWith: (
 		Array with: lineOrCircle mathItem with: self aPosition) )! !
 
-!DrGeoSketch methodsFor: 'DSL helpers' stamp: ''!
+!DrGeoSketch methodsFor: 'DSL helpers' stamp: 'hlsf 15/Jan/2026 10:56:47'!
 aPosition
+"Return a random position (a point) with integer coordinates 
+in the interval [-5 : 5]"
 	^ 10 atRandom - 5 @ (10 atRandom - 5)! !
 
-!DrGeoSketch methodsFor: 'DSL helpers' stamp: 'hlsf 13/Jun/2021 22:22:33'!
-do: aBlock
-	"Execute the given construction in a forked process so the user can see the on going construction or animation"
+!DrGeoSketch methodsFor: 'DSL helpers' stamp: 'hlsf 15/Jan/2026 11:48:09'!
+do: block
+"Execute code in a forked process 
+-block: block of code containing constructions or 
+  operations on existing geometric objects"
 	doProcess ifNotNil: [doProcess terminate].
-	doProcess := aBlock newProcess.
+	doProcess := block newProcess.
 	doProcess priority: Processor userBackgroundPriority.
 	doProcess resume! !
 
-!DrGeoSketch methodsFor: 'DSL helpers' stamp: 'hlsf 4/Aug/2023 20:05:38'!
-exportToImage: aFilename
-"Export to a SVG file"
-	presenter exportToImage: aFilename! !
+!DrGeoSketch methodsFor: 'DSL helpers' stamp: 'hlsf 15/Jan/2026 11:51:14'!
+exportToImage: filename
+"Export to a SVG file the view with its current extent and scale
+-filename: a string without the '.svg' extension. The file is saved
+  in the user myExports directory"
+	presenter exportToImage: filename! !
 
-!DrGeoSketch methodsFor: 'DSL line' stamp: 'hlsf 6/Jan/2026 19:55:00'!
+!DrGeoSketch methodsFor: 'DSL line' stamp: 'hlsf 15/Jan/2026 11:51:44'!
 angleBisector: angle
+"Bisector of an angle
+-angle: geometric angle defined by three points (see DSL value)"
 	^ self finalizeCurve: 
 		(DrGLineAngleBisectorItem newWith: (Array with: angle mathItem))! !
 
-!DrGeoSketch methodsFor: 'DSL line' stamp: 'hlsf 6/Jan/2026 19:55:34'!
+!DrGeoSketch methodsFor: 'DSL line' stamp: 'hlsf 15/Jan/2026 12:01:49'!
 angleBisectorSummit: summit side1: point1 side2: point2
+"Bisector of an angle defined by three points
+-summit: the point the bisector is passing through, summit of the angle
+-point1: a point in one side of the angle
+-point2: a point in the other side of the angle"
 	^ self finalizeCurve: (DrGAngleBisector3ptsItem newWith: (
 		Array
 			with: (self ensureDrGeoPoint: point1 ) mathItem
 			with: (self ensureDrGeoPoint: summit) mathItem
 			with: (self ensureDrGeoPoint: point2 ) mathItem) )! !
 
-!DrGeoSketch methodsFor: 'DSL line' stamp: 'hlsf 6/Jan/2026 19:55:56'!
+!DrGeoSketch methodsFor: 'DSL line' stamp: 'hlsf 15/Jan/2026 11:57:48'!
 line: point1 to: point2
+"Line defined by two points
+- point1: a point the line is passing through
+-point2: another point the line is passing through"
 	^ self finalizeCurve: (DrGLine2ptsItem newWith: (
 		Array
 			with: (self ensureDrGeoPoint: point1 ) mathItem
 			with: (self ensureDrGeoPoint: point2 ) mathItem) )! !
 
-!DrGeoSketch methodsFor: 'DSL line' stamp: 'hlsf 6/Jan/2026 19:57:31'!
+!DrGeoSketch methodsFor: 'DSL line' stamp: 'hlsf 15/Jan/2026 11:59:05'!
 parallel: direction at: point
+"Parallel line
+-direction: a direction (straight line, ray, segment, vector) 
+   the line is parallel to
+-point: a point the parallel line is passing through"
 	^ self finalizeCurve: (DrGLineParallelItem newWith: (
 		Array 
 			with: direction mathItem
 			with: (self ensureDrGeoPoint: point) mathItem) )! !
 
-!DrGeoSketch methodsFor: 'DSL line' stamp: 'hlsf 6/Jan/2026 19:58:05'!
+!DrGeoSketch methodsFor: 'DSL line' stamp: 'hlsf 15/Jan/2026 12:00:18'!
 perpendicular: drection at: point 
+"Perpendicular line
+-direction: a direction (straight line, ray, segment, vector) 
+   the line is perpendicular to
+-point: a point the perpendicular line is passing through"
 	^ self finalizeCurve: (DrGLinePerpendicularItem newWith: (
 		Array
 			with: drection mathItem
 			with: (self ensureDrGeoPoint: point) mathItem) )! !
 
-!DrGeoSketch methodsFor: 'DSL line' stamp: 'hlsf 6/Jan/2026 19:58:19'!
+!DrGeoSketch methodsFor: 'DSL line' stamp: 'hlsf 15/Jan/2026 12:01:10'!
 perpendicularBisector: segment
+"Perpendicular bisector
+-segment: the segment the line is perpendicular to in its middle"
 	^ self finalizeCurve: (
 		DrGPerpendicularBisectorItem newWith: (Array with: segment mathItem) )! !
 
-!DrGeoSketch methodsFor: 'DSL line' stamp: 'hlsf 6/Jan/2026 19:58:40'!
+!DrGeoSketch methodsFor: 'DSL line' stamp: 'hlsf 15/Jan/2026 12:02:46'!
 perpendicularBisector: point1 to: point2
+"Perpendicular bisector of a segment defined by two points
+-point1: an extremity of the segment
+-point2: the other extremity of the segment"
 	^ self finalizeCurve: (DrGLinePerpendicularBisector2ptsItem newWith: (
 		Array 
 			with: (self ensureDrGeoPoint: point1) mathItem
 			with: (self ensureDrGeoPoint: point2) mathItem) )! !
 
-!DrGeoSketch methodsFor: 'DSL line' stamp: 'hlsf 6/Jan/2026 22:35:46'!
-ray: origin to: point
+!DrGeoSketch methodsFor: 'DSL line' stamp: 'hlsf 15/Jan/2026 12:03:28'!
+ray: origin to: anotherPoint
+"Ray 
+-origin: starting point of the ray
+-anotherPoint: a point the ray is passing through"
 	^ self finalizeCurve: (DrGRay2ptsItem newWith: (
 		Array 
 			with: (self ensureDrGeoPoint: origin) mathItem
-			with: (self ensureDrGeoPoint: point) mathItem) )! !
+			with: (self ensureDrGeoPoint: anotherPoint ) mathItem) )! !
 
-!DrGeoSketch methodsFor: 'DSL line' stamp: 'hlsf 6/Jan/2026 19:54:00'!
+!DrGeoSketch methodsFor: 'DSL line' stamp: 'hlsf 15/Jan/2026 12:04:01'!
 segment: point1 to: point2
+"Segment 
+-point1: an extremity of the segment
+-point2: the other extremity of the segment"
 	^ self finalizeSegment: (
 		DrGSegment2ptsItem newWith: (
 			Array 
 				with: (self ensureDrGeoPoint: point1) mathItem	
 				with: (self ensureDrGeoPoint: point2) mathItem) )! !
 
-!DrGeoSketch methodsFor: 'DSL line curved' stamp: 'hlsf 6/Jan/2026 19:43:25'!
-arc: point1 to: point2 to: point3
+!DrGeoSketch methodsFor: 'DSL line curved' stamp: 'hlsf 15/Jan/2026 11:38:04'!
+arc: start to: aPoint to: end
+"Arc of circle defined by three points
+-start: starting point of the arc
+-aPoint: a point the arc is passing through
+-end: ending point of the arc"
 	^ self finalizeFilledCurve: (DrGArc3ptsItem newWith: (
 		Array
-			with: (self ensureDrGeoPoint: point1) mathItem
-			with: (self ensureDrGeoPoint: point2) mathItem
-			with: (self ensureDrGeoPoint: point3 ) mathItem) )! !
+			with: (self ensureDrGeoPoint: start) mathItem
+			with: (self ensureDrGeoPoint: aPoint) mathItem
+			with: (self ensureDrGeoPoint: end) mathItem) )! !
 
-!DrGeoSketch methodsFor: 'DSL line curved' stamp: 'hlsf 6/Jan/2026 22:33:24'!
-arcCenter: centre from: extremity1 to: extremity2
+!DrGeoSketch methodsFor: 'DSL line curved' stamp: 'hlsf 15/Jan/2026 11:38:14'!
+arcCenter: center from: start to: end
+"Arc of circle defined by three points
+-center: a point center of the circle
+-start: starting point of the arc
+-end: ending point of the arc"
 	^ self finalizeFilledCurve: (DrGArcCenterAngleItem newWith: (
 		Array
-			with: (self ensureDrGeoPoint: centre ) mathItem
-			with: (self ensureDrGeoPoint: extremity1 ) mathItem
-			with: (self ensureDrGeoPoint: extremity2 ) mathItem) )! !
+			with: (self ensureDrGeoPoint: center ) mathItem
+			with: (self ensureDrGeoPoint: start ) mathItem
+			with: (self ensureDrGeoPoint: end ) mathItem) )! !
 
-!DrGeoSketch methodsFor: 'DSL line curved' stamp: 'hlsf 6/Jan/2026 20:11:47'!
-circleCenter: center radius: value
+!DrGeoSketch methodsFor: 'DSL line curved' stamp: 'hlsf 15/Jan/2026 12:05:13'!
+circleCenter: center radius: radius
+"Circle defined by its center and radius
+- center: a point, center of the circle
+- radius: a number or a computed value (see DSL value)
+   representing the radius of the circle"
 	^ self finalizeFilledCurve: (DrGCircleRadiusItem  newWith: (
 		Array
 			with: (self ensureDrGeoPoint: center) mathItem
-			with: (self ensureDrGeoValue: value) mathItem) )! !
+			with: (self ensureDrGeoValue: radius ) mathItem) )! !
 
-!DrGeoSketch methodsFor: 'DSL line curved' stamp: 'hlsf 6/Jan/2026 19:45:42'!
+!DrGeoSketch methodsFor: 'DSL line curved' stamp: 'hlsf 15/Jan/2026 12:04:32'!
 circleCenter: center segment: segment
+"Circle defined by its center and radius
+-center: a point
+-segment: a segment whose length is used as the radius"
 	^ self finalizeFilledCurve: (DrGCircleSegmentItem  newWith: (
 		Array 
 			with: (self ensureDrGeoPoint: center) mathItem 
 			with: segment mathItem) )! !
 
-!DrGeoSketch methodsFor: 'DSL line curved' stamp: 'hlsf 6/Jan/2026 19:46:16'!
+!DrGeoSketch methodsFor: 'DSL line curved' stamp: 'hlsf 15/Jan/2026 12:10:23'!
 circleCenter: center to: point
+"Circle defined by two points
+-center: center of the circle
+-point: a point the circle is passing through"
 	^ self finalizeFilledCurve: (DrGCircle2ptsItem newWith: (
 		Array
 			with: (self ensureDrGeoPoint: center ) mathItem
 			with: (self ensureDrGeoPoint: point ) mathItem) )! !
 
-!DrGeoSketch methodsFor: 'DSL line curved' stamp: 'hlsf 6/Jan/2026 19:56:50'!
-locusOf: dependentPoint when: mobilePoint
-	mobilePoint mathItem isPointItemOnCurve 
+!DrGeoSketch methodsFor: 'DSL line curved' stamp: 'hlsf 15/Jan/2026 12:12:29'!
+locusOf: dependent when: mobile
+"Locus of a point given another point
+-mobile: a point mobile on a line (straight or curved)
+-dependent: a point dependent by construction on the 'mobile' point"
+	mobile mathItem isPointItemOnCurve 
 		ifFalse: [self error: 'The second point provided in the call must be on a curve.'].
 	^ self finalizeCurve: (
-		DrGLocus2ptsItem newWith: (Array with: mobilePoint mathItem with: dependentPoint mathItem) )! !
+		DrGLocus2ptsItem newWith: (Array with: mobile mathItem with: dependent mathItem) )! !
 
-!DrGeoSketch methodsFor: 'DSL line curved' stamp: ''!
+!DrGeoSketch methodsFor: 'DSL line curved' stamp: 'hlsf 15/Jan/2026 12:16:38'!
 plot: f from: x0 to: x1
+"Plot the curve of a one argument function in the x interval [x0 ; x1]
+-f: block of code to compute the function. ex: [:x | x + (10 * x) cos]
+-x0: minimun abscissa to plot the function
+-x1: maximum abscissa"
 | mobile s pen|
 	s := self segment: x0@0 to: x1@0.
 	mobile := self pointOnLine: s at: 0.
@@ -9192,20 +9261,20 @@ plot: f from: x0 to: x1
 	^ (self locusOf: pen when: mobile) color: Color blue
 ! !
 
-!DrGeoSketch methodsFor: 'DSL point' stamp: 'hlsf 6/Jan/2026 19:48:45'!
-altIntersectionOf: curve1 and: curve2 
+!DrGeoSketch methodsFor: 'DSL point' stamp: 'hlsf 15/Jan/2026 10:39:33'!
+altIntersectionOf: line1 and: line2 
 "use this one when you want the intersection point when non straight line are involved"
 	| item |
 	item := DrGPointIntersectionItem newWith: (
-		Array with: curve1 mathItem with: curve2 mathItem with: 0 @ 0).
+		Array with: line1 mathItem with: line2 mathItem with: 0 @ 0).
 	item k: 1.
 	^ self finalizePoint: item! !
 
-!DrGeoSketch methodsFor: 'DSL point' stamp: 'hlsf 6/Jan/2026 19:49:28'!
-intersectionOf: curve1 and: curve2 
+!DrGeoSketch methodsFor: 'DSL point' stamp: 'hlsf 15/Jan/2026 10:39:49'!
+intersectionOf: line1 and: line2 
 	| item |
 	item := DrGPointIntersectionItem newWith: (
-		Array with: curve1 mathItem with: curve2 mathItem with: 0 @ 0).
+		Array with: line1 mathItem with: line2 mathItem with: 0 @ 0).
 	item k: -1.
 	^ self finalizePoint: item! !
 
@@ -9237,10 +9306,10 @@ point: block parents: valueArray
 	array := Array with: block withAll: (valueArray collect: [:value | value mathItem]).
 	^ self finalizePoint: (DrGPointBlockItem newWith: array)! !
 
-!DrGeoSketch methodsFor: 'DSL point' stamp: 'hlsf 6/Jan/2026 19:50:57'!
-pointOnLine: curve at: abscissa 
+!DrGeoSketch methodsFor: 'DSL point' stamp: 'hlsf 15/Jan/2026 10:40:01'!
+pointOnLine: line at: abscissa 
 	| mathItem |
-	mathItem := DrGPointOncurveItem newWith: (Array with:curve mathItem with: 0 @ 0).
+	mathItem := DrGPointOncurveItem newWith: (Array with:line mathItem with: 0 @ 0).
 	mathItem setCurveAbscissa: abscissa.
 	^ self finalizePoint: mathItem ! !
 
