@@ -1,10 +1,10 @@
-'From Cuis7.7 [latest update: #7791] on 15 January 2026 at 12:17:42 pm'!
+'From Cuis7.7 [latest update: #7797] on 15 January 2026 at 5:29:35 pm'!
 'Description '!
-!provides: 'DrGeoCore' 1 13!
+!provides: 'DrGeoCore' 1 14!
 !requires: 'UI-Preference' 1 28 nil!
 !requires: 'UI-Panel' 1 140 nil!
-!requires: 'YAXO' 1 28 nil!
 !requires: 'Graphics-Files-Additional' 1 30 nil!
+!requires: 'YAXO' 1 28 nil!
 SystemOrganization addCategory: #'DrGeoCore-Model'!
 SystemOrganization addCategory: #'DrGeoCore-Model-Smalltalk'!
 SystemOrganization addCategory: #'DrGeoCore-Model-Item'!
@@ -9261,98 +9261,152 @@ plot: f from: x0 to: x1
 	^ (self locusOf: pen when: mobile) color: Color blue
 ! !
 
-!DrGeoSketch methodsFor: 'DSL point' stamp: 'hlsf 15/Jan/2026 10:39:33'!
-altIntersectionOf: line1 and: line2 
-"use this one when you want the intersection point when non straight line are involved"
+!DrGeoSketch methodsFor: 'DSL point' stamp: 'hlsf 15/Jan/2026 16:55:13'!
+altIntersectionOf: line1 and: line2
+"The alternate point of intersection between two lines
+-line1: a straight or curved line
+-line2: a straight or curved line
+When requesting the intersection with one curved line, the second point
+is requested with this method."
 	| item |
 	item := DrGPointIntersectionItem newWith: (
 		Array with: line1 mathItem with: line2 mathItem with: 0 @ 0).
 	item k: 1.
 	^ self finalizePoint: item! !
 
-!DrGeoSketch methodsFor: 'DSL point' stamp: 'hlsf 15/Jan/2026 10:39:49'!
+!DrGeoSketch methodsFor: 'DSL point' stamp: 'hlsf 15/Jan/2026 16:51:55'!
 intersectionOf: line1 and: line2 
+"Point of intersection between two lines
+-line1: a straight or curved line
+-line2: a straight or curved line"
 	| item |
 	item := DrGPointIntersectionItem newWith: (
 		Array with: line1 mathItem with: line2 mathItem with: 0 @ 0).
 	item k: -1.
 	^ self finalizePoint: item! !
 
-!DrGeoSketch methodsFor: 'DSL point' stamp: 'hlsf 6/Jan/2026 19:49:43'!
+!DrGeoSketch methodsFor: 'DSL point' stamp: 'hlsf 15/Jan/2026 16:50:05'!
 middleOf: segment
+"Middle of a segment
+-segment: a segment object, see DSL line"
 	^ self
 		finalizePoint: (DrGPointMiddlesegmentItem newWith: {segment mathItem})! !
 
-!DrGeoSketch methodsFor: 'DSL point' stamp: 'hlsf 6/Jan/2026 19:50:03'!
+!DrGeoSketch methodsFor: 'DSL point' stamp: 'hlsf 15/Jan/2026 16:49:45'!
 middleOf: point1 and: point2 
+"Middle of a segment defined by two points
+-point1: an extremity of the segment
+-point2: the other extremity of the segment"
 	^ self finalizePoint: (DrGPointMiddle2ptsItem newWith: (
 		Array 
 			with: (self ensureDrGeoPoint: point1) mathItem 
 			with: (self ensureDrGeoPoint: point2) mathItem) )! !
 
-!DrGeoSketch methodsFor: 'DSL point' stamp: 'hlsf 13/Apr/2024 10:11:18'!
+!DrGeoSketch methodsFor: 'DSL point' stamp: 'hlsf 15/Jan/2026 15:56:19'!
 point: aPointOrBlock
+"Point defined by its coordinates
+-aPoint: a Smalltalk point defined as 5@4, -5@3.4, (5/3)@(1/3) 
+-aBlock: a block whose computation returns a Smalltalk point 
+   ex. [5 atRandom @ 10]"
 	^ aPointOrBlock isPoint 
 		ifTrue:  [self finalizePoint: (DrGPointFreeItem newWith: {aPointOrBlock})]
 		ifFalse: [self finalizePoint: (DrGPointBlockItem newWith: (Array with: aPointOrBlock)	)]! !
 
-!DrGeoSketch methodsFor: 'DSL point' stamp: 'hlsf 6/Jan/2026 19:50:27'!
-point: block parent: value
-	^  self point: block parents: (Array with: value )! !
+!DrGeoSketch methodsFor: 'DSL point' stamp: 'hlsf 15/Jan/2026 16:09:40'!
+point: block parent: drgeoItem
+"Point defined by a block of code
+-block: a block of code with a MathItem argument. 
+   The block returns a Smalltalk point
+-drgeoItem: the Item whose MathItem is passed as argument to the block.
+   See DrGMathItem class hierarchy"
+	^  self point: block parents: (Array with: drgeoItem)! !
 
-!DrGeoSketch methodsFor: 'DSL point' stamp: 'hlsf 6/Jan/2026 19:50:45'!
-point: block parents: valueArray
+!DrGeoSketch methodsFor: 'DSL point' stamp: 'hlsf 15/Jan/2026 16:09:21'!
+point: block parents: drgeoItems
+"Point defined by a block of code
+-block: a block of code whose argument is a MathItem collection
+   The block returns a Smalltalk point
+-drgeoItems: a collection of DrGeoItem"
 	| array |
-	array := Array with: block withAll: (valueArray collect: [:value | value mathItem]).
+	array := Array with: block withAll: (drgeoItems collect: [:value | value mathItem]).
 	^ self finalizePoint: (DrGPointBlockItem newWith: array)! !
 
-!DrGeoSketch methodsFor: 'DSL point' stamp: 'hlsf 15/Jan/2026 10:40:01'!
+!DrGeoSketch methodsFor: 'DSL point' stamp: 'hlsf 15/Jan/2026 16:47:35'!
 pointOnLine: line at: abscissa 
+"Point mobile on a line
+-line: straight or curved line (see DSL line, DSL line curved)
+-abscissa: a number in the interval [0 ; 1]"
 	| mathItem |
 	mathItem := DrGPointOncurveItem newWith: (Array with:line mathItem with: 0 @ 0).
 	mathItem setCurveAbscissa: abscissa.
 	^ self finalizePoint: mathItem ! !
 
-!DrGeoSketch methodsFor: 'DSL point' stamp: 'hlsf 6/Jan/2026 19:51:19'!
+!DrGeoSketch methodsFor: 'DSL point' stamp: 'hlsf 15/Jan/2026 16:43:34'!
 pointX: value1 Y: value2
+"Point defined by two computed values
+-value1: a computed value for the abscissa
+-value2: a computer value for the ordinate
+See DSL value"
 	^ self finalizePoint: (DrGPointCoordinateItem  newWith: (
 		Array with: value1 mathItem with:  value2 mathItem) )! !
 
-!DrGeoSketch methodsFor: 'DSL polygon' stamp: 'hlsf 6/Jan/2026 22:38:23'!
-polygon: pointCollection
+!DrGeoSketch methodsFor: 'DSL polygon' stamp: 'hlsf 15/Jan/2026 17:01:52'!
+polygon: points
+"Polygon defined by its vertices
+-points: a collection of Smalltalk points or DrGeo points
+   ex: {3@3 . pt2 . pt3}"
 	^ self finalizeFilledCurve: (
 		DrGPolygonNptsItem newWith: (
-			pointCollection collect: [:point | (self ensureDrGeoPoint: point ) mathItem]))! !
+			points collect: [:point | (self ensureDrGeoPoint: point ) mathItem]))! !
 
-!DrGeoSketch methodsFor: 'DSL polygon' stamp: 'hlsf 6/Jan/2026 20:11:47'!
+!DrGeoSketch methodsFor: 'DSL polygon' stamp: 'hlsf 15/Jan/2026 17:05:33'!
 regularPolygonCenter: center vertex: vertex sides: value
+"Regular polygon
+-center: the center of the regular polygon
+-vertex: a vertex of the polygon, anyone
+-value: an integer number of a computer value
+   representing the number of sides of the polygon"
 	^ self finalizeFilledCurve: (DrGPolygonRegularItem newWith: (
 		Array
 			with: (self ensureDrGeoPoint: center ) mathItem
 			with: (self ensureDrGeoPoint: vertex ) mathItem
 			with: (self ensureDrGeoValue: value ) mathItem) )! !
 
-!DrGeoSketch methodsFor: 'DSL text' stamp: ''!
-text: aText
-	^ self text:aText at: self aPosition! !
+!DrGeoSketch methodsFor: 'DSL text' stamp: 'hlsf 15/Jan/2026 17:10:41'!
+text: text
+"Text pinned anywhere in the view
+-text: a string"
+	^ self text: text at: self aPosition! !
 
-!DrGeoSketch methodsFor: 'DSL text' stamp: 'hlsf 6/Jan/2026 22:30:53'!
-text: text at: position
+!DrGeoSketch methodsFor: 'DSL text' stamp: 'hlsf 15/Jan/2026 17:10:19'!
+text: text at: point
+"Text pinned in the view
+-text: a string
+-point: position where is pinned the text"
 	| answer |
 	presenter notInteractive: true.
-	answer := self finalizeText: ((DrGTextItem newWith: (Array with: position)) text: text asText).
+	answer := self finalizeText: ((DrGTextItem newWith: (Array with: point )) text: text asText).
 	presenter notInteractive: false.
 	^ answer! !
 
-!DrGeoSketch methodsFor: 'DSL transformations' stamp: 'hlsf 6/Jan/2026 19:52:25'!
-reflect: geometricItem axis: line
+!DrGeoSketch methodsFor: 'DSL transformations' stamp: 'hlsf 15/Jan/2026 17:21:18'!
+reflect: geometricItem axis: axis
+"Transformation by axial symmetry
+-geometricItem: the object to transform
+-axe: a straight line representing the axe of the symmetry"
 	self canTransform: geometricItem .
 	^ self 
 		finalizeTransformation: 'Reflexion' 
-		with: (Array with: geometricItem mathItem with: line mathItem)! !
+		with: (Array with: geometricItem mathItem with: axis mathItem)! !
 
-!DrGeoSketch methodsFor: 'DSL transformations' stamp: 'hlsf 6/Jan/2026 20:11:47'!
-rotate: geometricItem center: center angle: value 
+!DrGeoSketch methodsFor: 'DSL transformations' stamp: 'hlsf 15/Jan/2026 17:23:14'!
+rotate: geometricItem center: center angle: value
+"Transformation by rotation
+-geometricItem: the object to transform
+-center: a point representing the center of the rotation
+-value: a number or computed value (see DSL value)
+   representing the angle in radian"
+
 	self canTransform: geometricItem .
 	^ self 
 		finalizeTransformation: 'Rotation' 
@@ -9362,15 +9416,25 @@ rotate: geometricItem center: center angle: value
 				with: (self ensureDrGeoPoint: center) mathItem 
 				with: (self ensureDrGeoValue: value) mathItem) 	! !
 
-!DrGeoSketch methodsFor: 'DSL transformations' stamp: 'hlsf 6/Jan/2026 19:52:48'!
-rotate: geometricItem center: center angleDegrees: value 
-"Only work when value is a number and not an already existing value item, otherwise no conversion "
+!DrGeoSketch methodsFor: 'DSL transformations' stamp: 'hlsf 15/Jan/2026 17:25:14'!
+rotate: geometricItem center: center angleDegrees: number 
+"Transformation by rotation
+-geometricItem: the object to transform
+-center: a point representing the center of the rotation
+-number a number representing the angle in degrees"
+
 	| convertedValue |
-	convertedValue := value isNumber ifTrue: [value degreesToRadians] ifFalse: [value].
+	convertedValue := number isNumber ifTrue: [number degreesToRadians] ifFalse: [number ].
 	^ self rotate: geometricItem center: center angle: convertedValue ! !
 
-!DrGeoSketch methodsFor: 'DSL transformations' stamp: 'hlsf 6/Jan/2026 20:11:47'!
+!DrGeoSketch methodsFor: 'DSL transformations' stamp: 'hlsf 15/Jan/2026 17:26:42'!
 scale: geometricItem center: center factor: value 
+"Transformation by homothety (scale)
+-geometricItem: the object to transform
+-center: a point representing the center of the homothety
+-value: a number or computed value (see DSL value)
+   representing the scaling factor"
+
 	self canTransform: geometricItem.
 	^ self 
 		finalizeTransformation: 'Homothety' 
@@ -9380,8 +9444,12 @@ scale: geometricItem center: center factor: value
 			with: (self ensureDrGeoValue: value) mathItem)
 ! !
 
-!DrGeoSketch methodsFor: 'DSL transformations' stamp: 'hlsf 6/Jan/2026 19:53:02'!
-symmetry: geometricItem center: center 
+!DrGeoSketch methodsFor: 'DSL transformations' stamp: 'hlsf 15/Jan/2026 17:21:25'!
+symmetry: geometricItem center: center
+"Transformation by central symmetry
+-geometricItem: the object to transform
+-center: a point representing the center of the symmetry"
+
 	self canTransform: geometricItem .
 	^ self 
 		finalizeTransformation: 'Symmetry' 
@@ -9389,14 +9457,18 @@ symmetry: geometricItem center: center
 			with: geometricItem mathItem 
 			with: (self ensureDrGeoPoint: center) mathItem)! !
 
-!DrGeoSketch methodsFor: 'DSL transformations' stamp: 'hlsf 6/Jan/2026 19:53:08'!
-translate: geometricItem vector: drgeoVector 
+!DrGeoSketch methodsFor: 'DSL transformations' stamp: 'hlsf 15/Jan/2026 17:28:54'!
+translate: geometricItem vector: vector 
+"Transformation by translation
+-geometricItem: the object to transform
+-vector: a Smalltalk point (3@4) or computed vector (see vector:)"
+
 	self canTransform: geometricItem .
 	^ self 
 		finalizeTransformation: 'Translation' 
 		with: (Array
 			with: geometricItem mathItem
-			with: (self ensureVector: drgeoVector) mathItem)! !
+			with: (self ensureVector: vector) mathItem)! !
 
 !DrGeoSketch methodsFor: 'DSL transformations' stamp: 'hlsf 6/Jan/2026 19:54:17'!
 vector: point
