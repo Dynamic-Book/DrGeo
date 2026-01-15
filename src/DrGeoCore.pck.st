@@ -1,6 +1,6 @@
-'From Cuis7.7 [latest update: #7797] on 15 January 2026 at 5:29:35 pm'!
+'From Cuis7.7 [latest update: #7797] on 15 January 2026 at 6:12:52 pm'!
 'Description '!
-!provides: 'DrGeoCore' 1 14!
+!provides: 'DrGeoCore' 1 15!
 !requires: 'UI-Preference' 1 28 nil!
 !requires: 'UI-Panel' 1 140 nil!
 !requires: 'Graphics-Files-Additional' 1 30 nil!
@@ -9470,22 +9470,30 @@ translate: geometricItem vector: vector
 			with: geometricItem mathItem
 			with: (self ensureVector: vector) mathItem)! !
 
-!DrGeoSketch methodsFor: 'DSL transformations' stamp: 'hlsf 6/Jan/2026 19:54:17'!
+!DrGeoSketch methodsFor: 'DSL transformations' stamp: 'hlsf 15/Jan/2026 17:50:15'!
 vector: point
+"Vector defined by its coordinates
+-point: a Smalltalk point or DrGeo point"
 	^ self finalizeCurve: (DrGVector2ptsItem newWith: (
 		Array
 			with: (self ensureDrGeoPoint: 0@0) mathItem
 			with: (self ensureDrGeoPoint: point) mathItem) )! !
 
-!DrGeoSketch methodsFor: 'DSL transformations' stamp: 'hlsf 6/Jan/2026 19:54:42'!
-vector: point1 to: point2 
+!DrGeoSketch methodsFor: 'DSL transformations' stamp: 'hlsf 15/Jan/2026 17:53:53'!
+vector: origin to: extremity 
+"Vector defined by its origin and extremity
+-origin: a Smalltalk point or DrGeo point representing its origin
+-extremity: a Smalltalk point or DrGeo point representing its extremity"
 	^ self finalizeCurve: (DrGVector2ptsItem newWith: (
 		Array
-			with: (self ensureDrGeoPoint: point1 ) mathItem
-			with: (self ensureDrGeoPoint: point2 ) mathItem) )! !
+			with: (self ensureDrGeoPoint: origin) mathItem
+			with: (self ensureDrGeoPoint: extremity) mathItem) )! !
 
-!DrGeoSketch methodsFor: 'DSL value' stamp: 'hlsf 6/Jan/2026 20:00:30'!
+!DrGeoSketch methodsFor: 'DSL value' stamp: 'hlsf 15/Jan/2026 17:57:16'!
 abscissaOf: pointOrVector
+"Abscissa of a point or vector
+-point: a DrGeo point
+-vector: a DrGeo vector"
 	| class drgeoItem |
 	drgeoItem := self ensureDrGeoPoint: pointOrVector .
 	drgeoItem mathItem isPointItem
@@ -9495,28 +9503,39 @@ abscissaOf: pointOrVector
 	^ self finalizeValue: (class newWith: (
 		Array with: drgeoItem mathItem with:  self aPosition) )! !
 
-!DrGeoSketch methodsFor: 'DSL value' stamp: 'hlsf 6/Jan/2026 20:01:24'!
-angle: vector1 to: vectoe2
+!DrGeoSketch methodsFor: 'DSL value' stamp: 'hlsf 15/Jan/2026 17:58:58'!
+angle: vector1 to: vector2
+"Oriented angle defined by two vectors
+-vector1: a point or DrGeo vector
+-vector2: a point or DrGeo vector"
 	^ self finalizeValue: (DrGAngleVectorsItem newWith: (
 		Array 
 			with: (self ensureVector: vector1) mathItem
-			with: (self ensureVector: vectoe2 ) mathItem
+			with: (self ensureVector: vector2) mathItem
 			with: self aPosition) )
 		hide: false! !
 
-!DrGeoSketch methodsFor: 'DSL value' stamp: 'hlsf 6/Jan/2026 20:03:13'!
-angle: summit to: point1 to: point2
+!DrGeoSketch methodsFor: 'DSL value' stamp: 'hlsf 15/Jan/2026 18:08:11'!
+angle: vertex to: point1 to: point2
+"Geometric angle defined by three points
+-vertex: a point, vertex of the angle
+-point1: a point in one side of the angle
+-point2: a point  in the other side of the angle"
 	^ self finalizeValue: (DrGAngle3ptsOrientedItem newWith: (
 		Array
-			with: (self ensureDrGeoPoint: summit) mathItem
+			with: (self ensureDrGeoPoint: vertex ) mathItem
 			with: (self ensureDrGeoPoint: point1) mathItem
 			with: (self ensureDrGeoPoint: point2) mathItem
 			with: self aPosition) )
 		hide: false! !
 
-!DrGeoSketch methodsFor: 'DSL value' stamp: 'hlsf 6/Jan/2026 20:06:16'!
+!DrGeoSketch methodsFor: 'DSL value' stamp: 'hlsf 15/Jan/2026 18:12:30'!
 distance: item1 to: item2 
-	"Distance from a point to a line or another point"
+"Distance between two points or a point and a straight line
+-item1: a point or a line
+-item2: a point or a line
+Either item1 or item2 must be a point"
+
 	| arg class drgeoItem1 drgeoItem2 |
 	"Try to wrap to point in case the user provided point coordinates"
 	drgeoItem1 := self ensureDrGeoPoint: item1.
