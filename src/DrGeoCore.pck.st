@@ -1,6 +1,6 @@
-'From Cuis7.7 [latest update: #7791] on 17 January 2026 at 9:23:15 am'!
+'From Cuis7.7 [latest update: #7791] on 17 January 2026 at 10:42:43 pm'!
 'Description '!
-!provides: 'DrGeoCore' 1 17!
+!provides: 'DrGeoCore' 1 18!
 !requires: 'UI-Preference' 1 28 nil!
 !requires: 'UI-Panel' 1 140 nil!
 !requires: 'YAXO' 1 28 nil!
@@ -9287,12 +9287,12 @@ intersectionOf: line1 and: line2
 	item k: -1.
 	^ self finalizePoint: item! !
 
-!DrGeoSketch methodsFor: 'DSL point' stamp: 'hlsf 15/Jan/2026 16:50:05'!
+!DrGeoSketch methodsFor: 'DSL point' stamp: 'hlsf 17/Jan/2026 22:28:09'!
 middleOf: segment
 "Middle of a segment
 -segment: a segment object, see DSL line"
 	^ self
-		finalizePoint: (DrGPointMiddlesegmentItem newWith: {segment mathItem})! !
+		finalizePoint: (DrGPointMiddlesegmentItem newWith: (Array with: segment mathItem))! !
 
 !DrGeoSketch methodsFor: 'DSL point' stamp: 'hlsf 17/Jan/2026 09:15:55'!
 middleOf: point1 and: point2 
@@ -9304,7 +9304,7 @@ middleOf: point1 and: point2
 			with: (self ensureDrGeoPoint: point1) mathItem 
 			with: (self ensureDrGeoPoint: point2) mathItem) )! !
 
-!DrGeoSketch methodsFor: 'DSL point' stamp: 'hlsf 17/Jan/2026 09:16:42'!
+!DrGeoSketch methodsFor: 'DSL point' stamp: 'hlsf 17/Jan/2026 22:26:32'!
 point: aPointOrBlock
 "Point defined by its coordinates
 Argument can be either:
@@ -9312,7 +9312,7 @@ Argument can be either:
 -aBlock: a block whose computation returns a Smalltalk point 
    ex. [5 atRandom @ 10]"
 	^ aPointOrBlock isPoint 
-		ifTrue:  [self finalizePoint: (DrGPointFreeItem newWith: {aPointOrBlock})]
+		ifTrue:  [self finalizePoint: (DrGPointFreeItem newWith: (Array with:aPointOrBlock))]
 		ifFalse: [self finalizePoint: (DrGPointBlockItem newWith: (Array with: aPointOrBlock)	)]! !
 
 !DrGeoSketch methodsFor: 'DSL point' stamp: 'hlsf 15/Jan/2026 16:09:40'!
@@ -9362,12 +9362,12 @@ polygon: points
 		DrGPolygonNptsItem newWith: (
 			points collect: [:point | (self ensureDrGeoPoint: point ) mathItem]))! !
 
-!DrGeoSketch methodsFor: 'DSL polygon' stamp: 'hlsf 15/Jan/2026 17:05:33'!
+!DrGeoSketch methodsFor: 'DSL polygon' stamp: 'hlsf 17/Jan/2026 22:23:12'!
 regularPolygonCenter: center vertex: vertex sides: value
 "Regular polygon
--center: the center of the regular polygon
--vertex: a vertex of the polygon, anyone
--value: an integer number of a computer value
+-center: a point, center of the regular polygon
+-vertex: a point, any vertex of the polygon
+-value: an integer number or a computed value (see DSL value)
    representing the number of sides of the polygon"
 	^ self finalizeFilledCurve: (DrGPolygonRegularItem newWith: (
 		Array
@@ -9392,23 +9392,23 @@ text: text at: point
 	presenter notInteractive: false.
 	^ answer! !
 
-!DrGeoSketch methodsFor: 'DSL transformations' stamp: 'hlsf 15/Jan/2026 17:21:18'!
+!DrGeoSketch methodsFor: 'DSL transformations' stamp: 'hlsf 17/Jan/2026 22:30:38'!
 reflect: geometricItem axis: axis
 "Transformation by axial symmetry
 -geometricItem: the object to transform
--axe: a straight line representing the axe of the symmetry"
+-axis: a straight line representing the axis of the symmetry"
 	self canTransform: geometricItem .
 	^ self 
 		finalizeTransformation: 'Reflexion' 
 		with: (Array with: geometricItem mathItem with: axis mathItem)! !
 
-!DrGeoSketch methodsFor: 'DSL transformations' stamp: 'hlsf 15/Jan/2026 17:23:14'!
+!DrGeoSketch methodsFor: 'DSL transformations' stamp: 'hlsf 17/Jan/2026 22:31:27'!
 rotate: geometricItem center: center angle: value
 "Transformation by rotation
 -geometricItem: the object to transform
--center: a point representing the center of the rotation
+-center: a point, center of the rotation
 -value: a number or computed value (see DSL value)
-   representing the angle in radian"
+   rotation angle in radian of the transformation"
 
 	self canTransform: geometricItem .
 	^ self 
@@ -9419,24 +9419,24 @@ rotate: geometricItem center: center angle: value
 				with: (self ensureDrGeoPoint: center) mathItem 
 				with: (self ensureDrGeoValue: value) mathItem) 	! !
 
-!DrGeoSketch methodsFor: 'DSL transformations' stamp: 'hlsf 15/Jan/2026 17:25:14'!
+!DrGeoSketch methodsFor: 'DSL transformations' stamp: 'hlsf 17/Jan/2026 22:41:08'!
 rotate: geometricItem center: center angleDegrees: number 
 "Transformation by rotation
 -geometricItem: the object to transform
--center: a point representing the center of the rotation
--number a number representing the angle in degrees"
-
+-center: a point, center of the rotation
+-number: a direct number, rotation angle in degrees
+   of the transformation"
 	| convertedValue |
 	convertedValue := number isNumber ifTrue: [number degreesToRadians] ifFalse: [number ].
 	^ self rotate: geometricItem center: center angle: convertedValue ! !
 
-!DrGeoSketch methodsFor: 'DSL transformations' stamp: 'hlsf 15/Jan/2026 17:26:42'!
+!DrGeoSketch methodsFor: 'DSL transformations' stamp: 'hlsf 17/Jan/2026 22:33:44'!
 scale: geometricItem center: center factor: value 
 "Transformation by homothety (scale)
 -geometricItem: the object to transform
--center: a point representing the center of the homothety
+-center: a point, center of the homothety
 -value: a number or computed value (see DSL value)
-   representing the scaling factor"
+   the scaling factor of the transformation"
 
 	self canTransform: geometricItem.
 	^ self 
@@ -9447,11 +9447,11 @@ scale: geometricItem center: center factor: value
 			with: (self ensureDrGeoValue: value) mathItem)
 ! !
 
-!DrGeoSketch methodsFor: 'DSL transformations' stamp: 'hlsf 15/Jan/2026 17:21:25'!
+!DrGeoSketch methodsFor: 'DSL transformations' stamp: 'hlsf 17/Jan/2026 22:33:53'!
 symmetry: geometricItem center: center
 "Transformation by central symmetry
 -geometricItem: the object to transform
--center: a point representing the center of the symmetry"
+-center: a point, center of the symmetry"
 
 	self canTransform: geometricItem .
 	^ self 
@@ -9460,11 +9460,12 @@ symmetry: geometricItem center: center
 			with: geometricItem mathItem 
 			with: (self ensureDrGeoPoint: center) mathItem)! !
 
-!DrGeoSketch methodsFor: 'DSL transformations' stamp: 'hlsf 15/Jan/2026 17:28:54'!
+!DrGeoSketch methodsFor: 'DSL transformations' stamp: 'hlsf 17/Jan/2026 22:34:23'!
 translate: geometricItem vector: vector 
 "Transformation by translation
 -geometricItem: the object to transform
--vector: a Smalltalk point (3@4) or computed vector (see vector:)"
+-vector: a Smalltalk point (3@4) or 
+   computed vector (see vector: method)"
 
 	self canTransform: geometricItem .
 	^ self 
@@ -9504,9 +9505,9 @@ angle: vector1 to: vector2
 			with: self aPosition) )
 		hide: false! !
 
-!DrGeoSketch methodsFor: 'DSL angle' stamp: 'hlsf 15/Jan/2026 18:49:18'!
+!DrGeoSketch methodsFor: 'DSL angle' stamp: 'hlsf 17/Jan/2026 22:36:39'!
 angle: vertex to: point1 to: point2
-"Oriented angle defined by three points
+"Oriented angle in [0 ; 360[ defined by three points
 -vertex: a point, vertex of the angle
 -point1: a point in one side of the angle
 -point2: a point  in the other side of the angle"
@@ -9518,9 +9519,9 @@ angle: vertex to: point1 to: point2
 			with: self aPosition) )
 		hide: false! !
 
-!DrGeoSketch methodsFor: 'DSL angle' stamp: 'hlsf 15/Jan/2026 18:50:03'!
+!DrGeoSketch methodsFor: 'DSL angle' stamp: 'hlsf 17/Jan/2026 22:36:52'!
 geometricAngle: summit to: point1 to: point2
-"Geometric angle defined by three points
+"Geometric angle in  [0 ; 180] defined by three points
 -vertex: a point, vertex of the angle
 -point1: a point in one side of the angle
 -point2: a point  in the other side of the angle"
@@ -9570,10 +9571,10 @@ freeValue: aNumberOrBlock
 " Obsolete use #value: message"
 	^ self value: aNumberOrBlock ! !
 
-!DrGeoSketch methodsFor: 'DSL value' stamp: 'hlsf 13/Apr/2024 11:19:35'!
+!DrGeoSketch methodsFor: 'DSL value' stamp: 'hlsf 17/Jan/2026 22:39:29'!
 freeValue: aNumberOrBlock at: aPosition
 " obsolete "
-	^ self value: aNumberOrBlock parents: {} at: aPosition! !
+	^ self value: aNumberOrBlock parents: Array new at: aPosition! !
 
 !DrGeoSketch methodsFor: 'DSL value' stamp: 'hlsf 15/Jan/2026 18:51:07'!
 lengthOf: finitCurve
@@ -9614,39 +9615,43 @@ slopeOf: line
 	^ self finalizeValue: (DrGValueSlopeItem newWith: (
 		Array with: line mathItem with: self aPosition) )! !
 
-!DrGeoSketch methodsFor: 'DSL value' stamp: 'hlsf 17/Jan/2026 09:17:15'!
+!DrGeoSketch methodsFor: 'DSL value' stamp: 'hlsf 17/Jan/2026 22:40:04'!
 value: aNumberOrBlock
 "Value object pinned at a random position
 Argument can be either:
 -number: a direct number
+or
 -block: block of code returning a number"
-	^ self value: aNumberOrBlock parents: {} at: self aPosition ! !
+	^ self value: aNumberOrBlock parents: `Array new` at: self aPosition ! !
 
-!DrGeoSketch methodsFor: 'DSL value' stamp: 'hlsf 17/Jan/2026 09:19:43'!
+!DrGeoSketch methodsFor: 'DSL value' stamp: 'hlsf 17/Jan/2026 22:41:18'!
 value: aNumberOrBlock at: point
 "Value object
 Argument can be either:
 -number: a direct number
+or
 -block: block of code without argument returning a number.
 -point: the position where the value is pinned"
-	^ self value: aNumberOrBlock parents: {} at: point ! !
+	^ self value: aNumberOrBlock parents: `Array new` at: point ! !
 
-!DrGeoSketch methodsFor: 'DSL value' stamp: 'hlsf 17/Jan/2026 09:21:46'!
+!DrGeoSketch methodsFor: 'DSL value' stamp: 'hlsf 17/Jan/2026 22:41:25'!
 value: aNumberOrBlock parent: drgeoItem
 "Value object
 Argument can be either:
 -number: a direct number
+or
 -block: a block of code with argument a MathItem
    The block computes a number and return it.
 -drgeoItem: a DrGeoItem the mathItem is extracted from 
    and passed as argument to the block"
 	^ self value: aNumberOrBlock parents: (Array with: drgeoItem) at: self aPosition ! !
 
-!DrGeoSketch methodsFor: 'DSL value' stamp: 'hlsf 17/Jan/2026 09:23:00'!
+!DrGeoSketch methodsFor: 'DSL value' stamp: 'hlsf 17/Jan/2026 22:42:16'!
 value: numberOrBlock parents: drgeoItems at: point
 "Value object
 Argument can be either:
 -number: a direct number
+or
 -block: a block of code with argument a collection of MathItem
    The block computes a number and return it.
 -drgeoItems: a collection of DrGeoItem the mathItems are extracted from
