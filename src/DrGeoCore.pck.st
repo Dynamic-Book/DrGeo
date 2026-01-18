@@ -1,10 +1,10 @@
-'From Cuis7.7 [latest update: #7791] on 17 January 2026 at 10:42:43 pm'!
+'From Cuis7.7 [latest update: #7791] on 18 January 2026 at 7:56:37 pm'!
 'Description '!
-!provides: 'DrGeoCore' 1 18!
+!provides: 'DrGeoCore' 1 19!
 !requires: 'UI-Preference' 1 28 nil!
 !requires: 'UI-Panel' 1 140 nil!
-!requires: 'YAXO' 1 28 nil!
 !requires: 'Graphics-Files-Additional' 1 30 nil!
+!requires: 'YAXO' 1 28 nil!
 SystemOrganization addCategory: #'DrGeoCore-Model'!
 SystemOrganization addCategory: #'DrGeoCore-Model-Smalltalk'!
 SystemOrganization addCategory: #'DrGeoCore-Model-Item'!
@@ -8949,6 +8949,29 @@ value: aNumber
 	(self mathItem respondsTo: #valueItem:) 
 		ifTrue: [self mathItem valueItem: aNumber]! !
 
+!DrGeoSketch methodsFor: 'initialize-release' stamp: 'hlsf 25/Sep/2022 11:32:31'!
+delete
+	self view deleteWithoutConfirmation.
+	self release! !
+
+!DrGeoSketch methodsFor: 'initialize-release' stamp: 'hlsf 20/Apr/2024 11:04:09'!
+initialize
+	presenter := DrGeo service
+		stSketch: self;
+		yourself .
+	" From now, my view (empty) is in a presentable state. Inform about it "
+	DrGeoSketch triggerEvent: #newSmalltalkSketch with: self! !
+
+!DrGeoSketch methodsFor: 'initialize-release' stamp: 'hlsf 4/Aug/2023 20:05:38'!
+release
+	presenter ifNotNil: [presenter release].
+	presenter := nil.
+	self terminateDo ! !
+
+!DrGeoSketch methodsFor: 'obsolete' stamp: 'hlsf 10/Apr/2022 20:30:29'!
+fullscreen
+	! !
+
 !DrGeoSketch methodsFor: 'DSL canvas' stamp: 'hlsf 13/Jan/2026 15:26:42'!
 axesOn
 "Show the x-axis and y-axis"
@@ -9493,46 +9516,6 @@ vector: origin to: extremity
 			with: (self ensureDrGeoPoint: origin) mathItem
 			with: (self ensureDrGeoPoint: extremity) mathItem) )! !
 
-!DrGeoSketch methodsFor: 'DSL angle' stamp: 'hlsf 15/Jan/2026 17:58:58'!
-angle: vector1 to: vector2
-"Oriented angle defined by two vectors
--vector1: a point or DrGeo vector
--vector2: a point or DrGeo vector"
-	^ self finalizeValue: (DrGAngleVectorsItem newWith: (
-		Array 
-			with: (self ensureVector: vector1) mathItem
-			with: (self ensureVector: vector2) mathItem
-			with: self aPosition) )
-		hide: false! !
-
-!DrGeoSketch methodsFor: 'DSL angle' stamp: 'hlsf 17/Jan/2026 22:36:39'!
-angle: vertex to: point1 to: point2
-"Oriented angle in [0 ; 360[ defined by three points
--vertex: a point, vertex of the angle
--point1: a point in one side of the angle
--point2: a point  in the other side of the angle"
-	^ self finalizeValue: (DrGAngle3ptsOrientedItem newWith: (
-		Array
-			with: (self ensureDrGeoPoint: vertex ) mathItem
-			with: (self ensureDrGeoPoint: point1) mathItem
-			with: (self ensureDrGeoPoint: point2) mathItem
-			with: self aPosition) )
-		hide: false! !
-
-!DrGeoSketch methodsFor: 'DSL angle' stamp: 'hlsf 17/Jan/2026 22:36:52'!
-geometricAngle: summit to: point1 to: point2
-"Geometric angle in  [0 ; 180] defined by three points
--vertex: a point, vertex of the angle
--point1: a point in one side of the angle
--point2: a point  in the other side of the angle"
-	^ self finalizeValue: (DrGAngle3ptsItem newWith: (
-		Array
-			with: (self ensureDrGeoPoint: summit) mathItem
-			with: (self ensureDrGeoPoint: point1) mathItem
-			with: (self ensureDrGeoPoint: point2) mathItem
-			with: self aPosition) )
-		hide: false! !
-
 !DrGeoSketch methodsFor: 'DSL value' stamp: 'hlsf 15/Jan/2026 17:57:16'!
 abscissaOf: pointOrVector
 "Abscissa of a point or vector
@@ -9674,29 +9657,6 @@ or
 	presenter notInteractive: false.
 	^ answer! !
 
-!DrGeoSketch methodsFor: 'initialize-release' stamp: 'hlsf 25/Sep/2022 11:32:31'!
-delete
-	self view deleteWithoutConfirmation.
-	self release! !
-
-!DrGeoSketch methodsFor: 'initialize-release' stamp: 'hlsf 20/Apr/2024 11:04:09'!
-initialize
-	presenter := DrGeo service
-		stSketch: self;
-		yourself .
-	" From now, my view (empty) is in a presentable state. Inform about it "
-	DrGeoSketch triggerEvent: #newSmalltalkSketch with: self! !
-
-!DrGeoSketch methodsFor: 'initialize-release' stamp: 'hlsf 4/Aug/2023 20:05:38'!
-release
-	presenter ifNotNil: [presenter release].
-	presenter := nil.
-	self terminateDo ! !
-
-!DrGeoSketch methodsFor: 'obsolete' stamp: 'hlsf 10/Apr/2022 20:30:29'!
-fullscreen
-	! !
-
 !DrGeoSketch methodsFor: 'private' stamp: 'hlsf 6/Jan/2026 15:34:54'!
 canTransform: drgeoItem
 	drgeoItem mathItem isGeometricItem
@@ -9801,6 +9761,46 @@ terminateDo
 	doProcess  ifNotNil: [
 		doProcess terminate.
 		doProcess := nil]! !
+
+!DrGeoSketch methodsFor: 'DSL angle' stamp: 'hlsf 15/Jan/2026 17:58:58'!
+angle: vector1 to: vector2
+"Oriented angle defined by two vectors
+-vector1: a point or DrGeo vector
+-vector2: a point or DrGeo vector"
+	^ self finalizeValue: (DrGAngleVectorsItem newWith: (
+		Array 
+			with: (self ensureVector: vector1) mathItem
+			with: (self ensureVector: vector2) mathItem
+			with: self aPosition) )
+		hide: false! !
+
+!DrGeoSketch methodsFor: 'DSL angle' stamp: 'hlsf 17/Jan/2026 22:36:39'!
+angle: vertex to: point1 to: point2
+"Oriented angle in [0 ; 360[ defined by three points
+-vertex: a point, vertex of the angle
+-point1: a point in one side of the angle
+-point2: a point  in the other side of the angle"
+	^ self finalizeValue: (DrGAngle3ptsOrientedItem newWith: (
+		Array
+			with: (self ensureDrGeoPoint: vertex ) mathItem
+			with: (self ensureDrGeoPoint: point1) mathItem
+			with: (self ensureDrGeoPoint: point2) mathItem
+			with: self aPosition) )
+		hide: false! !
+
+!DrGeoSketch methodsFor: 'DSL angle' stamp: 'hlsf 17/Jan/2026 22:36:52'!
+geometricAngle: summit to: point1 to: point2
+"Geometric angle in  [0 ; 180] defined by three points
+-vertex: a point, vertex of the angle
+-point1: a point in one side of the angle
+-point2: a point  in the other side of the angle"
+	^ self finalizeValue: (DrGAngle3ptsItem newWith: (
+		Array
+			with: (self ensureDrGeoPoint: summit) mathItem
+			with: (self ensureDrGeoPoint: point1) mathItem
+			with: (self ensureDrGeoPoint: point2) mathItem
+			with: self aPosition) )
+		hide: false! !
 
 !DrGStyle methodsFor: 'accessing' stamp: 'hlsf 9/Apr/2024 10:22:38'!
 arrow: boolean
