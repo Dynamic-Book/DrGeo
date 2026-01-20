@@ -1,10 +1,10 @@
-'From Cuis7.7 [latest update: #7791] on 18 January 2026 at 7:56:37 pm'!
+'From Cuis7.7 [latest update: #7801] on 20 January 2026 at 3:12:39 pm'!
 'Description '!
-!provides: 'DrGeoCore' 1 19!
+!provides: 'DrGeoCore' 1 20!
 !requires: 'UI-Preference' 1 28 nil!
 !requires: 'UI-Panel' 1 140 nil!
-!requires: 'Graphics-Files-Additional' 1 30 nil!
 !requires: 'YAXO' 1 28 nil!
+!requires: 'Graphics-Files-Additional' 1 30 nil!
 SystemOrganization addCategory: #'DrGeoCore-Model'!
 SystemOrganization addCategory: #'DrGeoCore-Model-Smalltalk'!
 SystemOrganization addCategory: #'DrGeoCore-Model-Item'!
@@ -26211,8 +26211,8 @@ isLockable
 isLocked
 	^ self isLockable and: [mathItem isLocked]! !
 
-!DrGMorph methodsFor: 'testing' stamp: 'hlsf 24/May/2023 17:55:40'!
-isNotForAway
+!DrGMorph methodsFor: 'testing' stamp: 'hlsf 20/Jan/2026 14:38:05'!
+isNotFarAway
 "If not attached to a drawable, considers it not far away, likely used for an icon"
 	^ self drawable isNil! !
 
@@ -26842,12 +26842,12 @@ drawArrows: arrowsBound on: aCanvas
 		self drawArrow: arrow on: aCanvas at: vertices last from: self nextToLastPoint].
 	! !
 
-!DrGPolylineMorph methodsFor: 'drawing' stamp: 'hlsf 27/May/2025 17:29:10'!
+!DrGPolylineMorph methodsFor: 'drawing' stamp: 'hlsf 20/Jan/2026 14:38:05'!
 drawOn: aCanvas 
 	| verticesAndArrows |
 	self isDrawNeeded ifFalse: [^ false].
 	self getVertices.
-	self isNotForAway ifFalse: [
+	self isNotFarAway ifFalse: [
 		labelMorph ifNotNil: [labelMorph hide].
 		 ^ false].
 	self updateLabelStatus.
@@ -26928,13 +26928,13 @@ vertices: verts color: aColor borderWidth: width borderColor: anotherColor
 	borderWidth := width.
 	self vertices: verts color: aColor borderColor: anotherColor ! !
 
-!DrGPolylineMorph methodsFor: 'testing' stamp: 'hlsf 5/Sep/2024 16:32:02'!
-isNotForAway
+!DrGPolylineMorph methodsFor: 'testing' stamp: 'hlsf 20/Jan/2026 14:38:05'!
+isNotFarAway
 " are all vertices in expanded screen area ?"
 	| expandedBound |
-	^ super isNotForAway or: [
+	^ super isNotFarAway or: [
 		expandedBound := self drawable localBounds expandBy: 10000.
-		vertices allSatisfy: [:v | 		expandedBound containsPoint: v		] ]! !
+		vertices allSatisfy: [:v | expandedBound containsPoint: v	] ]! !
 
 !DrGPolylineMorph class methodsFor: 'examples' stamp: 'hlsf 23/May/2021 13:07:37'!
 example1
@@ -27073,11 +27073,11 @@ extend: origin inDirection: u toBorder: extent
 	^ points
 ! !
 
-!DrGRayMorph methodsFor: 'accessing' stamp: 'hlsf 16/May/2025 23:22:18'!
+!DrGRayMorph methodsFor: 'accessing' stamp: 'hlsf 20/Jan/2026 14:58:57'!
 from: origin direction: u
 	self from: origin to: (self class extend: origin inDirection: u toBorder: self drawable morphExtent)! !
 
-!DrGRayMorph methodsFor: 'accessing' stamp: 'hlsf 30/May/2021 09:55:25'!
+!DrGRayMorph methodsFor: 'accessing' stamp: 'hlsf 20/Jan/2026 14:57:26'!
 getVertices
 	self
 		from: (self drawable worldToMorph: mathItem origin)
@@ -27092,7 +27092,7 @@ styleClass
 isRay
 	^ true! !
 
-!DrGRayMorph class methodsFor: 'as yet unclassified' stamp: 'hlsf 16/May/2025 23:19:09'!
+!DrGRayMorph class methodsFor: 'as yet unclassified' stamp: 'hlsf 20/Jan/2026 15:00:48'!
 extend: origin inDirection: u toBorder: extent
 	| border c ex ey coordinate |
 	c := (origin x * u y - (origin y * u x)) asFloat.
@@ -27117,8 +27117,8 @@ extend: origin inDirection: u toBorder: extent
 		(u dotProduct: border - origin) >0 ifTrue: [^ border]].
 	"Q (ex;y)"
 	[coordinate := (ex * u y) - c / u x] on: ZeroDivide do: [coordinate := -1].
-	(coordinate between: 0 and: ey) ifTrue: [ ^ex @ coordinate]
-! !
+	(coordinate between: 0 and: ey) ifTrue: [ ^ex @ coordinate].
+	^ extent! !
 
 !DrGSegmentMorph methodsFor: 'accessing' stamp: 'hlsf 30/May/2021 09:56:14'!
 getVertices
@@ -27426,12 +27426,12 @@ canBeDrawn
 containsPoint: localPoint
 	^ self containsPointInWorld: localPoint! !
 
-!DrGPointMorph methodsFor: 'drawing' stamp: 'hlsf 5/Sep/2024 16:32:08'!
+!DrGPointMorph methodsFor: 'drawing' stamp: 'hlsf 20/Jan/2026 14:38:05'!
 drawOn: aCanvas
 | shape center |
 	self isDrawNeeded ifFalse: [^ self].
 	center := self morphCenter.
-	(self isNotForAway or: [self drawable localBounds containsPoint: center]) ifFalse: [
+	(self isNotFarAway or: [self drawable localBounds containsPoint: center]) ifFalse: [
 		labelMorph ifNotNil: [labelMorph hide].
 		^ false].
 	self updateLabelStatus.
