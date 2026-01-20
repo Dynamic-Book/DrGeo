@@ -1,10 +1,10 @@
-'From Cuis7.7 [latest update: #7801] on 20 January 2026 at 3:12:39 pm'!
+'From Cuis7.7 [latest update: #7791] on 20 January 2026 at 7:50:43 pm'!
 'Description '!
-!provides: 'DrGeoCore' 1 20!
+!provides: 'DrGeoCore' 1 21!
 !requires: 'UI-Preference' 1 28 nil!
 !requires: 'UI-Panel' 1 140 nil!
-!requires: 'YAXO' 1 28 nil!
 !requires: 'Graphics-Files-Additional' 1 30 nil!
+!requires: 'YAXO' 1 28 nil!
 SystemOrganization addCategory: #'DrGeoCore-Model'!
 SystemOrganization addCategory: #'DrGeoCore-Model-Smalltalk'!
 SystemOrganization addCategory: #'DrGeoCore-Model-Item'!
@@ -27073,9 +27073,23 @@ extend: origin inDirection: u toBorder: extent
 	^ points
 ! !
 
-!DrGRayMorph methodsFor: 'accessing' stamp: 'hlsf 20/Jan/2026 14:58:57'!
+!DrGRayMorph methodsFor: 'accessing' stamp: 'hlsf 20/Jan/2026 19:49:23'!
 from: origin direction: u
-	self from: origin to: (self class extend: origin inDirection: u toBorder: self drawable morphExtent)! !
+	| points |
+	points :=  DrGLineMorph extend: origin inDirection: u toBorder: self drawable morphExtent.
+	points size < 2 ifTrue:  [^ self from: `-1 @0` to: `-1 @0` "off-limit, empy draw"].
+	" Select the points on the ray line "
+	points := points select: [:pt | ( (pt - origin) dotProduct: u ) > 0].
+	" If both points on ray, take both points "
+	points size = 2 ifTrue: [ ^ self from: points first to: points second].
+	" Origin in the view, we have to discard one point "
+	points size =1 ifTrue: [ ^ self from: origin to: points first].
+	" No point, ray out of sight"
+	^ self from: `-1 @0` to: `-1 @0` "off-limit, empy draw"
+			
+			
+			
+	! !
 
 !DrGRayMorph methodsFor: 'accessing' stamp: 'hlsf 20/Jan/2026 14:57:26'!
 getVertices
@@ -27091,34 +27105,6 @@ styleClass
 !DrGRayMorph methodsFor: 'testing type' stamp: 'hlsf 5/Apr/2021 10:38:28'!
 isRay
 	^ true! !
-
-!DrGRayMorph class methodsFor: 'as yet unclassified' stamp: 'hlsf 20/Jan/2026 15:00:48'!
-extend: origin inDirection: u toBorder: extent
-	| border c ex ey coordinate |
-	c := (origin x * u y - (origin y * u x)) asFloat.
-	ex := extent x.
-	ey := extent y.
-	"Intersections with horizontal borders A, B"
-	"A (x;ey)"
-	[coordinate := (extent y * u x + c) / u y] on: ZeroDivide do: [coordinate := -1].
-	(coordinate between: 0 and: ex) ifTrue: [
-		border := coordinate @ ey.
-		(u dotProduct: border - origin) >0 ifTrue: [^ border] ].
-	"B (x;0)"
-	[coordinate := c / u y] on: ZeroDivide do: [coordinate := -1].
-	(coordinate between: 0 and: ex) ifTrue: [
-		border := coordinate @ 0.
-		(u dotProduct: border - origin) >0 ifTrue: [^ border] ].
-	"Vertical borders P, Q"
-	"P (0;y)"
-	[coordinate := c negated / u x] on: ZeroDivide do: [coordinate := -1].
-	(coordinate between: 0 and: ey) ifTrue: [
-		border := 0 @ coordinate.
-		(u dotProduct: border - origin) >0 ifTrue: [^ border]].
-	"Q (ex;y)"
-	[coordinate := (ex * u y) - c / u x] on: ZeroDivide do: [coordinate := -1].
-	(coordinate between: 0 and: ey) ifTrue: [ ^ex @ coordinate].
-	^ extent! !
 
 !DrGSegmentMorph methodsFor: 'accessing' stamp: 'hlsf 30/May/2021 09:56:14'!
 getVertices
