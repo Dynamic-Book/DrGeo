@@ -1,6 +1,6 @@
-'From Cuis7.7 [latest update: #7791] on 21 January 2026 at 3:45:02 pm'!
+'From Cuis7.7 [latest update: #7791] on 21 January 2026 at 8:11:15 pm'!
 'Description '!
-!provides: 'DrGeoCore' 1 22!
+!provides: 'DrGeoCore' 1 23!
 !requires: 'UI-Preference' 1 28 nil!
 !requires: 'UI-Panel' 1 140 nil!
 !requires: 'Graphics-Files-Additional' 1 30 nil!
@@ -4423,7 +4423,7 @@ and return a DrGeo for each one"
 	stream close.
 	^ self loadFigureFrom: doc for: constructor! !
 
-!DrGeoXml methodsFor: 'xml read' stamp: 'hlsf 4/Aug/2023 18:08:40'!
+!DrGeoXml methodsFor: 'xml read' stamp: 'hlsf 21/Jan/2026 19:12:25'!
 parseFigureFrom: drgeoNode
 "We parse from the view, because only the view knows both the domain and the view"
 	|  itemStatut |
@@ -4431,9 +4431,9 @@ parseFigureFrom: drgeoNode
 	self ox: (drgeoNode attributeAt: #'origin_x' ifAbsent: [self ox]).
 	self oy: (drgeoNode attributeAt: #'origin_y' ifAbsent: [self oy]).
 	self view setLabel: (drgeoNode attributeAt: 'name' ifAbsent: ['no name' translated]). 
-	(drgeoNode attributeAt: #grid) = 'True'	ifTrue: [presenter gridOnOff].
-	(drgeoNode attributeAt: #axes) = 'True'	ifTrue: [presenter axesOnOff].
-	(drgeoNode attributeAt: #gridded) = 'True'	ifTrue: [presenter gridStuckOnOff].
+	(drgeoNode attributeAt: #grid) = 'True' ifTrue: [presenter gridOn].
+	(drgeoNode attributeAt: #axes) = 'True' ifTrue: [presenter axesOn].
+	(drgeoNode attributeAt: #gridded) = 'True' ifTrue: [presenter gridStuckOnOff].
 		
 	self parseScript: drgeoNode.
 	drgeoNode elementsDo: [:aNode | 
@@ -8972,10 +8972,15 @@ release
 fullscreen
 	! !
 
-!DrGeoSketch methodsFor: 'DSL canvas' stamp: 'hlsf 13/Jan/2026 15:26:42'!
+!DrGeoSketch methodsFor: 'DSL canvas' stamp: 'hlsf 21/Jan/2026 19:21:27'!
+axesOff
+"Hide the x-axis and y-axis"
+	 presenter axesOff ! !
+
+!DrGeoSketch methodsFor: 'DSL canvas' stamp: 'hlsf 21/Jan/2026 19:13:57'!
 axesOn
 "Show the x-axis and y-axis"
-	 presenter axesOnOff ! !
+	 presenter axesOn ! !
 
 !DrGeoSketch methodsFor: 'DSL canvas' stamp: 'hlsf 17/Jan/2026 09:01:23'!
 centerTo: center
@@ -8990,10 +8995,15 @@ centerTo: center
 fullScreen
 	presenter view fullScreen! !
 
-!DrGeoSketch methodsFor: 'DSL canvas' stamp: 'hlsf 13/Jan/2026 15:27:52'!
+!DrGeoSketch methodsFor: 'DSL canvas' stamp: 'hlsf 21/Jan/2026 19:17:12'!
+gridOff
+"Hide the grid on the view"
+	 presenter gridOff! !
+
+!DrGeoSketch methodsFor: 'DSL canvas' stamp: 'hlsf 21/Jan/2026 19:12:39'!
 gridOn
 "Show the grid on the view"
-	 presenter gridOnOff ! !
+	 presenter gridOn! !
 
 !DrGeoSketch methodsFor: 'DSL canvas' stamp: 'hlsf 15/Jan/2026 11:42:19'!
 scale: integer
@@ -10969,18 +10979,36 @@ animate4
 	self tool animateStep: 0.1
 ! !
 
-!DrGeo methodsFor: 'callback canvas' stamp: 'hlsf 19/Jun/2021 17:15:55'!
+!DrGeo methodsFor: 'callback canvas' stamp: 'hlsf 21/Jan/2026 19:13:40'!
+axesOff
+	self drawable axesVisible: false
+	! !
+
+!DrGeo methodsFor: 'callback canvas' stamp: 'hlsf 21/Jan/2026 19:12:17'!
+axesOn
+	self drawable axesVisible: true
+	! !
+
+!DrGeo methodsFor: 'callback canvas' stamp: 'hlsf 21/Jan/2026 19:14:33'!
 axesOnOff
-	self drawable axesVisibleOnOff
+	self drawable axesVisible: self drawable axesVisible not
 	! !
 
 !DrGeo methodsFor: 'callback canvas' stamp: 'hlsf 19/Jun/2021 16:57:23'!
 createMultipleOnOff
 	isCreateMultipleMode := isCreateMultipleMode not! !
 
-!DrGeo methodsFor: 'callback canvas' stamp: 'hlsf 19/Jun/2021 17:15:21'!
+!DrGeo methodsFor: 'callback canvas' stamp: 'hlsf 21/Jan/2026 19:15:23'!
+gridOff
+	self drawable gridVisible: false! !
+
+!DrGeo methodsFor: 'callback canvas' stamp: 'hlsf 21/Jan/2026 19:11:43'!
+gridOn
+	self drawable gridVisible: true! !
+
+!DrGeo methodsFor: 'callback canvas' stamp: 'hlsf 21/Jan/2026 19:15:12'!
 gridOnOff
-	self drawable gridVisibleOnOff! !
+	self drawable gridVisible: self drawable gridVisible not! !
 
 !DrGeo methodsFor: 'callback canvas' stamp: 'hlsf 19/Jun/2021 16:57:50'!
 gridStuckOnOff
@@ -27690,20 +27718,20 @@ view
 axesVisible
 	^ self valueOfProperty: #axesVisible ifAbsent: [false]! !
 
-!DrGDrawable methodsFor: 'axes/grid' stamp: 'hlsf 19/Jun/2021 17:16:57'!
-axesVisibleOnOff
-	self setProperty: #axesVisible toValue: self axesVisible not.
+!DrGDrawable methodsFor: 'axes/grid' stamp: 'hlsf 21/Jan/2026 19:09:35'!
+axesVisible: aBoolean
+	self setProperty: #axesVisible toValue: aBoolean.
 	self updateGrid.
 	self redrawNeeded ! !
 
-!DrGDrawable methodsFor: 'axes/grid' stamp: 'hlsf 19/Jun/2021 17:13:17'!
+!DrGDrawable methodsFor: 'axes/grid' stamp: 'hlsf 21/Jan/2026 19:07:20'!
 gridVisible
-	^ self 	valueOfProperty: #gridVisible ifAbsent: [false]
+	^ self valueOfProperty: #gridVisible ifAbsent: [false]
 ! !
 
-!DrGDrawable methodsFor: 'axes/grid' stamp: 'hlsf 19/Jun/2021 17:16:48'!
-gridVisibleOnOff
-	self setProperty: #gridVisible toValue: self gridVisible not.
+!DrGDrawable methodsFor: 'axes/grid' stamp: 'hlsf 21/Jan/2026 19:10:38'!
+gridVisible: aBoolean
+	self setProperty: #gridVisible toValue: aBoolean.
 	self updateGrid.
 	self redrawNeeded ! !
 
