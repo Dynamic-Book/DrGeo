@@ -1,6 +1,6 @@
-'From Cuis7.7 [latest update: #7791] on 20 January 2026 at 7:50:43 pm'!
+'From Cuis7.7 [latest update: #7791] on 21 January 2026 at 3:45:02 pm'!
 'Description '!
-!provides: 'DrGeoCore' 1 21!
+!provides: 'DrGeoCore' 1 22!
 !requires: 'UI-Preference' 1 28 nil!
 !requires: 'UI-Panel' 1 140 nil!
 !requires: 'Graphics-Files-Additional' 1 30 nil!
@@ -9774,12 +9774,12 @@ angle: vector1 to: vector2
 			with: self aPosition) )
 		hide: false! !
 
-!DrGeoSketch methodsFor: 'DSL angle' stamp: 'hlsf 17/Jan/2026 22:36:39'!
+!DrGeoSketch methodsFor: 'DSL angle' stamp: 'hlsf 21/Jan/2026 15:21:56'!
 angle: vertex to: point1 to: point2
 "Oriented angle in [0 ; 360[ defined by three points
 -vertex: a point, vertex of the angle
 -point1: a point in one side of the angle
--point2: a point  in the other side of the angle"
+-point2: a point in the other side of the angle"
 	^ self finalizeValue: (DrGAngle3ptsOrientedItem newWith: (
 		Array
 			with: (self ensureDrGeoPoint: vertex ) mathItem
@@ -9788,12 +9788,12 @@ angle: vertex to: point1 to: point2
 			with: self aPosition) )
 		hide: false! !
 
-!DrGeoSketch methodsFor: 'DSL angle' stamp: 'hlsf 17/Jan/2026 22:36:52'!
+!DrGeoSketch methodsFor: 'DSL angle' stamp: 'hlsf 21/Jan/2026 15:22:08'!
 geometricAngle: summit to: point1 to: point2
-"Geometric angle in  [0 ; 180] defined by three points
+"Geometric angle in [0 ; 180] defined by three points
 -vertex: a point, vertex of the angle
 -point1: a point in one side of the angle
--point2: a point  in the other side of the angle"
+-point2: a point in the other side of the angle"
 	^ self finalizeValue: (DrGAngle3ptsItem newWith: (
 		Array
 			with: (self ensureDrGeoPoint: summit) mathItem
