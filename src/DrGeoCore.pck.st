@@ -1,6 +1,6 @@
-'From Cuis7.7 [latest update: #7809] on 25 January 2026 at 4:32:50 pm'!
+'From Cuis7.7 [latest update: #7809] on 25 January 2026 at 6:07:24 pm'!
 'Description '!
-!provides: 'DrGeoCore' 1 24!
+!provides: 'DrGeoCore' 1 25!
 !requires: 'UI-Preference' 1 28 nil!
 !requires: 'UI-Panel' 1 140 nil!
 !requires: 'YAXO' 1 28 nil!
@@ -5185,7 +5185,7 @@ rehash
 	bitXor: self nodeType hash) 
 	bitXor: self basicType hash! !
 
-!DrGArcCenterAngleItem methodsFor: 'updating' stamp: 'hlsf 20/May/2024 11:48:42'!
+!DrGArcCenterAngleItem methodsFor: 'updating' stamp: 'hlsf 25/Jan/2026 17:02:31'!
 update
 | u v |
 	self doParentsExist ifFalse: [^ self exist: false].
@@ -5196,8 +5196,9 @@ update
 		ifFalse: [radius := u r.
 			origin := u y asFloat arcTan: u x.
 			length := (u crossProduct: v) asFloat arcTan: (u dotProduct: v).
-			length < 0 ifTrue: [ length := length + Float twoPi] ].
-	self exist: true! !
+			length < 0 ifTrue: [ length := length + Float twoPi].
+			self exist: true]
+		ifTrue: [self exist: false]! !
 
 !DrGArcCenterAngleItem methodsFor: 'xml writing' stamp: ''!
 nodeType
@@ -6645,10 +6646,10 @@ nodeType
 moveParent: aPoint
 	^false! !
 
-!DrGVectorReflexionItem methodsFor: 'updating' stamp: 'hlsf 20/May/2024 12:06:22'!
+!DrGVectorReflexionItem methodsFor: 'updating' stamp: 'hlsf 25/Jan/2026 17:11:44'!
 update
 	self doParentsExist ifFalse: [^ self exist: false].
-	self direction: (parents first direction 			vectorReflexionBy: parents second direction).
+	self direction: (parents first direction vectorReflexionBy: parents second direction).
 	self exist: true
 ! !
 
@@ -6661,10 +6662,10 @@ initialize: theParents
 moveParent: aPoint
 	^false! !
 
-!DrGVectorRotationItem methodsFor: 'updating' stamp: 'hlsf 20/May/2024 12:06:34'!
+!DrGVectorRotationItem methodsFor: 'updating' stamp: 'hlsf 25/Jan/2026 17:11:49'!
 update
 	self doParentsExist ifFalse: [^ self exist: false].
-	vector := parents first direction 			rotateVector: parents third valueItem.
+	vector := parents first direction rotateVector: parents third valueItem.
 	self exist: true
 ! !
 
@@ -26202,9 +26203,9 @@ stopStepping
 	self restoreNormalColor.
 	self redrawNeeded ! !
 
-!DrGMorph methodsFor: 'testing' stamp: 'hlsf 23/Sep/2021 11:44:49'!
+!DrGMorph methodsFor: 'testing' stamp: 'hlsf 25/Jan/2026 17:17:59'!
 canBeDrawn
-	^ self visible! !
+	^ self visible and: [mathItem exist]! !
 
 !DrGMorph methodsFor: 'testing' stamp: 'hlsf 10/Aug/2025 13:28:43'!
 containsPoint: localPoint
@@ -28205,12 +28206,13 @@ dismissMorph
 	super dismissMorph.
 	presenter view dismissMorph ! !
 
-!DrGDrawable methodsFor: 'initialize-release' stamp: 'hlsf 18/Sep/2024 20:39:52'!
+!DrGDrawable methodsFor: 'initialize-release' stamp: 'hlsf 25/Jan/2026 17:20:23'!
 initialize
 	super initialize.
 	self color: Theme current canvasBackground.
 	tipOn := true.
 	self defaultScalePosition.
+	prevMousePos := 0@0.
 	balloonTarget := ColoredBoxMorph new 
 		color: Color transparent;
 		morphExtent: 6 @ 6;
