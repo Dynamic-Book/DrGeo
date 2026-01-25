@@ -1,10 +1,10 @@
-'From Cuis7.7 [latest update: #7791] on 21 January 2026 at 8:11:15 pm'!
+'From Cuis7.7 [latest update: #7809] on 25 January 2026 at 4:32:50 pm'!
 'Description '!
-!provides: 'DrGeoCore' 1 23!
+!provides: 'DrGeoCore' 1 24!
 !requires: 'UI-Preference' 1 28 nil!
 !requires: 'UI-Panel' 1 140 nil!
-!requires: 'Graphics-Files-Additional' 1 30 nil!
 !requires: 'YAXO' 1 28 nil!
+!requires: 'Graphics-Files-Additional' 1 30 nil!
 SystemOrganization addCategory: #'DrGeoCore-Model'!
 SystemOrganization addCategory: #'DrGeoCore-Model-Smalltalk'!
 SystemOrganization addCategory: #'DrGeoCore-Model-Item'!
@@ -9228,9 +9228,9 @@ arc: start to: aPoint to: end
 			with: (self ensureDrGeoPoint: aPoint) mathItem
 			with: (self ensureDrGeoPoint: end) mathItem) )! !
 
-!DrGeoSketch methodsFor: 'DSL line curved' stamp: 'hlsf 17/Jan/2026 09:10:50'!
+!DrGeoSketch methodsFor: 'DSL line curved' stamp: 'hlsf 25/Jan/2026 16:19:44'!
 arcCenter: center from: start to: end
-"Arc of circle defined by its center and two points
+"Oriented arc of circle (anti-clockwised) defined by its center and two points
 -center: a point, center of the circle
 -start: starting point of the arc
 -end: ending point of the arc"
@@ -9811,6 +9811,13 @@ geometricAngle: summit to: point1 to: point2
 			with: (self ensureDrGeoPoint: point2) mathItem
 			with: self aPosition) )
 		hide: false! !
+
+!DrGeoSketch class methodsFor: 'as yet unclassified' stamp: 'hlsf 25/Jan/2026 13:03:36'!
+open
+	| instance |
+	instance := self new.
+	instance view openInWorld.
+	^ instance! !
 
 !DrGStyle methodsFor: 'accessing' stamp: 'hlsf 9/Apr/2024 10:22:38'!
 arrow: boolean
@@ -26148,12 +26155,12 @@ aVector is a shifted direction from the center of the label morph"
 labelMorph
 	^ labelMorph ! !
 
-!DrGMorph methodsFor: 'label' stamp: 'hlsf 19/Jun/2021 10:08:59'!
+!DrGMorph methodsFor: 'label' stamp: 'hlsf 25/Jan/2026 16:32:42'!
 labelMorph: aString
 	aString isEmptyOrNil
-		ifTrue: 	[self removeLabelMorph]
-		ifFalse: 	[labelMorph 
-			ifNil: 	[labelMorph := DrGLabel new contents: aString.
+		ifTrue: [self removeLabelMorph]
+		ifFalse: [labelMorph 
+			ifNil: [labelMorph := DrGLabel new contents: aString.
 				labelMorph morph: self.
 				self canBeDrawn ifTrue: [self drawable addMorph: labelMorph.
 					labelMorph morphPosition: self labelPosition]]
@@ -27432,9 +27439,12 @@ getVertices
 styleClass
 	^DrGPolygonStyle ! !
 
-!DrGPolygonMorph methodsFor: 'testing' stamp: 'hlsf 10/Aug/2025 13:15:28'!
+!DrGPolygonMorph methodsFor: 'testing' stamp: 'hlsf 25/Jan/2026 16:29:26'!
 canBeDrawn
-	^ vertices isEmptyOrNil not! !
+	^ vertices isEmptyOrNil not
+		or: [ "Try to get the vertices if not there yet "
+			self getVertices.
+			vertices isEmptyOrNil not]! !
 
 !DrGPolygonMorph methodsFor: 'testing' stamp: 'hlsf 9/Mar/2023 14:36:14'!
 containsPoint: localPoint
