@@ -1,10 +1,10 @@
-'From Cuis7.7 [latest update: #7809] on 25 January 2026 at 6:07:24 pm'!
+'From Cuis7.7 [latest update: #7810] on 26 January 2026 at 7:27:48 pm'!
 'Description '!
-!provides: 'DrGeoCore' 1 25!
+!provides: 'DrGeoCore' 1 26!
 !requires: 'UI-Preference' 1 28 nil!
 !requires: 'UI-Panel' 1 140 nil!
-!requires: 'YAXO' 1 28 nil!
 !requires: 'Graphics-Files-Additional' 1 30 nil!
+!requires: 'YAXO' 1 28 nil!
 SystemOrganization addCategory: #'DrGeoCore-Model'!
 SystemOrganization addCategory: #'DrGeoCore-Model-Smalltalk'!
 SystemOrganization addCategory: #'DrGeoCore-Model-Item'!
@@ -6720,9 +6720,10 @@ update
 Indeed, a Locus is sampled from its view, because it depends on the visible portion of the drawable"
 	self exist: self doParentsExist! !
 
-!DrGLocus2ptsItem methodsFor: 'accessing' stamp: 'hlsf 13/Jun/2021 11:26:20'!
+!DrGLocus2ptsItem methodsFor: 'accessing' stamp: 'hlsf 26/Jan/2026 19:27:43'!
 abscissaOf: aPoint 
 	| i distance |
+	p ifNil: [^0].
 	distance := self squareNorm: aPoint - (p at: 1).
 	i := 1.
 	2 to: samplesQty do: [:n | 
@@ -6735,9 +6736,10 @@ abscissaOf: aPoint
 basicType
 	^ #locus! !
 
-!DrGLocus2ptsItem methodsFor: 'accessing' stamp: 'hlsf 13/Jun/2021 11:26:20'!
+!DrGLocus2ptsItem methodsFor: 'accessing' stamp: 'hlsf 26/Jan/2026 19:27:25'!
 closestPointTo: aPoint 
 	| distance d m |
+	p ifNil: [^aPoint].
 	m := p at: 1.
 	distance := self squareNorm: aPoint - m.
 	2 to: samplesQty do: [:n | 
