@@ -1,6 +1,6 @@
-'From Cuis7.7 [latest update: #7819] on 28 January 2026 at 6:01:03 pm'!
+'From Cuis7.7 [latest update: #7819] on 28 January 2026 at 6:22:54 pm'!
 'Description '!
-!provides: 'DrGeoFrench' 1 15!
+!provides: 'DrGeoFrench' 1 16!
 !requires: 'CuisFrench' 1 0 nil!
 SystemOrganization addCategory: #DrGeoFrench!
 
@@ -1758,28 +1758,46 @@ polygoneRégulierCentre: centre sommet: sommet côtés: valeur
    representant le nombre de côtés du polygone"
 	^ self regularPolygonCenter: centre vertex: sommet sides: valeur ! !
 
-!DrGeoFigure methodsFor: 'DSL réglette' stamp: 'hlsf 6/Jan/2026 22:41:53'!
+!DrGeoFigure methodsFor: 'DSL réglette' stamp: 'hlsf 28/Jan/2026 18:20:15'!
 décimal: valeur à: point min: valueDébut max: valeurFin
+"Réglette d'une valeur décimale
+Voir méthode décimal:à:min:max:nom:"
 	^ self float: valeur at: point from: valueDébut to: valeurFin ! !
 
-!DrGeoFigure methodsFor: 'DSL réglette' stamp: 'hlsf 6/Jan/2026 22:42:36'!
-décimal: valeur à: point min: valeurDébut max: valeurFin nom: nom
-	^ self float: valeur at: point from: valeurDébut to: valeurFin name: nom ! !
+!DrGeoFigure methodsFor: 'DSL réglette' stamp: 'hlsf 28/Jan/2026 18:19:20'!
+décimal: valeur à: point min: début max: fin nom: nom
+"Réglette d'une valeur décimale dans l'intervalle [début ; fin] 
+-valeur : valeur initiale
+-point : positionnement gauche de la réglette
+-début : valeur minimum de la réglette
+-fin : valeur maximum
+-nom : nom de la valeur
+⇒ bloc de code, la valeur courante de la réglette est demandée en lui envoyant le message #valeur"
+	^ self float: valeur at: point from: début to: fin name: nom ! !
 
-!DrGeoFigure methodsFor: 'DSL réglette' stamp: 'hlsf 6/Jan/2026 22:44:54'!
+!DrGeoFigure methodsFor: 'DSL réglette' stamp: 'hlsf 28/Jan/2026 18:21:32'!
 décimal: valeur à: point min: valeurDébut max: valeurFin nom: nom afficherValeur: montrerValeur
+"Réglette d'une valeur décimale
+-montrerValeur : true pour montrer la valeur courante
+Voir méthode décimal:à:min:max:nom: pour les autre attributs"
 	^ self float: valeur at: point from: valeurDébut to: valeurFin name: nom showValue: montrerValeur ! !
 
-!DrGeoFigure methodsFor: 'DSL réglette' stamp: 'hlsf 6/Jan/2026 22:45:42'!
+!DrGeoFigure methodsFor: 'DSL réglette' stamp: 'hlsf 28/Jan/2026 18:22:00'!
 entier: valeur à: point min: valeurDébut max: valeurFin
+"Réglette d'une valeur entière
+Voir méthode décimal:à:min:max:nom:"
 	^ self integer: valeur at: point from: valeurDébut to: valeurFin ! !
 
-!DrGeoFigure methodsFor: 'DSL réglette' stamp: 'hlsf 6/Jan/2026 22:46:29'!
+!DrGeoFigure methodsFor: 'DSL réglette' stamp: 'hlsf 28/Jan/2026 18:22:11'!
 entier: valeur à: point min: valeurDébut max: valeurFin nom: nom
+"Réglette d'une valeur entière
+Voir méthode décimal:à:min:max:nom:"
 	^ self integer: valeur at: point from: valeurDébut to: valeurFin name: nom ! !
 
-!DrGeoFigure methodsFor: 'DSL réglette' stamp: 'hlsf 6/Jan/2026 22:47:23'!
+!DrGeoFigure methodsFor: 'DSL réglette' stamp: 'hlsf 28/Jan/2026 18:22:15'!
 entier: valeur à: point min: valeurDébut max: valeurFin nom: nom afficherValeur: afficherValeur
+"Réglette d'une valeur entière
+Voir méthode décimal:à:min:max:nom:"
 	^ self integer: valeur at: point from: valeurDébut to: valeurFin name: nom showValue: afficherValeur ! !
 
 !DrGeoFigure methodsFor: 'DSL support' stamp: 'hlsf 6/Jan/2026 22:47:40'!
