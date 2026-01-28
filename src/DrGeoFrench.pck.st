@@ -1,9 +1,19 @@
-'From Cuis7.7 [latest update: #7783] on 7 January 2026 at 8:22:26 am'!
+'From Cuis7.7 [latest update: #7819] on 28 January 2026 at 6:01:03 pm'!
 'Description '!
-!provides: 'DrGeoFrench' 1 14!
+!provides: 'DrGeoFrench' 1 15!
 !requires: 'CuisFrench' 1 0 nil!
 SystemOrganization addCategory: #DrGeoFrench!
 
+
+!classDefinition: #DrGeoTutorial category: #DrGeoFrench!
+ProtoObject subclass: #DrGeoTutorial
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'DrGeoFrench'!
+!classDefinition: 'DrGeoTutorial class' category: #DrGeoFrench!
+DrGeoTutorial class
+	instanceVariableNames: ''!
 
 !classDefinition: #DrGeoFigure category: #DrGeoFrench!
 DrGeoSketch subclass: #DrGeoFigure
@@ -15,270 +25,10 @@ DrGeoSketch subclass: #DrGeoFigure
 DrGeoFigure class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGeoTutorial category: #DrGeoFrench!
-EruditeBook subclass: #DrGeoTutorial
-	instanceVariableNames: ''
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'DrGeoFrench'!
-!classDefinition: 'DrGeoTutorial class' category: #DrGeoFrench!
-DrGeoTutorial class
-	instanceVariableNames: ''!
-
 
 !DrGeoFigure commentStamp: '' prior: 0!
 Domain Specific Language (DSL) abstraction to construct programmatically interactive sketch. 
 I come with methods with French names.!
-
-!DrGeoFigure methodsFor: 'user interface' stamp: ''!
-afficherAxes
-	^ self axesOn! !
-
-!DrGeoFigure methodsFor: 'user interface' stamp: ''!
-afficherGrille
-	^ self gridOn! !
-
-!DrGeoFigure methodsFor: 'user interface' stamp: 'hlsf 6/Jan/2026 22:29:09'!
-centrerVueEn: point
-	^ self centerTo: point! !
-
-!DrGeoFigure methodsFor: 'user interface' stamp: 'hlsf 6/Jan/2026 22:29:49'!
-échelle: entier
-	^ self scale: entier ! !
-
-!DrGeoFigure methodsFor: 'user interface' stamp: ''!
-pleinEcran
-	^ self fullscreen ! !
-
-!DrGeoFigure methodsFor: 'text' stamp: ''!
-texte: aText
-	^ self text: aText! !
-
-!DrGeoFigure methodsFor: 'text' stamp: 'hlsf 6/Jan/2026 22:30:22'!
-texte: texte à: position
-	^ self text: texte at: position! !
-
-!DrGeoFigure methodsFor: 'curve' stamp: 'hlsf 6/Jan/2026 22:31:55'!
-arcCentre: point1 de: point2 à: point3
-	^ self arcCenter: point1 from: point2 to: point3 ! !
-
-!DrGeoFigure methodsFor: 'curve' stamp: 'hlsf 6/Jan/2026 22:33:53'!
-arcDe: centre à: extrémité1 passantPar: extrémité2
-	^ self arc: centre to: extrémité1 to: extrémité2 ! !
-
-!DrGeoFigure methodsFor: 'curve' stamp: 'hlsf 6/Jan/2026 22:34:01'!
-bissectriceDe: angle
-	^ self angleBisector: angle ! !
-
-!DrGeoFigure methodsFor: 'curve' stamp: 'hlsf 6/Jan/2026 22:34:34'!
-bissectriceSommet: sommet côté1: point1 côté2: point2
-	^ self angleBisectorSummit: sommet side1: point1 side2: point2 ! !
-
-!DrGeoFigure methodsFor: 'curve' stamp: 'hlsf 6/Jan/2026 22:34:47'!
-cercleCentre: centre passantPar: point
-	^ self circleCenter: centre to: point ! !
-
-!DrGeoFigure methodsFor: 'curve' stamp: 'hlsf 6/Jan/2026 22:34:59'!
-cercleCentre: center rayon: valeur
-	^ self circleCenter: center radius: valeur ! !
-
-!DrGeoFigure methodsFor: 'curve' stamp: 'hlsf 6/Jan/2026 22:35:12'!
-cercleCentre: center segment: segment
-	^ self circleCenter: center segment: segment ! !
-
-!DrGeoFigure methodsFor: 'curve' stamp: 'hlsf 6/Jan/2026 22:35:29'!
-demiDroiteOrigine: origine passantPar: point
-	^ self ray: origine to: point ! !
-
-!DrGeoFigure methodsFor: 'curve' stamp: 'hlsf 6/Jan/2026 22:36:04'!
-droitePassantPar: point1 et: point2
-	^ self line: point1 to: point2 ! !
-
-!DrGeoFigure methodsFor: 'curve' stamp: 'hlsf 6/Jan/2026 22:36:58'!
-lieuDe: pointDépendant lorsqueBouge: mobile
-	^ self locusOf: pointDépendant when: mobile ! !
-
-!DrGeoFigure methodsFor: 'curve' stamp: 'hlsf 6/Jan/2026 22:37:09'!
-médiatriceDe: segment
-	^ self perpendicularBisector: segment! !
-
-!DrGeoFigure methodsFor: 'curve' stamp: 'hlsf 6/Jan/2026 22:37:24'!
-médiatriceDe: point1 à: point2
-	^ self perpendicularBisector: point1 to: point2 ! !
-
-!DrGeoFigure methodsFor: 'curve' stamp: 'hlsf 6/Jan/2026 22:37:41'!
-parallèleA: direction passantPar: point
-	^ self parallel: direction at: point ! !
-
-!DrGeoFigure methodsFor: 'curve' stamp: 'hlsf 6/Jan/2026 22:37:57'!
-perpendiculaireA: direction passantPar: point
-	^ self perpendicular: direction at: point ! !
-
-!DrGeoFigure methodsFor: 'curve' stamp: 'hlsf 6/Jan/2026 22:38:30'!
-polygone: collectionDePoints
-	^ self polygon: collectionDePoints ! !
-
-!DrGeoFigure methodsFor: 'curve' stamp: 'hlsf 6/Jan/2026 22:39:03'!
-polygoneRégulierCentre: centre sommet: sommet côtés: valeur
-	^ self regularPolygonCenter: centre vertex: sommet sides: valeur ! !
-
-!DrGeoFigure methodsFor: 'curve' stamp: 'hlsf 7/Jan/2026 08:08:16'!
-segmentDe: point1 à: point2
-"Segment d'extrémités les point1 et point2.
-
-	segmentDe: 0 @ 0 à: -10 @ -2
-	
-	pointA := figure point: 5 @ 4.
-	segmentDe: pointA à: 5 @ 2"
-	^ self segment: point1 to: point2 ! !
-
-!DrGeoFigure methodsFor: 'curve' stamp: 'hlsf 6/Jan/2026 22:39:25'!
-vecteur: point
-	^ self vector: point ! !
-
-!DrGeoFigure methodsFor: 'curve' stamp: 'hlsf 6/Jan/2026 22:40:13'!
-vecteurOrigine: point1 extrémité: point2
-	^ self vector: point1 to: point2 ! !
-
-!DrGeoFigure methodsFor: 'helpers' stamp: 'hlsf 21/Dec/2022 14:19:20'!
-courbeDe: f de: x0 à: x1
-	^ self plot: f from: x0 to: x1! !
-
-!DrGeoFigure methodsFor: 'helpers' stamp: 'hlsf 6/Jan/2026 22:41:53'!
-décimal: valeur à: point min: valueDébut max: valeurFin
-	^ self float: valeur at: point from: valueDébut to: valeurFin ! !
-
-!DrGeoFigure methodsFor: 'helpers' stamp: 'hlsf 6/Jan/2026 22:42:36'!
-décimal: valeur à: point min: valeurDébut max: valeurFin nom: nom
-	^ self float: valeur at: point from: valeurDébut to: valeurFin name: nom ! !
-
-!DrGeoFigure methodsFor: 'helpers' stamp: 'hlsf 6/Jan/2026 22:44:54'!
-décimal: valeur à: point min: valeurDébut max: valeurFin nom: nom afficherValeur: montrerValeur
-	^ self float: valeur at: point from: valeurDébut to: valeurFin name: nom showValue: montrerValeur ! !
-
-!DrGeoFigure methodsFor: 'helpers' stamp: 'hlsf 6/Jan/2026 22:45:42'!
-entier: valeur à: point min: valeurDébut max: valeurFin
-	^ self integer: valeur at: point from: valeurDébut to: valeurFin ! !
-
-!DrGeoFigure methodsFor: 'helpers' stamp: 'hlsf 6/Jan/2026 22:46:29'!
-entier: valeur à: point min: valeurDébut max: valeurFin nom: nom
-	^ self integer: valeur at: point from: valeurDébut to: valeurFin name: nom ! !
-
-!DrGeoFigure methodsFor: 'helpers' stamp: 'hlsf 6/Jan/2026 22:47:23'!
-entier: valeur à: point min: valeurDébut max: valeurFin nom: nom afficherValeur: afficherValeur
-	^ self integer: valeur at: point from: valeurDébut to: valeurFin name: nom showValue: afficherValeur ! !
-
-!DrGeoFigure methodsFor: 'helpers' stamp: 'hlsf 6/Jan/2026 22:47:40'!
-exporterVersImage: nomFichier
-	self exportToImage: nomFichier ! !
-
-!DrGeoFigure methodsFor: 'helpers' stamp: 'hlsf 6/Jan/2026 22:47:51'!
-faire: unBloc
-	^ self do: unBloc ! !
-
-!DrGeoFigure methodsFor: 'equation' stamp: 'hlsf 6/Jan/2026 22:48:05'!
-équationDe: droiteOuCercle
-	^ self equationOf: droiteOuCercle ! !
-
-!DrGeoFigure methodsFor: 'initialize-release' stamp: ''!
-supprimer
-	self delete! !
-
-!DrGeoFigure methodsFor: 'point' stamp: 'hlsf 6/Jan/2026 22:48:30'!
-autreIntersectionDe: courbe1 et: courbe2
-	^ self altIntersectionOf: courbe1 and: courbe2 ! !
-
-!DrGeoFigure methodsFor: 'point' stamp: 'hlsf 6/Jan/2026 22:48:51'!
-intersectionDe: courbe1 et: courbe2
-	^ self intersectionOf: courbe1 and: courbe2 ! !
-
-!DrGeoFigure methodsFor: 'point' stamp: 'hlsf 6/Jan/2026 22:49:00'!
-milieuDe: segment
-	^ self middleOf: segment ! !
-
-!DrGeoFigure methodsFor: 'point' stamp: 'hlsf 6/Jan/2026 22:49:17'!
-milieuDe: point1 et: point2
-	^ self middleOf: point1 and: point2 ! !
-
-!DrGeoFigure methodsFor: 'point' stamp: 'hlsf 6/Jan/2026 22:49:28'!
-pointSurLigne: courbe à: abscisse
-	^ self pointOnLine: courbe at: abscisse! !
-
-!DrGeoFigure methodsFor: 'processing' stamp: ''!
-actualiser
-	^ self update! !
-
-!DrGeoFigure methodsFor: 'value' stamp: 'hlsf 6/Jan/2026 22:49:51'!
-abscisseDe:  pointOuVecteur
-	^ self abscissaOf: pointOuVecteur ! !
-
-!DrGeoFigure methodsFor: 'value' stamp: 'hlsf 6/Jan/2026 22:50:26'!
-angleGéométriqueSommet: sommet de: point1 à: point2
-	^ self geometricAngle: sommet  to: point1  to: point2 ! !
-
-!DrGeoFigure methodsFor: 'value' stamp: 'hlsf 6/Jan/2026 22:51:09'!
-angleSommet: sommet de: point1 à: point2
-	^ self angle: sommet  to: point1 to: point2 ! !
-
-!DrGeoFigure methodsFor: 'value' stamp: 'hlsf 6/Jan/2026 22:51:24'!
-angleVecteur: vecteur1 et: vecteur2
-	^ self angle: vecteur1 to: vecteur2 ! !
-
-!DrGeoFigure methodsFor: 'value' stamp: 'hlsf 21/Dec/2022 14:25:39'!
-distanceDe: item1 à: item2
-	^ self distance: item1 to: item2! !
-
-!DrGeoFigure methodsFor: 'value' stamp: 'hlsf 6/Jan/2026 22:52:07'!
-longueurDe: ligneFinie
-	^ self lengthOf: ligneFinie ! !
-
-!DrGeoFigure methodsFor: 'value' stamp: 'hlsf 6/Jan/2026 22:52:26'!
-ordonnéeDe: pointOuVecteur
-	^ self ordinateOf: pointOuVecteur ! !
-
-!DrGeoFigure methodsFor: 'value' stamp: 'hlsf 6/Jan/2026 22:52:33'!
-penteDe: droite
-	^ self slopeOf: droite ! !
-
-!DrGeoFigure methodsFor: 'value' stamp: 'hlsf 6/Jan/2026 22:56:05'!
-valeur: nombreOuBloc
-	^ self value: nombreOuBloc ! !
-
-!DrGeoFigure methodsFor: 'value' stamp: 'hlsf 6/Jan/2026 22:56:22'!
-valeur: nombreOuBloc parent: valeur
-	^ self value: nombreOuBloc parent: valeur ! !
-
-!DrGeoFigure methodsFor: 'value' stamp: 'hlsf 6/Jan/2026 22:56:59'!
-valeur: nombreOuBloc parents: valeurs à: position
-	^ self value: nombreOuBloc parents: valeurs at: position! !
-
-!DrGeoFigure methodsFor: 'transformations' stamp: 'hlsf 6/Jan/2026 22:58:00'!
-homothétieDe: itemGéométrique centre: centre facteur: valeur
-	^ self scale: itemGéométrique center: centre factor: valeur ! !
-
-!DrGeoFigure methodsFor: 'transformations' stamp: 'hlsf 6/Jan/2026 22:58:22'!
-rotationDe: itemGéométrique centre: centre angle: valeur
-	^ self rotate: itemGéométrique center: centre angle: valeur ! !
-
-!DrGeoFigure methodsFor: 'transformations' stamp: 'hlsf 6/Jan/2026 22:58:45'!
-rotationDe: itemGéométrique centre: center angleDegrés: valeur
-	^ self rotate: itemGéométrique center: center angleDegrees: valeur ! !
-
-!DrGeoFigure methodsFor: 'transformations' stamp: 'hlsf 6/Jan/2026 22:58:58'!
-symétriqueDe: itemGéométrique selonAxe: droite
-	^ self reflect: itemGéométrique axis: droite ! !
-
-!DrGeoFigure methodsFor: 'transformations' stamp: 'hlsf 6/Jan/2026 22:59:12'!
-symétriqueDe: itemGéométrique selonCentre: centre
-	^ self symmetry: itemGéométrique center: centre ! !
-
-!DrGeoFigure methodsFor: 'transformations' stamp: 'hlsf 6/Jan/2026 22:59:23'!
-translationDe: itemGéométrique parVecteur: vecteur
-	^ self translate: itemGéométrique vector: vecteur! !
-
-!DrGeoFigure class methodsFor: 'instance creation' stamp: ''!
-nouveau
-	^ self new! !
 
 !DrGeoTutorial methodsFor: 'as yet unclassified' stamp: 'hlsf 21/Dec/2022 22:16:02'!
 initialize
@@ -1761,6 +1511,364 @@ fig vecteur: p.
 fig vecteur: -5 @ -5]]] withDrGeoActions
 
 ') data: ((Dictionary new)); yourself); subsections: (OrderedCollection new yourself); yourself)! !
+
+!DrGeoFigure methodsFor: 'DSL angle' stamp: 'hlsf 28/Jan/2026 16:31:14'!
+angleGéométriqueSommet: sommet de: point1 à: point2
+"Angle géométrique dans [0 ; 180] défini par trois points
+-sommet: un point, sommet de l'angle
+-point1: un point sur un côté de l'angle
+-point2: un point sur l'autre côté de l'angle"
+	^ self geometricAngle: sommet  to: point1  to: point2 ! !
+
+!DrGeoFigure methodsFor: 'DSL angle' stamp: 'hlsf 28/Jan/2026 16:32:18'!
+angleSommet: sommet de: point1 à: point2
+"Angle orienté dans [0 ; 360[ defini par trois points
+-sommet: un point, sommet de l'angle
+-point1: un point sur un côté de l'angle
+-point2: un point sur l'autre côté de l'angle"
+	^ self angle: sommet  to: point1 to: point2 ! !
+
+!DrGeoFigure methodsFor: 'DSL angle' stamp: 'hlsf 28/Jan/2026 16:29:23'!
+angleVecteur: vecteur1 et: vecteur2
+"Angle orienté défini par deux vecteurs
+-vecteur1: un point ou vecteur DrGeo
+-vecteur2: un point ou vecteur DrGeo"
+	^ self angle: vecteur1 to: vecteur2 ! !
+
+!DrGeoFigure methodsFor: 'DSL canevas' stamp: ''!
+actualiser
+	^ self update! !
+
+!DrGeoFigure methodsFor: 'DSL canevas' stamp: 'hlsf 28/Jan/2026 16:34:11'!
+axesCacher
+"Cacher les axes ox et oy"
+	^self axesOff! !
+
+!DrGeoFigure methodsFor: 'DSL canevas' stamp: 'hlsf 28/Jan/2026 16:34:23'!
+axesMontrer
+"Afficher les axes ox et oy"
+	^self axesOn! !
+
+!DrGeoFigure methodsFor: 'DSL canevas' stamp: 'hlsf 28/Jan/2026 16:45:30'!
+centrerVueEn: centre
+"Centrer la vue sur position donnée
+-centre : le point où centrer la vue"
+	^ self centerTo: centre ! !
+
+!DrGeoFigure methodsFor: 'DSL canevas' stamp: 'hlsf 28/Jan/2026 16:45:33'!
+échelle: entier
+"Changer l'échelle de la figure
+-entier : nombre de pixels utilisés pour représenter une unité.
+Plus le nombre est large, plus la figure est grossie."
+	^ self scale: entier ! !
+
+!DrGeoFigure methodsFor: 'DSL canevas' stamp: 'hlsf 28/Jan/2026 16:35:20'!
+grilleCacher
+"Cacher le quadrillage"
+	^ self gridOff ! !
+
+!DrGeoFigure methodsFor: 'DSL canevas' stamp: 'hlsf 28/Jan/2026 16:35:32'!
+grilleMontrer
+"Montrer le quadrillage"
+	^ self gridOn! !
+
+!DrGeoFigure methodsFor: 'DSL canevas' stamp: 'hlsf 28/Jan/2026 16:38:42'!
+pleinEcran
+	^ self fullScreen ! !
+
+!DrGeoFigure methodsFor: 'DSL canevas' stamp: 'hlsf 28/Jan/2026 16:39:10'!
+vue
+	^ self view! !
+
+!DrGeoFigure methodsFor: 'DSL equation' stamp: 'hlsf 28/Jan/2026 16:45:22'!
+équationDe: droiteOuCercle
+"Equation d'une droite ou d'un cercle
+-droiteOuCercle : une droite ou un cercle
+Voir DSL ligne et DSL ligne courbe"
+	^ self equationOf: droiteOuCercle ! !
+
+!DrGeoFigure methodsFor: 'DSL ligne' stamp: 'hlsf 28/Jan/2026 16:45:17'!
+bissectriceDe: angle
+"Bissectrice d'un angle
+-angle : angle géométrique défini par trois points (voir DSL angle)"
+	^ self angleBisector: angle ! !
+
+!DrGeoFigure methodsFor: 'DSL ligne' stamp: 'hlsf 28/Jan/2026 16:45:12'!
+bissectriceSommet: sommet côté1: point1 côté2: point2
+"Bissectrice d'une angle défini par trois points
+-sommet : le point par lequelle passe la bissectrice, sommet de l'angle
+-point1 : un point sur un côté de l'angle
+-point2 : un point sur l'autre côté de l'angle"
+	^ self angleBisectorSummit: sommet side1: point1 side2: point2 ! !
+
+!DrGeoFigure methodsFor: 'DSL ligne' stamp: 'hlsf 28/Jan/2026 16:45:04'!
+demiDroiteOrigine: origine passantPar: point
+"Demi-droite
+-origine : origine de la demi-droite
+-point : un autre point par lequel passe la bissectrice"
+	^ self ray: origine to: point ! !
+
+!DrGeoFigure methodsFor: 'DSL ligne' stamp: 'hlsf 28/Jan/2026 17:09:52'!
+droitePassantPar: point1 et: point2
+"Droite définie par deux points
+-point1 : un point de la droite
+-point2 : un autre point de la droite"
+	^ self line: point1 to: point2 ! !
+
+!DrGeoFigure methodsFor: 'DSL ligne' stamp: 'hlsf 28/Jan/2026 16:49:43'!
+médiatriceDe: segment
+"Médiatrice
+-segment : un segment dont la médiatrice est perpendiculaire en son milieu"
+	^ self perpendicularBisector: segment! !
+
+!DrGeoFigure methodsFor: 'DSL ligne' stamp: 'hlsf 28/Jan/2026 16:49:37'!
+médiatriceDe: point1 à: point2
+"Médiatrice d'un segment défini par deux points
+-point1 : une extrémité du segment
+-point2 : l'autre extrémité du segment"
+	^ self perpendicularBisector: point1 to: point2 ! !
+
+!DrGeoFigure methodsFor: 'DSL ligne' stamp: 'hlsf 28/Jan/2026 17:09:12'!
+parallèleA: direction passantPar: point
+"Droite parallèle
+-direction : une direction (droite, demi-droite, segment, vecteur) 
+   à laquelle est parallèle la droite
+-point : un point par lequel passe la droite parallèle"
+	^ self parallel: direction at: point ! !
+
+!DrGeoFigure methodsFor: 'DSL ligne' stamp: 'hlsf 28/Jan/2026 17:09:01'!
+perpendiculaireA: direction passantPar: point
+"Droite perpendiculaire
+-direction : une direction (droite, demi-droite, segment, vecteur) 
+   à laquelle est  perpendiculaire la droite
+-point : un point par lequel passe la droite perpendiculaire"
+	^ self perpendicular: direction at: point ! !
+
+!DrGeoFigure methodsFor: 'DSL ligne' stamp: 'hlsf 28/Jan/2026 17:10:31'!
+segmentDe: point1 à: point2
+"Segment défini par deux points
+-point1 : une extrémité du segment
+-point2 : l'autre extrémité du segment"
+	^ self segment: point1 to: point2 ! !
+
+!DrGeoFigure methodsFor: 'DSL ligne courbe' stamp: 'hlsf 28/Jan/2026 17:20:37'!
+arcCentre: centre de: début à: fin
+"Arc de cercle orienté (sens anti-horaire) défini par son centre et deux points
+-centre : un point, centre du cercle
+-début : point de début de l'arc
+-fin : point de fin de l'arc"
+	^ self arcCenter: centre from: début to: fin ! !
+
+!DrGeoFigure methodsFor: 'DSL ligne courbe' stamp: 'hlsf 28/Jan/2026 17:25:15'!
+arcDe: début  à: fin passantPar: unPoint
+"Arc de cercle défini par trois points
+-début : point de début de l'arc
+-fin : point de fin de l'arc
+-unPoint : un point par lequel passe l'arc"
+	^ self arc: début to: unPoint to: fin! !
+
+!DrGeoFigure methodsFor: 'DSL ligne courbe' stamp: 'hlsf 28/Jan/2026 17:27:14'!
+cercleCentre: centre passantPar: point
+"Cercle défini par deux points
+-centre : un point, centre du cercle
+-point : un point par lequel passe le cercle"
+	^ self circleCenter: centre to: point ! !
+
+!DrGeoFigure methodsFor: 'DSL ligne courbe' stamp: 'hlsf 28/Jan/2026 17:29:38'!
+cercleCentre: center rayon: valeur
+"Cercle défini par ses centre et rayon
+-centre : un point, centre du cercle
+-valeur: un nombre ou une valeur calculée (voir DSL valeur)
+   representant le rayon du cercle"
+	^ self circleCenter: center radius: valeur ! !
+
+!DrGeoFigure methodsFor: 'DSL ligne courbe' stamp: 'hlsf 28/Jan/2026 17:30:48'!
+cercleCentre: center segment: segment
+"Cercle défini par ses centre et rayon
+-centre : un point, centre du cercle
+-segment : un segment dont la longueur
+  est utilisée comme rayon du cercle"
+	^ self circleCenter: center segment: segment ! !
+
+!DrGeoFigure methodsFor: 'DSL ligne courbe' stamp: 'hlsf 28/Jan/2026 17:34:44'!
+courbeDe: f de: x0 à: x1
+"Affiche la courbe d'une fonction à un argument dans l'intervalle [x0 ; x1]
+-f : bloc de code pour décrire la fonction. ex: [:x | x + (10 * x) cos]
+-x0 : abscisse minimun pour afficher la fonction
+-x1 : abscisse maximum"
+	^ self plot: f from: x0 to: x1! !
+
+!DrGeoFigure methodsFor: 'DSL ligne courbe' stamp: 'hlsf 28/Jan/2026 17:36:27'!
+lieuDe: dépendant lorsqueBouge: mobile
+"Lieu d'un point selon un autre point
+-mobile: un point mobile sur une ligne (droite ou courbe)
+-dépendant: un point dépendant par construction du point 'mobile'"
+	^ self locusOf: dépendant when: mobile ! !
+
+!DrGeoFigure methodsFor: 'DSL point' stamp: 'hlsf 28/Jan/2026 17:43:07'!
+autreIntersectionDe: ligne1 et: ligne2
+"L'autre point d'intersection entre deux lignes
+-ligne1 : une ligne droite ou courbe 
+-ligne2 : une ligne droite ou courbe 
+Lors de l'interesection avec au moins une ligne courbe, le deuxième
+point d'intersection est demandé avec cette méthode."
+	^ self altIntersectionOf: ligne1 and: ligne2 ! !
+
+!DrGeoFigure methodsFor: 'DSL point' stamp: 'hlsf 28/Jan/2026 17:43:28'!
+intersectionDe: ligne1 et: ligne2
+"Point d'intersection entre deux lignes
+-ligne1 : une ligne droite ou courbe 
+-ligne2 : une ligne droite ou courbe"
+	^ self intersectionOf: ligne1 and: ligne2 ! !
+
+!DrGeoFigure methodsFor: 'DSL point' stamp: 'hlsf 28/Jan/2026 17:44:37'!
+milieuDe: segment
+"Milieu d'un segment
+-segment : un segment DrGeo (voir DSL ligne)"
+	^ self middleOf: segment ! !
+
+!DrGeoFigure methodsFor: 'DSL point' stamp: 'hlsf 28/Jan/2026 17:45:51'!
+milieuDe: point1 et: point2
+"Le point au milieu de deux points
+- point1 : un point
+- point2 : un autre point"
+	^ self middleOf: point1 and: point2 ! !
+
+!DrGeoFigure methodsFor: 'DSL point' stamp: 'hlsf 28/Jan/2026 17:50:23'!
+pointSurLigne: ligne à: abscisse
+"Point mobile sur une ligne
+-ligne : une ligne droite ou courbe (see DSL ligne/ligne courbe)
+-abscisse : un nombre de l'intervalle [0 ; 1]"
+	^ self pointOnLine: ligne at: abscisse! !
+
+!DrGeoFigure methodsFor: 'DSL polygone' stamp: 'hlsf 28/Jan/2026 17:52:03'!
+polygone: points
+"Polygone défini par ses sommets
+-points : une collection de points Smalltalk ou 
+de points DrGeo
+   ex: {3@3 . pt2 . pt3}"
+	^ self polygon: points ! !
+
+!DrGeoFigure methodsFor: 'DSL polygone' stamp: 'hlsf 28/Jan/2026 17:54:51'!
+polygoneRégulierCentre: centre sommet: sommet côtés: valeur
+"Polygone régulier
+-centre : un point, centre du polygone régulier
+-sommet : un point, n'importe quel sommet du polygone
+-valeur : un nombre entier ou une valeur calculée (voir DSL valeur)
+   representant le nombre de côtés du polygone"
+	^ self regularPolygonCenter: centre vertex: sommet sides: valeur ! !
+
+!DrGeoFigure methodsFor: 'DSL réglette' stamp: 'hlsf 6/Jan/2026 22:41:53'!
+décimal: valeur à: point min: valueDébut max: valeurFin
+	^ self float: valeur at: point from: valueDébut to: valeurFin ! !
+
+!DrGeoFigure methodsFor: 'DSL réglette' stamp: 'hlsf 6/Jan/2026 22:42:36'!
+décimal: valeur à: point min: valeurDébut max: valeurFin nom: nom
+	^ self float: valeur at: point from: valeurDébut to: valeurFin name: nom ! !
+
+!DrGeoFigure methodsFor: 'DSL réglette' stamp: 'hlsf 6/Jan/2026 22:44:54'!
+décimal: valeur à: point min: valeurDébut max: valeurFin nom: nom afficherValeur: montrerValeur
+	^ self float: valeur at: point from: valeurDébut to: valeurFin name: nom showValue: montrerValeur ! !
+
+!DrGeoFigure methodsFor: 'DSL réglette' stamp: 'hlsf 6/Jan/2026 22:45:42'!
+entier: valeur à: point min: valeurDébut max: valeurFin
+	^ self integer: valeur at: point from: valeurDébut to: valeurFin ! !
+
+!DrGeoFigure methodsFor: 'DSL réglette' stamp: 'hlsf 6/Jan/2026 22:46:29'!
+entier: valeur à: point min: valeurDébut max: valeurFin nom: nom
+	^ self integer: valeur at: point from: valeurDébut to: valeurFin name: nom ! !
+
+!DrGeoFigure methodsFor: 'DSL réglette' stamp: 'hlsf 6/Jan/2026 22:47:23'!
+entier: valeur à: point min: valeurDébut max: valeurFin nom: nom afficherValeur: afficherValeur
+	^ self integer: valeur at: point from: valeurDébut to: valeurFin name: nom showValue: afficherValeur ! !
+
+!DrGeoFigure methodsFor: 'DSL support' stamp: 'hlsf 6/Jan/2026 22:47:40'!
+exporterVersImage: nomFichier
+	self exportToImage: nomFichier ! !
+
+!DrGeoFigure methodsFor: 'DSL support' stamp: 'hlsf 6/Jan/2026 22:47:51'!
+faire: unBloc
+	^ self do: unBloc ! !
+
+!DrGeoFigure methodsFor: 'DSL texte' stamp: ''!
+texte: aText
+	^ self text: aText! !
+
+!DrGeoFigure methodsFor: 'DSL texte' stamp: 'hlsf 6/Jan/2026 22:30:22'!
+texte: texte à: position
+	^ self text: texte at: position! !
+
+!DrGeoFigure methodsFor: 'DSL transformation' stamp: 'hlsf 6/Jan/2026 22:58:00'!
+homothétieDe: itemGéométrique centre: centre facteur: valeur
+	^ self scale: itemGéométrique center: centre factor: valeur ! !
+
+!DrGeoFigure methodsFor: 'DSL transformation' stamp: 'hlsf 6/Jan/2026 22:58:22'!
+rotationDe: itemGéométrique centre: centre angle: valeur
+	^ self rotate: itemGéométrique center: centre angle: valeur ! !
+
+!DrGeoFigure methodsFor: 'DSL transformation' stamp: 'hlsf 6/Jan/2026 22:58:45'!
+rotationDe: itemGéométrique centre: center angleDegrés: valeur
+	^ self rotate: itemGéométrique center: center angleDegrees: valeur ! !
+
+!DrGeoFigure methodsFor: 'DSL transformation' stamp: 'hlsf 6/Jan/2026 22:58:58'!
+symétriqueDe: itemGéométrique selonAxe: droite
+	^ self reflect: itemGéométrique axis: droite ! !
+
+!DrGeoFigure methodsFor: 'DSL transformation' stamp: 'hlsf 6/Jan/2026 22:59:12'!
+symétriqueDe: itemGéométrique selonCentre: centre
+	^ self symmetry: itemGéométrique center: centre ! !
+
+!DrGeoFigure methodsFor: 'DSL transformation' stamp: 'hlsf 6/Jan/2026 22:59:23'!
+translationDe: itemGéométrique parVecteur: vecteur
+	^ self translate: itemGéométrique vector: vecteur! !
+
+!DrGeoFigure methodsFor: 'DSL transformation' stamp: 'hlsf 6/Jan/2026 22:39:25'!
+vecteur: point
+	^ self vector: point ! !
+
+!DrGeoFigure methodsFor: 'DSL transformation' stamp: 'hlsf 6/Jan/2026 22:40:13'!
+vecteurOrigine: point1 extrémité: point2
+	^ self vector: point1 to: point2 ! !
+
+!DrGeoFigure methodsFor: 'DSL valeur' stamp: 'hlsf 6/Jan/2026 22:49:51'!
+abscisseDe:  pointOuVecteur
+	^ self abscissaOf: pointOuVecteur ! !
+
+!DrGeoFigure methodsFor: 'DSL valeur' stamp: 'hlsf 21/Dec/2022 14:25:39'!
+distanceDe: item1 à: item2
+	^ self distance: item1 to: item2! !
+
+!DrGeoFigure methodsFor: 'DSL valeur' stamp: 'hlsf 6/Jan/2026 22:52:07'!
+longueurDe: ligneFinie
+	^ self lengthOf: ligneFinie ! !
+
+!DrGeoFigure methodsFor: 'DSL valeur' stamp: 'hlsf 6/Jan/2026 22:52:26'!
+ordonnéeDe: pointOuVecteur
+	^ self ordinateOf: pointOuVecteur ! !
+
+!DrGeoFigure methodsFor: 'DSL valeur' stamp: 'hlsf 6/Jan/2026 22:52:33'!
+penteDe: droite
+	^ self slopeOf: droite ! !
+
+!DrGeoFigure methodsFor: 'DSL valeur' stamp: 'hlsf 6/Jan/2026 22:56:05'!
+valeur: nombreOuBloc
+	^ self value: nombreOuBloc ! !
+
+!DrGeoFigure methodsFor: 'DSL valeur' stamp: 'hlsf 6/Jan/2026 22:56:22'!
+valeur: nombreOuBloc parent: valeur
+	^ self value: nombreOuBloc parent: valeur ! !
+
+!DrGeoFigure methodsFor: 'DSL valeur' stamp: 'hlsf 6/Jan/2026 22:56:59'!
+valeur: nombreOuBloc parents: valeurs à: position
+	^ self value: nombreOuBloc parents: valeurs at: position! !
+
+!DrGeoFigure methodsFor: 'initialize-release' stamp: ''!
+supprimer
+	self delete! !
+
+!DrGeoFigure class methodsFor: 'instance creation' stamp: ''!
+nouveau
+	^ self new! !
 
 !DrGeoItem methodsFor: '*DrGeoFrench' stamp: ''!
 bloquer

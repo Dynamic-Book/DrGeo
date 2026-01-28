@@ -1,6 +1,6 @@
-'From Cuis7.7 [latest update: #7810] on 26 January 2026 at 7:27:48 pm'!
+'From Cuis7.7 [latest update: #7819] on 28 January 2026 at 6:08:37 pm'!
 'Description '!
-!provides: 'DrGeoCore' 1 26!
+!provides: 'DrGeoCore' 1 28!
 !requires: 'UI-Preference' 1 28 nil!
 !requires: 'UI-Panel' 1 140 nil!
 !requires: 'Graphics-Files-Additional' 1 30 nil!
@@ -7707,7 +7707,7 @@ moveParent: aPoint
 	parents second moveEvent: aPoint.
 	^ true! !
 
-!DrGPolygonRegularItem methodsFor: 'updating' stamp: 'hlsf 10/Aug/2025 13:20:02'!
+!DrGPolygonRegularItem methodsFor: 'updating' stamp: 'hlsf 28/Jan/2026 18:07:28'!
 update
 |center pointA angle sides|
 	self doParentsExist ifFalse: [^ self exist: false].
@@ -7716,8 +7716,8 @@ update
 	sides := parents third valueItem rounded abs.
 	sides < 3 ifTrue: [^ self exist: false].
 	angle := Float twoPi / sides.
-	points := OrderedCollection new.
-	sides timesRepeat: [pointA := points add: (pointA rotateBy: angle about: center)].
+	points := OrderedCollection with: pointA.
+	sides -1 timesRepeat: [pointA := points add: (pointA rotateBy: angle about: center)].
 	self computeLength.
 	self exist: true! !
 
@@ -8952,28 +8952,45 @@ value: aNumber
 	(self mathItem respondsTo: #valueItem:) 
 		ifTrue: [self mathItem valueItem: aNumber]! !
 
-!DrGeoSketch methodsFor: 'initialize-release' stamp: 'hlsf 25/Sep/2022 11:32:31'!
-delete
-	self view deleteWithoutConfirmation.
-	self release! !
+!DrGeoSketch methodsFor: 'DSL angle' stamp: 'hlsf 15/Jan/2026 17:58:58'!
+angle: vector1 to: vector2
+"Oriented angle defined by two vectors
+-vector1: a point or DrGeo vector
+-vector2: a point or DrGeo vector"
+	^ self finalizeValue: (DrGAngleVectorsItem newWith: (
+		Array 
+			with: (self ensureVector: vector1) mathItem
+			with: (self ensureVector: vector2) mathItem
+			with: self aPosition) )
+		hide: false! !
 
-!DrGeoSketch methodsFor: 'initialize-release' stamp: 'hlsf 20/Apr/2024 11:04:09'!
-initialize
-	presenter := DrGeo service
-		stSketch: self;
-		yourself .
-	" From now, my view (empty) is in a presentable state. Inform about it "
-	DrGeoSketch triggerEvent: #newSmalltalkSketch with: self! !
+!DrGeoSketch methodsFor: 'DSL angle' stamp: 'hlsf 21/Jan/2026 15:21:56'!
+angle: vertex to: point1 to: point2
+"Oriented angle in [0 ; 360[ defined by three points
+-vertex: a point, vertex of the angle
+-point1: a point in one side of the angle
+-point2: a point in the other side of the angle"
+	^ self finalizeValue: (DrGAngle3ptsOrientedItem newWith: (
+		Array
+			with: (self ensureDrGeoPoint: vertex ) mathItem
+			with: (self ensureDrGeoPoint: point1) mathItem
+			with: (self ensureDrGeoPoint: point2) mathItem
+			with: self aPosition) )
+		hide: false! !
 
-!DrGeoSketch methodsFor: 'initialize-release' stamp: 'hlsf 4/Aug/2023 20:05:38'!
-release
-	presenter ifNotNil: [presenter release].
-	presenter := nil.
-	self terminateDo ! !
-
-!DrGeoSketch methodsFor: 'obsolete' stamp: 'hlsf 10/Apr/2022 20:30:29'!
-fullscreen
-	! !
+!DrGeoSketch methodsFor: 'DSL angle' stamp: 'hlsf 21/Jan/2026 15:22:08'!
+geometricAngle: summit to: point1 to: point2
+"Geometric angle in [0 ; 180] defined by three points
+-vertex: a point, vertex of the angle
+-point1: a point in one side of the angle
+-point2: a point in the other side of the angle"
+	^ self finalizeValue: (DrGAngle3ptsItem newWith: (
+		Array
+			with: (self ensureDrGeoPoint: summit) mathItem
+			with: (self ensureDrGeoPoint: point1) mathItem
+			with: (self ensureDrGeoPoint: point2) mathItem
+			with: self aPosition) )
+		hide: false! !
 
 !DrGeoSketch methodsFor: 'DSL canvas' stamp: 'hlsf 21/Jan/2026 19:21:27'!
 axesOff
@@ -9299,13 +9316,13 @@ plot: f from: x0 to: x1
 	^ (self locusOf: pen when: mobile) color: Color blue
 ! !
 
-!DrGeoSketch methodsFor: 'DSL point' stamp: 'hlsf 17/Jan/2026 09:14:58'!
+!DrGeoSketch methodsFor: 'DSL point' stamp: 'hlsf 28/Jan/2026 17:41:40'!
 altIntersectionOf: line1 and: line2
 "The alternate point of intersection between two lines
 -line1: a straight or curved line
 -line2: a straight or curved line
-When requesting the intersection with one curved line, the second point
-can be asked with this method."
+When requesting the intersection with at least one curved line, 
+the second point can be asked with this method."
 	| item |
 	item := DrGPointIntersectionItem newWith: (
 		Array with: line1 mathItem with: line2 mathItem with: 0 @ 0).
@@ -9323,10 +9340,10 @@ intersectionOf: line1 and: line2
 	item k: -1.
 	^ self finalizePoint: item! !
 
-!DrGeoSketch methodsFor: 'DSL point' stamp: 'hlsf 17/Jan/2026 22:28:09'!
+!DrGeoSketch methodsFor: 'DSL point' stamp: 'hlsf 28/Jan/2026 17:44:44'!
 middleOf: segment
 "Middle of a segment
--segment: a segment object, see DSL line"
+-segment: a DrGeo segment (see DSL line)"
 	^ self
 		finalizePoint: (DrGPointMiddlesegmentItem newWith: (Array with: segment mathItem))! !
 
@@ -9370,10 +9387,10 @@ point: block parents: drgeoItems
 	array := Array with: block withAll: (drgeoItems collect: [:value | value mathItem]).
 	^ self finalizePoint: (DrGPointBlockItem newWith: array)! !
 
-!DrGeoSketch methodsFor: 'DSL point' stamp: 'hlsf 15/Jan/2026 16:47:35'!
+!DrGeoSketch methodsFor: 'DSL point' stamp: 'hlsf 28/Jan/2026 17:46:24'!
 pointOnLine: line at: abscissa 
 "Point mobile on a line
--line: straight or curved line (see DSL line, DSL line curved)
+-line: straight or curved line (see DSL line/line curved)
 -abscissa: a number in the interval [0 ; 1]"
 	| mathItem |
 	mathItem := DrGPointOncurveItem newWith: (Array with:line mathItem with: 0 @ 0).
@@ -9428,7 +9445,7 @@ text: text at: point
 	presenter notInteractive: false.
 	^ answer! !
 
-!DrGeoSketch methodsFor: 'DSL transformations' stamp: 'hlsf 17/Jan/2026 22:30:38'!
+!DrGeoSketch methodsFor: 'DSL transformation' stamp: 'hlsf 17/Jan/2026 22:30:38'!
 reflect: geometricItem axis: axis
 "Transformation by axial symmetry
 -geometricItem: the object to transform
@@ -9438,7 +9455,7 @@ reflect: geometricItem axis: axis
 		finalizeTransformation: 'Reflexion' 
 		with: (Array with: geometricItem mathItem with: axis mathItem)! !
 
-!DrGeoSketch methodsFor: 'DSL transformations' stamp: 'hlsf 17/Jan/2026 22:31:27'!
+!DrGeoSketch methodsFor: 'DSL transformation' stamp: 'hlsf 17/Jan/2026 22:31:27'!
 rotate: geometricItem center: center angle: value
 "Transformation by rotation
 -geometricItem: the object to transform
@@ -9455,7 +9472,7 @@ rotate: geometricItem center: center angle: value
 				with: (self ensureDrGeoPoint: center) mathItem 
 				with: (self ensureDrGeoValue: value) mathItem) 	! !
 
-!DrGeoSketch methodsFor: 'DSL transformations' stamp: 'hlsf 17/Jan/2026 22:41:08'!
+!DrGeoSketch methodsFor: 'DSL transformation' stamp: 'hlsf 17/Jan/2026 22:41:08'!
 rotate: geometricItem center: center angleDegrees: number 
 "Transformation by rotation
 -geometricItem: the object to transform
@@ -9466,7 +9483,7 @@ rotate: geometricItem center: center angleDegrees: number
 	convertedValue := number isNumber ifTrue: [number degreesToRadians] ifFalse: [number ].
 	^ self rotate: geometricItem center: center angle: convertedValue ! !
 
-!DrGeoSketch methodsFor: 'DSL transformations' stamp: 'hlsf 17/Jan/2026 22:33:44'!
+!DrGeoSketch methodsFor: 'DSL transformation' stamp: 'hlsf 17/Jan/2026 22:33:44'!
 scale: geometricItem center: center factor: value 
 "Transformation by homothety (scale)
 -geometricItem: the object to transform
@@ -9483,7 +9500,7 @@ scale: geometricItem center: center factor: value
 			with: (self ensureDrGeoValue: value) mathItem)
 ! !
 
-!DrGeoSketch methodsFor: 'DSL transformations' stamp: 'hlsf 17/Jan/2026 22:33:53'!
+!DrGeoSketch methodsFor: 'DSL transformation' stamp: 'hlsf 17/Jan/2026 22:33:53'!
 symmetry: geometricItem center: center
 "Transformation by central symmetry
 -geometricItem: the object to transform
@@ -9496,7 +9513,7 @@ symmetry: geometricItem center: center
 			with: geometricItem mathItem 
 			with: (self ensureDrGeoPoint: center) mathItem)! !
 
-!DrGeoSketch methodsFor: 'DSL transformations' stamp: 'hlsf 17/Jan/2026 22:34:23'!
+!DrGeoSketch methodsFor: 'DSL transformation' stamp: 'hlsf 17/Jan/2026 22:34:23'!
 translate: geometricItem vector: vector 
 "Transformation by translation
 -geometricItem: the object to transform
@@ -9510,7 +9527,7 @@ translate: geometricItem vector: vector
 			with: geometricItem mathItem
 			with: (self ensureVector: vector) mathItem)! !
 
-!DrGeoSketch methodsFor: 'DSL transformations' stamp: 'hlsf 15/Jan/2026 17:50:15'!
+!DrGeoSketch methodsFor: 'DSL transformation' stamp: 'hlsf 15/Jan/2026 17:50:15'!
 vector: point
 "Vector defined by its coordinates
 -point: a Smalltalk point or DrGeo point"
@@ -9519,7 +9536,7 @@ vector: point
 			with: (self ensureDrGeoPoint: 0@0) mathItem
 			with: (self ensureDrGeoPoint: point) mathItem) )! !
 
-!DrGeoSketch methodsFor: 'DSL transformations' stamp: 'hlsf 15/Jan/2026 17:53:53'!
+!DrGeoSketch methodsFor: 'DSL transformation' stamp: 'hlsf 15/Jan/2026 17:53:53'!
 vector: origin to: extremity 
 "Vector defined by its origin and extremity
 -origin: a Smalltalk point or DrGeo point representing its origin
@@ -9670,6 +9687,29 @@ or
 	presenter notInteractive: false.
 	^ answer! !
 
+!DrGeoSketch methodsFor: 'initialize-release' stamp: 'hlsf 25/Sep/2022 11:32:31'!
+delete
+	self view deleteWithoutConfirmation.
+	self release! !
+
+!DrGeoSketch methodsFor: 'initialize-release' stamp: 'hlsf 20/Apr/2024 11:04:09'!
+initialize
+	presenter := DrGeo service
+		stSketch: self;
+		yourself .
+	" From now, my view (empty) is in a presentable state. Inform about it "
+	DrGeoSketch triggerEvent: #newSmalltalkSketch with: self! !
+
+!DrGeoSketch methodsFor: 'initialize-release' stamp: 'hlsf 4/Aug/2023 20:05:38'!
+release
+	presenter ifNotNil: [presenter release].
+	presenter := nil.
+	self terminateDo ! !
+
+!DrGeoSketch methodsFor: 'obsolete' stamp: 'hlsf 10/Apr/2022 20:30:29'!
+fullscreen
+	! !
+
 !DrGeoSketch methodsFor: 'private' stamp: 'hlsf 6/Jan/2026 15:34:54'!
 canTransform: drgeoItem
 	drgeoItem mathItem isGeometricItem
@@ -9774,46 +9814,6 @@ terminateDo
 	doProcess  ifNotNil: [
 		doProcess terminate.
 		doProcess := nil]! !
-
-!DrGeoSketch methodsFor: 'DSL angle' stamp: 'hlsf 15/Jan/2026 17:58:58'!
-angle: vector1 to: vector2
-"Oriented angle defined by two vectors
--vector1: a point or DrGeo vector
--vector2: a point or DrGeo vector"
-	^ self finalizeValue: (DrGAngleVectorsItem newWith: (
-		Array 
-			with: (self ensureVector: vector1) mathItem
-			with: (self ensureVector: vector2) mathItem
-			with: self aPosition) )
-		hide: false! !
-
-!DrGeoSketch methodsFor: 'DSL angle' stamp: 'hlsf 21/Jan/2026 15:21:56'!
-angle: vertex to: point1 to: point2
-"Oriented angle in [0 ; 360[ defined by three points
--vertex: a point, vertex of the angle
--point1: a point in one side of the angle
--point2: a point in the other side of the angle"
-	^ self finalizeValue: (DrGAngle3ptsOrientedItem newWith: (
-		Array
-			with: (self ensureDrGeoPoint: vertex ) mathItem
-			with: (self ensureDrGeoPoint: point1) mathItem
-			with: (self ensureDrGeoPoint: point2) mathItem
-			with: self aPosition) )
-		hide: false! !
-
-!DrGeoSketch methodsFor: 'DSL angle' stamp: 'hlsf 21/Jan/2026 15:22:08'!
-geometricAngle: summit to: point1 to: point2
-"Geometric angle in [0 ; 180] defined by three points
--vertex: a point, vertex of the angle
--point1: a point in one side of the angle
--point2: a point in the other side of the angle"
-	^ self finalizeValue: (DrGAngle3ptsItem newWith: (
-		Array
-			with: (self ensureDrGeoPoint: summit) mathItem
-			with: (self ensureDrGeoPoint: point1) mathItem
-			with: (self ensureDrGeoPoint: point2) mathItem
-			with: self aPosition) )
-		hide: false! !
 
 !DrGeoSketch class methodsFor: 'as yet unclassified' stamp: 'hlsf 25/Jan/2026 13:03:36'!
 open
@@ -12781,12 +12781,12 @@ handleMouseAt: aPoint
 
 ! !
 
-!DrGSelectToolStateNeutral methodsFor: 'handling' stamp: 'hlsf 31/May/2025 15:11:43'!
+!DrGSelectToolStateNeutral methodsFor: 'handling' stamp: 'hlsf 28/Jan/2026 18:03:10'!
 handleMouseAt: aPoint
 	| processSomething |
 	(processSomething := super handleMouseAt: aPoint)
 		ifTrue: [Cursor webLinkCursor activateCursor] 
-		ifFalse: [Cursor normalCursorWithMask activateCursor].
+		ifFalse: [Cursor normalCursor activateCursor].
 	^ processSomething ! !
 
 !DrGSelectToolStateNeutral methodsFor: 'handling' stamp: 'hlsf 31/May/2025 15:53:42'!
@@ -28055,14 +28055,14 @@ mouseButton1Down: evt localPosition: localPosition
 		ifFalse: [self tool handlePress: localPosition].
 	self showUnderMouseMorph! !
 
-!DrGDrawable methodsFor: 'events' stamp: 'hlsf 5/Sep/2024 16:32:29'!
+!DrGDrawable methodsFor: 'events' stamp: 'hlsf 28/Jan/2026 18:03:20'!
 mouseButton1Up: evt localPosition: localPosition
 	evt shiftPressed 
 		ifTrue: [self tool handleReleaseShiftKey: localPosition]
 		ifFalse: [self tool handleRelease: localPosition ].
 	"underMouse hide." self flag: #drgeoTodo.
 	(self localBounds containsPoint: localPosition) 
-		ifFalse: [Cursor normalCursorWithMask activateCursor.]
+		ifFalse: [Cursor normalCursor activateCursor.]
 ! !
 
 !DrGDrawable methodsFor: 'events' stamp: 'hlsf 10/Apr/2022 15:00:10'!
@@ -28084,10 +28084,10 @@ mouseHover: evt localPosition: localEventPosition
 		ifFalse: [self tool handleMouseAt: localEventPosition].
 	prevMousePos := localEventPosition! !
 
-!DrGDrawable methodsFor: 'events' stamp: 'hlsf 21/Jun/2021 21:27:06'!
+!DrGDrawable methodsFor: 'events' stamp: 'hlsf 28/Jan/2026 18:03:33'!
 mouseLeave: evt
 	super mouseLeave: evt.
-	Cursor normalCursorWithMask activateCursor.
+	Cursor normalCursor activateCursor.
 	! !
 
 !DrGDrawable methodsFor: 'events' stamp: 'hlsf 23/Sep/2025 18:12:15'!
