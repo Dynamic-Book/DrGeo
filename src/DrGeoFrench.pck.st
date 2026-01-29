@@ -1,6 +1,6 @@
-'From Cuis7.7 [latest update: #7819] on 29 January 2026 at 11:01:19 am'!
+'From Cuis7.7 [latest update: #7819] on 29 January 2026 at 12:05:21 pm'!
 'Description '!
-!provides: 'DrGeoFrench' 1 17!
+!provides: 'DrGeoFrench' 1 18!
 !requires: 'CuisFrench' 1 0 nil!
 SystemOrganization addCategory: #DrGeoFrench!
 
@@ -1939,6 +1939,10 @@ ou
 -bloc : un bloc de code renvoyant un nombre"
 	^ self value: nombreOuBloc ! !
 
+!DrGeoFigure methodsFor: 'DSL valeur' stamp: 'hlsf 29/Jan/2026 11:11:31'!
+valeur: nombreOuBloc à: point
+	^ self value: nombreOuBloc at: point! !
+
 !DrGeoFigure methodsFor: 'DSL valeur' stamp: 'hlsf 29/Jan/2026 09:41:08'!
 valeur: nombreOuBloc parent: drgeoItem
 "Valeur placée au hasard dans la figure
@@ -2097,8 +2101,8 @@ couleurFond: aColor
 texte: aString
 	self text: aString! !
 
-!DrGeoValue methodsFor: '*DrGeoFrench' stamp: ''!
-nommer: aString
+!DrGeoValue methodsFor: '*DrGeoFrench' stamp: 'hlsf 29/Jan/2026 11:10:33'!
+nom: aString
 	self name: aString! !
 
 !DrGeoValue methodsFor: '*DrGeoFrench' stamp: ''!

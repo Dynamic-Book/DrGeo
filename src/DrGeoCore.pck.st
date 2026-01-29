@@ -1,6 +1,6 @@
-'From Cuis7.7 [latest update: #7819] on 29 January 2026 at 11:01:15 am'!
+'From Cuis7.7 [latest update: #7819] on 29 January 2026 at 12:05:28 pm'!
 'Description '!
-!provides: 'DrGeoCore' 1 29!
+!provides: 'DrGeoCore' 1 30!
 !requires: 'UI-Preference' 1 28 nil!
 !requires: 'UI-Panel' 1 140 nil!
 !requires: 'YAXO' 1 28 nil!
@@ -9471,7 +9471,7 @@ rotate: geometricItem center: center angle: value
 			with: (self ensureDrGeoPoint: center) mathItem 
 			with: (self ensureDrGeoValue: value) mathItem) 	! !
 
-!DrGeoSketch methodsFor: 'DSL transformation' stamp: 'hlsf 17/Jan/2026 22:41:08'!
+!DrGeoSketch methodsFor: 'DSL transformation' stamp: 'hlsf 29/Jan/2026 11:58:27'!
 rotate: geometricItem center: center angleDegrees: number 
 "Transformation by rotation
 -geometricItem: the object to transform
@@ -9479,7 +9479,13 @@ rotate: geometricItem center: center angleDegrees: number
 -number: a direct number, rotation angle in degrees
    of the transformation"
 	| convertedValue |
-	convertedValue := number isNumber ifTrue: [number degreesToRadians] ifFalse: [number ].
+	convertedValue := number isNumber 
+		ifTrue: [number degreesToRadians] 
+		ifFalse: ["It is likely a bloc of code return an angle in degrees, a value bloc and convert it to radian"
+			| value |
+			value := self value: [number value degreesToRadians].
+			value hide.
+			value].
 	^ self rotate: geometricItem center: center angle: convertedValue ! !
 
 !DrGeoSketch methodsFor: 'DSL transformation' stamp: 'hlsf 29/Jan/2026 09:24:24'!
@@ -9759,10 +9765,14 @@ finalizeSegment: mathItem
 finalizeText: textItem
 	^ DrGeoText wrap: (self morphOf: textItem)! !
 
-!DrGeoSketch methodsFor: 'private' stamp: 'hlsf 20/May/2024 14:33:28'!
+!DrGeoSketch methodsFor: 'private' stamp: 'hlsf 29/Jan/2026 11:40:13'!
 finalizeTransformation: string with: arguments 
 	| class item |
-	class := Smalltalk classNamed: 'DrG', arguments first basicType capitalized, string, 'Item'.
+	class := Smalltalk classNamed: (String streamContents: [:str |
+			str nextPutAll: 'DrG';
+				nextPutAll: arguments first basicType capitalized;
+				nextPutAll: string;
+				nextPutAll: 'Item']).
 	item := class newWith: arguments.
 	^ item isPointItem
 		ifTrue: [self finalizePoint: item]
