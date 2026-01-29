@@ -1,6 +1,6 @@
-'From Cuis7.7 [latest update: #7819] on 29 January 2026 at 12:05:28 pm'!
+'From Cuis7.7 [latest update: #7819] on 29 January 2026 at 11:47:15 pm'!
 'Description '!
-!provides: 'DrGeoCore' 1 30!
+!provides: 'DrGeoCore' 1 31!
 !requires: 'UI-Preference' 1 28 nil!
 !requires: 'UI-Panel' 1 140 nil!
 !requires: 'YAXO' 1 28 nil!
@@ -9445,7 +9445,7 @@ text: text at: point
 	presenter notInteractive: false.
 	^ answer! !
 
-!DrGeoSketch methodsFor: 'DSL transformation' stamp: 'hlsf 29/Jan/2026 09:23:58'!
+!DrGeoSketch methodsFor: 'DSL transformation' stamp: 'hlsf 29/Jan/2026 23:25:40'!
 reflect: geometricItem axis: axis
 "Transformation by axial symmetry
 -geometricItem: the object to transform
@@ -9453,10 +9453,10 @@ reflect: geometricItem axis: axis
 	self canTransform: geometricItem .
 	^ self finalizeTransformation: 'Reflexion' with: (
 		Array 
-			with: geometricItem mathItem 
+			with: geometricItem 
 			with: axis mathItem)! !
 
-!DrGeoSketch methodsFor: 'DSL transformation' stamp: 'hlsf 29/Jan/2026 09:24:13'!
+!DrGeoSketch methodsFor: 'DSL transformation' stamp: 'hlsf 29/Jan/2026 23:01:30'!
 rotate: geometricItem center: center angle: value
 "Transformation by rotation
 -geometricItem: the object to transform
@@ -9467,7 +9467,7 @@ rotate: geometricItem center: center angle: value
 	self canTransform: geometricItem .
 	^ self finalizeTransformation: 'Rotation' with:  (
 		Array 
-			with: geometricItem mathItem 
+			with: geometricItem 
 			with: (self ensureDrGeoPoint: center) mathItem 
 			with: (self ensureDrGeoValue: value) mathItem) 	! !
 
@@ -9488,7 +9488,7 @@ rotate: geometricItem center: center angleDegrees: number
 			value].
 	^ self rotate: geometricItem center: center angle: convertedValue ! !
 
-!DrGeoSketch methodsFor: 'DSL transformation' stamp: 'hlsf 29/Jan/2026 09:24:24'!
+!DrGeoSketch methodsFor: 'DSL transformation' stamp: 'hlsf 29/Jan/2026 23:25:49'!
 scale: geometricItem center: center factor: value 
 "Transformation by homothety (scale)
 -geometricItem: the object to transform
@@ -9499,12 +9499,12 @@ scale: geometricItem center: center factor: value
 	self canTransform: geometricItem.
 	^ self finalizeTransformation: 'Homothety' with: (
 		Array 
-			with: geometricItem mathItem
+			with: geometricItem
 			with: (self ensureDrGeoPoint: center) mathItem
 			with: (self ensureDrGeoValue: value) mathItem)
 ! !
 
-!DrGeoSketch methodsFor: 'DSL transformation' stamp: 'hlsf 29/Jan/2026 09:24:31'!
+!DrGeoSketch methodsFor: 'DSL transformation' stamp: 'hlsf 29/Jan/2026 23:25:54'!
 symmetry: geometricItem center: center
 "Transformation by central symmetry
 -geometricItem: the object to transform
@@ -9513,10 +9513,10 @@ symmetry: geometricItem center: center
 	self canTransform: geometricItem .
 	^ self finalizeTransformation: 'Symmetry' with: (
 		Array 
-			with: geometricItem mathItem 
+			with: geometricItem 
 			with: (self ensureDrGeoPoint: center) mathItem)! !
 
-!DrGeoSketch methodsFor: 'DSL transformation' stamp: 'hlsf 29/Jan/2026 09:23:20'!
+!DrGeoSketch methodsFor: 'DSL transformation' stamp: 'hlsf 29/Jan/2026 23:25:58'!
 translate: geometricItem vector: vector 
 "Transformation by translation
 -geometricItem: the object to transform
@@ -9525,7 +9525,7 @@ translate: geometricItem vector: vector
 	self canTransform: geometricItem.
 	^ self finalizeTransformation: 'Translation' with: (
 		Array	
-			with: geometricItem mathItem 
+			with: geometricItem 
 			with: (self ensureVector: vector) mathItem)! !
 
 !DrGeoSketch methodsFor: 'DSL transformation' stamp: 'hlsf 15/Jan/2026 17:50:15'!
@@ -9724,10 +9724,10 @@ ensureDrGeoPoint: aPointOrDrGeoPoint
 		ifTrue: [(self point: aPointOrDrGeoPoint ) hide] 
 		ifFalse:   [aPointOrDrGeoPoint ]! !
 
-!DrGeoSketch methodsFor: 'private' stamp: 'hlsf 6/Jan/2026 20:11:47'!
+!DrGeoSketch methodsFor: 'private' stamp: 'hlsf 29/Jan/2026 22:16:00'!
 ensureDrGeoValue: aNumberOrWrappedValueItem
 "ensure a wrapped value"
-	^ aNumberOrWrappedValueItem  isNumber 
+	^ (aNumberOrWrappedValueItem  isNumber or: [aNumberOrWrappedValueItem isBlock ])
 		ifTrue: [(self value: aNumberOrWrappedValueItem ) hide] 
 		ifFalse:   [aNumberOrWrappedValueItem]! !
 
@@ -9750,6 +9750,14 @@ finalizeFilledCurve: mathItem
 finalizeFinitCurve: mathItem
 	^ DrGeoFinitCurve wrap: (self morphOf: mathItem )! !
 
+!DrGeoSketch methodsFor: 'private' stamp: 'hlsf 29/Jan/2026 23:09:02'!
+finalizeItem: mathItem as: DrGeoItemClass
+	DrGeoItemClass == DrGeoPoint ifTrue: [^ self finalizePoint: mathItem ].
+	DrGeoItemClass == DrGeoCurve ifTrue: [^ self finalizeCurve: mathItem ].
+	DrGeoItemClass == DrGeoFinitCurve ifTrue: [^ self finalizeFinitCurve: mathItem ].
+	DrGeoItemClass == DrGeoFilledCurve ifTrue: [^ self finalizeFilledCurve: mathItem ].
+	DrGeoItemClass == DrGeoSegment ifTrue: [^ self finalizeSegment: mathItem ]! !
+
 !DrGeoSketch methodsFor: 'private' stamp: 'hlsf 6/Jan/2026 15:29:23'!
 finalizePoint: mathItem
 	| drgeoPoint |
@@ -9765,23 +9773,23 @@ finalizeSegment: mathItem
 finalizeText: textItem
 	^ DrGeoText wrap: (self morphOf: textItem)! !
 
-!DrGeoSketch methodsFor: 'private' stamp: 'hlsf 29/Jan/2026 11:40:13'!
+!DrGeoSketch methodsFor: 'private' stamp: 'hlsf 29/Jan/2026 23:24:43'!
 finalizeTransformation: string with: arguments 
-	| class item |
+	| class item drgeoItemClass finalizedItem  |
+	drgeoItemClass := arguments first class.
+	drgeoItemClass print.
+	arguments at: 1 put: arguments first mathItem.
 	class := Smalltalk classNamed: (String streamContents: [:str |
 			str nextPutAll: 'DrG';
 				nextPutAll: arguments first basicType capitalized;
 				nextPutAll: string;
 				nextPutAll: 'Item']).
 	item := class newWith: arguments.
-	^ item isPointItem
-		ifTrue: [self finalizePoint: item]
-		ifFalse: [| finalizedCurve | 
-			finalizedCurve := self finalizeCurve: item.
-			item isLocusItem ifTrue: [
-				self runningWorld ifNotNil: [:w | w doOneMinimalCycleNow].
-				self domain updateAllMathItems].
-			finalizedCurve ]! !
+	finalizedItem := self finalizeItem: item as: drgeoItemClass .
+	item isLocusItem ifTrue: [
+		self runningWorld ifNotNil: [:w | w doOneMinimalCycleNow].
+		self domain updateAllMathItems].
+	^ finalizedItem! !
 
 !DrGeoSketch methodsFor: 'private' stamp: ''!
 finalizeValue: item
