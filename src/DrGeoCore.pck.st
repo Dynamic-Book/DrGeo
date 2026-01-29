@@ -1,6 +1,6 @@
-'From Cuis7.7 [latest update: #7819] on 29 January 2026 at 11:47:15 pm'!
+'From Cuis7.7 [latest update: #7819] on 30 January 2026 at 12:24:06 am'!
 'Description '!
-!provides: 'DrGeoCore' 1 31!
+!provides: 'DrGeoCore' 1 32!
 !requires: 'UI-Preference' 1 28 nil!
 !requires: 'UI-Panel' 1 140 nil!
 !requires: 'YAXO' 1 28 nil!
@@ -9471,7 +9471,7 @@ rotate: geometricItem center: center angle: value
 			with: (self ensureDrGeoPoint: center) mathItem 
 			with: (self ensureDrGeoValue: value) mathItem) 	! !
 
-!DrGeoSketch methodsFor: 'DSL transformation' stamp: 'hlsf 29/Jan/2026 11:58:27'!
+!DrGeoSketch methodsFor: 'DSL transformation' stamp: 'hlsf 30/Jan/2026 00:18:30'!
 rotate: geometricItem center: center angleDegrees: number 
 "Transformation by rotation
 -geometricItem: the object to transform
@@ -9479,13 +9479,15 @@ rotate: geometricItem center: center angleDegrees: number
 -number: a direct number, rotation angle in degrees
    of the transformation"
 	| convertedValue |
-	convertedValue := number isNumber 
-		ifTrue: [number degreesToRadians] 
-		ifFalse: ["It is likely a bloc of code return an angle in degrees, a value bloc and convert it to radian"
-			| value |
-			value := self value: [number value degreesToRadians].
-			value hide.
-			value].
+	convertedValue := 
+	number isNumber ifTrue: [convertedValue := number degreesToRadians] .
+	number isBlock ifTrue: [
+		convertedValue := self value: [number value degreesToRadians].
+		convertedValue hide].
+	number class == DrGeoValue ifTrue: [
+		convertedValue := self value: [number mathItem valueItem degreesToRadians].
+		convertedValue hide].
+	convertedValue ifNil: [self error: 'Can''t convert from Degrees'].
 	^ self rotate: geometricItem center: center angle: convertedValue ! !
 
 !DrGeoSketch methodsFor: 'DSL transformation' stamp: 'hlsf 29/Jan/2026 23:25:49'!
