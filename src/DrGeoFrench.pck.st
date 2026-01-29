@@ -1,6 +1,6 @@
-'From Cuis7.7 [latest update: #7819] on 28 January 2026 at 6:22:54 pm'!
+'From Cuis7.7 [latest update: #7819] on 29 January 2026 at 11:01:19 am'!
 'Description '!
-!provides: 'DrGeoFrench' 1 16!
+!provides: 'DrGeoFrench' 1 17!
 !requires: 'CuisFrench' 1 0 nil!
 SystemOrganization addCategory: #DrGeoFrench!
 
@@ -1549,6 +1549,12 @@ axesMontrer
 "Afficher les axes ox et oy"
 	^self axesOn! !
 
+!DrGeoFigure methodsFor: 'DSL canevas' stamp: 'hlsf 29/Jan/2026 10:18:51'!
+centrerVue: centre
+"Centrer la vue sur position donnée
+-centre : le point où centrer la vue"
+	^ self centerTo: centre ! !
+
 !DrGeoFigure methodsFor: 'DSL canevas' stamp: 'hlsf 28/Jan/2026 16:45:30'!
 centrerVueEn: centre
 "Centrer la vue sur position donnée
@@ -1800,85 +1806,160 @@ entier: valeur à: point min: valeurDébut max: valeurFin nom: nom afficherVale
 Voir méthode décimal:à:min:max:nom:"
 	^ self integer: valeur at: point from: valeurDébut to: valeurFin name: nom showValue: afficherValeur ! !
 
-!DrGeoFigure methodsFor: 'DSL support' stamp: 'hlsf 6/Jan/2026 22:47:40'!
+!DrGeoFigure methodsFor: 'DSL support' stamp: 'hlsf 29/Jan/2026 09:05:42'!
 exporterVersImage: nomFichier
+"Exporter la figure comme image SVG, avec son étendue et son échelle
+-nomFichier : le nom du fichier sans l'extension '.svg'. 
+  Le fichier est sauvé dans le dossier utilisateur 'myExports'."
 	self exportToImage: nomFichier ! !
 
-!DrGeoFigure methodsFor: 'DSL support' stamp: 'hlsf 6/Jan/2026 22:47:51'!
-faire: unBloc
-	^ self do: unBloc ! !
+!DrGeoFigure methodsFor: 'DSL support' stamp: 'hlsf 29/Jan/2026 09:08:07'!
+faire: bloc
+"Exécuter du code dans un processus en tâche de fond (tâche parallèle)
+-bloc: bloc de code contenant les constructions ou
+  operations sur des objets géométriques"
+	^ self do: bloc ! !
 
-!DrGeoFigure methodsFor: 'DSL texte' stamp: ''!
-texte: aText
-	^ self text: aText! !
+!DrGeoFigure methodsFor: 'DSL texte' stamp: 'hlsf 29/Jan/2026 09:10:51'!
+texte: texte
+"Afficher un texte dans la figure, à une position quelconque
+- texte : une chaîne de caractères"
+	^ self text: texte! !
 
-!DrGeoFigure methodsFor: 'DSL texte' stamp: 'hlsf 6/Jan/2026 22:30:22'!
+!DrGeoFigure methodsFor: 'DSL texte' stamp: 'hlsf 29/Jan/2026 09:10:37'!
 texte: texte à: position
+"Afficher un texte dans la figure
+- texte : une chaîne de caractères
+- position : un point, position du texte"
 	^ self text: texte at: position! !
 
-!DrGeoFigure methodsFor: 'DSL transformation' stamp: 'hlsf 6/Jan/2026 22:58:00'!
+!DrGeoFigure methodsFor: 'DSL transformation' stamp: 'hlsf 29/Jan/2026 09:13:53'!
 homothétieDe: itemGéométrique centre: centre facteur: valeur
+"Transformation par homothétie (échelle)
+-itemGéométrique : un objet à transformer
+-centre : un point, centre de l'homothétie
+-valeur : un nombre ou une valeur calculée (voir DSL valeur)
+   le rapport de la transformation"
 	^ self scale: itemGéométrique center: centre factor: valeur ! !
 
-!DrGeoFigure methodsFor: 'DSL transformation' stamp: 'hlsf 6/Jan/2026 22:58:22'!
+!DrGeoFigure methodsFor: 'DSL transformation' stamp: 'hlsf 29/Jan/2026 09:15:49'!
 rotationDe: itemGéométrique centre: centre angle: valeur
+"Transformation par rotation
+-itemGéométrique : un objet à transformer
+-centre : un point, centre de la rotation
+-valeur : un nombre ou une valeur calculée (voir DSL valeur)
+   angle de la rotation en radian de la transformation"
 	^ self rotate: itemGéométrique center: centre angle: valeur ! !
 
-!DrGeoFigure methodsFor: 'DSL transformation' stamp: 'hlsf 6/Jan/2026 22:58:45'!
+!DrGeoFigure methodsFor: 'DSL transformation' stamp: 'hlsf 29/Jan/2026 09:18:07'!
 rotationDe: itemGéométrique centre: center angleDegrés: valeur
+"Transformation par rotation
+-itemGéométrique : un objet à transformer
+-centre : un point, centre de la rotation
+-valeur : un nombre, angle de la rotation en degrés 
+   de la transformation"
 	^ self rotate: itemGéométrique center: center angleDegrees: valeur ! !
 
-!DrGeoFigure methodsFor: 'DSL transformation' stamp: 'hlsf 6/Jan/2026 22:58:58'!
+!DrGeoFigure methodsFor: 'DSL transformation' stamp: 'hlsf 29/Jan/2026 09:19:08'!
 symétriqueDe: itemGéométrique selonAxe: droite
+"Transformation par symétrie axiale
+-itemGéométrique : un objet à transformer
+-droite : une droite, axe de la symétrie"
 	^ self reflect: itemGéométrique axis: droite ! !
 
-!DrGeoFigure methodsFor: 'DSL transformation' stamp: 'hlsf 6/Jan/2026 22:59:12'!
+!DrGeoFigure methodsFor: 'DSL transformation' stamp: 'hlsf 29/Jan/2026 09:19:52'!
 symétriqueDe: itemGéométrique selonCentre: centre
+"Transformation par symétrie centrale
+-itemGéométrique : un objet à transformer
+-centre : un point, centre de la symétrie"
 	^ self symmetry: itemGéométrique center: centre ! !
 
-!DrGeoFigure methodsFor: 'DSL transformation' stamp: 'hlsf 6/Jan/2026 22:59:23'!
+!DrGeoFigure methodsFor: 'DSL transformation' stamp: 'hlsf 29/Jan/2026 09:21:11'!
 translationDe: itemGéométrique parVecteur: vecteur
+"Transformation par translation
+-itemGéométrique : un objet à transformer
+-vecteur: un point Smalltalk (3@4) ou 
+   un vecteur DrGeo (voir méthode vecteur: )"
+
 	^ self translate: itemGéométrique vector: vecteur! !
 
-!DrGeoFigure methodsFor: 'DSL transformation' stamp: 'hlsf 6/Jan/2026 22:39:25'!
+!DrGeoFigure methodsFor: 'DSL transformation' stamp: 'hlsf 29/Jan/2026 09:25:36'!
 vecteur: point
+"Vecteur défini par ses coordonnées
+-point : un point Smalltalk ou un point DrGeo"
 	^ self vector: point ! !
 
-!DrGeoFigure methodsFor: 'DSL transformation' stamp: 'hlsf 6/Jan/2026 22:40:13'!
+!DrGeoFigure methodsFor: 'DSL transformation' stamp: 'hlsf 29/Jan/2026 09:27:46'!
 vecteurOrigine: point1 extrémité: point2
+"Vecteur défini par son origine et son extrémité
+-point1 : un point Smalltalk ou un point DrGeo representant son origine
+-point2 : un point Smalltalk ou un point DrGeo representant son extrémité"
 	^ self vector: point1 to: point2 ! !
 
-!DrGeoFigure methodsFor: 'DSL valeur' stamp: 'hlsf 6/Jan/2026 22:49:51'!
+!DrGeoFigure methodsFor: 'DSL valeur' stamp: 'hlsf 29/Jan/2026 09:29:30'!
 abscisseDe:  pointOuVecteur
+"Abscisse d'un point ou d'un vecteur
+-point : un point DrGeo
+-vecteur : un vecteur DrGeo"
 	^ self abscissaOf: pointOuVecteur ! !
 
-!DrGeoFigure methodsFor: 'DSL valeur' stamp: 'hlsf 21/Dec/2022 14:25:39'!
+!DrGeoFigure methodsFor: 'DSL valeur' stamp: 'hlsf 29/Jan/2026 09:30:47'!
 distanceDe: item1 à: item2
+"Distance entre deux points ou nu point et une droite
+-item1 : un point ou une droite
+-item2 : un point ou une droite
+item1 ou item2 doit être un point"
 	^ self distance: item1 to: item2! !
 
-!DrGeoFigure methodsFor: 'DSL valeur' stamp: 'hlsf 6/Jan/2026 22:52:07'!
+!DrGeoFigure methodsFor: 'DSL valeur' stamp: 'hlsf 29/Jan/2026 09:31:46'!
 longueurDe: ligneFinie
+"Longueur d'une ligne
+-ligneFinie : un segment, cercle, arc de cercle, polygone ou vecteur"
 	^ self lengthOf: ligneFinie ! !
 
-!DrGeoFigure methodsFor: 'DSL valeur' stamp: 'hlsf 6/Jan/2026 22:52:26'!
+!DrGeoFigure methodsFor: 'DSL valeur' stamp: 'hlsf 29/Jan/2026 09:29:44'!
 ordonnéeDe: pointOuVecteur
+"Ordonnée d'un point ou d'un vecteur
+-point : un point DrGeo
+-vecteur : un vecteur DrGeo"
 	^ self ordinateOf: pointOuVecteur ! !
 
-!DrGeoFigure methodsFor: 'DSL valeur' stamp: 'hlsf 6/Jan/2026 22:52:33'!
+!DrGeoFigure methodsFor: 'DSL valeur' stamp: 'hlsf 29/Jan/2026 09:32:11'!
 penteDe: droite
+"Pente d'une droite
+- droite : une droite"
 	^ self slopeOf: droite ! !
 
-!DrGeoFigure methodsFor: 'DSL valeur' stamp: 'hlsf 6/Jan/2026 22:56:05'!
+!DrGeoFigure methodsFor: 'DSL valeur' stamp: 'hlsf 29/Jan/2026 09:35:49'!
 valeur: nombreOuBloc
+"Valeur placée au hasard dans la figure
+L'argument est soit :
+-nombre : un nombre direct (-7 ; 3.14 ; Float pi ; 1/3)
+ou
+-bloc : un bloc de code renvoyant un nombre"
 	^ self value: nombreOuBloc ! !
 
-!DrGeoFigure methodsFor: 'DSL valeur' stamp: 'hlsf 6/Jan/2026 22:56:22'!
-valeur: nombreOuBloc parent: valeur
-	^ self value: nombreOuBloc parent: valeur ! !
+!DrGeoFigure methodsFor: 'DSL valeur' stamp: 'hlsf 29/Jan/2026 09:41:08'!
+valeur: nombreOuBloc parent: drgeoItem
+"Valeur placée au hasard dans la figure
+L'argument est soit :
+-nombre : un nombre direct
+ou
+-bloc : un bloc de code avec comme argument un objet MathItem.
+   Le bloc calcule un nombre et le retourne.
+-drgeoItem : un DrGeoItem dont est extrait le MathItem passé  
+   en paramètre au bloc de code"
+	^ self value: nombreOuBloc parent: drgeoItem ! !
 
-!DrGeoFigure methodsFor: 'DSL valeur' stamp: 'hlsf 6/Jan/2026 22:56:59'!
-valeur: nombreOuBloc parents: valeurs à: position
-	^ self value: nombreOuBloc parents: valeurs at: position! !
+!DrGeoFigure methodsFor: 'DSL valeur' stamp: 'hlsf 29/Jan/2026 09:47:29'!
+valeur: bloc parents: drgeoItems à: position
+"Valeur placée au hasard dans la figure
+-bloc : un bloc de code avec comme argument une collection 
+   de MathItem. Le bloc calcule un nombre et le retourne.
+-drgeoItems : une collection de DrGeoItem dont sont extraits 
+   les MathItem passés en paramètre au bloc de code
+-position : un point, position où est affichée la valeur"
+	^ self value: bloc parents: drgeoItems at: position! !
 
 !DrGeoFigure methodsFor: 'initialize-release' stamp: ''!
 supprimer
@@ -1900,10 +1981,6 @@ cacher
 couleur: aColor
 	self color: aColor! !
 
-!DrGeoItem methodsFor: '*DrGeoFrench' stamp: ''!
-decacher
-	self unhide! !
-
 !DrGeoItem methodsFor: '*DrGeoFrench' stamp: 'hlsf 21/Dec/2022 14:55:58'!
 débloquer
 	self unlock! !
@@ -1912,17 +1989,13 @@ débloquer
 déplacerA: aPoint
 	self moveTo: aPoint! !
 
-!DrGeoItem methodsFor: '*DrGeoFrench' stamp: ''!
+!DrGeoItem methodsFor: '*DrGeoFrench' stamp: 'hlsf 29/Jan/2026 10:25:14'!
 montrer
-	self show! !
+	self unhide! !
 
-!DrGeoItem methodsFor: '*DrGeoFrench' stamp: ''!
-nommer: aString
+!DrGeoItem methodsFor: '*DrGeoFrench' stamp: 'hlsf 29/Jan/2026 10:25:30'!
+nom: aString
 	self name: aString! !
-
-!DrGeoItem methodsFor: '*DrGeoFrench' stamp: ''!
-renommer: aString
-	self rename: aString! !
 
 !DrGeoCurve methodsFor: '*DrGeoFrench' stamp: 'hlsf 21/Dec/2022 14:55:47'!
 épais
@@ -1956,40 +2029,40 @@ flècheFin
 flèches
 	self bothArrows ! !
 
-!DrGeoFilledCurve methodsFor: '*DrGeoFrench' stamp: ''!
-remplir
+!DrGeoFilledCurve methodsFor: '*DrGeoFrench' stamp: 'hlsf 29/Jan/2026 10:45:28'!
+rempli
 	self filled! !
 
-!DrGeoFilledCurve methodsFor: '*DrGeoFrench' stamp: ''!
-transparent
+!DrGeoFilledCurve methodsFor: '*DrGeoFrench' stamp: 'hlsf 29/Jan/2026 10:46:03'!
+translucide
 	self translucent! !
 
-!DrGeoFilledCurve methodsFor: '*DrGeoFrench' stamp: ''!
-vider
+!DrGeoFilledCurve methodsFor: '*DrGeoFrench' stamp: 'hlsf 29/Jan/2026 10:45:33'!
+vide
 	self unfilled! !
 
-!DrGeoSegment methodsFor: '*DrGeoFrench' stamp: ''!
-marquerAucun
+!DrGeoSegment methodsFor: '*DrGeoFrench' stamp: 'hlsf 29/Jan/2026 10:33:10'!
+marqueAucune
 	self noMark ! !
 
-!DrGeoSegment methodsFor: '*DrGeoFrench' stamp: ''!
-marquerAvecCercle
+!DrGeoSegment methodsFor: '*DrGeoFrench' stamp: 'hlsf 29/Jan/2026 10:32:18'!
+marqueCercle
 	self circleMark ! !
 
-!DrGeoSegment methodsFor: '*DrGeoFrench' stamp: ''!
-marquerAvecDisque
+!DrGeoSegment methodsFor: '*DrGeoFrench' stamp: 'hlsf 29/Jan/2026 10:32:24'!
+marqueDisque
 	self discMark ! !
 
-!DrGeoSegment methodsFor: '*DrGeoFrench' stamp: ''!
-marquerAvecDoubleTrait
+!DrGeoSegment methodsFor: '*DrGeoFrench' stamp: 'hlsf 29/Jan/2026 10:32:32'!
+marqueDoubleTrait
 	self doubleMark ! !
 
-!DrGeoSegment methodsFor: '*DrGeoFrench' stamp: ''!
-marquerAvecSimpleTrait
+!DrGeoSegment methodsFor: '*DrGeoFrench' stamp: 'hlsf 29/Jan/2026 10:32:39'!
+marqueSimpleTrait
 	self simpleMark ! !
 
-!DrGeoSegment methodsFor: '*DrGeoFrench' stamp: ''!
-marquerAvecTripleTrait
+!DrGeoSegment methodsFor: '*DrGeoFrench' stamp: 'hlsf 29/Jan/2026 10:32:45'!
+marqueTripleTrait
 	self tripleMark ! !
 
 !DrGeoPoint methodsFor: '*DrGeoFrench' stamp: 'hlsf 21/Dec/2022 14:56:52'!

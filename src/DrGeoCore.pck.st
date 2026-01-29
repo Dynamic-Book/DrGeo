@@ -1,10 +1,10 @@
-'From Cuis7.7 [latest update: #7819] on 28 January 2026 at 6:08:37 pm'!
+'From Cuis7.7 [latest update: #7819] on 29 January 2026 at 11:01:15 am'!
 'Description '!
-!provides: 'DrGeoCore' 1 28!
+!provides: 'DrGeoCore' 1 29!
 !requires: 'UI-Preference' 1 28 nil!
 !requires: 'UI-Panel' 1 140 nil!
-!requires: 'Graphics-Files-Additional' 1 30 nil!
 !requires: 'YAXO' 1 28 nil!
+!requires: 'Graphics-Files-Additional' 1 30 nil!
 SystemOrganization addCategory: #'DrGeoCore-Model'!
 SystemOrganization addCategory: #'DrGeoCore-Model-Smalltalk'!
 SystemOrganization addCategory: #'DrGeoCore-Model-Item'!
@@ -9140,10 +9140,10 @@ do: block
 	doProcess priority: Processor userBackgroundPriority.
 	doProcess resume! !
 
-!DrGeoSketch methodsFor: 'DSL helpers' stamp: 'hlsf 17/Jan/2026 09:05:37'!
+!DrGeoSketch methodsFor: 'DSL helpers' stamp: 'hlsf 29/Jan/2026 09:06:42'!
 exportToImage: filename
 "Export to a SVG file the view with its current extent and scale
--filename: a string without the '.svg' extension. The file is saved
+-filename: a string without the '.svg' extention. The file is saved
   in the user directory 'myExports'"
 	presenter exportToImage: filename! !
 
@@ -9445,17 +9445,18 @@ text: text at: point
 	presenter notInteractive: false.
 	^ answer! !
 
-!DrGeoSketch methodsFor: 'DSL transformation' stamp: 'hlsf 17/Jan/2026 22:30:38'!
+!DrGeoSketch methodsFor: 'DSL transformation' stamp: 'hlsf 29/Jan/2026 09:23:58'!
 reflect: geometricItem axis: axis
 "Transformation by axial symmetry
 -geometricItem: the object to transform
 -axis: a straight line representing the axis of the symmetry"
 	self canTransform: geometricItem .
-	^ self 
-		finalizeTransformation: 'Reflexion' 
-		with: (Array with: geometricItem mathItem with: axis mathItem)! !
+	^ self finalizeTransformation: 'Reflexion' with: (
+		Array 
+			with: geometricItem mathItem 
+			with: axis mathItem)! !
 
-!DrGeoSketch methodsFor: 'DSL transformation' stamp: 'hlsf 17/Jan/2026 22:31:27'!
+!DrGeoSketch methodsFor: 'DSL transformation' stamp: 'hlsf 29/Jan/2026 09:24:13'!
 rotate: geometricItem center: center angle: value
 "Transformation by rotation
 -geometricItem: the object to transform
@@ -9464,13 +9465,11 @@ rotate: geometricItem center: center angle: value
    rotation angle in radian of the transformation"
 
 	self canTransform: geometricItem .
-	^ self 
-		finalizeTransformation: 'Rotation' 
-		with:  (
-			Array 
-				with: geometricItem mathItem 
-				with: (self ensureDrGeoPoint: center) mathItem 
-				with: (self ensureDrGeoValue: value) mathItem) 	! !
+	^ self finalizeTransformation: 'Rotation' with:  (
+		Array 
+			with: geometricItem mathItem 
+			with: (self ensureDrGeoPoint: center) mathItem 
+			with: (self ensureDrGeoValue: value) mathItem) 	! !
 
 !DrGeoSketch methodsFor: 'DSL transformation' stamp: 'hlsf 17/Jan/2026 22:41:08'!
 rotate: geometricItem center: center angleDegrees: number 
@@ -9483,7 +9482,7 @@ rotate: geometricItem center: center angleDegrees: number
 	convertedValue := number isNumber ifTrue: [number degreesToRadians] ifFalse: [number ].
 	^ self rotate: geometricItem center: center angle: convertedValue ! !
 
-!DrGeoSketch methodsFor: 'DSL transformation' stamp: 'hlsf 17/Jan/2026 22:33:44'!
+!DrGeoSketch methodsFor: 'DSL transformation' stamp: 'hlsf 29/Jan/2026 09:24:24'!
 scale: geometricItem center: center factor: value 
 "Transformation by homothety (scale)
 -geometricItem: the object to transform
@@ -9492,39 +9491,35 @@ scale: geometricItem center: center factor: value
    the scaling factor of the transformation"
 
 	self canTransform: geometricItem.
-	^ self 
-		finalizeTransformation: 'Homothety' 
-		with: (Array 
+	^ self finalizeTransformation: 'Homothety' with: (
+		Array 
 			with: geometricItem mathItem
 			with: (self ensureDrGeoPoint: center) mathItem
 			with: (self ensureDrGeoValue: value) mathItem)
 ! !
 
-!DrGeoSketch methodsFor: 'DSL transformation' stamp: 'hlsf 17/Jan/2026 22:33:53'!
+!DrGeoSketch methodsFor: 'DSL transformation' stamp: 'hlsf 29/Jan/2026 09:24:31'!
 symmetry: geometricItem center: center
 "Transformation by central symmetry
 -geometricItem: the object to transform
 -center: a point, center of the symmetry"
 
 	self canTransform: geometricItem .
-	^ self 
-		finalizeTransformation: 'Symmetry' 
-		with: (Array 
+	^ self finalizeTransformation: 'Symmetry' with: (
+		Array 
 			with: geometricItem mathItem 
 			with: (self ensureDrGeoPoint: center) mathItem)! !
 
-!DrGeoSketch methodsFor: 'DSL transformation' stamp: 'hlsf 17/Jan/2026 22:34:23'!
+!DrGeoSketch methodsFor: 'DSL transformation' stamp: 'hlsf 29/Jan/2026 09:23:20'!
 translate: geometricItem vector: vector 
 "Transformation by translation
 -geometricItem: the object to transform
 -vector: a Smalltalk point (3@4) or 
-   computed vector (see vector: method)"
-
-	self canTransform: geometricItem .
-	^ self 
-		finalizeTransformation: 'Translation' 
-		with: (Array
-			with: geometricItem mathItem
+   a DrGeo vector (see vector: method)"
+	self canTransform: geometricItem.
+	^ self finalizeTransformation: 'Translation' with: (
+		Array	
+			with: geometricItem mathItem 
 			with: (self ensureVector: vector) mathItem)! !
 
 !DrGeoSketch methodsFor: 'DSL transformation' stamp: 'hlsf 15/Jan/2026 17:50:15'!
@@ -9647,24 +9642,18 @@ or
 -point: the position where the value is pinned"
 	^ self value: aNumberOrBlock parents: `Array new` at: point ! !
 
-!DrGeoSketch methodsFor: 'DSL value' stamp: 'hlsf 17/Jan/2026 22:41:25'!
-value: aNumberOrBlock parent: drgeoItem
+!DrGeoSketch methodsFor: 'DSL value' stamp: 'hlsf 29/Jan/2026 09:44:06'!
+value: block parent: drgeoItem
 "Value object
-Argument can be either:
--number: a direct number
-or
 -block: a block of code with argument a MathItem
    The block computes a number and return it.
 -drgeoItem: a DrGeoItem the mathItem is extracted from 
    and passed as argument to the block"
-	^ self value: aNumberOrBlock parents: (Array with: drgeoItem) at: self aPosition ! !
+	^ self value: block parents: (Array with: drgeoItem) at: self aPosition ! !
 
-!DrGeoSketch methodsFor: 'DSL value' stamp: 'hlsf 17/Jan/2026 22:42:16'!
-value: numberOrBlock parents: drgeoItems at: point
+!DrGeoSketch methodsFor: 'DSL value' stamp: 'hlsf 29/Jan/2026 09:44:59'!
+value: block parents: drgeoItems at: point
 "Value object
-Argument can be either:
--number: a direct number
-or
 -block: a block of code with argument a collection of MathItem
    The block computes a number and return it.
 -drgeoItems: a collection of DrGeoItem the mathItems are extracted from
@@ -9672,18 +9661,18 @@ or
 -point: the position where the value is pinned"
 	| answer |
 	presenter notInteractive: true.
-	numberOrBlock isBlock 
+	block isBlock 
 	ifTrue: [ " Value defined by a block of code "
 		| collection |
 		collection := OrderedCollection new.
 		collection 
 			addAll: (drgeoItems collect: [:value | value mathItem]);
-			add: numberOrBlock ;
+			add: block ;
 			add: point.
 		answer := self finalizeValue: (DrGValueBlockItem newWith: collection asArray) 		] 
 	ifFalse: [" Value defined by a number, there is no parents "
 		answer := self finalizeValue: (
-			( DrGValueValueItem newWith: (Array with: point) ) valueItem: numberOrBlock)	 ].	
+			( DrGValueValueItem newWith: (Array with: point) ) valueItem: block )	 ].	
 	presenter notInteractive: false.
 	^ answer! !
 
