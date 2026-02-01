@@ -1,6 +1,6 @@
-'From Cuis7.7 [latest update: #7819] on 30 January 2026 at 12:24:06 am'!
+'From Cuis7.7 [latest update: #7819] on 1 February 2026 at 10:34:27 am'!
 'Description '!
-!provides: 'DrGeoCore' 1 32!
+!provides: 'DrGeoCore' 1 33!
 !requires: 'UI-Preference' 1 28 nil!
 !requires: 'UI-Panel' 1 140 nil!
 !requires: 'YAXO' 1 28 nil!
@@ -8852,8 +8852,9 @@ filled
 opaque
 	self style translucent: false! !
 
-!DrGeoFilledCurve methodsFor: 'updating' stamp: ''!
+!DrGeoFilledCurve methodsFor: 'updating' stamp: 'hlsf 1/Feb/2026 10:24:29'!
 translucent
+	self filled.
 	self style translucent: true! !
 
 !DrGeoFilledCurve methodsFor: 'updating' stamp: ''!
@@ -9058,7 +9059,7 @@ float: aValue at: aPoint from: startValue to: endValue name: name
 ⇒ block of code, request its current value by sending the message #value"
 	^ self float: aValue at: aPoint from: startValue to: endValue name: name showValue: false! !
 
-!DrGeoSketch methodsFor: 'DSL digital ruler' stamp: 'hlsf 17/Jan/2026 09:03:28'!
+!DrGeoSketch methodsFor: 'DSL digital ruler' stamp: 'hlsf 1/Feb/2026 10:30:45'!
 float: aValue at: aPoint from: startValue to: endValue name: name showValue: isValueDisplay
 "Ruler for decimal value
 -isValueDisplay: true to show the current value
@@ -9067,10 +9068,12 @@ See method float:at:from:to:name: for the other attributes"
 	segment := self segment: aPoint to: aPoint + (170 / presenter drawable scale @0).
 	mobile := self pointOnLine:  segment at: (aValue - startValue) / (endValue - startValue).
 	segment color: Color black; large.
+	segment style feedback: false.
 	mobile name: name;
 		color: Color black;
 		round;
-		large.	
+		large.
+	mobile style feedback: false.
 	^ isValueDisplay 
 		ifTrue:  [[|value |
 			value := mobile mathItem abscissa * ( endValue - startValue) + startValue.
@@ -9091,7 +9094,7 @@ integer: aValue at: aPoint from: startValue to: endValue name: name
 See method float:at:from:to:name:"
 	^ self integer: aValue at: aPoint from: startValue to: endValue name: name showValue: false! !
 
-!DrGeoSketch methodsFor: 'DSL digital ruler' stamp: 'hlsf 17/Jan/2026 09:03:49'!
+!DrGeoSketch methodsFor: 'DSL digital ruler' stamp: 'hlsf 1/Feb/2026 10:30:40'!
 integer: aValue at: aPoint from: startValue to: endValue name: name showValue: isValueDisplay
 "Ruler for integer value
 See method float:at:from:to:name:"
@@ -9099,10 +9102,12 @@ See method float:at:from:to:name:"
 	segment := self segment: aPoint to: aPoint + (170 / presenter drawable scale @0).
 	mobile := self pointOnLine:  segment at: (aValue - startValue) / (endValue - startValue).
 	segment color: Color black; large.
+	segment style feedback: false.
 	mobile name: name;
 		color: Color black;
 		round;
-		large.	
+		large.
+	mobile style feedback: false.
 	^ isValueDisplay 
 		ifTrue:  [[|value |
 			value := (mobile mathItem abscissa * ( endValue - startValue) + startValue) floor.
@@ -9775,11 +9780,10 @@ finalizeSegment: mathItem
 finalizeText: textItem
 	^ DrGeoText wrap: (self morphOf: textItem)! !
 
-!DrGeoSketch methodsFor: 'private' stamp: 'hlsf 29/Jan/2026 23:24:43'!
+!DrGeoSketch methodsFor: 'private' stamp: 'hlsf 1/Feb/2026 10:33:42'!
 finalizeTransformation: string with: arguments 
 	| class item drgeoItemClass finalizedItem  |
 	drgeoItemClass := arguments first class.
-	drgeoItemClass print.
 	arguments at: 1 put: arguments first mathItem.
 	class := Smalltalk classNamed: (String streamContents: [:str |
 			str nextPutAll: 'DrG';
