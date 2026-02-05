@@ -1,6 +1,6 @@
-'From Cuis7.7 [latest update: #7827] on 5 February 2026 at 11:28:41 am'!
+'From Cuis7.7 [latest update: #7827] on 5 February 2026 at 11:32:03 am'!
 'Description '!
-!provides: 'DrGeoCore' 1 34!
+!provides: 'DrGeoCore' 1 35!
 !requires: 'UI-Preference' 1 28 nil!
 !requires: 'UI-Panel' 1 140 nil!
 !requires: 'Graphics-Files-Additional' 1 30 nil!
@@ -26222,13 +26222,10 @@ stopStepping
 canBeDrawn
 	^ self visible and: [mathItem exist]! !
 
-!DrGMorph methodsFor: 'testing' stamp: 'hlsf 5/Feb/2026 11:27:17'!
+!DrGMorph methodsFor: 'testing' stamp: 'hlsf 5/Feb/2026 11:31:36'!
 containsPoint: localPoint
-	| worldPoint |
-	worldPoint := self externalizeToWorld: localPoint.
-	worldPoint print.
-	^self canBeDrawn and: [self isCloserThan: 5 toPixel: worldPoint 
-		"self drawable positionInWorld + localPoint"]! !
+	^self canBeDrawn 
+	and: [self isCloserThan: 5 toPixel: (self externalizeToWorld: localPoint)]! !
 
 !DrGMorph methodsFor: 'testing' stamp: 'hlsf 10/Aug/2025 13:28:59'!
 containsPointInWorld: localPoint
