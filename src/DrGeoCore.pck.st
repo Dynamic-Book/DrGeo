@@ -1,10 +1,10 @@
-'From Cuis7.7 [latest update: #7819] on 1 February 2026 at 10:34:27 am'!
+'From Cuis7.7 [latest update: #7827] on 5 February 2026 at 11:28:41 am'!
 'Description '!
-!provides: 'DrGeoCore' 1 33!
+!provides: 'DrGeoCore' 1 34!
 !requires: 'UI-Preference' 1 28 nil!
 !requires: 'UI-Panel' 1 140 nil!
-!requires: 'YAXO' 1 28 nil!
 !requires: 'Graphics-Files-Additional' 1 30 nil!
+!requires: 'YAXO' 1 28 nil!
 SystemOrganization addCategory: #'DrGeoCore-Model'!
 SystemOrganization addCategory: #'DrGeoCore-Model-Smalltalk'!
 SystemOrganization addCategory: #'DrGeoCore-Model-Item'!
@@ -7860,10 +7860,10 @@ text: aText
 	text := aText.
 	self rehash! !
 
-!DrGTextItem methodsFor: 'updating' stamp: 'hlsf 4/Aug/2023 17:22:39'!
+!DrGTextItem methodsFor: 'updating' stamp: 'hlsf 5/Feb/2026 10:59:25'!
 editPropertyIn: presenter
 	| holder |
-	holder := ValueHolder with: text.
+	holder := ValueHolder with: text asString.
 	holder action: [:newText | presenter domain propertyCommandFor: self with: newText].
 	^ TextEntryPanel open: holder label: 'Edit this text' translated! !
 
@@ -26222,9 +26222,13 @@ stopStepping
 canBeDrawn
 	^ self visible and: [mathItem exist]! !
 
-!DrGMorph methodsFor: 'testing' stamp: 'hlsf 10/Aug/2025 13:28:43'!
+!DrGMorph methodsFor: 'testing' stamp: 'hlsf 5/Feb/2026 11:27:17'!
 containsPoint: localPoint
-	^self canBeDrawn and: [self isCloserThan: 5 toPixel: (self drawable positionInWorld + localPoint)]! !
+	| worldPoint |
+	worldPoint := self externalizeToWorld: localPoint.
+	worldPoint print.
+	^self canBeDrawn and: [self isCloserThan: 5 toPixel: worldPoint 
+		"self drawable positionInWorld + localPoint"]! !
 
 !DrGMorph methodsFor: 'testing' stamp: 'hlsf 10/Aug/2025 13:28:59'!
 containsPointInWorld: localPoint
