@@ -1,6 +1,6 @@
-'From Cuis7.7 [latest update: #7827] on 5 February 2026 at 11:32:03 am'!
+'From Cuis7.7 [latest update: #7827] on 7 February 2026 at 11:53:56 am'!
 'Description '!
-!provides: 'DrGeoCore' 1 35!
+!provides: 'DrGeoCore' 1 36!
 !requires: 'UI-Preference' 1 28 nil!
 !requires: 'UI-Panel' 1 140 nil!
 !requires: 'Graphics-Files-Additional' 1 30 nil!
@@ -1495,7 +1495,7 @@ DrGCommandManager class
 
 !classDefinition: #DrGTool category: #'DrGeoCore-Presenter-Tool'!
 Object subclass: #DrGTool
-	instanceVariableNames: 'state presenter spot last morph mathItemUnderMouse'
+	instanceVariableNames: 'state presenter spot last morph'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'DrGeoCore-Presenter-Tool'!
@@ -2807,7 +2807,7 @@ A command to merge 'mathItem' in 'target': all the direct children of mathItem w
 !DrGPropertyCommand commentStamp: '' prior: 0!
 A command to record property editing!
 
-!DrGTool commentStamp: '<historical>' prior: 0!
+!DrGTool commentStamp: 'hlsf 7/Feb/2026 11:25:49' prior: 0!
 The root of the class hierarchy to handle tool. A tool is used to process the user inputs and to give appropriate feedbacks to the user depending on the operation the user can conduct. It works in close relation with a builder (see presenter-builder).
 
 - state: state of the tool
@@ -2815,8 +2815,7 @@ The root of the class hierarchy to handle tool. A tool is used to process the us
 - spot: 	xy-postition of the selected item when selecting one among several
 - last: last mouse xy-position (used during drag)
 - morph: 	a selected DrGMorph during the last multiple choice selection
-- mathItemUnderMouse: 	mathItem under mouse
- !
+!
 
 !DrGAnimateTool commentStamp: '' prior: 0!
 A tool to animate a free point on a curve.
@@ -11800,12 +11799,11 @@ registerDependant: anObject! !
 release
 	self reset.! !
 
-!DrGTool methodsFor: 'initialize-release' stamp: 'hlsf 9/Apr/2021 19:52:53'!
+!DrGTool methodsFor: 'initialize-release' stamp: 'hlsf 7/Feb/2026 11:25:26'!
 reset
 	self morph: nil;
 		last: nil;
-		spot: nil.
-	mathItemUnderMouse := nil! !
+		spot: nil! !
 
 !DrGTool methodsFor: 'initialize-release' stamp: ''!
 resetForFreshStart 
@@ -28222,7 +28220,7 @@ dismissMorph
 	super dismissMorph.
 	presenter view dismissMorph ! !
 
-!DrGDrawable methodsFor: 'initialize-release' stamp: 'hlsf 25/Jan/2026 17:20:23'!
+!DrGDrawable methodsFor: 'initialize-release' stamp: 'hlsf 7/Feb/2026 11:46:58'!
 initialize
 	super initialize.
 	self color: Theme current canvasBackground.
@@ -28233,6 +28231,7 @@ initialize
 		color: Color transparent;
 		morphExtent: 6 @ 6;
 		yourself.
+	self addMorphBack: balloonTarget.
 	itemViews := OrderedCollection new.
 	undoneViews := OrderedCollection new.
 	self registerEvents .
@@ -28370,15 +28369,16 @@ addMorph: newMorph
 		ifNil: [self addMorphFront: newMorph]  
 		ifNotNil: [self addMorph: newMorph behind: aLabel]! !
 
-!DrGDrawable methodsFor: 'tip' stamp: ''!
+!DrGDrawable methodsFor: 'tip' stamp: 'hlsf 7/Feb/2026 11:53:06'!
 hideTip
-	balloonTarget deleteBalloon.
-	self removeMorph: balloonTarget.! !
+	balloonTarget setBalloonText: nil.
+	balloonTarget deleteBalloon
+! !
 
-!DrGDrawable methodsFor: 'tip' stamp: 'hlsf 10/Jan/2026 19:59:20'!
+!DrGDrawable methodsFor: 'tip' stamp: 'hlsf 7/Feb/2026 11:49:18'!
 tip: aText at: aPoint
 	tipOn ifFalse: [^self].
-	self addMorphBack: balloonTarget.
+	balloonTarget  comeToFront.
 	DrGeoCoreSystem isTablet
 		ifTrue: [balloonTarget morphCenter: aPoint + (40 @ -40)]
 		ifFalse: [balloonTarget morphCenter: aPoint].
