@@ -1,6 +1,6 @@
-'From Cuis7.7 [latest update: #7827] on 7 February 2026 at 11:53:56 am'!
+'From Cuis7.7 [latest update: #7827] on 8 February 2026 at 12:17:14 pm'!
 'Description '!
-!provides: 'DrGeoCore' 1 36!
+!provides: 'DrGeoCore' 1 37!
 !requires: 'UI-Preference' 1 28 nil!
 !requires: 'UI-Panel' 1 140 nil!
 !requires: 'Graphics-Files-Additional' 1 30 nil!
@@ -28369,10 +28369,11 @@ addMorph: newMorph
 		ifNil: [self addMorphFront: newMorph]  
 		ifNotNil: [self addMorph: newMorph behind: aLabel]! !
 
-!DrGDrawable methodsFor: 'tip' stamp: 'hlsf 7/Feb/2026 11:53:06'!
+!DrGDrawable methodsFor: 'tip' stamp: 'hlsf 7/Feb/2026 12:00:59'!
 hideTip
 	balloonTarget setBalloonText: nil.
 	balloonTarget deleteBalloon
+	
 ! !
 
 !DrGDrawable methodsFor: 'tip' stamp: 'hlsf 7/Feb/2026 11:49:18'!
