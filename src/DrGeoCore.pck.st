@@ -1,10 +1,10 @@
-'From Cuis7.7 [latest update: #7827] on 8 February 2026 at 12:17:14 pm'!
+'From Cuis7.7 [latest update: #7839] on 12 February 2026 at 9:18:21 pm'!
 'Description '!
-!provides: 'DrGeoCore' 1 37!
+!provides: 'DrGeoCore' 1 38!
 !requires: 'UI-Preference' 1 28 nil!
 !requires: 'UI-Panel' 1 140 nil!
-!requires: 'Graphics-Files-Additional' 1 30 nil!
 !requires: 'YAXO' 1 28 nil!
+!requires: 'Graphics-Files-Additional' 1 30 nil!
 SystemOrganization addCategory: #'DrGeoCore-Model'!
 SystemOrganization addCategory: #'DrGeoCore-Model-Smalltalk'!
 SystemOrganization addCategory: #'DrGeoCore-Model-Item'!
@@ -13757,18 +13757,18 @@ fileMenu
 	^ fileMenu
 		! !
 
-!DrGMinimalControlsManager methodsFor: 'menus' stamp: 'hlsf 8/Jan/2026 21:31:58'!
+!DrGMinimalControlsManager methodsFor: 'menus' stamp: 'hlsf 12/Feb/2026 21:00:28'!
 mainMenu
 	| mainMenu menu |
 	mainMenu := MenuMorph entitled: self view label.
 	" File menu "
 	menu := mainMenu add: 'File' translated subMenu: self fileMenu.
-	menu 	setBalloonText: 'Load, save or export Dr. Geo figure.' translated.
+	menu setBalloonText: 'Load, save or export Dr. Geo figure.' translated.
 	" Edit menu "
 	menu := mainMenu add: 'Edit' translated subMenu: self editMenu.
 	menu setBalloonText: 'Erase or edit style and properties of items.' translated.
 	" Points menu "
-	menu := mainMenu 		add: 'Points' translated subMenu: self pointMenu.
+	menu := mainMenu add: 'Points' translated subMenu: self pointMenu.
 	menu setBalloonText: 'Create points: free, on curve, intersection or middle point.' translated.
 	" Lines menu "
 	menu := mainMenu add: 'Lines' translated subMenu: self curveMenu.
