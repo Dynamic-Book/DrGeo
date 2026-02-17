@@ -52,6 +52,7 @@ DrGeoSystem beWorkstation.
 DrGeo new.
 NaturalLanguageTranslator privateStartUp .
 TextDomainManager registerCategoryPrefix: ''DrGeo'' domain: ''drgeo''.
+TextDomainManager registerCategoryPrefix: ''DrGeoCore'' domain: ''drgeocore''.
 TextDomainManager allKnownDomains.
 DrGSmalltalkSketchBrowser open: DrGeoSystem smalltalkSketchesPath label: ''Browse''.
 DrGSmalltalkSketchEditor open: ''DrGeoSketch new'' label: ''Edit Smalltalk Sketch''.

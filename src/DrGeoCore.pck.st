@@ -1,6 +1,6 @@
-'From Cuis7.7 [latest update: #7839] on 12 February 2026 at 9:18:21 pm'!
+'From Cuis7.7 [latest update: #7839] on 17 February 2026 at 4:32:42 pm'!
 'Description '!
-!provides: 'DrGeoCore' 1 38!
+!provides: 'DrGeoCore' 1 41!
 !requires: 'UI-Preference' 1 28 nil!
 !requires: 'UI-Panel' 1 140 nil!
 !requires: 'YAXO' 1 28 nil!
@@ -1793,24 +1793,34 @@ DrGStyleToolState subclass: #DrGPropertyToolState
 DrGPropertyToolState class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGCorePlatform category: #'DrGeoCore-System'!
-Object subclass: #DrGCorePlatform
-	instanceVariableNames: 'preferences'
+!classDefinition: #DrGPlatform category: #'DrGeoCore-System'!
+Object subclass: #DrGPlatform
+	instanceVariableNames: 'toolbarIconSize canWeDisplaySpinner preferences fontManager'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'DrGeoCore-System'!
-!classDefinition: 'DrGCorePlatform class' category: #'DrGeoCore-System'!
-DrGCorePlatform class
+!classDefinition: 'DrGPlatform class' category: #'DrGeoCore-System'!
+DrGPlatform class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGeoCoreSystem category: #'DrGeoCore-System'!
-Object subclass: #DrGeoCoreSystem
+!classDefinition: #DrGDybo category: #'DrGeoCore-System'!
+DrGPlatform subclass: #DrGDybo
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'DrGeoCore-System'!
-!classDefinition: 'DrGeoCoreSystem class' category: #'DrGeoCore-System'!
-DrGeoCoreSystem class
+!classDefinition: 'DrGDybo class' category: #'DrGeoCore-System'!
+DrGDybo class
+	instanceVariableNames: ''!
+
+!classDefinition: #DrGeoSystem category: #'DrGeoCore-System'!
+Object subclass: #DrGeoSystem
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'DrGeoCore-System'!
+!classDefinition: 'DrGeoSystem class' category: #'DrGeoCore-System'!
+DrGeoSystem class
 	instanceVariableNames: 'platform'!
 
 !classDefinition: #DrGAbstractControlsManager category: #'DrGeoCore-View'!
@@ -2863,8 +2873,15 @@ The neutral state for animate tool: when no free point on curve is selected yet.
 The selected state for animate tool: when a free point on curve is selected and it is animated.
  - abscissa: the curvilinear abscissa of the selected point!
 
-!DrGCorePlatform commentStamp: '' prior: 0!
+!DrGPlatform commentStamp: '' prior: 0!
 I am an abstract class to modelise access to plateform preferences and information.
+Pattern: strategy!
+
+!DrGDybo commentStamp: '<historical>' prior: 0!
+Plateform preference  when DrGeo is used as a DKM in the context of the DyboApp!
+
+!DrGeoSystem commentStamp: '<historical>' prior: 0!
+I map settings/preferences to the underneath hardware/os plateform
 Pattern: strategy!
 
 !DrGIcons commentStamp: 'hlsf 4/26/2020 15:34:30' prior: 0!
@@ -3423,12 +3440,12 @@ renderAxes
 renderGrid
 	self drawable gridVisible ifTrue: [self drawable drawGridOn: self]! !
 
-!DrGSvgCanvas methodsFor: 'rendering' stamp: 'hlsf 10/Jan/2026 19:52:57'!
+!DrGSvgCanvas methodsFor: 'rendering' stamp: 'hlsf 17/Feb/2026 14:43:25'!
 renderLabelOf: aMorph
 	aMorph labelMorph ifNotNil: [
 		self drawString: aMorph mathItem name 
 		at: aMorph labelPosition
-		font: DrGeoCoreSystem canvasFont 
+		font: DrGeoSystem canvasFont 
 		color: Color black]! !
 
 !DrGSvgCanvas methodsFor: 'private' stamp: 'hlsf 18/Mar/2023 16:36:21'!
@@ -4325,7 +4342,7 @@ parseStyleOfSegment: item with: aNode
 	costume style mark: (aNode attributeAt: #mark ifAbsent: [#none]) asSymbol.
 	costume style arrow: (self parseArrowWith: aNode)! !
 
-!DrGeoXml methodsFor: 'parse style' stamp: 'hlsf 10/Jan/2026 19:52:44'!
+!DrGeoXml methodsFor: 'parse style' stamp: 'hlsf 17/Feb/2026 14:43:34'!
 parseStyleOfText: item with: aNode 
 	| morph |
 	morph := self drawable fastLastItemView .
@@ -4335,7 +4352,7 @@ parseStyleOfText: item with: aNode
 	morph style
 		borderColor: (self parseColorAt: #border with: aNode).
 	morph style
-		fontSize: (aNode attributeAt: #fontSize ifAbsent: DrGeoCoreSystem canvasFontSize) asNumber.! !
+		fontSize: (aNode attributeAt: #fontSize ifAbsent: DrGeoSystem canvasFontSize) asNumber.! !
 
 !DrGeoXml methodsFor: 'parse style' stamp: 'hlsf 24/May/2023 19:14:39'!
 parseStyleOfValue: item with: aNode 
@@ -4442,10 +4459,10 @@ parseFigureFrom: drgeoNode
 		]
 	].! !
 
-!DrGeoXml methodsFor: 'xml read' stamp: 'hlsf 8/Jan/2026 22:41:51'!
+!DrGeoXml methodsFor: 'xml read' stamp: 'hlsf 17/Feb/2026 15:28:49'!
 parseOneFigure: node for: constructor
 " Instantiate this node in a DrGeo app and return it"
-	self presenter: (DrGeoApp perform: constructor).
+	self presenter: (DrGeo perform: constructor).
 	presenter notInteractive: true.
 	self parseFigureFrom: node.
 	self drawable forcedVisibility: false.
@@ -4526,6 +4543,20 @@ parseOutput: node inMacro: macro
 					itemTemplate: (self instantiateItemFrom: child); 
 					parentNodes: (self parentMacroNodesIn: macro from: child);
 					yourself)]]! !
+
+!DrGeoXml methodsFor: 'xml write' stamp: 'hlsf 4/Aug/2023 17:28:58'!
+saveMultiple: sketchesAndMacros on: stream
+	| doc writer root |
+	doc := XMLDocument new version: '1.0'.
+	writer := XMLWriter on: stream.
+	root := XMLElement named: #drgenius.
+	(sketchesAndMacros select: [:each | each class = DrGeoView]) do: [:view |
+		self presenter: view presenter.
+		self writeFigureAsXmlTo: root].
+	(sketchesAndMacros select: [:each | each class = DrGMacro]) do: [:macro |
+		macro writeAsXmlTo: root].
+	doc addElement: root.
+	doc printXMLOn: writer.! !
 
 !DrGeoXml methodsFor: 'xml write' stamp: ''!
 saveOn: stream
@@ -5348,12 +5379,12 @@ writeAsXmlPositionTo: aNode
 				addContent: (XMLStringNode string: position y asString)).
 	^ aNode! !
 
-!DrGBitmapItem methodsFor: 'xml writing' stamp: 'hlsf 10/Jan/2026 19:53:01'!
+!DrGBitmapItem methodsFor: 'xml writing' stamp: 'hlsf 17/Feb/2026 14:43:39'!
 writeAsXmlTo: aNode
 	|node stream |
 	stream := ByteArray new writeStream.
 	PNGReadWriter putForm: data asForm onStream: stream.
-	DrGeoCoreSystem stopSpinner.
+	DrGeoSystem stopSpinner.
 	node := super writeAsXmlTo: aNode.
 	self writeAsXmlPositionTo: node.
 	node
@@ -7012,7 +7043,7 @@ doParentsExist
 isConstrainedPointItem
 	^ true! !
 
-!DrGPointBlockItem methodsFor: 'updating' stamp: 'hlsf 20/May/2024 12:37:53'!
+!DrGPointBlockItem methodsFor: 'updating' stamp: 'hlsf 17/Feb/2026 16:07:27'!
 update
 | evaluator |
 	self doParentsExist ifFalse: [^ self exist: false].
@@ -7020,8 +7051,8 @@ update
 		ifNotEmpty: [
 			parents size = 1
 			ifTrue: [ [ pointBlock value: parents first ] ]
-			ifFalse: [ [pointBlock valueWithArguments: parents] ]].
-	point := evaluator on: Error do: [nil].
+			ifFalse: [ [pointBlock value: parents] ]].
+	point := evaluator on: Error do: [:msg | msg print ].
 	self exist: point notNil ! !
 
 !DrGPointBlockItem methodsFor: 'xml writing' stamp: ''!
@@ -8361,7 +8392,7 @@ valueBlock: aBlock
 rehash
 	^ hash := super rehash bitXor: valueBlock hash! !
 
-!DrGValueBlockItem methodsFor: 'updating' stamp: 'hlsf 15/Jan/2026 18:56:25'!
+!DrGValueBlockItem methodsFor: 'updating' stamp: 'hlsf 17/Feb/2026 16:08:10'!
 update
 	| evaluator |
 	self doParentsExist ifFalse: [^ self exist: false].
@@ -8369,8 +8400,8 @@ update
 		ifNotEmpty: [
 			parents size = 1
 				ifTrue: [ [ valueBlock value: parents first ] ] 
-				ifFalse: [ [valueBlock valueWithArguments: parents] ]].
-	value := evaluator on: Error do: [nil]. 
+				ifFalse: [ [valueBlock value: parents] ]].
+	value := evaluator on: Error do: [:msg | msg print]. 
 	self exist: value notNil ! !
 
 !DrGValueBlockItem methodsFor: 'xml writing' stamp: 'hlsf 13/Apr/2024 09:53:35'!
@@ -8651,9 +8682,9 @@ writeAsXmlTo: aNode
 rehash
 	^hash := super rehash bitXor: script class hash! !
 
-!DrGValueScriptItem methodsFor: 'testing' stamp: 'hlsf 10/Jan/2026 19:55:09'!
+!DrGValueScriptItem methodsFor: 'testing' stamp: 'hlsf 17/Feb/2026 14:43:43'!
 isPropertyEditable
-	^ DrGeoCoreSystem isTablet 
+	^ DrGeoSystem isTablet 
 		ifTrue: [false]  
 		ifFalse:  [true]! !
 
@@ -8951,6 +8982,29 @@ name: aString
 value: aNumber
 	(self mathItem respondsTo: #valueItem:) 
 		ifTrue: [self mathItem valueItem: aNumber]! !
+
+!DrGeoSketch methodsFor: 'initialize-release' stamp: 'hlsf 25/Sep/2022 11:32:31'!
+delete
+	self view deleteWithoutConfirmation.
+	self release! !
+
+!DrGeoSketch methodsFor: 'initialize-release' stamp: 'hlsf 20/Apr/2024 11:04:09'!
+initialize
+	presenter := DrGeo service
+		stSketch: self;
+		yourself .
+	" From now, my view (empty) is in a presentable state. Inform about it "
+	DrGeoSketch triggerEvent: #newSmalltalkSketch with: self! !
+
+!DrGeoSketch methodsFor: 'initialize-release' stamp: 'hlsf 4/Aug/2023 20:05:38'!
+release
+	presenter ifNotNil: [presenter release].
+	presenter := nil.
+	self terminateDo ! !
+
+!DrGeoSketch methodsFor: 'obsolete' stamp: 'hlsf 10/Apr/2022 20:30:29'!
+fullscreen
+	! !
 
 !DrGeoSketch methodsFor: 'DSL angle' stamp: 'hlsf 15/Jan/2026 17:58:58'!
 angle: vector1 to: vector2
@@ -9688,29 +9742,6 @@ value: block parents: drgeoItems at: point
 	presenter notInteractive: false.
 	^ answer! !
 
-!DrGeoSketch methodsFor: 'initialize-release' stamp: 'hlsf 25/Sep/2022 11:32:31'!
-delete
-	self view deleteWithoutConfirmation.
-	self release! !
-
-!DrGeoSketch methodsFor: 'initialize-release' stamp: 'hlsf 20/Apr/2024 11:04:09'!
-initialize
-	presenter := DrGeo service
-		stSketch: self;
-		yourself .
-	" From now, my view (empty) is in a presentable state. Inform about it "
-	DrGeoSketch triggerEvent: #newSmalltalkSketch with: self! !
-
-!DrGeoSketch methodsFor: 'initialize-release' stamp: 'hlsf 4/Aug/2023 20:05:38'!
-release
-	presenter ifNotNil: [presenter release].
-	presenter := nil.
-	self terminateDo ! !
-
-!DrGeoSketch methodsFor: 'obsolete' stamp: 'hlsf 10/Apr/2022 20:30:29'!
-fullscreen
-	! !
-
 !DrGeoSketch methodsFor: 'private' stamp: 'hlsf 6/Jan/2026 15:34:54'!
 canTransform: drgeoItem
 	drgeoItem mathItem isGeometricItem
@@ -10300,33 +10331,33 @@ translucent: boolean
 	self changed: #translucent.
 	morph redrawNeeded! !
 
-!DrGArcStyle methodsFor: 'initialize-release' stamp: 'hlsf 10/Jan/2026 19:55:20'!
+!DrGArcStyle methodsFor: 'initialize-release' stamp: 'hlsf 17/Feb/2026 14:43:54'!
 initialize
 	super initialize.
-	self color: (DrGeoCoreSystem preferences at: #arcColor).
-	self lineStyle: (DrGeoCoreSystem preferences at: #arcStyle).
-	self thickness: (DrGeoCoreSystem preferences at: #arcThickness).
-	self arrow: (DrGeoCoreSystem preferences at: #arcArrow).
-	self fill: (DrGeoCoreSystem preferences at: #arcFilled).
-	self translucent: (DrGeoCoreSystem preferences at: #arcTranslucent).! !
+	self color: (DrGeoSystem preferences at: #arcColor).
+	self lineStyle: (DrGeoSystem preferences at: #arcStyle).
+	self thickness: (DrGeoSystem preferences at: #arcThickness).
+	self arrow: (DrGeoSystem preferences at: #arcArrow).
+	self fill: (DrGeoSystem preferences at: #arcFilled).
+	self translucent: (DrGeoSystem preferences at: #arcTranslucent).! !
 
-!DrGCircleStyle methodsFor: 'initialize-release' stamp: 'hlsf 10/Jan/2026 19:55:30'!
+!DrGCircleStyle methodsFor: 'initialize-release' stamp: 'hlsf 17/Feb/2026 14:44:02'!
 initialize
 	super initialize.
-	self color: (DrGeoCoreSystem preferences at: #circleColor).
-	self lineStyle: (DrGeoCoreSystem preferences at: #circleStyle).
-	self thickness: (DrGeoCoreSystem preferences at: #circleThickness).
-	self fill: (DrGeoCoreSystem preferences at: #circleFilled).
-	self translucent:(DrGeoCoreSystem preferences at: #circleTranslucent).! !
+	self color: (DrGeoSystem preferences at: #circleColor).
+	self lineStyle: (DrGeoSystem preferences at: #circleStyle).
+	self thickness: (DrGeoSystem preferences at: #circleThickness).
+	self fill: (DrGeoSystem preferences at: #circleFilled).
+	self translucent:(DrGeoSystem preferences at: #circleTranslucent).! !
 
-!DrGPolygonStyle methodsFor: 'initialize-release' stamp: 'hlsf 10/Jan/2026 19:55:42'!
+!DrGPolygonStyle methodsFor: 'initialize-release' stamp: 'hlsf 17/Feb/2026 14:44:12'!
 initialize
 	super initialize.
-	self color: (DrGeoCoreSystem preferences at: #polygonColor).
-	self lineStyle: (DrGeoCoreSystem preferences at: #polygonStyle).
-	self thickness: (DrGeoCoreSystem preferences at: #polygonThickness).
-	self fill: (DrGeoCoreSystem preferences at: #polygonFilled).
-	self translucent: (DrGeoCoreSystem preferences at: #polygonTranslucent).
+	self color: (DrGeoSystem preferences at: #polygonColor).
+	self lineStyle: (DrGeoSystem preferences at: #polygonStyle).
+	self thickness: (DrGeoSystem preferences at: #polygonThickness).
+	self fill: (DrGeoSystem preferences at: #polygonFilled).
+	self translucent: (DrGeoSystem preferences at: #polygonTranslucent).
 	self arrow: #none! !
 
 !DrGSegmentStyle methodsFor: 'xml writing' stamp: ''!
@@ -10374,46 +10405,46 @@ mark: aSymbol
 	mark := aSymbol.
 	morph redrawNeeded! !
 
-!DrGSegmentStyle methodsFor: 'initialize-release' stamp: 'hlsf 10/Jan/2026 19:56:20'!
+!DrGSegmentStyle methodsFor: 'initialize-release' stamp: 'hlsf 17/Feb/2026 14:44:22'!
 initialize
 	super initialize.
-	self color: (DrGeoCoreSystem preferences at: #segmentColor).
-	self lineStyle: (DrGeoCoreSystem preferences at: #segmentStyle).
-	self thickness: (DrGeoCoreSystem preferences at: #segmentThickness).
-	self mark: (DrGeoCoreSystem preferences at: #segmentMark).
-	self arrow: (DrGeoCoreSystem preferences at: #segmentArrow)! !
+	self color: (DrGeoSystem preferences at: #segmentColor).
+	self lineStyle: (DrGeoSystem preferences at: #segmentStyle).
+	self thickness: (DrGeoSystem preferences at: #segmentThickness).
+	self mark: (DrGeoSystem preferences at: #segmentMark).
+	self arrow: (DrGeoSystem preferences at: #segmentArrow)! !
 
-!DrGLineStyle methodsFor: 'initialize-release' stamp: 'hlsf 10/Jan/2026 19:56:26'!
+!DrGLineStyle methodsFor: 'initialize-release' stamp: 'hlsf 17/Feb/2026 14:44:33'!
 initialize
 	super initialize.
-	self color: (DrGeoCoreSystem preferences at: #lineColor).
-	self lineStyle: (DrGeoCoreSystem preferences at: #lineStyle).
-	self thickness: (DrGeoCoreSystem preferences at: #lineThickness)! !
+	self color: (DrGeoSystem preferences at: #lineColor).
+	self lineStyle: (DrGeoSystem preferences at: #lineStyle).
+	self thickness: (DrGeoSystem preferences at: #lineThickness)! !
 
-!DrGLocusStyle methodsFor: 'initialize-release' stamp: 'hlsf 10/Jan/2026 19:56:31'!
+!DrGLocusStyle methodsFor: 'initialize-release' stamp: 'hlsf 17/Feb/2026 14:44:38'!
 initialize
 	super initialize.
-	self color: (DrGeoCoreSystem preferences at: #locusColor).
-	self lineStyle: (DrGeoCoreSystem preferences at: #locusStyle).
-	self thickness: (DrGeoCoreSystem preferences at: #locusThickness)! !
+	self color: (DrGeoSystem preferences at: #locusColor).
+	self lineStyle: (DrGeoSystem preferences at: #locusStyle).
+	self thickness: (DrGeoSystem preferences at: #locusThickness)! !
 
 !DrGLocusStyle methodsFor: 'widget' stamp: 'hlsf 28/May/2025 15:47:36'!
 myWidgets 
 	^ OrderedCollection with: self thicknessWidget! !
 
-!DrGRayStyle methodsFor: 'initialize-release' stamp: 'hlsf 10/Jan/2026 19:56:37'!
+!DrGRayStyle methodsFor: 'initialize-release' stamp: 'hlsf 17/Feb/2026 14:44:43'!
 initialize
 	super initialize.
-	self color: (DrGeoCoreSystem preferences at: #rayColor).
-	self lineStyle: (DrGeoCoreSystem preferences at: #rayStyle).
-	self thickness: (DrGeoCoreSystem preferences at: #rayThickness)! !
+	self color: (DrGeoSystem preferences at: #rayColor).
+	self lineStyle: (DrGeoSystem preferences at: #rayStyle).
+	self thickness: (DrGeoSystem preferences at: #rayThickness)! !
 
-!DrGVectorStyle methodsFor: 'initialize-release' stamp: 'hlsf 10/Jan/2026 19:56:43'!
+!DrGVectorStyle methodsFor: 'initialize-release' stamp: 'hlsf 17/Feb/2026 14:44:48'!
 initialize
 	super initialize.
-	self color: (DrGeoCoreSystem preferences at: #vectorColor).
-	self lineStyle:(DrGeoCoreSystem preferences at: #vectorStyle).
-	self thickness: (DrGeoCoreSystem preferences at: #vectorThickness)! !
+	self color: (DrGeoSystem preferences at: #vectorColor).
+	self lineStyle:(DrGeoSystem preferences at: #vectorStyle).
+	self thickness: (DrGeoSystem preferences at: #vectorThickness)! !
 
 !DrGPointStyle methodsFor: 'widget' stamp: ''!
 myWidgets 
@@ -10457,12 +10488,12 @@ sizeWidget
 updateStylePanel
 	self view presenter controlsManager updateStylerFor: self! !
 
-!DrGPointStyle methodsFor: 'initialize-release' stamp: 'hlsf 10/Jan/2026 19:56:50'!
+!DrGPointStyle methodsFor: 'initialize-release' stamp: 'hlsf 17/Feb/2026 14:44:53'!
 initialize
 	super initialize.
-	self color: (DrGeoCoreSystem preferences at: #pointColor).
-	self pointSize: (DrGeoCoreSystem preferences at: #pointSize).
-	self shape: (DrGeoCoreSystem preferences at: #pointShape)! !
+	self color: (DrGeoSystem preferences at: #pointColor).
+	self pointSize: (DrGeoSystem preferences at: #pointSize).
+	self shape: (DrGeoSystem preferences at: #pointShape)! !
 
 !DrGPointStyle methodsFor: 'accessing' stamp: ''!
 abscissa
@@ -10723,12 +10754,12 @@ styleWidget
 	morph isLockable ifTrue: [controls add: self lockedWidget].
 	^controls! !
 
-!DrGTextStyle methodsFor: 'initialize-release' stamp: 'hlsf 10/Jan/2026 19:56:55'!
+!DrGTextStyle methodsFor: 'initialize-release' stamp: 'hlsf 17/Feb/2026 14:45:01'!
 initialize 
 	super initialize.
-	self color: (DrGeoCoreSystem preferences at: #textColor).
-	self setTranslucent: (DrGeoCoreSystem preferences at: #textBackgroundColor).
-	self borderColor: (DrGeoCoreSystem preferences at: #textBorderColor).
+	self color: (DrGeoSystem preferences at: #textColor).
+	self setTranslucent: (DrGeoSystem preferences at: #textBackgroundColor).
+	self borderColor: (DrGeoSystem preferences at: #textBorderColor).
 	fontSize := 12 .! !
 
 !DrGTextStyle methodsFor: 'xml writing' stamp: 'drgeo 10/Sep/2022 12:06:57'!
@@ -10749,32 +10780,10 @@ backgroundColorSymbols
 backgroundColors
 	^ self backgroundColorSymbols collect: [:symbol | Color perform: symbol]! !
 
-!DrGValueStyle methodsFor: 'accessing' stamp: 'hlsf 10/Jan/2026 19:57:05'!
-rename
-|answer|
-	"Not the responsability of this object"
-	self flag: #drgeoTodo.
-	DrGeoCoreSystem showVirtualKeyboard: true.
-	self mathItem name 
-		ifNotNil:	[
-			answer := self view 
-				textEntry:  'Rename this value' translated 
-				title: 'Rename this value' translated 
-				entryText: self mathItem name.]
-		ifNil: [
-			answer := self view 
-				textEntry:  'Name this value' translated 
-				title: 'Name this value' translated].
-	answer ifNil: [^self].
-	answer isEmpty ifTrue: [answer := nil].
-	self mathItem name: answer.
-	morph redrawNeeded.
-	self changed! !
-
-!DrGValueStyle methodsFor: 'initialize-release' stamp: 'hlsf 10/Jan/2026 19:56:59'!
+!DrGValueStyle methodsFor: 'initialize-release' stamp: 'hlsf 17/Feb/2026 14:45:06'!
 initialize 
 	super initialize.
-	self color: (DrGeoCoreSystem preferences at: #valueColor)
+	self color: (DrGeoSystem preferences at: #valueColor)
 ! !
 
 !DrGValueStyle methodsFor: 'widget' stamp: 'hlsf 24/Mar/2022 16:59:01'!
@@ -10883,10 +10892,10 @@ exportToClipboard: isBackgroundTransparent
 			<< (DrGeoSystem myExportsPath / 'clipboard.png') pathString].
 	OSPlatform current runCommand: command."! !
 
-!DrGeo methodsFor: 'callback UI' stamp: 'hlsf 10/Jan/2026 19:57:15'!
+!DrGeo methodsFor: 'callback UI' stamp: 'hlsf 17/Feb/2026 15:27:03'!
 exportToImage: aFilename
 	| stream |
-	[stream := (DrGeoCoreSystem myExportsPath // (aFilename, '.svg')) forceWriteStream.
+	[stream := (DrGeoSystem myExportsPath // (aFilename, '.svg')) forceWriteStream.
 	DrGeoXml new 
 		presenter: self; 
 		exportToSvg: stream
@@ -10910,10 +10919,10 @@ Check the local resource or the server.' translated].
 	DrGeoSystem stopSpinner.
 "! !
 
-!DrGeo methodsFor: 'callback UI' stamp: 'hlsf 10/Jan/2026 19:57:22'!
+!DrGeo methodsFor: 'callback UI' stamp: 'hlsf 17/Feb/2026 14:46:31'!
 exportToImageAs
 	| model |
-	DrGeoCoreSystem showVirtualKeyboard: true.
+	DrGeoSystem showVirtualKeyboard: true.
 	model := (ValueHolder with: (exportImageName ifNotNil: [:name | name] ifNil: ['']))
 	action: [:aString | 
 		exportImageName := aString.
@@ -10922,26 +10931,34 @@ exportToImageAs
 		morphCenter: self view fullBoundsInOwner center;
 		setProperty: #layerNumber toValue: 20! !
 
-!DrGeo methodsFor: 'callback UI' stamp: 'hlsf 10/Jan/2026 19:58:00'!
+!DrGeo methodsFor: 'callback UI' stamp: 'hlsf 8/Aug/2023 19:13:55'!
+newFigure
+	DrGeo new! !
+
+!DrGeo methodsFor: 'callback UI' stamp: 'hlsf 2/Dec/2021 10:00:04'!
+openFigureThumbnail
+	DrGFileOpenMorph open! !
+
+!DrGeo methodsFor: 'callback UI' stamp: 'hlsf 17/Feb/2026 14:46:41'!
 save
 "Save the sketch with the current filename"
 | stream |
 	[self saveWithinLimitedTime: [
-		DrGeoCoreSystem startSpinner.
-		stream := (DrGeoCoreSystem mySketchesPath // (sketchName, '.fgeo')) forceWriteStream.
+		DrGeoSystem startSpinner.
+		stream := (DrGeoSystem mySketchesPath // (sketchName, '.fgeo')) forceWriteStream.
 		DrGeoXml new 
 			presenter: self; 
 			saveOn: stream.
-		self previewOnFile: DrGeoCoreSystem mySketchesPath // (sketchName, '.png')].
+		self previewOnFile: DrGeoSystem mySketchesPath // (sketchName, '.png')].
 	self saved: true.
 	stream close]
 		on: Error 
-		do: [:ex | DrGeoCoreSystem stopSpinner.
+		do: [:ex | DrGeoSystem stopSpinner.
 			stream ifNotNil: [stream close].
 			Transcript show: ex.
 			PopUpMenu  inform: 'I can''t save the sketch.
 Check the local resource or the server.' translated].
-	DrGeoCoreSystem stopSpinner.! !
+	DrGeoSystem stopSpinner.! !
 
 !DrGeo methodsFor: 'callback UI' stamp: 'hlsf 5/Apr/2025 15:01:49'!
 saveSketch
@@ -10950,10 +10967,10 @@ saveSketch
 		ifNotNil: [self save]
 ! !
 
-!DrGeo methodsFor: 'callback UI' stamp: 'hlsf 10/Jan/2026 19:58:11'!
+!DrGeo methodsFor: 'callback UI' stamp: 'hlsf 17/Feb/2026 14:46:46'!
 saveSketchAs
 | model |
-	DrGeoCoreSystem showVirtualKeyboard: true.
+	DrGeoSystem showVirtualKeyboard: true.
 	model := (ValueHolder with:'')
 	action: [:aString | 
 		sketchName := aString.
@@ -10962,12 +10979,12 @@ saveSketchAs
 		morphCenter: self view fullBoundsInOwner center;
 		setProperty: #layerNumber toValue: 20! !
 
-!DrGeo methodsFor: 'callback UI' stamp: 'hlsf 10/Jan/2026 19:58:14'!
+!DrGeo methodsFor: 'callback UI' stamp: 'hlsf 17/Feb/2026 14:46:50'!
 saveWithinLimitedTime: aBlock
 	[aBlock value]
 		valueWithin: 10 seconds
 		onTimeout: 	
-			[DrGeoCoreSystem stopSpinner..
+			[DrGeoSystem stopSpinner..
 			PopUpMenu inform: 'I can''t save the sketch.
 Check the local resource or the server.' translated].! !
 
@@ -11140,6 +11157,11 @@ createLocus
 	self selectTool: DrGBuildTool with: DrGLocusBuilder
 ! !
 
+!DrGeo methodsFor: 'callback create' stamp: 'hlsf 5/Apr/2025 12:03:01'!
+createMacro
+	selectedTool := #macroBuild.
+	self selectTool: DrGMacroBuildTool with: DrGMacroBuilder! !
+
 !DrGeo methodsFor: 'callback create' stamp: 'hlsf 5/Apr/2025 12:03:11'!
 createMiddlePoint
 	selectedTool := #middle.
@@ -11195,6 +11217,12 @@ createRotation
 	selectedTool := #rotation.
 	self selectTool: DrGBuildTool with: DrGRotationBuilder! !
 
+!DrGeo methodsFor: 'callback create' stamp: 'hlsf 5/Apr/2025 12:04:52'!
+createScript
+	"We force to select/move mode as we do not interact with the sketch"	
+	self move.
+	DrGScriptDesignerDialog open: self label: 'Build a new script' translated! !
+
 !DrGeo methodsFor: 'callback create' stamp: 'hlsf 5/Apr/2025 12:05:02'!
 createSegment
 	selectedTool := #segment.
@@ -11220,16 +11248,70 @@ createVector
 	selectedTool := #vector.
 	self selectTool: DrGFlyBuildTouchTool with: DrGVectorBuilder! !
 
+!DrGeo methodsFor: 'callback create' stamp: 'hlsf 5/Apr/2025 11:55:52'!
+deleteMacro
+	selectedTool := #deleteMacro.
+	self selectTool: DrGSelectTool.
+! !
+
+!DrGeo methodsFor: 'callback create' stamp: 'hlsf 5/Apr/2025 12:05:54'!
+editScript
+	| menu |
+	"We force to select mode, then open a browser on the script classes"
+	self move.
+	menu := MenuMorph entitled: 'Edit or create scripts' translated.
+	DrGWizardScript sortedScripts do: [:aScriptClass |
+		(menu 
+			add: aScriptClass scriptName 
+			target: self 
+			action: #editScript: 
+			argument: aScriptClass)
+			setBalloonText: aScriptClass description].
+	menu popUpInWorld! !
+
+!DrGeo methodsFor: 'callback create' stamp: 'hlsf 9/Apr/2024 15:54:00'!
+editScript: aScriptClass
+	|  browser |
+	browser := Browser new setClass: aScriptClass selector: #compute.
+	browser when: #annotationChanged send: #updateAllMathItems to: self domain.
+	^ BrowserWindow openNoSysCat: browser label:  'Edit or create scripts' translated
+		
+	! !
+
 !DrGeo methodsFor: 'callback create' stamp: 'hlsf 5/Apr/2025 11:55:43'!
 eraser
 	selectedTool := #eraser.
 	self selectTool: DrGDeleteTool.
 ! !
 
+!DrGeo methodsFor: 'callback create' stamp: 'hlsf 5/Apr/2025 12:06:09'!
+executeMacro
+	selectedTool := #macroExecute.
+	self selectTool: DrGMacroPlayTool with: DrGMacroPlayer! !
+
+!DrGeo methodsFor: 'callback create' stamp: 'hlsf 5/Apr/2025 12:06:24'!
+executeMacro: aMacro
+	selectedTool := #macroExecute. 
+	self selectTool: DrGMacroPlayTool with: DrGMacroPlayerHeadless.
+	self tool builder selectedMacro: aMacro.
+	self tool switchState: DrGMacroPlayToolStateSelect! !
+
 !DrGeo methodsFor: 'callback create' stamp: 'hlsf 5/Apr/2025 11:55:17'!
 property 
 	selectedTool := #property.
 	self selectTool: DrGPropertyTool.! !
+
+!DrGeo methodsFor: 'callback create' stamp: 'hlsf 5/Apr/2025 12:06:33'!
+useScript
+	selectedTool := #useScript.
+	self selectTool: DrGScriptPlayTool with: DrGScriptPlayer! !
+
+!DrGeo methodsFor: 'callback create' stamp: 'hlsf 5/Apr/2025 12:06:43'!
+useScript: aScript
+	selectedTool := #useScript.
+	self selectTool: DrGScriptPlayTool with: DrGScriptPlayerHeadless.	
+	self tool builder scriptClass: aScript.
+	self tool switchState: DrGMacroPlayToolStateSelect! !
 
 !DrGeo methodsFor: 'canvas' stamp: 'hlsf 3/Aug/2023 23:22:11'!
 previewOnFile: aFileEntry
@@ -11243,6 +11325,13 @@ previewOnFile: aFileEntry
 		ensure: [	stream close]
 		 
 ! !
+
+!DrGeo methodsFor: 'initialize-release' stamp: 'hlsf 7/Jan/2026 16:10:42'!
+initialize
+	self initializeBasic.
+	self controlsManager: DrGControlsManager.
+	self move.
+	self view openInWorld ! !
 
 !DrGeo methodsFor: 'initialize-release' stamp: 'hlsf 4/Aug/2023 18:16:58'!
 initializeBasic
@@ -11368,6 +11457,18 @@ readyToBuildClone
 	answer := self domain createMathItem: self tool builder.
 	self tool grabClone: answer first last.! !
 
+!DrGeo methodsFor: 'updating' stamp: ''!
+readyToBuildMacro
+	"readyToBuild event, the builder is ready to build a macro, request to the domain the construction of the math item under the builder"
+	self domain createMacro: self tool builder.
+	self move! !
+
+!DrGeo methodsFor: 'updating' stamp: 'hlsf 4/Aug/2023 17:33:11'!
+readyToPlayMacro
+	"readyToBuild event, the builder is ready to play a macro (enought input items), request to the domain the construction of the math items under the builder"
+	self domain playMacro: self tool builder in: self.
+	self move! !
+
 !DrGeo methodsFor: 'updating' stamp: 'hlsf 4/Aug/2023 12:19:10'!
 updateSelection
 	(self isTool: #move) ifTrue: [|aMathItem| 
@@ -11376,12 +11477,12 @@ updateSelection
 			ifTrue: [self tool morph: nil]
 			ifFalse: [	self tool morph: (self drawable viewOf: aMathItem)]]! !
 
-!DrGeo class methodsFor: 'file' stamp: 'hlsf 10/Jan/2026 20:02:00'!
+!DrGeo class methodsFor: 'file' stamp: 'hlsf 17/Feb/2026 14:47:44'!
 file: fileEntry
 	|answer|
-	DrGeoCoreSystem startSpinner.
+	DrGeoSystem startSpinner.
 	answer := DrGeoXml new load: fileEntry for: #new.
-	DrGeoCoreSystem stopSpinner.
+	DrGeoSystem stopSpinner.
 	^ answer! !
 
 !DrGeo class methodsFor: 'file' stamp: 'hlsf 4/Aug/2023 18:07:41'!
@@ -11396,11 +11497,11 @@ service
 		initializeService;
 		yourself! !
 
-!DrGeo class methodsFor: 'saved status' stamp: 'hlsf 8/Jan/2026 21:56:18'!
+!DrGeo class methodsFor: 'saved status' stamp: 'hlsf 17/Feb/2026 16:27:46'!
 figuresArray
 	|items activeViews|
 	activeViews := OrderedCollection new.
-	DrGeoAppView allInstances do: [:each | 
+	DrGeoView allInstances do: [:each | 
 		each owner isNil ifFalse: [activeViews add: each]].
 	items := OrderedCollection new.
 	activeViews do: [:aView |
@@ -11410,6 +11511,17 @@ figuresArray
 			with: (ValueHolder with: aView presenter isSaved not))].
 	^ items
 ! !
+
+!DrGeo class methodsFor: 'saved status' stamp: 'hlsf 3/Aug/2023 21:40:18'!
+macrosArray
+	|items|
+	items := OrderedCollection new.
+	DrGMacroFactory new pool do: [:macro |
+		items add: (Array 
+			with: macro 
+			with: 'Macro - ' translated, macro title 
+			with: (ValueHolder with: macro isSaved not) )].
+	^ items! !
 
 !DrGeo class methodsFor: 'saved status' stamp: 'hlsf 8/Jan/2026 22:04:37'!
 unsavedData
@@ -11460,6 +11572,113 @@ drgeoVersion
 		'25.08a beta (code revision ', 
 		(String streamContents: [:str | 
 			(CodePackage installedPackages at: 'DrGeo') featureSpec provides printVersionRevisionOn: str]), ')'! !
+
+!DrGeo class methodsFor: 'user interface' stamp: 'hlsf 3/Aug/2023 21:47:35'!
+getMenuIn: aWorld at: aHand
+	| menu |
+	menu :=  (CommandBuilder on: #drgeoWorldMenu) getMenu.
+	menu addStayUpIcons ;
+		addTitle: 'System menu' translated.
+	^ menu! !
+
+!DrGeo class methodsFor: 'user interface' stamp: 'hlsf 3/Apr/2024 17:11:51'!
+preferencesMenu: builder
+	<drgeoWorldMenu>
+	(builder newEntry: 'Settings' translated in: 'Preferences' translated)
+		icon: #graphicsIcon;
+		action: [PreferenceBrowser open: DrGeoSystem preferences label: 'Dr. Geo Preferences' translated.];
+		order: 1.
+	(builder newEntry: 'Size of GUI elements' translated in: 'Preferences' translated)
+		target: Theme; selector: #changeFontSizes;
+		icon: #preferencesDesktopFontIcon;
+		order: 2.
+	(builder newEntry: 'Theme' translated in: 'Preferences' translated)
+		target: Theme; selector: #changeTheme;
+		icon: #appearanceIcon;
+		order: 3.
+		! !
+
+!DrGeo class methodsFor: 'user interface' stamp: 'hlsf 3/Aug/2023 21:44:17'!
+quit
+	self unsavedData isEmpty ifFalse: [ 
+		(self confirm: 'There is unsaved data!! 
+Are you sure to quit Dr. Geo environment?' translated) ifFalse: [ ^ self]].
+	Smalltalk quitPrimitive! !
+
+!DrGeo class methodsFor: 'user interface' stamp: 'hlsf 26/May/2024 11:23:04'!
+toolsMenu: builder
+	<drgeoWorldMenu>
+	(builder newEntry: 'System Browser' translated in: 'Tools' translated)
+		icon: #developmentIcon;
+		action: [HierarchyBrowserWindow onClass: DrGeoSketch selector: nil];
+		help:'A source code browser to view, edit and save Dr. Geo code. I open the browser on the DrGeoSketch class you can study to design your own Smalltalk sketch.' translated;
+		order: 40.
+
+	(builder newEntry: 'Smalltalk Sketch Editor' translated in: 'Tools' translated)
+		icon: #textEditorIcon;
+		help: 'An editor to write and to test new Smalltalk sketch.' 	translated;
+		action: [DrGSmalltalkSketchEditor open: '' label: 'Edit Smalltalk Sketch' translated.];
+		order: 20.
+
+	(builder newEntry: 'Browse Smalltalk Sketches' translated in: 'Tools' translated)
+		icon: #scriptIcon;
+		help: 'A tool to browse and to test both system and personal Smalltalk Sketches.' 	translated;
+		action: [DrGSmalltalkSketchBrowser open: DrGeoSystem smalltalkSketchesPath label: 'Browse' translated.];
+		order: 10.
+
+	(builder newEntry: 'Workspace' translated in: 'Tools' translated)
+		icon: #terminalIcon;
+		action: [Workspace open ];
+		help: 'A window used as a scratchpad area where fragments of Cuis-Smalltalk code can be entered, stored, edited, and evaluated. To edit Smalltalk sketch, use the Smalltalk Sketch Editor tool above.'	translated;
+		order: 30.
+
+	(builder newEntry: 'Transcript' translated in: 'Tools' translated)
+		icon: #printerIcon;
+		action: [Transcript open ];
+		help: 'A window used to print information from the code - text output. Any object receiving the message #print is output in the Transcript: ''hello'' print, (k * 5) print. Use the Transcript class for more elaborated output.' 	translated;
+		order: 35.
+
+		
+	(builder newEntry: 'Open a file' translated in: 'Tools' translated)
+		icon: #systemFileManagerIcon;
+		action: [FileList open];
+		help: 'Open the filer on your personal sketches collection.' translated;
+		order: 50.
+		
+	(builder newEntry: 'Save session' translated in: 'Tools' translated)
+		order: 999;
+		action: [Smalltalk saveImage];
+		icon:	 #saveIcon;
+		help: 'Save this Dr. Geo session.' translated! !
+
+!DrGeo class methodsFor: 'user interface' stamp: 'hlsf 3/Apr/2024 17:10:15'!
+worldMenu: builder
+	<drgeoWorldMenu>
+	(builder newEntry: 'New sketch' translated)
+		icon: #newIcon;
+		action: [DrGeo new];
+		order: 0.
+	(builder newEntry: 'Open a sketch' translated)
+		icon: #openIcon;
+		action: [DrGFileOpenMorph open];
+		order: 1.
+	(builder newEntry: 'Preferences' translated)
+		icon: #preferencesIcon;
+		order: 2.
+	(builder newEntry: 'Toggle full screen mode' translated)
+		icon: #viewFullscreenIcon;
+		action: [DrGeoSystem toggleFullscreen];
+		help: 'Turn full screen mode on when it is off, off when it is on.'	translated;
+		order: 3.
+	(builder newEntry: 'Tools' translated)
+		icon:	 #systemIcon.
+	(builder newEntry: 'About' translated)
+		action: [ DrGeo aboutDrgeo ];
+		order: 7.
+	(builder newEntry:  'Quit' translated)
+		action: [ DrGeo quit ];
+		icon: #quitIcon;
+		order: 999! !
 
 !DrGCommand methodsFor: 'command' stamp: ''!
 execute
@@ -12319,11 +12538,11 @@ initialize
 	super initialize.
 	self reset.! !
 
-!DrGStyleTool methodsFor: 'initialize-release' stamp: 'hlsf 10/Jan/2026 19:58:19'!
+!DrGStyleTool methodsFor: 'initialize-release' stamp: 'hlsf 17/Feb/2026 14:46:53'!
 release
 	self drawable forcedVisibility: false.
 	self presenter controlsManager stylerFor: nil.
-	DrGeoCoreSystem showVirtualKeyboard: false.
+	DrGeoSystem showVirtualKeyboard: false.
 	super release.! !
 
 !DrGStyleTool methodsFor: 'accessing' stamp: ''!
@@ -12992,7 +13211,7 @@ handleChoice: aMorphCollection
 		context presenter controlsManager propertyFor: context mathItem]
 ! !
 
-!DrGCorePlatform methodsFor: 'default preferences' stamp: 'hlsf 25/Sep/2022 10:22:26'!
+!DrGPlatform methodsFor: 'default preferences' stamp: 'hlsf 25/Sep/2022 10:22:26'!
 arcPreferences
 " name - description - category - type - value "
 | category |
@@ -13006,7 +13225,7 @@ arcPreferences
 	{#arcTranslucent. 'Translucent' translated. category. Boolean. false}
 	}! !
 
-!DrGCorePlatform methodsFor: 'default preferences' stamp: 'hlsf 25/Sep/2022 10:23:10'!
+!DrGPlatform methodsFor: 'default preferences' stamp: 'hlsf 25/Sep/2022 10:23:10'!
 circlePreferences
 " name - description - category - type - value "
 | category |
@@ -13019,7 +13238,7 @@ circlePreferences
 	{#circleTranslucent. 'Translucent' translated. category. Boolean. false}
 	}! !
 
-!DrGCorePlatform methodsFor: 'default preferences' stamp: 'hlsf 25/Sep/2022 10:23:49'!
+!DrGPlatform methodsFor: 'default preferences' stamp: 'hlsf 25/Sep/2022 10:23:49'!
 linePreferences
 " name - description - category - type - value "
 | category |
@@ -13030,7 +13249,7 @@ linePreferences
 	{#lineStyle. 'Style' translated. category. DrGTypeStyle with: #lineStyle in: preferences. #plain}
 	}! !
 
-!DrGCorePlatform methodsFor: 'default preferences' stamp: 'hlsf 25/Sep/2022 10:25:16'!
+!DrGPlatform methodsFor: 'default preferences' stamp: 'hlsf 25/Sep/2022 10:25:16'!
 locusPreferences
 " name - description - category - type - value "
 | category |
@@ -13041,7 +13260,7 @@ locusPreferences
 	{#locusStyle. 'Style' translated. category. DrGTypeStyle with: #locusStyle in: preferences. #plain}
 	}! !
 
-!DrGCorePlatform methodsFor: 'default preferences' stamp: 'hlsf 9/May/2024 08:58:32'!
+!DrGPlatform methodsFor: 'default preferences' stamp: 'hlsf 9/May/2024 08:58:32'!
 miscPreferences
 " name - description - category - type - value "
 | category |
@@ -13051,7 +13270,7 @@ miscPreferences
 	{#autoName. 'Autoname new object' translated. category. Boolean. false}
 	}! !
 
-!DrGCorePlatform methodsFor: 'default preferences' stamp: 'hlsf 25/Sep/2022 10:25:11'!
+!DrGPlatform methodsFor: 'default preferences' stamp: 'hlsf 25/Sep/2022 10:25:11'!
 pointPreferences
 " name - description - category - type - value "
 | category |
@@ -13062,7 +13281,7 @@ pointPreferences
 	{#pointShape. 'Shape' translated. category. DrGTypePointShape with: #pointShape in: preferences. #cross}
 	}! !
 
-!DrGCorePlatform methodsFor: 'default preferences' stamp: 'hlsf 25/Sep/2022 10:24:59'!
+!DrGPlatform methodsFor: 'default preferences' stamp: 'hlsf 25/Sep/2022 10:24:59'!
 polygonPreferences
 " name - description - category - type - value "
 | category |
@@ -13075,7 +13294,7 @@ polygonPreferences
 	{#polygonTranslucent. 'Translucent' translated. category. Boolean. false}
 	}! !
 
-!DrGCorePlatform methodsFor: 'default preferences' stamp: 'hlsf 9/May/2024 11:06:26'!
+!DrGPlatform methodsFor: 'default preferences' stamp: 'hlsf 9/May/2024 11:06:26'!
 programmingPreferences
 " name - description - category - type - value "
 | category |
@@ -13085,7 +13304,7 @@ programmingPreferences
 	{#advancedDebugger. 'Full debugger when executing Smalltalk sketch.' translated . category. Boolean. false }
 	}! !
 
-!DrGCorePlatform methodsFor: 'default preferences' stamp: 'hlsf 25/Sep/2022 10:26:19'!
+!DrGPlatform methodsFor: 'default preferences' stamp: 'hlsf 25/Sep/2022 10:26:19'!
 rayPreferences
 " name - description - category - type - value "
 | category |
@@ -13096,7 +13315,7 @@ rayPreferences
 	{#rayStyle. 'Style' translated. category. DrGTypeStyle with: #rayStyle in: preferences. #plain}
 	}! !
 
-!DrGCorePlatform methodsFor: 'default preferences' stamp: 'hlsf 25/Sep/2022 10:26:51'!
+!DrGPlatform methodsFor: 'default preferences' stamp: 'hlsf 25/Sep/2022 10:26:51'!
 segmentPreferences
 " name - description - category - type - value "
 | category |
@@ -13109,7 +13328,7 @@ segmentPreferences
 	{#segmentArrow. 'Arrow' translated. category. DrGTypeArrow with: #segmentArrow in: preferences. #none	}
 	}! !
 
-!DrGCorePlatform methodsFor: 'default preferences' stamp: 'hlsf 25/Sep/2022 10:27:20'!
+!DrGPlatform methodsFor: 'default preferences' stamp: 'hlsf 25/Sep/2022 10:27:20'!
 textPreferences
 " name - description - category - type - value "
 | category |
@@ -13120,7 +13339,7 @@ textPreferences
 	{#textBorderColor. 'Border' translated. category. DrGTypeColor with: #textBorderColor in: preferences. Color white }.	
 	}! !
 
-!DrGCorePlatform methodsFor: 'default preferences' stamp: 'hlsf 25/Sep/2022 10:27:40'!
+!DrGPlatform methodsFor: 'default preferences' stamp: 'hlsf 25/Sep/2022 10:27:40'!
 valuePreferences
 " name - description - category - type - value "
 | category |
@@ -13130,7 +13349,7 @@ valuePreferences
 	{#valueDecimal. 'Number of decimal' translated. category. (0 to: 9) asArray. 2}
 	}! !
 
-!DrGCorePlatform methodsFor: 'default preferences' stamp: 'hlsf 25/Sep/2022 10:28:12'!
+!DrGPlatform methodsFor: 'default preferences' stamp: 'hlsf 25/Sep/2022 10:28:12'!
 vectorPreferences
 " name - description - category - type - value "
 | category |
@@ -13141,11 +13360,28 @@ vectorPreferences
 	{#vectorStyle. 'Style' translated. category. DrGTypeStyle with: #vectorStyle in: preferences. #plain}
 	}! !
 
-!DrGCorePlatform methodsFor: 'initialize-release' stamp: 'hlsf 10/Jan/2026 19:47:10'!
+!DrGPlatform methodsFor: 'initialize-release' stamp: 'hlsf 17/Feb/2026 14:57:00'!
+launch
+	self setCodeCompletion.
+	Transcript show: '[DrGeo] Code completion set'; cr! !
+
+!DrGPlatform methodsFor: 'initialize-release' stamp: 'hlsf 6/Jul/2022 09:25:01'!
 reset
+	toolbarIconSize := nil.
 	preferences := nil! !
 
-!DrGCorePlatform methodsFor: 'initialize-release' stamp: 'hlsf 10/Jan/2026 19:39:09'!
+!DrGPlatform methodsFor: 'initialize-release' stamp: 'hlsf 14/Dec/2023 09:03:33'!
+setCodeCompletion
+	| class |
+	class := Locale current isoLanguage asSymbol 
+		caseOf: {
+			[#fr] -> [DrGeoFigure].
+			[#es] -> [DrGeoFigura]
+			}
+		 otherwise: [DrGeoSketch].
+	DrGeoSystem preferences at: #programmingCodeCompletion put: class! !
+
+!DrGPlatform methodsFor: 'initialize-release' stamp: 'hlsf 17/Feb/2026 14:35:47'!
 setDefaultPreferences
 	preferences := PreferenceSet new.
 	#(pointPreferences linePreferences rayPreferences segmentPreferences circlePreferences 
@@ -13160,113 +13396,306 @@ setDefaultPreferences
 				value: data fifth ] ].
 	^ preferences! !
 
-!DrGCorePlatform methodsFor: 'path' stamp: 'hlsf 23/Feb/2023 10:49:39'!
+!DrGPlatform methodsFor: 'path' stamp: 'drgeo 10/Sep/2022 16:16:25'!
+examplesPath
+	^ self resourcesPath / 'Sketches'! !
+
+!DrGPlatform methodsFor: 'path' stamp: 'hlsf 16/Aug/2022 11:34:26'!
+fontPath
+	^  self resourcesPath / 'fonts'! !
+
+!DrGPlatform methodsFor: 'path' stamp: 'hlsf 16/Aug/2022 11:34:14'!
+iconsPath
+	^ self resourcesPath / 'icons'! !
+
+!DrGPlatform methodsFor: 'path' stamp: 'hlsf 23/Feb/2023 10:49:39'!
 myExportsPath
 	^ self userPath / 'MyExports'! !
 
-!DrGCorePlatform methodsFor: 'path' stamp: 'hlsf 23/Feb/2023 10:49:45'!
+!DrGPlatform methodsFor: 'path' stamp: 'hlsf 23/Feb/2023 10:49:45'!
 mySketchesPath
 	^self userPath / 'MySketches'! !
 
-!DrGCorePlatform methodsFor: 'path' stamp: 'hlsf 10/Jan/2026 19:48:12'!
-userPath
-	^ DirectoryEntry userBaseDirectory! !
+!DrGPlatform methodsFor: 'path' stamp: 'hlsf 23/Feb/2023 10:49:52'!
+mySmalltalkSketchesPath
+	^self userPath / 'MySmalltalkSketches'! !
 
-!DrGCorePlatform methodsFor: 'user interface' stamp: ''!
+!DrGPlatform methodsFor: 'path' stamp: 'hlsf 23/Feb/2023 10:47:05'!
+resourcesPath
+"Where are located folders for icons, fonts, sketches, scripts, documentation, images, user created resources"
+	^ self rootPath / 'Resources'! !
+
+!DrGPlatform methodsFor: 'path' stamp: 'hlsf 16/May/2025 23:39:42'!
+rootPath
+" When deployed, the DrGeo/ directory
+Global variable #rootPath may be set by DrGeo start-up script to indicate it, if not try to deduce it from 
+image location  "
+	^ Smalltalk at: #rootPath ifAbsent: [DirectoryEntry smalltalkImageDirectory parent parent]! !
+
+!DrGPlatform methodsFor: 'path' stamp: 'hlsf 16/Aug/2022 11:36:11'!
+smalltalkSketchesPath
+	^self resourcesPath / 'SmalltalkSketches'! !
+
+!DrGPlatform methodsFor: 'path' stamp: 'hlsf 16/May/2025 23:37:55'!
+userPath
+"Where are located user created resources as sketch, Smalltalk sketch and exported sketch to image
+Global variable userPath may be set by DrGeo start-up script "
+	^ Smalltalk at: #userPath ifAbsent: [self userPathFromPreference]! !
+
+!DrGPlatform methodsFor: 'path' stamp: 'hlsf 16/May/2025 23:36:23'!
+userPathFromPreference
+" Is there a user prefrerence set to save user data ?
+(e.g. sketch, Smalltalk sketch and exported sketch to picture) "
+	^ (self preferences at: #userPath) 
+		ifNotEmpty: [:userPath | | userDirectoryEntry |
+			userDirectoryEntry := userPath asDirectoryEntry .
+			" Check if it is a relative path or an absolute path "
+			userDirectoryEntry pathName = userPath
+				ifTrue: [userDirectoryEntry "Absolute path"]
+				ifFalse: ["Relative path, append the home/user directory if any"
+					Smalltalk at: #home 
+						ifPresent: [:home | home / userPath]
+						ifAbsent: [userDirectoryEntry ] ] ]
+		ifEmpty: [self resourcesPath]
+		! !
+
+!DrGPlatform methodsFor: 'user interface' stamp: ''!
 showVirtualKeyboard: boolean
 ! !
 
-!DrGCorePlatform methodsFor: 'testing' stamp: 'hlsf 10/Jan/2026 20:34:16'!
-canWeDisplaySpinner
-	^ true! !
+!DrGPlatform methodsFor: 'user interface' stamp: 'hlsf 4/Aug/2022 23:06:44'!
+toggleFullscreen
+	| isFullscreen |
+	isFullscreen := [ Preferences at: #fullscreen ] 
+		on: Error 
+		do: [Preferences name: #fullscreen category: #gui value: true.
+			true].
+	Preferences at: #fullscreen put: isFullscreen not.
+	Display fullScreenMode: isFullscreen not! !
 
-!DrGCorePlatform methodsFor: 'testing' stamp: ''!
+!DrGPlatform methodsFor: 'testing' stamp: 'hlsf 21/Apr/2020 21:32:20'!
+canWeDisplaySpinner
+	^ canWeDisplaySpinner! !
+
+!DrGPlatform methodsFor: 'testing' stamp: ''!
 isAndroid
 	^ false! !
 
-!DrGCorePlatform methodsFor: 'testing' stamp: ''!
+!DrGPlatform methodsFor: 'testing' stamp: 'hlsf 17/Feb/2026 14:39:18'!
+isDybo
+	^ false! !
+
+!DrGPlatform methodsFor: 'testing' stamp: ''!
 isWorkstation
 "Preferences for Windows/Linux/Mac workstation"
 	^ false! !
 
-!DrGCorePlatform methodsFor: 'testing' stamp: ''!
+!DrGPlatform methodsFor: 'testing' stamp: ''!
 isiPad
 	^ false! !
 
-!DrGCorePlatform methodsFor: 'accessing' stamp: 'hlsf 3/Jul/2022 12:54:50'!
+!DrGPlatform methodsFor: 'accessing' stamp: 'hlsf 3/Jul/2022 12:54:50'!
 preferences
 	^ preferences ifNil: [self setDefaultPreferences]! !
 
-!DrGeoCoreSystem class methodsFor: 'user interface' stamp: 'hlsf 10/Jan/2026 19:31:56'!
+!DrGPlatform methodsFor: 'font' stamp: ''!
+canvasFontSize
+	^ 9! !
+
+!DrGDybo methodsFor: 'path' stamp: 'hlsf 17/Feb/2026 14:36:50'!
+userPath
+	^ DirectoryEntry userBaseDirectory! !
+
+!DrGDybo methodsFor: 'testing' stamp: 'hlsf 17/Feb/2026 14:39:32'!
+isDybo
+	^ true! !
+
+!DrGeoSystem class methodsFor: 'system startup' stamp: 'hlsf 17/May/2025 20:42:27'!
+launch
+	Transcript show: '[DrGeo] launching started'; cr.
+	platform launch.
+	Transcript show: '[DrGeo] launching ended'; cr.
+	! !
+
+!DrGeoSystem class methodsFor: 'class initialization' stamp: 'hlsf 1/Jun/2025 11:59:39'!
+beDevelopment
+	" Be like the Cuis environment for DrGeo development "
+	"self beDevelopment"
+	platform := DrGDevelopment new.
+	platform launch. "manual launch for additional initialization occuring right after system start up"! !
+
+!DrGeoSystem class methodsFor: 'class initialization' stamp: 'hlsf 17/Feb/2026 14:40:49'!
+beDybo
+	"self beDybo"
+	platform := DrGDybo new! !
+
+!DrGeoSystem class methodsFor: 'class initialization' stamp: 'hlsf 17/May/2025 20:38:29'!
+beWorkstation
+	"self beWorkstation"
+	platform := DrGWorkstation new! !
+
+!DrGeoSystem class methodsFor: 'class initialization' stamp: 'Install-DrGeoFrench 7/Dec/2022 16:16:08'!
+initialize
+	"Erudite extention for Dr. Geo"
+	EruditeMarkupGrammar addCodeAction: 'withDrGeoActions'! !
+
+!DrGeoSystem class methodsFor: 'class initialization' stamp: 'hlsf 3/Jul/2022 12:50:46'!
+reset
+	platform reset.
+	DrGIcons reset.  "flush icons cach"! !
+
+!DrGeoSystem class methodsFor: 'user interface' stamp: 'hlsf 3/Jul/2022 13:36:53'!
 preferences
 	^ platform preferences ! !
 
-!DrGeoCoreSystem class methodsFor: 'user interface' stamp: 'hlsf 10/Jan/2026 19:57:35'!
+!DrGeoSystem class methodsFor: 'user interface' stamp: 'hlsf 4/Aug/2021 10:49:08'!
 showVirtualKeyboard: boolean
 	platform ifNotNil: [
 		platform showVirtualKeyboard: boolean]! !
 
-!DrGeoCoreSystem class methodsFor: 'user interface' stamp: 'hlsf 10/Jan/2026 19:45:21'!
+!DrGeoSystem class methodsFor: 'user interface' stamp: 'hlsf 21/Apr/2020 21:31:40'!
 startSpinner
-	platform canWeDisplaySpinner ifTrue: [WaitSpinner start]! !
+	self canWeDisplaySpinner ifTrue: [WaitSpinner start]! !
 
-!DrGeoCoreSystem class methodsFor: 'user interface' stamp: 'hlsf 10/Jan/2026 18:04:16'!
+!DrGeoSystem class methodsFor: 'user interface' stamp: 'hlsf 21/Apr/2020 21:31:02'!
 stopSpinner
 	WaitSpinner stop! !
 
-!DrGeoCoreSystem class methodsFor: 'font' stamp: 'hlsf 10/Jan/2026 18:06:40'!
+!DrGeoSystem class methodsFor: 'user interface' stamp: 'hlsf 4/Aug/2022 22:55:40'!
+toggleFullscreen
+	platform toggleFullscreen ! !
+
+!DrGeoSystem class methodsFor: 'font' stamp: 'hlsf 11/Mar/2022 23:07:10'!
 canvasFont
 	^ self fontOfSize: self canvasFontSize! !
 
-!DrGeoCoreSystem class methodsFor: 'font' stamp: 'hlsf 10/Jan/2026 18:05:57'!
+!DrGeoSystem class methodsFor: 'font' stamp: ''!
 canvasFontSize
-	^ 9! !
+	^ platform canvasFontSize! !
 
-!DrGeoCoreSystem class methodsFor: 'font' stamp: 'hlsf 10/Jan/2026 18:10:05'!
+!DrGeoSystem class methodsFor: 'font' stamp: 'hlsf 1/Apr/2024 17:13:30'!
 fontOfSize: anInteger
 	^ FontFamily defaultFamilyPointSize: (Theme current scale: anInteger)! !
 
-!DrGeoCoreSystem class methodsFor: 'path' stamp: 'hlsf 10/Jan/2026 19:48:51'!
+!DrGeoSystem class methodsFor: 'path' stamp: ''!
+examplesPath
+	^ platform examplesPath! !
+
+!DrGeoSystem class methodsFor: 'path' stamp: 'hlsf 4/Dec/2021 19:40:05'!
+iconsPath
+	^ platform iconsPath! !
+
+!DrGeoSystem class methodsFor: 'path' stamp: 'hlsf 12/Jan/2025 13:32:14'!
 myExportsPath
 	^ platform myExportsPath assureExistence! !
 
-!DrGeoCoreSystem class methodsFor: 'path' stamp: 'hlsf 10/Jan/2026 19:48:57'!
+!DrGeoSystem class methodsFor: 'path' stamp: 'hlsf 12/Jan/2025 13:32:40'!
 mySketchesPath
 "Access to the my Sketch files. There are descirption in XML of geometry sketches."
 	^ platform mySketchesPath assureExistence! !
 
-!DrGeoCoreSystem class methodsFor: 'class initialization' stamp: 'hlsf 10/Jan/2026 19:36:33'!
-initialize
-	platform := DrGCorePlatform new.! !
+!DrGeoSystem class methodsFor: 'path' stamp: 'hlsf 12/Jan/2025 13:33:00'!
+mySmalltalkSketchesPath
+"Access to my Script files. There are Smalltalk scripts computing geometry sketches."
+	^ platform mySmalltalkSketchesPath assureExistence ! !
 
-!DrGeoCoreSystem class methodsFor: 'testing' stamp: 'hlsf 10/Jan/2026 19:53:36'!
+!DrGeoSystem class methodsFor: 'path' stamp: 'hlsf 11/Apr/2022 21:44:47'!
+smalltalkSketchesPath
+"Path to the Smalltalk sketches examples. There are written with Smalltalk code."
+	^ platform smalltalkSketchesPath ! !
+
+!DrGeoSystem class methodsFor: 'testing' stamp: 'hlsf 21/Apr/2020 21:31:40'!
+canWeDisplaySpinner
+	^ platform canWeDisplaySpinner! !
+
+!DrGeoSystem class methodsFor: 'testing' stamp: ''!
 ifNotTablet: aBlock
 	^ self isTablet ifFalse: [aBlock value]! !
 
-!DrGeoCoreSystem class methodsFor: 'testing' stamp: 'hlsf 10/Jan/2026 19:53:38'!
+!DrGeoSystem class methodsFor: 'testing' stamp: ''!
 ifNotiPad: aBlock
 	^ platform isiPad ifFalse: [aBlock value]! !
 
-!DrGeoCoreSystem class methodsFor: 'testing' stamp: 'hlsf 10/Jan/2026 19:53:39'!
+!DrGeoSystem class methodsFor: 'testing' stamp: ''!
 ifTablet: aBlock
 	^ self isTablet ifTrue: [aBlock value]! !
 
-!DrGeoCoreSystem class methodsFor: 'testing' stamp: 'hlsf 10/Jan/2026 19:53:41'!
+!DrGeoSystem class methodsFor: 'testing' stamp: ''!
 isAndroid
 	^ platform isAndroid! !
 
-!DrGeoCoreSystem class methodsFor: 'testing' stamp: 'hlsf 10/Jan/2026 19:53:24'!
+!DrGeoSystem class methodsFor: 'testing' stamp: ''!
 isTablet
 	^ platform isAndroid or: [platform isiPad]! !
 
-!DrGeoCoreSystem class methodsFor: 'testing' stamp: 'hlsf 10/Jan/2026 19:53:32'!
+!DrGeoSystem class methodsFor: 'testing' stamp: ''!
 isWorkstation
 "Are we workstation version of DrGeo"
 	^ platform isWorkstation! !
 
-!DrGeoCoreSystem class methodsFor: 'testing' stamp: 'hlsf 10/Jan/2026 19:54:40'!
+!DrGeoSystem class methodsFor: 'testing' stamp: ''!
 isiPad
 	^ platform isiPad! !
+
+!DrGeoSystem class methodsFor: 'install' stamp: 'hlsf 7/Aug/2022 13:18:13'!
+cleanUp
+	"Smalltalk reduceCuis "! !
+
+!DrGeoSystem class methodsFor: 'install' stamp: 'hlsf 18/May/2025 10:56:21'!
+install
+	| world |
+	"Report by any mean installation and run time"
+	Transcript
+		showOnDisplay: false;
+		logToFile: true;
+		logToStdout: true.
+	Smalltalk at: #LogStartupDebugAids put: true.
+	'Installing updates...' print.
+	Feature require: #'DrGeoFrench'.
+	Feature require: #'DrGeoSpanish'.
+	Smalltalk condenseChanges.
+	"Focus does not follow mouse, it is annoying when editing Smalltalk sketch"
+	Preferences at: #focusFollowsMouse put: false.
+	"Adjust font size"
+	Preferences at: #defaultFontSize put: 12.
+	'Font preferences set' print.
+	"Preferences at: #logDebuggerStackToFile put: true."
+	Preferences at: #warnAndOfferLastUserChanges put: false.
+	Preferences at: #autoNumberUserChanges put: false.
+	"Set Locale and text domains"
+	Preferences at: #useLocale put: true.
+	TextDomainManager registerCategoryPrefix: 'DrGeo' domain: 'drgeo'.
+	TextDomainManager registerCategoryPrefix: 'cuis' domain: 'cuis'.	
+	"Set a default name for authoring"
+	Utilities setAuthorName: 'Dr. Geo User' initials: 'drgeo'.
+
+	'Finalizing installation...' print.
+	world := UISupervisor ui.
+[
+	(Delay forSeconds: 1) wait.
+	UISupervisor whenUIinSafeState: 	[
+		"Adjust taskbar size"
+		world showTaskbar 
+		world taskbar scale: 1/2.
+		'Task bar rescaled' print.
+		Display fullScreenMode: true.
+		"Be quiet"
+		self cleanUp.
+		self beWorkstation.
+		"Remove all morphs"
+		(world submorphs reject: [:aMorph | aMorph is: #TaskbarMorph]) 
+			do: [:each | each delete].
+		'Morphs deleted' print.
+		'Installing App luanch sequence...' print.
+		Smalltalk at: #drgeoApp put: DrGeoSystem.
+		AppLauncher appGlobalName: #drgeoApp appSelector: #launch.
+		'Cleaning image' print.
+		Smalltalk garbageCollect.
+		'Installation ended' print.
+		'Saving image...' print.
+		Smalltalk saveAndQuit ]
+] fork
+! !
 
 !DrGAbstractControlsManager methodsFor: 'accessing' stamp: 'hlsf 7/Jan/2026 15:36:29'!
 presenter: aPresenter
@@ -13306,6 +13735,10 @@ animateTools
 curveTools
 	^ #(#line #parallel #perpendicular #perpendicularBisector #angleBisector #ray #segment #vector #circle #arc #arcCenter #polygon #polygonRegular #locus)! !
 
+!DrGAbstractControlsManager methodsFor: 'tools collections' stamp: 'hlsf 7/Jan/2026 15:38:43'!
+macroTools
+	^ #(#macroBuild #macroExecute)! !
+
 !DrGAbstractControlsManager methodsFor: 'tools collections' stamp: 'hlsf 7/Jan/2026 15:38:49'!
 miscTools
 	^ #(#new #open #keep #exportImage
@@ -13321,6 +13754,10 @@ numericTools
 !DrGAbstractControlsManager methodsFor: 'tools collections' stamp: 'hlsf 7/Jan/2026 15:38:53'!
 pointTools
 	^ #(#freePoint #middle #intersection #pointByCoordinates)! !
+
+!DrGAbstractControlsManager methodsFor: 'tools collections' stamp: 'hlsf 7/Jan/2026 15:39:06'!
+scriptTools
+	^ #(#scriptRun #scriptEdit #scriptCreate)! !
 
 !DrGAbstractControlsManager methodsFor: 'tools collections' stamp: 'hlsf 7/Jan/2026 15:39:11'!
 transformationTools
@@ -13414,6 +13851,21 @@ lineButtonData
 locusButtonData
 	^ {DrGLocusBuilder title. #locus. #createLocus. DrGLocusBuilder description}! !
 
+!DrGAbstractControlsManager methodsFor: 'tools data' stamp: 'hlsf 7/Jan/2026 15:39:49'!
+macroBuildButtonData
+	^ {DrGMacroBuilder title. #macroBuild. #createMacro. DrGMacroBuilder description}! !
+
+!DrGAbstractControlsManager methodsFor: 'tools data' stamp: 'hlsf 7/Jan/2026 15:46:21'!
+macroDeleteButtonData
+	^ {'Delete macro' translated.
+	#eraser .
+	#deleteMacro .
+	'Delete a macro-construction from the registry.' translated}! !
+
+!DrGAbstractControlsManager methodsFor: 'tools data' stamp: 'hlsf 7/Jan/2026 15:46:22'!
+macroExecuteButtonData
+	^ {DrGMacroPlayer title. #macroExecute. #executeMacro. DrGMacroPlayer description}! !
+
 !DrGAbstractControlsManager methodsFor: 'tools data' stamp: 'hlsf 7/Jan/2026 15:46:23'!
 magneticGridButtonData
 	^ {#magneticGridWording. #gridMagnet. #gridStuckOnOff. 'Snap to grid.' translated. #isGridded}! !
@@ -13492,6 +13944,18 @@ reflectionButtonData
 rotationButtonData
 	^ {DrGRotationBuilder title. #rotation. #createRotation. DrGRotationBuilder description}! !
 
+!DrGAbstractControlsManager methodsFor: 'tools data' stamp: 'hlsf 7/Jan/2026 15:46:46'!
+scriptCreateButtonData
+	^ {'Create a script' translated. #createScript . #createScript . 'Create a Smalltalk script.' translated}! !
+
+!DrGAbstractControlsManager methodsFor: 'tools data' stamp: 'hlsf 7/Jan/2026 15:46:48'!
+scriptEditButtonData
+	^ {'Edit a script' translated.	#editScript.	#editScript .	'Edit a Smalltalk script.' translated}! !
+
+!DrGAbstractControlsManager methodsFor: 'tools data' stamp: 'hlsf 7/Jan/2026 15:46:49'!
+scriptRunButtonData
+	^ {DrGScriptPlayer title. #useScript. #useScript. DrGScriptPlayer description}! !
+
 !DrGAbstractControlsManager methodsFor: 'tools data' stamp: 'hlsf 7/Jan/2026 15:46:50'!
 segmentButtonData
 	^ {DrGSegmentBuilder title. #segment. #createSegment. DrGSegmentBuilder description}! !
@@ -13511,6 +13975,10 @@ textButtonData
 !DrGAbstractControlsManager methodsFor: 'tools data' stamp: 'hlsf 7/Jan/2026 15:46:55'!
 translationButtonData
 	^ {DrGTranslationBuilder title. #translation. #createTranslation. DrGTranslationBuilder description}! !
+
+!DrGAbstractControlsManager methodsFor: 'tools data' stamp: 'hlsf 7/Jan/2026 15:46:56'!
+treeButtonData 
+	^ {'Construction tree' translated. nil . nil . 'The hierarchy tree presenting the visible constructed items.' translated}! !
 
 !DrGAbstractControlsManager methodsFor: 'tools data' stamp: 'hlsf 7/Jan/2026 15:46:57'!
 undoButtonData
@@ -24053,9 +24521,9 @@ redo
 undo
 	cmdManager undo! !
 
-!DrGeoDomain methodsFor: 'autoname' stamp: 'hlsf 10/Jan/2026 19:58:35'!
+!DrGeoDomain methodsFor: 'autoname' stamp: 'hlsf 17/Feb/2026 14:46:55'!
 autoname: aMathItem
-	(DrGeoCoreSystem preferences at: #autoName) ifFalse: [^ self].
+	(DrGeoSystem preferences at: #autoName) ifFalse: [^ self].
 	aMathItem isPointItem ifTrue: [self autonamePoint: aMathItem]! !
 
 !DrGeoDomain methodsFor: 'autoname' stamp: 'drgeo 16/Mar/2024 19:52:00'!
@@ -24704,9 +25172,9 @@ isWanted: aMathItemCollection at: aPoint
 readyToBuild
 	^ curveItemA notNil or: [point notNil]! !
 
-!DrGFlyPointBuilder class methodsFor: 'documentation' stamp: 'hlsf 10/Jan/2026 20:02:26'!
+!DrGFlyPointBuilder class methodsFor: 'documentation' stamp: 'hlsf 17/Feb/2026 14:47:48'!
 description 
-	^ DrGeoCoreSystem isTablet
+	^ DrGeoSystem isTablet
 		ifTrue: ['Tap to create a point: free point on the background, on a curve or on two curves intersection.' translated]
 		ifFalse:  ['Click to create a point: free point on the background, on a curve or on two curves intersection.' translated]! !
 
@@ -26266,6 +26734,11 @@ isNotFarAway
 "If not attached to a drawable, considers it not far away, likely used for an icon"
 	^ self drawable isNil! !
 
+!DrGMorph methodsFor: 'testing' stamp: 'hlsf 24/May/2023 17:55:40'!
+isNotForAway
+"If not attached to a drawable, considers it not far away, likely used for an icon"
+	^ self drawable isNil! !
+
 !DrGMorph methodsFor: 'testing' stamp: 'hlsf 5/Aug/2021 15:08:34'!
 itemExist
 "If there is not mathItem model, we just respond true"
@@ -26476,7 +26949,7 @@ drawArcOn: canvas
 			largeFlag: (length abs > `Float pi`)  
 			sweepFlag: length negative	]! !
 
-!DrGAngleGeometricMorph methodsFor: 'drawing' stamp: 'hlsf 10/Jan/2026 19:59:04'!
+!DrGAngleGeometricMorph methodsFor: 'drawing' stamp: 'hlsf 17/Feb/2026 14:47:00'!
 drawOn: canvas
 	| angleString font |
 	self isDrawNeeded ifFalse: [^ self].
@@ -26485,7 +26958,7 @@ drawOn: canvas
 	(mathItem radianAngle closeTo: Float halfPi)
 		ifTrue: 	[self drawRecOn: canvas]
 		ifFalse: 	[self drawArcOn: canvas].
-	font := DrGeoCoreSystem canvasFont.
+	font := DrGeoSystem canvasFont.
 	angleString := self roundedValueString.
 	canvas 
 		drawString: angleString 
@@ -26986,6 +27459,14 @@ isNotFarAway
 		expandedBound := self drawable localBounds expandBy: 10000.
 		vertices allSatisfy: [:v | expandedBound containsPoint: v	] ]! !
 
+!DrGPolylineMorph methodsFor: 'testing' stamp: 'hlsf 5/Sep/2024 16:32:02'!
+isNotForAway
+" are all vertices in expanded screen area ?"
+	| expandedBound |
+	^ super isNotForAway or: [
+		expandedBound := self drawable localBounds expandBy: 10000.
+		vertices allSatisfy: [:v | 		expandedBound containsPoint: v		] ]! !
+
 !DrGPolylineMorph class methodsFor: 'examples' stamp: 'hlsf 23/May/2021 13:07:37'!
 example1
 	"self example1"
@@ -27155,6 +27636,34 @@ styleClass
 !DrGRayMorph methodsFor: 'testing type' stamp: 'hlsf 5/Apr/2021 10:38:28'!
 isRay
 	^ true! !
+
+!DrGRayMorph class methodsFor: 'as yet unclassified' stamp: 'hlsf 16/May/2025 23:19:09'!
+extend: origin inDirection: u toBorder: extent
+	| border c ex ey coordinate |
+	c := (origin x * u y - (origin y * u x)) asFloat.
+	ex := extent x.
+	ey := extent y.
+	"Intersections with horizontal borders A, B"
+	"A (x;ey)"
+	[coordinate := (extent y * u x + c) / u y] on: ZeroDivide do: [coordinate := -1].
+	(coordinate between: 0 and: ex) ifTrue: [
+		border := coordinate @ ey.
+		(u dotProduct: border - origin) >0 ifTrue: [^ border] ].
+	"B (x;0)"
+	[coordinate := c / u y] on: ZeroDivide do: [coordinate := -1].
+	(coordinate between: 0 and: ex) ifTrue: [
+		border := coordinate @ 0.
+		(u dotProduct: border - origin) >0 ifTrue: [^ border] ].
+	"Vertical borders P, Q"
+	"P (0;y)"
+	[coordinate := c negated / u x] on: ZeroDivide do: [coordinate := -1].
+	(coordinate between: 0 and: ey) ifTrue: [
+		border := 0 @ coordinate.
+		(u dotProduct: border - origin) >0 ifTrue: [^ border]].
+	"Q (ex;y)"
+	[coordinate := (ex * u y) - c / u x] on: ZeroDivide do: [coordinate := -1].
+	(coordinate between: 0 and: ey) ifTrue: [ ^ex @ coordinate]
+! !
 
 !DrGSegmentMorph methodsFor: 'accessing' stamp: 'hlsf 30/May/2021 09:56:14'!
 getVertices
@@ -27561,10 +28070,10 @@ contents: aStringOrText
 	textComposition textComposed ~= aStringOrText ifTrue: [
 		self compose: aStringOrText]! !
 
-!DrGTextMorph methodsFor: 'accessing' stamp: 'hlsf 10/Jan/2026 19:59:07'!
+!DrGTextMorph methodsFor: 'accessing' stamp: 'hlsf 17/Feb/2026 14:47:06'!
 fontSize: aSmallInteger 
 	| text |
-	textComposition editor: (TextEditor new defaultFont: (DrGeoCoreSystem fontOfSize: aSmallInteger)).
+	textComposition editor: (TextEditor new defaultFont: (DrGeoSystem fontOfSize: aSmallInteger)).
 	(text := textComposition textComposed) ifEmpty: [^ self].
 	self compose: text.
 	self redrawNeeded ! !
@@ -27610,13 +28119,13 @@ containsPoint: localPoint
 			ifNotNil: [:d | d containsPoint: self drawable positionInWorld + localPoint ]]
 		! !
 
-!DrGValueMorph methodsFor: 'accessing' stamp: 'hlsf 10/Jan/2026 19:59:10'!
+!DrGValueMorph methodsFor: 'accessing' stamp: 'hlsf 17/Feb/2026 14:47:11'!
 roundedValueString
 	^ (mathItem valueItem isPoint or: [mathItem valueItem isNumber])
 		ifTrue: [
 			mathItem valueItem isFraction 
 				ifTrue: [mathItem valueItem printString] 
-				ifFalse: [mathItem valueItem printShowingDecimalPlaces: (DrGeoCoreSystem preferences at: #valueDecimal)]]
+				ifFalse: [mathItem valueItem printShowingDecimalPlaces: (DrGeoSystem preferences at: #valueDecimal)]]
 		ifFalse: [mathItem valueItem asString]! !
 
 !DrGValueMorph methodsFor: 'accessing' stamp: 'hlsf 7/Apr/2021 19:56:32'!
@@ -27749,6 +28258,12 @@ axesVisible: aBoolean
 	self updateGrid.
 	self redrawNeeded ! !
 
+!DrGDrawable methodsFor: 'axes/grid' stamp: 'hlsf 19/Jun/2021 17:16:57'!
+axesVisibleOnOff
+	self setProperty: #axesVisible toValue: self axesVisible not.
+	self updateGrid.
+	self redrawNeeded ! !
+
 !DrGDrawable methodsFor: 'axes/grid' stamp: 'hlsf 21/Jan/2026 19:07:20'!
 gridVisible
 	^ self valueOfProperty: #gridVisible ifAbsent: [false]
@@ -27757,6 +28272,12 @@ gridVisible
 !DrGDrawable methodsFor: 'axes/grid' stamp: 'hlsf 21/Jan/2026 19:10:38'!
 gridVisible: aBoolean
 	self setProperty: #gridVisible toValue: aBoolean.
+	self updateGrid.
+	self redrawNeeded ! !
+
+!DrGDrawable methodsFor: 'axes/grid' stamp: 'hlsf 19/Jun/2021 17:16:48'!
+gridVisibleOnOff
+	self setProperty: #gridVisible toValue: self gridVisible not.
 	self updateGrid.
 	self redrawNeeded ! !
 
@@ -27909,12 +28430,12 @@ updateDottedLinesToParents
 				with: point 
 				with: (self worldToMorph: (parent closestPointTo: pointWorld)))]! !
 
-!DrGDrawable methodsFor: 'drawing axes & grid' stamp: 'hlsf 10/Jan/2026 19:59:14'!
+!DrGDrawable methodsFor: 'drawing axes & grid' stamp: 'hlsf 17/Feb/2026 14:47:20'!
 drawAxesOn: aCanvas
 	| origin worldBound font p start |
 	origin := self worldToMorph: 0@0.
 	worldBound := self worldBound.
-	font := DrGeoCoreSystem canvasFont.
+	font := DrGeoSystem canvasFont.
 	
 	"x-axis"
 	(origin y > 0 and: [origin y < extent y]) ifTrue: [
@@ -28376,11 +28897,11 @@ hideTip
 	
 ! !
 
-!DrGDrawable methodsFor: 'tip' stamp: 'hlsf 7/Feb/2026 11:49:18'!
+!DrGDrawable methodsFor: 'tip' stamp: 'hlsf 17/Feb/2026 14:47:26'!
 tip: aText at: aPoint
 	tipOn ifFalse: [^self].
 	balloonTarget  comeToFront.
-	DrGeoCoreSystem isTablet
+	DrGeoSystem isTablet
 		ifTrue: [balloonTarget morphCenter: aPoint + (40 @ -40)]
 		ifFalse: [balloonTarget morphCenter: aPoint].
 	balloonTarget setBalloonText: aText.
@@ -28390,21 +28911,21 @@ tip: aText at: aPoint
 toggleTip
 	tipOn := tipOn not! !
 
-!DrGDrawable methodsFor: 'under mouse' stamp: 'hlsf 10/Jan/2026 19:59:17'!
+!DrGDrawable methodsFor: 'under mouse' stamp: 'hlsf 17/Feb/2026 14:47:23'!
 showUnderMouseMorph
-	DrGeoCoreSystem ifTablet: [
+	DrGeoSystem ifTablet: [
 		self updateUnderMouseMorphPosition.
 		underMouse 
 			comeToFront;
 			show].! !
 
-!DrGDrawable methodsFor: 'under mouse' stamp: 'hlsf 10/Jan/2026 19:59:24'!
+!DrGDrawable methodsFor: 'under mouse' stamp: 'hlsf 17/Feb/2026 14:47:32'!
 updateUnderMouseMorph
-	DrGeoCoreSystem ifTablet: [underMouse changed]! !
+	DrGeoSystem ifTablet: [underMouse changed]! !
 
-!DrGDrawable methodsFor: 'under mouse' stamp: 'hlsf 10/Jan/2026 19:59:28'!
+!DrGDrawable methodsFor: 'under mouse' stamp: 'hlsf 17/Feb/2026 14:47:36'!
 updateUnderMouseMorphPosition
-	DrGeoCoreSystem ifTablet: 
+	DrGeoSystem ifTablet: 
 		[self activeHand morphPosition x - self morphPosition x > (self morphWidth // 2 )
 			ifTrue: [underMouse position: self morphPosition] 
 			ifFalse: [underMouse position: (self morphWidth - underMouse width) @ self morphPosition y]]! !
@@ -28446,6 +28967,10 @@ setLabel: aString
 !DrGeoMiniView methodsFor: 'menus' stamp: 'hlsf 21/Oct/2021 21:23:37'!
 macroMenu: aMenuMorph 
 	self flag: #drgeoTodo! !
+
+!DrGeoMiniView methodsFor: 'menus' stamp: 'hlsf 21/Oct/2021 21:23:12'!
+scriptMenu: aMenu
+self flag: #drgeoTodo! !
 
 !DrGeoMiniView methodsFor: 'initialize-release' stamp: 'hlsf 30/Mar/2024 16:45:35'!
 defaultColor
@@ -28532,12 +29057,12 @@ mouseMove: evt localPosition: deltaVector
 		self morphPosition: itemMorph labelPosition].
 ! !
 
-!DrGLabel methodsFor: 'initialization' stamp: 'hlsf 10/Jan/2026 19:59:32'!
+!DrGLabel methodsFor: 'initialization' stamp: 'hlsf 17/Feb/2026 14:47:39'!
 initialize
 	super initialize.
 	blink := false.
 	delta := 7@7.
-	self font: DrGeoCoreSystem canvasFont
+	self font: DrGeoSystem canvasFont
 ! !
 
 !DrGLabel methodsFor: 'accessing' stamp: 'hlsf 12/Apr/2024 11:09:41'!
@@ -30853,4 +31378,4 @@ rightMaximumUsableArea
 	rectangle := self maximumUsableArea.
 	^ rectangle topCenter corner: rectangle corner! !
 DrGDirectionItem initialize!
-DrGeoCoreSystem initialize!
+DrGeoSystem initialize!
