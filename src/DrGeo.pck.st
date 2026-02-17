@@ -1,6 +1,6 @@
-'From Cuis7.7 [latest update: #7839] on 17 February 2026 at 4:32:39 pm'!
+'From Cuis7.7 [latest update: #7839] on 17 February 2026 at 7:21:45 pm'!
 'Description '!
-!provides: 'DrGeo' 1 790!
+!provides: 'DrGeo' 1 793!
 !requires: 'Gettext' 1 17 nil!
 !requires: 'SVG' 1 16 nil!
 !requires: 'YAXO' 1 19 nil!
@@ -12,40 +12,16 @@
 !requires: 'Commander' 1 4 nil!
 !requires: 'Graphics-Files-Additional' 1 24 nil!
 SystemOrganization addCategory: #'DrGeo-Model'!
-SystemOrganization addCategory: #'DrGeo-Model-Smalltalk'!
-SystemOrganization addCategory: #'DrGeo-Model-Item'!
-SystemOrganization addCategory: #'DrGeo-Model-Style'!
 SystemOrganization addCategory: #'DrGeo-Model-Macro'!
 SystemOrganization addCategory: #'DrGeo-Model-Script'!
 SystemOrganization addCategory: #'DrGeo-View'!
 SystemOrganization addCategory: #'DrGeo-View-Dialog'!
-SystemOrganization addCategory: #'DrGeo-View-Item'!
 SystemOrganization addCategory: #'DrGeo-Factories'!
-SystemOrganization addCategory: #'DrGeo-File'!
 SystemOrganization addCategory: #'DrGeo-System'!
-SystemOrganization addCategory: #'DrGeo-Test'!
 SystemOrganization addCategory: #DrGeo!
+SystemOrganization addCategory: #'DrGeo-Presenter-Builder'!
+SystemOrganization addCategory: #'DrGeo-Presenter-Tool'!
 
-
-!classDefinition: #DrGMacroFactory category: #'DrGeo-Factories'!
-ProtoObject subclass: #DrGMacroFactory
-	instanceVariableNames: ''
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'DrGeo-Factories'!
-!classDefinition: 'DrGMacroFactory class' category: #'DrGeo-Factories'!
-DrGMacroFactory class
-	instanceVariableNames: 'uniqueInstance'!
-
-!classDefinition: #DrGWorkstation category: #'DrGeo-System'!
-ProtoObject subclass: #DrGWorkstation
-	instanceVariableNames: ''
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'DrGeo-System'!
-!classDefinition: 'DrGWorkstation class' category: #'DrGeo-System'!
-DrGWorkstation class
-	instanceVariableNames: ''!
 
 !classDefinition: #DrGeoTree category: #'DrGeo-Model'!
 Object subclass: #DrGeoTree
@@ -147,6 +123,76 @@ Object subclass: #LanguageFontManager
 LanguageFontManager class
 	instanceVariableNames: ''!
 
+!classDefinition: #DrGMacroFactory category: #'DrGeo-Factories'!
+DrGFactory subclass: #DrGMacroFactory
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'DrGeo-Factories'!
+!classDefinition: 'DrGMacroFactory class' category: #'DrGeo-Factories'!
+DrGMacroFactory class
+	instanceVariableNames: 'uniqueInstance'!
+
+!classDefinition: #DrGMacroBuildTool category: #'DrGeo-Presenter-Tool'!
+DrGBuildTool subclass: #DrGMacroBuildTool
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'DrGeo-Presenter-Tool'!
+!classDefinition: 'DrGMacroBuildTool class' category: #'DrGeo-Presenter-Tool'!
+DrGMacroBuildTool class
+	instanceVariableNames: ''!
+
+!classDefinition: #DrGMacroPlayTool category: #'DrGeo-Presenter-Tool'!
+DrGMacroBuildTool subclass: #DrGMacroPlayTool
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'DrGeo-Presenter-Tool'!
+!classDefinition: 'DrGMacroPlayTool class' category: #'DrGeo-Presenter-Tool'!
+DrGMacroPlayTool class
+	instanceVariableNames: ''!
+
+!classDefinition: #DrGMacroToolStateNeutral category: #'DrGeo-Presenter-Tool'!
+DrGToolState subclass: #DrGMacroToolStateNeutral
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'DrGeo-Presenter-Tool'!
+!classDefinition: 'DrGMacroToolStateNeutral class' category: #'DrGeo-Presenter-Tool'!
+DrGMacroToolStateNeutral class
+	instanceVariableNames: ''!
+
+!classDefinition: #DrGMacroBuildToolStateInput category: #'DrGeo-Presenter-Tool'!
+DrGBuildToolState subclass: #DrGMacroBuildToolStateInput
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'DrGeo-Presenter-Tool'!
+!classDefinition: 'DrGMacroBuildToolStateInput class' category: #'DrGeo-Presenter-Tool'!
+DrGMacroBuildToolStateInput class
+	instanceVariableNames: ''!
+
+!classDefinition: #DrGMacroPlayToolStateSelect category: #'DrGeo-Presenter-Tool'!
+DrGMacroBuildToolStateInput subclass: #DrGMacroPlayToolStateSelect
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'DrGeo-Presenter-Tool'!
+!classDefinition: 'DrGMacroPlayToolStateSelect class' category: #'DrGeo-Presenter-Tool'!
+DrGMacroPlayToolStateSelect class
+	instanceVariableNames: ''!
+
+!classDefinition: #DrGMacroBuildToolStateOutput category: #'DrGeo-Presenter-Tool'!
+DrGBuildToolState subclass: #DrGMacroBuildToolStateOutput
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'DrGeo-Presenter-Tool'!
+!classDefinition: 'DrGMacroBuildToolStateOutput class' category: #'DrGeo-Presenter-Tool'!
+DrGMacroBuildToolStateOutput class
+	instanceVariableNames: ''!
+
 !classDefinition: #DrGDevelopment category: #'DrGeo-System'!
 DrGPlatform subclass: #DrGDevelopment
 	instanceVariableNames: ''
@@ -155,6 +201,16 @@ DrGPlatform subclass: #DrGDevelopment
 	category: 'DrGeo-System'!
 !classDefinition: 'DrGDevelopment class' category: #'DrGeo-System'!
 DrGDevelopment class
+	instanceVariableNames: ''!
+
+!classDefinition: #DrGWorkstation category: #'DrGeo-System'!
+DrGPlatform subclass: #DrGWorkstation
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'DrGeo-System'!
+!classDefinition: 'DrGWorkstation class' category: #'DrGeo-System'!
+DrGWorkstation class
 	instanceVariableNames: ''!
 
 !classDefinition: #DrGControlsManager category: #'DrGeo-View'!
@@ -175,6 +231,56 @@ DrGAbstractControlsManager subclass: #DrGMinControlsManager
 	category: 'DrGeo-View'!
 !classDefinition: 'DrGMinControlsManager class' category: #'DrGeo-View'!
 DrGMinControlsManager class
+	instanceVariableNames: ''!
+
+!classDefinition: #DrGMacroBuilder category: #'DrGeo-Presenter-Builder'!
+DrGMathItemBuilder subclass: #DrGMacroBuilder
+	instanceVariableNames: 'wizard input output description title'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'DrGeo-Presenter-Builder'!
+!classDefinition: 'DrGMacroBuilder class' category: #'DrGeo-Presenter-Builder'!
+DrGMacroBuilder class
+	instanceVariableNames: ''!
+
+!classDefinition: #DrGMacroPlayer category: #'DrGeo-Presenter-Builder'!
+DrGMathItemBuilder subclass: #DrGMacroPlayer
+	instanceVariableNames: 'wizard selectedMacro input'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'DrGeo-Presenter-Builder'!
+!classDefinition: 'DrGMacroPlayer class' category: #'DrGeo-Presenter-Builder'!
+DrGMacroPlayer class
+	instanceVariableNames: ''!
+
+!classDefinition: #DrGMacroPlayerHeadless category: #'DrGeo-Presenter-Builder'!
+DrGMacroPlayer subclass: #DrGMacroPlayerHeadless
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'DrGeo-Presenter-Builder'!
+!classDefinition: 'DrGMacroPlayerHeadless class' category: #'DrGeo-Presenter-Builder'!
+DrGMacroPlayerHeadless class
+	instanceVariableNames: ''!
+
+!classDefinition: #DrGScriptPlayer category: #'DrGeo-Presenter-Builder'!
+DrGMathItemBuilder subclass: #DrGScriptPlayer
+	instanceVariableNames: 'wizard input scriptClass'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'DrGeo-Presenter-Builder'!
+!classDefinition: 'DrGScriptPlayer class' category: #'DrGeo-Presenter-Builder'!
+DrGScriptPlayer class
+	instanceVariableNames: ''!
+
+!classDefinition: #DrGScriptPlayerHeadless category: #'DrGeo-Presenter-Builder'!
+DrGScriptPlayer subclass: #DrGScriptPlayerHeadless
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'DrGeo-Presenter-Builder'!
+!classDefinition: 'DrGScriptPlayerHeadless class' category: #'DrGeo-Presenter-Builder'!
+DrGScriptPlayerHeadless class
 	instanceVariableNames: ''!
 
 !classDefinition: #DrGeoView category: #'DrGeo-View'!
@@ -278,20 +384,11 @@ DrGeoTreeNode class
 	instanceVariableNames: ''!
 
 
-!DrGMacroFactory commentStamp: '' prior: 0!
-DrGMacroFactory is a unique factory to hold macro construction definition.
-
-Class Instance Variables:
-	uniqueInstance	is the unique macro factory instance!
-
-!DrGWorkstation commentStamp: '' prior: 0!
-Preferences for workstation (Linux, Mac, Windows)!
-
 !DrGeoTree commentStamp: 'hlsf 2/10/2022 11:29:00' prior: 0!
 I am a model to present the constructed math item in a hierarchy list.
 - app: the DrGeo instance!
 
-!DrGMacro commentStamp: '' prior: 0!
+!DrGMacro commentStamp: '<historical>' prior: 0!
 A DrGMacro is a macro-construction definition
 
 Instance Variables
@@ -337,8 +434,26 @@ Associate several LocaleIDs (fr_FR, zh_TW, zh_CN, ko) (with or without country c
 - family : a String, font family name
 - file : a String, file name of the font!
 
+!DrGMacroFactory commentStamp: '' prior: 0!
+DrGMacroFactory is a unique factory to hold macro construction definition.
+
+Class Instance Variables:
+	uniqueInstance	is the unique macro factory instance!
+
+!DrGMacroToolStateNeutral commentStamp: '<historical>' prior: 0!
+When user switch to info pages (info and description pages), we unselect all selected costumes. In this state the user can't select any items.!
+
+!DrGMacroBuildToolStateInput commentStamp: '<historical>' prior: 0!
+When user selects input page, blink the cosumes related to this state. In this state the user can select items as input parameters for the macro. He can also unselect items.!
+
+!DrGMacroBuildToolStateOutput commentStamp: '<historical>' prior: 0!
+When user selects  output page, blink the cosumes related to this state. In this state the user can select items as output parameters for the macro. He can also unselect items.!
+
 !DrGDevelopment commentStamp: '' prior: 0!
 Preferences for a Dr. Geo development environment!
+
+!DrGWorkstation commentStamp: '' prior: 0!
+Preferences for workstation (Linux, Mac, Windows)!
 
 !DrGControlsManager commentStamp: 'hlsf 4/10/2022 14:39:21' prior: 0!
 A manager for the DrGeo user interface controls (main view, menu, button, tree, etc.). 
@@ -346,6 +461,26 @@ A manager for the DrGeo user interface controls (main view, menu, button, tree, 
 - I hold the data and methods to build the UI
 - I build the main Dr. Geo view (Window or simpler view)
 !
+
+!DrGMacroBuilder commentStamp: '<historical>' prior: 0!
+A DrGMacroBuilder is builder to construct a macro-construction.
+The builder needs an appropriate list of:
+ - input & output mathItems selected in the drawing area
+ - a macro-construction name & description
+
+The builder checks the validity of the macro-construction, ie it checks if the outputs
+items are deductible from the input items
+
+Instance Variables
+!
+
+!DrGMacroPlayer commentStamp: '<historical>' prior: 0!
+A DrGMacroPlayer is a builder used to play a macro-construction against a user provided list of input items.
+It chekcs the validity of the input items against the macro-construction definition.
+The input parameters type must be user selected in the same order as they appear in the macro inputNodes definition.!
+
+!DrGMacroPlayerHeadless commentStamp: '<historical>' prior: 0!
+This is the macro player activated when the user directly selects a macro from the macro-menu in the toolbar. This player does not show up the usual wizard to select the macro to play as it is already selected from the menu.!
 
 !DrGeoView commentStamp: '<historical>' prior: 0!
 I am full featured view of a DrGeo app!
@@ -399,92 +534,6 @@ My model is a macro-construction player (DrGMacroPlayer instance)!
 
 !DrGWizardScript commentStamp: '<historical>' prior: 0!
 A wizard to plug a script instance in the canvas.!
-
-!DrGMacroFactory methodsFor: 'accessing' stamp: ''!
-addUnique: aMacro
-	^ (self findInPool: aMacro) 
-		ifNil: [self add: aMacro].! !
-
-!DrGMacroFactory methodsFor: 'accessing' stamp: ''!
-titles
-	^ self pool collect: [:m | m title]! !
-
-!DrGMacroFactory class methodsFor: 'as yet unclassified' stamp: ''!
-purge
-	"self purge"
-	self new purge! !
-
-!DrGMacroFactory class methodsFor: 'instance creation' stamp: ''!
-new
-	^ uniqueInstance ifNil: [uniqueInstance := super new]! !
-
-!DrGWorkstation methodsFor: 'initialize-release' stamp: 'hlsf 3/Apr/2024 12:12:01'!
-initialize
-	self initFontManager.
-	canWeDisplaySpinner := true.
-	Preferences 
-		at: #worldMenu put: DrGeo;
-		at: #fullScreenLeavesDeskMargins put: false.
-	UISupervisor ui taskbar scale: 1/2.! !
-
-!DrGWorkstation methodsFor: 'initialize-release' stamp: 'hlsf 17/Feb/2026 14:57:19'!
-launch
-	super launch.
-	self setFontPreferences.
-	Transcript show: '[DrGeo] Font installed'; cr! !
-
-!DrGWorkstation methodsFor: 'initialize-release' stamp: 'hlsf 17/Feb/2026 14:59:59'!
-splash
-| splash copy  background position path |
-	path := 	DrGeoSystem iconsPath.
-	splash := ImageReadWriter formFromFileEntry: path // 'splash.png'.
-	position := Display center - (splash extent // 2).
-	background := Form fromDisplay: (position extent: splash extent).
-	0.0 to: 1.0 by: 0.2 do: [:t |
-		copy := Form extent: splash extent  depth: 32.
-		copy copyBits: splash at: 0@0 translucent: t.
-		copy displayAt:  position.
-		(Delay forMilliseconds: 100) wait].
-	(Delay forSeconds: 2) wait.
-	background displayAt: position! !
-
-!DrGWorkstation methodsFor: 'testing' stamp: ''!
-isWorkstation
-	^ true! !
-
-!DrGWorkstation methodsFor: 'path' stamp: 'drgeo 17/Aug/2022 17:14:00'!
-rootPath
-" 	Test purpose, point to the bundle "
-"	^ DirectoryEntry smalltalkImageDirectory / 'drgeo' / 'build' / 'bundles' / 'gnulinux' / 'DrGeo'"
-	^ super rootPath! !
-
-!DrGWorkstation methodsFor: 'font' stamp: 'hlsf 17/Feb/2026 14:55:50'!
-fontManager
-	^ fontManager ifNil: [fontManager := self initFontManager]! !
-
-!DrGWorkstation methodsFor: 'font' stamp: 'hlsf 17/Feb/2026 14:55:37'!
-initFontManager
-	| font |
-	fontManager := LanguageFontManager new.
-	font := LanguageFont family: 'IPAexGothic' file: 'ipaexg.ttf'.
-	font addLocale: (LocaleID isoLanguage: 'ja').
-	fontManager add: font.
-	font := LanguageFont family: 'WenQuanYi Zen Hei Sharp' file: 'WenQuanYiZenHeiSharpRegular.ttf'.
-	font 
-		addLocale:(LocaleID isoLanguage: 'zh');
-		addLocale: (LocaleID isoLanguage: 'ko').
-	fontManager add: font.
-! !
-
-!DrGWorkstation methodsFor: 'font' stamp: 'hlsf 17/Feb/2026 14:55:26'!
-setFontPreferences
-	| languageFont |
-	" Pick an appropriate font file for the current locale, if necessary "
-	languageFont := self fontManager languageFontFor: Locale current.
-	languageFont ifNotNil: [
-		TrueTypeFontFamily readTrueTypeFontEntry: self fontPath // languageFont file.
-		PreferenceSet setDefaultFont: languageFont family].
-	Preferences at: #defaultFontSize put: 12! !
 
 !DrGeoTree methodsFor: 'accessing' stamp: 'hlsf 10/Feb/2022 11:51:56'!
 mathItem: aMathItem
@@ -1061,6 +1110,128 @@ initialize
 	super initialize.
 	languageFonts := OrderedCollection new! !
 
+!DrGMacroFactory methodsFor: 'accessing' stamp: ''!
+addUnique: aMacro
+	^ (self findInPool: aMacro) 
+		ifNil: [self add: aMacro].! !
+
+!DrGMacroFactory methodsFor: 'accessing' stamp: ''!
+titles
+	^ self pool collect: [:m | m title]! !
+
+!DrGMacroFactory class methodsFor: 'as yet unclassified' stamp: ''!
+purge
+	"self purge"
+	self new purge! !
+
+!DrGMacroFactory class methodsFor: 'instance creation' stamp: ''!
+new
+	^ uniqueInstance ifNil: [uniqueInstance := super new]! !
+
+!DrGMacroBuildTool methodsFor: 'accessing' stamp: 'hlsf 23/Jun/2021 15:52:50'!
+relevantMorphsNear: aPoint
+	^self pointMorphsFirstNear: aPoint ! !
+
+!DrGMacroBuildTool methodsFor: 'accessing' stamp: 'hlsf 11/Apr/2021 13:52:07'!
+selectInputMorph
+	self selectMorphsFrom: builder input! !
+
+!DrGMacroBuildTool methodsFor: 'accessing' stamp: 'hlsf 4/Aug/2023 12:18:22'!
+selectMorphsFrom: aMathItemCollection 
+	presenter ifNil: [^self].
+	self stopBlinking.
+	selectedMorphs := self drawable viewsOf: aMathItemCollection.
+	self startBlinking! !
+
+!DrGMacroBuildTool methodsFor: 'accessing' stamp: 'hlsf 11/Apr/2021 12:31:09'!
+selectNoMorph
+	self selectMorphsFrom: OrderedCollection new! !
+
+!DrGMacroBuildTool methodsFor: 'accessing' stamp: 'hlsf 11/Apr/2021 12:31:25'!
+selectOutputMorph
+	self selectMorphsFrom: builder output! !
+
+!DrGMacroBuildTool methodsFor: 'updating' stamp: ''!
+cancel
+	"the builder informs us the user wants to cancel the macro building process"
+	presenter move.! !
+
+!DrGMacroBuildTool methodsFor: 'initialize-release' stamp: ''!
+initialize
+	super initialize.
+	self switchState: DrGMacroToolStateNeutral ! !
+
+!DrGMacroBuildTool methodsFor: 'initialize-release' stamp: ''!
+registerDependant: anObject
+	builder when: #changedState send: #switchState: to: self.
+	builder when: #cancel send: #cancel to: self.
+	builder when: #readyToBuild send: #readyToBuildMacro to: anObject! !
+
+!DrGMacroPlayTool methodsFor: 'accessing' stamp: 'hlsf 3/Aug/2023 21:18:06'!
+presenter: aPresenter
+	super presenter: aPresenter.
+	presenter notInteractive: true.! !
+
+!DrGMacroPlayTool methodsFor: 'initialize-release' stamp: ''!
+registerDependant: anObject
+	builder when: #changedState send: #switchState: to: self.
+	builder when: #cancel send: #cancel to: self.
+	builder when: #readyToBuild send: #readyToPlayMacro to: anObject.
+	builder when: #changedMacro send: #changedMacro to: self! !
+
+!DrGMacroPlayTool methodsFor: 'initialize-release' stamp: 'hlsf 3/Aug/2023 21:18:23'!
+release
+	super release.
+	presenter notInteractive: false! !
+
+!DrGMacroPlayTool methodsFor: 'updating' stamp: 'hlsf 11/Apr/2021 12:31:09'!
+changedMacro
+" the builder inform us the user selected another macro-construction,
+do some cleaning"
+	self selectNoMorph! !
+
+!DrGMacroToolStateNeutral methodsFor: 'as yet unclassified' stamp: ''!
+handleMouseAt: aPoint
+	^false! !
+
+!DrGMacroToolStateNeutral methodsFor: 'accessing' stamp: 'hlsf 31/May/2025 15:50:56'!
+context: aContext
+	super context: aContext.
+	context selectNoMorph! !
+
+!DrGMacroBuildToolStateInput methodsFor: 'handling' stamp: 'hlsf 31/May/2025 15:49:00'!
+handleChoice: aMorphCollection 
+	context builder
+		add: (aMorphCollection collect: [ :c | c mathItem ])	
+			at: (self drawable gridWorldPoint: context last);
+		changed: #inputNames.
+	context selectInputMorph! !
+
+!DrGMacroBuildToolStateInput methodsFor: 'accessing' stamp: 'hlsf 31/May/2025 15:48:43'!
+context: aContext
+	super context: aContext.
+	context selectInputMorph ! !
+
+!DrGMacroPlayToolStateSelect methodsFor: 'handling' stamp: 'hlsf 31/May/2025 15:49:07'!
+handleChoice: aMorphCollection 
+	context builder 
+		add: (aMorphCollection collect: [ :c | c mathItem ])
+		at: (self drawable gridWorldPoint: context last).
+	context selectInputMorph! !
+
+!DrGMacroBuildToolStateOutput methodsFor: 'handling' stamp: 'hlsf 31/May/2025 15:49:16'!
+context: aContext
+	super context: aContext.
+	context selectOutputMorph ! !
+
+!DrGMacroBuildToolStateOutput methodsFor: 'handling' stamp: 'hlsf 31/May/2025 15:49:24'!
+handleChoice: aMorphCollection 
+	context builder
+		add: (aMorphCollection collect: [ :c | c mathItem ])
+			at: (self drawable gridWorldPoint: context last);
+		changed: #outputNames.
+	context selectOutputMorph! !
+
 !DrGDevelopment methodsFor: 'initialization' stamp: 'hlsf 17/Feb/2026 15:54:20'!
 initialize
 	canWeDisplaySpinner := false.
@@ -1090,6 +1261,74 @@ setFontPreferences
 	PreferenceSet setDefaultFont: 'DejaVu Sans'.
 	Preferences at: #defaultFontSize put: 14.
 ! !
+
+!DrGWorkstation methodsFor: 'initialize-release' stamp: 'hlsf 3/Apr/2024 12:12:01'!
+initialize
+	self initFontManager.
+	canWeDisplaySpinner := true.
+	Preferences 
+		at: #worldMenu put: DrGeo;
+		at: #fullScreenLeavesDeskMargins put: false.
+	UISupervisor ui taskbar scale: 1/2.! !
+
+!DrGWorkstation methodsFor: 'initialize-release' stamp: 'hlsf 17/Feb/2026 14:57:19'!
+launch
+	super launch.
+	self setFontPreferences.
+	Transcript show: '[DrGeo] Font installed'; cr! !
+
+!DrGWorkstation methodsFor: 'initialize-release' stamp: 'hlsf 17/Feb/2026 14:59:59'!
+splash
+| splash copy  background position path |
+	path := 	DrGeoSystem iconsPath.
+	splash := ImageReadWriter formFromFileEntry: path // 'splash.png'.
+	position := Display center - (splash extent // 2).
+	background := Form fromDisplay: (position extent: splash extent).
+	0.0 to: 1.0 by: 0.2 do: [:t |
+		copy := Form extent: splash extent  depth: 32.
+		copy copyBits: splash at: 0@0 translucent: t.
+		copy displayAt:  position.
+		(Delay forMilliseconds: 100) wait].
+	(Delay forSeconds: 2) wait.
+	background displayAt: position! !
+
+!DrGWorkstation methodsFor: 'testing' stamp: ''!
+isWorkstation
+	^ true! !
+
+!DrGWorkstation methodsFor: 'path' stamp: 'drgeo 17/Aug/2022 17:14:00'!
+rootPath
+" 	Test purpose, point to the bundle "
+"	^ DirectoryEntry smalltalkImageDirectory / 'drgeo' / 'build' / 'bundles' / 'gnulinux' / 'DrGeo'"
+	^ super rootPath! !
+
+!DrGWorkstation methodsFor: 'font' stamp: 'hlsf 17/Feb/2026 14:55:50'!
+fontManager
+	^ fontManager ifNil: [fontManager := self initFontManager]! !
+
+!DrGWorkstation methodsFor: 'font' stamp: 'hlsf 17/Feb/2026 14:55:37'!
+initFontManager
+	| font |
+	fontManager := LanguageFontManager new.
+	font := LanguageFont family: 'IPAexGothic' file: 'ipaexg.ttf'.
+	font addLocale: (LocaleID isoLanguage: 'ja').
+	fontManager add: font.
+	font := LanguageFont family: 'WenQuanYi Zen Hei Sharp' file: 'WenQuanYiZenHeiSharpRegular.ttf'.
+	font 
+		addLocale:(LocaleID isoLanguage: 'zh');
+		addLocale: (LocaleID isoLanguage: 'ko').
+	fontManager add: font.
+! !
+
+!DrGWorkstation methodsFor: 'font' stamp: 'hlsf 17/Feb/2026 14:55:26'!
+setFontPreferences
+	| languageFont |
+	" Pick an appropriate font file for the current locale, if necessary "
+	languageFont := self fontManager languageFontFor: Locale current.
+	languageFont ifNotNil: [
+		TrueTypeFontFamily readTrueTypeFontEntry: self fontPath // languageFont file.
+		PreferenceSet setDefaultFont: languageFont family].
+	Preferences at: #defaultFontSize put: 12! !
 
 !DrGControlsManager methodsFor: 'widget access' stamp: 'hlsf 30/Mar/2022 18:08:59'!
 addChevron: symbolOrArray to: aToolbar
@@ -1458,6 +1697,458 @@ openTools
 !DrGMinControlsManager methodsFor: 'widget access' stamp: 'hlsf 10/Apr/2022 16:25:16'!
 tools
 	^ tools ifNil: [tools := self mainMenu]! !
+
+!DrGMacroBuilder methodsFor: 'building' stamp: ''!
+buildItem
+	self shouldNotImplement! !
+
+!DrGMacroBuilder methodsFor: 'building' stamp: ''!
+buildItem: domain 
+	| macro |
+	macro := DrGMacro new
+		title: title; description: description.
+	macro 	from: input to: output 	in: domain.
+	^ macro! !
+
+!DrGMacroBuilder methodsFor: 'building' stamp: ''!
+getItem
+	self shouldNotImplement! !
+
+!DrGMacroBuilder methodsFor: 'building' stamp: ''!
+getItem: domain
+	self isMacroValid ifTrue:
+		[^self buildItem: domain].
+	^nil! !
+
+!DrGMacroBuilder methodsFor: 'callback' stamp: ''!
+apply
+	"the user clicked the apply button, do we have all the needed information
+	to instantiate a new macro construction?"
+	DrGeoSystem showVirtualKeyboard: false.
+	self isMacroValid ifTrue: 
+		[ "we can instantiate a macro"
+		self triggerEvent: #readyToBuild.
+		^self].
+	self isLogicValid ifFalse: 
+		[self inform: 'Input and output items don''t match' translated].
+	self isDescriptionValid ifFalse: 
+		[self inform: 'Please, enter a proper title and description' translated]! !
+
+!DrGMacroBuilder methodsFor: 'callback' stamp: ''!
+cancel
+	"the user withdrawn the macro-construction creation"
+	DrGeoSystem showVirtualKeyboard: false.
+	self triggerEvent: #cancel! !
+
+!DrGMacroBuilder methodsFor: 'callback' stamp: ''!
+page: integer 
+	"we receive notification from the wizard the user change the wizard
+	current page"
+	| newState |
+	(integer = 1 or: [ integer = 4 ]) ifTrue: [ newState := DrGMacroToolStateNeutral ].
+	integer = 2 ifTrue: [ newState := DrGMacroBuildToolStateInput ].
+	integer = 3 ifTrue: [ newState := DrGMacroBuildToolStateOutput ].
+	integer = 4 ifTrue: [DrGeoSystem showVirtualKeyboard: true].
+	self 
+		triggerEvent: #changedState
+		with: newState! !
+
+!DrGMacroBuilder methodsFor: 'accessing' stamp: ''!
+arguments
+	self shouldNotImplement! !
+
+!DrGMacroBuilder methodsFor: 'accessing' stamp: ''!
+description
+	^description ! !
+
+!DrGMacroBuilder methodsFor: 'accessing' stamp: ''!
+description: string
+	description := string asString! !
+
+!DrGMacroBuilder methodsFor: 'accessing' stamp: ''!
+input
+	^input! !
+
+!DrGMacroBuilder methodsFor: 'accessing' stamp: 'hlsf 3/Nov/2021 19:11:47'!
+inputNames
+	^ self itemNames: input! !
+
+!DrGMacroBuilder methodsFor: 'accessing' stamp: 'hlsf 3/Nov/2021 19:11:47'!
+itemNames: aMathItemCollection
+	^aMathItemCollection collect: [:mathItem | mathItem descriptiveName]! !
+
+!DrGMacroBuilder methodsFor: 'accessing' stamp: ''!
+output
+	^output ! !
+
+!DrGMacroBuilder methodsFor: 'accessing' stamp: 'hlsf 3/Nov/2021 19:11:47'!
+outputNames
+	^ self itemNames: output! !
+
+!DrGMacroBuilder methodsFor: 'accessing' stamp: ''!
+title
+	^title! !
+
+!DrGMacroBuilder methodsFor: 'accessing' stamp: ''!
+title: string
+	title := string! !
+
+!DrGMacroBuilder methodsFor: 'constant' stamp: ''!
+defaultDescription
+	^'Write down your description there.' asText! !
+
+!DrGMacroBuilder methodsFor: 'constant' stamp: ''!
+defaultTitle
+	^'Macro name' asText! !
+
+!DrGMacroBuilder methodsFor: 'constant' stamp: ''!
+mathItemClass
+	self shouldNotImplement! !
+
+!DrGMacroBuilder methodsFor: 'testing' stamp: ''!
+isDescriptionValid
+	^ ((title = self defaultTitle) | (description = self defaultDescription)) not! !
+
+!DrGMacroBuilder methodsFor: 'testing' stamp: ''!
+isInputMode
+	^ wizard isInputPage! !
+
+!DrGMacroBuilder methodsFor: 'testing' stamp: ''!
+isLogicValid
+	"check wheter a macro can be deduced from the input/output item collections"
+	^ DrGMacro 
+		isValidWith: input
+		and: output! !
+
+!DrGMacroBuilder methodsFor: 'testing' stamp: ''!
+isMacroValid 
+	^self isLogicValid & self isDescriptionValid ! !
+
+!DrGMacroBuilder methodsFor: 'testing' stamp: ''!
+isOutputMode
+	^ wizard isOutputPage! !
+
+!DrGMacroBuilder methodsFor: 'testing' stamp: ''!
+isWanted: aMathItemCollection 
+	^ aMathItemCollection notEmpty and: 
+		[ self isInputMode &  (output includes: aMathItemCollection first) not or: [ self isOutputMode & (input includes: aMathItemCollection first) not ] ]! !
+
+!DrGMacroBuilder methodsFor: 'testing' stamp: ''!
+readyToBuild
+"Only when the user clicks on the wizard 'apply' button,
+the system checks wheter the macro can be instiated"
+	^false! !
+
+!DrGMacroBuilder methodsFor: 'initialize-release' stamp: 'hlsf 6/Apr/2022 16:35:50'!
+initialize
+	self reset.
+	wizard := (DrGWizardMacroBuild open: self) 
+		addPages;
+		openInWorld.
+	wizard morphPosition: 0@0.
+	wizard when: #page send: #page: to: self.
+	wizard when: #apply send: #apply to: self.
+	wizard when: #cancel send: #cancel to: self! !
+
+!DrGMacroBuilder methodsFor: 'initialize-release' stamp: 'hlsf 27/Dec/2021 10:59:17'!
+release
+	wizard removeActionsWithReceiver: self.
+	wizard delete.
+	wizard := nil! !
+
+!DrGMacroBuilder methodsFor: 'private' stamp: ''!
+addItem: aMathItemCollection at: aPoint
+	super addItem: aMathItemCollection at: aPoint.
+	self isInputMode ifTrue: [self addToggleItem: aMathItemCollection in: input].
+	self isOutputMode ifTrue: [self addToggleItem: aMathItemCollection in: output]! !
+
+!DrGMacroBuilder methodsFor: 'updating' stamp: 'hlsf 3/Nov/2021 19:07:55'!
+reset
+	super reset.
+	input := OrderedCollection new.
+	output := OrderedCollection new.
+	title := self defaultTitle.
+	description := self defaultDescription.
+	self changed: #inputNames.
+	self changed: #ouputNames.
+	self changed: #title.
+	self changed: #description! !
+
+!DrGMacroBuilder class methodsFor: 'documentation' stamp: ''!
+description 
+	^ 'Construct a macro-construction with input and output items.' translated! !
+
+!DrGMacroBuilder class methodsFor: 'documentation' stamp: ''!
+title
+	^ 'Build macro' translated.! !
+
+!DrGMacroPlayer methodsFor: 'accessing' stamp: ''!
+constructedNodes
+	^ selectedMacro constructedNodes ! !
+
+!DrGMacroPlayer methodsFor: 'accessing' stamp: 'hlsf 19/Nov/2021 10:57:19'!
+description
+	^ selectedMacro ifNotNil: [selectedMacro description] ifNil: [^'']! !
+
+!DrGMacroPlayer methodsFor: 'accessing' stamp: ''!
+description: text 
+	selectedMacro ifNotNil: [selectedMacro description: text asString]! !
+
+!DrGMacroPlayer methodsFor: 'accessing' stamp: ''!
+input
+	^input! !
+
+!DrGMacroPlayer methodsFor: 'accessing' stamp: ''!
+inputBasicType
+	^input collect: [:i | i basicType]! !
+
+!DrGMacroPlayer methodsFor: 'accessing' stamp: ''!
+selectedMacro
+	^selectedMacro ! !
+
+!DrGMacroPlayer methodsFor: 'accessing' stamp: ''!
+selectedMacro: aMacro
+	"Some cleaning are needed"
+	selectedMacro := aMacro.
+	input := OrderedCollection new.
+	self triggerEvent: #changedMacro.! !
+
+!DrGMacroPlayer methodsFor: 'private' stamp: ''!
+addItem: aMathItemCollection at: aPoint
+	super addItem: aMathItemCollection at: aPoint.
+	self addToggleItem: aMathItemCollection in: input! !
+
+!DrGMacroPlayer methodsFor: 'initialize-release' stamp: 'hlsf 6/Apr/2022 16:34:27'!
+initialize
+	wizard := (DrGWizardMacroPlay open: self) 
+		addPages;
+		openInWorld.
+	wizard morphPosition: 0@0.
+	input := OrderedCollection new.
+	wizard when: #page send: #page: to: self.
+	wizard when: #cancel send: #cancel to: self! !
+
+!DrGMacroPlayer methodsFor: 'initialize-release' stamp: 'hlsf 27/Dec/2021 10:57:41'!
+release
+	wizard removeActionsWithReceiver: self.
+	wizard delete.
+	wizard := nil! !
+
+!DrGMacroPlayer methodsFor: 'callback' stamp: ''!
+cancel
+	self triggerEvent: #cancel! !
+
+!DrGMacroPlayer methodsFor: 'callback' stamp: ''!
+page: integer 
+	"we receive notification from the wizard the user change the wizard
+	current page"
+	| newState |
+	integer = 1 
+		ifTrue: [ newState := DrGMacroToolStateNeutral ]
+		ifFalse: [ newState := DrGMacroPlayToolStateSelect].
+	self 
+		triggerEvent: #changedState
+		with: newState! !
+
+!DrGMacroPlayer methodsFor: 'building' stamp: 'hlsf 4/Aug/2023 17:12:55'!
+buildItem
+	^selectedMacro execute: input in: presenter.! !
+
+!DrGMacroPlayer methodsFor: 'testing' stamp: ''!
+isWanted: aMathItemCollection
+	selectedMacro isNil ifTrue: [^false].
+	^aMathItemCollection notEmpty and: 
+		[(selectedMacro inputBasicType at: input size + 1 ) == aMathItemCollection first basicType]! !
+
+!DrGMacroPlayer methodsFor: 'testing' stamp: ''!
+readyToBuild
+	^ self inputBasicType = selectedMacro inputBasicType! !
+
+!DrGMacroPlayer methodsFor: 'updating' stamp: 'hlsf 19/Nov/2021 11:01:22'!
+reset
+	super reset.
+	input := OrderedCollection new.
+	selectedMacro := nil.
+	self changed: #description.
+	self flag: #drgeoTodo
+	"wizard changed: #selectedMacro"! !
+
+!DrGMacroPlayer class methodsFor: 'documentation' stamp: ''!
+description 
+	^'Execute a pre-built macro-construction on selected input items. To edit a macro description, edit its text and apply with the keys [alt/ctrl]+s.' translated! !
+
+!DrGMacroPlayer class methodsFor: 'documentation' stamp: ''!
+title
+	^ 'Execute/edit macro' translated! !
+
+!DrGMacroPlayerHeadless methodsFor: 'initialize-release' stamp: ''!
+initialize 
+	input := OrderedCollection new.
+! !
+
+!DrGMacroPlayerHeadless methodsFor: 'initialize-release' stamp: ''!
+release! !
+
+!DrGScriptPlayer methodsFor: 'callback' stamp: ''!
+cancel
+	self triggerEvent: #cancel! !
+
+!DrGScriptPlayer methodsFor: 'callback' stamp: ''!
+page: integer 
+	"we receive notification from the wizard the user change the wizard
+	current page"
+	| newState |
+	integer = 1 
+		ifTrue: [ newState := DrGMacroToolStateNeutral ]
+		ifFalse: [ newState := DrGMacroPlayToolStateSelect].
+	self 
+		triggerEvent: #changedState
+		with: newState! !
+
+!DrGScriptPlayer methodsFor: 'xml' stamp: ''!
+basicItemFrom: node
+"create a scrip item then set its script from the xml node information"
+| item |
+	item := super basicItemFrom: node.
+	item script: (node attributeAt: #class) asClass.
+	^ item! !
+
+!DrGScriptPlayer methodsFor: 'xml' stamp: 'hlsf 25/Sep/2021 21:43:01'!
+itemInstanceFrom: node
+	self scriptClass: (Smalltalk at: (node attributeAt: #class) asSymbol).
+	self add: #() at: 0@0.
+	(self parentsById: node) do: [:each |	self addItem: {each} at: 0@0].
+	^ self getItem first.! !
+
+!DrGScriptPlayer methodsFor: 'xml' stamp: ''!
+postProcess: item from: node
+	super postProcess: item from: node.
+	self parseValuePosition: node of: item! !
+
+!DrGScriptPlayer methodsFor: 'dependents access' stamp: ''!
+release
+	self removeEvents.
+	wizard delete.
+	wizard := nil! !
+
+!DrGScriptPlayer methodsFor: 'private' stamp: ''!
+addItem: aMathItemCollection at: aPoint
+"Take the point position only when the user clic somewhere in the background"
+	aMathItemCollection ifEmpty: 
+		[point := aPoint.
+		^self].
+	input size < scriptClass argumentsType size
+		ifTrue: [self addToggleItem: aMathItemCollection in: input]
+		ifFalse: [input remove: aMathItemCollection first ifAbsent: []]! !
+
+!DrGScriptPlayer methodsFor: 'testing' stamp: ''!
+isWanted: aMathItemCollection 
+	"We are now performing type checking for script, we are also interested
+in empty aMathItemCollection, (ie: just get the clic position in the background)"
+	scriptClass ifNil: [^false].
+	aMathItemCollection ifEmpty: [ ^ true ].
+	^ input size = scriptClass argumentsType size 
+		ifTrue: 
+			[input includes: aMathItemCollection first]
+		ifFalse: 
+			[aMathItemCollection first class includesBehavior: (scriptClass argumentsType at: input size + 1)]! !
+
+!DrGScriptPlayer methodsFor: 'testing' stamp: ''!
+mathItemClass
+	^DrGValueScriptItem ! !
+
+!DrGScriptPlayer methodsFor: 'testing' stamp: ''!
+readyToBuild
+	scriptClass ifNil: [^false].
+	^ input size = scriptClass argumentsType size and: [ point isNil not ]! !
+
+!DrGScriptPlayer methodsFor: 'testing' stamp: ''!
+reset
+	super reset.
+	input := OrderedCollection new.! !
+
+!DrGScriptPlayer methodsFor: 'accessing' stamp: ''!
+arguments
+	^ (OrderedCollection withAll: input)
+		add: scriptClass;
+		add: point;
+		yourself! !
+
+!DrGScriptPlayer methodsFor: 'accessing' stamp: 'hlsf 7/Apr/2022 15:41:45'!
+description
+	| comment |
+	^ scriptClass
+		ifNil: ['']
+		ifNotNil: 
+			[comment := scriptClass description.
+			comment isEmpty 
+				ifTrue: ['No description, write one in the description method of this script.' translated]
+				ifFalse: [comment]]! !
+
+!DrGScriptPlayer methodsFor: 'accessing' stamp: 'hlsf 7/Apr/2022 15:24:54'!
+description: aText 
+" Not yet implemented, should rewrite the description of the selected scriptClass "
+	self flag: #drgeoTodo! !
+
+!DrGScriptPlayer methodsFor: 'accessing' stamp: ''!
+input
+	^input! !
+
+!DrGScriptPlayer methodsFor: 'accessing' stamp: ''!
+scriptClass
+	^ scriptClass! !
+
+!DrGScriptPlayer methodsFor: 'accessing' stamp: ''!
+scriptClass: anObject
+	scriptClass := anObject.
+	input := OrderedCollection new.
+	self triggerEvent: #changedScript.! !
+
+!DrGScriptPlayer methodsFor: 'initialize-release' stamp: ''!
+basicInitialize
+	input := OrderedCollection new.! !
+
+!DrGScriptPlayer methodsFor: 'initialize-release' stamp: 'hlsf 6/Apr/2022 16:36:57'!
+initialize
+	wizard := (DrGWizardScript open: self)
+		addPages;
+		openInWorld.
+	input := OrderedCollection new.
+	wizard when: #page send: #page: to: self.
+	wizard when: #cancel send: #cancel to: self.! !
+
+!DrGScriptPlayer methodsFor: 'initialize-release' stamp: ''!
+removeEvents
+	wizard removeActionsWithReceiver: self! !
+
+!DrGScriptPlayer class methodsFor: 'xml' stamp: ''!
+basicItemFrom: node
+"create a basic item (unitialised) from this node and add it to the domain, return an item partially initialized. Use for macro node"
+	| builder |
+	builder := self basicNew basicInitialize.
+	^ builder basicItemFrom: node! !
+
+!DrGScriptPlayer class methodsFor: 'xml' stamp: 'hlsf 4/Aug/2023 17:29:25'!
+itemFrom: node in: presenter
+"create an item from this node and add it to the domain, return a couple {item. boolean}"
+	| builder |
+	builder := self basicNew basicInitialize; presenter: 	presenter;  yourself.
+	^ builder itemFrom: node! !
+
+!DrGScriptPlayer class methodsFor: 'documentation' stamp: ''!
+description
+	^ 'Insert a Smalltalk script in the drawing area.' translated! !
+
+!DrGScriptPlayer class methodsFor: 'documentation' stamp: ''!
+title
+	^ 'Use a script' translated! !
+
+!DrGScriptPlayerHeadless methodsFor: 'as yet unclassified' stamp: ''!
+initialize
+	input := OrderedCollection new.! !
+
+!DrGScriptPlayerHeadless methodsFor: 'as yet unclassified' stamp: ''!
+release! !
 
 !DrGeoView methodsFor: 'initialization' stamp: 'hlsf 4/Aug/2023 12:40:38'!
 initialize

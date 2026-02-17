@@ -1,10 +1,10 @@
-'From Cuis7.7 [latest update: #7839] on 17 February 2026 at 4:32:42 pm'!
+'From Cuis7.7 [latest update: #7839] on 17 February 2026 at 7:21:48 pm'!
 'Description '!
-!provides: 'DrGeoCore' 1 41!
+!provides: 'DrGeoCore' 1 43!
 !requires: 'UI-Preference' 1 28 nil!
 !requires: 'UI-Panel' 1 140 nil!
-!requires: 'YAXO' 1 28 nil!
 !requires: 'Graphics-Files-Additional' 1 30 nil!
+!requires: 'YAXO' 1 28 nil!
 SystemOrganization addCategory: #'DrGeoCore-Model'!
 SystemOrganization addCategory: #'DrGeoCore-Model-Smalltalk'!
 SystemOrganization addCategory: #'DrGeoCore-Model-Item'!
@@ -22,16 +22,6 @@ SystemOrganization addCategory: #'DrGeoCore-System'!
 SystemOrganization addCategory: #'DrGeoCore-Test'!
 SystemOrganization addCategory: #DrGeoCore!
 
-
-!classDefinition: #DrGScriptPlayTool category: #'DrGeoCore-Presenter-Tool'!
-ProtoObject subclass: #DrGScriptPlayTool
-	instanceVariableNames: ''
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'DrGeoCore-Presenter-Tool'!
-!classDefinition: 'DrGScriptPlayTool class' category: #'DrGeoCore-Presenter-Tool'!
-DrGScriptPlayTool class
-	instanceVariableNames: ''!
 
 !classDefinition: #DrGFactory category: #'DrGeoCore-Factories'!
 Object subclass: #DrGFactory
@@ -1523,6 +1513,16 @@ DrGTool subclass: #DrGBuildTool
 DrGBuildTool class
 	instanceVariableNames: ''!
 
+!classDefinition: #DrGScriptPlayTool category: #'DrGeoCore-Presenter-Tool'!
+DrGMacroBuildTool subclass: #DrGScriptPlayTool
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'DrGeoCore-Presenter-Tool'!
+!classDefinition: 'DrGScriptPlayTool class' category: #'DrGeoCore-Presenter-Tool'!
+DrGScriptPlayTool class
+	instanceVariableNames: ''!
+
 !classDefinition: #DrGFlyPointBuildTool category: #'DrGeoCore-Presenter-Tool'!
 DrGBuildTool subclass: #DrGFlyPointBuildTool
 	instanceVariableNames: ''
@@ -2041,26 +2041,6 @@ DrGMathItemBuilder subclass: #DrGPolygonRegularBuilder
 	category: 'DrGeoCore-Presenter-Builder'!
 !classDefinition: 'DrGPolygonRegularBuilder class' category: #'DrGeoCore-Presenter-Builder'!
 DrGPolygonRegularBuilder class
-	instanceVariableNames: ''!
-
-!classDefinition: #DrGScriptPlayer category: #'DrGeoCore-Presenter-Builder'!
-DrGMathItemBuilder subclass: #DrGScriptPlayer
-	instanceVariableNames: 'wizard input scriptClass'
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'DrGeoCore-Presenter-Builder'!
-!classDefinition: 'DrGScriptPlayer class' category: #'DrGeoCore-Presenter-Builder'!
-DrGScriptPlayer class
-	instanceVariableNames: ''!
-
-!classDefinition: #DrGScriptPlayerHeadless category: #'DrGeoCore-Presenter-Builder'!
-DrGScriptPlayer subclass: #DrGScriptPlayerHeadless
-	instanceVariableNames: ''
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'DrGeoCore-Presenter-Builder'!
-!classDefinition: 'DrGScriptPlayerHeadless class' category: #'DrGeoCore-Presenter-Builder'!
-DrGScriptPlayerHeadless class
 	instanceVariableNames: ''!
 
 !classDefinition: #DrGSegmentBuilder category: #'DrGeoCore-Presenter-Builder'!
@@ -3056,19 +3036,6 @@ A preference type representing the different possible style of a line.!
 
 !DrGTypeThickness commentStamp: '<historical>' prior: 0!
 A preference type representing the different possible thickness of a line.!
-
-!DrGScriptPlayTool methodsFor: 'initialize-release' stamp: ''!
-registerDependant: anObject
-	builder when: #changedState send: #switchState: to: self.
-	builder when: #cancel send: #cancel to: self.
-	builder when: #readyToBuild send: #readyToBuild to: anObject.
-	builder when: #changedScript send: #changedScript to: self! !
-
-!DrGScriptPlayTool methodsFor: 'updating' stamp: 'hlsf 11/Apr/2021 12:31:09'!
-changedScript
-" the builder inform us the user selected another script,
-do some cleaning"
-	self selectNoMorph! !
 
 !DrGFactory methodsFor: 'accessing' stamp: 'hlsf 10/Feb/2022 10:03:01'!
 add: item 
@@ -12266,6 +12233,19 @@ builder: aBuilderClassName presenter: aPresenter
 		initialize;
 		yourself! !
 
+!DrGScriptPlayTool methodsFor: 'initialize-release' stamp: ''!
+registerDependant: anObject
+	builder when: #changedState send: #switchState: to: self.
+	builder when: #cancel send: #cancel to: self.
+	builder when: #readyToBuild send: #readyToBuild to: anObject.
+	builder when: #changedScript send: #changedScript to: self! !
+
+!DrGScriptPlayTool methodsFor: 'updating' stamp: 'hlsf 11/Apr/2021 12:31:09'!
+changedScript
+" the builder inform us the user selected another script,
+do some cleaning"
+	self selectNoMorph! !
+
 !DrGFlyPointBuildTool methodsFor: 'initialize' stamp: ''!
 initialize
 	super initialize.
@@ -13641,7 +13621,7 @@ isiPad
 cleanUp
 	"Smalltalk reduceCuis "! !
 
-!DrGeoSystem class methodsFor: 'install' stamp: 'hlsf 18/May/2025 10:56:21'!
+!DrGeoSystem class methodsFor: 'install' stamp: 'hlsf 17/Feb/2026 18:58:36'!
 install
 	| world |
 	"Report by any mean installation and run time"
@@ -13665,6 +13645,7 @@ install
 	"Set Locale and text domains"
 	Preferences at: #useLocale put: true.
 	TextDomainManager registerCategoryPrefix: 'DrGeo' domain: 'drgeo'.
+	TextDomainManager registerCategoryPrefix: 'DrGeoCore' domain: 'drgeocore'.
 	TextDomainManager registerCategoryPrefix: 'cuis' domain: 'cuis'.	
 	"Set a default name for authoring"
 	Utilities setAuthorName: 'Dr. Geo User' initials: 'drgeo'.
@@ -25564,167 +25545,6 @@ description
 !DrGPolygonRegularBuilder class methodsFor: 'documentation' stamp: ''!
 title
 	^ 'Regular polygon' translated! !
-
-!DrGScriptPlayer methodsFor: 'callback' stamp: ''!
-cancel
-	self triggerEvent: #cancel! !
-
-!DrGScriptPlayer methodsFor: 'callback' stamp: ''!
-page: integer 
-	"we receive notification from the wizard the user change the wizard
-	current page"
-	| newState |
-	integer = 1 
-		ifTrue: [ newState := DrGMacroToolStateNeutral ]
-		ifFalse: [ newState := DrGMacroPlayToolStateSelect].
-	self 
-		triggerEvent: #changedState
-		with: newState! !
-
-!DrGScriptPlayer methodsFor: 'xml' stamp: ''!
-basicItemFrom: node
-"create a scrip item then set its script from the xml node information"
-| item |
-	item := super basicItemFrom: node.
-	item script: (node attributeAt: #class) asClass.
-	^ item! !
-
-!DrGScriptPlayer methodsFor: 'xml' stamp: 'hlsf 25/Sep/2021 21:43:01'!
-itemInstanceFrom: node
-	self scriptClass: (Smalltalk at: (node attributeAt: #class) asSymbol).
-	self add: #() at: 0@0.
-	(self parentsById: node) do: [:each |	self addItem: {each} at: 0@0].
-	^ self getItem first.! !
-
-!DrGScriptPlayer methodsFor: 'xml' stamp: ''!
-postProcess: item from: node
-	super postProcess: item from: node.
-	self parseValuePosition: node of: item! !
-
-!DrGScriptPlayer methodsFor: 'dependents access' stamp: ''!
-release
-	self removeEvents.
-	wizard delete.
-	wizard := nil! !
-
-!DrGScriptPlayer methodsFor: 'private' stamp: ''!
-addItem: aMathItemCollection at: aPoint
-"Take the point position only when the user clic somewhere in the background"
-	aMathItemCollection ifEmpty: 
-		[point := aPoint.
-		^self].
-	input size < scriptClass argumentsType size
-		ifTrue: [self addToggleItem: aMathItemCollection in: input]
-		ifFalse: [input remove: aMathItemCollection first ifAbsent: []]! !
-
-!DrGScriptPlayer methodsFor: 'testing' stamp: ''!
-isWanted: aMathItemCollection 
-	"We are now performing type checking for script, we are also interested
-in empty aMathItemCollection, (ie: just get the clic position in the background)"
-	scriptClass ifNil: [^false].
-	aMathItemCollection ifEmpty: [ ^ true ].
-	^ input size = scriptClass argumentsType size 
-		ifTrue: 
-			[input includes: aMathItemCollection first]
-		ifFalse: 
-			[aMathItemCollection first class includesBehavior: (scriptClass argumentsType at: input size + 1)]! !
-
-!DrGScriptPlayer methodsFor: 'testing' stamp: ''!
-mathItemClass
-	^DrGValueScriptItem ! !
-
-!DrGScriptPlayer methodsFor: 'testing' stamp: ''!
-readyToBuild
-	scriptClass ifNil: [^false].
-	^ input size = scriptClass argumentsType size and: [ point isNil not ]! !
-
-!DrGScriptPlayer methodsFor: 'testing' stamp: ''!
-reset
-	super reset.
-	input := OrderedCollection new.! !
-
-!DrGScriptPlayer methodsFor: 'accessing' stamp: ''!
-arguments
-	^ (OrderedCollection withAll: input)
-		add: scriptClass;
-		add: point;
-		yourself! !
-
-!DrGScriptPlayer methodsFor: 'accessing' stamp: 'hlsf 7/Apr/2022 15:41:45'!
-description
-	| comment |
-	^ scriptClass
-		ifNil: ['']
-		ifNotNil: 
-			[comment := scriptClass description.
-			comment isEmpty 
-				ifTrue: ['No description, write one in the description method of this script.' translated]
-				ifFalse: [comment]]! !
-
-!DrGScriptPlayer methodsFor: 'accessing' stamp: 'hlsf 7/Apr/2022 15:24:54'!
-description: aText 
-" Not yet implemented, should rewrite the description of the selected scriptClass "
-	self flag: #drgeoTodo! !
-
-!DrGScriptPlayer methodsFor: 'accessing' stamp: ''!
-input
-	^input! !
-
-!DrGScriptPlayer methodsFor: 'accessing' stamp: ''!
-scriptClass
-	^ scriptClass! !
-
-!DrGScriptPlayer methodsFor: 'accessing' stamp: ''!
-scriptClass: anObject
-	scriptClass := anObject.
-	input := OrderedCollection new.
-	self triggerEvent: #changedScript.! !
-
-!DrGScriptPlayer methodsFor: 'initialize-release' stamp: ''!
-basicInitialize
-	input := OrderedCollection new.! !
-
-!DrGScriptPlayer methodsFor: 'initialize-release' stamp: 'hlsf 6/Apr/2022 16:36:57'!
-initialize
-	wizard := (DrGWizardScript open: self)
-		addPages;
-		openInWorld.
-	input := OrderedCollection new.
-	wizard when: #page send: #page: to: self.
-	wizard when: #cancel send: #cancel to: self.! !
-
-!DrGScriptPlayer methodsFor: 'initialize-release' stamp: ''!
-removeEvents
-	wizard removeActionsWithReceiver: self! !
-
-!DrGScriptPlayer class methodsFor: 'xml' stamp: ''!
-basicItemFrom: node
-"create a basic item (unitialised) from this node and add it to the domain, return an item partially initialized. Use for macro node"
-	| builder |
-	builder := self basicNew basicInitialize.
-	^ builder basicItemFrom: node! !
-
-!DrGScriptPlayer class methodsFor: 'xml' stamp: 'hlsf 4/Aug/2023 17:29:25'!
-itemFrom: node in: presenter
-"create an item from this node and add it to the domain, return a couple {item. boolean}"
-	| builder |
-	builder := self basicNew basicInitialize; presenter: 	presenter;  yourself.
-	^ builder itemFrom: node! !
-
-!DrGScriptPlayer class methodsFor: 'documentation' stamp: ''!
-description
-	^ 'Insert a Smalltalk script in the drawing area.' translated! !
-
-!DrGScriptPlayer class methodsFor: 'documentation' stamp: ''!
-title
-	^ 'Use a script' translated! !
-
-!DrGScriptPlayerHeadless methodsFor: 'as yet unclassified' stamp: ''!
-initialize
-	input := OrderedCollection new.! !
-
-!DrGScriptPlayerHeadless methodsFor: 'as yet unclassified' stamp: ''!
-release! !
 
 !DrGSegmentBuilder methodsFor: 'testing' stamp: ''!
 isWanted: aMathItemCollection
