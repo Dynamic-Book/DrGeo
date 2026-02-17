@@ -1,0 +1,1580 @@
+# Ukrainian translation for drgeo
+# Copyright (c) 2012 Rosetta Contributors and Canonical Ltd 2012
+# This file is distributed under the same license as the drgeo package.
+#
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2012.
+# Yuri Chornoivan <yurchor@ukr.net>, 2012.
+msgid ""
+msgstr ""
+"Project-Id-Version: drgeo\n"
+"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2026-02-17 18:57-0000\n"
+"PO-Revision-Date: 2024-05-26 13:29+0000\n"
+"Last-Translator: Yuri Chornoivan <yurchor@gmail.com>\n"
+"Language-Team: Ukrainian <uk@li.org>\n"
+"Language: uk\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2024-05-27 04:38+0000\n"
+"X-Generator: Launchpad (build 0e1f616671af724398db43b36ddfb3ed1f2682ec)\n"
+
+#: DrGeoCore-File,DrGeoXml>>parseFigureFrom:
+msgid "no name"
+msgstr "без назви"
+
+#: DrGeoCore-Model-Item,DrGAngle3ptsItem>>adaptiveDescriptiveName
+msgid "This geometric angle %1"
+msgstr "Цей геометричний кут %1"
+
+#: DrGeoCore-Model-Item,DrGAngleBisector3ptsItem>>adaptiveDescriptiveName,DrGLineAngleBisectorItem>>adaptiveDescriptiveName
+msgid "This angle bisector %1"
+msgstr "Бісектриса кута %1"
+
+#: DrGeoCore-Model-Item,DrGAngleItem>>adaptiveDescriptiveName
+msgid "This oriented angle %1"
+msgstr "Цей орієнтований кут %1"
+
+#: DrGeoCore-Model-Item,DrGArcItem>>adaptiveDescriptiveName
+msgid "This Arc Circle %1"
+msgstr "Ця дуга кола %1"
+
+#: DrGeoCore-Model-Item,DrGBitmapItem>>adaptiveDescriptiveName
+msgid "This picture"
+msgstr "Цей малюнок"
+
+#: DrGeoCore-Model-Item,DrGCircleItem>>adaptiveDescriptiveName
+msgid "This circle %1"
+msgstr "Це коло %1"
+
+#: DrGeoCore-Model-Item,DrGCompositeItem>>adaptiveDescriptiveName
+msgid "This composite object %1"
+msgstr "Цей складений об’єкт %1"
+
+#: DrGeoCore-Model-Item,DrGEquationItem>>adaptiveDescriptiveName
+msgid "This equation %1"
+msgstr "Це рівняння %1"
+
+#: DrGeoCore-Model-Item,DrGEquationItem>>printOn:
+msgid "Equation"
+msgstr "Рівняння"
+
+#: DrGeoCore-Model-Item,DrGLineItem>>adaptiveDescriptiveName
+msgid "This line %1"
+msgstr "Ця пряма %1"
+
+#: DrGeoCore-Model-Item,DrGLineParallelItem>>adaptiveDescriptiveName
+msgid "This parallel line %1"
+msgstr "Ця паралель %1"
+
+#: DrGeoCore-Model-Item,DrGLinePerpendicularBisector2ptsItem>>adaptiveDescriptiveName,DrGPerpendicularBisectorItem>>adaptiveDescriptiveName
+msgid "This perpendicular bisector %1"
+msgstr "Серединний перпендикуляр %1"
+
+#: DrGeoCore-Model-Item,DrGLinePerpendicularItem>>adaptiveDescriptiveName
+msgid "This perpendicular line %1"
+msgstr "Цей перпендикуляр %1"
+
+#: DrGeoCore-Model-Item,DrGLocus2ptsItem>>adaptiveDescriptiveName
+msgid "This locus %1"
+msgstr "Це ГМТ %1"
+
+#: DrGeoCore-Model-Item,DrGMathItem>>adaptiveDescriptiveName
+msgid "This math item %1"
+msgstr "Цей математичний елемент %1"
+
+#: DrGeoCore-Model-Item,DrGPointCoordinateItem>>editPropertyIn:,DrGPointFreeItem>>editPropertyIn:
+msgid "Edit the coordinates"
+msgstr "Змінити координати"
+
+#: DrGeoCore-Model-Item,DrGPointItem>>adaptiveDescriptiveName
+msgid "This point %1"
+msgstr "Ця точка %1"
+
+#: DrGeoCore-Model-Item,DrGPointOncurveItem>>editPropertyIn:
+msgid "Edit this curvilinear abscissa in [0;1]"
+msgstr "Встановіть значення абсциси на кривій лінії у діапазоні [0;1]"
+
+#: DrGeoCore-Model-Item,DrGPolygonItem>>adaptiveDescriptiveName
+msgid "This polygon %1"
+msgstr "Цей багатокутник %1"
+
+#: DrGeoCore-Model-Item,DrGPolygonItem>>adaptiveDescriptiveName
+msgid "This quadrilateral %1"
+msgstr "Цей чотирикутник %1"
+
+#: DrGeoCore-Model-Item,DrGPolygonItem>>adaptiveDescriptiveName
+msgid "This triangle %1"
+msgstr "Цей трикутник %1"
+
+#: DrGeoCore-Model-Item,DrGPolygonItem>>printOn:
+msgid " edges="
+msgstr " ребер="
+
+#: DrGeoCore-Model-Item,DrGRayItem>>adaptiveDescriptiveName
+msgid "This half-line %1"
+msgstr "Цей промінь %1"
+
+#: DrGeoCore-Model-Item,DrGSegmentItem>>adaptiveDescriptiveName
+msgid "This segment %1"
+msgstr "Цей відрізок %1"
+
+#: DrGeoCore-Model-Item,DrGTextItem>>adaptiveDescriptiveName
+msgid "This text"
+msgstr "Цей текст"
+
+#: DrGeoCore-Model-Item,DrGTextItem>>editPropertyIn:
+msgid "Edit this text"
+msgstr "Змінити цей текст"
+
+#: DrGeoCore-Model-Item,DrGTextItem>>initialize
+msgid "Edit me"
+msgstr "Змініть"
+
+#: DrGeoCore-Model-Item,DrGValueArclengthItem>>adaptiveDescriptiveName
+msgid "This arc length %1"
+msgstr "Довжина цієї дуги — %1"
+
+#: DrGeoCore-Model-Item,DrGValueCircleperimeterItem>>adaptiveDescriptiveName
+msgid "This circle perimeter %1"
+msgstr "Периметр цього кола %1"
+
+#: DrGeoCore-Model-Item,DrGValueDistance2ptsItem>>adaptiveDescriptiveName
+msgid "This distance between two points %1"
+msgstr "Відстань між двома точками — %1"
+
+#: DrGeoCore-Model-Item,DrGValueDistanceptlineItem>>adaptiveDescriptiveName
+msgid "This point-line distance %1"
+msgstr "Відстань від точки до прямої %1"
+
+#: DrGeoCore-Model-Item,DrGValueItem>>adaptiveDescriptiveName
+msgid "This value %1"
+msgstr "Це значення %1"
+
+#: DrGeoCore-Model-Item,DrGValueItem>>printNameOn:
+msgid "Value "
+msgstr "Значення "
+
+#: DrGeoCore-Model-Item,DrGValuePolygonperimeterItem>>adaptiveDescriptiveName
+msgid "This polygon perimeter %1"
+msgstr "Периметр цього багатокутника — %1"
+
+#: DrGeoCore-Model-Item,DrGValuePtabscissaItem>>adaptiveDescriptiveName
+msgid "This point abscissa %1"
+msgstr "Абсциса цієї точки %1"
+
+#: DrGeoCore-Model-Item,DrGValuePtordinateItem>>adaptiveDescriptiveName
+msgid "This point ordinate %1"
+msgstr "Ордината цієї точки %1"
+
+#: DrGeoCore-Model-Item,DrGValueScriptItem>>adaptiveDescriptiveName
+msgid "This script \"{1}\""
+msgstr "Цей скрипт «{1}»"
+
+#: DrGeoCore-Model-Item,DrGValueScriptItem>>adaptiveDescriptiveName
+msgid "This script \"{1}\" with argument: %2"
+msgstr "Цей скрипт «{1}» з аргументом %2"
+
+#: DrGeoCore-Model-Item,DrGValueScriptItem>>adaptiveDescriptiveName
+msgid "This script \"{1}\" with arguments: %2"
+msgstr "Цей скрипт «{1}» з аргументами %2"
+
+#: DrGeoCore-Model-Item,DrGValueScriptItem>>printNameOn:
+msgid "Script "
+msgstr "Скрипт "
+
+#: DrGeoCore-Model-Item,DrGValueSegmentlengthItem>>adaptiveDescriptiveName
+msgid "This segment length %1"
+msgstr "Довжина цього відрізка %1"
+
+#: DrGeoCore-Model-Item,DrGValueSlopeItem>>adaptiveDescriptiveName
+msgid "This line slope %1"
+msgstr "Кут нахилу цієї прямої %1"
+
+#: DrGeoCore-Model-Item,DrGValueValueItem>>editPropertyIn:
+msgid "Edit this value"
+msgstr "Змінити це значення"
+
+#: DrGeoCore-Model-Item,DrGValueVectorabscissaItem>>adaptiveDescriptiveName
+msgid "This vector abscissa %1"
+msgstr "Абсциса цього вектора %1"
+
+#: DrGeoCore-Model-Item,DrGValueVectornormItem>>adaptiveDescriptiveName
+msgid "This Vector's norm %1"
+msgstr "Норма цього вектора %1"
+
+#: DrGeoCore-Model-Item,DrGValueVectorordinateItem>>adaptiveDescriptiveName
+msgid "This vector ordinate %1"
+msgstr "Ордината цього вектора %1"
+
+#: DrGeoCore-Model-Item,DrGVectorItem>>adaptiveDescriptiveName
+msgid "This vector %1"
+msgstr "Цей вектор %1"
+
+#: DrGeoCore-Model-Smalltalk,DrGeoSketch>>canTransform:
+msgid "Only geometric object can be transformed."
+msgstr "Перетворювати можна лише геометричні об’єкти."
+
+#: DrGeoCore-Model-Style,DrGCurveStyle>>lineWidget
+msgid "Set the style of the line."
+msgstr "Встановити стиль лінії."
+
+#: DrGeoCore-Model-Style,DrGCurveStyle>>lineWidget,DrGPlatform>>arcPreferences,DrGPlatform>>circlePreferences,DrGPlatform>>linePreferences,DrGPlatform>>locusPreferences,DrGPlatform>>polygonPreferences,DrGPlatform>>rayPreferences,DrGPlatform>>segmentPreferences,DrGPlatform>>vectorPreferences
+msgid "Style"
+msgstr "Стиль"
+
+#: DrGeoCore-Model-Style,DrGCurveStyle>>thicknessWidget
+msgid "Set the thickness of the line."
+msgstr "Встановити товщину лінії."
+
+#: DrGeoCore-Model-Style,DrGCurveStyle>>thicknessWidget,DrGPlatform>>arcPreferences,DrGPlatform>>circlePreferences,DrGPlatform>>linePreferences,DrGPlatform>>locusPreferences,DrGPlatform>>polygonPreferences,DrGPlatform>>rayPreferences,DrGPlatform>>segmentPreferences,DrGPlatform>>vectorPreferences
+msgid "Thickness"
+msgstr "Товщина"
+
+#: DrGeoCore-Model-Style,DrGFilledStyle>>fillWidget,DrGPlatform>>arcPreferences,DrGPlatform>>circlePreferences,DrGPlatform>>polygonPreferences
+msgid "Fill"
+msgstr "Заповнення"
+
+#: DrGeoCore-Model-Style,DrGFilledStyle>>fillWidget
+msgid "Toggle to fill the object."
+msgstr "Увімкнути або вимкнути заповнення об’єкта кольором."
+
+#: DrGeoCore-Model-Style,DrGFilledStyle>>translucentWidget
+msgid "Toggle the translucency of the object."
+msgstr "Увімкнути або вимкнути прозорість об’єкта."
+
+#: DrGeoCore-Model-Style,DrGFilledStyle>>translucentWidget,DrGPlatform>>arcPreferences,DrGPlatform>>circlePreferences,DrGPlatform>>polygonPreferences
+msgid "Translucent"
+msgstr "Прозорість"
+
+#: DrGeoCore-Model-Style,DrGFinitCurveStyle>>arrowWidget,DrGPlatform>>arcPreferences,DrGPlatform>>segmentPreferences
+msgid "Arrow"
+msgstr "Стрілка"
+
+#: DrGeoCore-Model-Style,DrGFinitCurveStyle>>arrowWidget
+msgid "Set arrow(s) to the line."
+msgstr "Вказати форму стрілок на кінці лінії."
+
+#: DrGeoCore-Model-Style,DrGPointStyle>>shapeWidget
+msgid "Set the shape of the point."
+msgstr "Вказати форму цієї точки."
+
+#: DrGeoCore-Model-Style,DrGPointStyle>>sizeWidget
+msgid "Set the size of the point."
+msgstr "Вказати розмір точки."
+
+#: DrGeoCore-Model-Style,DrGSegmentStyle>>markWidget
+msgid "Set a mark to the segment."
+msgstr "Вказати позначку до відрізка."
+
+#: DrGeoCore-Model-Style,DrGStyle>>colorWidget
+msgid "Set the colour."
+msgstr "Вказати колір."
+
+#: DrGeoCore-Model-Style,DrGStyle>>feedbackWidget
+msgid "Feedback"
+msgstr "Зворотний зв’язок"
+
+#: DrGeoCore-Model-Style,DrGStyle>>feedbackWidget
+msgid ""
+"Toggle to provide feedback and interaction when the mouse cursor is over the "
+"object."
+msgstr ""
+"Перемкніть, щоб програма показувала інформацію та взаємодіяла з вами, коли "
+"ви наводити вказівник на об’єкт."
+
+#: DrGeoCore-Model-Style,DrGStyle>>hiddenWidget
+msgid "Hide"
+msgstr "Приховати"
+
+#: DrGeoCore-Model-Style,DrGStyle>>hiddenWidget
+msgid "Toggle to hide the object."
+msgstr "Приховати або показати об’єкт."
+
+#: DrGeoCore-Model-Style,DrGStyle>>lockedWidget
+msgid "Lock"
+msgstr "Заблокувати"
+
+#: DrGeoCore-Model-Style,DrGStyle>>lockedWidget
+msgid "Toggle to lock the object to its position."
+msgstr "Заблокувати або розблокувати позицію об’єкта."
+
+#: DrGeoCore-Model-Style,DrGStyle>>nameWidget
+msgid "Name"
+msgstr "Назва"
+
+#: DrGeoCore-Model-Style,DrGStyle>>nameWidget
+msgid "Rename this object."
+msgstr "Перейменувати об’єкт."
+
+#: DrGeoCore-Model-Style,DrGTextStyle>>backgroundWidget
+msgid "Set the background colour."
+msgstr "Встановити колір тла"
+
+#: DrGeoCore-Model-Style,DrGTextStyle>>borderWidget
+msgid "Set the border colour."
+msgstr "Встановити колір рамки."
+
+#: DrGeoCore-Model-Style,DrGTextStyle>>fontSizeWidget
+msgid "Font size"
+msgstr "Розмір шрифту"
+
+#: DrGeoCore-Model-Style,DrGTextStyle>>fontSizeWidget
+msgid "Set the font size."
+msgstr "Встановити розмір шрифту."
+
+#: DrGeoCore-Presenter,DrGeo_class>>drgeoInformationString
+msgid ""
+"Dr. Geo is about interactive geometry and programming.\n"
+"{1} - {3}\n"
+"\n"
+"It allows one to create geometric figure plus the interactive manipulation \n"
+"It is usable in teaching situation, in mathematics, physics and\n"
+"programming, with students from primary school to university levels.\n"
+"\n"
+"It is simple and effective with some unique features as Smalltalk scripts \n"
+"and programmed interactive sketches. \n"
+"\n"
+"{2}\n"
+"\n"
+"LICENSE: GPL"
+msgstr ""
+"Dr. Geo призначено для інтерактивних геометричних побудов та програмування.\n"
+"{1} - {3}\n"
+"\n"
+"Програма уможливлює створення геометричних фігур та інтерактивну роботу з "
+"ними.\n"
+"Програмою можна скористатися з навчальною метою у математиці, фізиці та \n"
+"програмуванні зі учнями та студентами від початкового рівня до "
+"університетського.\n"
+"\n"
+"Програма є простою та ефективною і має деякі унікальні можливості, зокрема \n"
+"використання скриптів Smalltalk та програмовані інтерактивні ескізи.  \n"
+"\n"
+"{2}\n"
+"\n"
+"УМОВИ ЛІЦЕНЗУВАННЯ: GPL"
+
+#: DrGeoCore-Presenter,DrGeo_class>>drgeoVersion
+msgid "Installed version: "
+msgstr "Встановлена версія: "
+
+#: DrGeoCore-Presenter,DrGeo_class>>figuresArray
+msgid "Fig. - "
+msgstr "Рис. - "
+
+#: DrGeoCore-Presenter,DrGeo_class>>getMenuIn:at:
+msgid "System menu"
+msgstr "Системне меню"
+
+#: DrGeoCore-Presenter,DrGeo_class>>macrosArray
+msgid "Macro - "
+msgstr "Макрос — "
+
+#: DrGeoCore-Presenter,DrGeo_class>>preferencesMenu:
+msgid "Dr. Geo Preferences"
+msgstr "Налаштування Dr. Geo"
+
+#: DrGeoCore-Presenter,DrGeo_class>>preferencesMenu:,DrGeo_class>>preferencesMenu:,DrGeo_class>>preferencesMenu:,DrGeo_class>>worldMenu:
+msgid "Preferences"
+msgstr "Налаштування"
+
+#: DrGeoCore-Presenter,DrGeo_class>>preferencesMenu:
+msgid "Settings"
+msgstr "Параметри"
+
+#: DrGeoCore-Presenter,DrGeo_class>>preferencesMenu:
+msgid "Size of GUI elements"
+msgstr "Розмір елементів інтерфейсу"
+
+#: DrGeoCore-Presenter,DrGeo_class>>preferencesMenu:
+msgid "Theme"
+msgstr "Тема"
+
+#: DrGeoCore-Presenter,DrGeo_class>>quit
+msgid ""
+"There is unsaved data! \n"
+"Are you sure to quit Dr. Geo environment?"
+msgstr ""
+"Маємо незбережені дані! \n"
+"Ви справді хочете вийти із середовища Dr. Geo?"
+
+#: DrGeoCore-Presenter,DrGeo_class>>toolsMenu:
+msgid ""
+"A source code browser to view, edit and save Dr. Geo code. I open the "
+"browser on the DrGeoSketch class you can study to design your own Smalltalk "
+"sketch."
+msgstr ""
+"Засіб навігації початковим кодом для перегляду, редагування та збереження "
+"коду Dr. Geo. Відкрито засіб навігації на класі DrGeoSketch, де ви можете "
+"вивчати дизайн вашого власного ескізу Smalltalk."
+
+#: DrGeoCore-Presenter,DrGeo_class>>toolsMenu:
+msgid ""
+"A tool to browse and to test both system and personal Smalltalk Sketches."
+msgstr ""
+"Інструменти для навігації та тестування загальносистемних та особистих "
+"ескізів Smalltalk."
+
+#: DrGeoCore-Presenter,DrGeo_class>>toolsMenu:
+msgid ""
+"A window used as a scratchpad area where fragments of Cuis-Smalltalk code "
+"can be entered, stored, edited, and evaluated. To edit Smalltalk sketch, use "
+"the Smalltalk Sketch Editor tool above."
+msgstr ""
+"Вікно використовують як область ескізника, куди можна вводити, зберігати, "
+"редагувати та обробляти фрагменти коду Cuis-Smalltalk. Для редагування "
+"ескіза Smalltalk скористайтеся панеллю інструментів редактора ескізів "
+"Smalltalk, яку розташовано вище."
+
+#: DrGeoCore-Presenter,DrGeo_class>>toolsMenu:
+msgid ""
+"A window used to print information from the code - text output. Any object "
+"receiving the message #print is output in the Transcript: 'hello' print, (k "
+"* 5) print. Use the Transcript class for more elaborated output."
+msgstr ""
+"Вікно використовують для виведення даних з коду — текстового виведення. Будь-"
+"який об'є, що отримує повідомленя #print, виводить дані у Transcript: "
+"'hello' print, (k * 5) print. Скористайтеся класом Transcript, щоб "
+"скоригувати виведення."
+
+#: DrGeoCore-Presenter,DrGeo_class>>toolsMenu:
+msgid "An editor to write and to test new Smalltalk sketch."
+msgstr "Редактор для написання та тестування ескізу Smalltalk."
+
+#: DrGeoCore-Presenter,DrGeo_class>>toolsMenu:
+msgid "Browse"
+msgstr "Вибрати"
+
+#: DrGeoCore-Presenter,DrGeo_class>>toolsMenu:
+msgid "Browse Smalltalk Sketches"
+msgstr "Вибір ескізів Smalltalk"
+
+#: DrGeoCore-Presenter,DrGeo_class>>toolsMenu:
+msgid "Edit Smalltalk Sketch"
+msgstr "Редагування ескізу Smalltalk"
+
+#: DrGeoCore-Presenter,DrGeo_class>>toolsMenu:
+msgid "Open a file"
+msgstr "Відкрити файл"
+
+#: DrGeoCore-Presenter,DrGeo_class>>toolsMenu:
+msgid "Open the filer on your personal sketches collection."
+msgstr "Відкрити засіб роботи з файлами у вашій особистій збірці ескізів."
+
+#: DrGeoCore-Presenter,DrGeo_class>>toolsMenu:
+msgid "Save session"
+msgstr "Зберегти сеанс"
+
+#: DrGeoCore-Presenter,DrGeo_class>>toolsMenu:
+msgid "Save this Dr. Geo session."
+msgstr "Зберегти цей сеанс Dr. Geo."
+
+#: DrGeoCore-Presenter,DrGeo_class>>toolsMenu:
+msgid "Smalltalk Sketch Editor"
+msgstr "Редактор ескізів Smalltalk"
+
+#: DrGeoCore-Presenter,DrGeo_class>>toolsMenu:
+msgid "System Browser"
+msgstr "Навігатор системою"
+
+#: DrGeoCore-Presenter,DrGeo_class>>toolsMenu:,DrGeo_class>>toolsMenu:,DrGeo_class>>toolsMenu:,DrGeo_class>>toolsMenu:,DrGeo_class>>toolsMenu:,DrGeo_class>>toolsMenu:,DrGeo_class>>toolsMenu:,DrGeo_class>>worldMenu:
+msgid "Tools"
+msgstr "Інструменти"
+
+#: DrGeoCore-Presenter,DrGeo_class>>toolsMenu:
+msgid "Transcript"
+msgstr "Transcript"
+
+#: DrGeoCore-Presenter,DrGeo_class>>toolsMenu:
+msgid "Workspace"
+msgstr "Робочий простір"
+
+#: DrGeoCore-Presenter,DrGeo_class>>worldMenu:
+msgid "About"
+msgstr "Про програму"
+
+#: DrGeoCore-Presenter,DrGeo_class>>worldMenu:
+msgid "New sketch"
+msgstr "Нове креслення"
+
+#: DrGeoCore-Presenter,DrGeo_class>>worldMenu:
+msgid "Open a sketch"
+msgstr "Відкрити креслення"
+
+#: DrGeoCore-Presenter,DrGeo_class>>worldMenu:
+msgid "Quit"
+msgstr "Вийти"
+
+#: DrGeoCore-Presenter,DrGeo_class>>worldMenu:
+msgid "Toggle full screen mode"
+msgstr "Увімкнути/Вимкнути повноекранний режим"
+
+#: DrGeoCore-Presenter,DrGeo_class>>worldMenu:
+msgid "Turn full screen mode on when it is off, off when it is on."
+msgstr "Увімкнути повноекранний режим, якщо його вимкнути, і навпаки."
+
+#: DrGeoCore-Presenter,DrGeo>>axesWording
+msgid "<no> Axes"
+msgstr "<no> Вісі"
+
+#: DrGeoCore-Presenter,DrGeo>>axesWording
+msgid "<yes> Axes"
+msgstr "<yes> Вісі"
+
+#: DrGeoCore-Presenter,DrGeo>>createMultipleModeWording
+msgid "<no> Create Multiple"
+msgstr "<no> Створення декількох"
+
+#: DrGeoCore-Presenter,DrGeo>>createMultipleModeWording
+msgid "<yes> Create Multiple"
+msgstr "<yes> Створення декількох"
+
+#: DrGeoCore-Presenter,DrGeo>>createScript
+msgid "Build a new script"
+msgstr "Зібрати новий скрипт"
+
+#: DrGeoCore-Presenter,DrGeo>>editScript,DrGeo>>editScript:
+msgid "Edit or create scripts"
+msgstr "Редагувати або створювати скрипти."
+
+#: DrGeoCore-Presenter,DrGeo>>exportToImageAs
+msgid "Name the image to keep."
+msgstr "Назва, з якою слід зберегти зображення."
+
+#: DrGeoCore-Presenter,DrGeo>>gridWording
+msgid "<no> Grid"
+msgstr "<no> Сітка"
+
+#: DrGeoCore-Presenter,DrGeo>>gridWording
+msgid "<yes> Grid"
+msgstr "<yes> Сітка"
+
+#: DrGeoCore-Presenter,DrGeo>>magneticGridWording
+msgid "<no> Magnetic Grid"
+msgstr "<no> Магнітна сітка"
+
+#: DrGeoCore-Presenter,DrGeo>>magneticGridWording
+msgid "<yes> Magnetic Grid"
+msgstr "<yes> Магнітна сітка"
+
+#: DrGeoCore-Presenter,DrGeo>>save,DrGeo>>saveWithinLimitedTime:
+msgid ""
+"I can't save the sketch.\n"
+"Check the local resource or the server."
+msgstr ""
+"Не вдалося зберегти ескіз.\n"
+"Перевірте доступність локального ресурсу або сервера"
+
+#: DrGeoCore-Presenter,DrGeo>>saveSketchAs
+msgid "Name the sketch to keep."
+msgstr "Назва креслення, яке слід зберегти."
+
+#: DrGeoCore-Presenter-Builder,DrGAngleBisectorBuilder_class>>description
+msgid ""
+"Angle bisector defined by three points or an angle defined by three points."
+msgstr ""
+"Бісектриса кута, визначеного за трьома точками, або кут, визначений за "
+"трьома точками."
+
+#: DrGeoCore-Presenter-Builder,DrGAngleBisectorBuilder_class>>title
+msgid "Angle bisector"
+msgstr "Бісектриса кута"
+
+#: DrGeoCore-Presenter-Builder,DrGAngleGeometricBuilder_class>>description
+msgid ""
+"Geometric angle defined by three points, the second point is the vertex. Its "
+"measure belongs to [0 ; 180]."
+msgstr ""
+"Геометричний кут визначається трьома точками. Друга точка є вершиною кута. "
+"Міра кута має належати проміжку [0 ; 180]."
+
+#: DrGeoCore-Presenter-Builder,DrGAngleGeometricBuilder_class>>title
+msgid "Geometric angle"
+msgstr "Геометричний кут"
+
+#: DrGeoCore-Presenter-Builder,DrGAngleOrientedBuilder_class>>description
+msgid ""
+"Oriented angle defined by three points or two vectors. When defined from "
+"three points, the second point is the vertex. Its measure belongs to [0 ; "
+"360[ or ]-180 ; 180]. "
+msgstr ""
+"Орієнтований кут визначається трьома точками або двома векторами. Якщо кут "
+"визначено трьома точками, друга точка визначає вершину кута. Міра кута має "
+"належати проміжку [0 ; 360[ або ]-180 ; 180]. "
+
+#: DrGeoCore-Presenter-Builder,DrGAngleOrientedBuilder_class>>title
+msgid "Oriented angle"
+msgstr "Орієнтований кут"
+
+#: DrGeoCore-Presenter-Builder,DrGArcBuilder_class>>description
+msgid "Arc defined by three points."
+msgstr "Дуга, визначена трьома точками."
+
+#: DrGeoCore-Presenter-Builder,DrGArcBuilder_class>>title
+msgid "Arc"
+msgstr "Дуга"
+
+#: DrGeoCore-Presenter-Builder,DrGArcCenterBuilder_class>>description
+msgid "Arc defined by its center and two points."
+msgstr "Дуга, визначена центром та двома точками."
+
+#: DrGeoCore-Presenter-Builder,DrGArcCenterBuilder_class>>title
+msgid "Arc (center)"
+msgstr "Дуга (центр)"
+
+#: DrGeoCore-Presenter-Builder,DrGBitmapBuilder_class>>description
+msgid ""
+"Picture: drag and drop a picture in the canvas. It can be moved and scaled."
+msgstr ""
+"Малюнок: перетягніть малюнок і скиньте його на полотно. Ви можете пересувати "
+"малюнок і змінювати його масштаб."
+
+#: DrGeoCore-Presenter-Builder,DrGBitmapBuilder_class>>title,DrGBitmapItem>>printOn:
+msgid "Picture"
+msgstr "Малюнок"
+
+#: DrGeoCore-Presenter-Builder,DrGCircleBuilder_class>>description
+msgid ""
+"Circle defined by its center and a point or by its center and radius, a "
+"value."
+msgstr ""
+"Коло, визначене за центром та точкою на колі або за центром і радіусом, "
+"значення."
+
+#: DrGeoCore-Presenter-Builder,DrGCircleBuilder_class>>title
+msgid "Circle"
+msgstr "Коло"
+
+#: DrGeoCore-Presenter-Builder,DrGCoordinatesBuilder_class>>description
+msgid "Vector or point coordinates, circle or line equation."
+msgstr "Координати вектора або точки, рівняння кола або прямої."
+
+#: DrGeoCore-Presenter-Builder,DrGCoordinatesBuilder_class>>title
+msgid "Coordinates, equation"
+msgstr "Координати, рівняння"
+
+#: DrGeoCore-Presenter-Builder,DrGFlyPointBuilder_class>>description
+msgid ""
+"Click to create a point: free point on the background, on a curve or on two "
+"curves intersection."
+msgstr ""
+"Клацніть, щоб створити точку: довільну точку на тлі креслення, на кривій або "
+"на перетині двох кривих."
+
+#: DrGeoCore-Presenter-Builder,DrGFlyPointBuilder_class>>description
+msgid ""
+"Tap to create a point: free point on the background, on a curve or on two "
+"curves intersection."
+msgstr ""
+"Натисніть, щоб створити точку: довільну точку на полотні, на кривій або на "
+"перетині двох кривих."
+
+#: DrGeoCore-Presenter-Builder,DrGFlyPointBuilder_class>>title
+msgid "Point"
+msgstr "Точка"
+
+#: DrGeoCore-Presenter-Builder,DrGHomothetyBuilder_class>>description
+msgid ""
+"Homothety: select a center, a value and a geometric object. The first "
+"selected point is the homothety center."
+msgstr ""
+"Гомотетія: виберіть центр, значення та геометричний об’єкт. Першою вибраною "
+"точкою буде центр гомотетії."
+
+#: DrGeoCore-Presenter-Builder,DrGHomothetyBuilder_class>>title
+msgid "Homothety (scale)"
+msgstr "Гомотетія (масштабування)"
+
+#: DrGeoCore-Presenter-Builder,DrGLineBuilder_class>>description
+msgid "Line defined by two points"
+msgstr "Пряма за двома точками"
+
+#: DrGeoCore-Presenter-Builder,DrGLineBuilder_class>>title
+msgid "Line"
+msgstr "Пряма"
+
+#: DrGeoCore-Presenter-Builder,DrGLocusBuilder_class>>description
+msgid "Locus defined by a free point on a curve and a relative point."
+msgstr ""
+"Геометричне місце точок, що визначається довільною точкою на кривій і "
+"зв’язаною точкою."
+
+#: DrGeoCore-Presenter-Builder,DrGLocusBuilder_class>>title
+msgid "Locus"
+msgstr "Геометричне місце точок"
+
+#: DrGeoCore-Presenter-Builder,DrGMiddleBuilder_class>>description
+msgid "The midpoint of a segment or between two points."
+msgstr "Середина відрізку або середня точка між двома точками."
+
+#: DrGeoCore-Presenter-Builder,DrGMiddleBuilder_class>>title
+msgid "Middle"
+msgstr "Середина"
+
+#: DrGeoCore-Presenter-Builder,DrGParallelBuilder_class>>description
+msgid "Line passing through one point and parallel to a line, half-line, etc."
+msgstr ""
+"Пряма, що проходить через одну точку паралельно до іншої прямої, променя "
+"тощо."
+
+#: DrGeoCore-Presenter-Builder,DrGParallelBuilder_class>>title
+msgid "Parallel"
+msgstr "Паралель"
+
+#: DrGeoCore-Presenter-Builder,DrGPerpendicularBisectorBuilder_class>>description
+msgid "Perpendicular bisector defined by a segment or two points."
+msgstr "Серединний перпендикуляр, визначений за відрізком або двома точками."
+
+#: DrGeoCore-Presenter-Builder,DrGPerpendicularBisectorBuilder_class>>title
+msgid "Perpendicular bisector"
+msgstr "Серединний перпендикуляр"
+
+#: DrGeoCore-Presenter-Builder,DrGPerpendicularBuilder_class>>description
+msgid ""
+"Line passing through one point and orthogonal to a line, half-line, etc."
+msgstr ""
+"Пряма, що проходить через одну точку перпендикулярно до іншої прямої, "
+"променя тощо."
+
+#: DrGeoCore-Presenter-Builder,DrGPerpendicularBuilder_class>>title
+msgid "Perpendicular"
+msgstr "Перпендикуляр"
+
+#: DrGeoCore-Presenter-Builder,DrGPointByCoordinatesBuilder_class>>description
+msgid ""
+"Point given its coordinates: select two numbers or a point coordinates (@)."
+msgstr ""
+"Точка, вказана координатами: виберіть два числа або координати точки (@)."
+
+#: DrGeoCore-Presenter-Builder,DrGPointByCoordinatesBuilder_class>>title
+msgid "Coordinates"
+msgstr "Координати"
+
+#: DrGeoCore-Presenter-Builder,DrGPointIntersectionBuilder_class>>description
+msgid "Intersection(s) of two curves."
+msgstr "Перетин двох кіл."
+
+#: DrGeoCore-Presenter-Builder,DrGPointIntersectionBuilder_class>>title
+msgid "Intersection"
+msgstr "Перетин"
+
+#: DrGeoCore-Presenter-Builder,DrGPolygonBuilder_class>>description
+msgid "Polygon by n points: last point must be the initial point to terminate."
+msgstr ""
+"Багатокутник за вершинами: для завершення побудови остання вершина має "
+"збігатися з першою."
+
+#: DrGeoCore-Presenter-Builder,DrGPolygonBuilder_class>>title
+msgid "Polygon"
+msgstr "Багатокутник"
+
+#: DrGeoCore-Presenter-Builder,DrGPolygonRegularBuilder_class>>description
+msgid "Regular polygon defined by its center, a vertex and its sides number."
+msgstr ""
+"Правильний багатокутник, визначений за центром, вершиною та кількістю сторін."
+
+#: DrGeoCore-Presenter-Builder,DrGPolygonRegularBuilder_class>>title
+msgid "Regular polygon"
+msgstr "Правильний багатокутник"
+
+#: DrGeoCore-Presenter-Builder,DrGRayBuilder_class>>description
+msgid ""
+"Half-Line defined by two points, the first selected point is the origin."
+msgstr ""
+"Промінь, визначений двома точками. Перша позначена точка є початком променя."
+
+#: DrGeoCore-Presenter-Builder,DrGRayBuilder_class>>title
+msgid "Ray"
+msgstr "Промінь"
+
+#: DrGeoCore-Presenter-Builder,DrGReflectionBuilder_class>>description
+msgid ""
+"Reflexion: select a line and a geometric object. Reflexion axe is the first "
+"selected line."
+msgstr ""
+"Віддзеркалення: виберіть пряму і геометричний об’єкт. Вісь віддзеркалення "
+"має бути позначено першою."
+
+#: DrGeoCore-Presenter-Builder,DrGReflectionBuilder_class>>title
+msgid "Reflection"
+msgstr "Віддзеркалення"
+
+#: DrGeoCore-Presenter-Builder,DrGRotationBuilder_class>>description
+msgid ""
+"Rotation: select a point, a value and a geometric object. The first selected "
+"point is the rotation center."
+msgstr ""
+"Обертання: виберіть точку, значення і геометричний об’єкт. Першою має бути "
+"позначено точку — центр обертання."
+
+#: DrGeoCore-Presenter-Builder,DrGRotationBuilder_class>>title
+msgid "Rotation"
+msgstr "Обертання"
+
+#: DrGeoCore-Presenter-Builder,DrGScriptPlayer_class>>description
+msgid "Insert a Smalltalk script in the drawing area."
+msgstr "Вставити результат роботи сценарію Smalltalk на креслення"
+
+#: DrGeoCore-Presenter-Builder,DrGScriptPlayer_class>>title
+msgid "Use a script"
+msgstr "Використати сценарій"
+
+#: DrGeoCore-Presenter-Builder,DrGScriptPlayer>>description
+msgid "No description, write one in the description method of this script."
+msgstr "Немає опису. Створіть опис у методі description скрипту."
+
+#: DrGeoCore-Presenter-Builder,DrGSegmentBuilder_class>>description
+msgid "Segment defined by two points."
+msgstr "Відрізок за двома точками."
+
+#: DrGeoCore-Presenter-Builder,DrGSegmentBuilder_class>>title
+msgid "Segment"
+msgstr "Відрізок"
+
+#: DrGeoCore-Presenter-Builder,DrGSymmetryBuilder_class>>description
+msgid ""
+"Symmetry: select a point and a geometric object. The first selected point is "
+"the symmetry center."
+msgstr ""
+"Перетворення симетрії: вкажіть точку і геометричний об’єкт. Першою слід "
+"позначити точку — центр симетрії."
+
+#: DrGeoCore-Presenter-Builder,DrGSymmetryBuilder_class>>title
+msgid "Symmetry"
+msgstr "Симетричне відображення"
+
+#: DrGeoCore-Presenter-Builder,DrGTextBuilder_class>>description
+msgid "Free text you can edit and move around."
+msgstr "Довільний текст, який ви можете редагувати і пересувати кресленням."
+
+#: DrGeoCore-Presenter-Builder,DrGTextBuilder_class>>title
+msgid "Text"
+msgstr "Текст"
+
+#: DrGeoCore-Presenter-Builder,DrGTranslationBuilder_class>>description
+msgid "Translation: select a vector and a geometric object."
+msgstr "Паралельне перенесення: виберіть вектор і геометричний об’єкт."
+
+#: DrGeoCore-Presenter-Builder,DrGTranslationBuilder_class>>title
+msgid "Translation"
+msgstr "Паралельне перенесення"
+
+#: DrGeoCore-Presenter-Builder,DrGValueBuilder_class>>description
+msgid "Distance between objects, curve length, free value."
+msgstr "Відстань між об’єктами, довжина кривої, довільне значення."
+
+#: DrGeoCore-Presenter-Builder,DrGValueBuilder_class>>title
+msgid "Distance, length, value"
+msgstr "Відстань, довжина, значення"
+
+#: DrGeoCore-Presenter-Builder,DrGVectorBuilder_class>>description
+msgid "Vector defined by two points."
+msgstr "Вектор за двома точками."
+
+#: DrGeoCore-Presenter-Builder,DrGVectorBuilder_class>>title
+msgid "Vector"
+msgstr "Вектор"
+
+#: DrGeoCore-Presenter-Tool,DrGAnimateTool_class>>description
+msgid "Select a free point on a curve to animate it."
+msgstr "Виберіть на кривій довільну точку, щоб програма виконала її анімацію."
+
+#: DrGeoCore-Presenter-Tool,DrGAnimateTool_class>>title,DrGMinimalControlsManager>>mainMenu
+msgid "Animate"
+msgstr "Анімація"
+
+#: DrGeoCore-Presenter-Tool,DrGDeleteTool_class>>description
+msgid "Erase an object and all its depedencies."
+msgstr "Вилучити об’єкт і всі залежні від нього об’єкти."
+
+#: DrGeoCore-Presenter-Tool,DrGDeleteTool_class>>title
+msgid "Eraser"
+msgstr "Гумка"
+
+#: DrGeoCore-Presenter-Tool,DrGFlyPointBuildToolState>>handleMouseAt:
+msgid "This intersection"
+msgstr "Цей перетин"
+
+#: DrGeoCore-Presenter-Tool,DrGMutatorToolStateDragged>>handleMouseAt:
+msgid "Change as a free point on the plane."
+msgstr "Є довільною точкою на площині."
+
+#: DrGeoCore-Presenter-Tool,DrGMutatorToolStateDragged>>handleMouseAt:
+msgid "Change as a free point on this curve."
+msgstr "Є довільною точкою на цій кривій."
+
+#: DrGeoCore-Presenter-Tool,DrGMutatorToolStateDragged>>handleMouseAt:
+msgid "Change as this intersection."
+msgstr "Є цим перетином."
+
+#: DrGeoCore-Presenter-Tool,DrGPropertyTool_class>>description
+msgid "Edit an item's property"
+msgstr "Змінити властивість елемента"
+
+#: DrGeoCore-Presenter-Tool,DrGPropertyTool_class>>title
+msgid "Property"
+msgstr "Властивість"
+
+#: DrGeoCore-Presenter-Tool,DrGSelectTool_class>>description
+msgid "Select and move an object."
+msgstr "Позначити і пересунути об’єкт."
+
+#: DrGeoCore-Presenter-Tool,DrGSelectTool_class>>title
+msgid "Select and Move"
+msgstr "Позначити і пересунути"
+
+#: DrGeoCore-Presenter-Tool,DrGSelectToolStateDragged>>handleStillPress:
+msgid "Select a point to merge with"
+msgstr "Позначте точку для об’єднання"
+
+#: DrGeoCore-Presenter-Tool,DrGSelectToolStateNeutral>>handleShiftKeyMouseAt:
+msgid "Drag this point to change its nature."
+msgstr "Перетягніть точку, щоб змінити її прив’язку."
+
+#: DrGeoCore-Presenter-Tool,DrGSelectToolStateNeutral>>handleShiftKeyMouseAt:
+msgid ""
+"Pressing down the [Shift] key you can drag and change the nature of free "
+"point or intersection point."
+msgstr ""
+"За допомогою натискання і утримування натисненою клавіші Shift ви можете "
+"перетягувати і змінювати прив’язку довільної точки або точки перетину."
+
+#: DrGeoCore-Presenter-Tool,DrGSelectToolStateNeutral>>handleShiftKeyMouseAt:
+msgid "Several objects can be selected. Please, select one clicking the mouse."
+msgstr ""
+"Можна позначити декілька об’єктів. Будь ласка, позначте хоч один клацанням "
+"лівою кнопкою миші."
+
+#: DrGeoCore-Presenter-Tool,DrGStyleTool_class>>description
+msgid "Edit an object style."
+msgstr "Змінити стиль об’єкта."
+
+#: DrGeoCore-Presenter-Tool,DrGStyleTool_class>>title
+msgid "Edit Style"
+msgstr "Змінити стиль"
+
+#: DrGeoCore-Presenter-Tool,DrGTool>>chooseMorph:
+msgid "Select an object"
+msgstr "Виберіть об’єкт"
+
+#: DrGeoCore-Presenter-Tool,DrGToolState>>handleMouseAt:
+msgid "Several objects can be selected. Please, choose one."
+msgstr "Позначено декілька об’єктів. Будь ласка, виберіть один з них."
+
+#: DrGeoCore-System,DrGPlatform>>arcPreferences,DrGPlatform>>circlePreferences,DrGPlatform>>linePreferences,DrGPlatform>>locusPreferences,DrGPlatform>>pointPreferences,DrGPlatform>>polygonPreferences,DrGPlatform>>rayPreferences,DrGPlatform>>segmentPreferences,DrGPlatform>>textPreferences,DrGPlatform>>valuePreferences,DrGPlatform>>vectorPreferences,DrGStyle>>colorWidget
+msgid "Colour"
+msgstr "Колір"
+
+#: DrGeoCore-System,DrGPlatform>>arcPreferences
+msgid "arc"
+msgstr "дуга"
+
+#: DrGeoCore-System,DrGPlatform>>circlePreferences
+msgid "circle"
+msgstr "коло"
+
+#: DrGeoCore-System,DrGPlatform>>linePreferences
+msgid "line"
+msgstr "ghzvf"
+
+#: DrGeoCore-System,DrGPlatform>>locusPreferences
+msgid "locus"
+msgstr "ГМТ"
+
+#: DrGeoCore-System,DrGPlatform>>miscPreferences
+msgid "Autoname new object"
+msgstr "Автоматична назва нового об'єкта"
+
+#: DrGeoCore-System,DrGPlatform>>miscPreferences
+msgid ""
+"Path for user created resources as sketches, Smalltalk sketches, exported "
+"image. An empty path locates these resources in the Dr. Geo application "
+"folder. Relative path accepted, home/user directory is then prepended"
+msgstr ""
+"Шлях до створених користувачем ресурсів, зокрема ескізів, ескізів Smalltalk, "
+"експортованого зображення. Якщо вказати порожжній шлях, ресурси "
+"зберігатимуться у теці програми Dr. Geo. Можна вказувати відносні шляхи. До "
+"таких шляхів буде дописано каталог home/користувач"
+
+#: DrGeoCore-System,DrGPlatform>>miscPreferences
+msgid "miscellaneous"
+msgstr "різне"
+
+#: DrGeoCore-System,DrGPlatform>>pointPreferences,DrGPointStyle>>shapeWidget
+msgid "Shape"
+msgstr "Форма"
+
+#: DrGeoCore-System,DrGPlatform>>pointPreferences,DrGPointStyle>>sizeWidget
+msgid "Size"
+msgstr "Розмір"
+
+#: DrGeoCore-System,DrGPlatform>>pointPreferences
+msgid "point"
+msgstr "точка"
+
+#: DrGeoCore-System,DrGPlatform>>polygonPreferences
+msgid "polygon"
+msgstr "багатокутник"
+
+#: DrGeoCore-System,DrGPlatform>>programmingPreferences
+msgid "Code completion on"
+msgstr "Доповнення коду на"
+
+#: DrGeoCore-System,DrGPlatform>>programmingPreferences
+msgid "Full debugger when executing Smalltalk sketch."
+msgstr "Повна діагностика, коли виконуємо ескіз Smalltalk."
+
+#: DrGeoCore-System,DrGPlatform>>programmingPreferences
+msgid "programming"
+msgstr "програмування"
+
+#: DrGeoCore-System,DrGPlatform>>rayPreferences
+msgid "ray"
+msgstr "промінь"
+
+#: DrGeoCore-System,DrGPlatform>>segmentPreferences,DrGSegmentStyle>>markWidget
+msgid "Mark"
+msgstr "Позначити"
+
+#: DrGeoCore-System,DrGPlatform>>segmentPreferences
+msgid "segment"
+msgstr "відрізок"
+
+#: DrGeoCore-System,DrGPlatform>>textPreferences,DrGTextStyle>>backgroundWidget
+msgid "Background"
+msgstr "Тло"
+
+#: DrGeoCore-System,DrGPlatform>>textPreferences,DrGTextStyle>>borderWidget
+msgid "Border"
+msgstr "Рамка"
+
+#: DrGeoCore-System,DrGPlatform>>textPreferences
+msgid "text"
+msgstr "текст"
+
+#: DrGeoCore-System,DrGPlatform>>valuePreferences
+msgid "Number of decimal"
+msgstr "Кількість цифр"
+
+#: DrGeoCore-System,DrGPlatform>>valuePreferences
+msgid "value"
+msgstr "значення"
+
+#: DrGeoCore-System,DrGPlatform>>vectorPreferences
+msgid "vector"
+msgstr "вектор"
+
+#: DrGeoCore-View,DrGAbstractControlsManager>>animate1ButtonData
+msgid "Animate at speed 1."
+msgstr "Анімація на швидкості 1."
+
+#: DrGeoCore-View,DrGAbstractControlsManager>>animate1ButtonData
+msgid "Animate x1"
+msgstr "Анімація x1"
+
+#: DrGeoCore-View,DrGAbstractControlsManager>>animate2ButtonData
+msgid "Animate at speed 2."
+msgstr "Анімація на швидкості 2."
+
+#: DrGeoCore-View,DrGAbstractControlsManager>>animate2ButtonData
+msgid "Animate x2"
+msgstr "Анімація x2"
+
+#: DrGeoCore-View,DrGAbstractControlsManager>>animate3ButtonData
+msgid "Animate at speed 3."
+msgstr "Анімація на швидкості 3."
+
+#: DrGeoCore-View,DrGAbstractControlsManager>>animate3ButtonData
+msgid "Animate x3"
+msgstr "Анімація x3"
+
+#: DrGeoCore-View,DrGAbstractControlsManager>>animate4ButtonData
+msgid "Animate at speed 4."
+msgstr "Анімація на швидкості 4."
+
+#: DrGeoCore-View,DrGAbstractControlsManager>>animate4ButtonData
+msgid "Animate x4"
+msgstr "Анімація x4"
+
+#: DrGeoCore-View,DrGAbstractControlsManager>>axesButtonData
+msgid "Show or hide the ox and oy axes."
+msgstr "Показати або приховати вісі ox і oy."
+
+#: DrGeoCore-View,DrGAbstractControlsManager>>exportImageButtonData
+msgid "Export this sketch as SVG image."
+msgstr "Експортувати цей ескіз як зображення SVG."
+
+#: DrGeoCore-View,DrGAbstractControlsManager>>exportImageButtonData
+msgid "Save as image"
+msgstr "Зберегти як зображення"
+
+#: DrGeoCore-View,DrGAbstractControlsManager>>gridButtonData
+msgid "Show or hide grid."
+msgstr "Показати або сховати сітку."
+
+#: DrGeoCore-View,DrGAbstractControlsManager>>keepButtonData
+msgid "Keep this sketch permanently."
+msgstr "Зберегти цей ескіз на тривалій основі."
+
+#: DrGeoCore-View,DrGAbstractControlsManager>>keepButtonData
+msgid "Save"
+msgstr "Зберегти"
+
+#: DrGeoCore-View,DrGAbstractControlsManager>>macroDeleteButtonData
+msgid "Delete a macro-construction from the registry."
+msgstr "Вилучити макропобудову зі списку."
+
+#: DrGeoCore-View,DrGAbstractControlsManager>>macroDeleteButtonData
+msgid "Delete macro"
+msgstr "Вилучити макрос"
+
+#: DrGeoCore-View,DrGAbstractControlsManager>>magneticGridButtonData
+msgid "Snap to grid."
+msgstr "Чіплятися до сітки."
+
+#: DrGeoCore-View,DrGAbstractControlsManager>>menuButtonData
+msgid "An unobtrusive menu with all Dr. Geo tools."
+msgstr "Зручне меню з усіма інструментами Dr. Geo."
+
+#: DrGeoCore-View,DrGAbstractControlsManager>>menuButtonData
+msgid "Menu"
+msgstr "Меню"
+
+#: DrGeoCore-View,DrGAbstractControlsManager>>multipleModeButtonData
+msgid ""
+"Toggle between the build of several geometric objects and the build of one "
+"geometric object then move it."
+msgstr ""
+"Перемикач між режимами побудови декількох геометричних об’єктів і побудовою "
+"одного геометричного об’єкта при пересуванні."
+
+#: DrGeoCore-View,DrGAbstractControlsManager>>newButtonData
+msgid "New"
+msgstr "Створити"
+
+#: DrGeoCore-View,DrGAbstractControlsManager>>newButtonData
+msgid "Open a new blank sketch."
+msgstr "Відкрити порожнє креслення."
+
+#: DrGeoCore-View,DrGAbstractControlsManager>>openButtonData
+msgid "Open"
+msgstr "Відкрити"
+
+#: DrGeoCore-View,DrGAbstractControlsManager>>openButtonData
+msgid "Open a sketch."
+msgstr "Відкрити креслення."
+
+#: DrGeoCore-View,DrGAbstractControlsManager>>redoButtonData
+msgid "Redo"
+msgstr "Повторити"
+
+#: DrGeoCore-View,DrGAbstractControlsManager>>redoButtonData
+msgid "Redo last action."
+msgstr "Повторити останню дію."
+
+#: DrGeoCore-View,DrGAbstractControlsManager>>scriptCreateButtonData
+msgid "Create a Smalltalk script."
+msgstr "Створити скрипт Smalltalk."
+
+#: DrGeoCore-View,DrGAbstractControlsManager>>scriptCreateButtonData
+msgid "Create a script"
+msgstr "Створити скрипт"
+
+#: DrGeoCore-View,DrGAbstractControlsManager>>scriptEditButtonData
+msgid "Edit a Smalltalk script."
+msgstr "Редагувати скрипт Smalltalk."
+
+#: DrGeoCore-View,DrGAbstractControlsManager>>scriptEditButtonData
+msgid "Edit a script"
+msgstr "Змінити сценарій"
+
+#: DrGeoCore-View,DrGAbstractControlsManager>>stylerFor:
+msgid "Edit style"
+msgstr "Змінити стиль"
+
+#: DrGeoCore-View,DrGAbstractControlsManager>>treeButtonData
+msgid "Construction tree"
+msgstr "Ієрархія побудови"
+
+#: DrGeoCore-View,DrGAbstractControlsManager>>treeButtonData
+msgid "The hierarchy tree presenting the visible constructed items."
+msgstr "Ієрархія з усіма видимими елементами побудови."
+
+#: DrGeoCore-View,DrGAbstractControlsManager>>undoButtonData
+msgid "Undo"
+msgstr "Вернути"
+
+#: DrGeoCore-View,DrGAbstractControlsManager>>undoButtonData
+msgid "Undo last action"
+msgstr "Скасувати останню дію"
+
+#: DrGeoCore-View,DrGAbstractControlsManager>>wheelXButtonData
+msgid "A wheel to move horizontally the sketch."
+msgstr "Коліщатко для горизонтального пересування ескіза."
+
+#: DrGeoCore-View,DrGAbstractControlsManager>>wheelXButtonData
+msgid "Horizontal wheel"
+msgstr "Горизонтальне коліщатко"
+
+#: DrGeoCore-View,DrGAbstractControlsManager>>wheelYButtonData
+msgid "A wheel to move vertically the sketch."
+msgstr "Коліщатко для вертикального пересування ескіза."
+
+#: DrGeoCore-View,DrGAbstractControlsManager>>wheelYButtonData
+msgid "Vertical wheel"
+msgstr "Вертикальне колішатко"
+
+#: DrGeoCore-View,DrGAbstractControlsManager>>wheelZButtonData
+msgid "A wheel to zoom in, zoom out the sketch."
+msgstr "Коліщатко для збільшення і зменшення масштабу ескіза."
+
+#: DrGeoCore-View,DrGAbstractControlsManager>>wheelZButtonData
+msgid "Zoom wheel"
+msgstr "Коліщатко масштабування"
+
+#: DrGeoCore-View,DrGMinimalControlsManager>>editMenu
+msgid "Copy"
+msgstr "Копіювати"
+
+#: DrGeoCore-View,DrGMinimalControlsManager>>editMenu
+msgid "Copy with transparency"
+msgstr "Копіювати з прозорістю"
+
+#: DrGeoCore-View,DrGMinimalControlsManager>>mainMenu
+msgid "Animate a free point on curve."
+msgstr "Анімація довільної точки на кривій."
+
+#: DrGeoCore-View,DrGMinimalControlsManager>>mainMenu
+msgid ""
+"Create different curve types: line, half-line, segment, vector, circle..."
+msgstr "Створити лінії різних типів: пряму, промінь, відрізок, вектор, коло…"
+
+#: DrGeoCore-View,DrGMinimalControlsManager>>mainMenu
+msgid "Create points: free, on curve, intersection or middle point."
+msgstr "Створити точки: довільні, на кривій, точки перетину або середні точки."
+
+#: DrGeoCore-View,DrGMinimalControlsManager>>mainMenu
+msgid ""
+"Create several numeric objects: free value, distance, length, angle, "
+"coordinates, equation and text."
+msgstr ""
+"Створити числові об’єкти: довільне значення, відстань, довжину, кут, "
+"координати, рівняння і текст."
+
+#: DrGeoCore-View,DrGMinimalControlsManager>>mainMenu
+msgid "Edit"
+msgstr "Зміни"
+
+#: DrGeoCore-View,DrGMinimalControlsManager>>mainMenu
+msgid "Erase or edit style and properties of items."
+msgstr "Витерти або змінити стиль і властивості елементів."
+
+#: DrGeoCore-View,DrGMinimalControlsManager>>mainMenu
+msgid "File"
+msgstr "Файл"
+
+#: DrGeoCore-View,DrGMinimalControlsManager>>mainMenu
+msgid "Lines"
+msgstr "Лінії"
+
+#: DrGeoCore-View,DrGMinimalControlsManager>>mainMenu
+msgid "Load, save or export Dr. Geo figure."
+msgstr "Завантажити, зберегти або експортувати креслення Dr. Geo."
+
+#: DrGeoCore-View,DrGMinimalControlsManager>>mainMenu
+msgid "Numerics & Text"
+msgstr "Числа і текст"
+
+#: DrGeoCore-View,DrGMinimalControlsManager>>mainMenu
+msgid "Points"
+msgstr "Точки"
+
+#: DrGeoCore-View,DrGMinimalControlsManager>>mainMenu
+msgid ""
+"Transform an object with a geometric transformation: symmetry, reflexion, "
+"rotation, translation or homothety (scale)."
+msgstr ""
+"Геометрично перетворити об’єкт: відобразити симетрично, віддзеркалити, "
+"обернути, перенести паралельно або виконати гомотетію (масштабування)."
+
+#: DrGeoCore-View,DrGMinimalControlsManager>>mainMenu
+msgid "Transformations"
+msgstr "Перетворення"
+
+#: DrGeoCore-View,DrGeoMiniView>>label
+msgid "A Dr. Geo sketch"
+msgstr "Ескіз Dr. Geo"
+
+#~ msgid "I am the description of this script. Please edit me."
+#~ msgstr "Це опис скрипту. Змініть його."
+
+#~ msgid "A script"
+#~ msgstr "Скрипт"
+
+#~ msgid "Name this value"
+#~ msgstr "Встановити назву для цього значення"
+
+#~ msgid "Rename this value"
+#~ msgstr "Перейменувати це значення"
+
+#~ msgid "Construct a macro-construction with input and output items."
+#~ msgstr "Виконати макропобудову за вхідними і вихідними елементами."
+
+#~ msgid "Build macro"
+#~ msgstr "Побудувати макрос"
+
+#~ msgid "Input and output items don't match"
+#~ msgstr "Вхідний і вихідний елементи не збігаються."
+
+#~ msgid "Please, enter a proper title and description"
+#~ msgstr "Будь ласка, вкажіть належний заголовок і опис"
+
+#~ msgid ""
+#~ "Execute a pre-built macro-construction on selected input items. To edit a "
+#~ "macro description, edit its text and apply with the keys [alt/ctrl]+s."
+#~ msgstr ""
+#~ "Виконати попередньо створену макропобудову для позначених вхідних "
+#~ "елементів. Для редагування опису макроса внесіть зміни до його тексту і "
+#~ "застосуйте зміни натисканням комбінації клавіш [Alt/Ctrl]+S."
+
+#~ msgid "Execute/edit macro"
+#~ msgstr "Виконати/Редагувати макрос"
+
+#~ msgid "Keep this sketch under a different name."
+#~ msgstr "Зберегти цей ескіз під іншою назвою."
+
+#~ msgid "Open at..."
+#~ msgstr "Відкрити у…"
+
+#~ msgid "Save as..."
+#~ msgstr "Зберегти як…"
+
+#~ msgid ""
+#~ "Build or execute macro-construction. A macro is a construction template "
+#~ "you can apply to items in the sketch area."
+#~ msgstr ""
+#~ "Виконати макропобудову. Макрос — це шаблон побудови, який можна "
+#~ "застосовувати до елементів на кресленні."
+
+#~ msgid "Macro-construction"
+#~ msgstr "Макропобудова"
+
+#~ msgid "Script"
+#~ msgstr "Скрипт"
+
+#~ msgid "Script: use, edit or create script to plug in the sketch."
+#~ msgstr ""
+#~ "Скрипт: використання, редагування та створення скрипту, вбудованого до "
+#~ "ескіза."
+
+#~ msgid "Execute the code up to the cursor position."
+#~ msgstr "Виконати код до позиції курсора."
+
+#~ msgid "Execute the current message and go to the next message."
+#~ msgstr "Виконати поточне повідомлення і перейти до наступного повідомлення."
+
+#~ msgid "Restart"
+#~ msgstr "Перезапустити"
+
+#~ msgid "Restart the step by step execution from its start."
+#~ msgstr "Перезапустити покрокове виконання з початку."
+
+#~ msgid "Run to Cursor"
+#~ msgstr "Виконати до курсора"
+
+#~ msgid "Step"
+#~ msgstr "Крок"
+
+#~ msgid "Step into"
+#~ msgstr "Увійти"
+
+#~ msgid "Step into a block."
+#~ msgstr "Крок у блок."
+
+#~ msgid "Cancel"
+#~ msgstr "Скасувати"
+
+#~ msgid "Examples"
+#~ msgstr "Приклади"
+
+#~ msgid "My Sketches"
+#~ msgstr "Ваші ескізи"
+
+#~ msgid "Angle"
+#~ msgstr "Кут"
+
+#~ msgid "Any type"
+#~ msgstr "Будь-який тип"
+
+#~ msgid "Direction"
+#~ msgstr "Напрямок"
+
+#~ msgid "Value"
+#~ msgstr "Значення"
+
+#~ msgid "Remove this script argument."
+#~ msgstr "Вилучити цей аргумент скрипту."
+
+#~ msgid "Add an argument to this script."
+#~ msgstr "Додати аргумент до цього скрипту."
+
+#~ msgid "Add argument"
+#~ msgstr "Додати аргумент"
+
+#~ msgid "Build"
+#~ msgstr "Зібрати"
+
+#~ msgid "Build a script with these settings."
+#~ msgstr "Побудувати скрипт з цими параметрами."
+
+#~ msgid ""
+#~ "A description of the script. To help the user, describe carefully what "
+#~ "the script does and the input arguments to select to use it."
+#~ msgstr ""
+#~ "Опис скрипту. Щоб допомогти користувачеві, докладно опишіть призначення "
+#~ "скрипту та вхідні параметри для його використання."
+
+#~ msgid "Arguments"
+#~ msgstr "Аргументи"
+
+#~ msgid "Description"
+#~ msgstr "Опис"
+
+#~ msgid "The name of the script."
+#~ msgstr "Назва скрипту."
+
+#~ msgid "Browse my collection of Smalltalk sketches."
+#~ msgstr "Навігація збіркою ескізів Smalltalk."
+
+#~ msgid "Delete"
+#~ msgstr "Вилучити"
+
+#~ msgid "Delete permanently this Smalltalk Sketch from disk."
+#~ msgstr "Остаточно вилучити цей ескіз Smalltalk з диска."
+
+#~ msgid "Code"
+#~ msgstr "Код"
+
+#~ msgid "Select a Smalltalk sketch"
+#~ msgstr "Виберіть ескіз Smalltalk"
+
+#~ msgid ""
+#~ "Too many errors. Fix it!\n"
+#~ "Sketch stopped"
+#~ msgstr ""
+#~ "Забагато помилок. Виправте!\n"
+#~ "Обробку ескіза зупинено"
+
+#~ msgid "Debug the Smalltalk sketch."
+#~ msgstr "Діагностика ескіза Smalltalk."
+
+#~ msgid "Dr. Geo tutorial"
+#~ msgstr "Підручник з Dr. Geo"
+
+#~ msgid "Edit a Smalltalk sketch."
+#~ msgstr "Редагувати ескіз Smalltalk."
+
+#~ msgid "Play the Smalltalk sketch."
+#~ msgstr "Відтворити ескіз Smalltalk."
+
+#~ msgid "Save this Smalltalk sketch."
+#~ msgstr "Зберегти цей ескіз Smalltalk."
+
+#~ msgid "Stop the execution of the Smalltalk sketch."
+#~ msgstr "Припинити виконання ескіза Smalltalk."
+
+#~ msgid "Pause the Smalltalk sketch."
+#~ msgstr "Призупинити виконання ескіза Smalltalk."
+
+#~ msgid "Resume the Smalltalk sketch."
+#~ msgstr "Відновити виконання ескіза Smalltalk."
+
+#~ msgid "Build a macro-construction"
+#~ msgstr "Виконати макропобудову"
+
+#~ msgid ""
+#~ "To build a macro-construction,\n"
+#~ "\n"
+#~ " 1. First select the input paramaters,\n"
+#~ " 2. Next select the output parameters,\n"
+#~ " 3. Next chose a name and a description,\n"
+#~ " 4. Last apply the selection."
+#~ msgstr ""
+#~ "Щоб побудувати макропобудову,\n"
+#~ "\n"
+#~ " 1. Виберіть вхідні параметри,\n"
+#~ " 2. Виберіть вихідні параметри,\n"
+#~ " 3. Виберіть назву і опис,\n"
+#~ " 4. Застосуйте вибране."
+
+#~ msgid "Description:"
+#~ msgstr "Опис:"
+
+#~ msgid "Give a name and a description"
+#~ msgstr "Вкажіть назву і опис"
+
+#~ msgid "Title:"
+#~ msgstr "Заголовок:"
+
+#~ msgid "Select input parameters"
+#~ msgstr "Виберіть початкові параметри"
+
+#~ msgid "Select output parameters"
+#~ msgstr "Виберіть параметри виведення даних"
+
+#~ msgid "Execute a macro-construction"
+#~ msgstr "Виконати макропобудову"
+
+#~ msgid ""
+#~ "To execute a macro-construction,\n"
+#~ "\n"
+#~ " 1. First select a macro-construction from the list,\n"
+#~ " 2. Select items on the figure. Only items relevant\n"
+#~ " to the selected macro-construction are selectable.\n"
+#~ " Once enough items are selected, the macro is\n"
+#~ " automaticly executed.\n"
+#~ " To start press the 'next' button."
+#~ msgstr ""
+#~ "Щоб виконати макропобудову, скористайтеся наступними крокамии.\n"
+#~ "\n"
+#~ " 1. Виберіть макропобудову зі списку.\n"
+#~ " 2. Виберіть елементи на рисунку. Можна вибрати лише елементи, які "
+#~ "відповідають вибраній макропобудові.\n"
+#~ " Щойно буде вибрано достатньо елементів, макрос буде виконано "
+#~ "автоматично.\n"
+#~ "Щоб розпочати виконання, натисніть кнопку «Далі»."
+
+#~ msgid "Select a macro-construction then the figure items"
+#~ msgstr "Виберіть макропобудову, потім елементи побудови"
+
+#~ msgid ""
+#~ "To use a script,\n"
+#~ "\n"
+#~ " 1. First select a script from the list,\n"
+#~ " 2. Select items in the sketch,\n"
+#~ " 3. Click somewhere in the background. \n"
+#~ " Once enough items are selected, the script is\n"
+#~ " inserted in the sketch, at the user selected position.\n"
+#~ " To start press the 'next' button."
+#~ msgstr ""
+#~ "Щоб скористатися скриптом, виконайте наступні кроки.\n"
+#~ "\n"
+#~ " 1. Виберіть скрипт зі списку.\n"
+#~ " 2. Виберіть елементи в ескізі.\n"
+#~ " 3. Клацніть десь на тлі рисунка. \n"
+#~ "Щойно буде позначено достатньо елементів, програма вставить скрипт до "
+#~ "ескізу у вказаній користувачем позиції.\n"
+#~ "Щоб розпочати виконання, натисніть кнопку «Далі»."
+
+#~ msgid "Use a script in the sketch"
+#~ msgstr "Використати скрипт у ескізі"
+
+#~ msgid "Script name"
+#~ msgstr "Назва скрипту"
+
+#~ msgid "Select a script then items in the sketch"
+#~ msgstr "Виберіть скрипт, а потім об’єкти на ескізі"
+
+#~ msgid "The arguments accepted by this script."
+#~ msgstr "Аргументи, які приймає цей скрипт."

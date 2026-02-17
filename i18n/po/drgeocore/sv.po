@@ -1,0 +1,1484 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Pharo\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-02-17 18:57-0000\n"
+"PO-Revision-Date: 2022-11-17 14:42+0000\n"
+"Last-Translator: Kristoffer Grundström <Unknown>\n"
+"Language-Team: \n"
+"Language: sv\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2024-05-27 04:37+0000\n"
+"X-Generator: Launchpad (build 0e1f616671af724398db43b36ddfb3ed1f2682ec)\n"
+"X-Pharo-Domain: DrGeoII\n"
+"X-Pharo-SystemVersion: Pharo1.3 of 5 July 2011 update 13267\n"
+
+#: DrGeoCore-File,DrGeoXml>>parseFigureFrom:
+msgid "no name"
+msgstr "inget namn"
+
+#: DrGeoCore-Model-Item,DrGAngle3ptsItem>>adaptiveDescriptiveName
+msgid "This geometric angle %1"
+msgstr "Den här geometriska vinkeln %1"
+
+#: DrGeoCore-Model-Item,DrGAngleBisector3ptsItem>>adaptiveDescriptiveName,DrGLineAngleBisectorItem>>adaptiveDescriptiveName
+msgid "This angle bisector %1"
+msgstr "Den här vinkelhalveringslinjen %1"
+
+#: DrGeoCore-Model-Item,DrGAngleItem>>adaptiveDescriptiveName
+msgid "This oriented angle %1"
+msgstr "Den här orienterade vinkeln %1"
+
+#: DrGeoCore-Model-Item,DrGArcItem>>adaptiveDescriptiveName
+msgid "This Arc Circle %1"
+msgstr "Den här bågens cirkel %1"
+
+#: DrGeoCore-Model-Item,DrGBitmapItem>>adaptiveDescriptiveName
+msgid "This picture"
+msgstr "Den här bilden"
+
+#: DrGeoCore-Model-Item,DrGCircleItem>>adaptiveDescriptiveName
+msgid "This circle %1"
+msgstr "Den här cirkeln %1"
+
+#: DrGeoCore-Model-Item,DrGCompositeItem>>adaptiveDescriptiveName
+msgid "This composite object %1"
+msgstr "Det här sammansatta objektet %1"
+
+#: DrGeoCore-Model-Item,DrGEquationItem>>adaptiveDescriptiveName
+msgid "This equation %1"
+msgstr "Den här ekvationen %1"
+
+#: DrGeoCore-Model-Item,DrGEquationItem>>printOn:
+msgid "Equation"
+msgstr "Ekvation"
+
+#: DrGeoCore-Model-Item,DrGLineItem>>adaptiveDescriptiveName
+msgid "This line %1"
+msgstr "Den här raden %1"
+
+#: DrGeoCore-Model-Item,DrGLineParallelItem>>adaptiveDescriptiveName
+msgid "This parallel line %1"
+msgstr "Den här parallella raden %1"
+
+#: DrGeoCore-Model-Item,DrGLinePerpendicularBisector2ptsItem>>adaptiveDescriptiveName,DrGPerpendicularBisectorItem>>adaptiveDescriptiveName
+msgid "This perpendicular bisector %1"
+msgstr ""
+
+#: DrGeoCore-Model-Item,DrGLinePerpendicularItem>>adaptiveDescriptiveName
+msgid "This perpendicular line %1"
+msgstr "Den här vinkelräta linjen %1"
+
+#: DrGeoCore-Model-Item,DrGLocus2ptsItem>>adaptiveDescriptiveName
+msgid "This locus %1"
+msgstr "Det här stället %1"
+
+#: DrGeoCore-Model-Item,DrGMathItem>>adaptiveDescriptiveName
+msgid "This math item %1"
+msgstr "Det är matte-föremålet %1"
+
+#: DrGeoCore-Model-Item,DrGPointCoordinateItem>>editPropertyIn:,DrGPointFreeItem>>editPropertyIn:
+msgid "Edit the coordinates"
+msgstr "Redigera koordinaterna"
+
+#: DrGeoCore-Model-Item,DrGPointItem>>adaptiveDescriptiveName
+msgid "This point %1"
+msgstr "Den här punkten %1"
+
+#: DrGeoCore-Model-Item,DrGPointOncurveItem>>editPropertyIn:
+msgid "Edit this curvilinear abscissa in [0;1]"
+msgstr ""
+
+#: DrGeoCore-Model-Item,DrGPolygonItem>>adaptiveDescriptiveName
+msgid "This polygon %1"
+msgstr "Den här polygonen %1"
+
+#: DrGeoCore-Model-Item,DrGPolygonItem>>adaptiveDescriptiveName
+msgid "This quadrilateral %1"
+msgstr "Den här fyrhörningen %1"
+
+#: DrGeoCore-Model-Item,DrGPolygonItem>>adaptiveDescriptiveName
+msgid "This triangle %1"
+msgstr "Den här triangeln %1"
+
+#: DrGeoCore-Model-Item,DrGPolygonItem>>printOn:
+msgid " edges="
+msgstr " kanter="
+
+#: DrGeoCore-Model-Item,DrGRayItem>>adaptiveDescriptiveName
+msgid "This half-line %1"
+msgstr "Den här halv-raden %1"
+
+#: DrGeoCore-Model-Item,DrGSegmentItem>>adaptiveDescriptiveName
+msgid "This segment %1"
+msgstr "Det här segmentet %1"
+
+#: DrGeoCore-Model-Item,DrGTextItem>>adaptiveDescriptiveName
+msgid "This text"
+msgstr "Den här texten"
+
+#: DrGeoCore-Model-Item,DrGTextItem>>editPropertyIn:
+msgid "Edit this text"
+msgstr "Redigera den här texten"
+
+#: DrGeoCore-Model-Item,DrGTextItem>>initialize
+msgid "Edit me"
+msgstr "Redigera mig"
+
+#: DrGeoCore-Model-Item,DrGValueArclengthItem>>adaptiveDescriptiveName
+msgid "This arc length %1"
+msgstr "Den här bågens längd %1"
+
+#: DrGeoCore-Model-Item,DrGValueCircleperimeterItem>>adaptiveDescriptiveName
+msgid "This circle perimeter %1"
+msgstr "Den här cirkelns omkrets %1"
+
+#: DrGeoCore-Model-Item,DrGValueDistance2ptsItem>>adaptiveDescriptiveName
+msgid "This distance between two points %1"
+msgstr "Det här avståndet mellan två punkter %1"
+
+#: DrGeoCore-Model-Item,DrGValueDistanceptlineItem>>adaptiveDescriptiveName
+msgid "This point-line distance %1"
+msgstr "Avståndet för den här punkt-linjen %1"
+
+#: DrGeoCore-Model-Item,DrGValueItem>>adaptiveDescriptiveName
+msgid "This value %1"
+msgstr "Det här värdet %1"
+
+#: DrGeoCore-Model-Item,DrGValueItem>>printNameOn:
+msgid "Value "
+msgstr "Värde "
+
+#: DrGeoCore-Model-Item,DrGValuePolygonperimeterItem>>adaptiveDescriptiveName
+msgid "This polygon perimeter %1"
+msgstr "Den här polygonens omkrets %1"
+
+#: DrGeoCore-Model-Item,DrGValuePtabscissaItem>>adaptiveDescriptiveName
+msgid "This point abscissa %1"
+msgstr ""
+
+#: DrGeoCore-Model-Item,DrGValuePtordinateItem>>adaptiveDescriptiveName
+msgid "This point ordinate %1"
+msgstr ""
+
+#: DrGeoCore-Model-Item,DrGValueScriptItem>>adaptiveDescriptiveName
+msgid "This script \"{1}\""
+msgstr "Det här skriptet \"{1}\""
+
+#: DrGeoCore-Model-Item,DrGValueScriptItem>>adaptiveDescriptiveName
+msgid "This script \"{1}\" with argument: %2"
+msgstr "Det här skriptet \"{1}\" med argument: %2"
+
+#: DrGeoCore-Model-Item,DrGValueScriptItem>>adaptiveDescriptiveName
+msgid "This script \"{1}\" with arguments: %2"
+msgstr "Det här skriptet \"{1}\" med argumenten: %2"
+
+#: DrGeoCore-Model-Item,DrGValueScriptItem>>printNameOn:
+msgid "Script "
+msgstr "Skript "
+
+#: DrGeoCore-Model-Item,DrGValueSegmentlengthItem>>adaptiveDescriptiveName
+msgid "This segment length %1"
+msgstr "Det här segmentets längd %1"
+
+#: DrGeoCore-Model-Item,DrGValueSlopeItem>>adaptiveDescriptiveName
+msgid "This line slope %1"
+msgstr "Den här linjens sluttning %1"
+
+#: DrGeoCore-Model-Item,DrGValueValueItem>>editPropertyIn:
+msgid "Edit this value"
+msgstr "Redigera det här värdet"
+
+#: DrGeoCore-Model-Item,DrGValueVectorabscissaItem>>adaptiveDescriptiveName
+msgid "This vector abscissa %1"
+msgstr ""
+
+#: DrGeoCore-Model-Item,DrGValueVectornormItem>>adaptiveDescriptiveName
+msgid "This Vector's norm %1"
+msgstr "Den Vektorn's norm %1"
+
+#: DrGeoCore-Model-Item,DrGValueVectorordinateItem>>adaptiveDescriptiveName
+msgid "This vector ordinate %1"
+msgstr ""
+
+#: DrGeoCore-Model-Item,DrGVectorItem>>adaptiveDescriptiveName
+msgid "This vector %1"
+msgstr "Den här vektorn %1"
+
+#: DrGeoCore-Model-Smalltalk,DrGeoSketch>>canTransform:
+msgid "Only geometric object can be transformed."
+msgstr "Endast geometriska objekt kan omvandlas."
+
+#: DrGeoCore-Model-Style,DrGCurveStyle>>lineWidget
+msgid "Set the style of the line."
+msgstr "Ställ in linjens stil."
+
+#: DrGeoCore-Model-Style,DrGCurveStyle>>lineWidget,DrGPlatform>>arcPreferences,DrGPlatform>>circlePreferences,DrGPlatform>>linePreferences,DrGPlatform>>locusPreferences,DrGPlatform>>polygonPreferences,DrGPlatform>>rayPreferences,DrGPlatform>>segmentPreferences,DrGPlatform>>vectorPreferences
+msgid "Style"
+msgstr "Stil"
+
+#: DrGeoCore-Model-Style,DrGCurveStyle>>thicknessWidget
+msgid "Set the thickness of the line."
+msgstr "Ställ in radens storlek."
+
+#: DrGeoCore-Model-Style,DrGCurveStyle>>thicknessWidget,DrGPlatform>>arcPreferences,DrGPlatform>>circlePreferences,DrGPlatform>>linePreferences,DrGPlatform>>locusPreferences,DrGPlatform>>polygonPreferences,DrGPlatform>>rayPreferences,DrGPlatform>>segmentPreferences,DrGPlatform>>vectorPreferences
+msgid "Thickness"
+msgstr "Tjocklek"
+
+#: DrGeoCore-Model-Style,DrGFilledStyle>>fillWidget,DrGPlatform>>arcPreferences,DrGPlatform>>circlePreferences,DrGPlatform>>polygonPreferences
+msgid "Fill"
+msgstr "Fyll"
+
+#: DrGeoCore-Model-Style,DrGFilledStyle>>fillWidget
+msgid "Toggle to fill the object."
+msgstr "Växla för att fylla objektet."
+
+#: DrGeoCore-Model-Style,DrGFilledStyle>>translucentWidget
+msgid "Toggle the translucency of the object."
+msgstr "Växla genomskinligheten för objektet."
+
+#: DrGeoCore-Model-Style,DrGFilledStyle>>translucentWidget,DrGPlatform>>arcPreferences,DrGPlatform>>circlePreferences,DrGPlatform>>polygonPreferences
+msgid "Translucent"
+msgstr "Genomskinlig"
+
+#: DrGeoCore-Model-Style,DrGFinitCurveStyle>>arrowWidget,DrGPlatform>>arcPreferences,DrGPlatform>>segmentPreferences
+msgid "Arrow"
+msgstr "Pil"
+
+#: DrGeoCore-Model-Style,DrGFinitCurveStyle>>arrowWidget
+msgid "Set arrow(s) to the line."
+msgstr "Ställ in pil(ar) till linjen."
+
+#: DrGeoCore-Model-Style,DrGPointStyle>>shapeWidget
+msgid "Set the shape of the point."
+msgstr "Ställ in storleken för punkten."
+
+#: DrGeoCore-Model-Style,DrGPointStyle>>sizeWidget
+msgid "Set the size of the point."
+msgstr "Ställ in storleken på punkten."
+
+#: DrGeoCore-Model-Style,DrGSegmentStyle>>markWidget
+msgid "Set a mark to the segment."
+msgstr "Ställ in ett märke till segmentet."
+
+#: DrGeoCore-Model-Style,DrGStyle>>colorWidget
+msgid "Set the colour."
+msgstr "Ställ in färgen."
+
+#: DrGeoCore-Model-Style,DrGStyle>>feedbackWidget
+msgid "Feedback"
+msgstr "Återgivning"
+
+#: DrGeoCore-Model-Style,DrGStyle>>feedbackWidget
+msgid ""
+"Toggle to provide feedback and interaction when the mouse cursor is over the "
+"object."
+msgstr ""
+
+#: DrGeoCore-Model-Style,DrGStyle>>hiddenWidget
+msgid "Hide"
+msgstr "Göm"
+
+#: DrGeoCore-Model-Style,DrGStyle>>hiddenWidget
+msgid "Toggle to hide the object."
+msgstr "Växla för att gömma det här objektet."
+
+#: DrGeoCore-Model-Style,DrGStyle>>lockedWidget
+msgid "Lock"
+msgstr "Lås"
+
+#: DrGeoCore-Model-Style,DrGStyle>>lockedWidget
+msgid "Toggle to lock the object to its position."
+msgstr "Växla för att låsa objektet till dess position."
+
+#: DrGeoCore-Model-Style,DrGStyle>>nameWidget
+msgid "Name"
+msgstr "Namn"
+
+#: DrGeoCore-Model-Style,DrGStyle>>nameWidget
+msgid "Rename this object."
+msgstr "Döp om det här objektet."
+
+#: DrGeoCore-Model-Style,DrGTextStyle>>backgroundWidget
+msgid "Set the background colour."
+msgstr "Ställ in bakgrundsfärgen."
+
+#: DrGeoCore-Model-Style,DrGTextStyle>>borderWidget
+msgid "Set the border colour."
+msgstr "Ställ in kantens färg."
+
+#: DrGeoCore-Model-Style,DrGTextStyle>>fontSizeWidget
+msgid "Font size"
+msgstr "Storlek på typsnittet"
+
+#: DrGeoCore-Model-Style,DrGTextStyle>>fontSizeWidget
+msgid "Set the font size."
+msgstr "Ställ in typsnittets storlek."
+
+#: DrGeoCore-Presenter,DrGeo_class>>drgeoInformationString
+msgid ""
+"Dr. Geo is about interactive geometry and programming.\n"
+"{1} - {3}\n"
+"\n"
+"It allows one to create geometric figure plus the interactive manipulation \n"
+"It is usable in teaching situation, in mathematics, physics and\n"
+"programming, with students from primary school to university levels.\n"
+"\n"
+"It is simple and effective with some unique features as Smalltalk scripts \n"
+"and programmed interactive sketches. \n"
+"\n"
+"{2}\n"
+"\n"
+"LICENSE: GPL"
+msgstr ""
+
+#: DrGeoCore-Presenter,DrGeo_class>>drgeoVersion
+msgid "Installed version: "
+msgstr "Installerad version: "
+
+#: DrGeoCore-Presenter,DrGeo_class>>figuresArray
+msgid "Fig. - "
+msgstr "Fig. - "
+
+#: DrGeoCore-Presenter,DrGeo_class>>getMenuIn:at:
+msgid "System menu"
+msgstr "System-meny"
+
+#: DrGeoCore-Presenter,DrGeo_class>>macrosArray
+msgid "Macro - "
+msgstr "Makro - "
+
+#: DrGeoCore-Presenter,DrGeo_class>>preferencesMenu:
+msgid "Dr. Geo Preferences"
+msgstr "Egenskaper för Dr. Geo"
+
+#: DrGeoCore-Presenter,DrGeo_class>>preferencesMenu:,DrGeo_class>>preferencesMenu:,DrGeo_class>>preferencesMenu:,DrGeo_class>>worldMenu:
+msgid "Preferences"
+msgstr ""
+
+#: DrGeoCore-Presenter,DrGeo_class>>preferencesMenu:
+msgid "Settings"
+msgstr "Inställningar"
+
+#: DrGeoCore-Presenter,DrGeo_class>>preferencesMenu:
+msgid "Size of GUI elements"
+msgstr ""
+
+#: DrGeoCore-Presenter,DrGeo_class>>preferencesMenu:
+msgid "Theme"
+msgstr ""
+
+#: DrGeoCore-Presenter,DrGeo_class>>quit
+msgid ""
+"There is unsaved data! \n"
+"Are you sure to quit Dr. Geo environment?"
+msgstr ""
+"Det finns data som inte har sparats! \n"
+"Är du säker på att du vill avsluta Dr. Geo-miljön?"
+
+#: DrGeoCore-Presenter,DrGeo_class>>toolsMenu:
+msgid ""
+"A source code browser to view, edit and save Dr. Geo code. I open the "
+"browser on the DrGeoSketch class you can study to design your own Smalltalk "
+"sketch."
+msgstr ""
+"En bläddrare för källkod för att visa, redigera och spara Dr. Geo-kod. Jag "
+"öppnar bläddraren i DrGeoSketch-klassen som du kan studera och konstruera "
+"din egen Smalltalk-ritning."
+
+#: DrGeoCore-Presenter,DrGeo_class>>toolsMenu:
+msgid ""
+"A tool to browse and to test both system and personal Smalltalk Sketches."
+msgstr ""
+"Ett verktyg för att bläddra och testa både system och personliga Smalltalk-"
+"ritningar."
+
+#: DrGeoCore-Presenter,DrGeo_class>>toolsMenu:
+msgid ""
+"A window used as a scratchpad area where fragments of Cuis-Smalltalk code "
+"can be entered, stored, edited, and evaluated. To edit Smalltalk sketch, use "
+"the Smalltalk Sketch Editor tool above."
+msgstr ""
+
+#: DrGeoCore-Presenter,DrGeo_class>>toolsMenu:
+msgid ""
+"A window used to print information from the code - text output. Any object "
+"receiving the message #print is output in the Transcript: 'hello' print, (k "
+"* 5) print. Use the Transcript class for more elaborated output."
+msgstr ""
+
+#: DrGeoCore-Presenter,DrGeo_class>>toolsMenu:
+msgid "An editor to write and to test new Smalltalk sketch."
+msgstr "En redigerare för att skriva och testa ny Smalltalk-ritning."
+
+#: DrGeoCore-Presenter,DrGeo_class>>toolsMenu:
+msgid "Browse"
+msgstr "Bläddra"
+
+#: DrGeoCore-Presenter,DrGeo_class>>toolsMenu:
+msgid "Browse Smalltalk Sketches"
+msgstr "Bläddra bland Smalltalk-ritningar"
+
+#: DrGeoCore-Presenter,DrGeo_class>>toolsMenu:
+msgid "Edit Smalltalk Sketch"
+msgstr "Redigera Smalltalk-ritningen"
+
+#: DrGeoCore-Presenter,DrGeo_class>>toolsMenu:
+msgid "Open a file"
+msgstr "Öppna en fil"
+
+#: DrGeoCore-Presenter,DrGeo_class>>toolsMenu:
+msgid "Open the filer on your personal sketches collection."
+msgstr "Öppna arkiveraren i din personliga samling av ritningar."
+
+#: DrGeoCore-Presenter,DrGeo_class>>toolsMenu:
+msgid "Save session"
+msgstr "Spara session"
+
+#: DrGeoCore-Presenter,DrGeo_class>>toolsMenu:
+msgid "Save this Dr. Geo session."
+msgstr "Spara denna Dr. Geo-session."
+
+#: DrGeoCore-Presenter,DrGeo_class>>toolsMenu:
+msgid "Smalltalk Sketch Editor"
+msgstr "Ritningsredigeraren Smalltalk"
+
+#: DrGeoCore-Presenter,DrGeo_class>>toolsMenu:
+msgid "System Browser"
+msgstr "Systemutforskare"
+
+#: DrGeoCore-Presenter,DrGeo_class>>toolsMenu:,DrGeo_class>>toolsMenu:,DrGeo_class>>toolsMenu:,DrGeo_class>>toolsMenu:,DrGeo_class>>toolsMenu:,DrGeo_class>>toolsMenu:,DrGeo_class>>toolsMenu:,DrGeo_class>>worldMenu:
+msgid "Tools"
+msgstr "Verktyg"
+
+#: DrGeoCore-Presenter,DrGeo_class>>toolsMenu:
+msgid "Transcript"
+msgstr ""
+
+#: DrGeoCore-Presenter,DrGeo_class>>toolsMenu:
+msgid "Workspace"
+msgstr "Arbetsyta"
+
+#: DrGeoCore-Presenter,DrGeo_class>>worldMenu:
+msgid "About"
+msgstr "Om"
+
+#: DrGeoCore-Presenter,DrGeo_class>>worldMenu:
+msgid "New sketch"
+msgstr "Ny sketch"
+
+#: DrGeoCore-Presenter,DrGeo_class>>worldMenu:
+msgid "Open a sketch"
+msgstr "Öppna en ritning"
+
+#: DrGeoCore-Presenter,DrGeo_class>>worldMenu:
+msgid "Quit"
+msgstr "Avsluta"
+
+#: DrGeoCore-Presenter,DrGeo_class>>worldMenu:
+msgid "Toggle full screen mode"
+msgstr "Växla fullskärmsläge"
+
+#: DrGeoCore-Presenter,DrGeo_class>>worldMenu:
+msgid "Turn full screen mode on when it is off, off when it is on."
+msgstr "Sätt på fullskärmsläge när det är av, och av när det är på."
+
+#: DrGeoCore-Presenter,DrGeo>>axesWording
+msgid "<no> Axes"
+msgstr ""
+
+#: DrGeoCore-Presenter,DrGeo>>axesWording
+msgid "<yes> Axes"
+msgstr ""
+
+#: DrGeoCore-Presenter,DrGeo>>createMultipleModeWording
+msgid "<no> Create Multiple"
+msgstr "<nej> Skapa flera"
+
+#: DrGeoCore-Presenter,DrGeo>>createMultipleModeWording
+msgid "<yes> Create Multiple"
+msgstr "<ja> Skapa flera"
+
+#: DrGeoCore-Presenter,DrGeo>>createScript
+msgid "Build a new script"
+msgstr "Bygg ett nytt skript"
+
+#: DrGeoCore-Presenter,DrGeo>>editScript,DrGeo>>editScript:
+msgid "Edit or create scripts"
+msgstr "Redigera eller skapa skript"
+
+#: DrGeoCore-Presenter,DrGeo>>exportToImageAs
+msgid "Name the image to keep."
+msgstr ""
+
+#: DrGeoCore-Presenter,DrGeo>>gridWording
+msgid "<no> Grid"
+msgstr "<no> Rutnät"
+
+#: DrGeoCore-Presenter,DrGeo>>gridWording
+msgid "<yes> Grid"
+msgstr "<ja> Rutnät"
+
+#: DrGeoCore-Presenter,DrGeo>>magneticGridWording
+msgid "<no> Magnetic Grid"
+msgstr "<nej> Magnetiskt rutnät"
+
+#: DrGeoCore-Presenter,DrGeo>>magneticGridWording
+msgid "<yes> Magnetic Grid"
+msgstr "<ja> Magnetiskt rutnät"
+
+#: DrGeoCore-Presenter,DrGeo>>save,DrGeo>>saveWithinLimitedTime:
+msgid ""
+"I can't save the sketch.\n"
+"Check the local resource or the server."
+msgstr ""
+"Jag kan inte spara ritningen.\n"
+"Kolla den lokala resursen eller servern."
+
+#: DrGeoCore-Presenter,DrGeo>>saveSketchAs
+msgid "Name the sketch to keep."
+msgstr "Namnge sketchen att behållas."
+
+#: DrGeoCore-Presenter-Builder,DrGAngleBisectorBuilder_class>>description
+msgid ""
+"Angle bisector defined by three points or an angle defined by three points."
+msgstr ""
+"Vinkelbisektris definierad av tre punkter eller en vinkel definierad av tre "
+"punkter."
+
+#: DrGeoCore-Presenter-Builder,DrGAngleBisectorBuilder_class>>title
+msgid "Angle bisector"
+msgstr "Vinkelbisektris"
+
+#: DrGeoCore-Presenter-Builder,DrGAngleGeometricBuilder_class>>description
+msgid ""
+"Geometric angle defined by three points, the second point is the vertex. Its "
+"measure belongs to [0 ; 180]."
+msgstr ""
+"Geometrisk vinkel defineras av tre punkter, den andra punkten är vertex. "
+"Dess mått tillhör [0 ; 180]."
+
+#: DrGeoCore-Presenter-Builder,DrGAngleGeometricBuilder_class>>title
+msgid "Geometric angle"
+msgstr "Geometrisk vinkel"
+
+#: DrGeoCore-Presenter-Builder,DrGAngleOrientedBuilder_class>>description
+msgid ""
+"Oriented angle defined by three points or two vectors. When defined from "
+"three points, the second point is the vertex. Its measure belongs to [0 ; "
+"360[ or ]-180 ; 180]. "
+msgstr ""
+"Orienterad vinkel definieras av tre punkter eller två vektorer. När den "
+"definieras från tre punkter så är vertex den andra punkten. Dess mått "
+"tillhör [0 ; 360[ eller]-180; 180]. "
+
+#: DrGeoCore-Presenter-Builder,DrGAngleOrientedBuilder_class>>title
+msgid "Oriented angle"
+msgstr "Orienterad vinkel"
+
+#: DrGeoCore-Presenter-Builder,DrGArcBuilder_class>>description
+msgid "Arc defined by three points."
+msgstr "Båge definierad av tre punkter."
+
+#: DrGeoCore-Presenter-Builder,DrGArcBuilder_class>>title
+msgid "Arc"
+msgstr "Båge"
+
+#: DrGeoCore-Presenter-Builder,DrGArcCenterBuilder_class>>description
+msgid "Arc defined by its center and two points."
+msgstr "Båge definierad av dess center och två punkter."
+
+#: DrGeoCore-Presenter-Builder,DrGArcCenterBuilder_class>>title
+msgid "Arc (center)"
+msgstr "Båge (centrum)"
+
+#: DrGeoCore-Presenter-Builder,DrGBitmapBuilder_class>>description
+msgid ""
+"Picture: drag and drop a picture in the canvas. It can be moved and scaled."
+msgstr ""
+"Bild: dra och släpp en bild i kanvasen. Den kan bli flyttad och skalad."
+
+#: DrGeoCore-Presenter-Builder,DrGBitmapBuilder_class>>title,DrGBitmapItem>>printOn:
+msgid "Picture"
+msgstr "Bild"
+
+#: DrGeoCore-Presenter-Builder,DrGCircleBuilder_class>>description
+msgid ""
+"Circle defined by its center and a point or by its center and radius, a "
+"value."
+msgstr ""
+"Cirkel definierad av dess centrum och en punkt eller dess centrum och radie, "
+"ett värde."
+
+#: DrGeoCore-Presenter-Builder,DrGCircleBuilder_class>>title
+msgid "Circle"
+msgstr "Cirkel"
+
+#: DrGeoCore-Presenter-Builder,DrGCoordinatesBuilder_class>>description
+msgid "Vector or point coordinates, circle or line equation."
+msgstr "Vektor eller punktkorrdinater, cirkel eller linjeekvation."
+
+#: DrGeoCore-Presenter-Builder,DrGCoordinatesBuilder_class>>title
+msgid "Coordinates, equation"
+msgstr "Koordinater, ekvation"
+
+#: DrGeoCore-Presenter-Builder,DrGFlyPointBuilder_class>>description
+msgid ""
+"Click to create a point: free point on the background, on a curve or on two "
+"curves intersection."
+msgstr ""
+"Klicka för att skapa en punkt: fri punkt på bakgrunden, på en kurva eller på "
+"två kurvors genomskärning."
+
+#: DrGeoCore-Presenter-Builder,DrGFlyPointBuilder_class>>description
+msgid ""
+"Tap to create a point: free point on the background, on a curve or on two "
+"curves intersection."
+msgstr ""
+"Knacka för att skapa en punkt: fri punkt på bakgrunden, på en kurva eller på "
+"två kurvors genomskärning."
+
+#: DrGeoCore-Presenter-Builder,DrGFlyPointBuilder_class>>title
+msgid "Point"
+msgstr "Punkt"
+
+#: DrGeoCore-Presenter-Builder,DrGHomothetyBuilder_class>>description
+msgid ""
+"Homothety: select a center, a value and a geometric object. The first "
+"selected point is the homothety center."
+msgstr ""
+"Homoteti: välj en mittpunkt, ett värde och ett geometriskt objekt. Den "
+"första valda punkten är den homotetiska mittpunkten."
+
+#: DrGeoCore-Presenter-Builder,DrGHomothetyBuilder_class>>title
+msgid "Homothety (scale)"
+msgstr "Homoteti (skala)"
+
+#: DrGeoCore-Presenter-Builder,DrGLineBuilder_class>>description
+msgid "Line defined by two points"
+msgstr "Linje definierad av två punkter"
+
+#: DrGeoCore-Presenter-Builder,DrGLineBuilder_class>>title
+msgid "Line"
+msgstr "Linje"
+
+#: DrGeoCore-Presenter-Builder,DrGLocusBuilder_class>>description
+msgid "Locus defined by a free point on a curve and a relative point."
+msgstr "Lokus definierad av en fri punkt på en kurva och en relativ punkt."
+
+#: DrGeoCore-Presenter-Builder,DrGLocusBuilder_class>>title
+msgid "Locus"
+msgstr "Lokus"
+
+#: DrGeoCore-Presenter-Builder,DrGMiddleBuilder_class>>description
+msgid "The midpoint of a segment or between two points."
+msgstr "Mittpunkten av ett segment eller mellan två punkter."
+
+#: DrGeoCore-Presenter-Builder,DrGMiddleBuilder_class>>title
+msgid "Middle"
+msgstr "Mitten"
+
+#: DrGeoCore-Presenter-Builder,DrGParallelBuilder_class>>description
+msgid "Line passing through one point and parallel to a line, half-line, etc."
+msgstr ""
+"Linje som går genom en punkt och parallellt med en linje, halvlinje, etc."
+
+#: DrGeoCore-Presenter-Builder,DrGParallelBuilder_class>>title
+msgid "Parallel"
+msgstr "Parallell"
+
+#: DrGeoCore-Presenter-Builder,DrGPerpendicularBisectorBuilder_class>>description
+msgid "Perpendicular bisector defined by a segment or two points."
+msgstr "Vinkelrät halveringslinje definierad av ett segment eller två punkter."
+
+#: DrGeoCore-Presenter-Builder,DrGPerpendicularBisectorBuilder_class>>title
+msgid "Perpendicular bisector"
+msgstr "Vinkelrät halveringslinje"
+
+#: DrGeoCore-Presenter-Builder,DrGPerpendicularBuilder_class>>description
+msgid ""
+"Line passing through one point and orthogonal to a line, half-line, etc."
+msgstr ""
+"Linje som går genom en punkt och ortogonalt med en linje, halvlinje, etc."
+
+#: DrGeoCore-Presenter-Builder,DrGPerpendicularBuilder_class>>title
+msgid "Perpendicular"
+msgstr "Vinkelrät"
+
+#: DrGeoCore-Presenter-Builder,DrGPointByCoordinatesBuilder_class>>description
+msgid ""
+"Point given its coordinates: select two numbers or a point coordinates (@)."
+msgstr ""
+"Punkten ges till dess koordinater: välj två nummer eller en koordinater till "
+"en punkt (@)."
+
+#: DrGeoCore-Presenter-Builder,DrGPointByCoordinatesBuilder_class>>title
+msgid "Coordinates"
+msgstr "Koordinater"
+
+#: DrGeoCore-Presenter-Builder,DrGPointIntersectionBuilder_class>>description
+msgid "Intersection(s) of two curves."
+msgstr "Korsning(ar) med två kurvor."
+
+#: DrGeoCore-Presenter-Builder,DrGPointIntersectionBuilder_class>>title
+msgid "Intersection"
+msgstr "Korsning"
+
+#: DrGeoCore-Presenter-Builder,DrGPolygonBuilder_class>>description
+msgid "Polygon by n points: last point must be the initial point to terminate."
+msgstr ""
+
+#: DrGeoCore-Presenter-Builder,DrGPolygonBuilder_class>>title
+msgid "Polygon"
+msgstr "Polygon"
+
+#: DrGeoCore-Presenter-Builder,DrGPolygonRegularBuilder_class>>description
+msgid "Regular polygon defined by its center, a vertex and its sides number."
+msgstr ""
+"Vanlig polygon defineras av sin mittpunkt, en vertex och dess sidantal."
+
+#: DrGeoCore-Presenter-Builder,DrGPolygonRegularBuilder_class>>title
+msgid "Regular polygon"
+msgstr "Vanlig polygon"
+
+#: DrGeoCore-Presenter-Builder,DrGRayBuilder_class>>description
+msgid ""
+"Half-Line defined by two points, the first selected point is the origin."
+msgstr ""
+"Halv-linje definieras av två punkter, den första valda punkten är ursprunget."
+
+#: DrGeoCore-Presenter-Builder,DrGRayBuilder_class>>title
+msgid "Ray"
+msgstr "Stråle"
+
+#: DrGeoCore-Presenter-Builder,DrGReflectionBuilder_class>>description
+msgid ""
+"Reflexion: select a line and a geometric object. Reflexion axe is the first "
+"selected line."
+msgstr ""
+
+#: DrGeoCore-Presenter-Builder,DrGReflectionBuilder_class>>title
+msgid "Reflection"
+msgstr "Reflektion"
+
+#: DrGeoCore-Presenter-Builder,DrGRotationBuilder_class>>description
+msgid ""
+"Rotation: select a point, a value and a geometric object. The first selected "
+"point is the rotation center."
+msgstr ""
+"Rotering: välj en punkt, ett värde och ett geometriskt objekt. Den första "
+"valda punkten är roteringens mittpunkt."
+
+#: DrGeoCore-Presenter-Builder,DrGRotationBuilder_class>>title
+msgid "Rotation"
+msgstr "Rotation"
+
+#: DrGeoCore-Presenter-Builder,DrGScriptPlayer_class>>description
+msgid "Insert a Smalltalk script in the drawing area."
+msgstr "Klistra in ett Smalltalk-skript i ritområdet."
+
+#: DrGeoCore-Presenter-Builder,DrGScriptPlayer_class>>title
+msgid "Use a script"
+msgstr "Använd ett skript"
+
+#: DrGeoCore-Presenter-Builder,DrGScriptPlayer>>description
+msgid "No description, write one in the description method of this script."
+msgstr ""
+"Ingen beskrivning, skriv en i beskrivningsmetoden för det här skriptet."
+
+#: DrGeoCore-Presenter-Builder,DrGSegmentBuilder_class>>description
+msgid "Segment defined by two points."
+msgstr "Segmentet definieras av två punkter."
+
+#: DrGeoCore-Presenter-Builder,DrGSegmentBuilder_class>>title
+msgid "Segment"
+msgstr "Segment"
+
+#: DrGeoCore-Presenter-Builder,DrGSymmetryBuilder_class>>description
+msgid ""
+"Symmetry: select a point and a geometric object. The first selected point is "
+"the symmetry center."
+msgstr ""
+"Symmetri: välj en punkt och ett geometriskt objekt. Den första valda punkten "
+"är symmetrins mittpunkt."
+
+#: DrGeoCore-Presenter-Builder,DrGSymmetryBuilder_class>>title
+msgid "Symmetry"
+msgstr "Symmetri"
+
+#: DrGeoCore-Presenter-Builder,DrGTextBuilder_class>>description
+msgid "Free text you can edit and move around."
+msgstr "Gratis text som du kan redigera och flytta runt."
+
+#: DrGeoCore-Presenter-Builder,DrGTextBuilder_class>>title
+msgid "Text"
+msgstr "Text"
+
+#: DrGeoCore-Presenter-Builder,DrGTranslationBuilder_class>>description
+msgid "Translation: select a vector and a geometric object."
+msgstr "Översättning: välj en vektor och ett geometriskt objekt."
+
+#: DrGeoCore-Presenter-Builder,DrGTranslationBuilder_class>>title
+msgid "Translation"
+msgstr "Översättning"
+
+#: DrGeoCore-Presenter-Builder,DrGValueBuilder_class>>description
+msgid "Distance between objects, curve length, free value."
+msgstr "Avstånd mellan objekten, längd på kurva, fritt värde."
+
+#: DrGeoCore-Presenter-Builder,DrGValueBuilder_class>>title
+msgid "Distance, length, value"
+msgstr "Avstånd, längd, värde"
+
+#: DrGeoCore-Presenter-Builder,DrGVectorBuilder_class>>description
+msgid "Vector defined by two points."
+msgstr "Vektor definieras av två punkter."
+
+#: DrGeoCore-Presenter-Builder,DrGVectorBuilder_class>>title
+msgid "Vector"
+msgstr "Vektor"
+
+#: DrGeoCore-Presenter-Tool,DrGAnimateTool_class>>description
+msgid "Select a free point on a curve to animate it."
+msgstr "Välj en fri punkt på en kurva för att animera den."
+
+#: DrGeoCore-Presenter-Tool,DrGAnimateTool_class>>title,DrGMinimalControlsManager>>mainMenu
+msgid "Animate"
+msgstr "Animera"
+
+#: DrGeoCore-Presenter-Tool,DrGDeleteTool_class>>description
+msgid "Erase an object and all its depedencies."
+msgstr "Ta bort ett objekt och alla dess beroenden."
+
+#: DrGeoCore-Presenter-Tool,DrGDeleteTool_class>>title
+msgid "Eraser"
+msgstr "Suddgummi"
+
+#: DrGeoCore-Presenter-Tool,DrGFlyPointBuildToolState>>handleMouseAt:
+msgid "This intersection"
+msgstr "Den här korsningen"
+
+#: DrGeoCore-Presenter-Tool,DrGMutatorToolStateDragged>>handleMouseAt:
+msgid "Change as a free point on the plane."
+msgstr "Byt som en ledig punkt på planet."
+
+#: DrGeoCore-Presenter-Tool,DrGMutatorToolStateDragged>>handleMouseAt:
+msgid "Change as a free point on this curve."
+msgstr "Byt som en ledig punkt på den här kurvan."
+
+#: DrGeoCore-Presenter-Tool,DrGMutatorToolStateDragged>>handleMouseAt:
+msgid "Change as this intersection."
+msgstr "Byt som den här korsningen."
+
+#: DrGeoCore-Presenter-Tool,DrGPropertyTool_class>>description
+msgid "Edit an item's property"
+msgstr "Redigera egenskapen för ett föremål"
+
+#: DrGeoCore-Presenter-Tool,DrGPropertyTool_class>>title
+msgid "Property"
+msgstr "Föremål"
+
+#: DrGeoCore-Presenter-Tool,DrGSelectTool_class>>description
+msgid "Select and move an object."
+msgstr "Välj och flytta ett objekt."
+
+#: DrGeoCore-Presenter-Tool,DrGSelectTool_class>>title
+msgid "Select and Move"
+msgstr "Välj och Flytta"
+
+#: DrGeoCore-Presenter-Tool,DrGSelectToolStateDragged>>handleStillPress:
+msgid "Select a point to merge with"
+msgstr "Välj en punkt att smälta samman med"
+
+#: DrGeoCore-Presenter-Tool,DrGSelectToolStateNeutral>>handleShiftKeyMouseAt:
+msgid "Drag this point to change its nature."
+msgstr "Dra den här punkten för att byta dess karaktär."
+
+#: DrGeoCore-Presenter-Tool,DrGSelectToolStateNeutral>>handleShiftKeyMouseAt:
+msgid ""
+"Pressing down the [Shift] key you can drag and change the nature of free "
+"point or intersection point."
+msgstr ""
+
+#: DrGeoCore-Presenter-Tool,DrGSelectToolStateNeutral>>handleShiftKeyMouseAt:
+msgid "Several objects can be selected. Please, select one clicking the mouse."
+msgstr "Flera objekt kan väljas. Snälla, välj ett genom att klicka med musen."
+
+#: DrGeoCore-Presenter-Tool,DrGStyleTool_class>>description
+msgid "Edit an object style."
+msgstr "Redigera stilen för ett objekt."
+
+#: DrGeoCore-Presenter-Tool,DrGStyleTool_class>>title
+msgid "Edit Style"
+msgstr "Redigera stil"
+
+#: DrGeoCore-Presenter-Tool,DrGTool>>chooseMorph:
+msgid "Select an object"
+msgstr "Välj ett objekt"
+
+#: DrGeoCore-Presenter-Tool,DrGToolState>>handleMouseAt:
+msgid "Several objects can be selected. Please, choose one."
+msgstr "Flera objekt kan väljas. Snälla, välj ett."
+
+#: DrGeoCore-System,DrGPlatform>>arcPreferences,DrGPlatform>>circlePreferences,DrGPlatform>>linePreferences,DrGPlatform>>locusPreferences,DrGPlatform>>pointPreferences,DrGPlatform>>polygonPreferences,DrGPlatform>>rayPreferences,DrGPlatform>>segmentPreferences,DrGPlatform>>textPreferences,DrGPlatform>>valuePreferences,DrGPlatform>>vectorPreferences,DrGStyle>>colorWidget
+msgid "Colour"
+msgstr "Färg"
+
+#: DrGeoCore-System,DrGPlatform>>arcPreferences
+msgid "arc"
+msgstr "båge"
+
+#: DrGeoCore-System,DrGPlatform>>circlePreferences
+msgid "circle"
+msgstr "cirkel"
+
+#: DrGeoCore-System,DrGPlatform>>linePreferences
+msgid "line"
+msgstr "rad"
+
+#: DrGeoCore-System,DrGPlatform>>locusPreferences
+msgid "locus"
+msgstr "ställe"
+
+#: DrGeoCore-System,DrGPlatform>>miscPreferences
+msgid "Autoname new object"
+msgstr ""
+
+#: DrGeoCore-System,DrGPlatform>>miscPreferences
+msgid ""
+"Path for user created resources as sketches, Smalltalk sketches, exported "
+"image. An empty path locates these resources in the Dr. Geo application "
+"folder. Relative path accepted, home/user directory is then prepended"
+msgstr ""
+
+#: DrGeoCore-System,DrGPlatform>>miscPreferences
+msgid "miscellaneous"
+msgstr ""
+
+#: DrGeoCore-System,DrGPlatform>>pointPreferences,DrGPointStyle>>shapeWidget
+msgid "Shape"
+msgstr "Form"
+
+#: DrGeoCore-System,DrGPlatform>>pointPreferences,DrGPointStyle>>sizeWidget
+msgid "Size"
+msgstr "Storlek"
+
+#: DrGeoCore-System,DrGPlatform>>pointPreferences
+msgid "point"
+msgstr "poäng"
+
+#: DrGeoCore-System,DrGPlatform>>polygonPreferences
+msgid "polygon"
+msgstr "polygon"
+
+#: DrGeoCore-System,DrGPlatform>>programmingPreferences
+msgid "Code completion on"
+msgstr ""
+
+#: DrGeoCore-System,DrGPlatform>>programmingPreferences
+msgid "Full debugger when executing Smalltalk sketch."
+msgstr ""
+
+#: DrGeoCore-System,DrGPlatform>>programmingPreferences
+msgid "programming"
+msgstr "programmering"
+
+#: DrGeoCore-System,DrGPlatform>>rayPreferences
+msgid "ray"
+msgstr "stråle"
+
+#: DrGeoCore-System,DrGPlatform>>segmentPreferences,DrGSegmentStyle>>markWidget
+msgid "Mark"
+msgstr "Markera"
+
+#: DrGeoCore-System,DrGPlatform>>segmentPreferences
+msgid "segment"
+msgstr "segment"
+
+#: DrGeoCore-System,DrGPlatform>>textPreferences,DrGTextStyle>>backgroundWidget
+msgid "Background"
+msgstr "Bakgrund"
+
+#: DrGeoCore-System,DrGPlatform>>textPreferences,DrGTextStyle>>borderWidget
+msgid "Border"
+msgstr "Kant"
+
+#: DrGeoCore-System,DrGPlatform>>textPreferences
+msgid "text"
+msgstr "text"
+
+# Isn't this supposed to be plural (decimals) ?
+#: DrGeoCore-System,DrGPlatform>>valuePreferences
+msgid "Number of decimal"
+msgstr "Antalet decimal"
+
+#: DrGeoCore-System,DrGPlatform>>valuePreferences
+msgid "value"
+msgstr "värde"
+
+#: DrGeoCore-System,DrGPlatform>>vectorPreferences
+msgid "vector"
+msgstr "vektor"
+
+#: DrGeoCore-View,DrGAbstractControlsManager>>animate1ButtonData
+msgid "Animate at speed 1."
+msgstr "Animera vid hastighet 1."
+
+#: DrGeoCore-View,DrGAbstractControlsManager>>animate1ButtonData
+msgid "Animate x1"
+msgstr "Animera x1"
+
+#: DrGeoCore-View,DrGAbstractControlsManager>>animate2ButtonData
+msgid "Animate at speed 2."
+msgstr "Animera vid hastighet 2."
+
+#: DrGeoCore-View,DrGAbstractControlsManager>>animate2ButtonData
+msgid "Animate x2"
+msgstr "Animera x2"
+
+#: DrGeoCore-View,DrGAbstractControlsManager>>animate3ButtonData
+msgid "Animate at speed 3."
+msgstr "Animera vid hastighet 3."
+
+#: DrGeoCore-View,DrGAbstractControlsManager>>animate3ButtonData
+msgid "Animate x3"
+msgstr "Animera x3"
+
+#: DrGeoCore-View,DrGAbstractControlsManager>>animate4ButtonData
+msgid "Animate at speed 4."
+msgstr "Animera vid hastighet 4."
+
+#: DrGeoCore-View,DrGAbstractControlsManager>>animate4ButtonData
+msgid "Animate x4"
+msgstr "Animera x4"
+
+#: DrGeoCore-View,DrGAbstractControlsManager>>axesButtonData
+msgid "Show or hide the ox and oy axes."
+msgstr ""
+
+#: DrGeoCore-View,DrGAbstractControlsManager>>exportImageButtonData
+msgid "Export this sketch as SVG image."
+msgstr ""
+
+#: DrGeoCore-View,DrGAbstractControlsManager>>exportImageButtonData
+msgid "Save as image"
+msgstr ""
+
+#: DrGeoCore-View,DrGAbstractControlsManager>>gridButtonData
+msgid "Show or hide grid."
+msgstr "Visa eller göm rutnätet."
+
+#: DrGeoCore-View,DrGAbstractControlsManager>>keepButtonData
+msgid "Keep this sketch permanently."
+msgstr "Behåll den här ritningen permanent."
+
+#: DrGeoCore-View,DrGAbstractControlsManager>>keepButtonData
+msgid "Save"
+msgstr "Spara"
+
+#: DrGeoCore-View,DrGAbstractControlsManager>>macroDeleteButtonData
+msgid "Delete a macro-construction from the registry."
+msgstr "Ta bort en makro-konstruktion från registret."
+
+#: DrGeoCore-View,DrGAbstractControlsManager>>macroDeleteButtonData
+msgid "Delete macro"
+msgstr "Ta bort makro"
+
+#: DrGeoCore-View,DrGAbstractControlsManager>>magneticGridButtonData
+msgid "Snap to grid."
+msgstr ""
+
+#: DrGeoCore-View,DrGAbstractControlsManager>>menuButtonData
+msgid "An unobtrusive menu with all Dr. Geo tools."
+msgstr "En icke påträngande meny med alla Dr. Geo-verktyg."
+
+#: DrGeoCore-View,DrGAbstractControlsManager>>menuButtonData
+msgid "Menu"
+msgstr "Meny"
+
+#: DrGeoCore-View,DrGAbstractControlsManager>>multipleModeButtonData
+msgid ""
+"Toggle between the build of several geometric objects and the build of one "
+"geometric object then move it."
+msgstr ""
+"Växla mellan byggnationen av flera geometriska objekt och byggnationen av "
+"ett geometriskt objekt, flytta det sedan."
+
+#: DrGeoCore-View,DrGAbstractControlsManager>>newButtonData
+msgid "New"
+msgstr "Ny"
+
+#: DrGeoCore-View,DrGAbstractControlsManager>>newButtonData
+msgid "Open a new blank sketch."
+msgstr "Öppna en tom ritning."
+
+#: DrGeoCore-View,DrGAbstractControlsManager>>openButtonData
+msgid "Open"
+msgstr "Öppna"
+
+#: DrGeoCore-View,DrGAbstractControlsManager>>openButtonData
+msgid "Open a sketch."
+msgstr "Öppna en ritning."
+
+#: DrGeoCore-View,DrGAbstractControlsManager>>redoButtonData
+msgid "Redo"
+msgstr "Gör om"
+
+#: DrGeoCore-View,DrGAbstractControlsManager>>redoButtonData
+msgid "Redo last action."
+msgstr "Gör om den senaste åtgärden."
+
+#: DrGeoCore-View,DrGAbstractControlsManager>>scriptCreateButtonData
+msgid "Create a Smalltalk script."
+msgstr "Skapa ett Smalltalk-skript."
+
+#: DrGeoCore-View,DrGAbstractControlsManager>>scriptCreateButtonData
+msgid "Create a script"
+msgstr "Skapa ett skript"
+
+#: DrGeoCore-View,DrGAbstractControlsManager>>scriptEditButtonData
+msgid "Edit a Smalltalk script."
+msgstr "Redigera ett Smalltalk-skript."
+
+#: DrGeoCore-View,DrGAbstractControlsManager>>scriptEditButtonData
+msgid "Edit a script"
+msgstr "Redigera ett skript"
+
+#: DrGeoCore-View,DrGAbstractControlsManager>>stylerFor:
+msgid "Edit style"
+msgstr "Redigera stil"
+
+#: DrGeoCore-View,DrGAbstractControlsManager>>treeButtonData
+msgid "Construction tree"
+msgstr "Konstruktionsträd"
+
+#: DrGeoCore-View,DrGAbstractControlsManager>>treeButtonData
+msgid "The hierarchy tree presenting the visible constructed items."
+msgstr "Hierarkiträdet som presenterar de synliga konstruerade objekten."
+
+#: DrGeoCore-View,DrGAbstractControlsManager>>undoButtonData
+msgid "Undo"
+msgstr "Ångra"
+
+#: DrGeoCore-View,DrGAbstractControlsManager>>undoButtonData
+msgid "Undo last action"
+msgstr "Ångra den senaste åtgärden"
+
+# Shouldn't this be written as "A wheel to horisontally move the sketch" ?
+#: DrGeoCore-View,DrGAbstractControlsManager>>wheelXButtonData
+msgid "A wheel to move horizontally the sketch."
+msgstr "Ett hjul för att flytta ritningen horisontellt."
+
+#: DrGeoCore-View,DrGAbstractControlsManager>>wheelXButtonData
+msgid "Horizontal wheel"
+msgstr "Horisontellt hjul"
+
+#: DrGeoCore-View,DrGAbstractControlsManager>>wheelYButtonData
+msgid "A wheel to move vertically the sketch."
+msgstr "Ett hjul för att flytta ritningen vertikalt."
+
+#: DrGeoCore-View,DrGAbstractControlsManager>>wheelYButtonData
+msgid "Vertical wheel"
+msgstr "Vertikalt hjul"
+
+#: DrGeoCore-View,DrGAbstractControlsManager>>wheelZButtonData
+msgid "A wheel to zoom in, zoom out the sketch."
+msgstr "Ett hjul för att zooma in, zooma ut ritningen."
+
+#: DrGeoCore-View,DrGAbstractControlsManager>>wheelZButtonData
+msgid "Zoom wheel"
+msgstr "Zoom-hjul"
+
+#: DrGeoCore-View,DrGMinimalControlsManager>>editMenu
+msgid "Copy"
+msgstr "Kopiera"
+
+#: DrGeoCore-View,DrGMinimalControlsManager>>editMenu
+msgid "Copy with transparency"
+msgstr "Kopiera med transparens"
+
+#: DrGeoCore-View,DrGMinimalControlsManager>>mainMenu
+msgid "Animate a free point on curve."
+msgstr "Animera en fri punkt på kurvan."
+
+#: DrGeoCore-View,DrGMinimalControlsManager>>mainMenu
+msgid ""
+"Create different curve types: line, half-line, segment, vector, circle..."
+msgstr ""
+"Skapa annorlunda kurvtyper: linje, halv-linje, segment, vektor, cirkel..."
+
+#: DrGeoCore-View,DrGMinimalControlsManager>>mainMenu
+msgid "Create points: free, on curve, intersection or middle point."
+msgstr "Skapa punkter: fri, på kurvan, korsning eller mittpunkt."
+
+#: DrGeoCore-View,DrGMinimalControlsManager>>mainMenu
+msgid ""
+"Create several numeric objects: free value, distance, length, angle, "
+"coordinates, equation and text."
+msgstr ""
+"Skapa flera numeriska objekt: fritt värde, avstånd, längd, vinkel, "
+"koordinationer, ekvationer och text."
+
+#: DrGeoCore-View,DrGMinimalControlsManager>>mainMenu
+msgid "Edit"
+msgstr "Redigera"
+
+#: DrGeoCore-View,DrGMinimalControlsManager>>mainMenu
+msgid "Erase or edit style and properties of items."
+msgstr "Radera eller redigera föremålens stil och egenskaper."
+
+#: DrGeoCore-View,DrGMinimalControlsManager>>mainMenu
+msgid "File"
+msgstr "Arkiv"
+
+#: DrGeoCore-View,DrGMinimalControlsManager>>mainMenu
+msgid "Lines"
+msgstr "Rader"
+
+#: DrGeoCore-View,DrGMinimalControlsManager>>mainMenu
+msgid "Load, save or export Dr. Geo figure."
+msgstr "Ladda, spara eller exportera Dr. Geo-figur."
+
+#: DrGeoCore-View,DrGMinimalControlsManager>>mainMenu
+msgid "Numerics & Text"
+msgstr "Numeriskt & Text"
+
+#: DrGeoCore-View,DrGMinimalControlsManager>>mainMenu
+msgid "Points"
+msgstr "Poäng"
+
+#: DrGeoCore-View,DrGMinimalControlsManager>>mainMenu
+msgid ""
+"Transform an object with a geometric transformation: symmetry, reflexion, "
+"rotation, translation or homothety (scale)."
+msgstr ""
+"Omvandla ett objekt med en geometrisk omvandling: symmetri, reflektion, "
+"rotering, översättning eller homotitet (skala)."
+
+#: DrGeoCore-View,DrGMinimalControlsManager>>mainMenu
+msgid "Transformations"
+msgstr "Förvandlingar"
+
+#: DrGeoCore-View,DrGeoMiniView>>label
+msgid "A Dr. Geo sketch"
+msgstr "En Dr. Geo-ritning"
+
+#~ msgid "I am the description of this script. Please edit me."
+#~ msgstr "Jag är beskrivningen av det här skriptet. Redigera mig är du snäll."
+
+#~ msgid "A script"
+#~ msgstr "Ett skript"
+
+#~ msgid "Name this value"
+#~ msgstr "Namnge det här värdet"
+
+#~ msgid "Rename this value"
+#~ msgstr "Döp om det här värdet"
+
+#~ msgid "Construct a macro-construction with input and output items."
+#~ msgstr "Bygg en makro-konstruktion med inmatning och utmatningsobjekt."
+
+#~ msgid "Build macro"
+#~ msgstr "Bygg makro"
+
+#~ msgid "Input and output items don't match"
+#~ msgstr "Inpt- och outputobjekt matchar inte"
+
+#~ msgid "Please, enter a proper title and description"
+#~ msgstr "Vänligen, skriv en riktig titel och beskrivning"
+
+#~ msgid ""
+#~ "Execute a pre-built macro-construction on selected input items. To edit a "
+#~ "macro description, edit its text and apply with the keys [alt/ctrl]+s."
+#~ msgstr ""
+#~ "Utför en förbyggd makro-konstruktion på de valda inmatningsobjekten. För "
+#~ "att redigera en makro-beskrivning, redigera dess text och verkställ med "
+#~ "tangenterna [alt/ctrl]+s."
+
+#~ msgid "Execute/edit macro"
+#~ msgstr "Kör/redigera makro"
+
+#~ msgid "Keep this sketch under a different name."
+#~ msgstr "Behåll den här ritningen under ett annat namn."
+
+#~ msgid "Open at..."
+#~ msgstr "Öppna vid..."
+
+#~ msgid "Save as..."
+#~ msgstr "Spara som..."
+
+#~ msgid ""
+#~ "Build or execute macro-construction. A macro is a construction template "
+#~ "you can apply to items in the sketch area."
+#~ msgstr ""
+#~ "Bygg eller exekvera makro-konstruktion. En makro är en konstruktionsmall "
+#~ "som du kan verkställa till föremål i ritningsområdet."
+
+#~ msgid "Macro-construction"
+#~ msgstr "Makro-konstruktion"
+
+#~ msgid "Script"
+#~ msgstr "Skript"
+
+#~ msgid "Script: use, edit or create script to plug in the sketch."
+#~ msgstr ""
+#~ "Skript: använd, redigera eller skapa skript för att koppla in ritningen."
+
+#~ msgid "Execute the code up to the cursor position."
+#~ msgstr "Exekvera koden upp till pekarens position."
+
+#~ msgid "Execute the current message and go to the next message."
+#~ msgstr "Exekvera det nuvarande meddelandet och gå till nästa meddelande."
+
+#~ msgid "Restart"
+#~ msgstr "Starta om"
+
+#~ msgid "Run to Cursor"
+#~ msgstr "Kör till pekaren"
+
+#~ msgid "Step"
+#~ msgstr "Steg"
+
+#~ msgid "Step into"
+#~ msgstr "Steg till"
+
+#~ msgid "Step into a block."
+#~ msgstr "Kliv in i ett block."
+
+#~ msgid "Cancel"
+#~ msgstr "Avbryt"
+
+#~ msgid "Examples"
+#~ msgstr "Exempel"
+
+#~ msgid "My Sketches"
+#~ msgstr "Mina ritningar"
+
+#~ msgid "Angle"
+#~ msgstr "Vinkel"
+
+#~ msgid "Any type"
+#~ msgstr "Alla sorter"
+
+#~ msgid "Direction"
+#~ msgstr "Anvisning"
+
+#~ msgid "Value"
+#~ msgstr "Värde"
+
+#~ msgid "Remove this script argument."
+#~ msgstr "Ta bort det här skriptargumentet."
+
+#~ msgid "Add an argument to this script."
+#~ msgstr "Lägg till ett argument till det här skriptet."
+
+#~ msgid "Add argument"
+#~ msgstr "Lägg till argument"
+
+#~ msgid "Build"
+#~ msgstr "Bygg"
+
+#~ msgid "Build a script with these settings."
+#~ msgstr "Bygg ett skript med de här inställningarna."
+
+#~ msgid "Arguments"
+#~ msgstr "Argument"
+
+#~ msgid "Description"
+#~ msgstr "Beskrivning"
+
+#~ msgid "The name of the script."
+#~ msgstr "Skriptets namn."
+
+#~ msgid "Delete"
+#~ msgstr "Ta bort"
+
+#~ msgid "Delete permanently this Smalltalk Sketch from disk."
+#~ msgstr "Ta bort den här Smalltalk-ritningen permanent från disken."
+
+#~ msgid "Code"
+#~ msgstr "Kod"
+
+#~ msgid "Select a Smalltalk sketch"
+#~ msgstr "Välj en Smalltalk-ritning"
+
+#~ msgid "Debug the Smalltalk sketch."
+#~ msgstr "Avlusa Smalltalk-ritningen."
+
+#~ msgid "Dr. Geo tutorial"
+#~ msgstr "Handledning för Dr. Geo"
+
+#~ msgid "Edit a Smalltalk sketch."
+#~ msgstr "Redigera en Smalltalk-ritning."
+
+#~ msgid "Play the Smalltalk sketch."
+#~ msgstr "Spela upp Smalltalk-ritningen."
+
+#~ msgid "Save this Smalltalk sketch."
+#~ msgstr "Spara den här Smalltalk-ritningen."
+
+#~ msgid "Stop the execution of the Smalltalk sketch."
+#~ msgstr "Stoppa exekveringen av Smalltalk-ritningen."
+
+#~ msgid "Pause the Smalltalk sketch."
+#~ msgstr "Pausa Smalltalk-ritningen."
+
+#~ msgid "Resume the Smalltalk sketch."
+#~ msgstr "Återuppta Smalltalk-ritningen."
+
+#~ msgid "Build a macro-construction"
+#~ msgstr "Bygg en makro-konstruktion"
+
+#~ msgid "Description:"
+#~ msgstr "Beskrivning:"
+
+#~ msgid "Give a name and a description"
+#~ msgstr "Ange ett namn och en beskrivning"
+
+#~ msgid "Title:"
+#~ msgstr "Titel:"
+
+#~ msgid "Select input parameters"
+#~ msgstr "Välj parametrar för inmatning"
+
+#~ msgid "Select output parameters"
+#~ msgstr "Välj parametrar för utmatning"
+
+#~ msgid "Execute a macro-construction"
+#~ msgstr "Exekvera en makro-konstruktion"
+
+#~ msgid ""
+#~ "To execute a macro-construction,\n"
+#~ "\n"
+#~ " 1. First select a macro-construction from the list,\n"
+#~ " 2. Select items on the figure. Only items relevant\n"
+#~ " to the selected macro-construction are selectable.\n"
+#~ " Once enough items are selected, the macro is\n"
+#~ " automaticly executed.\n"
+#~ " To start press the 'next' button."
+#~ msgstr ""
+#~ "För att exekvera en makro-konstruktion,\n"
+#~ "\n"
+#~ " 1. Välj först en makro-konstruktion från listan,\n"
+#~ " 2. Välj föremål på figuren. Endast föremål som är relevanta\n"
+#~ " till den valda makro-konstruktionen kan väljas.\n"
+#~ " Makron exekveras automatiskt\n"
+#~ " när tillräckligt många föremål har valts.\n"
+#~ " Tryck på 'nästa'-knappen för att starta."
+
+#~ msgid "Select a macro-construction then the figure items"
+#~ msgstr "Välj en makro-konstruktion, sedan på figurföremålen"
+
+#~ msgid "Use a script in the sketch"
+#~ msgstr "Använd ett skript i ritningen"
+
+#~ msgid "Script name"
+#~ msgstr "Namn på skriptet"
+
+#~ msgid "Select a script then items in the sketch"
+#~ msgstr "Välj ett skript, sedan föremålen i ritningen"
+
+#~ msgid "The arguments accepted by this script."
+#~ msgstr "Argumenten som accepteras av det här skriptet."

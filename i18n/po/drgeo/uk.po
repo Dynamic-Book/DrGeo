@@ -1,0 +1,1396 @@
+# Ukrainian translation for drgeo
+# Copyright (c) 2012 Rosetta Contributors and Canonical Ltd 2012
+# This file is distributed under the same license as the drgeo package.
+#
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2012.
+# Yuri Chornoivan <yurchor@ukr.net>, 2012.
+msgid ""
+msgstr ""
+"Project-Id-Version: drgeo\n"
+"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2026-02-17 18:57-0000\n"
+"PO-Revision-Date: 2024-05-26 13:29+0000\n"
+"Last-Translator: Yuri Chornoivan <yurchor@gmail.com>\n"
+"Language-Team: Ukrainian <uk@li.org>\n"
+"Language: uk\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2024-05-27 04:38+0000\n"
+"X-Generator: Launchpad (build 0e1f616671af724398db43b36ddfb3ed1f2682ec)\n"
+
+#: DrGeo-Model-Script,DrGeoUserScript_class>>description
+msgid "I am the description of this script. Please edit me."
+msgstr "Це опис скрипту. Змініть його."
+
+#: DrGeo-Model-Script,DrGeoUserScript_class>>scriptName
+msgid "A script"
+msgstr "Скрипт"
+
+#: DrGeo-View,DrGMinControlsManager>>editMenu
+msgid "Copy"
+msgstr "Копіювати"
+
+#: DrGeo-View,DrGMinControlsManager>>editMenu
+msgid "Copy with transparency"
+msgstr "Копіювати з прозорістю"
+
+#: DrGeo-View,DrGMinControlsManager>>fileMenu
+msgid "Keep this sketch under a different name."
+msgstr "Зберегти цей ескіз під іншою назвою."
+
+#: DrGeo-View,DrGMinControlsManager>>fileMenu
+msgid "Save as..."
+msgstr "Зберегти як…"
+
+#: DrGeo-View,DrGMinControlsManager>>mainMenu
+msgid "Animate"
+msgstr "Анімація"
+
+#: DrGeo-View,DrGMinControlsManager>>mainMenu
+msgid "Animate a free point on curve."
+msgstr "Анімація довільної точки на кривій."
+
+#: DrGeo-View,DrGMinControlsManager>>mainMenu
+msgid ""
+"Build or execute macro-construction. A macro is a construction template you "
+"can apply to items in the sketch area."
+msgstr ""
+"Виконати макропобудову. Макрос — це шаблон побудови, який можна "
+"застосовувати до елементів на кресленні."
+
+#: DrGeo-View,DrGMinControlsManager>>mainMenu
+msgid ""
+"Create different curve types: line, half-line, segment, vector, circle..."
+msgstr "Створити лінії різних типів: пряму, промінь, відрізок, вектор, коло…"
+
+#: DrGeo-View,DrGMinControlsManager>>mainMenu
+msgid "Create points: free, on curve, intersection or middle point."
+msgstr "Створити точки: довільні, на кривій, точки перетину або середні точки."
+
+#: DrGeo-View,DrGMinControlsManager>>mainMenu
+msgid ""
+"Create several numeric objects: free value, distance, length, angle, "
+"coordinates, equation and text."
+msgstr ""
+"Створити числові об’єкти: довільне значення, відстань, довжину, кут, "
+"координати, рівняння і текст."
+
+#: DrGeo-View,DrGMinControlsManager>>mainMenu,DrGSmalltalkSketchBrowser>>newButtonArea
+msgid "Edit"
+msgstr "Зміни"
+
+#: DrGeo-View,DrGMinControlsManager>>mainMenu
+msgid "Erase or edit style and properties of items."
+msgstr "Витерти або змінити стиль і властивості елементів."
+
+#: DrGeo-View,DrGMinControlsManager>>mainMenu
+msgid "File"
+msgstr "Файл"
+
+#: DrGeo-View,DrGMinControlsManager>>mainMenu
+msgid "Lines"
+msgstr "Лінії"
+
+#: DrGeo-View,DrGMinControlsManager>>mainMenu
+msgid "Load, save or export Dr. Geo figure."
+msgstr "Завантажити, зберегти або експортувати креслення Dr. Geo."
+
+#: DrGeo-View,DrGMinControlsManager>>mainMenu
+msgid "Macro-construction"
+msgstr "Макропобудова"
+
+#: DrGeo-View,DrGMinControlsManager>>mainMenu
+msgid "Numerics & Text"
+msgstr "Числа і текст"
+
+#: DrGeo-View,DrGMinControlsManager>>mainMenu
+msgid "Points"
+msgstr "Точки"
+
+#: DrGeo-View,DrGMinControlsManager>>mainMenu
+msgid "Script"
+msgstr "Скрипт"
+
+#: DrGeo-View,DrGMinControlsManager>>mainMenu
+msgid "Script: use, edit or create script to plug in the sketch."
+msgstr ""
+"Скрипт: використання, редагування та створення скрипту, вбудованого до "
+"ескіза."
+
+#: DrGeo-View,DrGMinControlsManager>>mainMenu
+msgid ""
+"Transform an object with a geometric transformation: symmetry, reflexion, "
+"rotation, translation or homothety (scale)."
+msgstr ""
+"Геометрично перетворити об’єкт: відобразити симетрично, віддзеркалити, "
+"обернути, перенести паралельно або виконати гомотетію (масштабування)."
+
+#: DrGeo-View,DrGMinControlsManager>>mainMenu
+msgid "Transformations"
+msgstr "Перетворення"
+
+#: DrGeo-View-Dialog,DrGDebuggerWindow>>customButtonSpecs
+msgid "Execute the code up to the cursor position."
+msgstr "Виконати код до позиції курсора."
+
+#: DrGeo-View-Dialog,DrGDebuggerWindow>>customButtonSpecs
+msgid "Execute the current message and go to the next message."
+msgstr "Виконати поточне повідомлення і перейти до наступного повідомлення."
+
+#: DrGeo-View-Dialog,DrGDebuggerWindow>>customButtonSpecs
+msgid "Restart"
+msgstr "Перезапустити"
+
+#: DrGeo-View-Dialog,DrGDebuggerWindow>>customButtonSpecs
+msgid "Restart the step by step execution from its start."
+msgstr "Перезапустити покрокове виконання з початку."
+
+#: DrGeo-View-Dialog,DrGDebuggerWindow>>customButtonSpecs
+msgid "Run to Cursor"
+msgstr "Виконати до курсора"
+
+#: DrGeo-View-Dialog,DrGDebuggerWindow>>customButtonSpecs
+msgid "Step"
+msgstr "Крок"
+
+#: DrGeo-View-Dialog,DrGDebuggerWindow>>customButtonSpecs
+msgid "Step into"
+msgstr "Увійти"
+
+#: DrGeo-View-Dialog,DrGDebuggerWindow>>customButtonSpecs
+msgid "Step into a block."
+msgstr "Крок у блок."
+
+#: DrGeo-View-Dialog,DrGFileOpenMorph_class>>open
+msgid "Open a sketch"
+msgstr "Відкрити креслення"
+
+#: DrGeo-View-Dialog,DrGFileOpenMorph>>newButtonArea,DrGScriptDesignerDialog>>newButtonArea,DrGSmalltalkSketchBrowser>>newButtonArea,DrGSmalltalkSketchEditor>>newButtonArea
+msgid "Cancel"
+msgstr "Скасувати"
+
+#: DrGeo-View-Dialog,DrGFileOpenMorph>>newButtonArea,DrGSmalltalkSketchBrowser>>newButtonArea
+msgid "Examples"
+msgstr "Приклади"
+
+#: DrGeo-View-Dialog,DrGFileOpenMorph>>newButtonArea,DrGSmalltalkSketchBrowser>>newButtonArea
+msgid "My Sketches"
+msgstr "Ваші ескізи"
+
+#: DrGeo-View-Dialog,DrGFileOpenMorph>>newButtonArea
+msgid "Open"
+msgstr "Відкрити"
+
+#: DrGeo-View-Dialog,DrGScriptDesignerDialog_class>>labelsAndClasses
+msgid "Angle"
+msgstr "Кут"
+
+#: DrGeo-View-Dialog,DrGScriptDesignerDialog_class>>labelsAndClasses
+msgid "Any type"
+msgstr "Будь-який тип"
+
+#: DrGeo-View-Dialog,DrGScriptDesignerDialog_class>>labelsAndClasses
+msgid "Arc"
+msgstr "Дуга"
+
+#: DrGeo-View-Dialog,DrGScriptDesignerDialog_class>>labelsAndClasses
+msgid "Circle"
+msgstr "Коло"
+
+#: DrGeo-View-Dialog,DrGScriptDesignerDialog_class>>labelsAndClasses
+msgid "Direction"
+msgstr "Напрямок"
+
+#: DrGeo-View-Dialog,DrGScriptDesignerDialog_class>>labelsAndClasses
+msgid "Line"
+msgstr "Пряма"
+
+#: DrGeo-View-Dialog,DrGScriptDesignerDialog_class>>labelsAndClasses
+msgid "Locus"
+msgstr "Геометричне місце точок"
+
+#: DrGeo-View-Dialog,DrGScriptDesignerDialog_class>>labelsAndClasses
+msgid "Point"
+msgstr "Точка"
+
+#: DrGeo-View-Dialog,DrGScriptDesignerDialog_class>>labelsAndClasses
+msgid "Polygon"
+msgstr "Багатокутник"
+
+#: DrGeo-View-Dialog,DrGScriptDesignerDialog_class>>labelsAndClasses
+msgid "Ray"
+msgstr "Промінь"
+
+#: DrGeo-View-Dialog,DrGScriptDesignerDialog_class>>labelsAndClasses
+msgid "Segment"
+msgstr "Відрізок"
+
+#: DrGeo-View-Dialog,DrGScriptDesignerDialog_class>>labelsAndClasses
+msgid "Value"
+msgstr "Значення"
+
+#: DrGeo-View-Dialog,DrGScriptDesignerDialog_class>>labelsAndClasses
+msgid "Vector"
+msgstr "Вектор"
+
+#: DrGeo-View-Dialog,DrGScriptDesignerDialog>>addArgument
+msgid "Remove this script argument."
+msgstr "Вилучити цей аргумент скрипту."
+
+#: DrGeo-View-Dialog,DrGScriptDesignerDialog>>newAddArgumentButton
+msgid "Add an argument to this script."
+msgstr "Додати аргумент до цього скрипту."
+
+#: DrGeo-View-Dialog,DrGScriptDesignerDialog>>newButtonArea
+msgid "Build"
+msgstr "Зібрати"
+
+#: DrGeo-View-Dialog,DrGScriptDesignerDialog>>newButtonArea
+msgid "Build a script with these settings."
+msgstr "Побудувати скрипт з цими параметрами."
+
+#: DrGeo-View-Dialog,DrGScriptDesignerDialog>>newDescriptionMorph
+msgid ""
+"A description of the script. To help the user, describe carefully what the "
+"script does and the input arguments to select to use it."
+msgstr ""
+"Опис скрипту. Щоб допомогти користувачеві, докладно опишіть призначення "
+"скрипту та вхідні параметри для його використання."
+
+#: DrGeo-View-Dialog,DrGScriptDesignerDialog>>newPane,DrGWizardScript>>secondPage
+msgid "Arguments"
+msgstr "Аргументи"
+
+#: DrGeo-View-Dialog,DrGScriptDesignerDialog>>newPane,DrGWizardMacroBuild>>fourthPage,DrGWizardMacroPlay>>secondPage,DrGWizardScript>>secondPage
+msgid "Description"
+msgstr "Опис"
+
+#: DrGeo-View-Dialog,DrGScriptDesignerDialog>>newPane,DrGWizardMacroBuild>>fourthPage,DrGWizardMacroPlay>>secondPage,DrGWizardScript>>secondPage
+msgid "Name"
+msgstr "Назва"
+
+#: DrGeo-View-Dialog,DrGScriptDesignerDialog>>newScriptNameMorph
+msgid "The name of the script."
+msgstr "Назва скрипту."
+
+#: DrGeo-View-Dialog,DrGSmalltalkSketchBrowser>>newButtonArea
+msgid "Browse my collection of Smalltalk sketches."
+msgstr "Навігація збіркою ескізів Smalltalk."
+
+#: DrGeo-View-Dialog,DrGSmalltalkSketchBrowser>>newButtonArea
+msgid "Delete"
+msgstr "Вилучити"
+
+#: DrGeo-View-Dialog,DrGSmalltalkSketchBrowser>>newButtonArea
+msgid "Delete permanently this Smalltalk Sketch from disk."
+msgstr "Остаточно вилучити цей ескіз Smalltalk з диска."
+
+#: DrGeo-View-Dialog,DrGSmalltalkSketchBrowser>>newSketchesColumn
+msgid "Code"
+msgstr "Код"
+
+#: DrGeo-View-Dialog,DrGSmalltalkSketchEditor>>browseSketches
+msgid "Select a Smalltalk sketch"
+msgstr "Виберіть ескіз Smalltalk"
+
+#: DrGeo-View-Dialog,DrGSmalltalkSketchEditor>>executeSketch
+msgid ""
+"Too many errors. Fix it!\n"
+"Sketch stopped"
+msgstr ""
+"Забагато помилок. Виправте!\n"
+"Обробку ескіза зупинено"
+
+#: DrGeo-View-Dialog,DrGSmalltalkSketchEditor>>keepSketch
+msgid "Name the sketch to keep."
+msgstr "Назва креслення, яке слід зберегти."
+
+#: DrGeo-View-Dialog,DrGSmalltalkSketchEditor>>newToolbar
+msgid "Debug the Smalltalk sketch."
+msgstr "Діагностика ескіза Smalltalk."
+
+#: DrGeo-View-Dialog,DrGSmalltalkSketchEditor>>newToolbar
+msgid "Dr. Geo tutorial"
+msgstr "Підручник з Dr. Geo"
+
+#: DrGeo-View-Dialog,DrGSmalltalkSketchEditor>>newToolbar
+msgid "Edit a Smalltalk sketch."
+msgstr "Редагувати ескіз Smalltalk."
+
+#: DrGeo-View-Dialog,DrGSmalltalkSketchEditor>>newToolbar,DrGSmalltalkSketchEditor>>switchToPlayButton
+msgid "Play the Smalltalk sketch."
+msgstr "Відтворити ескіз Smalltalk."
+
+#: DrGeo-View-Dialog,DrGSmalltalkSketchEditor>>newToolbar
+msgid "Save this Smalltalk sketch."
+msgstr "Зберегти цей ескіз Smalltalk."
+
+#: DrGeo-View-Dialog,DrGSmalltalkSketchEditor>>newToolbar
+msgid "Stop the execution of the Smalltalk sketch."
+msgstr "Припинити виконання ескіза Smalltalk."
+
+#: DrGeo-View-Dialog,DrGSmalltalkSketchEditor>>restoreLabel
+msgid "Edit Smalltalk Sketch"
+msgstr "Редагування ескізу Smalltalk"
+
+#: DrGeo-View-Dialog,DrGSmalltalkSketchEditor>>switchToPauseButton
+msgid "Pause the Smalltalk sketch."
+msgstr "Призупинити виконання ескіза Smalltalk."
+
+#: DrGeo-View-Dialog,DrGSmalltalkSketchEditor>>switchToResumeButton
+msgid "Resume the Smalltalk sketch."
+msgstr "Відновити виконання ескіза Smalltalk."
+
+#: DrGeo-View-Dialog,DrGWizardMacroBuild>>firstPage
+msgid "Build a macro-construction"
+msgstr "Виконати макропобудову"
+
+#: DrGeo-View-Dialog,DrGWizardMacroBuild>>firstPage
+msgid ""
+"To build a macro-construction,\n"
+"\n"
+" 1. First select the input paramaters,\n"
+" 2. Next select the output parameters,\n"
+" 3. Next chose a name and a description,\n"
+" 4. Last apply the selection."
+msgstr ""
+"Щоб побудувати макропобудову,\n"
+"\n"
+" 1. Виберіть вхідні параметри,\n"
+" 2. Виберіть вихідні параметри,\n"
+" 3. Виберіть назву і опис,\n"
+" 4. Застосуйте вибране."
+
+#: DrGeo-View-Dialog,DrGWizardMacroBuild>>fourthPage
+msgid "Give a name and a description"
+msgstr "Вкажіть назву і опис"
+
+#: DrGeo-View-Dialog,DrGWizardMacroBuild>>secondPage
+msgid "Select input parameters"
+msgstr "Виберіть початкові параметри"
+
+#: DrGeo-View-Dialog,DrGWizardMacroBuild>>thirdPage
+msgid "Select output parameters"
+msgstr "Виберіть параметри виведення даних"
+
+#: DrGeo-View-Dialog,DrGWizardMacroPlay>>firstPage
+msgid "Execute a macro-construction"
+msgstr "Виконати макропобудову"
+
+#: DrGeo-View-Dialog,DrGWizardMacroPlay>>firstPage
+msgid ""
+"To execute a macro-construction,\n"
+"\n"
+" 1. First select a macro-construction from the list,\n"
+" 2. Select items on the figure. Only items relevant\n"
+" to the selected macro-construction are selectable.\n"
+" Once enough items are selected, the macro is\n"
+" automaticly executed.\n"
+" To start press the 'next' button."
+msgstr ""
+"Щоб виконати макропобудову, скористайтеся наступними крокамии.\n"
+"\n"
+" 1. Виберіть макропобудову зі списку.\n"
+" 2. Виберіть елементи на рисунку. Можна вибрати лише елементи, які "
+"відповідають вибраній макропобудові.\n"
+" Щойно буде вибрано достатньо елементів, макрос буде виконано автоматично.\n"
+"Щоб розпочати виконання, натисніть кнопку «Далі»."
+
+#: DrGeo-View-Dialog,DrGWizardMacroPlay>>secondPage
+msgid "Select a macro-construction then the figure items"
+msgstr "Виберіть макропобудову, потім елементи побудови"
+
+#: DrGeo-View-Dialog,DrGWizardScript>>firstPage
+msgid ""
+"To use a script,\n"
+"\n"
+" 1. First select a script from the list,\n"
+" 2. Select items in the sketch,\n"
+" 3. Click somewhere in the background. \n"
+" Once enough items are selected, the script is\n"
+" inserted in the sketch, at the user selected position.\n"
+" To start press the 'next' button."
+msgstr ""
+"Щоб скористатися скриптом, виконайте наступні кроки.\n"
+"\n"
+" 1. Виберіть скрипт зі списку.\n"
+" 2. Виберіть елементи в ескізі.\n"
+" 3. Клацніть десь на тлі рисунка. \n"
+"Щойно буде позначено достатньо елементів, програма вставить скрипт до ескізу "
+"у вказаній користувачем позиції.\n"
+"Щоб розпочати виконання, натисніть кнопку «Далі»."
+
+#: DrGeo-View-Dialog,DrGWizardScript>>firstPage
+msgid "Use a script in the sketch"
+msgstr "Використати скрипт у ескізі"
+
+#: DrGeo-View-Dialog,DrGWizardScript>>secondPage
+msgid "Select a script then items in the sketch"
+msgstr "Виберіть скрипт, а потім об’єкти на ескізі"
+
+#: DrGeo-View-Dialog,DrGWizardScript>>secondPage
+msgid "The arguments accepted by this script."
+msgstr "Аргументи, які приймає цей скрипт."
+
+#~ msgid "no name"
+#~ msgstr "без назви"
+
+#~ msgid "This geometric angle %1"
+#~ msgstr "Цей геометричний кут %1"
+
+#~ msgid "This angle bisector %1"
+#~ msgstr "Бісектриса кута %1"
+
+#~ msgid "This oriented angle %1"
+#~ msgstr "Цей орієнтований кут %1"
+
+#~ msgid "This Arc Circle %1"
+#~ msgstr "Ця дуга кола %1"
+
+#~ msgid "This picture"
+#~ msgstr "Цей малюнок"
+
+#~ msgid "This circle %1"
+#~ msgstr "Це коло %1"
+
+#~ msgid "This composite object %1"
+#~ msgstr "Цей складений об’єкт %1"
+
+#~ msgid "This equation %1"
+#~ msgstr "Це рівняння %1"
+
+#~ msgid "Equation"
+#~ msgstr "Рівняння"
+
+#~ msgid "This line %1"
+#~ msgstr "Ця пряма %1"
+
+#~ msgid "This parallel line %1"
+#~ msgstr "Ця паралель %1"
+
+#~ msgid "This perpendicular bisector %1"
+#~ msgstr "Серединний перпендикуляр %1"
+
+#~ msgid "This perpendicular line %1"
+#~ msgstr "Цей перпендикуляр %1"
+
+#~ msgid "This locus %1"
+#~ msgstr "Це ГМТ %1"
+
+#~ msgid "This math item %1"
+#~ msgstr "Цей математичний елемент %1"
+
+#~ msgid "Edit the coordinates"
+#~ msgstr "Змінити координати"
+
+#~ msgid "This point %1"
+#~ msgstr "Ця точка %1"
+
+#~ msgid "Edit this curvilinear abscissa in [0;1]"
+#~ msgstr "Встановіть значення абсциси на кривій лінії у діапазоні [0;1]"
+
+#~ msgid "This polygon %1"
+#~ msgstr "Цей багатокутник %1"
+
+#~ msgid "This quadrilateral %1"
+#~ msgstr "Цей чотирикутник %1"
+
+#~ msgid "This triangle %1"
+#~ msgstr "Цей трикутник %1"
+
+#~ msgid " edges="
+#~ msgstr " ребер="
+
+#~ msgid "This half-line %1"
+#~ msgstr "Цей промінь %1"
+
+#~ msgid "This segment %1"
+#~ msgstr "Цей відрізок %1"
+
+#~ msgid "This text"
+#~ msgstr "Цей текст"
+
+#~ msgid "Edit this text"
+#~ msgstr "Змінити цей текст"
+
+#~ msgid "Edit me"
+#~ msgstr "Змініть"
+
+#~ msgid "This arc length %1"
+#~ msgstr "Довжина цієї дуги — %1"
+
+#~ msgid "This circle perimeter %1"
+#~ msgstr "Периметр цього кола %1"
+
+#~ msgid "This distance between two points %1"
+#~ msgstr "Відстань між двома точками — %1"
+
+#~ msgid "This point-line distance %1"
+#~ msgstr "Відстань від точки до прямої %1"
+
+#~ msgid "This value %1"
+#~ msgstr "Це значення %1"
+
+#~ msgid "Value "
+#~ msgstr "Значення "
+
+#~ msgid "This polygon perimeter %1"
+#~ msgstr "Периметр цього багатокутника — %1"
+
+#~ msgid "This point abscissa %1"
+#~ msgstr "Абсциса цієї точки %1"
+
+#~ msgid "This point ordinate %1"
+#~ msgstr "Ордината цієї точки %1"
+
+#~ msgid "This script \"{1}\""
+#~ msgstr "Цей скрипт «{1}»"
+
+#~ msgid "This script \"{1}\" with argument: %2"
+#~ msgstr "Цей скрипт «{1}» з аргументом %2"
+
+#~ msgid "This script \"{1}\" with arguments: %2"
+#~ msgstr "Цей скрипт «{1}» з аргументами %2"
+
+#~ msgid "Script "
+#~ msgstr "Скрипт "
+
+#~ msgid "This segment length %1"
+#~ msgstr "Довжина цього відрізка %1"
+
+#~ msgid "This line slope %1"
+#~ msgstr "Кут нахилу цієї прямої %1"
+
+#~ msgid "Edit this value"
+#~ msgstr "Змінити це значення"
+
+#~ msgid "This vector abscissa %1"
+#~ msgstr "Абсциса цього вектора %1"
+
+#~ msgid "This Vector's norm %1"
+#~ msgstr "Норма цього вектора %1"
+
+#~ msgid "This vector ordinate %1"
+#~ msgstr "Ордината цього вектора %1"
+
+#~ msgid "This vector %1"
+#~ msgstr "Цей вектор %1"
+
+#~ msgid "Only geometric object can be transformed."
+#~ msgstr "Перетворювати можна лише геометричні об’єкти."
+
+#~ msgid "Set the style of the line."
+#~ msgstr "Встановити стиль лінії."
+
+#~ msgid "Style"
+#~ msgstr "Стиль"
+
+#~ msgid "Set the thickness of the line."
+#~ msgstr "Встановити товщину лінії."
+
+#~ msgid "Thickness"
+#~ msgstr "Товщина"
+
+#~ msgid "Fill"
+#~ msgstr "Заповнення"
+
+#~ msgid "Toggle to fill the object."
+#~ msgstr "Увімкнути або вимкнути заповнення об’єкта кольором."
+
+#~ msgid "Toggle the translucency of the object."
+#~ msgstr "Увімкнути або вимкнути прозорість об’єкта."
+
+#~ msgid "Translucent"
+#~ msgstr "Прозорість"
+
+#~ msgid "Arrow"
+#~ msgstr "Стрілка"
+
+#~ msgid "Set arrow(s) to the line."
+#~ msgstr "Вказати форму стрілок на кінці лінії."
+
+#~ msgid "Set the shape of the point."
+#~ msgstr "Вказати форму цієї точки."
+
+#~ msgid "Set the size of the point."
+#~ msgstr "Вказати розмір точки."
+
+#~ msgid "Set a mark to the segment."
+#~ msgstr "Вказати позначку до відрізка."
+
+#~ msgid "Set the colour."
+#~ msgstr "Вказати колір."
+
+#~ msgid "Feedback"
+#~ msgstr "Зворотний зв’язок"
+
+#~ msgid ""
+#~ "Toggle to provide feedback and interaction when the mouse cursor is over "
+#~ "the object."
+#~ msgstr ""
+#~ "Перемкніть, щоб програма показувала інформацію та взаємодіяла з вами, "
+#~ "коли ви наводити вказівник на об’єкт."
+
+#~ msgid "Hide"
+#~ msgstr "Приховати"
+
+#~ msgid "Toggle to hide the object."
+#~ msgstr "Приховати або показати об’єкт."
+
+#~ msgid "Lock"
+#~ msgstr "Заблокувати"
+
+#~ msgid "Toggle to lock the object to its position."
+#~ msgstr "Заблокувати або розблокувати позицію об’єкта."
+
+#~ msgid "Rename this object."
+#~ msgstr "Перейменувати об’єкт."
+
+#~ msgid "Set the background colour."
+#~ msgstr "Встановити колір тла"
+
+#~ msgid "Set the border colour."
+#~ msgstr "Встановити колір рамки."
+
+#~ msgid "Font size"
+#~ msgstr "Розмір шрифту"
+
+#~ msgid "Set the font size."
+#~ msgstr "Встановити розмір шрифту."
+
+#~ msgid "Name this value"
+#~ msgstr "Встановити назву для цього значення"
+
+#~ msgid "Rename this value"
+#~ msgstr "Перейменувати це значення"
+
+#~ msgid ""
+#~ "Dr. Geo is about interactive geometry and programming.\n"
+#~ "{1} - {3}\n"
+#~ "\n"
+#~ "It allows one to create geometric figure plus the interactive "
+#~ "manipulation \n"
+#~ "It is usable in teaching situation, in mathematics, physics and\n"
+#~ "programming, with students from primary school to university levels.\n"
+#~ "\n"
+#~ "It is simple and effective with some unique features as Smalltalk "
+#~ "scripts \n"
+#~ "and programmed interactive sketches. \n"
+#~ "\n"
+#~ "{2}\n"
+#~ "\n"
+#~ "LICENSE: GPL"
+#~ msgstr ""
+#~ "Dr. Geo призначено для інтерактивних геометричних побудов та "
+#~ "програмування.\n"
+#~ "{1} - {3}\n"
+#~ "\n"
+#~ "Програма уможливлює створення геометричних фігур та інтерактивну роботу з "
+#~ "ними.\n"
+#~ "Програмою можна скористатися з навчальною метою у математиці, фізиці та \n"
+#~ "програмуванні зі учнями та студентами від початкового рівня до "
+#~ "університетського.\n"
+#~ "\n"
+#~ "Програма є простою та ефективною і має деякі унікальні можливості, "
+#~ "зокрема \n"
+#~ "використання скриптів Smalltalk та програмовані інтерактивні ескізи.  \n"
+#~ "\n"
+#~ "{2}\n"
+#~ "\n"
+#~ "УМОВИ ЛІЦЕНЗУВАННЯ: GPL"
+
+#~ msgid "Installed version: "
+#~ msgstr "Встановлена версія: "
+
+#~ msgid "Fig. - "
+#~ msgstr "Рис. - "
+
+#~ msgid "System menu"
+#~ msgstr "Системне меню"
+
+#~ msgid "Macro - "
+#~ msgstr "Макрос — "
+
+#~ msgid "Dr. Geo Preferences"
+#~ msgstr "Налаштування Dr. Geo"
+
+#~ msgid "Preferences"
+#~ msgstr "Налаштування"
+
+#~ msgid "Settings"
+#~ msgstr "Параметри"
+
+#~ msgid "Size of GUI elements"
+#~ msgstr "Розмір елементів інтерфейсу"
+
+#~ msgid "Theme"
+#~ msgstr "Тема"
+
+#~ msgid ""
+#~ "There is unsaved data! \n"
+#~ "Are you sure to quit Dr. Geo environment?"
+#~ msgstr ""
+#~ "Маємо незбережені дані! \n"
+#~ "Ви справді хочете вийти із середовища Dr. Geo?"
+
+#~ msgid ""
+#~ "A source code browser to view, edit and save Dr. Geo code. I open the "
+#~ "browser on the DrGeoSketch class you can study to design your own "
+#~ "Smalltalk sketch."
+#~ msgstr ""
+#~ "Засіб навігації початковим кодом для перегляду, редагування та збереження "
+#~ "коду Dr. Geo. Відкрито засіб навігації на класі DrGeoSketch, де ви можете "
+#~ "вивчати дизайн вашого власного ескізу Smalltalk."
+
+#~ msgid ""
+#~ "A tool to browse and to test both system and personal Smalltalk Sketches."
+#~ msgstr ""
+#~ "Інструменти для навігації та тестування загальносистемних та особистих "
+#~ "ескізів Smalltalk."
+
+#~ msgid ""
+#~ "A window used as a scratchpad area where fragments of Cuis-Smalltalk code "
+#~ "can be entered, stored, edited, and evaluated. To edit Smalltalk sketch, "
+#~ "use the Smalltalk Sketch Editor tool above."
+#~ msgstr ""
+#~ "Вікно використовують як область ескізника, куди можна вводити, зберігати, "
+#~ "редагувати та обробляти фрагменти коду Cuis-Smalltalk. Для редагування "
+#~ "ескіза Smalltalk скористайтеся панеллю інструментів редактора ескізів "
+#~ "Smalltalk, яку розташовано вище."
+
+#~ msgid ""
+#~ "A window used to print information from the code - text output. Any "
+#~ "object receiving the message #print is output in the Transcript: 'hello' "
+#~ "print, (k * 5) print. Use the Transcript class for more elaborated output."
+#~ msgstr ""
+#~ "Вікно використовують для виведення даних з коду — текстового виведення. "
+#~ "Будь-який об'є, що отримує повідомленя #print, виводить дані у "
+#~ "Transcript: 'hello' print, (k * 5) print. Скористайтеся класом "
+#~ "Transcript, щоб скоригувати виведення."
+
+#~ msgid "An editor to write and to test new Smalltalk sketch."
+#~ msgstr "Редактор для написання та тестування ескізу Smalltalk."
+
+#~ msgid "Browse"
+#~ msgstr "Вибрати"
+
+#~ msgid "Browse Smalltalk Sketches"
+#~ msgstr "Вибір ескізів Smalltalk"
+
+#~ msgid "Open a file"
+#~ msgstr "Відкрити файл"
+
+#~ msgid "Open the filer on your personal sketches collection."
+#~ msgstr "Відкрити засіб роботи з файлами у вашій особистій збірці ескізів."
+
+#~ msgid "Save session"
+#~ msgstr "Зберегти сеанс"
+
+#~ msgid "Save this Dr. Geo session."
+#~ msgstr "Зберегти цей сеанс Dr. Geo."
+
+#~ msgid "Smalltalk Sketch Editor"
+#~ msgstr "Редактор ескізів Smalltalk"
+
+#~ msgid "System Browser"
+#~ msgstr "Навігатор системою"
+
+#~ msgid "Tools"
+#~ msgstr "Інструменти"
+
+#~ msgid "Transcript"
+#~ msgstr "Transcript"
+
+#~ msgid "Workspace"
+#~ msgstr "Робочий простір"
+
+#~ msgid "About"
+#~ msgstr "Про програму"
+
+#~ msgid "New sketch"
+#~ msgstr "Нове креслення"
+
+#~ msgid "Quit"
+#~ msgstr "Вийти"
+
+#~ msgid "Toggle full screen mode"
+#~ msgstr "Увімкнути/Вимкнути повноекранний режим"
+
+#~ msgid "Turn full screen mode on when it is off, off when it is on."
+#~ msgstr "Увімкнути повноекранний режим, якщо його вимкнути, і навпаки."
+
+#~ msgid "<no> Axes"
+#~ msgstr "<no> Вісі"
+
+#~ msgid "<yes> Axes"
+#~ msgstr "<yes> Вісі"
+
+#~ msgid "<no> Create Multiple"
+#~ msgstr "<no> Створення декількох"
+
+#~ msgid "<yes> Create Multiple"
+#~ msgstr "<yes> Створення декількох"
+
+#~ msgid "Build a new script"
+#~ msgstr "Зібрати новий скрипт"
+
+#~ msgid "Edit or create scripts"
+#~ msgstr "Редагувати або створювати скрипти."
+
+#~ msgid "Name the image to keep."
+#~ msgstr "Назва, з якою слід зберегти зображення."
+
+#~ msgid "<no> Grid"
+#~ msgstr "<no> Сітка"
+
+#~ msgid "<yes> Grid"
+#~ msgstr "<yes> Сітка"
+
+#~ msgid "<no> Magnetic Grid"
+#~ msgstr "<no> Магнітна сітка"
+
+#~ msgid "<yes> Magnetic Grid"
+#~ msgstr "<yes> Магнітна сітка"
+
+#~ msgid ""
+#~ "I can't save the sketch.\n"
+#~ "Check the local resource or the server."
+#~ msgstr ""
+#~ "Не вдалося зберегти ескіз.\n"
+#~ "Перевірте доступність локального ресурсу або сервера"
+
+#~ msgid ""
+#~ "Angle bisector defined by three points or an angle defined by three "
+#~ "points."
+#~ msgstr ""
+#~ "Бісектриса кута, визначеного за трьома точками, або кут, визначений за "
+#~ "трьома точками."
+
+#~ msgid "Angle bisector"
+#~ msgstr "Бісектриса кута"
+
+#~ msgid ""
+#~ "Geometric angle defined by three points, the second point is the vertex. "
+#~ "Its measure belongs to [0 ; 180]."
+#~ msgstr ""
+#~ "Геометричний кут визначається трьома точками. Друга точка є вершиною "
+#~ "кута. Міра кута має належати проміжку [0 ; 180]."
+
+#~ msgid "Geometric angle"
+#~ msgstr "Геометричний кут"
+
+#~ msgid ""
+#~ "Oriented angle defined by three points or two vectors. When defined from "
+#~ "three points, the second point is the vertex. Its measure belongs to [0 ; "
+#~ "360[ or ]-180 ; 180]. "
+#~ msgstr ""
+#~ "Орієнтований кут визначається трьома точками або двома векторами. Якщо "
+#~ "кут визначено трьома точками, друга точка визначає вершину кута. Міра "
+#~ "кута має належати проміжку [0 ; 360[ або ]-180 ; 180]. "
+
+#~ msgid "Oriented angle"
+#~ msgstr "Орієнтований кут"
+
+#~ msgid "Arc defined by three points."
+#~ msgstr "Дуга, визначена трьома точками."
+
+#~ msgid "Arc defined by its center and two points."
+#~ msgstr "Дуга, визначена центром та двома точками."
+
+#~ msgid "Arc (center)"
+#~ msgstr "Дуга (центр)"
+
+#~ msgid ""
+#~ "Picture: drag and drop a picture in the canvas. It can be moved and "
+#~ "scaled."
+#~ msgstr ""
+#~ "Малюнок: перетягніть малюнок і скиньте його на полотно. Ви можете "
+#~ "пересувати малюнок і змінювати його масштаб."
+
+#~ msgid "Picture"
+#~ msgstr "Малюнок"
+
+#~ msgid ""
+#~ "Circle defined by its center and a point or by its center and radius, a "
+#~ "value."
+#~ msgstr ""
+#~ "Коло, визначене за центром та точкою на колі або за центром і радіусом, "
+#~ "значення."
+
+#~ msgid "Vector or point coordinates, circle or line equation."
+#~ msgstr "Координати вектора або точки, рівняння кола або прямої."
+
+#~ msgid "Coordinates, equation"
+#~ msgstr "Координати, рівняння"
+
+#~ msgid ""
+#~ "Click to create a point: free point on the background, on a curve or on "
+#~ "two curves intersection."
+#~ msgstr ""
+#~ "Клацніть, щоб створити точку: довільну точку на тлі креслення, на кривій "
+#~ "або на перетині двох кривих."
+
+#~ msgid ""
+#~ "Tap to create a point: free point on the background, on a curve or on two "
+#~ "curves intersection."
+#~ msgstr ""
+#~ "Натисніть, щоб створити точку: довільну точку на полотні, на кривій або "
+#~ "на перетині двох кривих."
+
+#~ msgid ""
+#~ "Homothety: select a center, a value and a geometric object. The first "
+#~ "selected point is the homothety center."
+#~ msgstr ""
+#~ "Гомотетія: виберіть центр, значення та геометричний об’єкт. Першою "
+#~ "вибраною точкою буде центр гомотетії."
+
+#~ msgid "Homothety (scale)"
+#~ msgstr "Гомотетія (масштабування)"
+
+#~ msgid "Line defined by two points"
+#~ msgstr "Пряма за двома точками"
+
+#~ msgid "Locus defined by a free point on a curve and a relative point."
+#~ msgstr ""
+#~ "Геометричне місце точок, що визначається довільною точкою на кривій і "
+#~ "зв’язаною точкою."
+
+#~ msgid "Construct a macro-construction with input and output items."
+#~ msgstr "Виконати макропобудову за вхідними і вихідними елементами."
+
+#~ msgid "Build macro"
+#~ msgstr "Побудувати макрос"
+
+#~ msgid "Input and output items don't match"
+#~ msgstr "Вхідний і вихідний елементи не збігаються."
+
+#~ msgid "Please, enter a proper title and description"
+#~ msgstr "Будь ласка, вкажіть належний заголовок і опис"
+
+#~ msgid ""
+#~ "Execute a pre-built macro-construction on selected input items. To edit a "
+#~ "macro description, edit its text and apply with the keys [alt/ctrl]+s."
+#~ msgstr ""
+#~ "Виконати попередньо створену макропобудову для позначених вхідних "
+#~ "елементів. Для редагування опису макроса внесіть зміни до його тексту і "
+#~ "застосуйте зміни натисканням комбінації клавіш [Alt/Ctrl]+S."
+
+#~ msgid "Execute/edit macro"
+#~ msgstr "Виконати/Редагувати макрос"
+
+#~ msgid "The midpoint of a segment or between two points."
+#~ msgstr "Середина відрізку або середня точка між двома точками."
+
+#~ msgid "Middle"
+#~ msgstr "Середина"
+
+#~ msgid ""
+#~ "Line passing through one point and parallel to a line, half-line, etc."
+#~ msgstr ""
+#~ "Пряма, що проходить через одну точку паралельно до іншої прямої, променя "
+#~ "тощо."
+
+#~ msgid "Parallel"
+#~ msgstr "Паралель"
+
+#~ msgid "Perpendicular bisector defined by a segment or two points."
+#~ msgstr ""
+#~ "Серединний перпендикуляр, визначений за відрізком або двома точками."
+
+#~ msgid "Perpendicular bisector"
+#~ msgstr "Серединний перпендикуляр"
+
+#~ msgid ""
+#~ "Line passing through one point and orthogonal to a line, half-line, etc."
+#~ msgstr ""
+#~ "Пряма, що проходить через одну точку перпендикулярно до іншої прямої, "
+#~ "променя тощо."
+
+#~ msgid "Perpendicular"
+#~ msgstr "Перпендикуляр"
+
+#~ msgid ""
+#~ "Point given its coordinates: select two numbers or a point coordinates "
+#~ "(@)."
+#~ msgstr ""
+#~ "Точка, вказана координатами: виберіть два числа або координати точки (@)."
+
+#~ msgid "Coordinates"
+#~ msgstr "Координати"
+
+#~ msgid "Intersection(s) of two curves."
+#~ msgstr "Перетин двох кіл."
+
+#~ msgid "Intersection"
+#~ msgstr "Перетин"
+
+#~ msgid ""
+#~ "Polygon by n points: last point must be the initial point to terminate."
+#~ msgstr ""
+#~ "Багатокутник за вершинами: для завершення побудови остання вершина має "
+#~ "збігатися з першою."
+
+#~ msgid ""
+#~ "Regular polygon defined by its center, a vertex and its sides number."
+#~ msgstr ""
+#~ "Правильний багатокутник, визначений за центром, вершиною та кількістю "
+#~ "сторін."
+
+#~ msgid "Regular polygon"
+#~ msgstr "Правильний багатокутник"
+
+#~ msgid ""
+#~ "Half-Line defined by two points, the first selected point is the origin."
+#~ msgstr ""
+#~ "Промінь, визначений двома точками. Перша позначена точка є початком "
+#~ "променя."
+
+#~ msgid ""
+#~ "Reflexion: select a line and a geometric object. Reflexion axe is the "
+#~ "first selected line."
+#~ msgstr ""
+#~ "Віддзеркалення: виберіть пряму і геометричний об’єкт. Вісь віддзеркалення "
+#~ "має бути позначено першою."
+
+#~ msgid "Reflection"
+#~ msgstr "Віддзеркалення"
+
+#~ msgid ""
+#~ "Rotation: select a point, a value and a geometric object. The first "
+#~ "selected point is the rotation center."
+#~ msgstr ""
+#~ "Обертання: виберіть точку, значення і геометричний об’єкт. Першою має "
+#~ "бути позначено точку — центр обертання."
+
+#~ msgid "Rotation"
+#~ msgstr "Обертання"
+
+#~ msgid "Insert a Smalltalk script in the drawing area."
+#~ msgstr "Вставити результат роботи сценарію Smalltalk на креслення"
+
+#~ msgid "Use a script"
+#~ msgstr "Використати сценарій"
+
+#~ msgid "No description, write one in the description method of this script."
+#~ msgstr "Немає опису. Створіть опис у методі description скрипту."
+
+#~ msgid "Segment defined by two points."
+#~ msgstr "Відрізок за двома точками."
+
+#~ msgid ""
+#~ "Symmetry: select a point and a geometric object. The first selected point "
+#~ "is the symmetry center."
+#~ msgstr ""
+#~ "Перетворення симетрії: вкажіть точку і геометричний об’єкт. Першою слід "
+#~ "позначити точку — центр симетрії."
+
+#~ msgid "Symmetry"
+#~ msgstr "Симетричне відображення"
+
+#~ msgid "Free text you can edit and move around."
+#~ msgstr "Довільний текст, який ви можете редагувати і пересувати кресленням."
+
+#~ msgid "Text"
+#~ msgstr "Текст"
+
+#~ msgid "Translation: select a vector and a geometric object."
+#~ msgstr "Паралельне перенесення: виберіть вектор і геометричний об’єкт."
+
+#~ msgid "Translation"
+#~ msgstr "Паралельне перенесення"
+
+#~ msgid "Distance between objects, curve length, free value."
+#~ msgstr "Відстань між об’єктами, довжина кривої, довільне значення."
+
+#~ msgid "Distance, length, value"
+#~ msgstr "Відстань, довжина, значення"
+
+#~ msgid "Vector defined by two points."
+#~ msgstr "Вектор за двома точками."
+
+#~ msgid "Select a free point on a curve to animate it."
+#~ msgstr ""
+#~ "Виберіть на кривій довільну точку, щоб програма виконала її анімацію."
+
+#~ msgid "Erase an object and all its depedencies."
+#~ msgstr "Вилучити об’єкт і всі залежні від нього об’єкти."
+
+#~ msgid "Eraser"
+#~ msgstr "Гумка"
+
+#~ msgid "This intersection"
+#~ msgstr "Цей перетин"
+
+#~ msgid "Change as a free point on the plane."
+#~ msgstr "Є довільною точкою на площині."
+
+#~ msgid "Change as a free point on this curve."
+#~ msgstr "Є довільною точкою на цій кривій."
+
+#~ msgid "Change as this intersection."
+#~ msgstr "Є цим перетином."
+
+#~ msgid "Edit an item's property"
+#~ msgstr "Змінити властивість елемента"
+
+#~ msgid "Property"
+#~ msgstr "Властивість"
+
+#~ msgid "Select and move an object."
+#~ msgstr "Позначити і пересунути об’єкт."
+
+#~ msgid "Select and Move"
+#~ msgstr "Позначити і пересунути"
+
+#~ msgid "Select a point to merge with"
+#~ msgstr "Позначте точку для об’єднання"
+
+#~ msgid "Drag this point to change its nature."
+#~ msgstr "Перетягніть точку, щоб змінити її прив’язку."
+
+#~ msgid ""
+#~ "Pressing down the [Shift] key you can drag and change the nature of free "
+#~ "point or intersection point."
+#~ msgstr ""
+#~ "За допомогою натискання і утримування натисненою клавіші Shift ви можете "
+#~ "перетягувати і змінювати прив’язку довільної точки або точки перетину."
+
+#~ msgid ""
+#~ "Several objects can be selected. Please, select one clicking the mouse."
+#~ msgstr ""
+#~ "Можна позначити декілька об’єктів. Будь ласка, позначте хоч один "
+#~ "клацанням лівою кнопкою миші."
+
+#~ msgid "Edit an object style."
+#~ msgstr "Змінити стиль об’єкта."
+
+#~ msgid "Edit Style"
+#~ msgstr "Змінити стиль"
+
+#~ msgid "Select an object"
+#~ msgstr "Виберіть об’єкт"
+
+#~ msgid "Several objects can be selected. Please, choose one."
+#~ msgstr "Позначено декілька об’єктів. Будь ласка, виберіть один з них."
+
+#~ msgid "Colour"
+#~ msgstr "Колір"
+
+#~ msgid "arc"
+#~ msgstr "дуга"
+
+#~ msgid "circle"
+#~ msgstr "коло"
+
+#~ msgid "line"
+#~ msgstr "ghzvf"
+
+#~ msgid "locus"
+#~ msgstr "ГМТ"
+
+#~ msgid "Autoname new object"
+#~ msgstr "Автоматична назва нового об'єкта"
+
+#~ msgid ""
+#~ "Path for user created resources as sketches, Smalltalk sketches, exported "
+#~ "image. An empty path locates these resources in the Dr. Geo application "
+#~ "folder. Relative path accepted, home/user directory is then prepended"
+#~ msgstr ""
+#~ "Шлях до створених користувачем ресурсів, зокрема ескізів, ескізів "
+#~ "Smalltalk, експортованого зображення. Якщо вказати порожжній шлях, "
+#~ "ресурси зберігатимуться у теці програми Dr. Geo. Можна вказувати відносні "
+#~ "шляхи. До таких шляхів буде дописано каталог home/користувач"
+
+#~ msgid "miscellaneous"
+#~ msgstr "різне"
+
+#~ msgid "Shape"
+#~ msgstr "Форма"
+
+#~ msgid "Size"
+#~ msgstr "Розмір"
+
+#~ msgid "point"
+#~ msgstr "точка"
+
+#~ msgid "polygon"
+#~ msgstr "багатокутник"
+
+#~ msgid "Code completion on"
+#~ msgstr "Доповнення коду на"
+
+#~ msgid "Full debugger when executing Smalltalk sketch."
+#~ msgstr "Повна діагностика, коли виконуємо ескіз Smalltalk."
+
+#~ msgid "programming"
+#~ msgstr "програмування"
+
+#~ msgid "ray"
+#~ msgstr "промінь"
+
+#~ msgid "Mark"
+#~ msgstr "Позначити"
+
+#~ msgid "segment"
+#~ msgstr "відрізок"
+
+#~ msgid "Background"
+#~ msgstr "Тло"
+
+#~ msgid "Border"
+#~ msgstr "Рамка"
+
+#~ msgid "text"
+#~ msgstr "текст"
+
+#~ msgid "Number of decimal"
+#~ msgstr "Кількість цифр"
+
+#~ msgid "value"
+#~ msgstr "значення"
+
+#~ msgid "vector"
+#~ msgstr "вектор"
+
+#~ msgid "Animate at speed 1."
+#~ msgstr "Анімація на швидкості 1."
+
+#~ msgid "Animate x1"
+#~ msgstr "Анімація x1"
+
+#~ msgid "Animate at speed 2."
+#~ msgstr "Анімація на швидкості 2."
+
+#~ msgid "Animate x2"
+#~ msgstr "Анімація x2"
+
+#~ msgid "Animate at speed 3."
+#~ msgstr "Анімація на швидкості 3."
+
+#~ msgid "Animate x3"
+#~ msgstr "Анімація x3"
+
+#~ msgid "Animate at speed 4."
+#~ msgstr "Анімація на швидкості 4."
+
+#~ msgid "Animate x4"
+#~ msgstr "Анімація x4"
+
+#~ msgid "Show or hide the ox and oy axes."
+#~ msgstr "Показати або приховати вісі ox і oy."
+
+#~ msgid "Export this sketch as SVG image."
+#~ msgstr "Експортувати цей ескіз як зображення SVG."
+
+#~ msgid "Save as image"
+#~ msgstr "Зберегти як зображення"
+
+#~ msgid "Show or hide grid."
+#~ msgstr "Показати або сховати сітку."
+
+#~ msgid "Keep this sketch permanently."
+#~ msgstr "Зберегти цей ескіз на тривалій основі."
+
+#~ msgid "Save"
+#~ msgstr "Зберегти"
+
+#~ msgid "Delete a macro-construction from the registry."
+#~ msgstr "Вилучити макропобудову зі списку."
+
+#~ msgid "Delete macro"
+#~ msgstr "Вилучити макрос"
+
+#~ msgid "Snap to grid."
+#~ msgstr "Чіплятися до сітки."
+
+#~ msgid "An unobtrusive menu with all Dr. Geo tools."
+#~ msgstr "Зручне меню з усіма інструментами Dr. Geo."
+
+#~ msgid "Menu"
+#~ msgstr "Меню"
+
+#~ msgid ""
+#~ "Toggle between the build of several geometric objects and the build of "
+#~ "one geometric object then move it."
+#~ msgstr ""
+#~ "Перемикач між режимами побудови декількох геометричних об’єктів і "
+#~ "побудовою одного геометричного об’єкта при пересуванні."
+
+#~ msgid "New"
+#~ msgstr "Створити"
+
+#~ msgid "Open a new blank sketch."
+#~ msgstr "Відкрити порожнє креслення."
+
+#~ msgid "Open a sketch."
+#~ msgstr "Відкрити креслення."
+
+#~ msgid "Redo"
+#~ msgstr "Повторити"
+
+#~ msgid "Redo last action."
+#~ msgstr "Повторити останню дію."
+
+#~ msgid "Create a Smalltalk script."
+#~ msgstr "Створити скрипт Smalltalk."
+
+#~ msgid "Create a script"
+#~ msgstr "Створити скрипт"
+
+#~ msgid "Edit a Smalltalk script."
+#~ msgstr "Редагувати скрипт Smalltalk."
+
+#~ msgid "Edit a script"
+#~ msgstr "Змінити сценарій"
+
+#~ msgid "Edit style"
+#~ msgstr "Змінити стиль"
+
+#~ msgid "Construction tree"
+#~ msgstr "Ієрархія побудови"
+
+#~ msgid "The hierarchy tree presenting the visible constructed items."
+#~ msgstr "Ієрархія з усіма видимими елементами побудови."
+
+#~ msgid "Undo"
+#~ msgstr "Вернути"
+
+#~ msgid "Undo last action"
+#~ msgstr "Скасувати останню дію"
+
+#~ msgid "A wheel to move horizontally the sketch."
+#~ msgstr "Коліщатко для горизонтального пересування ескіза."
+
+#~ msgid "Horizontal wheel"
+#~ msgstr "Горизонтальне коліщатко"
+
+#~ msgid "A wheel to move vertically the sketch."
+#~ msgstr "Коліщатко для вертикального пересування ескіза."
+
+#~ msgid "Vertical wheel"
+#~ msgstr "Вертикальне колішатко"
+
+#~ msgid "A wheel to zoom in, zoom out the sketch."
+#~ msgstr "Коліщатко для збільшення і зменшення масштабу ескіза."
+
+#~ msgid "Zoom wheel"
+#~ msgstr "Коліщатко масштабування"
+
+#~ msgid "Open at..."
+#~ msgstr "Відкрити у…"
+
+#~ msgid "A Dr. Geo sketch"
+#~ msgstr "Ескіз Dr. Geo"
+
+#~ msgid "Add argument"
+#~ msgstr "Додати аргумент"
+
+#~ msgid "Description:"
+#~ msgstr "Опис:"
+
+#~ msgid "Title:"
+#~ msgstr "Заголовок:"
+
+#~ msgid "Script name"
+#~ msgstr "Назва скрипту"

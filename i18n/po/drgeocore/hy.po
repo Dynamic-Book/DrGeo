@@ -1,0 +1,1308 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-02-17 18:57-0000\n"
+"PO-Revision-Date: 2013-08-15 12:23+0000\n"
+"Last-Translator: Chris Leonard <Unknown>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: hy\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2024-05-27 04:37+0000\n"
+"X-Generator: Launchpad (build 0e1f616671af724398db43b36ddfb3ed1f2682ec)\n"
+"X-Pharo-Domain: DrGeoII\n"
+"X-Pharo-SystemVersion: Pharo1.3 of 5 July 2011 update 13267\n"
+
+#: DrGeoCore-File,DrGeoXml>>parseFigureFrom:
+msgid "no name"
+msgstr "անուն չկա"
+
+#: DrGeoCore-Model-Item,DrGAngle3ptsItem>>adaptiveDescriptiveName
+msgid "This geometric angle %1"
+msgstr "Այս երկրաչափական անկյունը %1"
+
+#: DrGeoCore-Model-Item,DrGAngleBisector3ptsItem>>adaptiveDescriptiveName,DrGLineAngleBisectorItem>>adaptiveDescriptiveName
+msgid "This angle bisector %1"
+msgstr ""
+
+#: DrGeoCore-Model-Item,DrGAngleItem>>adaptiveDescriptiveName
+msgid "This oriented angle %1"
+msgstr "Այս դիրքորոշված անկյունը %1"
+
+#: DrGeoCore-Model-Item,DrGArcItem>>adaptiveDescriptiveName
+msgid "This Arc Circle %1"
+msgstr "Այս աղեղի շրջանագիծը %1"
+
+#: DrGeoCore-Model-Item,DrGBitmapItem>>adaptiveDescriptiveName
+msgid "This picture"
+msgstr ""
+
+#: DrGeoCore-Model-Item,DrGCircleItem>>adaptiveDescriptiveName
+msgid "This circle %1"
+msgstr "Այս շրջանագիծը %1"
+
+#: DrGeoCore-Model-Item,DrGCompositeItem>>adaptiveDescriptiveName
+msgid "This composite object %1"
+msgstr "Այս բաղադրյալ մարմինը %1"
+
+#: DrGeoCore-Model-Item,DrGEquationItem>>adaptiveDescriptiveName
+msgid "This equation %1"
+msgstr ""
+
+#: DrGeoCore-Model-Item,DrGEquationItem>>printOn:
+msgid "Equation"
+msgstr ""
+
+#: DrGeoCore-Model-Item,DrGLineItem>>adaptiveDescriptiveName
+msgid "This line %1"
+msgstr "Այս գիծը %1"
+
+#: DrGeoCore-Model-Item,DrGLineParallelItem>>adaptiveDescriptiveName
+msgid "This parallel line %1"
+msgstr "Այս զուգահեռ գիծը %1"
+
+#: DrGeoCore-Model-Item,DrGLinePerpendicularBisector2ptsItem>>adaptiveDescriptiveName,DrGPerpendicularBisectorItem>>adaptiveDescriptiveName
+msgid "This perpendicular bisector %1"
+msgstr ""
+
+#: DrGeoCore-Model-Item,DrGLinePerpendicularItem>>adaptiveDescriptiveName
+msgid "This perpendicular line %1"
+msgstr "Այս ուղղահայաց գիծը %1"
+
+#: DrGeoCore-Model-Item,DrGLocus2ptsItem>>adaptiveDescriptiveName
+msgid "This locus %1"
+msgstr "Այս տեղը %1"
+
+#: DrGeoCore-Model-Item,DrGMathItem>>adaptiveDescriptiveName
+msgid "This math item %1"
+msgstr "Այս մաթեմատիկական տարրը %1"
+
+#: DrGeoCore-Model-Item,DrGPointCoordinateItem>>editPropertyIn:,DrGPointFreeItem>>editPropertyIn:
+msgid "Edit the coordinates"
+msgstr "Խմբագրել կոորդինատներ"
+
+#: DrGeoCore-Model-Item,DrGPointItem>>adaptiveDescriptiveName
+msgid "This point %1"
+msgstr "Այս կետը %1"
+
+#: DrGeoCore-Model-Item,DrGPointOncurveItem>>editPropertyIn:
+msgid "Edit this curvilinear abscissa in [0;1]"
+msgstr "Խմբագրել այն կորագիծ աբսցիսը [0;1]-ում"
+
+#: DrGeoCore-Model-Item,DrGPolygonItem>>adaptiveDescriptiveName
+msgid "This polygon %1"
+msgstr "Այս բազմանկյունը %1"
+
+#: DrGeoCore-Model-Item,DrGPolygonItem>>adaptiveDescriptiveName
+msgid "This quadrilateral %1"
+msgstr ""
+
+#: DrGeoCore-Model-Item,DrGPolygonItem>>adaptiveDescriptiveName
+msgid "This triangle %1"
+msgstr ""
+
+#: DrGeoCore-Model-Item,DrGPolygonItem>>printOn:
+msgid " edges="
+msgstr ""
+
+# Գիծն անսահման է, կես չունի: Պետք լինի ՀԱՏՎԱԾ:
+#: DrGeoCore-Model-Item,DrGRayItem>>adaptiveDescriptiveName
+msgid "This half-line %1"
+msgstr "Այս կես գիծը %1"
+
+#: DrGeoCore-Model-Item,DrGSegmentItem>>adaptiveDescriptiveName
+msgid "This segment %1"
+msgstr "Այս հատվածը %1"
+
+#: DrGeoCore-Model-Item,DrGTextItem>>adaptiveDescriptiveName
+msgid "This text"
+msgstr "Այս Տեքստը"
+
+#: DrGeoCore-Model-Item,DrGTextItem>>editPropertyIn:
+msgid "Edit this text"
+msgstr "Խմբագրել տեքստը"
+
+#: DrGeoCore-Model-Item,DrGTextItem>>initialize
+msgid "Edit me"
+msgstr "Խմբագրեք ինձ"
+
+#: DrGeoCore-Model-Item,DrGValueArclengthItem>>adaptiveDescriptiveName
+msgid "This arc length %1"
+msgstr "Այս աղեղի երկարությունը %1"
+
+#: DrGeoCore-Model-Item,DrGValueCircleperimeterItem>>adaptiveDescriptiveName
+msgid "This circle perimeter %1"
+msgstr "Այս շրջանագծի տրամագիծը %1"
+
+#: DrGeoCore-Model-Item,DrGValueDistance2ptsItem>>adaptiveDescriptiveName
+msgid "This distance between two points %1"
+msgstr "Երկու կետերի %1 միջև այս հեռավորությունը"
+
+#: DrGeoCore-Model-Item,DrGValueDistanceptlineItem>>adaptiveDescriptiveName
+msgid "This point-line distance %1"
+msgstr "Այս կետի և գծի հեռավորությունը %1"
+
+#: DrGeoCore-Model-Item,DrGValueItem>>adaptiveDescriptiveName
+msgid "This value %1"
+msgstr "Այս արժեքը %1"
+
+#: DrGeoCore-Model-Item,DrGValueItem>>printNameOn:
+msgid "Value "
+msgstr ""
+
+#: DrGeoCore-Model-Item,DrGValuePolygonperimeterItem>>adaptiveDescriptiveName
+msgid "This polygon perimeter %1"
+msgstr ""
+
+#: DrGeoCore-Model-Item,DrGValuePtabscissaItem>>adaptiveDescriptiveName
+msgid "This point abscissa %1"
+msgstr ""
+
+#: DrGeoCore-Model-Item,DrGValuePtordinateItem>>adaptiveDescriptiveName
+msgid "This point ordinate %1"
+msgstr ""
+
+#: DrGeoCore-Model-Item,DrGValueScriptItem>>adaptiveDescriptiveName
+msgid "This script \"{1}\""
+msgstr ""
+
+#: DrGeoCore-Model-Item,DrGValueScriptItem>>adaptiveDescriptiveName
+msgid "This script \"{1}\" with argument: %2"
+msgstr ""
+
+#: DrGeoCore-Model-Item,DrGValueScriptItem>>adaptiveDescriptiveName
+msgid "This script \"{1}\" with arguments: %2"
+msgstr ""
+
+#: DrGeoCore-Model-Item,DrGValueScriptItem>>printNameOn:
+msgid "Script "
+msgstr ""
+
+#: DrGeoCore-Model-Item,DrGValueSegmentlengthItem>>adaptiveDescriptiveName
+msgid "This segment length %1"
+msgstr "Այս հատվածի երկարությունը %1"
+
+#: DrGeoCore-Model-Item,DrGValueSlopeItem>>adaptiveDescriptiveName
+msgid "This line slope %1"
+msgstr "Այս գծի թեքությունը %1"
+
+#: DrGeoCore-Model-Item,DrGValueValueItem>>editPropertyIn:
+msgid "Edit this value"
+msgstr "Խմբագրել այս արժեքը"
+
+#: DrGeoCore-Model-Item,DrGValueVectorabscissaItem>>adaptiveDescriptiveName
+msgid "This vector abscissa %1"
+msgstr ""
+
+#: DrGeoCore-Model-Item,DrGValueVectornormItem>>adaptiveDescriptiveName
+msgid "This Vector's norm %1"
+msgstr "Այս վեկտորի նորման %1"
+
+#: DrGeoCore-Model-Item,DrGValueVectorordinateItem>>adaptiveDescriptiveName
+msgid "This vector ordinate %1"
+msgstr ""
+
+#: DrGeoCore-Model-Item,DrGVectorItem>>adaptiveDescriptiveName
+msgid "This vector %1"
+msgstr "Այս վեկտորը %1"
+
+#: DrGeoCore-Model-Smalltalk,DrGeoSketch>>canTransform:
+msgid "Only geometric object can be transformed."
+msgstr "Միայն երկրաչափական մարմինը կարող է ձևափոխվել"
+
+#: DrGeoCore-Model-Style,DrGCurveStyle>>lineWidget
+msgid "Set the style of the line."
+msgstr ""
+
+#: DrGeoCore-Model-Style,DrGCurveStyle>>lineWidget,DrGPlatform>>arcPreferences,DrGPlatform>>circlePreferences,DrGPlatform>>linePreferences,DrGPlatform>>locusPreferences,DrGPlatform>>polygonPreferences,DrGPlatform>>rayPreferences,DrGPlatform>>segmentPreferences,DrGPlatform>>vectorPreferences
+msgid "Style"
+msgstr ""
+
+#: DrGeoCore-Model-Style,DrGCurveStyle>>thicknessWidget
+msgid "Set the thickness of the line."
+msgstr ""
+
+#: DrGeoCore-Model-Style,DrGCurveStyle>>thicknessWidget,DrGPlatform>>arcPreferences,DrGPlatform>>circlePreferences,DrGPlatform>>linePreferences,DrGPlatform>>locusPreferences,DrGPlatform>>polygonPreferences,DrGPlatform>>rayPreferences,DrGPlatform>>segmentPreferences,DrGPlatform>>vectorPreferences
+msgid "Thickness"
+msgstr ""
+
+#: DrGeoCore-Model-Style,DrGFilledStyle>>fillWidget,DrGPlatform>>arcPreferences,DrGPlatform>>circlePreferences,DrGPlatform>>polygonPreferences
+msgid "Fill"
+msgstr ""
+
+#: DrGeoCore-Model-Style,DrGFilledStyle>>fillWidget
+msgid "Toggle to fill the object."
+msgstr ""
+
+#: DrGeoCore-Model-Style,DrGFilledStyle>>translucentWidget
+msgid "Toggle the translucency of the object."
+msgstr ""
+
+#: DrGeoCore-Model-Style,DrGFilledStyle>>translucentWidget,DrGPlatform>>arcPreferences,DrGPlatform>>circlePreferences,DrGPlatform>>polygonPreferences
+msgid "Translucent"
+msgstr ""
+
+#: DrGeoCore-Model-Style,DrGFinitCurveStyle>>arrowWidget,DrGPlatform>>arcPreferences,DrGPlatform>>segmentPreferences
+msgid "Arrow"
+msgstr ""
+
+#: DrGeoCore-Model-Style,DrGFinitCurveStyle>>arrowWidget
+msgid "Set arrow(s) to the line."
+msgstr ""
+
+#: DrGeoCore-Model-Style,DrGPointStyle>>shapeWidget
+msgid "Set the shape of the point."
+msgstr ""
+
+#: DrGeoCore-Model-Style,DrGPointStyle>>sizeWidget
+msgid "Set the size of the point."
+msgstr ""
+
+#: DrGeoCore-Model-Style,DrGSegmentStyle>>markWidget
+msgid "Set a mark to the segment."
+msgstr ""
+
+#: DrGeoCore-Model-Style,DrGStyle>>colorWidget
+msgid "Set the colour."
+msgstr ""
+
+#: DrGeoCore-Model-Style,DrGStyle>>feedbackWidget
+msgid "Feedback"
+msgstr ""
+
+#: DrGeoCore-Model-Style,DrGStyle>>feedbackWidget
+msgid ""
+"Toggle to provide feedback and interaction when the mouse cursor is over the "
+"object."
+msgstr ""
+
+#: DrGeoCore-Model-Style,DrGStyle>>hiddenWidget
+msgid "Hide"
+msgstr ""
+
+#: DrGeoCore-Model-Style,DrGStyle>>hiddenWidget
+msgid "Toggle to hide the object."
+msgstr ""
+
+#: DrGeoCore-Model-Style,DrGStyle>>lockedWidget
+msgid "Lock"
+msgstr ""
+
+#: DrGeoCore-Model-Style,DrGStyle>>lockedWidget
+msgid "Toggle to lock the object to its position."
+msgstr ""
+
+#: DrGeoCore-Model-Style,DrGStyle>>nameWidget
+msgid "Name"
+msgstr ""
+
+#: DrGeoCore-Model-Style,DrGStyle>>nameWidget
+msgid "Rename this object."
+msgstr ""
+
+#: DrGeoCore-Model-Style,DrGTextStyle>>backgroundWidget
+msgid "Set the background colour."
+msgstr ""
+
+#: DrGeoCore-Model-Style,DrGTextStyle>>borderWidget
+msgid "Set the border colour."
+msgstr ""
+
+#: DrGeoCore-Model-Style,DrGTextStyle>>fontSizeWidget
+msgid "Font size"
+msgstr ""
+
+#: DrGeoCore-Model-Style,DrGTextStyle>>fontSizeWidget
+msgid "Set the font size."
+msgstr ""
+
+#: DrGeoCore-Presenter,DrGeo_class>>drgeoInformationString
+msgid ""
+"Dr. Geo is about interactive geometry and programming.\n"
+"{1} - {3}\n"
+"\n"
+"It allows one to create geometric figure plus the interactive manipulation \n"
+"It is usable in teaching situation, in mathematics, physics and\n"
+"programming, with students from primary school to university levels.\n"
+"\n"
+"It is simple and effective with some unique features as Smalltalk scripts \n"
+"and programmed interactive sketches. \n"
+"\n"
+"{2}\n"
+"\n"
+"LICENSE: GPL"
+msgstr ""
+
+#: DrGeoCore-Presenter,DrGeo_class>>drgeoVersion
+msgid "Installed version: "
+msgstr ""
+
+#: DrGeoCore-Presenter,DrGeo_class>>figuresArray
+msgid "Fig. - "
+msgstr "Պատկեր - "
+
+#: DrGeoCore-Presenter,DrGeo_class>>getMenuIn:at:
+msgid "System menu"
+msgstr ""
+
+#: DrGeoCore-Presenter,DrGeo_class>>macrosArray
+msgid "Macro - "
+msgstr "Մակրո - "
+
+#: DrGeoCore-Presenter,DrGeo_class>>preferencesMenu:
+msgid "Dr. Geo Preferences"
+msgstr ""
+
+#: DrGeoCore-Presenter,DrGeo_class>>preferencesMenu:,DrGeo_class>>preferencesMenu:,DrGeo_class>>preferencesMenu:,DrGeo_class>>worldMenu:
+msgid "Preferences"
+msgstr ""
+
+#: DrGeoCore-Presenter,DrGeo_class>>preferencesMenu:
+msgid "Settings"
+msgstr ""
+
+#: DrGeoCore-Presenter,DrGeo_class>>preferencesMenu:
+msgid "Size of GUI elements"
+msgstr ""
+
+#: DrGeoCore-Presenter,DrGeo_class>>preferencesMenu:
+msgid "Theme"
+msgstr ""
+
+#: DrGeoCore-Presenter,DrGeo_class>>quit
+msgid ""
+"There is unsaved data! \n"
+"Are you sure to quit Dr. Geo environment?"
+msgstr ""
+
+#: DrGeoCore-Presenter,DrGeo_class>>toolsMenu:
+msgid ""
+"A source code browser to view, edit and save Dr. Geo code. I open the "
+"browser on the DrGeoSketch class you can study to design your own Smalltalk "
+"sketch."
+msgstr ""
+
+#: DrGeoCore-Presenter,DrGeo_class>>toolsMenu:
+msgid ""
+"A tool to browse and to test both system and personal Smalltalk Sketches."
+msgstr ""
+
+#: DrGeoCore-Presenter,DrGeo_class>>toolsMenu:
+msgid ""
+"A window used as a scratchpad area where fragments of Cuis-Smalltalk code "
+"can be entered, stored, edited, and evaluated. To edit Smalltalk sketch, use "
+"the Smalltalk Sketch Editor tool above."
+msgstr ""
+
+#: DrGeoCore-Presenter,DrGeo_class>>toolsMenu:
+msgid ""
+"A window used to print information from the code - text output. Any object "
+"receiving the message #print is output in the Transcript: 'hello' print, (k "
+"* 5) print. Use the Transcript class for more elaborated output."
+msgstr ""
+
+#: DrGeoCore-Presenter,DrGeo_class>>toolsMenu:
+msgid "An editor to write and to test new Smalltalk sketch."
+msgstr ""
+
+#: DrGeoCore-Presenter,DrGeo_class>>toolsMenu:
+msgid "Browse"
+msgstr ""
+
+#: DrGeoCore-Presenter,DrGeo_class>>toolsMenu:
+msgid "Browse Smalltalk Sketches"
+msgstr ""
+
+#: DrGeoCore-Presenter,DrGeo_class>>toolsMenu:
+msgid "Edit Smalltalk Sketch"
+msgstr ""
+
+#: DrGeoCore-Presenter,DrGeo_class>>toolsMenu:
+msgid "Open a file"
+msgstr ""
+
+#: DrGeoCore-Presenter,DrGeo_class>>toolsMenu:
+msgid "Open the filer on your personal sketches collection."
+msgstr ""
+
+#: DrGeoCore-Presenter,DrGeo_class>>toolsMenu:
+msgid "Save session"
+msgstr ""
+
+#: DrGeoCore-Presenter,DrGeo_class>>toolsMenu:
+msgid "Save this Dr. Geo session."
+msgstr ""
+
+#: DrGeoCore-Presenter,DrGeo_class>>toolsMenu:
+msgid "Smalltalk Sketch Editor"
+msgstr ""
+
+#: DrGeoCore-Presenter,DrGeo_class>>toolsMenu:
+msgid "System Browser"
+msgstr ""
+
+#: DrGeoCore-Presenter,DrGeo_class>>toolsMenu:,DrGeo_class>>toolsMenu:,DrGeo_class>>toolsMenu:,DrGeo_class>>toolsMenu:,DrGeo_class>>toolsMenu:,DrGeo_class>>toolsMenu:,DrGeo_class>>toolsMenu:,DrGeo_class>>worldMenu:
+msgid "Tools"
+msgstr ""
+
+#: DrGeoCore-Presenter,DrGeo_class>>toolsMenu:
+msgid "Transcript"
+msgstr ""
+
+#: DrGeoCore-Presenter,DrGeo_class>>toolsMenu:
+msgid "Workspace"
+msgstr ""
+
+#: DrGeoCore-Presenter,DrGeo_class>>worldMenu:
+msgid "About"
+msgstr "Մասին"
+
+#: DrGeoCore-Presenter,DrGeo_class>>worldMenu:
+msgid "New sketch"
+msgstr "Նոր ուրվանկար"
+
+#: DrGeoCore-Presenter,DrGeo_class>>worldMenu:
+msgid "Open a sketch"
+msgstr "Բացել ուրվանկար"
+
+#: DrGeoCore-Presenter,DrGeo_class>>worldMenu:
+msgid "Quit"
+msgstr "Լքել"
+
+#: DrGeoCore-Presenter,DrGeo_class>>worldMenu:
+msgid "Toggle full screen mode"
+msgstr ""
+
+#: DrGeoCore-Presenter,DrGeo_class>>worldMenu:
+msgid "Turn full screen mode on when it is off, off when it is on."
+msgstr ""
+
+#: DrGeoCore-Presenter,DrGeo>>axesWording
+msgid "<no> Axes"
+msgstr ""
+
+#: DrGeoCore-Presenter,DrGeo>>axesWording
+msgid "<yes> Axes"
+msgstr ""
+
+#: DrGeoCore-Presenter,DrGeo>>createMultipleModeWording
+msgid "<no> Create Multiple"
+msgstr ""
+
+#: DrGeoCore-Presenter,DrGeo>>createMultipleModeWording
+msgid "<yes> Create Multiple"
+msgstr ""
+
+#: DrGeoCore-Presenter,DrGeo>>createScript
+msgid "Build a new script"
+msgstr ""
+
+#: DrGeoCore-Presenter,DrGeo>>editScript,DrGeo>>editScript:
+msgid "Edit or create scripts"
+msgstr "Խմբագրել կամ ստեղծել \"սցենարներ\""
+
+#: DrGeoCore-Presenter,DrGeo>>exportToImageAs
+msgid "Name the image to keep."
+msgstr ""
+
+#: DrGeoCore-Presenter,DrGeo>>gridWording
+msgid "<no> Grid"
+msgstr ""
+
+#: DrGeoCore-Presenter,DrGeo>>gridWording
+msgid "<yes> Grid"
+msgstr ""
+
+#: DrGeoCore-Presenter,DrGeo>>magneticGridWording
+msgid "<no> Magnetic Grid"
+msgstr ""
+
+#: DrGeoCore-Presenter,DrGeo>>magneticGridWording
+msgid "<yes> Magnetic Grid"
+msgstr ""
+
+#: DrGeoCore-Presenter,DrGeo>>save,DrGeo>>saveWithinLimitedTime:
+msgid ""
+"I can't save the sketch.\n"
+"Check the local resource or the server."
+msgstr ""
+
+#: DrGeoCore-Presenter,DrGeo>>saveSketchAs
+msgid "Name the sketch to keep."
+msgstr ""
+
+#: DrGeoCore-Presenter-Builder,DrGAngleBisectorBuilder_class>>description
+msgid ""
+"Angle bisector defined by three points or an angle defined by three points."
+msgstr ""
+
+#: DrGeoCore-Presenter-Builder,DrGAngleBisectorBuilder_class>>title
+msgid "Angle bisector"
+msgstr ""
+
+#: DrGeoCore-Presenter-Builder,DrGAngleGeometricBuilder_class>>description
+msgid ""
+"Geometric angle defined by three points, the second point is the vertex. Its "
+"measure belongs to [0 ; 180]."
+msgstr ""
+
+#: DrGeoCore-Presenter-Builder,DrGAngleGeometricBuilder_class>>title
+msgid "Geometric angle"
+msgstr ""
+
+#: DrGeoCore-Presenter-Builder,DrGAngleOrientedBuilder_class>>description
+msgid ""
+"Oriented angle defined by three points or two vectors. When defined from "
+"three points, the second point is the vertex. Its measure belongs to [0 ; "
+"360[ or ]-180 ; 180]. "
+msgstr ""
+
+#: DrGeoCore-Presenter-Builder,DrGAngleOrientedBuilder_class>>title
+msgid "Oriented angle"
+msgstr ""
+
+#: DrGeoCore-Presenter-Builder,DrGArcBuilder_class>>description
+msgid "Arc defined by three points."
+msgstr ""
+
+#: DrGeoCore-Presenter-Builder,DrGArcBuilder_class>>title
+msgid "Arc"
+msgstr "Կոր"
+
+#: DrGeoCore-Presenter-Builder,DrGArcCenterBuilder_class>>description
+msgid "Arc defined by its center and two points."
+msgstr ""
+
+#: DrGeoCore-Presenter-Builder,DrGArcCenterBuilder_class>>title
+msgid "Arc (center)"
+msgstr ""
+
+#: DrGeoCore-Presenter-Builder,DrGBitmapBuilder_class>>description
+msgid ""
+"Picture: drag and drop a picture in the canvas. It can be moved and scaled."
+msgstr ""
+
+#: DrGeoCore-Presenter-Builder,DrGBitmapBuilder_class>>title,DrGBitmapItem>>printOn:
+msgid "Picture"
+msgstr ""
+
+#: DrGeoCore-Presenter-Builder,DrGCircleBuilder_class>>description
+msgid ""
+"Circle defined by its center and a point or by its center and radius, a "
+"value."
+msgstr ""
+"Շրջանագիծ` սահմանված իր կենտրոնով և կետով կամ իր կենտրոնով և շառավղով, մի "
+"արժեքով:"
+
+#: DrGeoCore-Presenter-Builder,DrGCircleBuilder_class>>title
+msgid "Circle"
+msgstr "Շրջանագիծ"
+
+#: DrGeoCore-Presenter-Builder,DrGCoordinatesBuilder_class>>description
+msgid "Vector or point coordinates, circle or line equation."
+msgstr "Վեկտորային կամ կետային դիրքացույցներ, շրջանագծի կամ գծի հավասարեցում:"
+
+#: DrGeoCore-Presenter-Builder,DrGCoordinatesBuilder_class>>title
+msgid "Coordinates, equation"
+msgstr ""
+
+#: DrGeoCore-Presenter-Builder,DrGFlyPointBuilder_class>>description
+msgid ""
+"Click to create a point: free point on the background, on a curve or on two "
+"curves intersection."
+msgstr ""
+"Սեղմեք կետ ստեղծելու համար. ազատ կետ ֆոնի վրա, կորագծի վրա կամ երկու "
+"կորագծերի հատման կետում:"
+
+#: DrGeoCore-Presenter-Builder,DrGFlyPointBuilder_class>>description
+msgid ""
+"Tap to create a point: free point on the background, on a curve or on two "
+"curves intersection."
+msgstr ""
+
+#: DrGeoCore-Presenter-Builder,DrGFlyPointBuilder_class>>title
+msgid "Point"
+msgstr "Կետ"
+
+#: DrGeoCore-Presenter-Builder,DrGHomothetyBuilder_class>>description
+msgid ""
+"Homothety: select a center, a value and a geometric object. The first "
+"selected point is the homothety center."
+msgstr ""
+"Մարմնի ձևափոխումն արտապատկերման միջոցով. ընտրել կետը, արժեքը և երկրաչափական "
+"մարմինը: Առաջին ընտրված կետը արտապատկերի կենտրոնն է:"
+
+#: DrGeoCore-Presenter-Builder,DrGHomothetyBuilder_class>>title
+msgid "Homothety (scale)"
+msgstr "Սիմետրիկ արտապատկերում (սանդղակ)"
+
+#: DrGeoCore-Presenter-Builder,DrGLineBuilder_class>>description
+msgid "Line defined by two points"
+msgstr "Երկու կետերով սահմանված գիծ"
+
+#: DrGeoCore-Presenter-Builder,DrGLineBuilder_class>>title
+msgid "Line"
+msgstr "Գիծ"
+
+#: DrGeoCore-Presenter-Builder,DrGLocusBuilder_class>>description
+msgid "Locus defined by a free point on a curve and a relative point."
+msgstr "Երկրաչափական տեղ` կորի վրա ազատ կետով և հարաբերական կետով սահմանված:"
+
+#: DrGeoCore-Presenter-Builder,DrGLocusBuilder_class>>title
+msgid "Locus"
+msgstr "Տեղ"
+
+#: DrGeoCore-Presenter-Builder,DrGMiddleBuilder_class>>description
+msgid "The midpoint of a segment or between two points."
+msgstr "Հատվածի միջնակետը, կամ կետ երկու կետերի միջև:"
+
+#: DrGeoCore-Presenter-Builder,DrGMiddleBuilder_class>>title
+msgid "Middle"
+msgstr "Միջին"
+
+# Գիծը չունի սկիզբ, չունի վերջ, ուստի չունի "կես". Պետք է որ լինի ՀԱՏՎԱԾ:
+#: DrGeoCore-Presenter-Builder,DrGParallelBuilder_class>>description
+msgid "Line passing through one point and parallel to a line, half-line, etc."
+msgstr "Գիծ, որն անցնում է մեկ կետով և զուգահեռ է գծին, կես գծին և այլն:"
+
+#: DrGeoCore-Presenter-Builder,DrGParallelBuilder_class>>title
+msgid "Parallel"
+msgstr "Զուգահեռ"
+
+#: DrGeoCore-Presenter-Builder,DrGPerpendicularBisectorBuilder_class>>description
+msgid "Perpendicular bisector defined by a segment or two points."
+msgstr ""
+
+#: DrGeoCore-Presenter-Builder,DrGPerpendicularBisectorBuilder_class>>title
+msgid "Perpendicular bisector"
+msgstr ""
+
+# Գիծն անսահման հասկացություն է, կես չի կարող ունենալ: Պետք լինի ՀԱՏՎԱԾ:
+#: DrGeoCore-Presenter-Builder,DrGPerpendicularBuilder_class>>description
+msgid ""
+"Line passing through one point and orthogonal to a line, half-line, etc."
+msgstr "Գիծ, որը անցնում է մեկ կետով և ուղղահայաց է գծին, կես գծին և այլն:"
+
+#: DrGeoCore-Presenter-Builder,DrGPerpendicularBuilder_class>>title
+msgid "Perpendicular"
+msgstr "Ուղղահայաց"
+
+#: DrGeoCore-Presenter-Builder,DrGPointByCoordinatesBuilder_class>>description
+msgid ""
+"Point given its coordinates: select two numbers or a point coordinates (@)."
+msgstr ""
+"Նշեք տրված դիրքացույցները՝ ընտրեք երկու թիվ կամ կետի դիրքացույցները (@):"
+
+#: DrGeoCore-Presenter-Builder,DrGPointByCoordinatesBuilder_class>>title
+msgid "Coordinates"
+msgstr "Դիրքացույցներ"
+
+#: DrGeoCore-Presenter-Builder,DrGPointIntersectionBuilder_class>>description
+msgid "Intersection(s) of two curves."
+msgstr "Երկու կորերի հատում(ներ)"
+
+#: DrGeoCore-Presenter-Builder,DrGPointIntersectionBuilder_class>>title
+msgid "Intersection"
+msgstr "հատում"
+
+#: DrGeoCore-Presenter-Builder,DrGPolygonBuilder_class>>description
+msgid "Polygon by n points: last point must be the initial point to terminate."
+msgstr ""
+"Բազմանկյուն n կետից՝ վերջին կետը պետք է լինի սկբնական կետը, ավարտելու համար"
+
+#: DrGeoCore-Presenter-Builder,DrGPolygonBuilder_class>>title
+msgid "Polygon"
+msgstr "Բազմանկյուն"
+
+#: DrGeoCore-Presenter-Builder,DrGPolygonRegularBuilder_class>>description
+msgid "Regular polygon defined by its center, a vertex and its sides number."
+msgstr ""
+
+#: DrGeoCore-Presenter-Builder,DrGPolygonRegularBuilder_class>>title
+msgid "Regular polygon"
+msgstr ""
+
+# Գիծը չի կարող կես լինել: Այն անսահման է: Պետք է լինի ՀԱՏՎԱԾ:
+#: DrGeoCore-Presenter-Builder,DrGRayBuilder_class>>description
+msgid ""
+"Half-Line defined by two points, the first selected point is the origin."
+msgstr "Կես գիծ` սահմանված երկու կետերով, առաջին ընտրված կետը սկզբնակետն է"
+
+#: DrGeoCore-Presenter-Builder,DrGRayBuilder_class>>title
+msgid "Ray"
+msgstr "Ճառագայթ"
+
+#: DrGeoCore-Presenter-Builder,DrGReflectionBuilder_class>>description
+msgid ""
+"Reflexion: select a line and a geometric object. Reflexion axe is the first "
+"selected line."
+msgstr ""
+"Անդրադարձում՝ ընտրեք մեկ գիծ և մեկ երկրաչափական մարմին: Անդրադարձող առանցքը "
+"առաջին ընտրված տողն է:"
+
+#: DrGeoCore-Presenter-Builder,DrGReflectionBuilder_class>>title
+msgid "Reflection"
+msgstr "Անդրադարձում"
+
+#: DrGeoCore-Presenter-Builder,DrGRotationBuilder_class>>description
+msgid ""
+"Rotation: select a point, a value and a geometric object. The first selected "
+"point is the rotation center."
+msgstr ""
+"Մարմնի ձևափոխում պտույտի միջոցով. ընտրել մեկ կետ, արժեքը և երկրաչափական "
+"մարմինը: Առաջին ընտրված կետը պտույտի կենտրոնն է:"
+
+#: DrGeoCore-Presenter-Builder,DrGRotationBuilder_class>>title
+msgid "Rotation"
+msgstr "Պտույտ"
+
+#: DrGeoCore-Presenter-Builder,DrGScriptPlayer_class>>description
+msgid "Insert a Smalltalk script in the drawing area."
+msgstr "Մուտքագրել «Smalltalk» սցենարը գծագրի տարածքում:"
+
+#: DrGeoCore-Presenter-Builder,DrGScriptPlayer_class>>title
+msgid "Use a script"
+msgstr "Օգտագործել սցենար"
+
+#: DrGeoCore-Presenter-Builder,DrGScriptPlayer>>description
+msgid "No description, write one in the description method of this script."
+msgstr ""
+
+#: DrGeoCore-Presenter-Builder,DrGSegmentBuilder_class>>description
+msgid "Segment defined by two points."
+msgstr "Հատված` սահմանված երկու կետերով:"
+
+#: DrGeoCore-Presenter-Builder,DrGSegmentBuilder_class>>title
+msgid "Segment"
+msgstr "Հատված"
+
+#: DrGeoCore-Presenter-Builder,DrGSymmetryBuilder_class>>description
+msgid ""
+"Symmetry: select a point and a geometric object. The first selected point is "
+"the symmetry center."
+msgstr ""
+"Մարմնի ձևափոխում պտույտի միջոցով. ընտրել մեկ կետ, արժեքը և երկրաչափական "
+"մարմինը: Առաջին ընտրված կետը պտույտի կենտրոնն է:"
+
+#: DrGeoCore-Presenter-Builder,DrGSymmetryBuilder_class>>title
+msgid "Symmetry"
+msgstr "Սիմետրիա"
+
+#: DrGeoCore-Presenter-Builder,DrGTextBuilder_class>>description
+msgid "Free text you can edit and move around."
+msgstr "Ազատ տեքստ, որը կարող ես խմբագրել և տեղաշարժել:"
+
+#: DrGeoCore-Presenter-Builder,DrGTextBuilder_class>>title
+msgid "Text"
+msgstr "Տեքստ"
+
+#: DrGeoCore-Presenter-Builder,DrGTranslationBuilder_class>>description
+msgid "Translation: select a vector and a geometric object."
+msgstr "Տարգմանություն՝ ընտրեք մեկ վեկտոր և մեկ երկրաչափական մարմին:"
+
+#: DrGeoCore-Presenter-Builder,DrGTranslationBuilder_class>>title
+msgid "Translation"
+msgstr "Թարգմանություն"
+
+#: DrGeoCore-Presenter-Builder,DrGValueBuilder_class>>description
+msgid "Distance between objects, curve length, free value."
+msgstr ""
+
+#: DrGeoCore-Presenter-Builder,DrGValueBuilder_class>>title
+msgid "Distance, length, value"
+msgstr "Հեռավորությունը, երկարությունը, արժեքը"
+
+#: DrGeoCore-Presenter-Builder,DrGVectorBuilder_class>>description
+msgid "Vector defined by two points."
+msgstr "Վեկտոր` սահմանված երկու կետերով:"
+
+#: DrGeoCore-Presenter-Builder,DrGVectorBuilder_class>>title
+msgid "Vector"
+msgstr "Վեկտոր"
+
+#: DrGeoCore-Presenter-Tool,DrGAnimateTool_class>>description
+msgid "Select a free point on a curve to animate it."
+msgstr ""
+
+#: DrGeoCore-Presenter-Tool,DrGAnimateTool_class>>title,DrGMinimalControlsManager>>mainMenu
+msgid "Animate"
+msgstr ""
+
+#: DrGeoCore-Presenter-Tool,DrGDeleteTool_class>>description
+msgid "Erase an object and all its depedencies."
+msgstr "Ջնջել թե օբյեկտը թե նրա կախումները:"
+
+#: DrGeoCore-Presenter-Tool,DrGDeleteTool_class>>title
+msgid "Eraser"
+msgstr "Ռետին"
+
+#: DrGeoCore-Presenter-Tool,DrGFlyPointBuildToolState>>handleMouseAt:
+msgid "This intersection"
+msgstr "Այս հատումը"
+
+#: DrGeoCore-Presenter-Tool,DrGMutatorToolStateDragged>>handleMouseAt:
+msgid "Change as a free point on the plane."
+msgstr "Փոխել որպես ազատ կետ հարթության վրա"
+
+#: DrGeoCore-Presenter-Tool,DrGMutatorToolStateDragged>>handleMouseAt:
+msgid "Change as a free point on this curve."
+msgstr "Փոխել որպես ազատ կետ կորի վրա"
+
+#: DrGeoCore-Presenter-Tool,DrGMutatorToolStateDragged>>handleMouseAt:
+msgid "Change as this intersection."
+msgstr "Փոխիր ինչպես այս հատումը"
+
+#: DrGeoCore-Presenter-Tool,DrGPropertyTool_class>>description
+msgid "Edit an item's property"
+msgstr "Խմբագրել էլեմենտի հատկությունները"
+
+#: DrGeoCore-Presenter-Tool,DrGPropertyTool_class>>title
+msgid "Property"
+msgstr "Հատկություն"
+
+#: DrGeoCore-Presenter-Tool,DrGSelectTool_class>>description
+msgid "Select and move an object."
+msgstr "Ընտրել և տեղաշարժել պատկերը:"
+
+#: DrGeoCore-Presenter-Tool,DrGSelectTool_class>>title
+msgid "Select and Move"
+msgstr "Ընտրել և տեղաշարժել"
+
+#: DrGeoCore-Presenter-Tool,DrGSelectToolStateDragged>>handleStillPress:
+msgid "Select a point to merge with"
+msgstr ""
+
+#: DrGeoCore-Presenter-Tool,DrGSelectToolStateNeutral>>handleShiftKeyMouseAt:
+msgid "Drag this point to change its nature."
+msgstr "Քաշիր այս կետը, նրա բնույթը փոխելու համար"
+
+#: DrGeoCore-Presenter-Tool,DrGSelectToolStateNeutral>>handleShiftKeyMouseAt:
+msgid ""
+"Pressing down the [Shift] key you can drag and change the nature of free "
+"point or intersection point."
+msgstr ""
+"Սեղմած պահելով [Shift] ստեղնը՝ կարող ես քաշել և փոխել ազատ կետի բնույթը կամ "
+"հատվող կետը:"
+
+#: DrGeoCore-Presenter-Tool,DrGSelectToolStateNeutral>>handleShiftKeyMouseAt:
+msgid "Several objects can be selected. Please, select one clicking the mouse."
+msgstr ""
+"Կարող են ընտրվել մի քանի մարմիններ: Խնդրեմ, ընտրեք որևիցե մեկը` քլիք անելով "
+"մկնիկին:"
+
+#: DrGeoCore-Presenter-Tool,DrGStyleTool_class>>description
+msgid "Edit an object style."
+msgstr "Խմբագրել մարմնի ոճը:"
+
+#: DrGeoCore-Presenter-Tool,DrGStyleTool_class>>title
+msgid "Edit Style"
+msgstr "Խմբագրել ոճը"
+
+#: DrGeoCore-Presenter-Tool,DrGTool>>chooseMorph:
+msgid "Select an object"
+msgstr "Ընտրել մարմինը"
+
+#: DrGeoCore-Presenter-Tool,DrGToolState>>handleMouseAt:
+msgid "Several objects can be selected. Please, choose one."
+msgstr ""
+
+#: DrGeoCore-System,DrGPlatform>>arcPreferences,DrGPlatform>>circlePreferences,DrGPlatform>>linePreferences,DrGPlatform>>locusPreferences,DrGPlatform>>pointPreferences,DrGPlatform>>polygonPreferences,DrGPlatform>>rayPreferences,DrGPlatform>>segmentPreferences,DrGPlatform>>textPreferences,DrGPlatform>>valuePreferences,DrGPlatform>>vectorPreferences,DrGStyle>>colorWidget
+msgid "Colour"
+msgstr ""
+
+#: DrGeoCore-System,DrGPlatform>>arcPreferences
+msgid "arc"
+msgstr ""
+
+#: DrGeoCore-System,DrGPlatform>>circlePreferences
+msgid "circle"
+msgstr ""
+
+#: DrGeoCore-System,DrGPlatform>>linePreferences
+msgid "line"
+msgstr ""
+
+#: DrGeoCore-System,DrGPlatform>>locusPreferences
+msgid "locus"
+msgstr ""
+
+#: DrGeoCore-System,DrGPlatform>>miscPreferences
+msgid "Autoname new object"
+msgstr ""
+
+#: DrGeoCore-System,DrGPlatform>>miscPreferences
+msgid ""
+"Path for user created resources as sketches, Smalltalk sketches, exported "
+"image. An empty path locates these resources in the Dr. Geo application "
+"folder. Relative path accepted, home/user directory is then prepended"
+msgstr ""
+
+#: DrGeoCore-System,DrGPlatform>>miscPreferences
+msgid "miscellaneous"
+msgstr ""
+
+#: DrGeoCore-System,DrGPlatform>>pointPreferences,DrGPointStyle>>shapeWidget
+msgid "Shape"
+msgstr ""
+
+#: DrGeoCore-System,DrGPlatform>>pointPreferences,DrGPointStyle>>sizeWidget
+msgid "Size"
+msgstr ""
+
+#: DrGeoCore-System,DrGPlatform>>pointPreferences
+msgid "point"
+msgstr ""
+
+#: DrGeoCore-System,DrGPlatform>>polygonPreferences
+msgid "polygon"
+msgstr ""
+
+#: DrGeoCore-System,DrGPlatform>>programmingPreferences
+msgid "Code completion on"
+msgstr ""
+
+#: DrGeoCore-System,DrGPlatform>>programmingPreferences
+msgid "Full debugger when executing Smalltalk sketch."
+msgstr ""
+
+#: DrGeoCore-System,DrGPlatform>>programmingPreferences
+msgid "programming"
+msgstr ""
+
+#: DrGeoCore-System,DrGPlatform>>rayPreferences
+msgid "ray"
+msgstr ""
+
+#: DrGeoCore-System,DrGPlatform>>segmentPreferences,DrGSegmentStyle>>markWidget
+msgid "Mark"
+msgstr ""
+
+#: DrGeoCore-System,DrGPlatform>>segmentPreferences
+msgid "segment"
+msgstr ""
+
+#: DrGeoCore-System,DrGPlatform>>textPreferences,DrGTextStyle>>backgroundWidget
+msgid "Background"
+msgstr ""
+
+#: DrGeoCore-System,DrGPlatform>>textPreferences,DrGTextStyle>>borderWidget
+msgid "Border"
+msgstr ""
+
+#: DrGeoCore-System,DrGPlatform>>textPreferences
+msgid "text"
+msgstr ""
+
+#: DrGeoCore-System,DrGPlatform>>valuePreferences
+msgid "Number of decimal"
+msgstr ""
+
+#: DrGeoCore-System,DrGPlatform>>valuePreferences
+msgid "value"
+msgstr ""
+
+#: DrGeoCore-System,DrGPlatform>>vectorPreferences
+msgid "vector"
+msgstr ""
+
+#: DrGeoCore-View,DrGAbstractControlsManager>>animate1ButtonData
+msgid "Animate at speed 1."
+msgstr ""
+
+#: DrGeoCore-View,DrGAbstractControlsManager>>animate1ButtonData
+msgid "Animate x1"
+msgstr ""
+
+#: DrGeoCore-View,DrGAbstractControlsManager>>animate2ButtonData
+msgid "Animate at speed 2."
+msgstr ""
+
+#: DrGeoCore-View,DrGAbstractControlsManager>>animate2ButtonData
+msgid "Animate x2"
+msgstr ""
+
+#: DrGeoCore-View,DrGAbstractControlsManager>>animate3ButtonData
+msgid "Animate at speed 3."
+msgstr ""
+
+#: DrGeoCore-View,DrGAbstractControlsManager>>animate3ButtonData
+msgid "Animate x3"
+msgstr ""
+
+#: DrGeoCore-View,DrGAbstractControlsManager>>animate4ButtonData
+msgid "Animate at speed 4."
+msgstr ""
+
+#: DrGeoCore-View,DrGAbstractControlsManager>>animate4ButtonData
+msgid "Animate x4"
+msgstr ""
+
+#: DrGeoCore-View,DrGAbstractControlsManager>>axesButtonData
+msgid "Show or hide the ox and oy axes."
+msgstr ""
+
+#: DrGeoCore-View,DrGAbstractControlsManager>>exportImageButtonData
+msgid "Export this sketch as SVG image."
+msgstr ""
+
+#: DrGeoCore-View,DrGAbstractControlsManager>>exportImageButtonData
+msgid "Save as image"
+msgstr ""
+
+#: DrGeoCore-View,DrGAbstractControlsManager>>gridButtonData
+msgid "Show or hide grid."
+msgstr "Ցույց տալ կամ թաքցնել վանդակները:"
+
+#: DrGeoCore-View,DrGAbstractControlsManager>>keepButtonData
+msgid "Keep this sketch permanently."
+msgstr ""
+
+#: DrGeoCore-View,DrGAbstractControlsManager>>keepButtonData
+msgid "Save"
+msgstr "Պահպանել"
+
+#: DrGeoCore-View,DrGAbstractControlsManager>>macroDeleteButtonData
+msgid "Delete a macro-construction from the registry."
+msgstr "Ջնջել մակրո կառույցն արձանագրությունից:"
+
+#: DrGeoCore-View,DrGAbstractControlsManager>>macroDeleteButtonData
+msgid "Delete macro"
+msgstr "Ջնջել մակրոն"
+
+#: DrGeoCore-View,DrGAbstractControlsManager>>magneticGridButtonData
+msgid "Snap to grid."
+msgstr "Տեղադրել վանդակի վրա:"
+
+#: DrGeoCore-View,DrGAbstractControlsManager>>menuButtonData
+msgid "An unobtrusive menu with all Dr. Geo tools."
+msgstr ""
+
+#: DrGeoCore-View,DrGAbstractControlsManager>>menuButtonData
+msgid "Menu"
+msgstr ""
+
+#: DrGeoCore-View,DrGAbstractControlsManager>>multipleModeButtonData
+msgid ""
+"Toggle between the build of several geometric objects and the build of one "
+"geometric object then move it."
+msgstr ""
+"Փոխանջատել մի քանի երկրաչափական մարմինների կառույցը և մեկ երկրաչափական "
+"մարմնի կառույցը, այնուհետև տեղաշարժել այն:"
+
+#: DrGeoCore-View,DrGAbstractControlsManager>>newButtonData
+msgid "New"
+msgstr "Նոր"
+
+#: DrGeoCore-View,DrGAbstractControlsManager>>newButtonData
+msgid "Open a new blank sketch."
+msgstr "Բացել նոր դատարկ ուրվանկար:"
+
+#: DrGeoCore-View,DrGAbstractControlsManager>>openButtonData
+msgid "Open"
+msgstr "Բացել"
+
+#: DrGeoCore-View,DrGAbstractControlsManager>>openButtonData
+msgid "Open a sketch."
+msgstr "Բացել ուրվանկարը:"
+
+#: DrGeoCore-View,DrGAbstractControlsManager>>redoButtonData
+msgid "Redo"
+msgstr "Կրկին կատարել"
+
+#: DrGeoCore-View,DrGAbstractControlsManager>>redoButtonData
+msgid "Redo last action."
+msgstr "Կրկնել վերջին գործողությունը:"
+
+#: DrGeoCore-View,DrGAbstractControlsManager>>scriptCreateButtonData
+msgid "Create a Smalltalk script."
+msgstr ""
+
+#: DrGeoCore-View,DrGAbstractControlsManager>>scriptCreateButtonData
+msgid "Create a script"
+msgstr ""
+
+#: DrGeoCore-View,DrGAbstractControlsManager>>scriptEditButtonData
+msgid "Edit a Smalltalk script."
+msgstr ""
+
+#: DrGeoCore-View,DrGAbstractControlsManager>>scriptEditButtonData
+msgid "Edit a script"
+msgstr "Խմբագրել սցենարը"
+
+#: DrGeoCore-View,DrGAbstractControlsManager>>stylerFor:
+msgid "Edit style"
+msgstr ""
+
+#: DrGeoCore-View,DrGAbstractControlsManager>>treeButtonData
+msgid "Construction tree"
+msgstr ""
+
+#: DrGeoCore-View,DrGAbstractControlsManager>>treeButtonData
+msgid "The hierarchy tree presenting the visible constructed items."
+msgstr ""
+
+#: DrGeoCore-View,DrGAbstractControlsManager>>undoButtonData
+msgid "Undo"
+msgstr "Չեղյալ համարել"
+
+#: DrGeoCore-View,DrGAbstractControlsManager>>undoButtonData
+msgid "Undo last action"
+msgstr "Ետարկել վերջին գործողությունը"
+
+#: DrGeoCore-View,DrGAbstractControlsManager>>wheelXButtonData
+msgid "A wheel to move horizontally the sketch."
+msgstr ""
+
+#: DrGeoCore-View,DrGAbstractControlsManager>>wheelXButtonData
+msgid "Horizontal wheel"
+msgstr ""
+
+#: DrGeoCore-View,DrGAbstractControlsManager>>wheelYButtonData
+msgid "A wheel to move vertically the sketch."
+msgstr ""
+
+#: DrGeoCore-View,DrGAbstractControlsManager>>wheelYButtonData
+msgid "Vertical wheel"
+msgstr ""
+
+#: DrGeoCore-View,DrGAbstractControlsManager>>wheelZButtonData
+msgid "A wheel to zoom in, zoom out the sketch."
+msgstr ""
+
+#: DrGeoCore-View,DrGAbstractControlsManager>>wheelZButtonData
+msgid "Zoom wheel"
+msgstr ""
+
+#: DrGeoCore-View,DrGMinimalControlsManager>>editMenu
+msgid "Copy"
+msgstr ""
+
+#: DrGeoCore-View,DrGMinimalControlsManager>>editMenu
+msgid "Copy with transparency"
+msgstr ""
+
+#: DrGeoCore-View,DrGMinimalControlsManager>>mainMenu
+msgid "Animate a free point on curve."
+msgstr ""
+
+#: DrGeoCore-View,DrGMinimalControlsManager>>mainMenu
+msgid ""
+"Create different curve types: line, half-line, segment, vector, circle..."
+msgstr "Ստեղծել տարբեր կորի տեսակներ՝ տող, կիսատող, հատված, վեկտոր, շրջան..."
+
+#: DrGeoCore-View,DrGMinimalControlsManager>>mainMenu
+msgid "Create points: free, on curve, intersection or middle point."
+msgstr "Ստեղծել կետեր՝ ազատ, կորի վրա, հատվող կամ միջին կետ:"
+
+#: DrGeoCore-View,DrGMinimalControlsManager>>mainMenu
+msgid ""
+"Create several numeric objects: free value, distance, length, angle, "
+"coordinates, equation and text."
+msgstr ""
+
+#: DrGeoCore-View,DrGMinimalControlsManager>>mainMenu
+msgid "Edit"
+msgstr ""
+
+#: DrGeoCore-View,DrGMinimalControlsManager>>mainMenu
+msgid "Erase or edit style and properties of items."
+msgstr "Ջնջիր կամ խմբագրիր էլէմենտի ոճը և հատկությունները"
+
+#: DrGeoCore-View,DrGMinimalControlsManager>>mainMenu
+msgid "File"
+msgstr "Ֆայլ"
+
+#: DrGeoCore-View,DrGMinimalControlsManager>>mainMenu
+msgid "Lines"
+msgstr "Գծեր"
+
+#: DrGeoCore-View,DrGMinimalControlsManager>>mainMenu
+msgid "Load, save or export Dr. Geo figure."
+msgstr "Բեռնել, պահպանել կամ արտահանել Dr. Geo պատկերը"
+
+#: DrGeoCore-View,DrGMinimalControlsManager>>mainMenu
+msgid "Numerics & Text"
+msgstr ""
+
+#: DrGeoCore-View,DrGMinimalControlsManager>>mainMenu
+msgid "Points"
+msgstr "Կետեր"
+
+#: DrGeoCore-View,DrGMinimalControlsManager>>mainMenu
+msgid ""
+"Transform an object with a geometric transformation: symmetry, reflexion, "
+"rotation, translation or homothety (scale)."
+msgstr ""
+"Ձևափոխիր պբյեկտը երկրաչափական ձևափոխմամբ՝ սիմետրիա, անդրադարձում, պտույտ, "
+"թարգմանություն և սիմետրիկ արտապատկերում (սանդղակ)"
+
+#: DrGeoCore-View,DrGMinimalControlsManager>>mainMenu
+msgid "Transformations"
+msgstr "Ձևափոխումներ"
+
+#: DrGeoCore-View,DrGeoMiniView>>label
+msgid "A Dr. Geo sketch"
+msgstr ""
+
+#~ msgid "Name this value"
+#~ msgstr "Անվանել այս արժեքը"
+
+#~ msgid "Rename this value"
+#~ msgstr "Վերանվանել այս արժեքը"
+
+#~ msgid "Construct a macro-construction with input and output items."
+#~ msgstr "Կառուցել մակրո կառույց մուտքագրման և ելքագրման տարրերով:"
+
+#~ msgid "Build macro"
+#~ msgstr "Կառուցել մակրո"
+
+#~ msgid "Input and output items don't match"
+#~ msgstr "Մուտքագրման և ելքագրման կետերը չեն համընկնում"
+
+#~ msgid "Please, enter a proper title and description"
+#~ msgstr "Խնդրում ենք մուտքագրել համապատասխան վերնագիրը և նկարագրությունը"
+
+#~ msgid "Save as..."
+#~ msgstr "Պահպանել որպես"
+
+#~ msgid ""
+#~ "Build or execute macro-construction. A macro is a construction template "
+#~ "you can apply to items in the sketch area."
+#~ msgstr ""
+#~ "Կառուցել կամ գործարկել մակրո-կառույց: Մակրոն կառույցի ձևանմուշ է, որը "
+#~ "կարող ես կիրառել էլեմենտների վրա ուրվանկարի տարածքում"
+
+#~ msgid "Macro-construction"
+#~ msgstr "Մակրո կառույց"
+
+#~ msgid "Examples"
+#~ msgstr "Օրինակներ"
+
+#~ msgid "Angle"
+#~ msgstr "Անկյուն"
+
+#~ msgid "Build a macro-construction"
+#~ msgstr "Կառուցել Մակրո կառույց"
+
+#~ msgid "Description:"
+#~ msgstr "Նկարագրություն."
+
+#~ msgid "Give a name and a description"
+#~ msgstr "Անվանել և նկարագրել"
+
+#~ msgid "Title:"
+#~ msgstr "Վերնագիր."
+
+#~ msgid "Select input parameters"
+#~ msgstr "Ընտրել մուտքային չափանիշները"
+
+#~ msgid "Select output parameters"
+#~ msgstr "Ընտրել ելքային չափանիշները"
+
+#~ msgid "Execute a macro-construction"
+#~ msgstr "Գործարկել մակրո կառույցը"
+
+#~ msgid "Select a macro-construction then the figure items"
+#~ msgstr "Ընտրել մակրո կառույցը, այնուհետև` պատկերի տարրերը"

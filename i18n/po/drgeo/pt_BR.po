@@ -1,0 +1,1144 @@
+# Brazilian Portuguese translation for drgeo
+# Copyright (c) 2014 Rosetta Contributors and Canonical Ltd 2014
+# This file is distributed under the same license as the drgeo package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2014.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: drgeo\n"
+"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2026-02-17 18:57-0000\n"
+"PO-Revision-Date: 2024-05-09 07:31+0000\n"
+"Last-Translator: Paulo Francisco Slomp <slomp@ufrgs.br>\n"
+"Language-Team: Brazilian Portuguese <pt_BR@li.org>\n"
+"Language: pt_BR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2024-05-27 04:38+0000\n"
+"X-Generator: Launchpad (build 0e1f616671af724398db43b36ddfb3ed1f2682ec)\n"
+
+#: DrGeo-Model-Script,DrGeoUserScript_class>>description
+msgid "I am the description of this script. Please edit me."
+msgstr "Eu sou a descrição desse script. Por favor, me edite."
+
+#: DrGeo-Model-Script,DrGeoUserScript_class>>scriptName
+msgid "A script"
+msgstr "Um script"
+
+#: DrGeo-View,DrGMinControlsManager>>editMenu
+msgid "Copy"
+msgstr "Copiar"
+
+#: DrGeo-View,DrGMinControlsManager>>editMenu
+msgid "Copy with transparency"
+msgstr "Copiar com transparência"
+
+#: DrGeo-View,DrGMinControlsManager>>fileMenu
+msgid "Keep this sketch under a different name."
+msgstr "Mantém esse esboço sob um nome diferente."
+
+#: DrGeo-View,DrGMinControlsManager>>fileMenu
+msgid "Save as..."
+msgstr "Salvar como..."
+
+#: DrGeo-View,DrGMinControlsManager>>mainMenu
+msgid "Animate"
+msgstr "Animar"
+
+#: DrGeo-View,DrGMinControlsManager>>mainMenu
+msgid "Animate a free point on curve."
+msgstr "Anima um ponto livre na curva"
+
+#: DrGeo-View,DrGMinControlsManager>>mainMenu
+msgid ""
+"Build or execute macro-construction. A macro is a construction template you "
+"can apply to items in the sketch area."
+msgstr ""
+"Constrói ou executa uma macro-construção. Uma macro é um modelo de "
+"construção que você pode aplicar a itens na área do esboço."
+
+#: DrGeo-View,DrGMinControlsManager>>mainMenu
+msgid ""
+"Create different curve types: line, half-line, segment, vector, circle..."
+msgstr ""
+"Cria diferentes tipos de curva: reta, semirreta, segmento, vetor, círculo..."
+
+#: DrGeo-View,DrGMinControlsManager>>mainMenu
+msgid "Create points: free, on curve, intersection or middle point."
+msgstr "Cria pontos: livres, na curva, interseção ou ponto médio."
+
+#: DrGeo-View,DrGMinControlsManager>>mainMenu
+msgid ""
+"Create several numeric objects: free value, distance, length, angle, "
+"coordinates, equation and text."
+msgstr ""
+"Cria vários objetos numéricos: valor livre, distância, comprimento, ângulo, "
+"coordenadas, equação e texto."
+
+#: DrGeo-View,DrGMinControlsManager>>mainMenu,DrGSmalltalkSketchBrowser>>newButtonArea
+msgid "Edit"
+msgstr "Editar"
+
+#: DrGeo-View,DrGMinControlsManager>>mainMenu
+msgid "Erase or edit style and properties of items."
+msgstr "Apaga ou edita estilo e propriedades de itens."
+
+#: DrGeo-View,DrGMinControlsManager>>mainMenu
+msgid "File"
+msgstr "Arquivo"
+
+#: DrGeo-View,DrGMinControlsManager>>mainMenu
+msgid "Lines"
+msgstr "Retas"
+
+#: DrGeo-View,DrGMinControlsManager>>mainMenu
+msgid "Load, save or export Dr. Geo figure."
+msgstr "Carrega, salva ou exporta uma imagem do Dr. Geo."
+
+#: DrGeo-View,DrGMinControlsManager>>mainMenu
+msgid "Macro-construction"
+msgstr "Construção de macro"
+
+#: DrGeo-View,DrGMinControlsManager>>mainMenu
+msgid "Numerics & Text"
+msgstr "Numerais & Texto"
+
+#: DrGeo-View,DrGMinControlsManager>>mainMenu
+msgid "Points"
+msgstr "Pontos"
+
+#: DrGeo-View,DrGMinControlsManager>>mainMenu
+msgid "Script"
+msgstr "Script"
+
+#: DrGeo-View,DrGMinControlsManager>>mainMenu
+msgid "Script: use, edit or create script to plug in the sketch."
+msgstr "Script: usa, edita ou cria script para conectar no esboço."
+
+#: DrGeo-View,DrGMinControlsManager>>mainMenu
+msgid ""
+"Transform an object with a geometric transformation: symmetry, reflexion, "
+"rotation, translation or homothety (scale)."
+msgstr ""
+"Transforma um objeto com uma transformação geométrica: simetria, reflexão, "
+"rotação, translação ou homotetia (escala)."
+
+#: DrGeo-View,DrGMinControlsManager>>mainMenu
+msgid "Transformations"
+msgstr "Transformações"
+
+#: DrGeo-View-Dialog,DrGDebuggerWindow>>customButtonSpecs
+msgid "Execute the code up to the cursor position."
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGDebuggerWindow>>customButtonSpecs
+msgid "Execute the current message and go to the next message."
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGDebuggerWindow>>customButtonSpecs
+msgid "Restart"
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGDebuggerWindow>>customButtonSpecs
+msgid "Restart the step by step execution from its start."
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGDebuggerWindow>>customButtonSpecs
+msgid "Run to Cursor"
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGDebuggerWindow>>customButtonSpecs
+msgid "Step"
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGDebuggerWindow>>customButtonSpecs
+msgid "Step into"
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGDebuggerWindow>>customButtonSpecs
+msgid "Step into a block."
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGFileOpenMorph_class>>open
+msgid "Open a sketch"
+msgstr "Abre um esboço"
+
+#: DrGeo-View-Dialog,DrGFileOpenMorph>>newButtonArea,DrGScriptDesignerDialog>>newButtonArea,DrGSmalltalkSketchBrowser>>newButtonArea,DrGSmalltalkSketchEditor>>newButtonArea
+msgid "Cancel"
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGFileOpenMorph>>newButtonArea,DrGSmalltalkSketchBrowser>>newButtonArea
+msgid "Examples"
+msgstr "Exemplos"
+
+#: DrGeo-View-Dialog,DrGFileOpenMorph>>newButtonArea,DrGSmalltalkSketchBrowser>>newButtonArea
+msgid "My Sketches"
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGFileOpenMorph>>newButtonArea
+msgid "Open"
+msgstr "Abrir"
+
+#: DrGeo-View-Dialog,DrGScriptDesignerDialog_class>>labelsAndClasses
+msgid "Angle"
+msgstr "Ângulo"
+
+#: DrGeo-View-Dialog,DrGScriptDesignerDialog_class>>labelsAndClasses
+msgid "Any type"
+msgstr "Qualquer tipo"
+
+#: DrGeo-View-Dialog,DrGScriptDesignerDialog_class>>labelsAndClasses
+msgid "Arc"
+msgstr "Arco"
+
+#: DrGeo-View-Dialog,DrGScriptDesignerDialog_class>>labelsAndClasses
+msgid "Circle"
+msgstr "Circulo"
+
+#: DrGeo-View-Dialog,DrGScriptDesignerDialog_class>>labelsAndClasses
+msgid "Direction"
+msgstr "Direção"
+
+#: DrGeo-View-Dialog,DrGScriptDesignerDialog_class>>labelsAndClasses
+msgid "Line"
+msgstr "Linha"
+
+#: DrGeo-View-Dialog,DrGScriptDesignerDialog_class>>labelsAndClasses
+msgid "Locus"
+msgstr "Lugar geométrico"
+
+#: DrGeo-View-Dialog,DrGScriptDesignerDialog_class>>labelsAndClasses
+msgid "Point"
+msgstr "Ponto"
+
+#: DrGeo-View-Dialog,DrGScriptDesignerDialog_class>>labelsAndClasses
+msgid "Polygon"
+msgstr "Polígono"
+
+#: DrGeo-View-Dialog,DrGScriptDesignerDialog_class>>labelsAndClasses
+msgid "Ray"
+msgstr "Raio"
+
+#: DrGeo-View-Dialog,DrGScriptDesignerDialog_class>>labelsAndClasses
+msgid "Segment"
+msgstr "Segmento"
+
+#: DrGeo-View-Dialog,DrGScriptDesignerDialog_class>>labelsAndClasses
+msgid "Value"
+msgstr "Valor"
+
+#: DrGeo-View-Dialog,DrGScriptDesignerDialog_class>>labelsAndClasses
+msgid "Vector"
+msgstr "Vetor"
+
+#: DrGeo-View-Dialog,DrGScriptDesignerDialog>>addArgument
+msgid "Remove this script argument."
+msgstr "Remove esse parâmetro do script."
+
+#: DrGeo-View-Dialog,DrGScriptDesignerDialog>>newAddArgumentButton
+msgid "Add an argument to this script."
+msgstr "Adiciona um parâmetro a esse script."
+
+#: DrGeo-View-Dialog,DrGScriptDesignerDialog>>newButtonArea
+msgid "Build"
+msgstr "Construir"
+
+#: DrGeo-View-Dialog,DrGScriptDesignerDialog>>newButtonArea
+msgid "Build a script with these settings."
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGScriptDesignerDialog>>newDescriptionMorph
+msgid ""
+"A description of the script. To help the user, describe carefully what the "
+"script does and the input arguments to select to use it."
+msgstr ""
+"Uma descrição do script. Para auxiliar o usuário, descreva cuidadosamente o "
+"que o script faz e os parâmetros de entrada a selecionar para usá-lo."
+
+#: DrGeo-View-Dialog,DrGScriptDesignerDialog>>newPane,DrGWizardScript>>secondPage
+msgid "Arguments"
+msgstr "Parâmetros"
+
+#: DrGeo-View-Dialog,DrGScriptDesignerDialog>>newPane,DrGWizardMacroBuild>>fourthPage,DrGWizardMacroPlay>>secondPage,DrGWizardScript>>secondPage
+msgid "Description"
+msgstr "Descrição"
+
+#: DrGeo-View-Dialog,DrGScriptDesignerDialog>>newPane,DrGWizardMacroBuild>>fourthPage,DrGWizardMacroPlay>>secondPage,DrGWizardScript>>secondPage
+msgid "Name"
+msgstr "Nome"
+
+#: DrGeo-View-Dialog,DrGScriptDesignerDialog>>newScriptNameMorph
+msgid "The name of the script."
+msgstr "O nome do script"
+
+#: DrGeo-View-Dialog,DrGSmalltalkSketchBrowser>>newButtonArea
+msgid "Browse my collection of Smalltalk sketches."
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGSmalltalkSketchBrowser>>newButtonArea
+msgid "Delete"
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGSmalltalkSketchBrowser>>newButtonArea
+msgid "Delete permanently this Smalltalk Sketch from disk."
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGSmalltalkSketchBrowser>>newSketchesColumn
+msgid "Code"
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGSmalltalkSketchEditor>>browseSketches
+msgid "Select a Smalltalk sketch"
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGSmalltalkSketchEditor>>executeSketch
+msgid ""
+"Too many errors. Fix it!\n"
+"Sketch stopped"
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGSmalltalkSketchEditor>>keepSketch
+msgid "Name the sketch to keep."
+msgstr "Nomeie o esboço para manter."
+
+#: DrGeo-View-Dialog,DrGSmalltalkSketchEditor>>newToolbar
+msgid "Debug the Smalltalk sketch."
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGSmalltalkSketchEditor>>newToolbar
+msgid "Dr. Geo tutorial"
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGSmalltalkSketchEditor>>newToolbar
+msgid "Edit a Smalltalk sketch."
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGSmalltalkSketchEditor>>newToolbar,DrGSmalltalkSketchEditor>>switchToPlayButton
+msgid "Play the Smalltalk sketch."
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGSmalltalkSketchEditor>>newToolbar
+msgid "Save this Smalltalk sketch."
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGSmalltalkSketchEditor>>newToolbar
+msgid "Stop the execution of the Smalltalk sketch."
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGSmalltalkSketchEditor>>restoreLabel
+msgid "Edit Smalltalk Sketch"
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGSmalltalkSketchEditor>>switchToPauseButton
+msgid "Pause the Smalltalk sketch."
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGSmalltalkSketchEditor>>switchToResumeButton
+msgid "Resume the Smalltalk sketch."
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGWizardMacroBuild>>firstPage
+msgid "Build a macro-construction"
+msgstr "Constrói uma macro-construção"
+
+#: DrGeo-View-Dialog,DrGWizardMacroBuild>>firstPage
+msgid ""
+"To build a macro-construction,\n"
+"\n"
+" 1. First select the input paramaters,\n"
+" 2. Next select the output parameters,\n"
+" 3. Next chose a name and a description,\n"
+" 4. Last apply the selection."
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGWizardMacroBuild>>fourthPage
+msgid "Give a name and a description"
+msgstr "Forneça um nome e uma descrição"
+
+#: DrGeo-View-Dialog,DrGWizardMacroBuild>>secondPage
+msgid "Select input parameters"
+msgstr "Selecione os parâmetros de entrada"
+
+#: DrGeo-View-Dialog,DrGWizardMacroBuild>>thirdPage
+msgid "Select output parameters"
+msgstr "Selecione os parâmetros de saída"
+
+#: DrGeo-View-Dialog,DrGWizardMacroPlay>>firstPage
+msgid "Execute a macro-construction"
+msgstr "Executa uma macro-construção"
+
+#: DrGeo-View-Dialog,DrGWizardMacroPlay>>firstPage
+msgid ""
+"To execute a macro-construction,\n"
+"\n"
+" 1. First select a macro-construction from the list,\n"
+" 2. Select items on the figure. Only items relevant\n"
+" to the selected macro-construction are selectable.\n"
+" Once enough items are selected, the macro is\n"
+" automaticly executed.\n"
+" To start press the 'next' button."
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGWizardMacroPlay>>secondPage
+msgid "Select a macro-construction then the figure items"
+msgstr "Selecione uma macro-construção e, então, os itens da figura"
+
+#: DrGeo-View-Dialog,DrGWizardScript>>firstPage
+msgid ""
+"To use a script,\n"
+"\n"
+" 1. First select a script from the list,\n"
+" 2. Select items in the sketch,\n"
+" 3. Click somewhere in the background. \n"
+" Once enough items are selected, the script is\n"
+" inserted in the sketch, at the user selected position.\n"
+" To start press the 'next' button."
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGWizardScript>>firstPage
+msgid "Use a script in the sketch"
+msgstr "Usa um script no esboço"
+
+#: DrGeo-View-Dialog,DrGWizardScript>>secondPage
+msgid "Select a script then items in the sketch"
+msgstr "Selecione um script e, em seguida, os itens no esboço"
+
+#: DrGeo-View-Dialog,DrGWizardScript>>secondPage
+msgid "The arguments accepted by this script."
+msgstr ""
+
+#~ msgid "no name"
+#~ msgstr "sem nome"
+
+#~ msgid "This geometric angle %1"
+#~ msgstr "Este ângulo geométrico %1"
+
+#~ msgid "This angle bisector %1"
+#~ msgstr "Ângulo da bissetriz %1"
+
+#~ msgid "This oriented angle %1"
+#~ msgstr "Este ângulo orientado %1"
+
+#~ msgid "This Arc Circle %1"
+#~ msgstr "Este arco de circunferência %1"
+
+#~ msgid "This picture"
+#~ msgstr "Esta imagem"
+
+#~ msgid "This circle %1"
+#~ msgstr "Este círculo %1"
+
+#~ msgid "This composite object %1"
+#~ msgstr "Este objeto composto %1"
+
+#~ msgid "This equation %1"
+#~ msgstr "Esta equação %1"
+
+#~ msgid "Equation"
+#~ msgstr "Equação"
+
+#~ msgid "This line %1"
+#~ msgstr "Está linha %1"
+
+#~ msgid "This parallel line %1"
+#~ msgstr "Esta reta paralela %1"
+
+#~ msgid "This perpendicular bisector %1"
+#~ msgstr "Esta bissetriz perpendicular %1"
+
+#~ msgid "This perpendicular line %1"
+#~ msgstr "Esta reta perpendicular %1"
+
+#~ msgid "This locus %1"
+#~ msgstr "Este lugar geométrico %1"
+
+#~ msgid "This math item %1"
+#~ msgstr "Este item matemático %1"
+
+#~ msgid "Edit the coordinates"
+#~ msgstr "Editar as coordenadas"
+
+#~ msgid "This point %1"
+#~ msgstr "Este ponto %1"
+
+#~ msgid "Edit this curvilinear abscissa in [0;1]"
+#~ msgstr "Edita esta abscissa curvilínea em [0;1]"
+
+#~ msgid "This polygon %1"
+#~ msgstr "Este polígono %1"
+
+#~ msgid "This quadrilateral %1"
+#~ msgstr "Este quadrilátero %1"
+
+#~ msgid "This triangle %1"
+#~ msgstr "Este triangulo %1"
+
+#~ msgid " edges="
+#~ msgstr " Arestas="
+
+#~ msgid "This half-line %1"
+#~ msgstr "Esta semirreta %1"
+
+#~ msgid "This segment %1"
+#~ msgstr "Este segmento %1"
+
+#~ msgid "This text"
+#~ msgstr "Este texto"
+
+#~ msgid "Edit this text"
+#~ msgstr "Editar este texto"
+
+#~ msgid "Edit me"
+#~ msgstr "Edite-me"
+
+#~ msgid "This arc length %1"
+#~ msgstr "Comprimento deste arco %1"
+
+#~ msgid "This circle perimeter %1"
+#~ msgstr "Perímetro desta circunferência %1"
+
+#~ msgid "This distance between two points %1"
+#~ msgstr "Distância entre estes dois pontos %1"
+
+#~ msgid "This point-line distance %1"
+#~ msgstr "Distância entre este ponto e esta reta %1"
+
+#~ msgid "This value %1"
+#~ msgstr "Este valor %1"
+
+#~ msgid "Value "
+#~ msgstr "Valor "
+
+#~ msgid "This polygon perimeter %1"
+#~ msgstr "Perímetro deste polígono %1"
+
+#~ msgid "This point abscissa %1"
+#~ msgstr "Abscissa deste ponto %1"
+
+#~ msgid "This point ordinate %1"
+#~ msgstr "Ordenada deste ponto %1"
+
+#~ msgid "This script \"{1}\""
+#~ msgstr "Este script \"{1}\""
+
+#~ msgid "This script \"{1}\" with argument: %2"
+#~ msgstr "Este script \"{1}\" com argumento: %2"
+
+#~ msgid "This script \"{1}\" with arguments: %2"
+#~ msgstr "Este script \"{1}\" com argumentos: %2"
+
+#~ msgid "Script "
+#~ msgstr "Script "
+
+#~ msgid "This segment length %1"
+#~ msgstr "Comprimento deste segmento %1"
+
+#~ msgid "This line slope %1"
+#~ msgstr "Inclinação desta reta %1"
+
+#~ msgid "Edit this value"
+#~ msgstr "Editar este valor"
+
+#~ msgid "This vector abscissa %1"
+#~ msgstr "Abscissa deste vetor %1"
+
+#~ msgid "This Vector's norm %1"
+#~ msgstr "Norma deste vetor %1"
+
+#~ msgid "This vector ordinate %1"
+#~ msgstr "Ordenada deste vetor %1"
+
+#~ msgid "This vector %1"
+#~ msgstr "Este vetor %1"
+
+#~ msgid "Only geometric object can be transformed."
+#~ msgstr "Apenas objetos geométricos podem ser transformados."
+
+#~ msgid "Set the style of the line."
+#~ msgstr "Configurar o estilo da reta"
+
+#~ msgid "Style"
+#~ msgstr "Style"
+
+#~ msgid "Set the thickness of the line."
+#~ msgstr "Configurar a espessura da reta"
+
+#~ msgid "Thickness"
+#~ msgstr "Espessura"
+
+#~ msgid "Fill"
+#~ msgstr "Preencher"
+
+#~ msgid "Toggle to fill the object."
+#~ msgstr "Alterne para preencher o objeto."
+
+#~ msgid "Toggle the translucency of the object."
+#~ msgstr "Alterna a translucidez do objeto."
+
+#~ msgid "Translucent"
+#~ msgstr "Translúcido"
+
+#~ msgid "Arrow"
+#~ msgstr "Seta"
+
+#~ msgid "Set arrow(s) to the line."
+#~ msgstr "Configurar seta(s) para a reta."
+
+#~ msgid "Set the shape of the point."
+#~ msgstr "Configurar a forma do ponto."
+
+#~ msgid "Set the size of the point."
+#~ msgstr "Configurar o tamanho do ponto."
+
+#~ msgid "Set a mark to the segment."
+#~ msgstr "Define uma marca no segmento"
+
+#~ msgid "Set the colour."
+#~ msgstr "Defina a cor."
+
+#~ msgid "Feedback"
+#~ msgstr "Feedback"
+
+#~ msgid ""
+#~ "Toggle to provide feedback and interaction when the mouse cursor is over "
+#~ "the object."
+#~ msgstr ""
+#~ "Alterne para fornecer comentários e interação quando o cursor do mouse "
+#~ "estiver sobre o objeto"
+
+#~ msgid "Hide"
+#~ msgstr "Ocultar"
+
+#~ msgid "Toggle to hide the object."
+#~ msgstr "Alterne pra ocultar este objeto"
+
+#~ msgid "Lock"
+#~ msgstr "Bloquear"
+
+#~ msgid "Toggle to lock the object to its position."
+#~ msgstr "Alterne para bloquear o objeto em sua posição."
+
+#~ msgid "Rename this object."
+#~ msgstr "Renomear este objeto"
+
+#~ msgid "Set the background colour."
+#~ msgstr "Configurar a cor de fundo"
+
+#~ msgid "Set the border colour."
+#~ msgstr "Configurar a cor da borda."
+
+#~ msgid "Font size"
+#~ msgstr "Tamanho da fonte"
+
+#~ msgid "Set the font size."
+#~ msgstr "Configurar o tamanho da fonte."
+
+#~ msgid "Name this value"
+#~ msgstr "Nomeie este valor"
+
+#~ msgid "Rename this value"
+#~ msgstr "Renomear este valor"
+
+#~ msgid "Installed version: "
+#~ msgstr "Versão instalada: "
+
+#~ msgid "Fig. - "
+#~ msgstr "Fig. - "
+
+#~ msgid "System menu"
+#~ msgstr "Menu do sistema"
+
+#~ msgid "Macro - "
+#~ msgstr "Macro - "
+
+#~ msgid "Settings"
+#~ msgstr "Configurações"
+
+#~ msgid "Open a file"
+#~ msgstr "Abrir um arquivo"
+
+#~ msgid "Open the filer on your personal sketches collection."
+#~ msgstr "Abra o arquivador em sua coleção de esboços pessoais."
+
+#~ msgid "Save session"
+#~ msgstr "Salvar sessão"
+
+#~ msgid "Save this Dr. Geo session."
+#~ msgstr "Salvar essa sessão do Dr. Geo."
+
+#~ msgid "System Browser"
+#~ msgstr "Navegador do sistema"
+
+#~ msgid "Tools"
+#~ msgstr "Ferramentas"
+
+#~ msgid "Workspace"
+#~ msgstr "Área de trabalho"
+
+#~ msgid "About"
+#~ msgstr "Sobre"
+
+#~ msgid "New sketch"
+#~ msgstr "Novo esboço"
+
+#~ msgid "Quit"
+#~ msgstr "Sair"
+
+#~ msgid "Toggle full screen mode"
+#~ msgstr "Alternar modo de tela cheia"
+
+#~ msgid "Turn full screen mode on when it is off, off when it is on."
+#~ msgstr ""
+#~ "Liga o modo tela cheia quando está desativado e desliga quando está "
+#~ "ativado."
+
+#~ msgid "Build a new script"
+#~ msgstr "Constrói um novo script"
+
+#~ msgid "Edit or create scripts"
+#~ msgstr "Editar ou criar scripts"
+
+#~ msgid ""
+#~ "Angle bisector defined by three points or an angle defined by three "
+#~ "points."
+#~ msgstr ""
+#~ "Ângulo bissetor definido por três pontos ou um ângulo definido por três "
+#~ "pontos."
+
+#~ msgid "Angle bisector"
+#~ msgstr "Ângulo bissetor"
+
+#~ msgid "Geometric angle"
+#~ msgstr "Ângulo geométrico"
+
+#~ msgid "Oriented angle"
+#~ msgstr "Ângulo orientado"
+
+#~ msgid "Arc defined by three points."
+#~ msgstr "Arco definido por três pontos."
+
+#~ msgid "Arc defined by its center and two points."
+#~ msgstr "Arco definido pelo seu centro e dois pontos."
+
+#~ msgid "Arc (center)"
+#~ msgstr "Arco"
+
+#~ msgid ""
+#~ "Picture: drag and drop a picture in the canvas. It can be moved and "
+#~ "scaled."
+#~ msgstr ""
+#~ "Figura: arraste e solte a figura na tela. Ela pode ser movida e "
+#~ "redimensionada."
+
+#~ msgid "Picture"
+#~ msgstr "Imagem"
+
+#~ msgid ""
+#~ "Circle defined by its center and a point or by its center and radius, a "
+#~ "value."
+#~ msgstr ""
+#~ "Círculo definido pelo seu centro e um ponto ou pelo seu centro e raio, um "
+#~ "valor."
+
+#~ msgid "Vector or point coordinates, circle or line equation."
+#~ msgstr "Vetor ou coordenadas do ponto, equação do círculo ou da reta."
+
+#~ msgid "Coordinates, equation"
+#~ msgstr "Coordenadas, equação"
+
+#~ msgid ""
+#~ "Click to create a point: free point on the background, on a curve or on "
+#~ "two curves intersection."
+#~ msgstr ""
+#~ "Clique para criar um ponto: ponto livre no plano, numa curva ou na "
+#~ "interseção de duas curvas."
+
+#~ msgid ""
+#~ "Tap to create a point: free point on the background, on a curve or on two "
+#~ "curves intersection."
+#~ msgstr ""
+#~ "Toque para criar um ponto: no plano, na curva ou na interseção entre duas "
+#~ "curvas."
+
+#~ msgid ""
+#~ "Homothety: select a center, a value and a geometric object. The first "
+#~ "selected point is the homothety center."
+#~ msgstr ""
+#~ "Homotetia: selecione um centro, um valor e um objeto geométrico. O "
+#~ "primeiro ponto selecionado é o centro homotético."
+
+#~ msgid "Homothety (scale)"
+#~ msgstr "Homotetia (escala)"
+
+#~ msgid "Line defined by two points"
+#~ msgstr "Reta definida por dois pontos"
+
+#~ msgid "Locus defined by a free point on a curve and a relative point."
+#~ msgstr ""
+#~ "Lugar geométrico definido por um ponto livre numa curva e um ponto "
+#~ "relativo."
+
+#~ msgid "Construct a macro-construction with input and output items."
+#~ msgstr "Constrói uma macro de construção com itens de entrada e de saída."
+
+#~ msgid "Build macro"
+#~ msgstr "Construir macro"
+
+#~ msgid "Input and output items don't match"
+#~ msgstr "Itens de entrada e saída não correspondem"
+
+#~ msgid "Please, enter a proper title and description"
+#~ msgstr "Por favor, insira um título e uma descrição adequada"
+
+#~ msgid ""
+#~ "Execute a pre-built macro-construction on selected input items. To edit a "
+#~ "macro description, edit its text and apply with the keys [alt/ctrl]+s."
+#~ msgstr ""
+#~ "Executa uma macro de construção pré-construída nos itens de entrada "
+#~ "selecionados. Para editar uma descrição de macro, edite seu texto e "
+#~ "aplique com as teclas [alt/ctrl]+s."
+
+#~ msgid "Execute/edit macro"
+#~ msgstr "Executar/editar macro"
+
+#~ msgid "The midpoint of a segment or between two points."
+#~ msgstr "O ponto médio de um segmento ou entre dois pontos"
+
+#~ msgid "Middle"
+#~ msgstr "Meio"
+
+#~ msgid ""
+#~ "Line passing through one point and parallel to a line, half-line, etc."
+#~ msgstr "Reta passando por um ponto e paralela a uma reta, semirreta, etc."
+
+#~ msgid "Parallel"
+#~ msgstr "Paralelo"
+
+#~ msgid "Perpendicular bisector defined by a segment or two points."
+#~ msgstr "Bissetriz perpendicular definido por um segmento ou dois pontos."
+
+#~ msgid "Perpendicular bisector"
+#~ msgstr "Bissetriz perpendicular"
+
+#~ msgid ""
+#~ "Line passing through one point and orthogonal to a line, half-line, etc."
+#~ msgstr "Reta passando por um ponto e ortogonal a uma reta, semirreta, etc."
+
+#~ msgid "Perpendicular"
+#~ msgstr "Perpendicular"
+
+#~ msgid ""
+#~ "Point given its coordinates: select two numbers or a point coordinates "
+#~ "(@)."
+#~ msgstr ""
+#~ "Ponto dadas suas coordenadas: selecione dois números ou as coordenadas de "
+#~ "um ponto (@)."
+
+#~ msgid "Coordinates"
+#~ msgstr "Coordenadas"
+
+#~ msgid "Intersection(s) of two curves."
+#~ msgstr "Interseção de duas curvas"
+
+#~ msgid "Intersection"
+#~ msgstr "Interseção"
+
+#~ msgid ""
+#~ "Polygon by n points: last point must be the initial point to terminate."
+#~ msgstr ""
+#~ "Polígono por n pontos: o último ponto precisa de ser o ponto inicial para "
+#~ "terminar ."
+
+#~ msgid ""
+#~ "Regular polygon defined by its center, a vertex and its sides number."
+#~ msgstr ""
+#~ "Polígono regular definido pelo seu centro, um vértice e seu número de "
+#~ "lados."
+
+#~ msgid "Regular polygon"
+#~ msgstr "Polígono regular"
+
+#~ msgid ""
+#~ "Half-Line defined by two points, the first selected point is the origin."
+#~ msgstr ""
+#~ "Semirreta definida por dois pontos em que o primeiro ponto selecionado é "
+#~ "a origem."
+
+#~ msgid ""
+#~ "Reflexion: select a line and a geometric object. Reflexion axe is the "
+#~ "first selected line."
+#~ msgstr ""
+#~ "Reflexão: selecione uma reta e um objeto geométrico. A primeira reta "
+#~ "selecionada é o eixo de reflexão."
+
+#~ msgid "Reflection"
+#~ msgstr "Reflexão"
+
+#~ msgid ""
+#~ "Rotation: select a point, a value and a geometric object. The first "
+#~ "selected point is the rotation center."
+#~ msgstr ""
+#~ "Rotação: selecione um ponto, um valor e um objeto geométrico. O centro de "
+#~ "rotação é o primeiro ponto selecionado."
+
+#~ msgid "Rotation"
+#~ msgstr "Rotação"
+
+#~ msgid "Insert a Smalltalk script in the drawing area."
+#~ msgstr "Insere um script Smalltalk na área de desenho."
+
+#~ msgid "Use a script"
+#~ msgstr "Usar um script"
+
+#~ msgid "No description, write one in the description method of this script."
+#~ msgstr "Sem descrição, escreva um descrição no método deste script."
+
+#~ msgid "Segment defined by two points."
+#~ msgstr "Segmento definido por dois pontos."
+
+#~ msgid ""
+#~ "Symmetry: select a point and a geometric object. The first selected point "
+#~ "is the symmetry center."
+#~ msgstr ""
+#~ "Simetria: selecione um ponto e um objeto geométrico. O primeiro ponto "
+#~ "selecionado é o cento de simetria."
+
+#~ msgid "Symmetry"
+#~ msgstr "Simetria"
+
+#~ msgid "Free text you can edit and move around."
+#~ msgstr "Texto livre você pode editar e mover."
+
+#~ msgid "Text"
+#~ msgstr "Texto"
+
+#~ msgid "Translation: select a vector and a geometric object."
+#~ msgstr "Translação: selecione um vetor e um objeto geométrico."
+
+#~ msgid "Translation"
+#~ msgstr "Tradução"
+
+#~ msgid "Distance between objects, curve length, free value."
+#~ msgstr "Distância entre objetos, comprimento de curva, valor livre."
+
+#~ msgid "Distance, length, value"
+#~ msgstr "Distância, comprimento, valor"
+
+#~ msgid "Vector defined by two points."
+#~ msgstr "Vetor definido por dois pontos."
+
+#~ msgid "Select a free point on a curve to animate it."
+#~ msgstr "Selecione um ponto livre em uma curva para animá-lo."
+
+#~ msgid "Erase an object and all its depedencies."
+#~ msgstr "Apaga um objeto e suas dependências."
+
+#~ msgid "Eraser"
+#~ msgstr "Barracha"
+
+#~ msgid "This intersection"
+#~ msgstr "Esta interseção."
+
+#~ msgid "Change as a free point on the plane."
+#~ msgstr "Muda como um ponto livre no plano."
+
+#~ msgid "Change as a free point on this curve."
+#~ msgstr "Muda como um ponto livre nesta curva."
+
+#~ msgid "Change as this intersection."
+#~ msgstr "Muda como essa interseção."
+
+#~ msgid "Edit an item's property"
+#~ msgstr "Edita uma propriedade do item"
+
+#~ msgid "Property"
+#~ msgstr "Propriedade"
+
+#~ msgid "Select and move an object."
+#~ msgstr "Seleciona e move um objeto"
+
+#~ msgid "Select and Move"
+#~ msgstr "Selecionar e mover"
+
+#~ msgid "Select a point to merge with"
+#~ msgstr "Selecione um ponto para fundir com"
+
+#~ msgid "Drag this point to change its nature."
+#~ msgstr "Arraste esse ponto para mudar sua natureza"
+
+#~ msgid ""
+#~ "Pressing down the [Shift] key you can drag and change the nature of free "
+#~ "point or intersection point."
+#~ msgstr ""
+#~ "Pressionando e segurando a tecla [Shift], você pode arrastar e modificar "
+#~ "a natureza de pontos livres ou de interseção."
+
+#~ msgid ""
+#~ "Several objects can be selected. Please, select one clicking the mouse."
+#~ msgstr ""
+#~ "Muitos objetos podem ser selecionados. Por favor, selecione um clicando "
+#~ "com o mouse."
+
+#~ msgid "Edit an object style."
+#~ msgstr "Edita o estilo de um objeto."
+
+#~ msgid "Edit Style"
+#~ msgstr "Editar estilo"
+
+#~ msgid "Select an object"
+#~ msgstr "Seleciona um objeto"
+
+#~ msgid "Several objects can be selected. Please, choose one."
+#~ msgstr "Muitos objetos podem ser selecionados. Por favor, escolha um."
+
+#~ msgid "Colour"
+#~ msgstr "Cor"
+
+#~ msgid "Shape"
+#~ msgstr "Forma"
+
+#~ msgid "Size"
+#~ msgstr "Tamanho"
+
+#~ msgid "Mark"
+#~ msgstr "Marca"
+
+#~ msgid "Background"
+#~ msgstr "Plano de fundo"
+
+#~ msgid "Border"
+#~ msgstr "Contorno"
+
+#~ msgid "Number of decimal"
+#~ msgstr "Número decimal"
+
+#~ msgid "Animate at speed 1."
+#~ msgstr "Anima na velocidade 1."
+
+#~ msgid "Animate x1"
+#~ msgstr "Animar x1"
+
+#~ msgid "Animate at speed 2."
+#~ msgstr "Anima na velocidade 2."
+
+#~ msgid "Animate x2"
+#~ msgstr "Animação x2"
+
+#~ msgid "Animate at speed 3."
+#~ msgstr "Animação na velocidade 3."
+
+#~ msgid "Animate x3"
+#~ msgstr "Animar x3"
+
+#~ msgid "Animate at speed 4."
+#~ msgstr "Anima na velocidade 4."
+
+#~ msgid "Animate x4"
+#~ msgstr "Animar x4"
+
+#~ msgid "Show or hide the ox and oy axes."
+#~ msgstr "Exibe ou oculta os eixos ox e oy."
+
+#~ msgid "Show or hide grid."
+#~ msgstr "Exibir ou ocultar grade."
+
+#~ msgid "Keep this sketch permanently."
+#~ msgstr "Manter esse esboço permanentemente"
+
+#~ msgid "Save"
+#~ msgstr "Salvar"
+
+#~ msgid "Delete a macro-construction from the registry."
+#~ msgstr "Remove uma macro-construção do registro."
+
+#~ msgid "Delete macro"
+#~ msgstr "Remover macro"
+
+#~ msgid "Snap to grid."
+#~ msgstr "Ajustar à grade"
+
+#~ msgid "An unobtrusive menu with all Dr. Geo tools."
+#~ msgstr "Um menu discreto com todas as ferramentas do Dr. Geo."
+
+#~ msgid "Menu"
+#~ msgstr "Menu"
+
+#~ msgid ""
+#~ "Toggle between the build of several geometric objects and the build of "
+#~ "one geometric object then move it."
+#~ msgstr ""
+#~ "Alterna entre a construção de muitos objetos geométricos e a construção "
+#~ "de um objeto geométrico e, então, o move."
+
+#~ msgid "New"
+#~ msgstr "Novo"
+
+#~ msgid "Open a new blank sketch."
+#~ msgstr "Abre um novo esboço em branco."
+
+#~ msgid "Open a sketch."
+#~ msgstr "Abre um esboço."
+
+#~ msgid "Redo"
+#~ msgstr "Refazer"
+
+#~ msgid "Redo last action."
+#~ msgstr "Refaz a última ação."
+
+#~ msgid "Create a Smalltalk script."
+#~ msgstr "Cria um script SmallTalk"
+
+#~ msgid "Create a script"
+#~ msgstr "Cria um script"
+
+#~ msgid "Edit a Smalltalk script."
+#~ msgstr "Edita um script SmallTalk"
+
+#~ msgid "Edit a script"
+#~ msgstr "Edita um script"
+
+#~ msgid "Construction tree"
+#~ msgstr "Árvore de construção"
+
+#~ msgid "The hierarchy tree presenting the visible constructed items."
+#~ msgstr "A árvore hierárquica apresentando os itens visíveis construídos."
+
+#~ msgid "Undo"
+#~ msgstr "Desfazer"
+
+#~ msgid "Undo last action"
+#~ msgstr "Desfaz a última ação"
+
+#~ msgid "A wheel to move horizontally the sketch."
+#~ msgstr "Uma roda para mover o esboço horizontalmente."
+
+#~ msgid "Horizontal wheel"
+#~ msgstr "Roda horizontal"
+
+#~ msgid "A wheel to move vertically the sketch."
+#~ msgstr "Uma roda para mover o esboço verticalmente."
+
+#~ msgid "Vertical wheel"
+#~ msgstr "Roda vertical"
+
+#~ msgid "A wheel to zoom in, zoom out the sketch."
+#~ msgstr "Uma roda para aproximar ou afastar o esboço"
+
+#~ msgid "Zoom wheel"
+#~ msgstr "Roda de zoom"
+
+#~ msgid "Open at..."
+#~ msgstr "Abrir em..."
+
+#~ msgid "Add argument"
+#~ msgstr "Adicionar parâmetro"
+
+#~ msgid "Description:"
+#~ msgstr "Descrição:"
+
+#~ msgid "Title:"
+#~ msgstr "Título:"
+
+#~ msgid "Script name"
+#~ msgstr "Nome do script"

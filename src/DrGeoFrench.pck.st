@@ -1,6 +1,6 @@
-'From Cuis7.7 [latest update: #7839] on 17 February 2026 at 4:24:22 pm'!
+'From Cuis7.7 [latest update: #7839] on 17 February 2026 at 8:45:21 pm'!
 'Description '!
-!provides: 'DrGeoFrench' 1 21!
+!provides: 'DrGeoFrench' 1 22!
 !requires: 'DrGeoCore' 1 33 nil!
 !requires: 'CuisFrench' 1 0 nil!
 SystemOrganization addCategory: #DrGeoFrench!
@@ -1028,219 +1028,6 @@ section_Lines_Segment
 section_Lines_StraightLine
 ^(EruditeBookSection basicNew title: 'Straight line'; document: ((EruditeDocument contents: '') data: ((Dictionary new)); yourself); subsections: (OrderedCollection new yourself); yourself)! !
 
-!DrGeoTutorial methodsFor: 'as yet unclassified' stamp: 'hlsf 24/Nov/2022 17:14:16'!
-section_MesuresEtValeurs
-^(EruditeBookSection basicNew title: 'Mesures et valeurs'; document: ((EruditeDocument contents: 'Cette section regroupe les commandes pour obtenir des valeurs numériques : angles, coordonnées, pente, distance et valeurs libres.
-
-Déplie la section **▶ Mesures et valeurs** pour explorer ces types de valeurs numériques !!') data: ((Dictionary new)); yourself); subsections: (OrderedCollection new        add: self section_MesuresEtValeurs_Angle;
-        add: self section_MesuresEtValeurs_Coordonnée;
-        add: self section_MesuresEtValeurs_Mesure;
-        add: self section_MesuresEtValeurs_ValeurRéglette;
- yourself); yourself)! !
-
-!DrGeoTutorial methodsFor: 'as yet unclassified' stamp: 'hlsf 24/Nov/2022 17:14:16'!
-section_MesuresEtValeurs_Angle
-^(EruditeBookSection basicNew title: 'Angle'; document: ((EruditeDocument contents: '!!!!!!Angle géométrique
-//<angle>// **angleGeometriqueCentre:de:a** //a b c//
-//a//, point, sommet de l’angle
-//b//, point sur le 1er côté de l''angle
-//c//, point sur le 2ème coté de l''angle
-⇒ angle géométrique bac dont la mesure appartient à [0 ; 180[
-
-[[[| fig |
-fig _ DrGeoFigure nouveau.
-fig 
-	segmentDe: 0@0 a: 3@0;
-	segmentDe: 0@0 a: 0@3;
-	angleGeometriqueCentre: 0@0 de: 3@0 a: 0@3.
-(fig point: 0@3) montrer.
-(fig point: 3@0) montrer]]] withDrGeoActions
-
-!!!!!!Angle orienté
-//<angle>// **angleCentre:de:a** //a b c//
-//a//, point, sommet de l’angle
-//b//, point sur le 1er côté de l''angle
-//c//, point sur le 2ème coté de l''angle
-⇒ angle orienté bac dont la mesure appartient à [0 ; 360[
-
-[[[| fig |
-fig _ DrGeoFigure nouveau.
-fig 
-	segmentDe: 0@0 a: 3@0;
-	segmentDe: 0@0 a: 0@3;
-	angleCentre: 0@0 de: 3@0 a: 0@3.
-(fig point: 0@3) montrer.
-(fig point: 3@0) montrer]]] withDrGeoActions
-
-!!!!!!Angle vecteurs
-//<angle>// **angleVecteur:et:** //v1 v2//
-//v1, v2//, vecteurs
-⇒ angle orienté, formé par les deux vecteurs, dont la mesure appartient à [-PI ; PI[
-
-[[[| fig v1 v2 a |
-fig _ DrGeoFigure nouveau.
-v1 _ fig vecteurOrigine: 0@0 extremite: 3@1.
-v2 _ fig vecteurOrigine: 0@0 extremite: -1@-3.
-a _ fig angleVecteur: v1 et: v2]]] withDrGeoActions
-') data: ((Dictionary new)); yourself); subsections: (OrderedCollection new yourself); yourself)! !
-
-!DrGeoTutorial methodsFor: 'as yet unclassified' stamp: 'hlsf 24/Nov/2022 17:14:16'!
-section_MesuresEtValeurs_Coordonnée
-^(EruditeBookSection basicNew title: 'Coordonnée'; document: ((EruditeDocument contents: '!!!!!!Abscisse
-//<valeur>// **abscisseDe:** //item//
-//item//, un point ou un vecteur
-
-[[[| fig m |
-fig _ DrGeoFigure nouveau.
-m _ fig milieuDe: 10@5 et: 7@8.
-fig abscisseDe: m]]] withDrGeoActions
-
-!!!!!!Ordonnée
-//<valeur>// **ordonneeDe:** //item//
-//item//, un point ou un vecteur
-
-[[[| fig m |
-fig _ DrGeoFigure nouveau.
-m _ fig milieuDe: 10@5 et: 7@8.
-fig ordonneeDe: m]]] withDrGeoActions
-
-!!!!!!Coordonnées (fixe)
-//<point>// **coordonnees**
-⇒ coordonnées (statiques) d’un point
-
-[[[| fig seg c p |
-fig _ DrGeoFigure nouveau.
-seg _ fig segmentDe: 0@0 a: 5@0.
-p _ fig pointSurLigne: seg a: 0.5.
-c _ p coordonnees.
-c x]]] withDrGeoActions') data: ((Dictionary new)); yourself); subsections: (OrderedCollection new yourself); yourself)! !
-
-!DrGeoTutorial methodsFor: 'as yet unclassified' stamp: 'hlsf 24/Nov/2022 17:14:16'!
-section_MesuresEtValeurs_Mesure
-^(EruditeBookSection basicNew title: 'Mesure'; document: ((EruditeDocument contents: '!!!!!!Longueur
-//<valeur>// **longueurDe:** //objet//
-//objet//, segment, cercle, arc ou vecteur
-⇒ nombre, longueur de l’item
-
-[[[| fig point segment |
-fig _ DrGeoFigure nouveau.
-point _ fig point: 1@2.
-segment _ fig segmentDe: 0@0 a: point.
-fig longueurDe: segment]]] withDrGeoActions
-
-!!!!!!Distance
-//<valeur>// **distanceDe:a:** //objet p//
-//objet//, droite ou point
-//p//, point
-⇒ nombre, distance entre deux points ou un point et une droite
-
-[[[| fig point droite |
-fig _ DrGeoFigure nouveau.
-point _ fig point: -5@5.
-droite _ fig droitePassantPar: 0@0 et: 1@2.
-fig distanceDe: droite a: point.
-fig distanceDe: 0@0 a: 12@2]]] withDrGeoActions
-
-!!!!!!Pente
-//<valeur>// **penteDe:** //d//
-//d//, droite
-⇒ nombre, pente de la droite
-
-[[[| fig p d |
-fig _ DrGeoFigure nouveau.
-d _ fig droitePassantPar: 0@0 et: 3@8.
-p _ fig penteDe: d]]] withDrGeoActions') data: ((Dictionary new)); yourself); subsections: (OrderedCollection new yourself); yourself)! !
-
-!DrGeoTutorial methodsFor: 'as yet unclassified' stamp: 'hlsf 17/Feb/2026 16:12:51'!
-section_MesuresEtValeurs_Valeur
-^(EruditeBookSection basicNew title: 'Valeur'; document: ((EruditeDocument contents: '!!!!!!Valeur libre
-//<valeur>// **valeur:** //v//
-//v//, la valeur initiale du nombre
-⇒ nombre à la valeur libre
-
-[[[DrGeoFigure nouveau
-	valeur: 1/3]]] withDrGeoActions
-
-Valeur approchée de π :
-[[[DrGeoFigure nouveau
-	valeur: (-1 arcCos)]]] withDrGeoActions
-
-!!!!!!Editer une valeur libre
-**valeur:** //v//
-//v//, nouvelle valeur d''un nombre
-
-[[[| fig n |
-fig _ DrGeoFigure nouveau.
-" π ≈ 3 :"
-n _ fig 	valeur: 3. 
-" Valeur approchée de π plus précise :"
-n valeur: Float pi]]] withDrGeoActions
-
-!!!!!!Réglette
-Une réglette est une valeur libre dans un intervalle numérique. Dans la figure, elle est représentée sous la forme d''un segment et d''un point glissant sur ce dernier. La position du point indique la valeur numérique de la réglette.
-
-Son utilisation permet de construire des figures dynamiques aux paramètres numériques variables.
-Une réglette est de valeur entière ou décimale.
-
-!!!!!!!!Valeur entière
-
-!!!!!!!!Valeur décimale') data: ((Dictionary new)); yourself); subsections: (OrderedCollection new yourself); yourself)! !
-
-!DrGeoTutorial methodsFor: 'as yet unclassified' stamp: 'hlsf 17/Feb/2026 16:10:47'!
-section_MesuresEtValeurs_ValeurRéglette
-^(EruditeBookSection basicNew title: 'Valeur & Réglette'; document: ((EruditeDocument contents: '!!!!!!Valeur libre
-//<valeur>// **valeur:** //v//
-//v//, la valeur initiale du nombre
-⇒ nombre à la valeur libre
-
-[[[DrGeoFigure nouveau
-	valeur: 1/3)]]] withDrGeoActions
-
-Valeur approchée de π :
-[[[DrGeoFigure nouveau
-	valeur: (-1 arcCos)]]] withDrGeoActions
-
-!!!!!!Editer une valeur libre
-**valeur:** //v//
-//v//, nouvelle valeur d''un nombre
-
-[[[| fig n |
-fig _ DrGeoFigure nouveau.
-" π ≈ 3 :"
-n _ fig 	valeur: 3. 
-" Valeur approchée de π plus précise :"
-n valeur: Float pi]]] withDrGeoActions
-
-!!!!!!Réglette
-Une réglette est une valeur libre dans un intervalle numérique. Dans la figure, elle est représentée sous la forme d''un segment et d''un point glissant sur ce dernier. La position du point indique la valeur numérique de la réglette.
-
-Son utilisation permet de construire des figures dynamiques aux paramètres numériques variables.
-Une réglette est de valeur entière ou décimale.
-
-!!!!!!!!Valeur entière
-//<bloc>// **entier:a:min:max** //v1 p v2 v3//
-//<bloc>// **eniter:a:min:max:nom:** //v1 p v2 v3 s//
-//<bloc>// **entier:a:min:max:nom:affciherValeur:** //v1 p v2 v3 s b//
-//v1//, valeur entière initiale
-//p//, position du bord gauche de la réglette
-//v2//, valeur minimum
-//v3//, valeur maximum
-//s//, nom de la valeur
-//b//, booléen (true|false), affiche ou non la valeur numérique avec le nom sous la forme ’a = 1.2’
-⇒ un bloc de code retournant la valeur courante, décimale ou entière, de la réglette
-
-[[[| fig r |
-fig _ DrGeoFigure nouveau.
-fig axesMontrer.
-r _ fig entier: 1 a: 0@-5 min: 1 max: 5.
-fig cercleCentre: 0@0 rayon: r]]] withDrGeoActions
-
-!!!!!!!!Valeur décimale
-Variante à valeur décimale.
-//<bloc>// **decimal:a:min:max** //v1 p v2 v3//
-//<bloc>// **decimal:a:min:max:nom:** //v1 p v2 v3 s//
-//<bloc>// **decimal:a:min:max:nom:affciherValeur:** //v1') data: ((Dictionary new)); yourself); subsections: (OrderedCollection new yourself); yourself)! !
-
 !DrGeoTutorial methodsFor: 'as yet unclassified' stamp: 'hlsf 21/Dec/2022 22:16:02'!
 section_NumériqueTexte
 ^(EruditeBookSection basicNew title: 'Numérique & Texte'; document: ((EruditeDocument contents: 'Cette section regroupe les commandes pour obtenir des valeurs numériques et texte : angles, coordonnées, pente, distance, valeurs libres, etc.
@@ -1411,7 +1198,7 @@ fig _ DrGeoFigure nouveau.
 monTexte _ fig texte: ''Hello''.
 monTexte texte: ''Au revoir'']]] withDrGeoActions') data: ((Dictionary new)); yourself); subsections: (OrderedCollection new yourself); yourself)! !
 
-!DrGeoTutorial methodsFor: 'as yet unclassified' stamp: 'hlsf 17/Feb/2026 16:11:02'!
+!DrGeoTutorial methodsFor: 'as yet unclassified' stamp: 'hlsf 17/Feb/2026 20:38:47'!
 section_NumériqueTexte_ValeurRéglette
 ^(EruditeBookSection basicNew title: 'Valeur & Réglette'; document: ((EruditeDocument contents: '!!!!!!Valeur libre
 //<valeur>// **valeur:** //v//
@@ -1419,7 +1206,7 @@ section_NumériqueTexte_ValeurRéglette
 ⇒ nombre à la valeur libre
 
 [[[DrGeoFigure nouveau
-	valeur: 1/3)]]] withDrGeoActions
+	valeur: 1/3]]] withDrGeoActions
 
 Valeur approchée de π :
 [[[DrGeoFigure nouveau

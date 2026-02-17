@@ -1,0 +1,778 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-02-17 18:57-0000\n"
+"PO-Revision-Date: 2013-08-15 12:23+0000\n"
+"Last-Translator: Chris Leonard <Unknown>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: hy\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2024-05-27 04:37+0000\n"
+"X-Generator: Launchpad (build 0e1f616671af724398db43b36ddfb3ed1f2682ec)\n"
+"X-Pharo-Domain: DrGeoII\n"
+"X-Pharo-SystemVersion: Pharo1.3 of 5 July 2011 update 13267\n"
+
+#: DrGeo-Model-Script,DrGeoUserScript_class>>description
+msgid "I am the description of this script. Please edit me."
+msgstr ""
+
+#: DrGeo-Model-Script,DrGeoUserScript_class>>scriptName
+msgid "A script"
+msgstr ""
+
+#: DrGeo-View,DrGMinControlsManager>>editMenu
+msgid "Copy"
+msgstr ""
+
+#: DrGeo-View,DrGMinControlsManager>>editMenu
+msgid "Copy with transparency"
+msgstr ""
+
+#: DrGeo-View,DrGMinControlsManager>>fileMenu
+msgid "Keep this sketch under a different name."
+msgstr ""
+
+#: DrGeo-View,DrGMinControlsManager>>fileMenu
+msgid "Save as..."
+msgstr "Պահպանել որպես"
+
+#: DrGeo-View,DrGMinControlsManager>>mainMenu
+msgid "Animate"
+msgstr ""
+
+#: DrGeo-View,DrGMinControlsManager>>mainMenu
+msgid "Animate a free point on curve."
+msgstr ""
+
+#: DrGeo-View,DrGMinControlsManager>>mainMenu
+msgid ""
+"Build or execute macro-construction. A macro is a construction template you "
+"can apply to items in the sketch area."
+msgstr ""
+"Կառուցել կամ գործարկել մակրո-կառույց: Մակրոն կառույցի ձևանմուշ է, որը կարող "
+"ես կիրառել էլեմենտների վրա ուրվանկարի տարածքում"
+
+#: DrGeo-View,DrGMinControlsManager>>mainMenu
+msgid ""
+"Create different curve types: line, half-line, segment, vector, circle..."
+msgstr "Ստեղծել տարբեր կորի տեսակներ՝ տող, կիսատող, հատված, վեկտոր, շրջան..."
+
+#: DrGeo-View,DrGMinControlsManager>>mainMenu
+msgid "Create points: free, on curve, intersection or middle point."
+msgstr "Ստեղծել կետեր՝ ազատ, կորի վրա, հատվող կամ միջին կետ:"
+
+#: DrGeo-View,DrGMinControlsManager>>mainMenu
+msgid ""
+"Create several numeric objects: free value, distance, length, angle, "
+"coordinates, equation and text."
+msgstr ""
+
+#: DrGeo-View,DrGMinControlsManager>>mainMenu,DrGSmalltalkSketchBrowser>>newButtonArea
+msgid "Edit"
+msgstr ""
+
+#: DrGeo-View,DrGMinControlsManager>>mainMenu
+msgid "Erase or edit style and properties of items."
+msgstr "Ջնջիր կամ խմբագրիր էլէմենտի ոճը և հատկությունները"
+
+#: DrGeo-View,DrGMinControlsManager>>mainMenu
+msgid "File"
+msgstr "Ֆայլ"
+
+#: DrGeo-View,DrGMinControlsManager>>mainMenu
+msgid "Lines"
+msgstr "Գծեր"
+
+#: DrGeo-View,DrGMinControlsManager>>mainMenu
+msgid "Load, save or export Dr. Geo figure."
+msgstr "Բեռնել, պահպանել կամ արտահանել Dr. Geo պատկերը"
+
+#: DrGeo-View,DrGMinControlsManager>>mainMenu
+msgid "Macro-construction"
+msgstr "Մակրո կառույց"
+
+#: DrGeo-View,DrGMinControlsManager>>mainMenu
+msgid "Numerics & Text"
+msgstr ""
+
+#: DrGeo-View,DrGMinControlsManager>>mainMenu
+msgid "Points"
+msgstr "Կետեր"
+
+#: DrGeo-View,DrGMinControlsManager>>mainMenu
+msgid "Script"
+msgstr ""
+
+#: DrGeo-View,DrGMinControlsManager>>mainMenu
+msgid "Script: use, edit or create script to plug in the sketch."
+msgstr ""
+
+#: DrGeo-View,DrGMinControlsManager>>mainMenu
+msgid ""
+"Transform an object with a geometric transformation: symmetry, reflexion, "
+"rotation, translation or homothety (scale)."
+msgstr ""
+"Ձևափոխիր պբյեկտը երկրաչափական ձևափոխմամբ՝ սիմետրիա, անդրադարձում, պտույտ, "
+"թարգմանություն և սիմետրիկ արտապատկերում (սանդղակ)"
+
+#: DrGeo-View,DrGMinControlsManager>>mainMenu
+msgid "Transformations"
+msgstr "Ձևափոխումներ"
+
+#: DrGeo-View-Dialog,DrGDebuggerWindow>>customButtonSpecs
+msgid "Execute the code up to the cursor position."
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGDebuggerWindow>>customButtonSpecs
+msgid "Execute the current message and go to the next message."
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGDebuggerWindow>>customButtonSpecs
+msgid "Restart"
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGDebuggerWindow>>customButtonSpecs
+msgid "Restart the step by step execution from its start."
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGDebuggerWindow>>customButtonSpecs
+msgid "Run to Cursor"
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGDebuggerWindow>>customButtonSpecs
+msgid "Step"
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGDebuggerWindow>>customButtonSpecs
+msgid "Step into"
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGDebuggerWindow>>customButtonSpecs
+msgid "Step into a block."
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGFileOpenMorph_class>>open
+msgid "Open a sketch"
+msgstr "Բացել ուրվանկար"
+
+#: DrGeo-View-Dialog,DrGFileOpenMorph>>newButtonArea,DrGScriptDesignerDialog>>newButtonArea,DrGSmalltalkSketchBrowser>>newButtonArea,DrGSmalltalkSketchEditor>>newButtonArea
+msgid "Cancel"
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGFileOpenMorph>>newButtonArea,DrGSmalltalkSketchBrowser>>newButtonArea
+msgid "Examples"
+msgstr "Օրինակներ"
+
+#: DrGeo-View-Dialog,DrGFileOpenMorph>>newButtonArea,DrGSmalltalkSketchBrowser>>newButtonArea
+msgid "My Sketches"
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGFileOpenMorph>>newButtonArea
+msgid "Open"
+msgstr "Բացել"
+
+#: DrGeo-View-Dialog,DrGScriptDesignerDialog_class>>labelsAndClasses
+msgid "Angle"
+msgstr "Անկյուն"
+
+#: DrGeo-View-Dialog,DrGScriptDesignerDialog_class>>labelsAndClasses
+msgid "Any type"
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGScriptDesignerDialog_class>>labelsAndClasses
+msgid "Arc"
+msgstr "Կոր"
+
+#: DrGeo-View-Dialog,DrGScriptDesignerDialog_class>>labelsAndClasses
+msgid "Circle"
+msgstr "Շրջանագիծ"
+
+#: DrGeo-View-Dialog,DrGScriptDesignerDialog_class>>labelsAndClasses
+msgid "Direction"
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGScriptDesignerDialog_class>>labelsAndClasses
+msgid "Line"
+msgstr "Գիծ"
+
+#: DrGeo-View-Dialog,DrGScriptDesignerDialog_class>>labelsAndClasses
+msgid "Locus"
+msgstr "Տեղ"
+
+#: DrGeo-View-Dialog,DrGScriptDesignerDialog_class>>labelsAndClasses
+msgid "Point"
+msgstr "Կետ"
+
+#: DrGeo-View-Dialog,DrGScriptDesignerDialog_class>>labelsAndClasses
+msgid "Polygon"
+msgstr "Բազմանկյուն"
+
+#: DrGeo-View-Dialog,DrGScriptDesignerDialog_class>>labelsAndClasses
+msgid "Ray"
+msgstr "Ճառագայթ"
+
+#: DrGeo-View-Dialog,DrGScriptDesignerDialog_class>>labelsAndClasses
+msgid "Segment"
+msgstr "Հատված"
+
+#: DrGeo-View-Dialog,DrGScriptDesignerDialog_class>>labelsAndClasses
+msgid "Value"
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGScriptDesignerDialog_class>>labelsAndClasses
+msgid "Vector"
+msgstr "Վեկտոր"
+
+#: DrGeo-View-Dialog,DrGScriptDesignerDialog>>addArgument
+msgid "Remove this script argument."
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGScriptDesignerDialog>>newAddArgumentButton
+msgid "Add an argument to this script."
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGScriptDesignerDialog>>newButtonArea
+msgid "Build"
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGScriptDesignerDialog>>newButtonArea
+msgid "Build a script with these settings."
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGScriptDesignerDialog>>newDescriptionMorph
+msgid ""
+"A description of the script. To help the user, describe carefully what the "
+"script does and the input arguments to select to use it."
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGScriptDesignerDialog>>newPane,DrGWizardScript>>secondPage
+msgid "Arguments"
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGScriptDesignerDialog>>newPane,DrGWizardMacroBuild>>fourthPage,DrGWizardMacroPlay>>secondPage,DrGWizardScript>>secondPage
+msgid "Description"
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGScriptDesignerDialog>>newPane,DrGWizardMacroBuild>>fourthPage,DrGWizardMacroPlay>>secondPage,DrGWizardScript>>secondPage
+msgid "Name"
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGScriptDesignerDialog>>newScriptNameMorph
+msgid "The name of the script."
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGSmalltalkSketchBrowser>>newButtonArea
+msgid "Browse my collection of Smalltalk sketches."
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGSmalltalkSketchBrowser>>newButtonArea
+msgid "Delete"
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGSmalltalkSketchBrowser>>newButtonArea
+msgid "Delete permanently this Smalltalk Sketch from disk."
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGSmalltalkSketchBrowser>>newSketchesColumn
+msgid "Code"
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGSmalltalkSketchEditor>>browseSketches
+msgid "Select a Smalltalk sketch"
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGSmalltalkSketchEditor>>executeSketch
+msgid ""
+"Too many errors. Fix it!\n"
+"Sketch stopped"
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGSmalltalkSketchEditor>>keepSketch
+msgid "Name the sketch to keep."
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGSmalltalkSketchEditor>>newToolbar
+msgid "Debug the Smalltalk sketch."
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGSmalltalkSketchEditor>>newToolbar
+msgid "Dr. Geo tutorial"
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGSmalltalkSketchEditor>>newToolbar
+msgid "Edit a Smalltalk sketch."
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGSmalltalkSketchEditor>>newToolbar,DrGSmalltalkSketchEditor>>switchToPlayButton
+msgid "Play the Smalltalk sketch."
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGSmalltalkSketchEditor>>newToolbar
+msgid "Save this Smalltalk sketch."
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGSmalltalkSketchEditor>>newToolbar
+msgid "Stop the execution of the Smalltalk sketch."
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGSmalltalkSketchEditor>>restoreLabel
+msgid "Edit Smalltalk Sketch"
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGSmalltalkSketchEditor>>switchToPauseButton
+msgid "Pause the Smalltalk sketch."
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGSmalltalkSketchEditor>>switchToResumeButton
+msgid "Resume the Smalltalk sketch."
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGWizardMacroBuild>>firstPage
+msgid "Build a macro-construction"
+msgstr "Կառուցել Մակրո կառույց"
+
+#: DrGeo-View-Dialog,DrGWizardMacroBuild>>firstPage
+msgid ""
+"To build a macro-construction,\n"
+"\n"
+" 1. First select the input paramaters,\n"
+" 2. Next select the output parameters,\n"
+" 3. Next chose a name and a description,\n"
+" 4. Last apply the selection."
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGWizardMacroBuild>>fourthPage
+msgid "Give a name and a description"
+msgstr "Անվանել և նկարագրել"
+
+#: DrGeo-View-Dialog,DrGWizardMacroBuild>>secondPage
+msgid "Select input parameters"
+msgstr "Ընտրել մուտքային չափանիշները"
+
+#: DrGeo-View-Dialog,DrGWizardMacroBuild>>thirdPage
+msgid "Select output parameters"
+msgstr "Ընտրել ելքային չափանիշները"
+
+#: DrGeo-View-Dialog,DrGWizardMacroPlay>>firstPage
+msgid "Execute a macro-construction"
+msgstr "Գործարկել մակրո կառույցը"
+
+#: DrGeo-View-Dialog,DrGWizardMacroPlay>>firstPage
+msgid ""
+"To execute a macro-construction,\n"
+"\n"
+" 1. First select a macro-construction from the list,\n"
+" 2. Select items on the figure. Only items relevant\n"
+" to the selected macro-construction are selectable.\n"
+" Once enough items are selected, the macro is\n"
+" automaticly executed.\n"
+" To start press the 'next' button."
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGWizardMacroPlay>>secondPage
+msgid "Select a macro-construction then the figure items"
+msgstr "Ընտրել մակրո կառույցը, այնուհետև` պատկերի տարրերը"
+
+#: DrGeo-View-Dialog,DrGWizardScript>>firstPage
+msgid ""
+"To use a script,\n"
+"\n"
+" 1. First select a script from the list,\n"
+" 2. Select items in the sketch,\n"
+" 3. Click somewhere in the background. \n"
+" Once enough items are selected, the script is\n"
+" inserted in the sketch, at the user selected position.\n"
+" To start press the 'next' button."
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGWizardScript>>firstPage
+msgid "Use a script in the sketch"
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGWizardScript>>secondPage
+msgid "Select a script then items in the sketch"
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGWizardScript>>secondPage
+msgid "The arguments accepted by this script."
+msgstr ""
+
+#~ msgid "no name"
+#~ msgstr "անուն չկա"
+
+#~ msgid "This geometric angle %1"
+#~ msgstr "Այս երկրաչափական անկյունը %1"
+
+#~ msgid "This oriented angle %1"
+#~ msgstr "Այս դիրքորոշված անկյունը %1"
+
+#~ msgid "This Arc Circle %1"
+#~ msgstr "Այս աղեղի շրջանագիծը %1"
+
+#~ msgid "This circle %1"
+#~ msgstr "Այս շրջանագիծը %1"
+
+#~ msgid "This composite object %1"
+#~ msgstr "Այս բաղադրյալ մարմինը %1"
+
+#~ msgid "This line %1"
+#~ msgstr "Այս գիծը %1"
+
+#~ msgid "This parallel line %1"
+#~ msgstr "Այս զուգահեռ գիծը %1"
+
+#~ msgid "This perpendicular line %1"
+#~ msgstr "Այս ուղղահայաց գիծը %1"
+
+#~ msgid "This locus %1"
+#~ msgstr "Այս տեղը %1"
+
+#~ msgid "This math item %1"
+#~ msgstr "Այս մաթեմատիկական տարրը %1"
+
+#~ msgid "Edit the coordinates"
+#~ msgstr "Խմբագրել կոորդինատներ"
+
+#~ msgid "This point %1"
+#~ msgstr "Այս կետը %1"
+
+#~ msgid "Edit this curvilinear abscissa in [0;1]"
+#~ msgstr "Խմբագրել այն կորագիծ աբսցիսը [0;1]-ում"
+
+#~ msgid "This polygon %1"
+#~ msgstr "Այս բազմանկյունը %1"
+
+# Գիծն անսահման է, կես չունի: Պետք լինի ՀԱՏՎԱԾ:
+#~ msgid "This half-line %1"
+#~ msgstr "Այս կես գիծը %1"
+
+#~ msgid "This segment %1"
+#~ msgstr "Այս հատվածը %1"
+
+#~ msgid "This text"
+#~ msgstr "Այս Տեքստը"
+
+#~ msgid "Edit this text"
+#~ msgstr "Խմբագրել տեքստը"
+
+#~ msgid "Edit me"
+#~ msgstr "Խմբագրեք ինձ"
+
+#~ msgid "This arc length %1"
+#~ msgstr "Այս աղեղի երկարությունը %1"
+
+#~ msgid "This circle perimeter %1"
+#~ msgstr "Այս շրջանագծի տրամագիծը %1"
+
+#~ msgid "This distance between two points %1"
+#~ msgstr "Երկու կետերի %1 միջև այս հեռավորությունը"
+
+#~ msgid "This point-line distance %1"
+#~ msgstr "Այս կետի և գծի հեռավորությունը %1"
+
+#~ msgid "This value %1"
+#~ msgstr "Այս արժեքը %1"
+
+#~ msgid "This segment length %1"
+#~ msgstr "Այս հատվածի երկարությունը %1"
+
+#~ msgid "This line slope %1"
+#~ msgstr "Այս գծի թեքությունը %1"
+
+#~ msgid "Edit this value"
+#~ msgstr "Խմբագրել այս արժեքը"
+
+#~ msgid "This Vector's norm %1"
+#~ msgstr "Այս վեկտորի նորման %1"
+
+#~ msgid "This vector %1"
+#~ msgstr "Այս վեկտորը %1"
+
+#~ msgid "Only geometric object can be transformed."
+#~ msgstr "Միայն երկրաչափական մարմինը կարող է ձևափոխվել"
+
+#~ msgid "Name this value"
+#~ msgstr "Անվանել այս արժեքը"
+
+#~ msgid "Rename this value"
+#~ msgstr "Վերանվանել այս արժեքը"
+
+#~ msgid "Fig. - "
+#~ msgstr "Պատկեր - "
+
+#~ msgid "Macro - "
+#~ msgstr "Մակրո - "
+
+#~ msgid "About"
+#~ msgstr "Մասին"
+
+#~ msgid "New sketch"
+#~ msgstr "Նոր ուրվանկար"
+
+#~ msgid "Quit"
+#~ msgstr "Լքել"
+
+#~ msgid "Edit or create scripts"
+#~ msgstr "Խմբագրել կամ ստեղծել \"սցենարներ\""
+
+#~ msgid ""
+#~ "Circle defined by its center and a point or by its center and radius, a "
+#~ "value."
+#~ msgstr ""
+#~ "Շրջանագիծ` սահմանված իր կենտրոնով և կետով կամ իր կենտրոնով և շառավղով, մի "
+#~ "արժեքով:"
+
+#~ msgid "Vector or point coordinates, circle or line equation."
+#~ msgstr ""
+#~ "Վեկտորային կամ կետային դիրքացույցներ, շրջանագծի կամ գծի հավասարեցում:"
+
+#~ msgid ""
+#~ "Click to create a point: free point on the background, on a curve or on "
+#~ "two curves intersection."
+#~ msgstr ""
+#~ "Սեղմեք կետ ստեղծելու համար. ազատ կետ ֆոնի վրա, կորագծի վրա կամ երկու "
+#~ "կորագծերի հատման կետում:"
+
+#~ msgid ""
+#~ "Homothety: select a center, a value and a geometric object. The first "
+#~ "selected point is the homothety center."
+#~ msgstr ""
+#~ "Մարմնի ձևափոխումն արտապատկերման միջոցով. ընտրել կետը, արժեքը և "
+#~ "երկրաչափական մարմինը: Առաջին ընտրված կետը արտապատկերի կենտրոնն է:"
+
+#~ msgid "Homothety (scale)"
+#~ msgstr "Սիմետրիկ արտապատկերում (սանդղակ)"
+
+#~ msgid "Line defined by two points"
+#~ msgstr "Երկու կետերով սահմանված գիծ"
+
+#~ msgid "Locus defined by a free point on a curve and a relative point."
+#~ msgstr ""
+#~ "Երկրաչափական տեղ` կորի վրա ազատ կետով և հարաբերական կետով սահմանված:"
+
+#~ msgid "Construct a macro-construction with input and output items."
+#~ msgstr "Կառուցել մակրո կառույց մուտքագրման և ելքագրման տարրերով:"
+
+#~ msgid "Build macro"
+#~ msgstr "Կառուցել մակրո"
+
+#~ msgid "Input and output items don't match"
+#~ msgstr "Մուտքագրման և ելքագրման կետերը չեն համընկնում"
+
+#~ msgid "Please, enter a proper title and description"
+#~ msgstr "Խնդրում ենք մուտքագրել համապատասխան վերնագիրը և նկարագրությունը"
+
+#~ msgid "The midpoint of a segment or between two points."
+#~ msgstr "Հատվածի միջնակետը, կամ կետ երկու կետերի միջև:"
+
+#~ msgid "Middle"
+#~ msgstr "Միջին"
+
+# Գիծը չունի սկիզբ, չունի վերջ, ուստի չունի "կես". Պետք է որ լինի ՀԱՏՎԱԾ:
+#~ msgid ""
+#~ "Line passing through one point and parallel to a line, half-line, etc."
+#~ msgstr "Գիծ, որն անցնում է մեկ կետով և զուգահեռ է գծին, կես գծին և այլն:"
+
+#~ msgid "Parallel"
+#~ msgstr "Զուգահեռ"
+
+# Գիծն անսահման հասկացություն է, կես չի կարող ունենալ: Պետք լինի ՀԱՏՎԱԾ:
+#~ msgid ""
+#~ "Line passing through one point and orthogonal to a line, half-line, etc."
+#~ msgstr "Գիծ, որը անցնում է մեկ կետով և ուղղահայաց է գծին, կես գծին և այլն:"
+
+#~ msgid "Perpendicular"
+#~ msgstr "Ուղղահայաց"
+
+#~ msgid ""
+#~ "Point given its coordinates: select two numbers or a point coordinates "
+#~ "(@)."
+#~ msgstr ""
+#~ "Նշեք տրված դիրքացույցները՝ ընտրեք երկու թիվ կամ կետի դիրքացույցները (@):"
+
+#~ msgid "Coordinates"
+#~ msgstr "Դիրքացույցներ"
+
+#~ msgid "Intersection(s) of two curves."
+#~ msgstr "Երկու կորերի հատում(ներ)"
+
+#~ msgid "Intersection"
+#~ msgstr "հատում"
+
+#~ msgid ""
+#~ "Polygon by n points: last point must be the initial point to terminate."
+#~ msgstr ""
+#~ "Բազմանկյուն n կետից՝ վերջին կետը պետք է լինի սկբնական կետը, ավարտելու "
+#~ "համար"
+
+# Գիծը չի կարող կես լինել: Այն անսահման է: Պետք է լինի ՀԱՏՎԱԾ:
+#~ msgid ""
+#~ "Half-Line defined by two points, the first selected point is the origin."
+#~ msgstr "Կես գիծ` սահմանված երկու կետերով, առաջին ընտրված կետը սկզբնակետն է"
+
+#~ msgid ""
+#~ "Reflexion: select a line and a geometric object. Reflexion axe is the "
+#~ "first selected line."
+#~ msgstr ""
+#~ "Անդրադարձում՝ ընտրեք մեկ գիծ և մեկ երկրաչափական մարմին: Անդրադարձող "
+#~ "առանցքը առաջին ընտրված տողն է:"
+
+#~ msgid "Reflection"
+#~ msgstr "Անդրադարձում"
+
+#~ msgid ""
+#~ "Rotation: select a point, a value and a geometric object. The first "
+#~ "selected point is the rotation center."
+#~ msgstr ""
+#~ "Մարմնի ձևափոխում պտույտի միջոցով. ընտրել մեկ կետ, արժեքը և երկրաչափական "
+#~ "մարմինը: Առաջին ընտրված կետը պտույտի կենտրոնն է:"
+
+#~ msgid "Rotation"
+#~ msgstr "Պտույտ"
+
+#~ msgid "Insert a Smalltalk script in the drawing area."
+#~ msgstr "Մուտքագրել «Smalltalk» սցենարը գծագրի տարածքում:"
+
+#~ msgid "Use a script"
+#~ msgstr "Օգտագործել սցենար"
+
+#~ msgid "Segment defined by two points."
+#~ msgstr "Հատված` սահմանված երկու կետերով:"
+
+#~ msgid ""
+#~ "Symmetry: select a point and a geometric object. The first selected point "
+#~ "is the symmetry center."
+#~ msgstr ""
+#~ "Մարմնի ձևափոխում պտույտի միջոցով. ընտրել մեկ կետ, արժեքը և երկրաչափական "
+#~ "մարմինը: Առաջին ընտրված կետը պտույտի կենտրոնն է:"
+
+#~ msgid "Symmetry"
+#~ msgstr "Սիմետրիա"
+
+#~ msgid "Free text you can edit and move around."
+#~ msgstr "Ազատ տեքստ, որը կարող ես խմբագրել և տեղաշարժել:"
+
+#~ msgid "Text"
+#~ msgstr "Տեքստ"
+
+#~ msgid "Translation: select a vector and a geometric object."
+#~ msgstr "Տարգմանություն՝ ընտրեք մեկ վեկտոր և մեկ երկրաչափական մարմին:"
+
+#~ msgid "Translation"
+#~ msgstr "Թարգմանություն"
+
+#~ msgid "Distance, length, value"
+#~ msgstr "Հեռավորությունը, երկարությունը, արժեքը"
+
+#~ msgid "Vector defined by two points."
+#~ msgstr "Վեկտոր` սահմանված երկու կետերով:"
+
+#~ msgid "Erase an object and all its depedencies."
+#~ msgstr "Ջնջել թե օբյեկտը թե նրա կախումները:"
+
+#~ msgid "Eraser"
+#~ msgstr "Ռետին"
+
+#~ msgid "This intersection"
+#~ msgstr "Այս հատումը"
+
+#~ msgid "Change as a free point on the plane."
+#~ msgstr "Փոխել որպես ազատ կետ հարթության վրա"
+
+#~ msgid "Change as a free point on this curve."
+#~ msgstr "Փոխել որպես ազատ կետ կորի վրա"
+
+#~ msgid "Change as this intersection."
+#~ msgstr "Փոխիր ինչպես այս հատումը"
+
+#~ msgid "Edit an item's property"
+#~ msgstr "Խմբագրել էլեմենտի հատկությունները"
+
+#~ msgid "Property"
+#~ msgstr "Հատկություն"
+
+#~ msgid "Select and move an object."
+#~ msgstr "Ընտրել և տեղաշարժել պատկերը:"
+
+#~ msgid "Select and Move"
+#~ msgstr "Ընտրել և տեղաշարժել"
+
+#~ msgid "Drag this point to change its nature."
+#~ msgstr "Քաշիր այս կետը, նրա բնույթը փոխելու համար"
+
+#~ msgid ""
+#~ "Pressing down the [Shift] key you can drag and change the nature of free "
+#~ "point or intersection point."
+#~ msgstr ""
+#~ "Սեղմած պահելով [Shift] ստեղնը՝ կարող ես քաշել և փոխել ազատ կետի բնույթը "
+#~ "կամ հատվող կետը:"
+
+#~ msgid ""
+#~ "Several objects can be selected. Please, select one clicking the mouse."
+#~ msgstr ""
+#~ "Կարող են ընտրվել մի քանի մարմիններ: Խնդրեմ, ընտրեք որևիցե մեկը` քլիք "
+#~ "անելով մկնիկին:"
+
+#~ msgid "Edit an object style."
+#~ msgstr "Խմբագրել մարմնի ոճը:"
+
+#~ msgid "Edit Style"
+#~ msgstr "Խմբագրել ոճը"
+
+#~ msgid "Select an object"
+#~ msgstr "Ընտրել մարմինը"
+
+#~ msgid "Show or hide grid."
+#~ msgstr "Ցույց տալ կամ թաքցնել վանդակները:"
+
+#~ msgid "Save"
+#~ msgstr "Պահպանել"
+
+#~ msgid "Delete a macro-construction from the registry."
+#~ msgstr "Ջնջել մակրո կառույցն արձանագրությունից:"
+
+#~ msgid "Delete macro"
+#~ msgstr "Ջնջել մակրոն"
+
+#~ msgid "Snap to grid."
+#~ msgstr "Տեղադրել վանդակի վրա:"
+
+#~ msgid ""
+#~ "Toggle between the build of several geometric objects and the build of "
+#~ "one geometric object then move it."
+#~ msgstr ""
+#~ "Փոխանջատել մի քանի երկրաչափական մարմինների կառույցը և մեկ երկրաչափական "
+#~ "մարմնի կառույցը, այնուհետև տեղաշարժել այն:"
+
+#~ msgid "New"
+#~ msgstr "Նոր"
+
+#~ msgid "Open a new blank sketch."
+#~ msgstr "Բացել նոր դատարկ ուրվանկար:"
+
+#~ msgid "Open a sketch."
+#~ msgstr "Բացել ուրվանկարը:"
+
+#~ msgid "Redo"
+#~ msgstr "Կրկին կատարել"
+
+#~ msgid "Redo last action."
+#~ msgstr "Կրկնել վերջին գործողությունը:"
+
+#~ msgid "Edit a script"
+#~ msgstr "Խմբագրել սցենարը"
+
+#~ msgid "Undo"
+#~ msgstr "Չեղյալ համարել"
+
+#~ msgid "Undo last action"
+#~ msgstr "Ետարկել վերջին գործողությունը"
+
+#~ msgid "Description:"
+#~ msgstr "Նկարագրություն."
+
+#~ msgid "Title:"
+#~ msgstr "Վերնագիր."

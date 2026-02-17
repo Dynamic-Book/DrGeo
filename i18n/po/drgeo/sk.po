@@ -1,0 +1,1089 @@
+# Slovak translation for drgeo
+# Copyright (c) 2016 Rosetta Contributors and Canonical Ltd 2016
+# This file is distributed under the same license as the drgeo package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2016.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: drgeo\n"
+"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2026-02-17 18:57-0000\n"
+"PO-Revision-Date: 2016-08-11 12:10+0000\n"
+"Last-Translator: Dusan Kazik <prescott66@gmail.com>\n"
+"Language-Team: Slovak <sk@li.org>\n"
+"Language: sk\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2024-05-27 04:37+0000\n"
+"X-Generator: Launchpad (build 0e1f616671af724398db43b36ddfb3ed1f2682ec)\n"
+"X-Poedit-Bookmarks: -1,273,-1,-1,-1,-1,-1,-1,-1,-1\n"
+
+#: DrGeo-Model-Script,DrGeoUserScript_class>>description
+msgid "I am the description of this script. Please edit me."
+msgstr "Ja som popis tohto skriptu. Prosím, zmeň ma."
+
+#: DrGeo-Model-Script,DrGeoUserScript_class>>scriptName
+msgid "A script"
+msgstr "Skript"
+
+#: DrGeo-View,DrGMinControlsManager>>editMenu
+msgid "Copy"
+msgstr ""
+
+#: DrGeo-View,DrGMinControlsManager>>editMenu
+msgid "Copy with transparency"
+msgstr ""
+
+#: DrGeo-View,DrGMinControlsManager>>fileMenu
+msgid "Keep this sketch under a different name."
+msgstr "Uložiť tento náčrt pod iným menom."
+
+#: DrGeo-View,DrGMinControlsManager>>fileMenu
+msgid "Save as..."
+msgstr "Uložiť ako..."
+
+#: DrGeo-View,DrGMinControlsManager>>mainMenu
+msgid "Animate"
+msgstr "Animuj"
+
+#: DrGeo-View,DrGMinControlsManager>>mainMenu
+msgid "Animate a free point on curve."
+msgstr "Animovať voľný bod na krivke."
+
+#: DrGeo-View,DrGMinControlsManager>>mainMenu
+msgid ""
+"Build or execute macro-construction. A macro is a construction template you "
+"can apply to items in the sketch area."
+msgstr ""
+"Zostaviť alebo vykonať makro-konštrukciu. Makro je konštrukčná šablóna ktorú "
+"môžete použiť na položky v náčrte."
+
+#: DrGeo-View,DrGMinControlsManager>>mainMenu
+msgid ""
+"Create different curve types: line, half-line, segment, vector, circle..."
+msgstr ""
+"Vytvoriť rôzne typy kriviek: priamka, polpriamka, úsečka, vektor, kružnica..."
+
+#: DrGeo-View,DrGMinControlsManager>>mainMenu
+msgid "Create points: free, on curve, intersection or middle point."
+msgstr "Vytvoriť body: voľný, na krivke, priesečník alebo stredný bod."
+
+#: DrGeo-View,DrGMinControlsManager>>mainMenu
+msgid ""
+"Create several numeric objects: free value, distance, length, angle, "
+"coordinates, equation and text."
+msgstr ""
+"Vytvoriť viacero číselných objektov: voľná hodnota, vzdialenosť, dĺžka, "
+"uhol, súradnice, rovnica a text."
+
+#: DrGeo-View,DrGMinControlsManager>>mainMenu,DrGSmalltalkSketchBrowser>>newButtonArea
+msgid "Edit"
+msgstr "Upraviť"
+
+#: DrGeo-View,DrGMinControlsManager>>mainMenu
+msgid "Erase or edit style and properties of items."
+msgstr "Zmazať alebo upraviť štýl a vlastnosti položiek."
+
+#: DrGeo-View,DrGMinControlsManager>>mainMenu
+msgid "File"
+msgstr "Súbor"
+
+#: DrGeo-View,DrGMinControlsManager>>mainMenu
+msgid "Lines"
+msgstr "Čiary"
+
+#: DrGeo-View,DrGMinControlsManager>>mainMenu
+msgid "Load, save or export Dr. Geo figure."
+msgstr "Nahrať, uložiť alebo exportovať Dr. Geo objekt."
+
+#: DrGeo-View,DrGMinControlsManager>>mainMenu
+msgid "Macro-construction"
+msgstr "Makro-konštrukcia"
+
+#: DrGeo-View,DrGMinControlsManager>>mainMenu
+msgid "Numerics & Text"
+msgstr "Čísla a Text"
+
+#: DrGeo-View,DrGMinControlsManager>>mainMenu
+msgid "Points"
+msgstr "Body"
+
+#: DrGeo-View,DrGMinControlsManager>>mainMenu
+msgid "Script"
+msgstr "Skript"
+
+#: DrGeo-View,DrGMinControlsManager>>mainMenu
+msgid "Script: use, edit or create script to plug in the sketch."
+msgstr "Skript: použiť, upraviť alebo vytvoriť skript"
+
+#: DrGeo-View,DrGMinControlsManager>>mainMenu
+msgid ""
+"Transform an object with a geometric transformation: symmetry, reflexion, "
+"rotation, translation or homothety (scale)."
+msgstr ""
+"Transformovať objekt s geometrickou transformáciou: symetria, odrazy, "
+"otočenie, posun alebo rovnoľahlosť (mierka)."
+
+#: DrGeo-View,DrGMinControlsManager>>mainMenu
+msgid "Transformations"
+msgstr "Transformácie"
+
+#: DrGeo-View-Dialog,DrGDebuggerWindow>>customButtonSpecs
+msgid "Execute the code up to the cursor position."
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGDebuggerWindow>>customButtonSpecs
+msgid "Execute the current message and go to the next message."
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGDebuggerWindow>>customButtonSpecs
+msgid "Restart"
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGDebuggerWindow>>customButtonSpecs
+msgid "Restart the step by step execution from its start."
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGDebuggerWindow>>customButtonSpecs
+msgid "Run to Cursor"
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGDebuggerWindow>>customButtonSpecs
+msgid "Step"
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGDebuggerWindow>>customButtonSpecs
+msgid "Step into"
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGDebuggerWindow>>customButtonSpecs
+msgid "Step into a block."
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGFileOpenMorph_class>>open
+msgid "Open a sketch"
+msgstr "Otvoriť náčrt"
+
+#: DrGeo-View-Dialog,DrGFileOpenMorph>>newButtonArea,DrGScriptDesignerDialog>>newButtonArea,DrGSmalltalkSketchBrowser>>newButtonArea,DrGSmalltalkSketchEditor>>newButtonArea
+msgid "Cancel"
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGFileOpenMorph>>newButtonArea,DrGSmalltalkSketchBrowser>>newButtonArea
+msgid "Examples"
+msgstr "Príklady"
+
+#: DrGeo-View-Dialog,DrGFileOpenMorph>>newButtonArea,DrGSmalltalkSketchBrowser>>newButtonArea
+msgid "My Sketches"
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGFileOpenMorph>>newButtonArea
+msgid "Open"
+msgstr "Otvoriť"
+
+#: DrGeo-View-Dialog,DrGScriptDesignerDialog_class>>labelsAndClasses
+msgid "Angle"
+msgstr "Uhol"
+
+#: DrGeo-View-Dialog,DrGScriptDesignerDialog_class>>labelsAndClasses
+msgid "Any type"
+msgstr "Akýkoľvek typ"
+
+#: DrGeo-View-Dialog,DrGScriptDesignerDialog_class>>labelsAndClasses
+msgid "Arc"
+msgstr "Oblúk"
+
+#: DrGeo-View-Dialog,DrGScriptDesignerDialog_class>>labelsAndClasses
+msgid "Circle"
+msgstr "Kruh"
+
+#: DrGeo-View-Dialog,DrGScriptDesignerDialog_class>>labelsAndClasses
+msgid "Direction"
+msgstr "Smer"
+
+#: DrGeo-View-Dialog,DrGScriptDesignerDialog_class>>labelsAndClasses
+msgid "Line"
+msgstr "Priamka"
+
+#: DrGeo-View-Dialog,DrGScriptDesignerDialog_class>>labelsAndClasses
+msgid "Locus"
+msgstr "Lokus"
+
+#: DrGeo-View-Dialog,DrGScriptDesignerDialog_class>>labelsAndClasses
+msgid "Point"
+msgstr "Bod"
+
+#: DrGeo-View-Dialog,DrGScriptDesignerDialog_class>>labelsAndClasses
+msgid "Polygon"
+msgstr "Mnohouholník"
+
+#: DrGeo-View-Dialog,DrGScriptDesignerDialog_class>>labelsAndClasses
+msgid "Ray"
+msgstr "Lúč"
+
+#: DrGeo-View-Dialog,DrGScriptDesignerDialog_class>>labelsAndClasses
+msgid "Segment"
+msgstr "Úsečka"
+
+#: DrGeo-View-Dialog,DrGScriptDesignerDialog_class>>labelsAndClasses
+msgid "Value"
+msgstr "Hodnota"
+
+#: DrGeo-View-Dialog,DrGScriptDesignerDialog_class>>labelsAndClasses
+msgid "Vector"
+msgstr "Vektor"
+
+#: DrGeo-View-Dialog,DrGScriptDesignerDialog>>addArgument
+msgid "Remove this script argument."
+msgstr "Odstrániť parameter zo skriptu."
+
+#: DrGeo-View-Dialog,DrGScriptDesignerDialog>>newAddArgumentButton
+msgid "Add an argument to this script."
+msgstr "Pridať parameter do skriptu."
+
+#: DrGeo-View-Dialog,DrGScriptDesignerDialog>>newButtonArea
+msgid "Build"
+msgstr "Zostava"
+
+#: DrGeo-View-Dialog,DrGScriptDesignerDialog>>newButtonArea
+msgid "Build a script with these settings."
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGScriptDesignerDialog>>newDescriptionMorph
+msgid ""
+"A description of the script. To help the user, describe carefully what the "
+"script does and the input arguments to select to use it."
+msgstr ""
+"Popis skriptu. Aby bol nápomocný užívateľovi dôkladne popíšte čo skript robí "
+"a aké vstupné parametre majú byť vybrané pre jeho použitie."
+
+#: DrGeo-View-Dialog,DrGScriptDesignerDialog>>newPane,DrGWizardScript>>secondPage
+msgid "Arguments"
+msgstr "Parametre"
+
+#: DrGeo-View-Dialog,DrGScriptDesignerDialog>>newPane,DrGWizardMacroBuild>>fourthPage,DrGWizardMacroPlay>>secondPage,DrGWizardScript>>secondPage
+msgid "Description"
+msgstr "Popis"
+
+#: DrGeo-View-Dialog,DrGScriptDesignerDialog>>newPane,DrGWizardMacroBuild>>fourthPage,DrGWizardMacroPlay>>secondPage,DrGWizardScript>>secondPage
+msgid "Name"
+msgstr "Meno"
+
+#: DrGeo-View-Dialog,DrGScriptDesignerDialog>>newScriptNameMorph
+msgid "The name of the script."
+msgstr "Meno skriptu."
+
+#: DrGeo-View-Dialog,DrGSmalltalkSketchBrowser>>newButtonArea
+msgid "Browse my collection of Smalltalk sketches."
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGSmalltalkSketchBrowser>>newButtonArea
+msgid "Delete"
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGSmalltalkSketchBrowser>>newButtonArea
+msgid "Delete permanently this Smalltalk Sketch from disk."
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGSmalltalkSketchBrowser>>newSketchesColumn
+msgid "Code"
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGSmalltalkSketchEditor>>browseSketches
+msgid "Select a Smalltalk sketch"
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGSmalltalkSketchEditor>>executeSketch
+msgid ""
+"Too many errors. Fix it!\n"
+"Sketch stopped"
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGSmalltalkSketchEditor>>keepSketch
+msgid "Name the sketch to keep."
+msgstr "Pre uchovanie pomenujte náčrt."
+
+#: DrGeo-View-Dialog,DrGSmalltalkSketchEditor>>newToolbar
+msgid "Debug the Smalltalk sketch."
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGSmalltalkSketchEditor>>newToolbar
+msgid "Dr. Geo tutorial"
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGSmalltalkSketchEditor>>newToolbar
+msgid "Edit a Smalltalk sketch."
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGSmalltalkSketchEditor>>newToolbar,DrGSmalltalkSketchEditor>>switchToPlayButton
+msgid "Play the Smalltalk sketch."
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGSmalltalkSketchEditor>>newToolbar
+msgid "Save this Smalltalk sketch."
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGSmalltalkSketchEditor>>newToolbar
+msgid "Stop the execution of the Smalltalk sketch."
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGSmalltalkSketchEditor>>restoreLabel
+msgid "Edit Smalltalk Sketch"
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGSmalltalkSketchEditor>>switchToPauseButton
+msgid "Pause the Smalltalk sketch."
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGSmalltalkSketchEditor>>switchToResumeButton
+msgid "Resume the Smalltalk sketch."
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGWizardMacroBuild>>firstPage
+msgid "Build a macro-construction"
+msgstr "Vytvoriť makro-konštrukciu"
+
+#: DrGeo-View-Dialog,DrGWizardMacroBuild>>firstPage
+msgid ""
+"To build a macro-construction,\n"
+"\n"
+" 1. First select the input paramaters,\n"
+" 2. Next select the output parameters,\n"
+" 3. Next chose a name and a description,\n"
+" 4. Last apply the selection."
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGWizardMacroBuild>>fourthPage
+msgid "Give a name and a description"
+msgstr "Zadať meno a popis"
+
+#: DrGeo-View-Dialog,DrGWizardMacroBuild>>secondPage
+msgid "Select input parameters"
+msgstr "Vybrať vstupné parametre"
+
+#: DrGeo-View-Dialog,DrGWizardMacroBuild>>thirdPage
+msgid "Select output parameters"
+msgstr "Vybrať výstupné parametre"
+
+#: DrGeo-View-Dialog,DrGWizardMacroPlay>>firstPage
+msgid "Execute a macro-construction"
+msgstr "Spustiť makro-konštrukciu"
+
+#: DrGeo-View-Dialog,DrGWizardMacroPlay>>firstPage
+msgid ""
+"To execute a macro-construction,\n"
+"\n"
+" 1. First select a macro-construction from the list,\n"
+" 2. Select items on the figure. Only items relevant\n"
+" to the selected macro-construction are selectable.\n"
+" Once enough items are selected, the macro is\n"
+" automaticly executed.\n"
+" To start press the 'next' button."
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGWizardMacroPlay>>secondPage
+msgid "Select a macro-construction then the figure items"
+msgstr "Vyberte makro-konštrukciu a potom jeho prvky"
+
+#: DrGeo-View-Dialog,DrGWizardScript>>firstPage
+msgid ""
+"To use a script,\n"
+"\n"
+" 1. First select a script from the list,\n"
+" 2. Select items in the sketch,\n"
+" 3. Click somewhere in the background. \n"
+" Once enough items are selected, the script is\n"
+" inserted in the sketch, at the user selected position.\n"
+" To start press the 'next' button."
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGWizardScript>>firstPage
+msgid "Use a script in the sketch"
+msgstr "Použiť skript v náčrte"
+
+#: DrGeo-View-Dialog,DrGWizardScript>>secondPage
+msgid "Select a script then items in the sketch"
+msgstr "Vyberte skript a potom objekty náčrtu"
+
+#: DrGeo-View-Dialog,DrGWizardScript>>secondPage
+msgid "The arguments accepted by this script."
+msgstr ""
+
+#~ msgid "no name"
+#~ msgstr "bez mena"
+
+#~ msgid "This geometric angle %1"
+#~ msgstr "Tento geometrický uhol %1"
+
+#~ msgid "This angle bisector %1"
+#~ msgstr "Os tohto uhlu %1"
+
+#~ msgid "This oriented angle %1"
+#~ msgstr "Tento orientovaný uhol %1"
+
+#~ msgid "This Arc Circle %1"
+#~ msgstr "Táto kruhová výseč %1"
+
+#~ msgid "This picture"
+#~ msgstr "Tento obrázok"
+
+#~ msgid "This circle %1"
+#~ msgstr "Tento kruh %1"
+
+#~ msgid "This composite object %1"
+#~ msgstr "Tento zložený objekt %1"
+
+#~ msgid "This equation %1"
+#~ msgstr "Táto rovnica %1"
+
+#~ msgid "Equation"
+#~ msgstr "Rovnica"
+
+#~ msgid "This line %1"
+#~ msgstr "Táto priamka %1"
+
+#~ msgid "This parallel line %1"
+#~ msgstr "Táto rovnobežná priamka %1"
+
+#~ msgid "This perpendicular bisector %1"
+#~ msgstr "Táto kolmá os %1"
+
+#~ msgid "This perpendicular line %1"
+#~ msgstr "Táto kolmá priamka %1"
+
+#~ msgid "This locus %1"
+#~ msgstr "Tento lokus %1"
+
+#~ msgid "This math item %1"
+#~ msgstr "Táto matematická položka %1"
+
+#~ msgid "Edit the coordinates"
+#~ msgstr "Upraviť súradnice"
+
+#~ msgid "This point %1"
+#~ msgstr "Tento bod %1"
+
+#~ msgid "Edit this curvilinear abscissa in [0;1]"
+#~ msgstr "Upraviť krivočiaru abscisu v [0;1]"
+
+#~ msgid "This polygon %1"
+#~ msgstr "Tento mnohouholník %1"
+
+#~ msgid "This quadrilateral %1"
+#~ msgstr "Tento štvoruholník %1"
+
+#~ msgid "This triangle %1"
+#~ msgstr "Tento trojuholník %1"
+
+#~ msgid " edges="
+#~ msgstr " hrany="
+
+#~ msgid "This half-line %1"
+#~ msgstr "Táto polpriamka %1"
+
+#~ msgid "This segment %1"
+#~ msgstr "Tento segment %1"
+
+#~ msgid "This text"
+#~ msgstr "Tento text"
+
+#~ msgid "Edit this text"
+#~ msgstr "Upraviť tento text"
+
+#~ msgid "Edit me"
+#~ msgstr "Uprav ma"
+
+#~ msgid "This arc length %1"
+#~ msgstr "Dĺžka tohto oblúku %1"
+
+#~ msgid "This circle perimeter %1"
+#~ msgstr "Obvod tejto kružnice %1"
+
+#~ msgid "This distance between two points %1"
+#~ msgstr "Vzdialenosť medzi týmito dvoma bodmi %1"
+
+#~ msgid "This point-line distance %1"
+#~ msgstr "Vzdialenosť medzi týmto bodom a priamkou %1"
+
+#~ msgid "This value %1"
+#~ msgstr "Táto hodnota %1"
+
+#~ msgid "Value "
+#~ msgstr "Hodnota "
+
+#~ msgid "This polygon perimeter %1"
+#~ msgstr "Obvod tohto mnohouholníka %1"
+
+#~ msgid "This point abscissa %1"
+#~ msgstr "Abscisa tohto bodu %1"
+
+#~ msgid "This point ordinate %1"
+#~ msgstr "Ordináta tohto bodu %1"
+
+#~ msgid "This script \"{1}\""
+#~ msgstr "Tento skript \"{1}\""
+
+#~ msgid "This script \"{1}\" with argument: %2"
+#~ msgstr "Tento skript \"{1}\" s parametrom: %2"
+
+#~ msgid "This script \"{1}\" with arguments: %2"
+#~ msgstr "Tento skript \"{1}\" s parametrami: %2"
+
+#~ msgid "Script "
+#~ msgstr "Skript "
+
+#~ msgid "This segment length %1"
+#~ msgstr "Dĺžka tejto úsečky %1"
+
+#~ msgid "This line slope %1"
+#~ msgstr "Sklon tejto priamky %1"
+
+#~ msgid "Edit this value"
+#~ msgstr "Upraviť túto hodnotu"
+
+#~ msgid "This vector abscissa %1"
+#~ msgstr "Abscisa tohto vektoru %1"
+
+#~ msgid "This Vector's norm %1"
+#~ msgstr "Norma tohto vektoru %1"
+
+#~ msgid "This vector ordinate %1"
+#~ msgstr "Ordináta tohto vektoru %1"
+
+#~ msgid "This vector %1"
+#~ msgstr "Tento vektor %1"
+
+#~ msgid "Only geometric object can be transformed."
+#~ msgstr "Transformovať možno iba geometrické objekty."
+
+#~ msgid "Set the style of the line."
+#~ msgstr "Nastaviť štýl tejto čiary."
+
+#~ msgid "Style"
+#~ msgstr "Štýl"
+
+#~ msgid "Set the thickness of the line."
+#~ msgstr "Nastaviť hrúbku čiary."
+
+#~ msgid "Thickness"
+#~ msgstr "Hrúbka"
+
+#~ msgid "Fill"
+#~ msgstr "Výplň"
+
+#~ msgid "Toggle to fill the object."
+#~ msgstr "Prepnúť na vyplnenie objektu."
+
+#~ msgid "Toggle the translucency of the object."
+#~ msgstr "Prepnúť priehľadnosť objektu."
+
+#~ msgid "Translucent"
+#~ msgstr "Priehľadný"
+
+#~ msgid "Arrow"
+#~ msgstr "Šípka"
+
+#~ msgid "Set arrow(s) to the line."
+#~ msgstr "Nastaviť šípku(y) pre čiaru."
+
+#~ msgid "Set the shape of the point."
+#~ msgstr "Nastaviť tvar bodu."
+
+#~ msgid "Set the size of the point."
+#~ msgstr "Nastaviť veľkosť bodu."
+
+#~ msgid "Set a mark to the segment."
+#~ msgstr "Pridať značku na úsečku."
+
+#~ msgid "Set the colour."
+#~ msgstr "Nastaviť farbu."
+
+#~ msgid "Feedback"
+#~ msgstr "Spätná väzba"
+
+#~ msgid ""
+#~ "Toggle to provide feedback and interaction when the mouse cursor is over "
+#~ "the object."
+#~ msgstr ""
+#~ "Prepnúť pre poskytovanie spätnej väzby a interakcie keď je ekurzor myši "
+#~ "nad objektom."
+
+#~ msgid "Hide"
+#~ msgstr "Skryť"
+
+#~ msgid "Toggle to hide the object."
+#~ msgstr "Prepnúť na skrytie objektu."
+
+#~ msgid "Lock"
+#~ msgstr "Zamknúť"
+
+#~ msgid "Toggle to lock the object to its position."
+#~ msgstr "Prepnúť na zamknutie objektu na jeho pozícii."
+
+#~ msgid "Rename this object."
+#~ msgstr "Premenovať tento objekt."
+
+#~ msgid "Set the background colour."
+#~ msgstr "Nastaviť farbu pozadia."
+
+#~ msgid "Set the border colour."
+#~ msgstr "Nastaviť farbu okraja"
+
+#~ msgid "Font size"
+#~ msgstr "Veľkosť písma"
+
+#~ msgid "Set the font size."
+#~ msgstr "Nastaviť veľkosť písma."
+
+#~ msgid "Name this value"
+#~ msgstr "Pomenuj túto hodnotu"
+
+#~ msgid "Rename this value"
+#~ msgstr "Premenuj túto hodnotu"
+
+#~ msgid "Fig. - "
+#~ msgstr "Obr. - "
+
+#~ msgid "Macro - "
+#~ msgstr "Makro - "
+
+#~ msgid "Settings"
+#~ msgstr "Nastavenia"
+
+#~ msgid "About"
+#~ msgstr "O programe"
+
+#~ msgid "New sketch"
+#~ msgstr "Nový náčrt"
+
+#~ msgid "Quit"
+#~ msgstr "Ukončiť"
+
+#~ msgid "Build a new script"
+#~ msgstr "Zostaviť nový skript"
+
+#~ msgid "Edit or create scripts"
+#~ msgstr "Uprav alebo vytvor skript"
+
+#~ msgid ""
+#~ "Angle bisector defined by three points or an angle defined by three "
+#~ "points."
+#~ msgstr "Uhol alebo os uhla - oboje určené troma bodmi."
+
+#~ msgid "Angle bisector"
+#~ msgstr "Os uhla"
+
+#~ msgid "Arc defined by three points."
+#~ msgstr "Oblúk určený troma bodmi."
+
+#~ msgid "Arc defined by its center and two points."
+#~ msgstr "Oblúk určený stredovým bodom a dvoma bodmi."
+
+#~ msgid "Arc (center)"
+#~ msgstr "Oblúk (stredový bod)"
+
+#~ msgid ""
+#~ "Picture: drag and drop a picture in the canvas. It can be moved and "
+#~ "scaled."
+#~ msgstr ""
+#~ "Obrázok: potiahnite a pustite obrázok do náčrtu. Môžete ho posúvať a "
+#~ "meniť jeho veľkosť."
+
+#~ msgid "Picture"
+#~ msgstr "Obrázok"
+
+#~ msgid ""
+#~ "Circle defined by its center and a point or by its center and radius, a "
+#~ "value."
+#~ msgstr ""
+#~ "Kruh definovaný stredom a bodom alebo stredom a polomerom - hodnotou."
+
+#~ msgid "Vector or point coordinates, circle or line equation."
+#~ msgstr "Súradnice vektoru alebo bodu, rovnica kružnice alebo priamky."
+
+#~ msgid "Coordinates, equation"
+#~ msgstr "Súradnice, rovnica"
+
+#~ msgid ""
+#~ "Click to create a point: free point on the background, on a curve or on "
+#~ "two curves intersection."
+#~ msgstr ""
+#~ "Kliknite pre vytvorenie bodu: voľný bod na pozadí, na krivke alebo na "
+#~ "priesečníku dvoch kriviek."
+
+#~ msgid ""
+#~ "Tap to create a point: free point on the background, on a curve or on two "
+#~ "curves intersection."
+#~ msgstr "Ťuknite pre vytvorenie bodu:"
+
+#~ msgid ""
+#~ "Homothety: select a center, a value and a geometric object. The first "
+#~ "selected point is the homothety center."
+#~ msgstr ""
+#~ "Rovnoľahlosť: vyber stred, hodnotu a geometrický objekt. Prvý vybraný bod "
+#~ "bude stredom rovnoľahlosti."
+
+#~ msgid "Homothety (scale)"
+#~ msgstr "Rovnoľahlosť (mierka)"
+
+#~ msgid "Line defined by two points"
+#~ msgstr "Priamka definovaná dvoma bodmi"
+
+#~ msgid "Locus defined by a free point on a curve and a relative point."
+#~ msgstr "Lokus definovaný voľným bodom na krivke a relatívnym bod."
+
+#~ msgid "Construct a macro-construction with input and output items."
+#~ msgstr "Vytvoriť makro-konštrukciu s vstupnými a výstupnými položkami."
+
+#~ msgid "Build macro"
+#~ msgstr "Vytvoriť makro"
+
+#~ msgid "Input and output items don't match"
+#~ msgstr "Vstupné a výstupné parametre nepasujú"
+
+#~ msgid "Please, enter a proper title and description"
+#~ msgstr "Prosím zadajte vhodný názov a popis"
+
+#~ msgid ""
+#~ "Execute a pre-built macro-construction on selected input items. To edit a "
+#~ "macro description, edit its text and apply with the keys [alt/ctrl]+s."
+#~ msgstr ""
+#~ "Spustiť predvytvorenú makro-konštrukciu na vybraných vstupných položkách. "
+#~ "Na upravenie popisu makra upravte jeho text a uložte ho klávesami [alt/"
+#~ "ctrl]+s."
+
+#~ msgid "Execute/edit macro"
+#~ msgstr "Spusti/uprav makro"
+
+#~ msgid "The midpoint of a segment or between two points."
+#~ msgstr "Stredný bod segmentu alebo bod medzi dvoma bodmi."
+
+#~ msgid "Middle"
+#~ msgstr "Stred"
+
+#~ msgid ""
+#~ "Line passing through one point and parallel to a line, half-line, etc."
+#~ msgstr ""
+#~ "Priamka prechádzajúca cez jeden bod a rovnobežne ku priamke, polpriamke, "
+#~ "atď."
+
+#~ msgid "Parallel"
+#~ msgstr "Rovnobežné"
+
+#~ msgid "Perpendicular bisector defined by a segment or two points."
+#~ msgstr "Kolmá os definovaná segmentom dvoch bodov."
+
+#~ msgid "Perpendicular bisector"
+#~ msgstr "Kolmá os"
+
+#~ msgid ""
+#~ "Line passing through one point and orthogonal to a line, half-line, etc."
+#~ msgstr ""
+#~ "Priamka prechádzajúca cez jeden bod a kolmá ku priamke, polpriamke, atď."
+
+#~ msgid "Perpendicular"
+#~ msgstr "Kolmé"
+
+#~ msgid ""
+#~ "Point given its coordinates: select two numbers or a point coordinates "
+#~ "(@)."
+#~ msgstr "Bod určený súradnicami: vyberte dve čísla alebo súradnice bodu (@)."
+
+#~ msgid "Coordinates"
+#~ msgstr "Súradnice"
+
+#~ msgid "Intersection(s) of two curves."
+#~ msgstr "Priesečník(y) dvoch kriviek."
+
+#~ msgid "Intersection"
+#~ msgstr "Priesečník"
+
+#~ msgid ""
+#~ "Polygon by n points: last point must be the initial point to terminate."
+#~ msgstr "Mnohouholník s n bodmi: posledný bod musí byť rovnaký ako prvý."
+
+#~ msgid ""
+#~ "Regular polygon defined by its center, a vertex and its sides number."
+#~ msgstr ""
+#~ "Pravidelný mnohouholník určený stredom, bodom na okraji a počtom strán."
+
+#~ msgid "Regular polygon"
+#~ msgstr "Pravidelný mnohouholník"
+
+#~ msgid ""
+#~ "Half-Line defined by two points, the first selected point is the origin."
+#~ msgstr "Polpriamka definovaná dvoma bodmi, kde prvý je začiatočný bod."
+
+#~ msgid ""
+#~ "Reflexion: select a line and a geometric object. Reflexion axe is the "
+#~ "first selected line."
+#~ msgstr ""
+#~ "Zrkadlenie: vyberte riamku a geometrický objekt. Osou odrazu bude prvá "
+#~ "vybraná hrana."
+
+#~ msgid "Reflection"
+#~ msgstr "Zrkadlenie"
+
+#~ msgid ""
+#~ "Rotation: select a point, a value and a geometric object. The first "
+#~ "selected point is the rotation center."
+#~ msgstr ""
+#~ "Otočenie: vyberte bod, hodnotu a geometrický objekt. Prvý vybraný bod "
+#~ "bude stredom otočenia."
+
+#~ msgid "Rotation"
+#~ msgstr "Otočenie"
+
+#~ msgid "Insert a Smalltalk script in the drawing area."
+#~ msgstr "Vložiť Smalltalk skript do kresliacej oblasti."
+
+#~ msgid "Use a script"
+#~ msgstr "Použi skript"
+
+#~ msgid "No description, write one in the description method of this script."
+#~ msgstr "Bez popisu, môžete ho pridať v skripte v metóde popisu."
+
+#~ msgid "Segment defined by two points."
+#~ msgstr "Segment určený dvoma bodmi."
+
+#~ msgid ""
+#~ "Symmetry: select a point and a geometric object. The first selected point "
+#~ "is the symmetry center."
+#~ msgstr ""
+#~ "Symetria: vyberte bod a geometrický objekt. Prvý vybraný bod je stredom "
+#~ "symetrie."
+
+#~ msgid "Symmetry"
+#~ msgstr "Symetria"
+
+#~ msgid "Free text you can edit and move around."
+#~ msgstr "Ľubovolný text ktorý môžeťe upravovať a pohybovať."
+
+#~ msgid "Text"
+#~ msgstr "Text"
+
+#~ msgid "Translation: select a vector and a geometric object."
+#~ msgstr "Posuv: vyberte vektor a geometrický objekt."
+
+#~ msgid "Translation"
+#~ msgstr "Posuv"
+
+#~ msgid "Distance between objects, curve length, free value."
+#~ msgstr "Vzdialenosť objektov, dĺžka krivky, voľná hodnota."
+
+#~ msgid "Distance, length, value"
+#~ msgstr "Vzdialenosť, dĺžka, hodnota"
+
+#~ msgid "Vector defined by two points."
+#~ msgstr "Vektor definovaný dvoma bodmi."
+
+#~ msgid "Select a free point on a curve to animate it."
+#~ msgstr "Vyberte voľný bod na krivke na animovanie."
+
+#~ msgid "Erase an object and all its depedencies."
+#~ msgstr "Zmazať objekt so všetkými závislosťami."
+
+#~ msgid "Eraser"
+#~ msgstr "Zmazanie"
+
+#~ msgid "This intersection"
+#~ msgstr "Tento priesečník"
+
+#~ msgid "Change as a free point on the plane."
+#~ msgstr "Zmeniť voľný bod v rovine."
+
+#~ msgid "Change as a free point on this curve."
+#~ msgstr "Zmeniť voľný bod na tejto krivke."
+
+#~ msgid "Change as this intersection."
+#~ msgstr "Zmeniť tento priesečník."
+
+#~ msgid "Edit an item's property"
+#~ msgstr "Upraviť vlastnosť položky"
+
+#~ msgid "Property"
+#~ msgstr "Vlastnosť"
+
+#~ msgid "Select and move an object."
+#~ msgstr "Vyberte a posuňte objekt."
+
+#~ msgid "Select and Move"
+#~ msgstr "Vybrať a posunúť"
+
+#~ msgid "Select a point to merge with"
+#~ msgstr "Vyberte bod na spojenie"
+
+#~ msgid "Drag this point to change its nature."
+#~ msgstr "Potiahnite tento bod pre zmenu jeho povahy."
+
+#~ msgid ""
+#~ "Pressing down the [Shift] key you can drag and change the nature of free "
+#~ "point or intersection point."
+#~ msgstr ""
+#~ "Držaním klávesy [Shift] môžete ťahať a zmeniť povahu bodu alebo "
+#~ "priesečníka."
+
+#~ msgid ""
+#~ "Several objects can be selected. Please, select one clicking the mouse."
+#~ msgstr ""
+#~ "Dá sa vybrať viacero objektov. Prosím, vyberte jeden kliknutím myšou."
+
+#~ msgid "Edit an object style."
+#~ msgstr "Upraviť štýl objektu."
+
+#~ msgid "Edit Style"
+#~ msgstr "Upraviť Štýl"
+
+#~ msgid "Select an object"
+#~ msgstr "Vybrať objekt"
+
+#~ msgid "Several objects can be selected. Please, choose one."
+#~ msgstr "Dá sa vybrať viacero objektov. Prosím, vyberte jeden."
+
+#~ msgid "Colour"
+#~ msgstr "Farba"
+
+#~ msgid "Shape"
+#~ msgstr "Tvar"
+
+#~ msgid "Size"
+#~ msgstr "Veľkosť"
+
+#~ msgid "Mark"
+#~ msgstr "Označiť"
+
+#~ msgid "Background"
+#~ msgstr "Pozadie"
+
+#~ msgid "Border"
+#~ msgstr "Okraj"
+
+#~ msgid "Animate at speed 1."
+#~ msgstr "Animovať rýchlosťou 1."
+
+#~ msgid "Animate x1"
+#~ msgstr "Animovať x1"
+
+#~ msgid "Animate at speed 2."
+#~ msgstr "Animovať rýchlosťou 2."
+
+#~ msgid "Animate x2"
+#~ msgstr "Animovať x2"
+
+#~ msgid "Animate at speed 3."
+#~ msgstr "Animovať rýchlosťou 3."
+
+#~ msgid "Animate x3"
+#~ msgstr "Animovať x3"
+
+#~ msgid "Animate at speed 4."
+#~ msgstr "Animovať rýchlosťou 4."
+
+#~ msgid "Animate x4"
+#~ msgstr "Animovať x4"
+
+#~ msgid "Show or hide the ox and oy axes."
+#~ msgstr "Zobraziť/skryť osi ox a oy."
+
+#~ msgid "Show or hide grid."
+#~ msgstr "Ukázať alebo skryť mriežku."
+
+#~ msgid "Keep this sketch permanently."
+#~ msgstr "Ponechať tento náčrt nastálo."
+
+#~ msgid "Save"
+#~ msgstr "Uložiť"
+
+#~ msgid "Delete a macro-construction from the registry."
+#~ msgstr "Zmazať makro-konštrukciu z registru."
+
+#~ msgid "Delete macro"
+#~ msgstr "Zmazať makro"
+
+#~ msgid "Snap to grid."
+#~ msgstr "Prichyť na mriežku."
+
+#~ msgid "An unobtrusive menu with all Dr. Geo tools."
+#~ msgstr "Nenápadné menu so všetkými nástrojmi Dr. Geo."
+
+#~ msgid "Menu"
+#~ msgstr "Ponuka"
+
+#~ msgid ""
+#~ "Toggle between the build of several geometric objects and the build of "
+#~ "one geometric object then move it."
+#~ msgstr ""
+#~ "Prepni či chcete vytvárať viacero geometrických objektov alebo vytvoriť "
+#~ "jeden geometrický objekt a posunúť ho."
+
+#~ msgid "New"
+#~ msgstr "Nové"
+
+#~ msgid "Open a new blank sketch."
+#~ msgstr "Otvoriť prázdny náčrt."
+
+#~ msgid "Open a sketch."
+#~ msgstr "Otvoriť náčrt."
+
+#~ msgid "Redo"
+#~ msgstr "Opakovať"
+
+#~ msgid "Redo last action."
+#~ msgstr "Znova vykonať akciu."
+
+#~ msgid "Create a Smalltalk script."
+#~ msgstr "Vytvoriť Smalltalk skript."
+
+#~ msgid "Create a script"
+#~ msgstr "Vytvoriť skript"
+
+#~ msgid "Edit a Smalltalk script."
+#~ msgstr "Upraviť Smalltalk skript."
+
+#~ msgid "Edit a script"
+#~ msgstr "Upraviť skript"
+
+#~ msgid "Construction tree"
+#~ msgstr "Strom konštrukcie"
+
+#~ msgid "The hierarchy tree presenting the visible constructed items."
+#~ msgstr "Strom zobrazujúci väzby viditeľných vytvorených objektov."
+
+#~ msgid "Undo"
+#~ msgstr "Odvolať"
+
+#~ msgid "Undo last action"
+#~ msgstr "Odvolať poslednú akciu"
+
+#~ msgid "A wheel to move horizontally the sketch."
+#~ msgstr "Koliesko na posun náčrtu vodorovne."
+
+#~ msgid "Horizontal wheel"
+#~ msgstr "Vodorovné koliesko"
+
+#~ msgid "A wheel to move vertically the sketch."
+#~ msgstr "Koliesko na posun náčrtu zvisle."
+
+#~ msgid "Vertical wheel"
+#~ msgstr "Zvislé koliesko"
+
+#~ msgid "A wheel to zoom in, zoom out the sketch."
+#~ msgstr "Kolieskom"
+
+#~ msgid "Zoom wheel"
+#~ msgstr "Približovacie koliesko"
+
+#~ msgid "Open at..."
+#~ msgstr "Otvoriť z..."
+
+#~ msgid "Add argument"
+#~ msgstr "Pridať parameter"
+
+#~ msgid "Description:"
+#~ msgstr "Popis:"
+
+#~ msgid "Title:"
+#~ msgstr "Nadpis:"
+
+#~ msgid "Script name"
+#~ msgstr "Meno skriptu"

@@ -1,0 +1,905 @@
+# Vietnamese translation for drgeo
+# Copyright (c) 2012 Rosetta Contributors and Canonical Ltd 2012
+# This file is distributed under the same license as the drgeo package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2012.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: drgeo\n"
+"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2026-02-17 18:57-0000\n"
+"PO-Revision-Date: 2014-10-04 06:08+0000\n"
+"Last-Translator: Nguyen Lan <lanbk@yahoo.com>\n"
+"Language-Team: Vietnamese <vi@li.org>\n"
+"Language: vi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2024-05-27 04:38+0000\n"
+"X-Generator: Launchpad (build 0e1f616671af724398db43b36ddfb3ed1f2682ec)\n"
+
+#: DrGeo-Model-Script,DrGeoUserScript_class>>description
+msgid "I am the description of this script. Please edit me."
+msgstr ""
+
+#: DrGeo-Model-Script,DrGeoUserScript_class>>scriptName
+msgid "A script"
+msgstr ""
+
+#: DrGeo-View,DrGMinControlsManager>>editMenu
+msgid "Copy"
+msgstr ""
+
+#: DrGeo-View,DrGMinControlsManager>>editMenu
+msgid "Copy with transparency"
+msgstr ""
+
+#: DrGeo-View,DrGMinControlsManager>>fileMenu
+msgid "Keep this sketch under a different name."
+msgstr ""
+
+#: DrGeo-View,DrGMinControlsManager>>fileMenu
+msgid "Save as..."
+msgstr "Lưu lại với định dạng..."
+
+#: DrGeo-View,DrGMinControlsManager>>mainMenu
+msgid "Animate"
+msgstr ""
+
+#: DrGeo-View,DrGMinControlsManager>>mainMenu
+msgid "Animate a free point on curve."
+msgstr ""
+
+#: DrGeo-View,DrGMinControlsManager>>mainMenu
+msgid ""
+"Build or execute macro-construction. A macro is a construction template you "
+"can apply to items in the sketch area."
+msgstr ""
+"Tạo hoặc thực thi cấu trúc macro. Một macro là một mẫu cấu trúc mà bạn có "
+"thể áp dụng cho các đối tượng trong vùng của bản vẽ"
+
+#: DrGeo-View,DrGMinControlsManager>>mainMenu
+msgid ""
+"Create different curve types: line, half-line, segment, vector, circle..."
+msgstr "Tạo các kiểu đường cong khác: đường, tia, cạnh, véc-tơ, đường tròn..."
+
+#: DrGeo-View,DrGMinControlsManager>>mainMenu
+msgid "Create points: free, on curve, intersection or middle point."
+msgstr "Tạo các điểm: tự do trên đường cong, giao điểm hoặc trung điểm"
+
+#: DrGeo-View,DrGMinControlsManager>>mainMenu
+msgid ""
+"Create several numeric objects: free value, distance, length, angle, "
+"coordinates, equation and text."
+msgstr ""
+
+#: DrGeo-View,DrGMinControlsManager>>mainMenu,DrGSmalltalkSketchBrowser>>newButtonArea
+msgid "Edit"
+msgstr "Chỉnh sửa"
+
+#: DrGeo-View,DrGMinControlsManager>>mainMenu
+msgid "Erase or edit style and properties of items."
+msgstr "Xóa hoặc biên tập kiểu và thuộc tính của các đối tượng"
+
+#: DrGeo-View,DrGMinControlsManager>>mainMenu
+msgid "File"
+msgstr "Tập tin"
+
+#: DrGeo-View,DrGMinControlsManager>>mainMenu
+msgid "Lines"
+msgstr "Đường thẳng"
+
+#: DrGeo-View,DrGMinControlsManager>>mainMenu
+msgid "Load, save or export Dr. Geo figure."
+msgstr "Nạp vào, lưu trữ hoặc xuất ra hình minh họa định dạng Dr. Geo"
+
+#: DrGeo-View,DrGMinControlsManager>>mainMenu
+msgid "Macro-construction"
+msgstr "xây dựng macro"
+
+#: DrGeo-View,DrGMinControlsManager>>mainMenu
+msgid "Numerics & Text"
+msgstr ""
+
+#: DrGeo-View,DrGMinControlsManager>>mainMenu
+msgid "Points"
+msgstr "Điểm"
+
+#: DrGeo-View,DrGMinControlsManager>>mainMenu
+msgid "Script"
+msgstr ""
+
+#: DrGeo-View,DrGMinControlsManager>>mainMenu
+msgid "Script: use, edit or create script to plug in the sketch."
+msgstr ""
+
+#: DrGeo-View,DrGMinControlsManager>>mainMenu
+msgid ""
+"Transform an object with a geometric transformation: symmetry, reflexion, "
+"rotation, translation or homothety (scale)."
+msgstr ""
+"Phép biến hình một đối tượng hình học: phép đối xứng, phép phản xạ, phép "
+"quay, phép tịnh tieens hoặc phép vị tự (phép đồng dạng (theo tỷ lệ)."
+
+#: DrGeo-View,DrGMinControlsManager>>mainMenu
+msgid "Transformations"
+msgstr "Biến đổi"
+
+#: DrGeo-View-Dialog,DrGDebuggerWindow>>customButtonSpecs
+msgid "Execute the code up to the cursor position."
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGDebuggerWindow>>customButtonSpecs
+msgid "Execute the current message and go to the next message."
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGDebuggerWindow>>customButtonSpecs
+msgid "Restart"
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGDebuggerWindow>>customButtonSpecs
+msgid "Restart the step by step execution from its start."
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGDebuggerWindow>>customButtonSpecs
+msgid "Run to Cursor"
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGDebuggerWindow>>customButtonSpecs
+msgid "Step"
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGDebuggerWindow>>customButtonSpecs
+msgid "Step into"
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGDebuggerWindow>>customButtonSpecs
+msgid "Step into a block."
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGFileOpenMorph_class>>open
+msgid "Open a sketch"
+msgstr "Mở một bản vẽ"
+
+#: DrGeo-View-Dialog,DrGFileOpenMorph>>newButtonArea,DrGScriptDesignerDialog>>newButtonArea,DrGSmalltalkSketchBrowser>>newButtonArea,DrGSmalltalkSketchEditor>>newButtonArea
+msgid "Cancel"
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGFileOpenMorph>>newButtonArea,DrGSmalltalkSketchBrowser>>newButtonArea
+msgid "Examples"
+msgstr "Ví dụ"
+
+#: DrGeo-View-Dialog,DrGFileOpenMorph>>newButtonArea,DrGSmalltalkSketchBrowser>>newButtonArea
+msgid "My Sketches"
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGFileOpenMorph>>newButtonArea
+msgid "Open"
+msgstr "Mở"
+
+#: DrGeo-View-Dialog,DrGScriptDesignerDialog_class>>labelsAndClasses
+msgid "Angle"
+msgstr "Góc"
+
+#: DrGeo-View-Dialog,DrGScriptDesignerDialog_class>>labelsAndClasses
+msgid "Any type"
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGScriptDesignerDialog_class>>labelsAndClasses
+msgid "Arc"
+msgstr "Cung"
+
+#: DrGeo-View-Dialog,DrGScriptDesignerDialog_class>>labelsAndClasses
+msgid "Circle"
+msgstr "Đường tròn"
+
+#: DrGeo-View-Dialog,DrGScriptDesignerDialog_class>>labelsAndClasses
+msgid "Direction"
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGScriptDesignerDialog_class>>labelsAndClasses
+msgid "Line"
+msgstr "Đường thẳng"
+
+#: DrGeo-View-Dialog,DrGScriptDesignerDialog_class>>labelsAndClasses
+msgid "Locus"
+msgstr "TQuỹ tích"
+
+#: DrGeo-View-Dialog,DrGScriptDesignerDialog_class>>labelsAndClasses
+msgid "Point"
+msgstr "Điểm"
+
+#: DrGeo-View-Dialog,DrGScriptDesignerDialog_class>>labelsAndClasses
+msgid "Polygon"
+msgstr "Đa giác"
+
+#: DrGeo-View-Dialog,DrGScriptDesignerDialog_class>>labelsAndClasses
+msgid "Ray"
+msgstr "Tia"
+
+#: DrGeo-View-Dialog,DrGScriptDesignerDialog_class>>labelsAndClasses
+msgid "Segment"
+msgstr "Cạnh"
+
+#: DrGeo-View-Dialog,DrGScriptDesignerDialog_class>>labelsAndClasses
+msgid "Value"
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGScriptDesignerDialog_class>>labelsAndClasses
+msgid "Vector"
+msgstr "Véc-tơ"
+
+#: DrGeo-View-Dialog,DrGScriptDesignerDialog>>addArgument
+msgid "Remove this script argument."
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGScriptDesignerDialog>>newAddArgumentButton
+msgid "Add an argument to this script."
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGScriptDesignerDialog>>newButtonArea
+msgid "Build"
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGScriptDesignerDialog>>newButtonArea
+msgid "Build a script with these settings."
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGScriptDesignerDialog>>newDescriptionMorph
+msgid ""
+"A description of the script. To help the user, describe carefully what the "
+"script does and the input arguments to select to use it."
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGScriptDesignerDialog>>newPane,DrGWizardScript>>secondPage
+msgid "Arguments"
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGScriptDesignerDialog>>newPane,DrGWizardMacroBuild>>fourthPage,DrGWizardMacroPlay>>secondPage,DrGWizardScript>>secondPage
+msgid "Description"
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGScriptDesignerDialog>>newPane,DrGWizardMacroBuild>>fourthPage,DrGWizardMacroPlay>>secondPage,DrGWizardScript>>secondPage
+msgid "Name"
+msgstr "Tên"
+
+#: DrGeo-View-Dialog,DrGScriptDesignerDialog>>newScriptNameMorph
+msgid "The name of the script."
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGSmalltalkSketchBrowser>>newButtonArea
+msgid "Browse my collection of Smalltalk sketches."
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGSmalltalkSketchBrowser>>newButtonArea
+msgid "Delete"
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGSmalltalkSketchBrowser>>newButtonArea
+msgid "Delete permanently this Smalltalk Sketch from disk."
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGSmalltalkSketchBrowser>>newSketchesColumn
+msgid "Code"
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGSmalltalkSketchEditor>>browseSketches
+msgid "Select a Smalltalk sketch"
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGSmalltalkSketchEditor>>executeSketch
+msgid ""
+"Too many errors. Fix it!\n"
+"Sketch stopped"
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGSmalltalkSketchEditor>>keepSketch
+msgid "Name the sketch to keep."
+msgstr "Tên các bản vẽ giữ lại"
+
+#: DrGeo-View-Dialog,DrGSmalltalkSketchEditor>>newToolbar
+msgid "Debug the Smalltalk sketch."
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGSmalltalkSketchEditor>>newToolbar
+msgid "Dr. Geo tutorial"
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGSmalltalkSketchEditor>>newToolbar
+msgid "Edit a Smalltalk sketch."
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGSmalltalkSketchEditor>>newToolbar,DrGSmalltalkSketchEditor>>switchToPlayButton
+msgid "Play the Smalltalk sketch."
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGSmalltalkSketchEditor>>newToolbar
+msgid "Save this Smalltalk sketch."
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGSmalltalkSketchEditor>>newToolbar
+msgid "Stop the execution of the Smalltalk sketch."
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGSmalltalkSketchEditor>>restoreLabel
+msgid "Edit Smalltalk Sketch"
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGSmalltalkSketchEditor>>switchToPauseButton
+msgid "Pause the Smalltalk sketch."
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGSmalltalkSketchEditor>>switchToResumeButton
+msgid "Resume the Smalltalk sketch."
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGWizardMacroBuild>>firstPage
+msgid "Build a macro-construction"
+msgstr "Xây dựng một cấu trúc macro"
+
+#: DrGeo-View-Dialog,DrGWizardMacroBuild>>firstPage
+msgid ""
+"To build a macro-construction,\n"
+"\n"
+" 1. First select the input paramaters,\n"
+" 2. Next select the output parameters,\n"
+" 3. Next chose a name and a description,\n"
+" 4. Last apply the selection."
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGWizardMacroBuild>>fourthPage
+msgid "Give a name and a description"
+msgstr "Cho tôi một cái tên và một mô tả"
+
+#: DrGeo-View-Dialog,DrGWizardMacroBuild>>secondPage
+msgid "Select input parameters"
+msgstr "Chọn tham số đầu vào"
+
+#: DrGeo-View-Dialog,DrGWizardMacroBuild>>thirdPage
+msgid "Select output parameters"
+msgstr "Chọn tham số đầu ra"
+
+#: DrGeo-View-Dialog,DrGWizardMacroPlay>>firstPage
+msgid "Execute a macro-construction"
+msgstr "Thực hiện việc xây dựng một macro"
+
+#: DrGeo-View-Dialog,DrGWizardMacroPlay>>firstPage
+msgid ""
+"To execute a macro-construction,\n"
+"\n"
+" 1. First select a macro-construction from the list,\n"
+" 2. Select items on the figure. Only items relevant\n"
+" to the selected macro-construction are selectable.\n"
+" Once enough items are selected, the macro is\n"
+" automaticly executed.\n"
+" To start press the 'next' button."
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGWizardMacroPlay>>secondPage
+msgid "Select a macro-construction then the figure items"
+msgstr "Chọn một cấu trúc macro sau một đối tượng hình vẽ"
+
+#: DrGeo-View-Dialog,DrGWizardScript>>firstPage
+msgid ""
+"To use a script,\n"
+"\n"
+" 1. First select a script from the list,\n"
+" 2. Select items in the sketch,\n"
+" 3. Click somewhere in the background. \n"
+" Once enough items are selected, the script is\n"
+" inserted in the sketch, at the user selected position.\n"
+" To start press the 'next' button."
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGWizardScript>>firstPage
+msgid "Use a script in the sketch"
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGWizardScript>>secondPage
+msgid "Select a script then items in the sketch"
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGWizardScript>>secondPage
+msgid "The arguments accepted by this script."
+msgstr ""
+
+#~ msgid "no name"
+#~ msgstr "vô danh"
+
+#~ msgid "This geometric angle %1"
+#~ msgstr "Góc hình học này %1"
+
+#~ msgid "This oriented angle %1"
+#~ msgstr "Góc định hướng này %1"
+
+#~ msgid "This Arc Circle %1"
+#~ msgstr "Cung tròn này %1"
+
+#~ msgid "This circle %1"
+#~ msgstr "Đường tròn này %1"
+
+#~ msgid "This composite object %1"
+#~ msgstr "Đối tượng phức hợp này %1"
+
+#~ msgid "This equation %1"
+#~ msgstr "Phương trình (công thức) này %1"
+
+#~ msgid "This line %1"
+#~ msgstr "Đường thẳng này %1"
+
+#~ msgid "This parallel line %1"
+#~ msgstr "Đường thằng song song này %1"
+
+#~ msgid "This perpendicular line %1"
+#~ msgstr "Đường vuông góc này %"
+
+#~ msgid "This locus %1"
+#~ msgstr "Quỹ tích này %1"
+
+#~ msgid "This math item %1"
+#~ msgstr "Đối tượng toán học này %1"
+
+#~ msgid "Edit the coordinates"
+#~ msgstr "Chỉnh sửa hệ trục tọa độ"
+
+#~ msgid "This point %1"
+#~ msgstr "Điểm này %1"
+
+#~ msgid "Edit this curvilinear abscissa in [0;1]"
+#~ msgstr "Chỉnh sửa hoành độ đường cong trong khoảng [0;1]"
+
+#~ msgid "This polygon %1"
+#~ msgstr "Đa giác này %1"
+
+#~ msgid "This quadrilateral %1"
+#~ msgstr "Tứ giác này %1"
+
+#~ msgid "This triangle %1"
+#~ msgstr "Tam giác này %1"
+
+#~ msgid "This half-line %1"
+#~ msgstr "Tia này %1"
+
+#~ msgid "This segment %1"
+#~ msgstr "Cạnh này %1"
+
+#~ msgid "This text"
+#~ msgstr "Văn bản này"
+
+#~ msgid "Edit this text"
+#~ msgstr "Chỉnh sửa các ký tự này"
+
+#~ msgid "Edit me"
+#~ msgstr "Biên tập tôi"
+
+#~ msgid "This arc length %1"
+#~ msgstr "Độ dài cung tròn này %1"
+
+#~ msgid "This circle perimeter %1"
+#~ msgstr "Chu vi đường tròn này %1"
+
+#~ msgid "This distance between two points %1"
+#~ msgstr "Đây là khoảng cách giữa 2 điểm %1"
+
+#~ msgid "This point-line distance %1"
+#~ msgstr "Khoảng cách từ điểm đến đường %1"
+
+#~ msgid "This value %1"
+#~ msgstr "Giá trị này %1"
+
+#~ msgid "This point abscissa %1"
+#~ msgstr "Hoành độ của điểm này %1"
+
+#~ msgid "This point ordinate %1"
+#~ msgstr "Tung độ của điểm này %1"
+
+#~ msgid "This segment length %1"
+#~ msgstr "Chiều dài cạnh này %1"
+
+#~ msgid "This line slope %1"
+#~ msgstr "Độ dốc của đường này %1"
+
+#~ msgid "Edit this value"
+#~ msgstr "chỉnh sửa giá trị này"
+
+#~ msgid "This vector abscissa %1"
+#~ msgstr "Hoành độ của véc-tơ này %1"
+
+#~ msgid "This Vector's norm %1"
+#~ msgstr "Tiêu chuẩn này của véc-tơ %1"
+
+#~ msgid "This vector ordinate %1"
+#~ msgstr "Tung độ của vec-tơ này %1"
+
+#~ msgid "This vector %1"
+#~ msgstr "Véc-tơ này %1"
+
+#~ msgid "Only geometric object can be transformed."
+#~ msgstr "Chỉ các đối tượng hình học mới có khả năng được chuyển đổi"
+
+#~ msgid "Set the style of the line."
+#~ msgstr "Thiết đặt kiểu của đường thẳng"
+
+#~ msgid "Style"
+#~ msgstr "Kiểu"
+
+#~ msgid "Set the thickness of the line."
+#~ msgstr "chọn độ dài đường thẳng"
+
+#~ msgid "Thickness"
+#~ msgstr "Độ dày"
+
+#~ msgid "Fill"
+#~ msgstr "Điền đầy"
+
+#~ msgid "Toggle to fill the object."
+#~ msgstr "Chuyển qua để làm đầy đối tượng"
+
+#~ msgid "Toggle the translucency of the object."
+#~ msgstr "Chuyển đổi độ trong suốt của đối tượng"
+
+#~ msgid "Translucent"
+#~ msgstr "Mờ"
+
+#~ msgid "Arrow"
+#~ msgstr "Mũi tên"
+
+#~ msgid "Set arrow(s) to the line."
+#~ msgstr "Bấm chọn mũi tên để đi đến dòng"
+
+#~ msgid "Set the shape of the point."
+#~ msgstr "Chọn kiểu hình của điểm"
+
+#~ msgid "Set the size of the point."
+#~ msgstr "Chọn kính thước điểm"
+
+#~ msgid "Set a mark to the segment."
+#~ msgstr "Đánh dấu cạnh"
+
+#~ msgid "Set the colour."
+#~ msgstr "Chọn màu"
+
+#~ msgid "Hide"
+#~ msgstr "Ẩn"
+
+#~ msgid "Toggle to hide the object."
+#~ msgstr "Chuyển sang chế độ ẩn đối tượng"
+
+#~ msgid "Lock"
+#~ msgstr "Khoá"
+
+#~ msgid "Toggle to lock the object to its position."
+#~ msgstr "Chuyển đổi đến khóa các đối tượng đến vị trí của nó"
+
+#~ msgid "Rename this object."
+#~ msgstr "Đổi tên đối tượng này"
+
+#~ msgid "Set the background colour."
+#~ msgstr "thiết lập màu nền"
+
+#~ msgid "Name this value"
+#~ msgstr "Tên của giá trị này"
+
+#~ msgid "Rename this value"
+#~ msgstr "Đổi tên giá trị này"
+
+#~ msgid "Fig. - "
+#~ msgstr "Minh họa.  - "
+
+#~ msgid "Macro - "
+#~ msgstr "Macro - "
+
+#~ msgid "Settings"
+#~ msgstr "Tùy chỉnh"
+
+#~ msgid "About"
+#~ msgstr "Giới thiệu"
+
+#~ msgid "New sketch"
+#~ msgstr "Bản vẽ mới"
+
+#~ msgid "Quit"
+#~ msgstr "Thoát"
+
+#~ msgid "Edit or create scripts"
+#~ msgstr "Biên tập hoặc tạo các đoạn mã"
+
+#~ msgid ""
+#~ "Angle bisector defined by three points or an angle defined by three "
+#~ "points."
+#~ msgstr ""
+#~ "Đường phân giác được xác định bởi 3 điểm hoặc một góc được xác định bởi 3 "
+#~ "điểm."
+
+#~ msgid "Angle bisector"
+#~ msgstr "Đường phân giác"
+
+#~ msgid "Arc defined by three points."
+#~ msgstr "Cung được xác định bởi 3 điểm nằm trên cung."
+
+#~ msgid "Arc defined by its center and two points."
+#~ msgstr "Cung được xác định bởi tâm của cung và 2 điểm nằm trên cung."
+
+#~ msgid "Arc (center)"
+#~ msgstr "Cung (tâm)"
+
+#~ msgid ""
+#~ "Circle defined by its center and a point or by its center and radius, a "
+#~ "value."
+#~ msgstr ""
+#~ "Đường tròn được xác định bởi tâm và  1 điểm trên đường tròn hoặc giá trị "
+#~ "đường kính"
+
+#~ msgid "Vector or point coordinates, circle or line equation."
+#~ msgstr ""
+#~ "Tọa độ của véc-tơ hoặc điểm, phương trình đường tròn hoặc đường thẳng"
+
+#~ msgid "Coordinates, equation"
+#~ msgstr "Tọa độ, phương trình (công thức)"
+
+#~ msgid ""
+#~ "Click to create a point: free point on the background, on a curve or on "
+#~ "two curves intersection."
+#~ msgstr ""
+#~ "Bấm nút chuột để tạo một điểm: 1 điểm tùy ý trên nền, trên 1 cung hoặc "
+#~ "trên giao điểm của 2 đường cong."
+
+#~ msgid ""
+#~ "Homothety: select a center, a value and a geometric object. The first "
+#~ "selected point is the homothety center."
+#~ msgstr ""
+#~ "Phép đồng dạng: chọn một tâm cho phép đồng dạng, một giá trị và một đối "
+#~ "tượng hình học. Điểm đầu tiên được chọn là tâm của phép đồng dạng."
+
+#~ msgid "Homothety (scale)"
+#~ msgstr "Phép đồng dạng (tỷ lệ)"
+
+#~ msgid "Line defined by two points"
+#~ msgstr "Đường thẳng được xác định bởi 2 điểm"
+
+#~ msgid "Locus defined by a free point on a curve and a relative point."
+#~ msgstr ""
+#~ "Quỹ tích được xác định bởi một điểm trên cung tròn và một điểm có liên "
+#~ "quan"
+
+#~ msgid "Construct a macro-construction with input and output items."
+#~ msgstr "Xây dựng một cấu trúc macro với các mục đầu vào và đầu ra"
+
+#~ msgid "Build macro"
+#~ msgstr "Xây dựng macro"
+
+#~ msgid "Input and output items don't match"
+#~ msgstr "Dữ liệu nhập và xuất không tương thích"
+
+#~ msgid "Please, enter a proper title and description"
+#~ msgstr "Bạn vui lòng nhập tiêu đề và mô tả"
+
+#~ msgid "The midpoint of a segment or between two points."
+#~ msgstr "Trung điểm của một đoạn thẳng hoặc giữa 2 điểm."
+
+#~ msgid "Middle"
+#~ msgstr "Trung điểm"
+
+#~ msgid ""
+#~ "Line passing through one point and parallel to a line, half-line, etc."
+#~ msgstr ""
+#~ "Đường thẳng đi qua một điểm và song song với một đường thẳng cho trước, "
+#~ "hoặc một tia, v.v.."
+
+#~ msgid "Parallel"
+#~ msgstr "Song song"
+
+#~ msgid "Perpendicular bisector defined by a segment or two points."
+#~ msgstr "Đường trung trực được xác định bởi 1 đoạn thẳng hoặc 2 điểm."
+
+#~ msgid "Perpendicular bisector"
+#~ msgstr "Đường trung trực"
+
+#~ msgid ""
+#~ "Line passing through one point and orthogonal to a line, half-line, etc."
+#~ msgstr ""
+#~ "Đường thẳng đi qua một điểm và vuông góc với một đường thẳng khác, tia, v."
+#~ "v.."
+
+#~ msgid "Perpendicular"
+#~ msgstr "Vuông góc"
+
+#~ msgid ""
+#~ "Point given its coordinates: select two numbers or a point coordinates "
+#~ "(@)."
+#~ msgstr ""
+#~ "Điểm được cho bởi tọa độ: chọn giá trị tung độ & hoành độ hoặc tọa độ "
+#~ "điểm (@)."
+
+#~ msgid "Coordinates"
+#~ msgstr "Tọa độ"
+
+#~ msgid "Intersection(s) of two curves."
+#~ msgstr "(1 hoặc nhiều) giao điểm của 2 đường cong"
+
+#~ msgid "Intersection"
+#~ msgstr "Giao điểm"
+
+#~ msgid ""
+#~ "Polygon by n points: last point must be the initial point to terminate."
+#~ msgstr ""
+#~ "n-giác (đa giác n đỉnh): đỉnh cuối cùng phải là đỉnh đầu tiên để hoàn tất "
+#~ "đa giác"
+
+#~ msgid ""
+#~ "Half-Line defined by two points, the first selected point is the origin."
+#~ msgstr "Tia được xác định bởi 2 điểm, điểm đầu là gốc của tia"
+
+#~ msgid ""
+#~ "Reflexion: select a line and a geometric object. Reflexion axe is the "
+#~ "first selected line."
+#~ msgstr "Lấy đối xứng: chọn một đường thằng và một đối tượng."
+
+#~ msgid "Reflection"
+#~ msgstr "Đối xứng"
+
+#~ msgid ""
+#~ "Rotation: select a point, a value and a geometric object. The first "
+#~ "selected point is the rotation center."
+#~ msgstr ""
+#~ "Quay hình: chọn một điểm, một giá trị và một đối tượng hình học. Điểm đầu "
+#~ "tiên được chọn là tâm quay"
+
+#~ msgid "Rotation"
+#~ msgstr "Quay"
+
+#~ msgid "Insert a Smalltalk script in the drawing area."
+#~ msgstr "Chèn một đoạn mã Smalltalk vào trong khu vực hình vẽ"
+
+#~ msgid "Use a script"
+#~ msgstr "Sử dụng một đoạn mã"
+
+#~ msgid "Segment defined by two points."
+#~ msgstr "Cạnh được xác định bởi 2 điểm"
+
+#~ msgid ""
+#~ "Symmetry: select a point and a geometric object. The first selected point "
+#~ "is the symmetry center."
+#~ msgstr ""
+#~ "Đối xứng tâm: chọn một điểm và một đối tượng hình học. Điểm đầu tiên được "
+#~ "chọn là tâm đối xứng."
+
+#~ msgid "Symmetry"
+#~ msgstr "Đối xứng tâm"
+
+#~ msgid "Free text you can edit and move around."
+#~ msgstr "Văn bản tùy chọn mà bạn có thể soạn ra và dịch chuyển"
+
+#~ msgid "Text"
+#~ msgstr "Văn bản"
+
+#~ msgid "Translation: select a vector and a geometric object."
+#~ msgstr "Phép tịnh tiến: chọn một véc-tơ và một đối tượng hình học"
+
+#~ msgid "Translation"
+#~ msgstr "Phép tịnh tiến"
+
+#~ msgid "Distance, length, value"
+#~ msgstr "Khoảng cách, chiều dài, giá trị"
+
+#~ msgid "Vector defined by two points."
+#~ msgstr "Véc-tơ được xác định bởi 2 điểm"
+
+#~ msgid "Erase an object and all its depedencies."
+#~ msgstr "Xóa bỏ một đối tượng và tất cả các thành phần phụ thuộc của nó"
+
+#~ msgid "Eraser"
+#~ msgstr "Xóa"
+
+#~ msgid "This intersection"
+#~ msgstr "Giao điểm này"
+
+#~ msgid "Change as a free point on the plane."
+#~ msgstr "Thay đổi một điểm tự do trên mặt phẳng này"
+
+#~ msgid "Change as a free point on this curve."
+#~ msgstr "Thay đổi một điểm tự do trên cung này"
+
+#~ msgid "Change as this intersection."
+#~ msgstr "Thay đổi như giao điểm này"
+
+#~ msgid "Edit an item's property"
+#~ msgstr "Biên tập một thuộc tính của bộ phận"
+
+#~ msgid "Property"
+#~ msgstr "Thuộc tính"
+
+#~ msgid "Select and move an object."
+#~ msgstr "Chọn hoặc di chuyển một đối tượng"
+
+#~ msgid "Select and Move"
+#~ msgstr "Chọn và di chuyển"
+
+#~ msgid "Drag this point to change its nature."
+#~ msgstr "Kéo thả điểm này để thay đổi tính chất của nó"
+
+#~ msgid ""
+#~ "Pressing down the [Shift] key you can drag and change the nature of free "
+#~ "point or intersection point."
+#~ msgstr ""
+#~ "Bằng việc nhấn giữ phím [Shift] bạn có thể kéo thả và thay đổi tính chất "
+#~ "của một điểm tùy chọn hoặc giao điểm."
+
+#~ msgid ""
+#~ "Several objects can be selected. Please, select one clicking the mouse."
+#~ msgstr ""
+#~ "Vài đối tượng có thể đã được chọn. Vui lòng, bấm nút chuột để chọn một "
+#~ "trong số đó."
+
+#~ msgid "Edit an object style."
+#~ msgstr "Chỉnh sửa kiểu của một đối tượng"
+
+#~ msgid "Edit Style"
+#~ msgstr "Chỉnh sửa kiểu"
+
+#~ msgid "Select an object"
+#~ msgstr "Chọn một đối tượng"
+
+#~ msgid "Colour"
+#~ msgstr "màu sắc"
+
+#~ msgid "Shape"
+#~ msgstr "Hình"
+
+#~ msgid "Size"
+#~ msgstr "Kích thước"
+
+#~ msgid "Mark"
+#~ msgstr "Dấu"
+
+#~ msgid "Show or hide grid."
+#~ msgstr "Cho hiện hoặc ẩn lưới"
+
+#~ msgid "Save"
+#~ msgstr "Lưu"
+
+#~ msgid "Delete a macro-construction from the registry."
+#~ msgstr "Xóa một cấu trúc macro từ registry"
+
+#~ msgid "Delete macro"
+#~ msgstr "Xóa macro"
+
+#~ msgid "Snap to grid."
+#~ msgstr "Dính vào lưới"
+
+#~ msgid ""
+#~ "Toggle between the build of several geometric objects and the build of "
+#~ "one geometric object then move it."
+#~ msgstr ""
+#~ "Chuyển đổi qua lại việc xây dựng vài đối tượng hình học sang việc xây "
+#~ "dựng một đối tượng hình học sau khi di chuyển nó, và ngược lại"
+
+#~ msgid "New"
+#~ msgstr "Tạo mới"
+
+#~ msgid "Open a new blank sketch."
+#~ msgstr "Mở mới một bản vẽ trắng"
+
+#~ msgid "Open a sketch."
+#~ msgstr "Mở một bản vẽ"
+
+#~ msgid "Redo"
+#~ msgstr "Làm lại"
+
+#~ msgid "Redo last action."
+#~ msgstr "Làm lại thao tác sau cùng"
+
+#~ msgid "Edit a script"
+#~ msgstr "Biên tập một đoạn mã"
+
+#~ msgid "Undo"
+#~ msgstr "Hoàn tác"
+
+#~ msgid "Undo last action"
+#~ msgstr "Hoàn tác hành động sau cùng"
+
+#~ msgid "Description:"
+#~ msgstr "Mô tả:"
+
+#~ msgid "Title:"
+#~ msgstr "Tiêu đề:"

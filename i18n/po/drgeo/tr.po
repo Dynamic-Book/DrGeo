@@ -1,0 +1,738 @@
+# Turkish translation for drgeo
+# Copyright (c) 2019 Rosetta Contributors and Canonical Ltd 2019
+# This file is distributed under the same license as the drgeo package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2019.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: drgeo\n"
+"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2026-02-17 18:57-0000\n"
+"PO-Revision-Date: 2023-12-04 15:34+0000\n"
+"Last-Translator: Necdet Yucel <Unknown>\n"
+"Language-Team: Turkish <tr@li.org>\n"
+"Language: tr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2024-05-27 04:37+0000\n"
+"X-Generator: Launchpad (build 0e1f616671af724398db43b36ddfb3ed1f2682ec)\n"
+
+#: DrGeo-Model-Script,DrGeoUserScript_class>>description
+msgid "I am the description of this script. Please edit me."
+msgstr "Bu betiğin açıklamasıyım. Lütfen beni düzenleyin."
+
+#: DrGeo-Model-Script,DrGeoUserScript_class>>scriptName
+msgid "A script"
+msgstr "Bir betik"
+
+#: DrGeo-View,DrGMinControlsManager>>editMenu
+msgid "Copy"
+msgstr ""
+
+#: DrGeo-View,DrGMinControlsManager>>editMenu
+msgid "Copy with transparency"
+msgstr ""
+
+#: DrGeo-View,DrGMinControlsManager>>fileMenu
+msgid "Keep this sketch under a different name."
+msgstr ""
+
+#: DrGeo-View,DrGMinControlsManager>>fileMenu
+msgid "Save as..."
+msgstr "Farklı kaydet..."
+
+#: DrGeo-View,DrGMinControlsManager>>mainMenu
+msgid "Animate"
+msgstr "Canlandır"
+
+#: DrGeo-View,DrGMinControlsManager>>mainMenu
+msgid "Animate a free point on curve."
+msgstr ""
+
+#: DrGeo-View,DrGMinControlsManager>>mainMenu
+msgid ""
+"Build or execute macro-construction. A macro is a construction template you "
+"can apply to items in the sketch area."
+msgstr ""
+
+#: DrGeo-View,DrGMinControlsManager>>mainMenu
+msgid ""
+"Create different curve types: line, half-line, segment, vector, circle..."
+msgstr ""
+
+#: DrGeo-View,DrGMinControlsManager>>mainMenu
+msgid "Create points: free, on curve, intersection or middle point."
+msgstr ""
+
+#: DrGeo-View,DrGMinControlsManager>>mainMenu
+msgid ""
+"Create several numeric objects: free value, distance, length, angle, "
+"coordinates, equation and text."
+msgstr ""
+
+#: DrGeo-View,DrGMinControlsManager>>mainMenu,DrGSmalltalkSketchBrowser>>newButtonArea
+msgid "Edit"
+msgstr "Düzenle"
+
+#: DrGeo-View,DrGMinControlsManager>>mainMenu
+msgid "Erase or edit style and properties of items."
+msgstr ""
+
+#: DrGeo-View,DrGMinControlsManager>>mainMenu
+msgid "File"
+msgstr "Dosya"
+
+#: DrGeo-View,DrGMinControlsManager>>mainMenu
+msgid "Lines"
+msgstr "Çizgiler"
+
+#: DrGeo-View,DrGMinControlsManager>>mainMenu
+msgid "Load, save or export Dr. Geo figure."
+msgstr ""
+
+#: DrGeo-View,DrGMinControlsManager>>mainMenu
+msgid "Macro-construction"
+msgstr ""
+
+#: DrGeo-View,DrGMinControlsManager>>mainMenu
+msgid "Numerics & Text"
+msgstr ""
+
+#: DrGeo-View,DrGMinControlsManager>>mainMenu
+msgid "Points"
+msgstr "Noktalar"
+
+#: DrGeo-View,DrGMinControlsManager>>mainMenu
+msgid "Script"
+msgstr "Betik"
+
+#: DrGeo-View,DrGMinControlsManager>>mainMenu
+msgid "Script: use, edit or create script to plug in the sketch."
+msgstr ""
+
+#: DrGeo-View,DrGMinControlsManager>>mainMenu
+msgid ""
+"Transform an object with a geometric transformation: symmetry, reflexion, "
+"rotation, translation or homothety (scale)."
+msgstr ""
+
+#: DrGeo-View,DrGMinControlsManager>>mainMenu
+msgid "Transformations"
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGDebuggerWindow>>customButtonSpecs
+msgid "Execute the code up to the cursor position."
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGDebuggerWindow>>customButtonSpecs
+msgid "Execute the current message and go to the next message."
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGDebuggerWindow>>customButtonSpecs
+msgid "Restart"
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGDebuggerWindow>>customButtonSpecs
+msgid "Restart the step by step execution from its start."
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGDebuggerWindow>>customButtonSpecs
+msgid "Run to Cursor"
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGDebuggerWindow>>customButtonSpecs
+msgid "Step"
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGDebuggerWindow>>customButtonSpecs
+msgid "Step into"
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGDebuggerWindow>>customButtonSpecs
+msgid "Step into a block."
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGFileOpenMorph_class>>open
+msgid "Open a sketch"
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGFileOpenMorph>>newButtonArea,DrGScriptDesignerDialog>>newButtonArea,DrGSmalltalkSketchBrowser>>newButtonArea,DrGSmalltalkSketchEditor>>newButtonArea
+msgid "Cancel"
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGFileOpenMorph>>newButtonArea,DrGSmalltalkSketchBrowser>>newButtonArea
+msgid "Examples"
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGFileOpenMorph>>newButtonArea,DrGSmalltalkSketchBrowser>>newButtonArea
+msgid "My Sketches"
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGFileOpenMorph>>newButtonArea
+msgid "Open"
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGScriptDesignerDialog_class>>labelsAndClasses
+msgid "Angle"
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGScriptDesignerDialog_class>>labelsAndClasses
+msgid "Any type"
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGScriptDesignerDialog_class>>labelsAndClasses
+msgid "Arc"
+msgstr "Yay"
+
+#: DrGeo-View-Dialog,DrGScriptDesignerDialog_class>>labelsAndClasses
+msgid "Circle"
+msgstr "Daire"
+
+#: DrGeo-View-Dialog,DrGScriptDesignerDialog_class>>labelsAndClasses
+msgid "Direction"
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGScriptDesignerDialog_class>>labelsAndClasses
+msgid "Line"
+msgstr "Doğru"
+
+#: DrGeo-View-Dialog,DrGScriptDesignerDialog_class>>labelsAndClasses
+msgid "Locus"
+msgstr "Konum"
+
+#: DrGeo-View-Dialog,DrGScriptDesignerDialog_class>>labelsAndClasses
+msgid "Point"
+msgstr "Nokta"
+
+#: DrGeo-View-Dialog,DrGScriptDesignerDialog_class>>labelsAndClasses
+msgid "Polygon"
+msgstr "Çokgen"
+
+#: DrGeo-View-Dialog,DrGScriptDesignerDialog_class>>labelsAndClasses
+msgid "Ray"
+msgstr "Işın"
+
+#: DrGeo-View-Dialog,DrGScriptDesignerDialog_class>>labelsAndClasses
+msgid "Segment"
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGScriptDesignerDialog_class>>labelsAndClasses
+msgid "Value"
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGScriptDesignerDialog_class>>labelsAndClasses
+msgid "Vector"
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGScriptDesignerDialog>>addArgument
+msgid "Remove this script argument."
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGScriptDesignerDialog>>newAddArgumentButton
+msgid "Add an argument to this script."
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGScriptDesignerDialog>>newButtonArea
+msgid "Build"
+msgstr "İnşa Et"
+
+#: DrGeo-View-Dialog,DrGScriptDesignerDialog>>newButtonArea
+msgid "Build a script with these settings."
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGScriptDesignerDialog>>newDescriptionMorph
+msgid ""
+"A description of the script. To help the user, describe carefully what the "
+"script does and the input arguments to select to use it."
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGScriptDesignerDialog>>newPane,DrGWizardScript>>secondPage
+msgid "Arguments"
+msgstr "Parametreler"
+
+#: DrGeo-View-Dialog,DrGScriptDesignerDialog>>newPane,DrGWizardMacroBuild>>fourthPage,DrGWizardMacroPlay>>secondPage,DrGWizardScript>>secondPage
+msgid "Description"
+msgstr "Açıklama"
+
+#: DrGeo-View-Dialog,DrGScriptDesignerDialog>>newPane,DrGWizardMacroBuild>>fourthPage,DrGWizardMacroPlay>>secondPage,DrGWizardScript>>secondPage
+msgid "Name"
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGScriptDesignerDialog>>newScriptNameMorph
+msgid "The name of the script."
+msgstr "Betiğin adı."
+
+#: DrGeo-View-Dialog,DrGSmalltalkSketchBrowser>>newButtonArea
+msgid "Browse my collection of Smalltalk sketches."
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGSmalltalkSketchBrowser>>newButtonArea
+msgid "Delete"
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGSmalltalkSketchBrowser>>newButtonArea
+msgid "Delete permanently this Smalltalk Sketch from disk."
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGSmalltalkSketchBrowser>>newSketchesColumn
+msgid "Code"
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGSmalltalkSketchEditor>>browseSketches
+msgid "Select a Smalltalk sketch"
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGSmalltalkSketchEditor>>executeSketch
+msgid ""
+"Too many errors. Fix it!\n"
+"Sketch stopped"
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGSmalltalkSketchEditor>>keepSketch
+msgid "Name the sketch to keep."
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGSmalltalkSketchEditor>>newToolbar
+msgid "Debug the Smalltalk sketch."
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGSmalltalkSketchEditor>>newToolbar
+msgid "Dr. Geo tutorial"
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGSmalltalkSketchEditor>>newToolbar
+msgid "Edit a Smalltalk sketch."
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGSmalltalkSketchEditor>>newToolbar,DrGSmalltalkSketchEditor>>switchToPlayButton
+msgid "Play the Smalltalk sketch."
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGSmalltalkSketchEditor>>newToolbar
+msgid "Save this Smalltalk sketch."
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGSmalltalkSketchEditor>>newToolbar
+msgid "Stop the execution of the Smalltalk sketch."
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGSmalltalkSketchEditor>>restoreLabel
+msgid "Edit Smalltalk Sketch"
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGSmalltalkSketchEditor>>switchToPauseButton
+msgid "Pause the Smalltalk sketch."
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGSmalltalkSketchEditor>>switchToResumeButton
+msgid "Resume the Smalltalk sketch."
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGWizardMacroBuild>>firstPage
+msgid "Build a macro-construction"
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGWizardMacroBuild>>firstPage
+msgid ""
+"To build a macro-construction,\n"
+"\n"
+" 1. First select the input paramaters,\n"
+" 2. Next select the output parameters,\n"
+" 3. Next chose a name and a description,\n"
+" 4. Last apply the selection."
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGWizardMacroBuild>>fourthPage
+msgid "Give a name and a description"
+msgstr "Bir isim ve tanımlama girin"
+
+#: DrGeo-View-Dialog,DrGWizardMacroBuild>>secondPage
+msgid "Select input parameters"
+msgstr "Girdi parametrelerini seçin"
+
+#: DrGeo-View-Dialog,DrGWizardMacroBuild>>thirdPage
+msgid "Select output parameters"
+msgstr "Çıktı parametrelerini seçin"
+
+#: DrGeo-View-Dialog,DrGWizardMacroPlay>>firstPage
+msgid "Execute a macro-construction"
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGWizardMacroPlay>>firstPage
+msgid ""
+"To execute a macro-construction,\n"
+"\n"
+" 1. First select a macro-construction from the list,\n"
+" 2. Select items on the figure. Only items relevant\n"
+" to the selected macro-construction are selectable.\n"
+" Once enough items are selected, the macro is\n"
+" automaticly executed.\n"
+" To start press the 'next' button."
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGWizardMacroPlay>>secondPage
+msgid "Select a macro-construction then the figure items"
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGWizardScript>>firstPage
+msgid ""
+"To use a script,\n"
+"\n"
+" 1. First select a script from the list,\n"
+" 2. Select items in the sketch,\n"
+" 3. Click somewhere in the background. \n"
+" Once enough items are selected, the script is\n"
+" inserted in the sketch, at the user selected position.\n"
+" To start press the 'next' button."
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGWizardScript>>firstPage
+msgid "Use a script in the sketch"
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGWizardScript>>secondPage
+msgid "Select a script then items in the sketch"
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGWizardScript>>secondPage
+msgid "The arguments accepted by this script."
+msgstr ""
+
+#~ msgid "no name"
+#~ msgstr "isimsiz"
+
+#~ msgid "This geometric angle %1"
+#~ msgstr "Bu geometrik açı %1"
+
+#~ msgid "This oriented angle %1"
+#~ msgstr "Bu yönlü açı %1"
+
+#~ msgid "This picture"
+#~ msgstr "Bu resim"
+
+#~ msgid "This circle %1"
+#~ msgstr "Bu daire %1"
+
+#~ msgid "This composite object %1"
+#~ msgstr "Bu bileşik nesne %1"
+
+#~ msgid "This equation %1"
+#~ msgstr "Bu denklem %1"
+
+#~ msgid "Equation"
+#~ msgstr "Denklem"
+
+#~ msgid "This line %1"
+#~ msgstr "Bu doğru %1"
+
+#~ msgid "This parallel line %1"
+#~ msgstr "Bu paralel doğru %1"
+
+#~ msgid "This perpendicular line %1"
+#~ msgstr "Bu dik doğru %1"
+
+#~ msgid "This math item %1"
+#~ msgstr "Bu matematik nesnesi %1"
+
+#~ msgid "Edit the coordinates"
+#~ msgstr "Koordinatları düzenle"
+
+#~ msgid "This point %1"
+#~ msgstr "Bu nokta %1"
+
+#~ msgid "This polygon %1"
+#~ msgstr "Bu çokgen %1"
+
+#~ msgid "This quadrilateral %1"
+#~ msgstr "Bu dörtgen %1"
+
+#~ msgid "This triangle %1"
+#~ msgstr "Bu üçgen %1"
+
+#~ msgid " edges="
+#~ msgstr " kenarlar="
+
+#~ msgid "This half-line %1"
+#~ msgstr "Bu yarı doğru %1"
+
+#~ msgid "This segment %1"
+#~ msgstr "Bu parça %1"
+
+#~ msgid "This text"
+#~ msgstr "Bu metin"
+
+#~ msgid "Edit this text"
+#~ msgstr "Bu metni düzenle"
+
+#~ msgid "Edit me"
+#~ msgstr "Beni düzenle"
+
+#~ msgid "This arc length %1"
+#~ msgstr "Bu yay uzunluğu %1"
+
+#~ msgid "This distance between two points %1"
+#~ msgstr "İki nokta arasındaki bu uzaklık %1"
+
+#~ msgid "This value %1"
+#~ msgstr "Bu değer %1"
+
+#~ msgid "Value "
+#~ msgstr "Değer "
+
+#~ msgid "This script \"{1}\""
+#~ msgstr "Bu betik \"{1}\""
+
+#~ msgid "Script "
+#~ msgstr "Betik "
+
+#~ msgid "This segment length %1"
+#~ msgstr "Bu parça uzunluğu %1"
+
+#~ msgid "Installed version: "
+#~ msgstr "Kurulu sürüm: "
+
+#~ msgid "System menu"
+#~ msgstr "Sistem menüsü"
+
+#~ msgid "Settings"
+#~ msgstr "Ayarlar"
+
+#~ msgid "Open a file"
+#~ msgstr "Dosya aç"
+
+#~ msgid "Save session"
+#~ msgstr "Oturumu kaydet"
+
+#~ msgid "Save this Dr. Geo session."
+#~ msgstr "Bu Dr. Geo oturumunu kaydet"
+
+#~ msgid "System Browser"
+#~ msgstr "Sistem Tarayıcısı"
+
+#~ msgid "Tools"
+#~ msgstr "Araçlar"
+
+#~ msgid "Workspace"
+#~ msgstr "Çalışma Alanı"
+
+#~ msgid "About"
+#~ msgstr "Hakkında"
+
+#~ msgid "New sketch"
+#~ msgstr "Yeni kroki"
+
+#~ msgid "Quit"
+#~ msgstr "Çık"
+
+#~ msgid "Toggle full screen mode"
+#~ msgstr "Tam ekran kipine geç"
+
+#~ msgid "Edit or create scripts"
+#~ msgstr "Betik oluştur veya düzenle"
+
+#~ msgid "Geometric angle"
+#~ msgstr "Geometrik açı"
+
+#~ msgid "Oriented angle"
+#~ msgstr "Yönlü açı"
+
+#~ msgid "Arc defined by three points."
+#~ msgstr "Üç nokta ile belirnemiş yay."
+
+#~ msgid "Arc defined by its center and two points."
+#~ msgstr "Merkezi ve iki noktası ile belirlenmiş yay."
+
+#~ msgid "Arc (center)"
+#~ msgstr "Yay (merkez)"
+
+#~ msgid "Picture"
+#~ msgstr "Resim"
+
+#~ msgid "Vector or point coordinates, circle or line equation."
+#~ msgstr "Vektör veya nokta koordinatları, çember ya da doğru denklemi."
+
+#~ msgid "Coordinates, equation"
+#~ msgstr "Koordinatlar, denklem"
+
+#~ msgid "Line defined by two points"
+#~ msgstr "İki nokta ile belirlenmiş doğru"
+
+#~ msgid "Build macro"
+#~ msgstr "Makroyu derle"
+
+#~ msgid "Input and output items don't match"
+#~ msgstr "Girdi ve çıktı ögeleri uyuşmuyor"
+
+#~ msgid "Please, enter a proper title and description"
+#~ msgstr "Lütfen uygun bir başlık ve tanımlama yazın"
+
+#~ msgid "Execute/edit macro"
+#~ msgstr "Makroyu çalıştır/düzenle"
+
+#~ msgid "Middle"
+#~ msgstr "Orta"
+
+#~ msgid "Parallel"
+#~ msgstr "Paralel"
+
+#~ msgid "Perpendicular"
+#~ msgstr "Dik"
+
+#~ msgid "Coordinates"
+#~ msgstr "Koordinatlar"
+
+#~ msgid "Intersection(s) of two curves."
+#~ msgstr "İki eğrinin kesişim(ler)i"
+
+#~ msgid "Intersection"
+#~ msgstr "Kesişim"
+
+#~ msgid "Regular polygon"
+#~ msgstr "Düzenli çokgen"
+
+#~ msgid "Reflection"
+#~ msgstr "Yansıma"
+
+#~ msgid "Rotation"
+#~ msgstr "Döndürme"
+
+#~ msgid "Insert a Smalltalk script in the drawing area."
+#~ msgstr "Çizim alanına bir Smalltalk betiği yazın"
+
+#~ msgid "Use a script"
+#~ msgstr "Bir betik kullan"
+
+#~ msgid "Segment defined by two points."
+#~ msgstr "İki nokta ile tanımlanan parça."
+
+#~ msgid "Symmetry"
+#~ msgstr "Simetri"
+
+#~ msgid "Text"
+#~ msgstr "Metin"
+
+#~ msgid "Translation"
+#~ msgstr "Çeviri"
+
+#~ msgid "Distance between objects, curve length, free value."
+#~ msgstr "Nesneler arası mesafe, eğri uzunluğu, serbest değer."
+
+#~ msgid "Distance, length, value"
+#~ msgstr "Uzaklık, uzunluk, değer"
+
+#~ msgid "Vector defined by two points."
+#~ msgstr "İki nokta ile tanımlanan vektör."
+
+#~ msgid "Erase an object and all its depedencies."
+#~ msgstr "Bir nesneyi ve tüm bağımlılıklarını sil"
+
+#~ msgid "Eraser"
+#~ msgstr "Silgi"
+
+#~ msgid "This intersection"
+#~ msgstr "Bu kesişim"
+
+#~ msgid "Edit an item's property"
+#~ msgstr "Bir ögenin özelliğini düzenle"
+
+#~ msgid "Property"
+#~ msgstr "Özellik"
+
+#~ msgid "Select and move an object."
+#~ msgstr "Bir nesneyi seç ve taşı."
+
+#~ msgid "Select and Move"
+#~ msgstr "Seç ve Taşı"
+
+#~ msgid "Select a point to merge with"
+#~ msgstr "Birleştirilecek bir nokta seç"
+
+#~ msgid ""
+#~ "Several objects can be selected. Please, select one clicking the mouse."
+#~ msgstr ""
+#~ "Birden fazla nesne seçilebilir. Lütfen fareye tıklayarak birini seçin."
+
+#~ msgid "Edit an object style."
+#~ msgstr "Bir nesnenin biçemini düzenle."
+
+#~ msgid "Edit Style"
+#~ msgstr "Biçemi Düzenle"
+
+#~ msgid "Select an object"
+#~ msgstr "Bir nesne seçin"
+
+#~ msgid "Several objects can be selected. Please, choose one."
+#~ msgstr "Birden fazla nesne seçilebilir. Lütfen birini seçin."
+
+#~ msgid "Background"
+#~ msgstr "Arkaplan"
+
+#~ msgid "Animate at speed 1."
+#~ msgstr "1 hızıyla canlandır."
+
+#~ msgid "Animate x1"
+#~ msgstr "x1 canlandır"
+
+#~ msgid "Animate at speed 2."
+#~ msgstr "2 hızıyla canlandır."
+
+#~ msgid "Animate x2"
+#~ msgstr "x2 canlandır"
+
+#~ msgid "Animate at speed 3."
+#~ msgstr "3 hızıyla canlandır."
+
+#~ msgid "Animate x3"
+#~ msgstr "x3 canlandır"
+
+#~ msgid "Animate at speed 4."
+#~ msgstr "4 hızıyla canlandır."
+
+#~ msgid "Animate x4"
+#~ msgstr "x4 canlandır"
+
+#~ msgid "Show or hide the ox and oy axes."
+#~ msgstr "ox ve oy eksenlerini göster veya gizle."
+
+#~ msgid "Delete macro"
+#~ msgstr "Makroyu sil"
+
+#~ msgid "Menu"
+#~ msgstr "Menü"
+
+#~ msgid "New"
+#~ msgstr "Yeni"
+
+#~ msgid "Redo"
+#~ msgstr "Yeniden yap"
+
+#~ msgid "Redo last action."
+#~ msgstr "Son eylemi yeniden yap."
+
+#~ msgid "Create a Smalltalk script."
+#~ msgstr "Bir Smalltalk betiği oluştur."
+
+#~ msgid "Create a script"
+#~ msgstr "Bir betik oluştur"
+
+#~ msgid "Edit a Smalltalk script."
+#~ msgstr "Bir Smalltalk betiğini düzenle."
+
+#~ msgid "Edit a script"
+#~ msgstr "Bir betiği düzenle"
+
+#~ msgid "Undo"
+#~ msgstr "Geri al"
+
+#~ msgid "Undo last action"
+#~ msgstr "Son eylemi geri al"
+
+#~ msgid "Description:"
+#~ msgstr "Açıklama:"
+
+#~ msgid "Title:"
+#~ msgstr "Başlık:"
+
+#~ msgid "Script name"
+#~ msgstr "Betik adı"

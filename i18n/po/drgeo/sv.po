@@ -1,0 +1,1216 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Pharo\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-02-17 18:57-0000\n"
+"PO-Revision-Date: 2022-11-17 14:42+0000\n"
+"Last-Translator: Kristoffer Grundström <Unknown>\n"
+"Language-Team: \n"
+"Language: sv\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2024-05-27 04:37+0000\n"
+"X-Generator: Launchpad (build 0e1f616671af724398db43b36ddfb3ed1f2682ec)\n"
+"X-Pharo-Domain: DrGeoII\n"
+"X-Pharo-SystemVersion: Pharo1.3 of 5 July 2011 update 13267\n"
+
+#: DrGeo-Model-Script,DrGeoUserScript_class>>description
+msgid "I am the description of this script. Please edit me."
+msgstr "Jag är beskrivningen av det här skriptet. Redigera mig är du snäll."
+
+#: DrGeo-Model-Script,DrGeoUserScript_class>>scriptName
+msgid "A script"
+msgstr "Ett skript"
+
+#: DrGeo-View,DrGMinControlsManager>>editMenu
+msgid "Copy"
+msgstr "Kopiera"
+
+#: DrGeo-View,DrGMinControlsManager>>editMenu
+msgid "Copy with transparency"
+msgstr "Kopiera med transparens"
+
+#: DrGeo-View,DrGMinControlsManager>>fileMenu
+msgid "Keep this sketch under a different name."
+msgstr "Behåll den här ritningen under ett annat namn."
+
+#: DrGeo-View,DrGMinControlsManager>>fileMenu
+msgid "Save as..."
+msgstr "Spara som..."
+
+#: DrGeo-View,DrGMinControlsManager>>mainMenu
+msgid "Animate"
+msgstr "Animera"
+
+#: DrGeo-View,DrGMinControlsManager>>mainMenu
+msgid "Animate a free point on curve."
+msgstr "Animera en fri punkt på kurvan."
+
+#: DrGeo-View,DrGMinControlsManager>>mainMenu
+msgid ""
+"Build or execute macro-construction. A macro is a construction template you "
+"can apply to items in the sketch area."
+msgstr ""
+"Bygg eller exekvera makro-konstruktion. En makro är en konstruktionsmall som "
+"du kan verkställa till föremål i ritningsområdet."
+
+#: DrGeo-View,DrGMinControlsManager>>mainMenu
+msgid ""
+"Create different curve types: line, half-line, segment, vector, circle..."
+msgstr ""
+"Skapa annorlunda kurvtyper: linje, halv-linje, segment, vektor, cirkel..."
+
+#: DrGeo-View,DrGMinControlsManager>>mainMenu
+msgid "Create points: free, on curve, intersection or middle point."
+msgstr "Skapa punkter: fri, på kurvan, korsning eller mittpunkt."
+
+#: DrGeo-View,DrGMinControlsManager>>mainMenu
+msgid ""
+"Create several numeric objects: free value, distance, length, angle, "
+"coordinates, equation and text."
+msgstr ""
+"Skapa flera numeriska objekt: fritt värde, avstånd, längd, vinkel, "
+"koordinationer, ekvationer och text."
+
+#: DrGeo-View,DrGMinControlsManager>>mainMenu,DrGSmalltalkSketchBrowser>>newButtonArea
+msgid "Edit"
+msgstr "Redigera"
+
+#: DrGeo-View,DrGMinControlsManager>>mainMenu
+msgid "Erase or edit style and properties of items."
+msgstr "Radera eller redigera föremålens stil och egenskaper."
+
+#: DrGeo-View,DrGMinControlsManager>>mainMenu
+msgid "File"
+msgstr "Arkiv"
+
+#: DrGeo-View,DrGMinControlsManager>>mainMenu
+msgid "Lines"
+msgstr "Rader"
+
+#: DrGeo-View,DrGMinControlsManager>>mainMenu
+msgid "Load, save or export Dr. Geo figure."
+msgstr "Ladda, spara eller exportera Dr. Geo-figur."
+
+#: DrGeo-View,DrGMinControlsManager>>mainMenu
+msgid "Macro-construction"
+msgstr "Makro-konstruktion"
+
+#: DrGeo-View,DrGMinControlsManager>>mainMenu
+msgid "Numerics & Text"
+msgstr "Numeriskt & Text"
+
+#: DrGeo-View,DrGMinControlsManager>>mainMenu
+msgid "Points"
+msgstr "Poäng"
+
+#: DrGeo-View,DrGMinControlsManager>>mainMenu
+msgid "Script"
+msgstr "Skript"
+
+#: DrGeo-View,DrGMinControlsManager>>mainMenu
+msgid "Script: use, edit or create script to plug in the sketch."
+msgstr ""
+"Skript: använd, redigera eller skapa skript för att koppla in ritningen."
+
+#: DrGeo-View,DrGMinControlsManager>>mainMenu
+msgid ""
+"Transform an object with a geometric transformation: symmetry, reflexion, "
+"rotation, translation or homothety (scale)."
+msgstr ""
+"Omvandla ett objekt med en geometrisk omvandling: symmetri, reflektion, "
+"rotering, översättning eller homotitet (skala)."
+
+#: DrGeo-View,DrGMinControlsManager>>mainMenu
+msgid "Transformations"
+msgstr "Förvandlingar"
+
+#: DrGeo-View-Dialog,DrGDebuggerWindow>>customButtonSpecs
+msgid "Execute the code up to the cursor position."
+msgstr "Exekvera koden upp till pekarens position."
+
+#: DrGeo-View-Dialog,DrGDebuggerWindow>>customButtonSpecs
+msgid "Execute the current message and go to the next message."
+msgstr "Exekvera det nuvarande meddelandet och gå till nästa meddelande."
+
+#: DrGeo-View-Dialog,DrGDebuggerWindow>>customButtonSpecs
+msgid "Restart"
+msgstr "Starta om"
+
+#: DrGeo-View-Dialog,DrGDebuggerWindow>>customButtonSpecs
+msgid "Restart the step by step execution from its start."
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGDebuggerWindow>>customButtonSpecs
+msgid "Run to Cursor"
+msgstr "Kör till pekaren"
+
+#: DrGeo-View-Dialog,DrGDebuggerWindow>>customButtonSpecs
+msgid "Step"
+msgstr "Steg"
+
+#: DrGeo-View-Dialog,DrGDebuggerWindow>>customButtonSpecs
+msgid "Step into"
+msgstr "Steg till"
+
+#: DrGeo-View-Dialog,DrGDebuggerWindow>>customButtonSpecs
+msgid "Step into a block."
+msgstr "Kliv in i ett block."
+
+#: DrGeo-View-Dialog,DrGFileOpenMorph_class>>open
+msgid "Open a sketch"
+msgstr "Öppna en ritning"
+
+#: DrGeo-View-Dialog,DrGFileOpenMorph>>newButtonArea,DrGScriptDesignerDialog>>newButtonArea,DrGSmalltalkSketchBrowser>>newButtonArea,DrGSmalltalkSketchEditor>>newButtonArea
+msgid "Cancel"
+msgstr "Avbryt"
+
+#: DrGeo-View-Dialog,DrGFileOpenMorph>>newButtonArea,DrGSmalltalkSketchBrowser>>newButtonArea
+msgid "Examples"
+msgstr "Exempel"
+
+#: DrGeo-View-Dialog,DrGFileOpenMorph>>newButtonArea,DrGSmalltalkSketchBrowser>>newButtonArea
+msgid "My Sketches"
+msgstr "Mina ritningar"
+
+#: DrGeo-View-Dialog,DrGFileOpenMorph>>newButtonArea
+msgid "Open"
+msgstr "Öppna"
+
+#: DrGeo-View-Dialog,DrGScriptDesignerDialog_class>>labelsAndClasses
+msgid "Angle"
+msgstr "Vinkel"
+
+#: DrGeo-View-Dialog,DrGScriptDesignerDialog_class>>labelsAndClasses
+msgid "Any type"
+msgstr "Alla sorter"
+
+#: DrGeo-View-Dialog,DrGScriptDesignerDialog_class>>labelsAndClasses
+msgid "Arc"
+msgstr "Båge"
+
+#: DrGeo-View-Dialog,DrGScriptDesignerDialog_class>>labelsAndClasses
+msgid "Circle"
+msgstr "Cirkel"
+
+#: DrGeo-View-Dialog,DrGScriptDesignerDialog_class>>labelsAndClasses
+msgid "Direction"
+msgstr "Anvisning"
+
+#: DrGeo-View-Dialog,DrGScriptDesignerDialog_class>>labelsAndClasses
+msgid "Line"
+msgstr "Linje"
+
+#: DrGeo-View-Dialog,DrGScriptDesignerDialog_class>>labelsAndClasses
+msgid "Locus"
+msgstr "Lokus"
+
+#: DrGeo-View-Dialog,DrGScriptDesignerDialog_class>>labelsAndClasses
+msgid "Point"
+msgstr "Punkt"
+
+#: DrGeo-View-Dialog,DrGScriptDesignerDialog_class>>labelsAndClasses
+msgid "Polygon"
+msgstr "Polygon"
+
+#: DrGeo-View-Dialog,DrGScriptDesignerDialog_class>>labelsAndClasses
+msgid "Ray"
+msgstr "Stråle"
+
+#: DrGeo-View-Dialog,DrGScriptDesignerDialog_class>>labelsAndClasses
+msgid "Segment"
+msgstr "Segment"
+
+#: DrGeo-View-Dialog,DrGScriptDesignerDialog_class>>labelsAndClasses
+msgid "Value"
+msgstr "Värde"
+
+#: DrGeo-View-Dialog,DrGScriptDesignerDialog_class>>labelsAndClasses
+msgid "Vector"
+msgstr "Vektor"
+
+#: DrGeo-View-Dialog,DrGScriptDesignerDialog>>addArgument
+msgid "Remove this script argument."
+msgstr "Ta bort det här skriptargumentet."
+
+#: DrGeo-View-Dialog,DrGScriptDesignerDialog>>newAddArgumentButton
+msgid "Add an argument to this script."
+msgstr "Lägg till ett argument till det här skriptet."
+
+#: DrGeo-View-Dialog,DrGScriptDesignerDialog>>newButtonArea
+msgid "Build"
+msgstr "Bygg"
+
+#: DrGeo-View-Dialog,DrGScriptDesignerDialog>>newButtonArea
+msgid "Build a script with these settings."
+msgstr "Bygg ett skript med de här inställningarna."
+
+#: DrGeo-View-Dialog,DrGScriptDesignerDialog>>newDescriptionMorph
+msgid ""
+"A description of the script. To help the user, describe carefully what the "
+"script does and the input arguments to select to use it."
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGScriptDesignerDialog>>newPane,DrGWizardScript>>secondPage
+msgid "Arguments"
+msgstr "Argument"
+
+#: DrGeo-View-Dialog,DrGScriptDesignerDialog>>newPane,DrGWizardMacroBuild>>fourthPage,DrGWizardMacroPlay>>secondPage,DrGWizardScript>>secondPage
+msgid "Description"
+msgstr "Beskrivning"
+
+#: DrGeo-View-Dialog,DrGScriptDesignerDialog>>newPane,DrGWizardMacroBuild>>fourthPage,DrGWizardMacroPlay>>secondPage,DrGWizardScript>>secondPage
+msgid "Name"
+msgstr "Namn"
+
+#: DrGeo-View-Dialog,DrGScriptDesignerDialog>>newScriptNameMorph
+msgid "The name of the script."
+msgstr "Skriptets namn."
+
+#: DrGeo-View-Dialog,DrGSmalltalkSketchBrowser>>newButtonArea
+msgid "Browse my collection of Smalltalk sketches."
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGSmalltalkSketchBrowser>>newButtonArea
+msgid "Delete"
+msgstr "Ta bort"
+
+#: DrGeo-View-Dialog,DrGSmalltalkSketchBrowser>>newButtonArea
+msgid "Delete permanently this Smalltalk Sketch from disk."
+msgstr "Ta bort den här Smalltalk-ritningen permanent från disken."
+
+#: DrGeo-View-Dialog,DrGSmalltalkSketchBrowser>>newSketchesColumn
+msgid "Code"
+msgstr "Kod"
+
+#: DrGeo-View-Dialog,DrGSmalltalkSketchEditor>>browseSketches
+msgid "Select a Smalltalk sketch"
+msgstr "Välj en Smalltalk-ritning"
+
+#: DrGeo-View-Dialog,DrGSmalltalkSketchEditor>>executeSketch
+msgid ""
+"Too many errors. Fix it!\n"
+"Sketch stopped"
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGSmalltalkSketchEditor>>keepSketch
+msgid "Name the sketch to keep."
+msgstr "Namnge sketchen att behållas."
+
+#: DrGeo-View-Dialog,DrGSmalltalkSketchEditor>>newToolbar
+msgid "Debug the Smalltalk sketch."
+msgstr "Avlusa Smalltalk-ritningen."
+
+#: DrGeo-View-Dialog,DrGSmalltalkSketchEditor>>newToolbar
+msgid "Dr. Geo tutorial"
+msgstr "Handledning för Dr. Geo"
+
+#: DrGeo-View-Dialog,DrGSmalltalkSketchEditor>>newToolbar
+msgid "Edit a Smalltalk sketch."
+msgstr "Redigera en Smalltalk-ritning."
+
+#: DrGeo-View-Dialog,DrGSmalltalkSketchEditor>>newToolbar,DrGSmalltalkSketchEditor>>switchToPlayButton
+msgid "Play the Smalltalk sketch."
+msgstr "Spela upp Smalltalk-ritningen."
+
+#: DrGeo-View-Dialog,DrGSmalltalkSketchEditor>>newToolbar
+msgid "Save this Smalltalk sketch."
+msgstr "Spara den här Smalltalk-ritningen."
+
+#: DrGeo-View-Dialog,DrGSmalltalkSketchEditor>>newToolbar
+msgid "Stop the execution of the Smalltalk sketch."
+msgstr "Stoppa exekveringen av Smalltalk-ritningen."
+
+#: DrGeo-View-Dialog,DrGSmalltalkSketchEditor>>restoreLabel
+msgid "Edit Smalltalk Sketch"
+msgstr "Redigera Smalltalk-ritningen"
+
+#: DrGeo-View-Dialog,DrGSmalltalkSketchEditor>>switchToPauseButton
+msgid "Pause the Smalltalk sketch."
+msgstr "Pausa Smalltalk-ritningen."
+
+#: DrGeo-View-Dialog,DrGSmalltalkSketchEditor>>switchToResumeButton
+msgid "Resume the Smalltalk sketch."
+msgstr "Återuppta Smalltalk-ritningen."
+
+#: DrGeo-View-Dialog,DrGWizardMacroBuild>>firstPage
+msgid "Build a macro-construction"
+msgstr "Bygg en makro-konstruktion"
+
+#: DrGeo-View-Dialog,DrGWizardMacroBuild>>firstPage
+msgid ""
+"To build a macro-construction,\n"
+"\n"
+" 1. First select the input paramaters,\n"
+" 2. Next select the output parameters,\n"
+" 3. Next chose a name and a description,\n"
+" 4. Last apply the selection."
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGWizardMacroBuild>>fourthPage
+msgid "Give a name and a description"
+msgstr "Ange ett namn och en beskrivning"
+
+#: DrGeo-View-Dialog,DrGWizardMacroBuild>>secondPage
+msgid "Select input parameters"
+msgstr "Välj parametrar för inmatning"
+
+#: DrGeo-View-Dialog,DrGWizardMacroBuild>>thirdPage
+msgid "Select output parameters"
+msgstr "Välj parametrar för utmatning"
+
+#: DrGeo-View-Dialog,DrGWizardMacroPlay>>firstPage
+msgid "Execute a macro-construction"
+msgstr "Exekvera en makro-konstruktion"
+
+#: DrGeo-View-Dialog,DrGWizardMacroPlay>>firstPage
+msgid ""
+"To execute a macro-construction,\n"
+"\n"
+" 1. First select a macro-construction from the list,\n"
+" 2. Select items on the figure. Only items relevant\n"
+" to the selected macro-construction are selectable.\n"
+" Once enough items are selected, the macro is\n"
+" automaticly executed.\n"
+" To start press the 'next' button."
+msgstr ""
+"För att exekvera en makro-konstruktion,\n"
+"\n"
+" 1. Välj först en makro-konstruktion från listan,\n"
+" 2. Välj föremål på figuren. Endast föremål som är relevanta\n"
+" till den valda makro-konstruktionen kan väljas.\n"
+" Makron exekveras automatiskt\n"
+" när tillräckligt många föremål har valts.\n"
+" Tryck på 'nästa'-knappen för att starta."
+
+#: DrGeo-View-Dialog,DrGWizardMacroPlay>>secondPage
+msgid "Select a macro-construction then the figure items"
+msgstr "Välj en makro-konstruktion, sedan på figurföremålen"
+
+#: DrGeo-View-Dialog,DrGWizardScript>>firstPage
+msgid ""
+"To use a script,\n"
+"\n"
+" 1. First select a script from the list,\n"
+" 2. Select items in the sketch,\n"
+" 3. Click somewhere in the background. \n"
+" Once enough items are selected, the script is\n"
+" inserted in the sketch, at the user selected position.\n"
+" To start press the 'next' button."
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGWizardScript>>firstPage
+msgid "Use a script in the sketch"
+msgstr "Använd ett skript i ritningen"
+
+#: DrGeo-View-Dialog,DrGWizardScript>>secondPage
+msgid "Select a script then items in the sketch"
+msgstr "Välj ett skript, sedan föremålen i ritningen"
+
+#: DrGeo-View-Dialog,DrGWizardScript>>secondPage
+msgid "The arguments accepted by this script."
+msgstr "Argumenten som accepteras av det här skriptet."
+
+#~ msgid "no name"
+#~ msgstr "inget namn"
+
+#~ msgid "This geometric angle %1"
+#~ msgstr "Den här geometriska vinkeln %1"
+
+#~ msgid "This angle bisector %1"
+#~ msgstr "Den här vinkelhalveringslinjen %1"
+
+#~ msgid "This oriented angle %1"
+#~ msgstr "Den här orienterade vinkeln %1"
+
+#~ msgid "This Arc Circle %1"
+#~ msgstr "Den här bågens cirkel %1"
+
+#~ msgid "This picture"
+#~ msgstr "Den här bilden"
+
+#~ msgid "This circle %1"
+#~ msgstr "Den här cirkeln %1"
+
+#~ msgid "This composite object %1"
+#~ msgstr "Det här sammansatta objektet %1"
+
+#~ msgid "This equation %1"
+#~ msgstr "Den här ekvationen %1"
+
+#~ msgid "Equation"
+#~ msgstr "Ekvation"
+
+#~ msgid "This line %1"
+#~ msgstr "Den här raden %1"
+
+#~ msgid "This parallel line %1"
+#~ msgstr "Den här parallella raden %1"
+
+#~ msgid "This perpendicular line %1"
+#~ msgstr "Den här vinkelräta linjen %1"
+
+#~ msgid "This locus %1"
+#~ msgstr "Det här stället %1"
+
+#~ msgid "This math item %1"
+#~ msgstr "Det är matte-föremålet %1"
+
+#~ msgid "Edit the coordinates"
+#~ msgstr "Redigera koordinaterna"
+
+#~ msgid "This point %1"
+#~ msgstr "Den här punkten %1"
+
+#~ msgid "This polygon %1"
+#~ msgstr "Den här polygonen %1"
+
+#~ msgid "This quadrilateral %1"
+#~ msgstr "Den här fyrhörningen %1"
+
+#~ msgid "This triangle %1"
+#~ msgstr "Den här triangeln %1"
+
+#~ msgid " edges="
+#~ msgstr " kanter="
+
+#~ msgid "This half-line %1"
+#~ msgstr "Den här halv-raden %1"
+
+#~ msgid "This segment %1"
+#~ msgstr "Det här segmentet %1"
+
+#~ msgid "This text"
+#~ msgstr "Den här texten"
+
+#~ msgid "Edit this text"
+#~ msgstr "Redigera den här texten"
+
+#~ msgid "Edit me"
+#~ msgstr "Redigera mig"
+
+#~ msgid "This arc length %1"
+#~ msgstr "Den här bågens längd %1"
+
+#~ msgid "This circle perimeter %1"
+#~ msgstr "Den här cirkelns omkrets %1"
+
+#~ msgid "This distance between two points %1"
+#~ msgstr "Det här avståndet mellan två punkter %1"
+
+#~ msgid "This point-line distance %1"
+#~ msgstr "Avståndet för den här punkt-linjen %1"
+
+#~ msgid "This value %1"
+#~ msgstr "Det här värdet %1"
+
+#~ msgid "Value "
+#~ msgstr "Värde "
+
+#~ msgid "This polygon perimeter %1"
+#~ msgstr "Den här polygonens omkrets %1"
+
+#~ msgid "This script \"{1}\""
+#~ msgstr "Det här skriptet \"{1}\""
+
+#~ msgid "This script \"{1}\" with argument: %2"
+#~ msgstr "Det här skriptet \"{1}\" med argument: %2"
+
+#~ msgid "This script \"{1}\" with arguments: %2"
+#~ msgstr "Det här skriptet \"{1}\" med argumenten: %2"
+
+#~ msgid "Script "
+#~ msgstr "Skript "
+
+#~ msgid "This segment length %1"
+#~ msgstr "Det här segmentets längd %1"
+
+#~ msgid "This line slope %1"
+#~ msgstr "Den här linjens sluttning %1"
+
+#~ msgid "Edit this value"
+#~ msgstr "Redigera det här värdet"
+
+#~ msgid "This Vector's norm %1"
+#~ msgstr "Den Vektorn's norm %1"
+
+#~ msgid "This vector %1"
+#~ msgstr "Den här vektorn %1"
+
+#~ msgid "Only geometric object can be transformed."
+#~ msgstr "Endast geometriska objekt kan omvandlas."
+
+#~ msgid "Set the style of the line."
+#~ msgstr "Ställ in linjens stil."
+
+#~ msgid "Style"
+#~ msgstr "Stil"
+
+#~ msgid "Set the thickness of the line."
+#~ msgstr "Ställ in radens storlek."
+
+#~ msgid "Thickness"
+#~ msgstr "Tjocklek"
+
+#~ msgid "Fill"
+#~ msgstr "Fyll"
+
+#~ msgid "Toggle to fill the object."
+#~ msgstr "Växla för att fylla objektet."
+
+#~ msgid "Toggle the translucency of the object."
+#~ msgstr "Växla genomskinligheten för objektet."
+
+#~ msgid "Translucent"
+#~ msgstr "Genomskinlig"
+
+#~ msgid "Arrow"
+#~ msgstr "Pil"
+
+#~ msgid "Set arrow(s) to the line."
+#~ msgstr "Ställ in pil(ar) till linjen."
+
+#~ msgid "Set the shape of the point."
+#~ msgstr "Ställ in storleken för punkten."
+
+#~ msgid "Set the size of the point."
+#~ msgstr "Ställ in storleken på punkten."
+
+#~ msgid "Set a mark to the segment."
+#~ msgstr "Ställ in ett märke till segmentet."
+
+#~ msgid "Set the colour."
+#~ msgstr "Ställ in färgen."
+
+#~ msgid "Feedback"
+#~ msgstr "Återgivning"
+
+#~ msgid "Hide"
+#~ msgstr "Göm"
+
+#~ msgid "Toggle to hide the object."
+#~ msgstr "Växla för att gömma det här objektet."
+
+#~ msgid "Lock"
+#~ msgstr "Lås"
+
+#~ msgid "Toggle to lock the object to its position."
+#~ msgstr "Växla för att låsa objektet till dess position."
+
+#~ msgid "Rename this object."
+#~ msgstr "Döp om det här objektet."
+
+#~ msgid "Set the background colour."
+#~ msgstr "Ställ in bakgrundsfärgen."
+
+#~ msgid "Set the border colour."
+#~ msgstr "Ställ in kantens färg."
+
+#~ msgid "Font size"
+#~ msgstr "Storlek på typsnittet"
+
+#~ msgid "Set the font size."
+#~ msgstr "Ställ in typsnittets storlek."
+
+#~ msgid "Name this value"
+#~ msgstr "Namnge det här värdet"
+
+#~ msgid "Rename this value"
+#~ msgstr "Döp om det här värdet"
+
+#~ msgid "Installed version: "
+#~ msgstr "Installerad version: "
+
+#~ msgid "Fig. - "
+#~ msgstr "Fig. - "
+
+#~ msgid "System menu"
+#~ msgstr "System-meny"
+
+#~ msgid "Macro - "
+#~ msgstr "Makro - "
+
+#~ msgid "Dr. Geo Preferences"
+#~ msgstr "Egenskaper för Dr. Geo"
+
+#~ msgid "Settings"
+#~ msgstr "Inställningar"
+
+#~ msgid ""
+#~ "There is unsaved data! \n"
+#~ "Are you sure to quit Dr. Geo environment?"
+#~ msgstr ""
+#~ "Det finns data som inte har sparats! \n"
+#~ "Är du säker på att du vill avsluta Dr. Geo-miljön?"
+
+#~ msgid ""
+#~ "A source code browser to view, edit and save Dr. Geo code. I open the "
+#~ "browser on the DrGeoSketch class you can study to design your own "
+#~ "Smalltalk sketch."
+#~ msgstr ""
+#~ "En bläddrare för källkod för att visa, redigera och spara Dr. Geo-kod. "
+#~ "Jag öppnar bläddraren i DrGeoSketch-klassen som du kan studera och "
+#~ "konstruera din egen Smalltalk-ritning."
+
+#~ msgid ""
+#~ "A tool to browse and to test both system and personal Smalltalk Sketches."
+#~ msgstr ""
+#~ "Ett verktyg för att bläddra och testa både system och personliga "
+#~ "Smalltalk-ritningar."
+
+#~ msgid "An editor to write and to test new Smalltalk sketch."
+#~ msgstr "En redigerare för att skriva och testa ny Smalltalk-ritning."
+
+#~ msgid "Browse"
+#~ msgstr "Bläddra"
+
+#~ msgid "Browse Smalltalk Sketches"
+#~ msgstr "Bläddra bland Smalltalk-ritningar"
+
+#~ msgid "Open a file"
+#~ msgstr "Öppna en fil"
+
+#~ msgid "Open the filer on your personal sketches collection."
+#~ msgstr "Öppna arkiveraren i din personliga samling av ritningar."
+
+#~ msgid "Save session"
+#~ msgstr "Spara session"
+
+#~ msgid "Save this Dr. Geo session."
+#~ msgstr "Spara denna Dr. Geo-session."
+
+#~ msgid "Smalltalk Sketch Editor"
+#~ msgstr "Ritningsredigeraren Smalltalk"
+
+#~ msgid "System Browser"
+#~ msgstr "Systemutforskare"
+
+#~ msgid "Tools"
+#~ msgstr "Verktyg"
+
+#~ msgid "Workspace"
+#~ msgstr "Arbetsyta"
+
+#~ msgid "About"
+#~ msgstr "Om"
+
+#~ msgid "New sketch"
+#~ msgstr "Ny sketch"
+
+#~ msgid "Quit"
+#~ msgstr "Avsluta"
+
+#~ msgid "Toggle full screen mode"
+#~ msgstr "Växla fullskärmsläge"
+
+#~ msgid "Turn full screen mode on when it is off, off when it is on."
+#~ msgstr "Sätt på fullskärmsläge när det är av, och av när det är på."
+
+#~ msgid "<no> Create Multiple"
+#~ msgstr "<nej> Skapa flera"
+
+#~ msgid "<yes> Create Multiple"
+#~ msgstr "<ja> Skapa flera"
+
+#~ msgid "Build a new script"
+#~ msgstr "Bygg ett nytt skript"
+
+#~ msgid "Edit or create scripts"
+#~ msgstr "Redigera eller skapa skript"
+
+#~ msgid "<no> Grid"
+#~ msgstr "<no> Rutnät"
+
+#~ msgid "<yes> Grid"
+#~ msgstr "<ja> Rutnät"
+
+#~ msgid "<no> Magnetic Grid"
+#~ msgstr "<nej> Magnetiskt rutnät"
+
+#~ msgid "<yes> Magnetic Grid"
+#~ msgstr "<ja> Magnetiskt rutnät"
+
+#~ msgid ""
+#~ "I can't save the sketch.\n"
+#~ "Check the local resource or the server."
+#~ msgstr ""
+#~ "Jag kan inte spara ritningen.\n"
+#~ "Kolla den lokala resursen eller servern."
+
+#~ msgid ""
+#~ "Angle bisector defined by three points or an angle defined by three "
+#~ "points."
+#~ msgstr ""
+#~ "Vinkelbisektris definierad av tre punkter eller en vinkel definierad av "
+#~ "tre punkter."
+
+#~ msgid "Angle bisector"
+#~ msgstr "Vinkelbisektris"
+
+#~ msgid ""
+#~ "Geometric angle defined by three points, the second point is the vertex. "
+#~ "Its measure belongs to [0 ; 180]."
+#~ msgstr ""
+#~ "Geometrisk vinkel defineras av tre punkter, den andra punkten är vertex. "
+#~ "Dess mått tillhör [0 ; 180]."
+
+#~ msgid "Geometric angle"
+#~ msgstr "Geometrisk vinkel"
+
+#~ msgid ""
+#~ "Oriented angle defined by three points or two vectors. When defined from "
+#~ "three points, the second point is the vertex. Its measure belongs to [0 ; "
+#~ "360[ or ]-180 ; 180]. "
+#~ msgstr ""
+#~ "Orienterad vinkel definieras av tre punkter eller två vektorer. När den "
+#~ "definieras från tre punkter så är vertex den andra punkten. Dess mått "
+#~ "tillhör [0 ; 360[ eller]-180; 180]. "
+
+#~ msgid "Oriented angle"
+#~ msgstr "Orienterad vinkel"
+
+#~ msgid "Arc defined by three points."
+#~ msgstr "Båge definierad av tre punkter."
+
+#~ msgid "Arc defined by its center and two points."
+#~ msgstr "Båge definierad av dess center och två punkter."
+
+#~ msgid "Arc (center)"
+#~ msgstr "Båge (centrum)"
+
+#~ msgid ""
+#~ "Picture: drag and drop a picture in the canvas. It can be moved and "
+#~ "scaled."
+#~ msgstr ""
+#~ "Bild: dra och släpp en bild i kanvasen. Den kan bli flyttad och skalad."
+
+#~ msgid "Picture"
+#~ msgstr "Bild"
+
+#~ msgid ""
+#~ "Circle defined by its center and a point or by its center and radius, a "
+#~ "value."
+#~ msgstr ""
+#~ "Cirkel definierad av dess centrum och en punkt eller dess centrum och "
+#~ "radie, ett värde."
+
+#~ msgid "Vector or point coordinates, circle or line equation."
+#~ msgstr "Vektor eller punktkorrdinater, cirkel eller linjeekvation."
+
+#~ msgid "Coordinates, equation"
+#~ msgstr "Koordinater, ekvation"
+
+#~ msgid ""
+#~ "Click to create a point: free point on the background, on a curve or on "
+#~ "two curves intersection."
+#~ msgstr ""
+#~ "Klicka för att skapa en punkt: fri punkt på bakgrunden, på en kurva eller "
+#~ "på två kurvors genomskärning."
+
+#~ msgid ""
+#~ "Tap to create a point: free point on the background, on a curve or on two "
+#~ "curves intersection."
+#~ msgstr ""
+#~ "Knacka för att skapa en punkt: fri punkt på bakgrunden, på en kurva eller "
+#~ "på två kurvors genomskärning."
+
+#~ msgid ""
+#~ "Homothety: select a center, a value and a geometric object. The first "
+#~ "selected point is the homothety center."
+#~ msgstr ""
+#~ "Homoteti: välj en mittpunkt, ett värde och ett geometriskt objekt. Den "
+#~ "första valda punkten är den homotetiska mittpunkten."
+
+#~ msgid "Homothety (scale)"
+#~ msgstr "Homoteti (skala)"
+
+#~ msgid "Line defined by two points"
+#~ msgstr "Linje definierad av två punkter"
+
+#~ msgid "Locus defined by a free point on a curve and a relative point."
+#~ msgstr "Lokus definierad av en fri punkt på en kurva och en relativ punkt."
+
+#~ msgid "Construct a macro-construction with input and output items."
+#~ msgstr "Bygg en makro-konstruktion med inmatning och utmatningsobjekt."
+
+#~ msgid "Build macro"
+#~ msgstr "Bygg makro"
+
+#~ msgid "Input and output items don't match"
+#~ msgstr "Inpt- och outputobjekt matchar inte"
+
+#~ msgid "Please, enter a proper title and description"
+#~ msgstr "Vänligen, skriv en riktig titel och beskrivning"
+
+#~ msgid ""
+#~ "Execute a pre-built macro-construction on selected input items. To edit a "
+#~ "macro description, edit its text and apply with the keys [alt/ctrl]+s."
+#~ msgstr ""
+#~ "Utför en förbyggd makro-konstruktion på de valda inmatningsobjekten. För "
+#~ "att redigera en makro-beskrivning, redigera dess text och verkställ med "
+#~ "tangenterna [alt/ctrl]+s."
+
+#~ msgid "Execute/edit macro"
+#~ msgstr "Kör/redigera makro"
+
+#~ msgid "The midpoint of a segment or between two points."
+#~ msgstr "Mittpunkten av ett segment eller mellan två punkter."
+
+#~ msgid "Middle"
+#~ msgstr "Mitten"
+
+#~ msgid ""
+#~ "Line passing through one point and parallel to a line, half-line, etc."
+#~ msgstr ""
+#~ "Linje som går genom en punkt och parallellt med en linje, halvlinje, etc."
+
+#~ msgid "Parallel"
+#~ msgstr "Parallell"
+
+#~ msgid "Perpendicular bisector defined by a segment or two points."
+#~ msgstr ""
+#~ "Vinkelrät halveringslinje definierad av ett segment eller två punkter."
+
+#~ msgid "Perpendicular bisector"
+#~ msgstr "Vinkelrät halveringslinje"
+
+#~ msgid ""
+#~ "Line passing through one point and orthogonal to a line, half-line, etc."
+#~ msgstr ""
+#~ "Linje som går genom en punkt och ortogonalt med en linje, halvlinje, etc."
+
+#~ msgid "Perpendicular"
+#~ msgstr "Vinkelrät"
+
+#~ msgid ""
+#~ "Point given its coordinates: select two numbers or a point coordinates "
+#~ "(@)."
+#~ msgstr ""
+#~ "Punkten ges till dess koordinater: välj två nummer eller en koordinater "
+#~ "till en punkt (@)."
+
+#~ msgid "Coordinates"
+#~ msgstr "Koordinater"
+
+#~ msgid "Intersection(s) of two curves."
+#~ msgstr "Korsning(ar) med två kurvor."
+
+#~ msgid "Intersection"
+#~ msgstr "Korsning"
+
+#~ msgid ""
+#~ "Regular polygon defined by its center, a vertex and its sides number."
+#~ msgstr ""
+#~ "Vanlig polygon defineras av sin mittpunkt, en vertex och dess sidantal."
+
+#~ msgid "Regular polygon"
+#~ msgstr "Vanlig polygon"
+
+#~ msgid ""
+#~ "Half-Line defined by two points, the first selected point is the origin."
+#~ msgstr ""
+#~ "Halv-linje definieras av två punkter, den första valda punkten är "
+#~ "ursprunget."
+
+#~ msgid "Reflection"
+#~ msgstr "Reflektion"
+
+#~ msgid ""
+#~ "Rotation: select a point, a value and a geometric object. The first "
+#~ "selected point is the rotation center."
+#~ msgstr ""
+#~ "Rotering: välj en punkt, ett värde och ett geometriskt objekt. Den första "
+#~ "valda punkten är roteringens mittpunkt."
+
+#~ msgid "Rotation"
+#~ msgstr "Rotation"
+
+#~ msgid "Insert a Smalltalk script in the drawing area."
+#~ msgstr "Klistra in ett Smalltalk-skript i ritområdet."
+
+#~ msgid "Use a script"
+#~ msgstr "Använd ett skript"
+
+#~ msgid "No description, write one in the description method of this script."
+#~ msgstr ""
+#~ "Ingen beskrivning, skriv en i beskrivningsmetoden för det här skriptet."
+
+#~ msgid "Segment defined by two points."
+#~ msgstr "Segmentet definieras av två punkter."
+
+#~ msgid ""
+#~ "Symmetry: select a point and a geometric object. The first selected point "
+#~ "is the symmetry center."
+#~ msgstr ""
+#~ "Symmetri: välj en punkt och ett geometriskt objekt. Den första valda "
+#~ "punkten är symmetrins mittpunkt."
+
+#~ msgid "Symmetry"
+#~ msgstr "Symmetri"
+
+#~ msgid "Free text you can edit and move around."
+#~ msgstr "Gratis text som du kan redigera och flytta runt."
+
+#~ msgid "Text"
+#~ msgstr "Text"
+
+#~ msgid "Translation: select a vector and a geometric object."
+#~ msgstr "Översättning: välj en vektor och ett geometriskt objekt."
+
+#~ msgid "Translation"
+#~ msgstr "Översättning"
+
+#~ msgid "Distance between objects, curve length, free value."
+#~ msgstr "Avstånd mellan objekten, längd på kurva, fritt värde."
+
+#~ msgid "Distance, length, value"
+#~ msgstr "Avstånd, längd, värde"
+
+#~ msgid "Vector defined by two points."
+#~ msgstr "Vektor definieras av två punkter."
+
+#~ msgid "Select a free point on a curve to animate it."
+#~ msgstr "Välj en fri punkt på en kurva för att animera den."
+
+#~ msgid "Erase an object and all its depedencies."
+#~ msgstr "Ta bort ett objekt och alla dess beroenden."
+
+#~ msgid "Eraser"
+#~ msgstr "Suddgummi"
+
+#~ msgid "This intersection"
+#~ msgstr "Den här korsningen"
+
+#~ msgid "Change as a free point on the plane."
+#~ msgstr "Byt som en ledig punkt på planet."
+
+#~ msgid "Change as a free point on this curve."
+#~ msgstr "Byt som en ledig punkt på den här kurvan."
+
+#~ msgid "Change as this intersection."
+#~ msgstr "Byt som den här korsningen."
+
+#~ msgid "Edit an item's property"
+#~ msgstr "Redigera egenskapen för ett föremål"
+
+#~ msgid "Property"
+#~ msgstr "Föremål"
+
+#~ msgid "Select and move an object."
+#~ msgstr "Välj och flytta ett objekt."
+
+#~ msgid "Select and Move"
+#~ msgstr "Välj och Flytta"
+
+#~ msgid "Select a point to merge with"
+#~ msgstr "Välj en punkt att smälta samman med"
+
+#~ msgid "Drag this point to change its nature."
+#~ msgstr "Dra den här punkten för att byta dess karaktär."
+
+#~ msgid ""
+#~ "Several objects can be selected. Please, select one clicking the mouse."
+#~ msgstr ""
+#~ "Flera objekt kan väljas. Snälla, välj ett genom att klicka med musen."
+
+#~ msgid "Edit an object style."
+#~ msgstr "Redigera stilen för ett objekt."
+
+#~ msgid "Edit Style"
+#~ msgstr "Redigera stil"
+
+#~ msgid "Select an object"
+#~ msgstr "Välj ett objekt"
+
+#~ msgid "Several objects can be selected. Please, choose one."
+#~ msgstr "Flera objekt kan väljas. Snälla, välj ett."
+
+#~ msgid "Colour"
+#~ msgstr "Färg"
+
+#~ msgid "arc"
+#~ msgstr "båge"
+
+#~ msgid "circle"
+#~ msgstr "cirkel"
+
+#~ msgid "line"
+#~ msgstr "rad"
+
+#~ msgid "locus"
+#~ msgstr "ställe"
+
+#~ msgid "Shape"
+#~ msgstr "Form"
+
+#~ msgid "Size"
+#~ msgstr "Storlek"
+
+#~ msgid "point"
+#~ msgstr "poäng"
+
+#~ msgid "polygon"
+#~ msgstr "polygon"
+
+#~ msgid "programming"
+#~ msgstr "programmering"
+
+#~ msgid "ray"
+#~ msgstr "stråle"
+
+#~ msgid "Mark"
+#~ msgstr "Markera"
+
+#~ msgid "segment"
+#~ msgstr "segment"
+
+#~ msgid "Background"
+#~ msgstr "Bakgrund"
+
+#~ msgid "Border"
+#~ msgstr "Kant"
+
+#~ msgid "text"
+#~ msgstr "text"
+
+# Isn't this supposed to be plural (decimals) ?
+#~ msgid "Number of decimal"
+#~ msgstr "Antalet decimal"
+
+#~ msgid "value"
+#~ msgstr "värde"
+
+#~ msgid "vector"
+#~ msgstr "vektor"
+
+#~ msgid "Animate at speed 1."
+#~ msgstr "Animera vid hastighet 1."
+
+#~ msgid "Animate x1"
+#~ msgstr "Animera x1"
+
+#~ msgid "Animate at speed 2."
+#~ msgstr "Animera vid hastighet 2."
+
+#~ msgid "Animate x2"
+#~ msgstr "Animera x2"
+
+#~ msgid "Animate at speed 3."
+#~ msgstr "Animera vid hastighet 3."
+
+#~ msgid "Animate x3"
+#~ msgstr "Animera x3"
+
+#~ msgid "Animate at speed 4."
+#~ msgstr "Animera vid hastighet 4."
+
+#~ msgid "Animate x4"
+#~ msgstr "Animera x4"
+
+#~ msgid "Show or hide grid."
+#~ msgstr "Visa eller göm rutnätet."
+
+#~ msgid "Keep this sketch permanently."
+#~ msgstr "Behåll den här ritningen permanent."
+
+#~ msgid "Save"
+#~ msgstr "Spara"
+
+#~ msgid "Delete a macro-construction from the registry."
+#~ msgstr "Ta bort en makro-konstruktion från registret."
+
+#~ msgid "Delete macro"
+#~ msgstr "Ta bort makro"
+
+#~ msgid "An unobtrusive menu with all Dr. Geo tools."
+#~ msgstr "En icke påträngande meny med alla Dr. Geo-verktyg."
+
+#~ msgid "Menu"
+#~ msgstr "Meny"
+
+#~ msgid ""
+#~ "Toggle between the build of several geometric objects and the build of "
+#~ "one geometric object then move it."
+#~ msgstr ""
+#~ "Växla mellan byggnationen av flera geometriska objekt och byggnationen av "
+#~ "ett geometriskt objekt, flytta det sedan."
+
+#~ msgid "New"
+#~ msgstr "Ny"
+
+#~ msgid "Open a new blank sketch."
+#~ msgstr "Öppna en tom ritning."
+
+#~ msgid "Open a sketch."
+#~ msgstr "Öppna en ritning."
+
+#~ msgid "Redo"
+#~ msgstr "Gör om"
+
+#~ msgid "Redo last action."
+#~ msgstr "Gör om den senaste åtgärden."
+
+#~ msgid "Create a Smalltalk script."
+#~ msgstr "Skapa ett Smalltalk-skript."
+
+#~ msgid "Create a script"
+#~ msgstr "Skapa ett skript"
+
+#~ msgid "Edit a Smalltalk script."
+#~ msgstr "Redigera ett Smalltalk-skript."
+
+#~ msgid "Edit a script"
+#~ msgstr "Redigera ett skript"
+
+#~ msgid "Edit style"
+#~ msgstr "Redigera stil"
+
+#~ msgid "Construction tree"
+#~ msgstr "Konstruktionsträd"
+
+#~ msgid "The hierarchy tree presenting the visible constructed items."
+#~ msgstr "Hierarkiträdet som presenterar de synliga konstruerade objekten."
+
+#~ msgid "Undo"
+#~ msgstr "Ångra"
+
+#~ msgid "Undo last action"
+#~ msgstr "Ångra den senaste åtgärden"
+
+# Shouldn't this be written as "A wheel to horisontally move the sketch" ?
+#~ msgid "A wheel to move horizontally the sketch."
+#~ msgstr "Ett hjul för att flytta ritningen horisontellt."
+
+#~ msgid "Horizontal wheel"
+#~ msgstr "Horisontellt hjul"
+
+#~ msgid "A wheel to move vertically the sketch."
+#~ msgstr "Ett hjul för att flytta ritningen vertikalt."
+
+#~ msgid "Vertical wheel"
+#~ msgstr "Vertikalt hjul"
+
+#~ msgid "A wheel to zoom in, zoom out the sketch."
+#~ msgstr "Ett hjul för att zooma in, zooma ut ritningen."
+
+#~ msgid "Zoom wheel"
+#~ msgstr "Zoom-hjul"
+
+#~ msgid "Open at..."
+#~ msgstr "Öppna vid..."
+
+#~ msgid "A Dr. Geo sketch"
+#~ msgstr "En Dr. Geo-ritning"
+
+#~ msgid "Add argument"
+#~ msgstr "Lägg till argument"
+
+#~ msgid "Description:"
+#~ msgstr "Beskrivning:"
+
+#~ msgid "Title:"
+#~ msgstr "Titel:"
+
+#~ msgid "Script name"
+#~ msgstr "Namn på skriptet"

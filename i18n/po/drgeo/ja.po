@@ -1,0 +1,1317 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Cuis\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-02-17 18:57-0000\n"
+"PO-Revision-Date: 2024-05-26 13:35+0000\n"
+"Last-Translator: makoto <makoto@kobe-u.ac.jp>\n"
+"Language-Team: \n"
+"Language: ja\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2024-05-27 04:37+0000\n"
+"X-Generator: Launchpad (build 0e1f616671af724398db43b36ddfb3ed1f2682ec)\n"
+"X-Cuis-SystemVersion: Cuis7.1 update 6409\n"
+"X-Cuis-Domain: drgeo\n"
+
+#: DrGeo-Model-Script,DrGeoUserScript_class>>description
+msgid "I am the description of this script. Please edit me."
+msgstr "このスクリプトの説明です．編集して下さい．"
+
+#: DrGeo-Model-Script,DrGeoUserScript_class>>scriptName
+msgid "A script"
+msgstr "スクリプト"
+
+#: DrGeo-View,DrGMinControlsManager>>editMenu
+msgid "Copy"
+msgstr "コピー"
+
+#: DrGeo-View,DrGMinControlsManager>>editMenu
+msgid "Copy with transparency"
+msgstr "透明度を保持したコピー"
+
+#: DrGeo-View,DrGMinControlsManager>>fileMenu
+msgid "Keep this sketch under a different name."
+msgstr "このスケッチを異なる名前で保存します．"
+
+#: DrGeo-View,DrGMinControlsManager>>fileMenu
+msgid "Save as..."
+msgstr "名前を付けて保存"
+
+#: DrGeo-View,DrGMinControlsManager>>mainMenu
+msgid "Animate"
+msgstr "アニメーション"
+
+#: DrGeo-View,DrGMinControlsManager>>mainMenu
+msgid "Animate a free point on curve."
+msgstr "曲線上の自由点の動きをアニメーションする．"
+
+#: DrGeo-View,DrGMinControlsManager>>mainMenu
+msgid ""
+"Build or execute macro-construction. A macro is a construction template you "
+"can apply to items in the sketch area."
+msgstr ""
+"作図マクロを作成あるいは実行します．マクロは作図のためのテンプレートで，図中"
+"の項目に対して適用します．"
+
+#: DrGeo-View,DrGMinControlsManager>>mainMenu
+msgid ""
+"Create different curve types: line, half-line, segment, vector, circle..."
+msgstr ""
+"いろいろなタイプの曲線（直線，半直線，線分，ベクトル，円など）を作成する．"
+
+#: DrGeo-View,DrGMinControlsManager>>mainMenu
+msgid "Create points: free, on curve, intersection or middle point."
+msgstr "点の作成：自由点，曲線上の点，交点，中点"
+
+#: DrGeo-View,DrGMinControlsManager>>mainMenu
+msgid ""
+"Create several numeric objects: free value, distance, length, angle, "
+"coordinates, equation and text."
+msgstr ""
+"様々な数値オブジェクト（自由値，距離，長さ，角度，座標，等式及びテキスト）を"
+"作成"
+
+#: DrGeo-View,DrGMinControlsManager>>mainMenu,DrGSmalltalkSketchBrowser>>newButtonArea
+msgid "Edit"
+msgstr "編集"
+
+#: DrGeo-View,DrGMinControlsManager>>mainMenu
+msgid "Erase or edit style and properties of items."
+msgstr "項目を削除したり，スタイルやプロパティを編集します．"
+
+#: DrGeo-View,DrGMinControlsManager>>mainMenu
+msgid "File"
+msgstr "ファイル"
+
+#: DrGeo-View,DrGMinControlsManager>>mainMenu
+msgid "Lines"
+msgstr "線"
+
+#: DrGeo-View,DrGMinControlsManager>>mainMenu
+msgid "Load, save or export Dr. Geo figure."
+msgstr "Dr.Geo図形の読み込み，保存，書き出しをします．"
+
+#: DrGeo-View,DrGMinControlsManager>>mainMenu
+msgid "Macro-construction"
+msgstr "作図マクロ"
+
+#: DrGeo-View,DrGMinControlsManager>>mainMenu
+msgid "Numerics & Text"
+msgstr "数値とテキスト"
+
+#: DrGeo-View,DrGMinControlsManager>>mainMenu
+msgid "Points"
+msgstr "点"
+
+#: DrGeo-View,DrGMinControlsManager>>mainMenu
+msgid "Script"
+msgstr "スクリプト"
+
+#: DrGeo-View,DrGMinControlsManager>>mainMenu
+msgid "Script: use, edit or create script to plug in the sketch."
+msgstr "スクリプト：スケッチ中に組み込むために作成，使用，編集する．"
+
+#: DrGeo-View,DrGMinControlsManager>>mainMenu
+msgid ""
+"Transform an object with a geometric transformation: symmetry, reflexion, "
+"rotation, translation or homothety (scale)."
+msgstr ""
+"オブジェクトを幾何的変換（点対称，鏡映，回転，平行移動，相似拡大）により変換"
+"します．"
+
+#: DrGeo-View,DrGMinControlsManager>>mainMenu
+msgid "Transformations"
+msgstr "変換"
+
+#: DrGeo-View-Dialog,DrGDebuggerWindow>>customButtonSpecs
+msgid "Execute the code up to the cursor position."
+msgstr "カーソルの位置までコードを実行"
+
+#: DrGeo-View-Dialog,DrGDebuggerWindow>>customButtonSpecs
+msgid "Execute the current message and go to the next message."
+msgstr "このメッセージを実行して次のメッセージに移行"
+
+#: DrGeo-View-Dialog,DrGDebuggerWindow>>customButtonSpecs
+msgid "Restart"
+msgstr "再起動"
+
+#: DrGeo-View-Dialog,DrGDebuggerWindow>>customButtonSpecs
+msgid "Restart the step by step execution from its start."
+msgstr "最初からステップバイステップ実行でやり直す"
+
+#: DrGeo-View-Dialog,DrGDebuggerWindow>>customButtonSpecs
+msgid "Run to Cursor"
+msgstr "カーソル位置まで実行"
+
+#: DrGeo-View-Dialog,DrGDebuggerWindow>>customButtonSpecs
+msgid "Step"
+msgstr "ステップ"
+
+#: DrGeo-View-Dialog,DrGDebuggerWindow>>customButtonSpecs
+msgid "Step into"
+msgstr "ステップ実行"
+
+#: DrGeo-View-Dialog,DrGDebuggerWindow>>customButtonSpecs
+msgid "Step into a block."
+msgstr "ブロックに入る"
+
+#: DrGeo-View-Dialog,DrGFileOpenMorph_class>>open
+msgid "Open a sketch"
+msgstr "スケッチを開く"
+
+#: DrGeo-View-Dialog,DrGFileOpenMorph>>newButtonArea,DrGScriptDesignerDialog>>newButtonArea,DrGSmalltalkSketchBrowser>>newButtonArea,DrGSmalltalkSketchEditor>>newButtonArea
+msgid "Cancel"
+msgstr "キャンセル"
+
+#: DrGeo-View-Dialog,DrGFileOpenMorph>>newButtonArea,DrGSmalltalkSketchBrowser>>newButtonArea
+msgid "Examples"
+msgstr "作図例"
+
+#: DrGeo-View-Dialog,DrGFileOpenMorph>>newButtonArea,DrGSmalltalkSketchBrowser>>newButtonArea
+msgid "My Sketches"
+msgstr "自分のスケッチ"
+
+#: DrGeo-View-Dialog,DrGFileOpenMorph>>newButtonArea
+msgid "Open"
+msgstr "開く"
+
+#: DrGeo-View-Dialog,DrGScriptDesignerDialog_class>>labelsAndClasses
+msgid "Angle"
+msgstr "角度"
+
+#: DrGeo-View-Dialog,DrGScriptDesignerDialog_class>>labelsAndClasses
+msgid "Any type"
+msgstr "任意のタイプ"
+
+#: DrGeo-View-Dialog,DrGScriptDesignerDialog_class>>labelsAndClasses
+msgid "Arc"
+msgstr "円弧"
+
+#: DrGeo-View-Dialog,DrGScriptDesignerDialog_class>>labelsAndClasses
+msgid "Circle"
+msgstr "円"
+
+#: DrGeo-View-Dialog,DrGScriptDesignerDialog_class>>labelsAndClasses
+msgid "Direction"
+msgstr "向き"
+
+#: DrGeo-View-Dialog,DrGScriptDesignerDialog_class>>labelsAndClasses
+msgid "Line"
+msgstr "直線"
+
+#: DrGeo-View-Dialog,DrGScriptDesignerDialog_class>>labelsAndClasses
+msgid "Locus"
+msgstr "軌跡"
+
+#: DrGeo-View-Dialog,DrGScriptDesignerDialog_class>>labelsAndClasses
+msgid "Point"
+msgstr "点"
+
+#: DrGeo-View-Dialog,DrGScriptDesignerDialog_class>>labelsAndClasses
+msgid "Polygon"
+msgstr "多角形"
+
+#: DrGeo-View-Dialog,DrGScriptDesignerDialog_class>>labelsAndClasses
+msgid "Ray"
+msgstr "半直線"
+
+#: DrGeo-View-Dialog,DrGScriptDesignerDialog_class>>labelsAndClasses
+msgid "Segment"
+msgstr "線分"
+
+#: DrGeo-View-Dialog,DrGScriptDesignerDialog_class>>labelsAndClasses
+msgid "Value"
+msgstr "値"
+
+#: DrGeo-View-Dialog,DrGScriptDesignerDialog_class>>labelsAndClasses
+msgid "Vector"
+msgstr "ベクトル"
+
+#: DrGeo-View-Dialog,DrGScriptDesignerDialog>>addArgument
+msgid "Remove this script argument."
+msgstr "このスクリプトの引数を削除"
+
+#: DrGeo-View-Dialog,DrGScriptDesignerDialog>>newAddArgumentButton
+msgid "Add an argument to this script."
+msgstr "このスクリプトに引数を追加"
+
+#: DrGeo-View-Dialog,DrGScriptDesignerDialog>>newButtonArea
+msgid "Build"
+msgstr "ビルド"
+
+#: DrGeo-View-Dialog,DrGScriptDesignerDialog>>newButtonArea
+msgid "Build a script with these settings."
+msgstr "これらの設定の下でスクリプトをビルドする"
+
+#: DrGeo-View-Dialog,DrGScriptDesignerDialog>>newDescriptionMorph
+msgid ""
+"A description of the script. To help the user, describe carefully what the "
+"script does and the input arguments to select to use it."
+msgstr ""
+"このスクリプトの説明．ユーザのために，このスクリプトがどのようなものである"
+"か，またスクリプトを使用するために必要な引数の入力について注意深く記述してく"
+"ださい．"
+
+#: DrGeo-View-Dialog,DrGScriptDesignerDialog>>newPane,DrGWizardScript>>secondPage
+msgid "Arguments"
+msgstr "引数"
+
+#: DrGeo-View-Dialog,DrGScriptDesignerDialog>>newPane,DrGWizardMacroBuild>>fourthPage,DrGWizardMacroPlay>>secondPage,DrGWizardScript>>secondPage
+msgid "Description"
+msgstr "説明"
+
+#: DrGeo-View-Dialog,DrGScriptDesignerDialog>>newPane,DrGWizardMacroBuild>>fourthPage,DrGWizardMacroPlay>>secondPage,DrGWizardScript>>secondPage
+msgid "Name"
+msgstr "名前"
+
+#: DrGeo-View-Dialog,DrGScriptDesignerDialog>>newScriptNameMorph
+msgid "The name of the script."
+msgstr "スクリプトの名前"
+
+#: DrGeo-View-Dialog,DrGSmalltalkSketchBrowser>>newButtonArea
+msgid "Browse my collection of Smalltalk sketches."
+msgstr "自分用のSmalltalkスケッチを閲覧"
+
+#: DrGeo-View-Dialog,DrGSmalltalkSketchBrowser>>newButtonArea
+msgid "Delete"
+msgstr "削除"
+
+#: DrGeo-View-Dialog,DrGSmalltalkSketchBrowser>>newButtonArea
+msgid "Delete permanently this Smalltalk Sketch from disk."
+msgstr "ディスクからこのSmalltalkスケッチを削除する"
+
+#: DrGeo-View-Dialog,DrGSmalltalkSketchBrowser>>newSketchesColumn
+msgid "Code"
+msgstr "コー​​ド"
+
+#: DrGeo-View-Dialog,DrGSmalltalkSketchEditor>>browseSketches
+msgid "Select a Smalltalk sketch"
+msgstr "Smalltalkスケッチを選択する"
+
+#: DrGeo-View-Dialog,DrGSmalltalkSketchEditor>>executeSketch
+msgid ""
+"Too many errors. Fix it!\n"
+"Sketch stopped"
+msgstr ""
+"多数のエラーを検出。 修正してください！\n"
+"スケッチは停止しました"
+
+#: DrGeo-View-Dialog,DrGSmalltalkSketchEditor>>keepSketch
+msgid "Name the sketch to keep."
+msgstr "このスケッチに名前をつけてください．"
+
+#: DrGeo-View-Dialog,DrGSmalltalkSketchEditor>>newToolbar
+msgid "Debug the Smalltalk sketch."
+msgstr "Smalltalkスケッチのデバッグ"
+
+#: DrGeo-View-Dialog,DrGSmalltalkSketchEditor>>newToolbar
+msgid "Dr. Geo tutorial"
+msgstr "Dr. Geo チュートリアル"
+
+#: DrGeo-View-Dialog,DrGSmalltalkSketchEditor>>newToolbar
+msgid "Edit a Smalltalk sketch."
+msgstr "Smalltalkスケッチを編集する。"
+
+#: DrGeo-View-Dialog,DrGSmalltalkSketchEditor>>newToolbar,DrGSmalltalkSketchEditor>>switchToPlayButton
+msgid "Play the Smalltalk sketch."
+msgstr "Smalltalkスケッチを実行する。"
+
+#: DrGeo-View-Dialog,DrGSmalltalkSketchEditor>>newToolbar
+msgid "Save this Smalltalk sketch."
+msgstr "Smalltalkスケッチを保存する。"
+
+#: DrGeo-View-Dialog,DrGSmalltalkSketchEditor>>newToolbar
+msgid "Stop the execution of the Smalltalk sketch."
+msgstr "Smalltalkスケッチの実行を停止する。"
+
+#: DrGeo-View-Dialog,DrGSmalltalkSketchEditor>>restoreLabel
+msgid "Edit Smalltalk Sketch"
+msgstr "Smalltalkスケッチの編集"
+
+#: DrGeo-View-Dialog,DrGSmalltalkSketchEditor>>switchToPauseButton
+msgid "Pause the Smalltalk sketch."
+msgstr "Smalltalkスケッチを一時停止する。"
+
+#: DrGeo-View-Dialog,DrGSmalltalkSketchEditor>>switchToResumeButton
+msgid "Resume the Smalltalk sketch."
+msgstr "Smalltalkスケッチを再開する。"
+
+#: DrGeo-View-Dialog,DrGWizardMacroBuild>>firstPage
+msgid "Build a macro-construction"
+msgstr "作図マクロの作成"
+
+#: DrGeo-View-Dialog,DrGWizardMacroBuild>>firstPage
+msgid ""
+"To build a macro-construction,\n"
+"\n"
+" 1. First select the input paramaters,\n"
+" 2. Next select the output parameters,\n"
+" 3. Next chose a name and a description,\n"
+" 4. Last apply the selection."
+msgstr ""
+"作図マクロを作成するには，\n"
+"\n"
+" 1. 最初に入力パラメータを選択し，\n"
+" 2. 次に出力パラメータを選択し，\n"
+" 3. 次に名前を説明を選んで，\n"
+" 4. 最後に選択を適用します。"
+
+#: DrGeo-View-Dialog,DrGWizardMacroBuild>>fourthPage
+msgid "Give a name and a description"
+msgstr "名前と説明を指定してください"
+
+#: DrGeo-View-Dialog,DrGWizardMacroBuild>>secondPage
+msgid "Select input parameters"
+msgstr "入力パラメータを選択してください"
+
+#: DrGeo-View-Dialog,DrGWizardMacroBuild>>thirdPage
+msgid "Select output parameters"
+msgstr "出力パラメータを選択してください"
+
+#: DrGeo-View-Dialog,DrGWizardMacroPlay>>firstPage
+msgid "Execute a macro-construction"
+msgstr "作図マクロを実行"
+
+#: DrGeo-View-Dialog,DrGWizardMacroPlay>>firstPage
+msgid ""
+"To execute a macro-construction,\n"
+"\n"
+" 1. First select a macro-construction from the list,\n"
+" 2. Select items on the figure. Only items relevant\n"
+" to the selected macro-construction are selectable.\n"
+" Once enough items are selected, the macro is\n"
+" automaticly executed.\n"
+" To start press the 'next' button."
+msgstr ""
+"作図マクロを実行するには，\n"
+"\n"
+" 1. 最初にリストからマクロ作図を選択し，\n"
+" 2. 図形上の項目を選択します。選択された\n"
+" 作図マクロに関連する項目のみが選択可能です。\n"
+" 十分な数の項目が選択されると、マクロは\n"
+" 自動的に実行されます。\n"
+" 開始するには、'次' ボタンを押してください。"
+
+#: DrGeo-View-Dialog,DrGWizardMacroPlay>>secondPage
+msgid "Select a macro-construction then the figure items"
+msgstr ""
+"作図マクロを選択し、次に入力パラメータとなる図中のオブジェクトを選択してくだ"
+"さい"
+
+#: DrGeo-View-Dialog,DrGWizardScript>>firstPage
+msgid ""
+"To use a script,\n"
+"\n"
+" 1. First select a script from the list,\n"
+" 2. Select items in the sketch,\n"
+" 3. Click somewhere in the background. \n"
+" Once enough items are selected, the script is\n"
+" inserted in the sketch, at the user selected position.\n"
+" To start press the 'next' button."
+msgstr ""
+"スクリプトを使用するには，\n"
+"\n"
+"  1. 最初にリストからスクリプトを選択し，\n"
+"  2. スクリプトの項目を選択し，\n"
+"  3. 背景のどこかをクリックします。\n"
+" 十分な数の項目が選択されると、スクリプトがスケッチに挿入され、\n"
+" ユーザが選択した位置に表示されます。\n"
+" 開始するには、'次' ボタンを押してください。"
+
+#: DrGeo-View-Dialog,DrGWizardScript>>firstPage
+msgid "Use a script in the sketch"
+msgstr "スケッチ内でスクリプトを使用"
+
+#: DrGeo-View-Dialog,DrGWizardScript>>secondPage
+msgid "Select a script then items in the sketch"
+msgstr "スクリプトとスケッチの項目を選択"
+
+#: DrGeo-View-Dialog,DrGWizardScript>>secondPage
+msgid "The arguments accepted by this script."
+msgstr "このスクリプトが受け取る引数。"
+
+#~ msgid "no name"
+#~ msgstr "名前なし"
+
+#~ msgid "This geometric angle %1"
+#~ msgstr "この幾何的角度 %1"
+
+#~ msgid "This angle bisector %1"
+#~ msgstr "この角の2等分線 %1"
+
+#~ msgid "This oriented angle %1"
+#~ msgstr "この相対角度 %1"
+
+#~ msgid "This Arc Circle %1"
+#~ msgstr "この円弧 %1"
+
+#~ msgid "This picture"
+#~ msgstr "この図形"
+
+#~ msgid "This circle %1"
+#~ msgstr "この円 %1"
+
+#~ msgid "This composite object %1"
+#~ msgstr "この複合オブジェクト %1"
+
+#~ msgid "This equation %1"
+#~ msgstr "この式 %1"
+
+#~ msgid "Equation"
+#~ msgstr "方程式"
+
+#~ msgid "This line %1"
+#~ msgstr "この直線 %1"
+
+#~ msgid "This parallel line %1"
+#~ msgstr "この平行線 %1"
+
+#~ msgid "This perpendicular bisector %1"
+#~ msgstr "この垂直2等分線 %1"
+
+#~ msgid "This perpendicular line %1"
+#~ msgstr "この垂線 %1"
+
+#~ msgid "This locus %1"
+#~ msgstr "この軌跡 %1"
+
+#~ msgid "This math item %1"
+#~ msgstr "この数学項目 %1"
+
+#~ msgid "Edit the coordinates"
+#~ msgstr "座標を編集"
+
+#~ msgid "This point %1"
+#~ msgstr "この点 %1"
+
+#~ msgid "Edit this curvilinear abscissa in [0;1]"
+#~ msgstr "[0;1]区間でのこの曲線横座標を編集"
+
+#~ msgid "This polygon %1"
+#~ msgstr "この多角形 %1"
+
+#~ msgid "This quadrilateral %1"
+#~ msgstr "この四角形 %1"
+
+#~ msgid "This triangle %1"
+#~ msgstr "この三角形 %1"
+
+#~ msgid " edges="
+#~ msgstr " 辺="
+
+#~ msgid "This half-line %1"
+#~ msgstr "この半直線 %1"
+
+#~ msgid "This segment %1"
+#~ msgstr "この線分 %1"
+
+#~ msgid "This text"
+#~ msgstr "このテキスト"
+
+#~ msgid "Edit this text"
+#~ msgstr "このテキストを編集する"
+
+#~ msgid "Edit me"
+#~ msgstr "編集してください"
+
+#~ msgid "This arc length %1"
+#~ msgstr "この円弧の長さ %1"
+
+#~ msgid "This circle perimeter %1"
+#~ msgstr "この円周 %1"
+
+#~ msgid "This distance between two points %1"
+#~ msgstr "この二点間の距離 %1"
+
+#~ msgid "This point-line distance %1"
+#~ msgstr "この点-直線間の距離 %1"
+
+#~ msgid "This value %1"
+#~ msgstr "この値 %1"
+
+#~ msgid "Value "
+#~ msgstr "数値 "
+
+#~ msgid "This polygon perimeter %1"
+#~ msgstr "この多角形の周長 %1"
+
+#~ msgid "This point abscissa %1"
+#~ msgstr "この点のx座標 %1"
+
+#~ msgid "This point ordinate %1"
+#~ msgstr "この点のy座標 %1"
+
+#~ msgid "This script \"{1}\""
+#~ msgstr "このスクリプト\"{1}\""
+
+#~ msgid "This script \"{1}\" with argument: %2"
+#~ msgstr "1つの引数を持つこのスクリプト\"{1}\"，引数: %2"
+
+#~ msgid "This script \"{1}\" with arguments: %2"
+#~ msgstr "複数の引数を持つこのスクリプト\"{1}\"，引数: %2"
+
+#~ msgid "Script "
+#~ msgstr "スクリプト "
+
+#~ msgid "This segment length %1"
+#~ msgstr "この線分の長さ %1"
+
+#~ msgid "This line slope %1"
+#~ msgstr "この直線の傾き %1"
+
+#~ msgid "Edit this value"
+#~ msgstr "この値を編集"
+
+#~ msgid "This vector abscissa %1"
+#~ msgstr "このベクトルの横成分 %1"
+
+#~ msgid "This Vector's norm %1"
+#~ msgstr "このベクトルのノルム %1"
+
+#~ msgid "This vector ordinate %1"
+#~ msgstr "このベクトルの縦成分 %1"
+
+#~ msgid "This vector %1"
+#~ msgstr "このベクトル %1"
+
+#~ msgid "Only geometric object can be transformed."
+#~ msgstr "幾何図形のみ変換できます．"
+
+#~ msgid "Set the style of the line."
+#~ msgstr "線のスタイルを設定します．"
+
+#~ msgid "Style"
+#~ msgstr "スタイル"
+
+#~ msgid "Set the thickness of the line."
+#~ msgstr "線の太さを設定します"
+
+#~ msgid "Thickness"
+#~ msgstr "太さ"
+
+#~ msgid "Fill"
+#~ msgstr "塗りつぶし"
+
+#~ msgid "Toggle to fill the object."
+#~ msgstr "塗りつぶしをするかしないか変更します．"
+
+#~ msgid "Toggle the translucency of the object."
+#~ msgstr "透明・不透明の変更をします．"
+
+#~ msgid "Translucent"
+#~ msgstr "透明"
+
+#~ msgid "Arrow"
+#~ msgstr "矢印"
+
+#~ msgid "Set arrow(s) to the line."
+#~ msgstr "線に矢印を設定します．"
+
+#~ msgid "Set the shape of the point."
+#~ msgstr "点の形を設定します．"
+
+#~ msgid "Set the size of the point."
+#~ msgstr "点の大きさを設定します．"
+
+#~ msgid "Set a mark to the segment."
+#~ msgstr "線分にマークをつけます．"
+
+#~ msgid "Set the colour."
+#~ msgstr "色を選択してください．"
+
+#~ msgid "Feedback"
+#~ msgstr "フィードバック"
+
+#~ msgid ""
+#~ "Toggle to provide feedback and interaction when the mouse cursor is over "
+#~ "the object."
+#~ msgstr ""
+#~ "マウスカーソルが対象上にあるときにフィードバックを得たり相互作用を実行する"
+#~ "ための機能に切り替えます．"
+
+#~ msgid "Hide"
+#~ msgstr "隠す"
+
+#~ msgid "Toggle to hide the object."
+#~ msgstr "オブジェクトを表示するか隠すか変更します．"
+
+#~ msgid "Lock"
+#~ msgstr "ロック"
+
+#~ msgid "Toggle to lock the object to its position."
+#~ msgstr "オブジェクトのその位置で固定するかしないかを変更します．"
+
+#~ msgid "Rename this object."
+#~ msgstr "このオブジェクトの名前を変更します．"
+
+#~ msgid "Set the background colour."
+#~ msgstr "背景色を設定する"
+
+#~ msgid "Set the border colour."
+#~ msgstr "枠線の色を設定する．"
+
+#~ msgid "Font size"
+#~ msgstr "フォントサイズ"
+
+#~ msgid "Set the font size."
+#~ msgstr "フォントサイズを設定します．"
+
+#~ msgid "Name this value"
+#~ msgstr "この値に名前をつける"
+
+#~ msgid "Rename this value"
+#~ msgstr "この値の名前を変更する"
+
+#~ msgid "Installed version: "
+#~ msgstr "インストールされているバージョン "
+
+#~ msgid "Fig. - "
+#~ msgstr "図- "
+
+#~ msgid "System menu"
+#~ msgstr "システムメニュー"
+
+#~ msgid "Macro - "
+#~ msgstr "マクロ- "
+
+#~ msgid "Dr. Geo Preferences"
+#~ msgstr "Dr. Geoの設定"
+
+#~ msgid "Preferences"
+#~ msgstr "設定"
+
+#~ msgid "Settings"
+#~ msgstr "設定"
+
+#~ msgid "Size of GUI elements"
+#~ msgstr "GUI要素の大きさ"
+
+#~ msgid "Theme"
+#~ msgstr "テーマ"
+
+#~ msgid ""
+#~ "There is unsaved data! \n"
+#~ "Are you sure to quit Dr. Geo environment?"
+#~ msgstr ""
+#~ "保存していないデータがあります。 \n"
+#~ "このままDr. Geoを終了してよろしいですか。"
+
+#~ msgid ""
+#~ "A source code browser to view, edit and save Dr. Geo code. I open the "
+#~ "browser on the DrGeoSketch class you can study to design your own "
+#~ "Smalltalk sketch."
+#~ msgstr ""
+#~ "Dr.Geoのコードを表示、編集、保存するためのソースコードブラウザです。"
+#~ "DrGeoSketchクラス上でこのブラウザを開くことで，あなた自身のSmalltalkスケッ"
+#~ "チを設計するための勉強ができます。"
+
+#~ msgid ""
+#~ "A tool to browse and to test both system and personal Smalltalk Sketches."
+#~ msgstr ""
+#~ "システム用や個人用のSmalltalkスケッチを閲覧したりテストするためのツール"
+
+#~ msgid "An editor to write and to test new Smalltalk sketch."
+#~ msgstr "新しいSmalltalkスケッチを書いて試すためのエディター"
+
+#~ msgid "Browse"
+#~ msgstr "閲覧"
+
+#~ msgid "Browse Smalltalk Sketches"
+#~ msgstr "Smalltalkスケッチを閲覧する"
+
+#~ msgid "Open a file"
+#~ msgstr "ファイルを開く"
+
+#~ msgid "Open the filer on your personal sketches collection."
+#~ msgstr "個人で作成したスケッチのためのファイラーを開く"
+
+#~ msgid "Save session"
+#~ msgstr "セッションを保存"
+
+#~ msgid "Save this Dr. Geo session."
+#~ msgstr "このDr. Geoセッションを保存"
+
+#~ msgid "Smalltalk Sketch Editor"
+#~ msgstr "Smalltalkスケッチエディター"
+
+#~ msgid "System Browser"
+#~ msgstr "システムブラウザー"
+
+#~ msgid "Tools"
+#~ msgstr "ツール"
+
+#~ msgid "Transcript"
+#~ msgstr "トランスクリプト"
+
+#~ msgid "Workspace"
+#~ msgstr "ワークスペース"
+
+#~ msgid "About"
+#~ msgstr "Dr.Geo IIについて"
+
+#~ msgid "New sketch"
+#~ msgstr "新しいスケッチ"
+
+#~ msgid "Quit"
+#~ msgstr "終了"
+
+#~ msgid "Toggle full screen mode"
+#~ msgstr "フルスクリーンモードにする"
+
+#~ msgid "Turn full screen mode on when it is off, off when it is on."
+#~ msgstr "フルスクリーンモードのオン・オフを切り替える"
+
+#~ msgid "<no> Axes"
+#~ msgstr "<no>軸"
+
+#~ msgid "<yes> Axes"
+#~ msgstr "<yes>軸"
+
+#~ msgid "<no> Create Multiple"
+#~ msgstr "<no>複数を作成"
+
+#~ msgid "<yes> Create Multiple"
+#~ msgstr "<yes>複数を作成"
+
+#~ msgid "Build a new script"
+#~ msgstr "新しいスクリプトをビルド"
+
+#~ msgid "Edit or create scripts"
+#~ msgstr "スクリプトを編集または作成"
+
+#~ msgid "Name the image to keep."
+#~ msgstr "この画像に保存用の名前をつける"
+
+#~ msgid "<no> Grid"
+#~ msgstr "<no>グリッド"
+
+#~ msgid "<yes> Grid"
+#~ msgstr "<yes>グリッド"
+
+#~ msgid "<no> Magnetic Grid"
+#~ msgstr "<no>マグネチックグリッド"
+
+#~ msgid "<yes> Magnetic Grid"
+#~ msgstr "<yes>マグネチックグリッド"
+
+#~ msgid ""
+#~ "I can't save the sketch.\n"
+#~ "Check the local resource or the server."
+#~ msgstr ""
+#~ "スケッチを保存できません。\n"
+#~ "ローカルの環境あるいはサーバーを確認してください。"
+
+#~ msgid ""
+#~ "Angle bisector defined by three points or an angle defined by three "
+#~ "points."
+#~ msgstr "角の二等分線：3点で定まる角の二等分線"
+
+#~ msgid "Angle bisector"
+#~ msgstr "角の二等分線"
+
+#~ msgid ""
+#~ "Geometric angle defined by three points, the second point is the vertex. "
+#~ "Its measure belongs to [0 ; 180]."
+#~ msgstr "3つの点（2番目に指定した点が頂点）で定まる0から180度の間の角度"
+
+#~ msgid "Geometric angle"
+#~ msgstr "角度"
+
+#~ msgid ""
+#~ "Oriented angle defined by three points or two vectors. When defined from "
+#~ "three points, the second point is the vertex. Its measure belongs to [0 ; "
+#~ "360[ or ]-180 ; 180]. "
+#~ msgstr ""
+#~ "3つの点または二つのベクトルで決まる有向角．3点で決める場合は2番目の点が頂"
+#~ "点になる．有向角は0度から360度または-180度から180度までの値をとる． "
+
+#~ msgid "Oriented angle"
+#~ msgstr "回転角"
+
+#~ msgid "Arc defined by three points."
+#~ msgstr "円弧：3点により定まる円弧"
+
+#~ msgid "Arc defined by its center and two points."
+#~ msgstr "円弧：中心と2点により定まる円弧"
+
+#~ msgid "Arc (center)"
+#~ msgstr "円弧（中心）"
+
+#~ msgid ""
+#~ "Picture: drag and drop a picture in the canvas. It can be moved and "
+#~ "scaled."
+#~ msgstr ""
+#~ "図形：キャンバスに図形をドラッグアンドドロップします．移動や大きさの変更が"
+#~ "できます．"
+
+#~ msgid "Picture"
+#~ msgstr "図形"
+
+#~ msgid ""
+#~ "Circle defined by its center and a point or by its center and radius, a "
+#~ "value."
+#~ msgstr "円：中心と一点、または中心と線分（動径）で定まる円"
+
+#~ msgid "Vector or point coordinates, circle or line equation."
+#~ msgstr "ベクトルまたは点の座標，円あるいは直線の式"
+
+#~ msgid "Coordinates, equation"
+#~ msgstr "座標，式"
+
+#~ msgid ""
+#~ "Click to create a point: free point on the background, on a curve or on "
+#~ "two curves intersection."
+#~ msgstr ""
+#~ "クリックすると点（描画領域上の自由点，線上の自由点，２つの線の交点）を作成"
+#~ "します．"
+
+#~ msgid ""
+#~ "Tap to create a point: free point on the background, on a curve or on two "
+#~ "curves intersection."
+#~ msgstr ""
+#~ "タップして点を作成：描画領域や曲線上に自由点あるいは二つの曲線の交点を作成"
+#~ "します．"
+
+#~ msgid ""
+#~ "Homothety: select a center, a value and a geometric object. The first "
+#~ "selected point is the homothety center."
+#~ msgstr ""
+#~ "相似拡大: 点、値、幾何オブジェクトを選択してください．最初に選択した点が、"
+#~ "相似拡大の中心になります．"
+
+#~ msgid "Homothety (scale)"
+#~ msgstr "相似拡大（縮小）"
+
+#~ msgid "Line defined by two points"
+#~ msgstr "直線：2点を通る直線"
+
+#~ msgid "Locus defined by a free point on a curve and a relative point."
+#~ msgstr "軌跡：曲線上の自由点とそれに依存する点で定まる軌跡"
+
+#~ msgid "Construct a macro-construction with input and output items."
+#~ msgstr "入力と出力項目から作図マクロを作成します．"
+
+#~ msgid "Build macro"
+#~ msgstr "マクロを作成"
+
+#~ msgid "Input and output items don't match"
+#~ msgstr "入出力の項目が対応しません"
+
+#~ msgid "Please, enter a proper title and description"
+#~ msgstr "適切な表題と説明を入力してください"
+
+#~ msgid ""
+#~ "Execute a pre-built macro-construction on selected input items. To edit a "
+#~ "macro description, edit its text and apply with the keys [alt/ctrl]+s."
+#~ msgstr ""
+#~ "選択された入力項目に対して予めビルトされた作図マクロを実行します．マクロ記"
+#~ "述を編集するには，マクロが定義されているテキストを編集後，キーボートから"
+#~ "[alt/ctrl]+s を押して適用してください．"
+
+#~ msgid "Execute/edit macro"
+#~ msgstr "マクロの実行／編集"
+
+#~ msgid "The midpoint of a segment or between two points."
+#~ msgstr "線分や2点の中点"
+
+#~ msgid "Middle"
+#~ msgstr "中点"
+
+#~ msgid ""
+#~ "Line passing through one point and parallel to a line, half-line, etc."
+#~ msgstr "平行線：一点を通り，他の直線や半直線などに平行な直線"
+
+#~ msgid "Parallel"
+#~ msgstr "平行線"
+
+#~ msgid "Perpendicular bisector defined by a segment or two points."
+#~ msgstr ""
+#~ "垂直二等分線：線分の垂直二等分線または2点（で定まる線分）の垂直二等分線"
+
+#~ msgid "Perpendicular bisector"
+#~ msgstr "垂直二等分線"
+
+#~ msgid ""
+#~ "Line passing through one point and orthogonal to a line, half-line, etc."
+#~ msgstr "垂線：一点を通り，他の直線や半直線などに垂直な直線"
+
+#~ msgid "Perpendicular"
+#~ msgstr "垂線"
+
+#~ msgid ""
+#~ "Point given its coordinates: select two numbers or a point coordinates "
+#~ "(@)."
+#~ msgstr "座標で定まる点：2つの数値か座標(@)を選択します．"
+
+#~ msgid "Coordinates"
+#~ msgstr "座標"
+
+#~ msgid "Intersection(s) of two curves."
+#~ msgstr "2つの曲線の交点"
+
+#~ msgid "Intersection"
+#~ msgstr "交点"
+
+#~ msgid ""
+#~ "Polygon by n points: last point must be the initial point to terminate."
+#~ msgstr ""
+#~ "多角形：n個の点で定まる多角形．最後に最初の点を選択すると終了します．"
+
+#~ msgid ""
+#~ "Regular polygon defined by its center, a vertex and its sides number."
+#~ msgstr "中心と頂点と辺の数で定まる正多角形"
+
+#~ msgid "Regular polygon"
+#~ msgstr "正多角形"
+
+#~ msgid ""
+#~ "Half-Line defined by two points, the first selected point is the origin."
+#~ msgstr "半直線：二点で定まる半直線．最初に選択された点が始点になります．"
+
+#~ msgid ""
+#~ "Reflexion: select a line and a geometric object. Reflexion axe is the "
+#~ "first selected line."
+#~ msgstr ""
+#~ "鏡映（反射）：線と幾何オブジェクトを選択してください．最初に選択した線が対"
+#~ "称軸になります．"
+
+#~ msgid "Reflection"
+#~ msgstr "鏡映"
+
+#~ msgid ""
+#~ "Rotation: select a point, a value and a geometric object. The first "
+#~ "selected point is the rotation center."
+#~ msgstr ""
+#~ "回転：点，角度と幾何オブジェクトを選択して下さい．最初に選んだ点が回転の中"
+#~ "心になります．"
+
+#~ msgid "Rotation"
+#~ msgstr "回転"
+
+#~ msgid "Insert a Smalltalk script in the drawing area."
+#~ msgstr "描画領域にSmalltalkのスクリプトを埋め込みます．"
+
+#~ msgid "Use a script"
+#~ msgstr "スクリプトを使う"
+
+#~ msgid "No description, write one in the description method of this script."
+#~ msgstr "説明がありません．このスクリプトの説明を書いて下さい。"
+
+#~ msgid "Segment defined by two points."
+#~ msgstr "線分：2点で定まる線分"
+
+#~ msgid ""
+#~ "Symmetry: select a point and a geometric object. The first selected point "
+#~ "is the symmetry center."
+#~ msgstr ""
+#~ "点対称：点と幾何オブジェクトを選択して下さい．最初に選んだ点が対称の中心に"
+#~ "なります．"
+
+#~ msgid "Symmetry"
+#~ msgstr "点対称"
+
+#~ msgid "Free text you can edit and move around."
+#~ msgstr "テキスト：編集や移動が自由にできるテキスト"
+
+#~ msgid "Text"
+#~ msgstr "テキスト"
+
+#~ msgid "Translation: select a vector and a geometric object."
+#~ msgstr "平行移動：ベクトルと幾何オブジェクトを選んで下さい．"
+
+#~ msgid "Translation"
+#~ msgstr "平行移動"
+
+#~ msgid "Distance between objects, curve length, free value."
+#~ msgstr "オブジェクト間の距離，曲線の長さ，自由値"
+
+#~ msgid "Distance, length, value"
+#~ msgstr "距離，長さ，値"
+
+#~ msgid "Vector defined by two points."
+#~ msgstr "ベクトル：2点で定まるベクトル"
+
+#~ msgid "Select a free point on a curve to animate it."
+#~ msgstr "アニメーションする曲線上の点を選択してください．"
+
+#~ msgid "Erase an object and all its depedencies."
+#~ msgstr "オブジェクトと依存しているものをすべて消去します．"
+
+#~ msgid "Eraser"
+#~ msgstr "消しゴム"
+
+#~ msgid "This intersection"
+#~ msgstr "この交点"
+
+#~ msgid "Change as a free point on the plane."
+#~ msgstr "平面上の自由点に変更します．"
+
+#~ msgid "Change as a free point on this curve."
+#~ msgstr "この曲線上の自由点に変更します．"
+
+#~ msgid "Change as this intersection."
+#~ msgstr "この交点に変更します．"
+
+#~ msgid "Edit an item's property"
+#~ msgstr "項目の属性を編集します．"
+
+#~ msgid "Property"
+#~ msgstr "属性"
+
+#~ msgid "Select and move an object."
+#~ msgstr "オブジェクトを選択して移動します．"
+
+#~ msgid "Select and Move"
+#~ msgstr "選択と移動"
+
+#~ msgid "Select a point to merge with"
+#~ msgstr "統合する点を選択してください"
+
+#~ msgid "Drag this point to change its nature."
+#~ msgstr "この点をドラッグすると特性が変わります．"
+
+#~ msgid ""
+#~ "Pressing down the [Shift] key you can drag and change the nature of free "
+#~ "point or intersection point."
+#~ msgstr ""
+#~ "[shift]キーを押しながら自由点や交点をドラッグするとその点の特性を変更でき"
+#~ "ます．"
+
+#~ msgid ""
+#~ "Several objects can be selected. Please, select one clicking the mouse."
+#~ msgstr "いろんなオブジェクトを選択できます．クリックして選択してください．"
+
+#~ msgid "Edit an object style."
+#~ msgstr "オブジェクトのスタイルを編集します．"
+
+#~ msgid "Edit Style"
+#~ msgstr "スタイルを編集"
+
+#~ msgid "Select an object"
+#~ msgstr "オブジェクトを選択"
+
+#~ msgid "Several objects can be selected. Please, choose one."
+#~ msgstr "複数のオブジェクトが選択されています．どれか１つを選んで下さい．"
+
+#~ msgid "Colour"
+#~ msgstr "色"
+
+#~ msgid "arc"
+#~ msgstr "弧"
+
+#~ msgid "circle"
+#~ msgstr "円"
+
+#~ msgid "line"
+#~ msgstr "直線"
+
+#~ msgid "locus"
+#~ msgstr "軌跡"
+
+#~ msgid "Autoname new object"
+#~ msgstr "新しいオブジェクトに自動的に名前を名前を付ける"
+
+#~ msgid ""
+#~ "Path for user created resources as sketches, Smalltalk sketches, exported "
+#~ "image. An empty path locates these resources in the Dr. Geo application "
+#~ "folder. Relative path accepted, home/user directory is then prepended"
+#~ msgstr ""
+#~ "ユーザーが作成したスケッチ，Smalltalkスケッチ，書き出した画像などのリソー"
+#~ "スへのパス．パス未設定のときは，これらのリソースはDr. Geoアプリのフォルダ"
+#~ "に保存される．相対パスも許され，その場合home/user directoryが先頭に補完さ"
+#~ "れる."
+
+#~ msgid "miscellaneous"
+#~ msgstr "その他"
+
+#~ msgid "Shape"
+#~ msgstr "形"
+
+#~ msgid "Size"
+#~ msgstr "大きさ"
+
+#~ msgid "point"
+#~ msgstr "点"
+
+#~ msgid "polygon"
+#~ msgstr "多角形"
+
+#~ msgid "Code completion on"
+#~ msgstr "コード補完"
+
+#~ msgid "Full debugger when executing Smalltalk sketch."
+#~ msgstr "Smalltalkスケッチを実行するときのフルデバッガー"
+
+#~ msgid "programming"
+#~ msgstr "プログラミング"
+
+#~ msgid "ray"
+#~ msgstr "光線"
+
+#~ msgid "Mark"
+#~ msgstr "マーク"
+
+#~ msgid "segment"
+#~ msgstr "線分"
+
+#~ msgid "Background"
+#~ msgstr "背景"
+
+#~ msgid "Border"
+#~ msgstr "枠線"
+
+#~ msgid "text"
+#~ msgstr "テキスト"
+
+#~ msgid "Number of decimal"
+#~ msgstr "小数点以下の桁数"
+
+#~ msgid "value"
+#~ msgstr "値"
+
+#~ msgid "vector"
+#~ msgstr "ベクトル"
+
+#~ msgid "Animate at speed 1."
+#~ msgstr "速さ1でアニメーション．"
+
+#~ msgid "Animate x1"
+#~ msgstr "通常速度でアニメーション"
+
+#~ msgid "Animate at speed 2."
+#~ msgstr "速さ2でアニメーション"
+
+#~ msgid "Animate x2"
+#~ msgstr "倍速でアニメーション"
+
+#~ msgid "Animate at speed 3."
+#~ msgstr "速さ3でアニメーション"
+
+#~ msgid "Animate x3"
+#~ msgstr "3倍速でアニメーション"
+
+#~ msgid "Animate at speed 4."
+#~ msgstr "速さ4でアニメーション"
+
+#~ msgid "Animate x4"
+#~ msgstr "4倍速でアニメーション"
+
+#~ msgid "Show or hide the ox and oy axes."
+#~ msgstr "座標軸(oxとoy)を表示する／隠す。"
+
+#~ msgid "Export this sketch as SVG image."
+#~ msgstr "このスケッチをSVG画像で書き出す"
+
+#~ msgid "Save as image"
+#~ msgstr "画像として保存"
+
+#~ msgid "Show or hide grid."
+#~ msgstr "グリッドの表示・非表示"
+
+#~ msgid "Keep this sketch permanently."
+#~ msgstr "このスケッチを永続的に維持します．"
+
+#~ msgid "Save"
+#~ msgstr "保存"
+
+#~ msgid "Delete a macro-construction from the registry."
+#~ msgstr "登録した作図マクロを削除します．"
+
+#~ msgid "Delete macro"
+#~ msgstr "マクロを削除"
+
+#~ msgid "Snap to grid."
+#~ msgstr "グリッドにあわせる"
+
+#~ msgid "An unobtrusive menu with all Dr. Geo tools."
+#~ msgstr "Dr.Geoのすべてのツールをもつ簡易メニュー"
+
+#~ msgid "Menu"
+#~ msgstr "メニュー"
+
+#~ msgid ""
+#~ "Toggle between the build of several geometric objects and the build of "
+#~ "one geometric object then move it."
+#~ msgstr ""
+#~ "オブジェクトを続けて作成する機能とオブジェクトを１つ作成して動かす機能を切"
+#~ "り替えます．"
+
+#~ msgid "New"
+#~ msgstr "新規作成"
+
+#~ msgid "Open a new blank sketch."
+#~ msgstr "新しい空のスケッチを開く．．"
+
+#~ msgid "Open a sketch."
+#~ msgstr "スケッチを開く"
+
+#~ msgid "Redo"
+#~ msgstr "やり直し"
+
+#~ msgid "Redo last action."
+#~ msgstr "最後の操作をやり直します．"
+
+#~ msgid "Create a Smalltalk script."
+#~ msgstr "Smalltalkのスクリプトを作成"
+
+#~ msgid "Create a script"
+#~ msgstr "スクリプトを作成"
+
+#~ msgid "Edit a Smalltalk script."
+#~ msgstr "Smalltalkのスクリプトを編集"
+
+#~ msgid "Edit a script"
+#~ msgstr "スクリプトを編集"
+
+#~ msgid "Edit style"
+#~ msgstr "編集スタイル"
+
+#~ msgid "Construction tree"
+#~ msgstr "構成木"
+
+#~ msgid "The hierarchy tree presenting the visible constructed items."
+#~ msgstr "作成した項目を表すための階層木"
+
+#~ msgid "Undo"
+#~ msgstr "取り消し"
+
+#~ msgid "Undo last action"
+#~ msgstr "最後の操作を取り消します．"
+
+#~ msgid "A wheel to move horizontally the sketch."
+#~ msgstr "スケッチを水平に動かすためのダイアル"
+
+#~ msgid "Horizontal wheel"
+#~ msgstr "水平方向ダイアル"
+
+#~ msgid "A wheel to move vertically the sketch."
+#~ msgstr "作品を垂直方向に動かすダイアル"
+
+#~ msgid "Vertical wheel"
+#~ msgstr "垂直方向ダイアル"
+
+#~ msgid "A wheel to zoom in, zoom out the sketch."
+#~ msgstr "作品をズームイン，ズームアウトさせるダイアル"
+
+#~ msgid "Zoom wheel"
+#~ msgstr "ズームダイアル"
+
+#~ msgid "Open at..."
+#~ msgstr "...から開く"
+
+#~ msgid "A Dr. Geo sketch"
+#~ msgstr "Dr.Geo スケッチ"
+
+#~ msgid "Add argument"
+#~ msgstr "引数の追加"
+
+#~ msgid "Description:"
+#~ msgstr "説明:"
+
+#~ msgid "Title:"
+#~ msgstr "表題:"
+
+#~ msgid "Script name"
+#~ msgstr "スクリプト名"

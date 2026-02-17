@@ -1,0 +1,999 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Pharo\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-02-17 18:57-0000\n"
+"PO-Revision-Date: 2015-06-01 06:00+0000\n"
+"Last-Translator: ☠Jay ZDLin☠ <Unknown>\n"
+"Language-Team: \n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2024-05-27 04:37+0000\n"
+"X-Generator: Launchpad (build 0e1f616671af724398db43b36ddfb3ed1f2682ec)\n"
+"X-Pharo-Domain: DrGeoII\n"
+"X-Pharo-SystemVersion: Pharo1.3 of 5 July 2011 update 13267\n"
+
+#: DrGeo-Model-Script,DrGeoUserScript_class>>description
+msgid "I am the description of this script. Please edit me."
+msgstr ""
+
+#: DrGeo-Model-Script,DrGeoUserScript_class>>scriptName
+msgid "A script"
+msgstr ""
+
+#: DrGeo-View,DrGMinControlsManager>>editMenu
+msgid "Copy"
+msgstr ""
+
+#: DrGeo-View,DrGMinControlsManager>>editMenu
+msgid "Copy with transparency"
+msgstr ""
+
+#: DrGeo-View,DrGMinControlsManager>>fileMenu
+msgid "Keep this sketch under a different name."
+msgstr ""
+
+#: DrGeo-View,DrGMinControlsManager>>fileMenu
+msgid "Save as..."
+msgstr "Сохранить как..."
+
+#: DrGeo-View,DrGMinControlsManager>>mainMenu
+msgid "Animate"
+msgstr "Анимировать"
+
+#: DrGeo-View,DrGMinControlsManager>>mainMenu
+msgid "Animate a free point on curve."
+msgstr "Анимировать свободную точку на кривой"
+
+#: DrGeo-View,DrGMinControlsManager>>mainMenu
+msgid ""
+"Build or execute macro-construction. A macro is a construction template you "
+"can apply to items in the sketch area."
+msgstr ""
+"Создать или выполнить макрос. Макрос может быть применен к элементам эскиза."
+
+#: DrGeo-View,DrGMinControlsManager>>mainMenu
+msgid ""
+"Create different curve types: line, half-line, segment, vector, circle..."
+msgstr "Создайте другие типы кривых: прямая, луч, отрезок, вектор, окружность"
+
+#: DrGeo-View,DrGMinControlsManager>>mainMenu
+msgid "Create points: free, on curve, intersection or middle point."
+msgstr ""
+"Создайте точку: свободную, на кривой, на пересечении линий, или промежуточную"
+
+#: DrGeo-View,DrGMinControlsManager>>mainMenu
+msgid ""
+"Create several numeric objects: free value, distance, length, angle, "
+"coordinates, equation and text."
+msgstr ""
+
+#: DrGeo-View,DrGMinControlsManager>>mainMenu,DrGSmalltalkSketchBrowser>>newButtonArea
+msgid "Edit"
+msgstr "Редактирование"
+
+#: DrGeo-View,DrGMinControlsManager>>mainMenu
+msgid "Erase or edit style and properties of items."
+msgstr "Удалить или редактировать стиль и свойства объектов."
+
+#: DrGeo-View,DrGMinControlsManager>>mainMenu
+msgid "File"
+msgstr "Файл"
+
+#: DrGeo-View,DrGMinControlsManager>>mainMenu
+msgid "Lines"
+msgstr "Линии"
+
+#: DrGeo-View,DrGMinControlsManager>>mainMenu
+msgid "Load, save or export Dr. Geo figure."
+msgstr "Загрузить, сохранить или преобразовать геометрическую фигуру Dr. Geo"
+
+#: DrGeo-View,DrGMinControlsManager>>mainMenu
+msgid "Macro-construction"
+msgstr "Запись макроса"
+
+#: DrGeo-View,DrGMinControlsManager>>mainMenu
+msgid "Numerics & Text"
+msgstr "Цифры и текст"
+
+#: DrGeo-View,DrGMinControlsManager>>mainMenu
+msgid "Points"
+msgstr "Точки"
+
+#: DrGeo-View,DrGMinControlsManager>>mainMenu
+msgid "Script"
+msgstr "Сценарий"
+
+#: DrGeo-View,DrGMinControlsManager>>mainMenu
+msgid "Script: use, edit or create script to plug in the sketch."
+msgstr ""
+
+#: DrGeo-View,DrGMinControlsManager>>mainMenu
+msgid ""
+"Transform an object with a geometric transformation: symmetry, reflexion, "
+"rotation, translation or homothety (scale)."
+msgstr ""
+"Преобразуйте объект посредством геометрической трансформации: отражение, "
+"вращение, перенос, или гомотетия (масштабирование)."
+
+#: DrGeo-View,DrGMinControlsManager>>mainMenu
+msgid "Transformations"
+msgstr "Преобразования"
+
+#: DrGeo-View-Dialog,DrGDebuggerWindow>>customButtonSpecs
+msgid "Execute the code up to the cursor position."
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGDebuggerWindow>>customButtonSpecs
+msgid "Execute the current message and go to the next message."
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGDebuggerWindow>>customButtonSpecs
+msgid "Restart"
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGDebuggerWindow>>customButtonSpecs
+msgid "Restart the step by step execution from its start."
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGDebuggerWindow>>customButtonSpecs
+msgid "Run to Cursor"
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGDebuggerWindow>>customButtonSpecs
+msgid "Step"
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGDebuggerWindow>>customButtonSpecs
+msgid "Step into"
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGDebuggerWindow>>customButtonSpecs
+msgid "Step into a block."
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGFileOpenMorph_class>>open
+msgid "Open a sketch"
+msgstr "Открыть эскиз"
+
+#: DrGeo-View-Dialog,DrGFileOpenMorph>>newButtonArea,DrGScriptDesignerDialog>>newButtonArea,DrGSmalltalkSketchBrowser>>newButtonArea,DrGSmalltalkSketchEditor>>newButtonArea
+msgid "Cancel"
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGFileOpenMorph>>newButtonArea,DrGSmalltalkSketchBrowser>>newButtonArea
+msgid "Examples"
+msgstr "Примеры"
+
+#: DrGeo-View-Dialog,DrGFileOpenMorph>>newButtonArea,DrGSmalltalkSketchBrowser>>newButtonArea
+msgid "My Sketches"
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGFileOpenMorph>>newButtonArea
+msgid "Open"
+msgstr "Открыть"
+
+#: DrGeo-View-Dialog,DrGScriptDesignerDialog_class>>labelsAndClasses
+msgid "Angle"
+msgstr "Угол"
+
+#: DrGeo-View-Dialog,DrGScriptDesignerDialog_class>>labelsAndClasses
+msgid "Any type"
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGScriptDesignerDialog_class>>labelsAndClasses
+msgid "Arc"
+msgstr "Дуга"
+
+#: DrGeo-View-Dialog,DrGScriptDesignerDialog_class>>labelsAndClasses
+msgid "Circle"
+msgstr "Окружность"
+
+#: DrGeo-View-Dialog,DrGScriptDesignerDialog_class>>labelsAndClasses
+msgid "Direction"
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGScriptDesignerDialog_class>>labelsAndClasses
+msgid "Line"
+msgstr "Прямая"
+
+#: DrGeo-View-Dialog,DrGScriptDesignerDialog_class>>labelsAndClasses
+msgid "Locus"
+msgstr "Место"
+
+#: DrGeo-View-Dialog,DrGScriptDesignerDialog_class>>labelsAndClasses
+msgid "Point"
+msgstr "Точка"
+
+#: DrGeo-View-Dialog,DrGScriptDesignerDialog_class>>labelsAndClasses
+msgid "Polygon"
+msgstr "Многоугольник"
+
+#: DrGeo-View-Dialog,DrGScriptDesignerDialog_class>>labelsAndClasses
+msgid "Ray"
+msgstr "Луч"
+
+#: DrGeo-View-Dialog,DrGScriptDesignerDialog_class>>labelsAndClasses
+msgid "Segment"
+msgstr "Отрезок"
+
+#: DrGeo-View-Dialog,DrGScriptDesignerDialog_class>>labelsAndClasses
+msgid "Value"
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGScriptDesignerDialog_class>>labelsAndClasses
+msgid "Vector"
+msgstr "Вектор"
+
+#: DrGeo-View-Dialog,DrGScriptDesignerDialog>>addArgument
+msgid "Remove this script argument."
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGScriptDesignerDialog>>newAddArgumentButton
+msgid "Add an argument to this script."
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGScriptDesignerDialog>>newButtonArea
+msgid "Build"
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGScriptDesignerDialog>>newButtonArea
+msgid "Build a script with these settings."
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGScriptDesignerDialog>>newDescriptionMorph
+msgid ""
+"A description of the script. To help the user, describe carefully what the "
+"script does and the input arguments to select to use it."
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGScriptDesignerDialog>>newPane,DrGWizardScript>>secondPage
+msgid "Arguments"
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGScriptDesignerDialog>>newPane,DrGWizardMacroBuild>>fourthPage,DrGWizardMacroPlay>>secondPage,DrGWizardScript>>secondPage
+msgid "Description"
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGScriptDesignerDialog>>newPane,DrGWizardMacroBuild>>fourthPage,DrGWizardMacroPlay>>secondPage,DrGWizardScript>>secondPage
+msgid "Name"
+msgstr "Имя"
+
+#: DrGeo-View-Dialog,DrGScriptDesignerDialog>>newScriptNameMorph
+msgid "The name of the script."
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGSmalltalkSketchBrowser>>newButtonArea
+msgid "Browse my collection of Smalltalk sketches."
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGSmalltalkSketchBrowser>>newButtonArea
+msgid "Delete"
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGSmalltalkSketchBrowser>>newButtonArea
+msgid "Delete permanently this Smalltalk Sketch from disk."
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGSmalltalkSketchBrowser>>newSketchesColumn
+msgid "Code"
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGSmalltalkSketchEditor>>browseSketches
+msgid "Select a Smalltalk sketch"
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGSmalltalkSketchEditor>>executeSketch
+msgid ""
+"Too many errors. Fix it!\n"
+"Sketch stopped"
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGSmalltalkSketchEditor>>keepSketch
+msgid "Name the sketch to keep."
+msgstr "Имя для сохранения эскиза"
+
+#: DrGeo-View-Dialog,DrGSmalltalkSketchEditor>>newToolbar
+msgid "Debug the Smalltalk sketch."
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGSmalltalkSketchEditor>>newToolbar
+msgid "Dr. Geo tutorial"
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGSmalltalkSketchEditor>>newToolbar
+msgid "Edit a Smalltalk sketch."
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGSmalltalkSketchEditor>>newToolbar,DrGSmalltalkSketchEditor>>switchToPlayButton
+msgid "Play the Smalltalk sketch."
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGSmalltalkSketchEditor>>newToolbar
+msgid "Save this Smalltalk sketch."
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGSmalltalkSketchEditor>>newToolbar
+msgid "Stop the execution of the Smalltalk sketch."
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGSmalltalkSketchEditor>>restoreLabel
+msgid "Edit Smalltalk Sketch"
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGSmalltalkSketchEditor>>switchToPauseButton
+msgid "Pause the Smalltalk sketch."
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGSmalltalkSketchEditor>>switchToResumeButton
+msgid "Resume the Smalltalk sketch."
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGWizardMacroBuild>>firstPage
+msgid "Build a macro-construction"
+msgstr "Создать макрос"
+
+#: DrGeo-View-Dialog,DrGWizardMacroBuild>>firstPage
+msgid ""
+"To build a macro-construction,\n"
+"\n"
+" 1. First select the input paramaters,\n"
+" 2. Next select the output parameters,\n"
+" 3. Next chose a name and a description,\n"
+" 4. Last apply the selection."
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGWizardMacroBuild>>fourthPage
+msgid "Give a name and a description"
+msgstr "Задайте имя и описание"
+
+#: DrGeo-View-Dialog,DrGWizardMacroBuild>>secondPage
+msgid "Select input parameters"
+msgstr "Выберите входные данные"
+
+#: DrGeo-View-Dialog,DrGWizardMacroBuild>>thirdPage
+msgid "Select output parameters"
+msgstr "Выберите выходные данные"
+
+#: DrGeo-View-Dialog,DrGWizardMacroPlay>>firstPage
+msgid "Execute a macro-construction"
+msgstr "Выполнить макрос"
+
+#: DrGeo-View-Dialog,DrGWizardMacroPlay>>firstPage
+msgid ""
+"To execute a macro-construction,\n"
+"\n"
+" 1. First select a macro-construction from the list,\n"
+" 2. Select items on the figure. Only items relevant\n"
+" to the selected macro-construction are selectable.\n"
+" Once enough items are selected, the macro is\n"
+" automaticly executed.\n"
+" To start press the 'next' button."
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGWizardMacroPlay>>secondPage
+msgid "Select a macro-construction then the figure items"
+msgstr "Выберите макрос, затем элементы геометрической фигуры"
+
+#: DrGeo-View-Dialog,DrGWizardScript>>firstPage
+msgid ""
+"To use a script,\n"
+"\n"
+" 1. First select a script from the list,\n"
+" 2. Select items in the sketch,\n"
+" 3. Click somewhere in the background. \n"
+" Once enough items are selected, the script is\n"
+" inserted in the sketch, at the user selected position.\n"
+" To start press the 'next' button."
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGWizardScript>>firstPage
+msgid "Use a script in the sketch"
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGWizardScript>>secondPage
+msgid "Select a script then items in the sketch"
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGWizardScript>>secondPage
+msgid "The arguments accepted by this script."
+msgstr ""
+
+#~ msgid "no name"
+#~ msgstr "без имени"
+
+#~ msgid "This geometric angle %1"
+#~ msgstr "Геометрический угол %1"
+
+#~ msgid "This angle bisector %1"
+#~ msgstr "Эта угловая биссектриса %1"
+
+#~ msgid "This oriented angle %1"
+#~ msgstr "Этот направленный угол %1"
+
+#~ msgid "This Arc Circle %1"
+#~ msgstr "Дуга окружности %1"
+
+#~ msgid "This picture"
+#~ msgstr "Этот рисунок"
+
+#~ msgid "This circle %1"
+#~ msgstr "Эта окружность %1"
+
+#~ msgid "This composite object %1"
+#~ msgstr "Составной объект %1"
+
+#~ msgid "This equation %1"
+#~ msgstr "Это уравнение %1"
+
+#~ msgid "Equation"
+#~ msgstr "Уравнение"
+
+#~ msgid "This line %1"
+#~ msgstr "Эта прямая %1"
+
+#~ msgid "This parallel line %1"
+#~ msgstr "Эта параллельная прямая %1"
+
+#~ msgid "This perpendicular bisector %1"
+#~ msgstr "Эта перпендикулярная биссектриса %1"
+
+#~ msgid "This perpendicular line %1"
+#~ msgstr "Эта перпендикулярная прямая %1"
+
+#~ msgid "This locus %1"
+#~ msgstr "Это место %1"
+
+#~ msgid "This math item %1"
+#~ msgstr "Этот элемент соответствия %1"
+
+#~ msgid "Edit the coordinates"
+#~ msgstr "Редактировать координаты"
+
+#~ msgid "This point %1"
+#~ msgstr "Эта точка %1"
+
+#~ msgid "Edit this curvilinear abscissa in [0;1]"
+#~ msgstr "Редактировать эту криволинейную абсциссу на отрезке [0;1]"
+
+#~ msgid "This polygon %1"
+#~ msgstr "Этот многоугольник %1"
+
+#~ msgid "This quadrilateral %1"
+#~ msgstr "Этот четырехугольник %1"
+
+#~ msgid "This triangle %1"
+#~ msgstr "Этот треугольник %1"
+
+#~ msgid " edges="
+#~ msgstr " края="
+
+#~ msgid "This half-line %1"
+#~ msgstr "Этот луч %1"
+
+#~ msgid "This segment %1"
+#~ msgstr "Этот отрезок %1"
+
+#~ msgid "This text"
+#~ msgstr "Этот текст"
+
+#~ msgid "Edit this text"
+#~ msgstr "Редактировать этот текст."
+
+#~ msgid "Edit me"
+#~ msgstr "Редактируйте меня"
+
+#~ msgid "This arc length %1"
+#~ msgstr "Эта дуга длины %1"
+
+#~ msgid "This circle perimeter %1"
+#~ msgstr "Эта окружность периметром %1"
+
+#~ msgid "This distance between two points %1"
+#~ msgstr "Это расстояние между двумя точками %1"
+
+#~ msgid "This point-line distance %1"
+#~ msgstr "Это расстояние от точки до прямой %1"
+
+#~ msgid "This value %1"
+#~ msgstr "Эта величина %1"
+
+#~ msgid "Value "
+#~ msgstr "Значение "
+
+#~ msgid "This point abscissa %1"
+#~ msgstr "Эта точка абсциссы %1"
+
+#~ msgid "This point ordinate %1"
+#~ msgstr "Эта точка ординаты %1"
+
+#~ msgid "Script "
+#~ msgstr "Скрипт "
+
+#~ msgid "This segment length %1"
+#~ msgstr "Этот отрезок длины %1"
+
+#~ msgid "This line slope %1"
+#~ msgstr "Эта прямая с наклоном %1"
+
+#~ msgid "Edit this value"
+#~ msgstr "Редактировать эту величину"
+
+#~ msgid "This vector abscissa %1"
+#~ msgstr "Этот вектор абсциссы %1"
+
+#~ msgid "This Vector's norm %1"
+#~ msgstr "Норма этого вектора %1"
+
+#~ msgid "This vector ordinate %1"
+#~ msgstr "Этот вектор ординаты %1"
+
+#~ msgid "This vector %1"
+#~ msgstr "Этот вектор %1"
+
+#~ msgid "Only geometric object can be transformed."
+#~ msgstr "Только геометрический объект может быть преобразован."
+
+#~ msgid "Set the style of the line."
+#~ msgstr "Установить стиль прямой"
+
+#~ msgid "Style"
+#~ msgstr "Стиль"
+
+#~ msgid "Set the thickness of the line."
+#~ msgstr "Установить толщину прямой"
+
+#~ msgid "Thickness"
+#~ msgstr "Толщина"
+
+#~ msgid "Fill"
+#~ msgstr "Заполнить"
+
+#~ msgid "Toggle to fill the object."
+#~ msgstr "Переключите, чтобы заполнить объект"
+
+#~ msgid "Toggle the translucency of the object."
+#~ msgstr "Переключить прозрачность объекта"
+
+#~ msgid "Translucent"
+#~ msgstr "Прозрачный"
+
+#~ msgid "Arrow"
+#~ msgstr "Стрелка"
+
+#~ msgid "Set arrow(s) to the line."
+#~ msgstr "Установить стрелку к этой прямой"
+
+#~ msgid "Set the shape of the point."
+#~ msgstr "Установить форму точки."
+
+#~ msgid "Set the size of the point."
+#~ msgstr "Установите размер точки."
+
+#~ msgid "Set a mark to the segment."
+#~ msgstr "Установить отметку на этот отрезок."
+
+#~ msgid "Set the colour."
+#~ msgstr "Установить цвет."
+
+#~ msgid "Feedback"
+#~ msgstr "Обратная связь"
+
+#~ msgid "Hide"
+#~ msgstr "Скрыть"
+
+#~ msgid "Toggle to hide the object."
+#~ msgstr "Переключите, чтобы скрыть объект"
+
+#~ msgid "Lock"
+#~ msgstr "Заблокировать"
+
+#~ msgid "Toggle to lock the object to its position."
+#~ msgstr "Переключите, чтобы зафиксировать объект в его текущем положении"
+
+#~ msgid "Rename this object."
+#~ msgstr "Переименовать этот объект"
+
+#~ msgid "Set the background colour."
+#~ msgstr "Установить цвет фона"
+
+#~ msgid "Font size"
+#~ msgstr "Размер шрифта"
+
+#~ msgid "Set the font size."
+#~ msgstr "Установить размер шрифта."
+
+#~ msgid "Name this value"
+#~ msgstr "Дать имя этой величине"
+
+#~ msgid "Rename this value"
+#~ msgstr "Переименовать эту величину"
+
+#~ msgid "Fig. - "
+#~ msgstr "Рис. "
+
+#~ msgid "Macro - "
+#~ msgstr "Макрос - "
+
+#~ msgid "Settings"
+#~ msgstr "Настройки"
+
+#~ msgid "About"
+#~ msgstr "Сведения о программе"
+
+#~ msgid "New sketch"
+#~ msgstr "Новый эскиз"
+
+#~ msgid "Quit"
+#~ msgstr "Выйти"
+
+#~ msgid "Edit or create scripts"
+#~ msgstr "Изменить или создать скрипт"
+
+#~ msgid ""
+#~ "Angle bisector defined by three points or an angle defined by three "
+#~ "points."
+#~ msgstr ""
+#~ "Угловая биссектриса определяется по трем точкам, или угол определяется по "
+#~ "трем точкам."
+
+#~ msgid "Angle bisector"
+#~ msgstr "Угловая биссектриса"
+
+#~ msgid "Arc defined by three points."
+#~ msgstr "Дуга, определенная тремя точками"
+
+#~ msgid "Arc defined by its center and two points."
+#~ msgstr "Дуга, определенная ее центром и двумя точками"
+
+#~ msgid "Arc (center)"
+#~ msgstr "Дуга (центр)"
+
+#~ msgid ""
+#~ "Picture: drag and drop a picture in the canvas. It can be moved and "
+#~ "scaled."
+#~ msgstr ""
+#~ "Рисунок: перетащиые рисунок на плоскость для рисования, его положение и "
+#~ "размер можно будет изменять."
+
+#~ msgid "Picture"
+#~ msgstr "Рисунок"
+
+#~ msgid ""
+#~ "Circle defined by its center and a point or by its center and radius, a "
+#~ "value."
+#~ msgstr ""
+#~ "Окружность, определенная центром и точкой, или центром и длиной радиуса "
+#~ "(число)"
+
+#~ msgid "Vector or point coordinates, circle or line equation."
+#~ msgstr "Координаты вектора или точки, уравненные окружности или линии"
+
+#~ msgid "Coordinates, equation"
+#~ msgstr "Координаты, уравнение"
+
+#~ msgid ""
+#~ "Click to create a point: free point on the background, on a curve or on "
+#~ "two curves intersection."
+#~ msgstr ""
+#~ "Нажмите здесь, чтобы создать точку на поверхности, на кривой, или на "
+#~ "пересечении двух кривых"
+
+#~ msgid ""
+#~ "Tap to create a point: free point on the background, on a curve or on two "
+#~ "curves intersection."
+#~ msgstr ""
+#~ "Коснитесь, чтобы создать точку: свободную точку на заднем плане, на "
+#~ "кривой, или на пересечении двух кривых."
+
+#~ msgid ""
+#~ "Homothety: select a center, a value and a geometric object. The first "
+#~ "selected point is the homothety center."
+#~ msgstr ""
+#~ "Гомотетия: выберите центр, размер, и геометрический объект. Первая "
+#~ "выбранная точка - центр гомотетии."
+
+#~ msgid "Homothety (scale)"
+#~ msgstr "Гомотетия (масштабное преобразование)"
+
+#~ msgid "Line defined by two points"
+#~ msgstr "Прямая, определенная двумя точками"
+
+#~ msgid "Locus defined by a free point on a curve and a relative point."
+#~ msgstr ""
+#~ "Место, определенное свободной точкой на кривой и относительной точкой."
+
+#~ msgid "Construct a macro-construction with input and output items."
+#~ msgstr "Создать макрос с входными и выходными элементами"
+
+#~ msgid "Build macro"
+#~ msgstr "Создать макрос"
+
+#~ msgid "Input and output items don't match"
+#~ msgstr "Входные и выходные элементы не совпадают"
+
+#~ msgid "Please, enter a proper title and description"
+#~ msgstr "Пожалуйста введите правильные заголовок и описание"
+
+#~ msgid "The midpoint of a segment or between two points."
+#~ msgstr "Промежуточная точка отрезка или между двумя точками"
+
+#~ msgid "Middle"
+#~ msgstr "Середина"
+
+#~ msgid ""
+#~ "Line passing through one point and parallel to a line, half-line, etc."
+#~ msgstr ""
+#~ "Прямая, проходящая через одну точку и параллельная другой прямой или "
+#~ "лучу, и т. д."
+
+#~ msgid "Parallel"
+#~ msgstr "Параллельный"
+
+#~ msgid "Perpendicular bisector defined by a segment or two points."
+#~ msgstr ""
+#~ "Перпендикулярная биссектриса определяется по отрезку или по двум точкам"
+
+#~ msgid "Perpendicular bisector"
+#~ msgstr "Перпендикулярная биссектриса"
+
+#~ msgid ""
+#~ "Line passing through one point and orthogonal to a line, half-line, etc."
+#~ msgstr ""
+#~ "Прямая, проходящая через одну точку и перпендикулярная другой прямой или "
+#~ "лучу, и т. д."
+
+#~ msgid "Perpendicular"
+#~ msgstr "Перпендикуляр"
+
+#~ msgid ""
+#~ "Point given its coordinates: select two numbers or a point coordinates "
+#~ "(@)."
+#~ msgstr "Точка, для которой заданы координаты: выберите два числа (x@y)"
+
+#~ msgid "Coordinates"
+#~ msgstr "Координаты"
+
+#~ msgid "Intersection(s) of two curves."
+#~ msgstr "Пересечение двух кривых"
+
+#~ msgid "Intersection"
+#~ msgstr "Пересечение"
+
+#~ msgid ""
+#~ "Polygon by n points: last point must be the initial point to terminate."
+#~ msgstr ""
+#~ "Многоугольник по нескольким точкам: последняя точка должна замыкать "
+#~ "контур."
+
+#~ msgid ""
+#~ "Regular polygon defined by its center, a vertex and its sides number."
+#~ msgstr ""
+#~ "Обыкновенный многоугольник, определенный его центром, вершиной и "
+#~ "количеством сторон."
+
+#~ msgid "Regular polygon"
+#~ msgstr "Обыкновенный многоугольник"
+
+#~ msgid ""
+#~ "Half-Line defined by two points, the first selected point is the origin."
+#~ msgstr "Луч, заданный двумя точками, первая заданная точка - начало луча."
+
+#~ msgid ""
+#~ "Reflexion: select a line and a geometric object. Reflexion axe is the "
+#~ "first selected line."
+#~ msgstr ""
+#~ "Отражение: выберите прямую и геометрический объект. Первая выбранная "
+#~ "линия - ось отражения."
+
+#~ msgid "Reflection"
+#~ msgstr "Отражение"
+
+#~ msgid ""
+#~ "Rotation: select a point, a value and a geometric object. The first "
+#~ "selected point is the rotation center."
+#~ msgstr ""
+#~ "Поворот: выберите точку, число и геометрический объект. Первая выбранная "
+#~ "точка - центр поворота."
+
+#~ msgid "Rotation"
+#~ msgstr "Поворот"
+
+#~ msgid "Insert a Smalltalk script in the drawing area."
+#~ msgstr "Вставить Smalltalk-скрипт в область рисования"
+
+#~ msgid "Use a script"
+#~ msgstr "Использовать скрипт"
+
+#~ msgid "Segment defined by two points."
+#~ msgstr "Отрезок, определенный двумя точками."
+
+#~ msgid ""
+#~ "Symmetry: select a point and a geometric object. The first selected point "
+#~ "is the symmetry center."
+#~ msgstr ""
+#~ "Симметрия: выберите точку и геометрический объект. Первая выранная точка "
+#~ "- центр симметрии."
+
+#~ msgid "Symmetry"
+#~ msgstr "Симметрия"
+
+#~ msgid "Free text you can edit and move around."
+#~ msgstr "Текст в свободной форме, который можно редактировать и перемещать."
+
+#~ msgid "Text"
+#~ msgstr "Текст"
+
+#~ msgid "Translation: select a vector and a geometric object."
+#~ msgstr "Параллельный перенос: выберите вектор и геометрический объект"
+
+#~ msgid "Translation"
+#~ msgstr "Параллельный перенос"
+
+#~ msgid "Distance between objects, curve length, free value."
+#~ msgstr "Расстояние между объектами, длина кривой, свободная величина."
+
+#~ msgid "Distance, length, value"
+#~ msgstr "Расстояние, длина, число."
+
+#~ msgid "Vector defined by two points."
+#~ msgstr "Вектор, определенный двумя точками."
+
+#~ msgid "Select a free point on a curve to animate it."
+#~ msgstr "Выберите свободную точку на кривой для анимации."
+
+#~ msgid "Erase an object and all its depedencies."
+#~ msgstr "Удалить объект и его зависимости."
+
+#~ msgid "Eraser"
+#~ msgstr "Ластик"
+
+#~ msgid "This intersection"
+#~ msgstr "Это пересечение"
+
+#~ msgid "Change as a free point on the plane."
+#~ msgstr "Сделать свободной точкой на плоскости."
+
+#~ msgid "Change as a free point on this curve."
+#~ msgstr "Сделать свободной точкой на кривой."
+
+#~ msgid "Change as this intersection."
+#~ msgstr "Сделать этим пересечением."
+
+#~ msgid "Edit an item's property"
+#~ msgstr "Редактировать свойства элемента"
+
+#~ msgid "Property"
+#~ msgstr "Свойство"
+
+#~ msgid "Select and move an object."
+#~ msgstr "Выделить и переместить объект."
+
+#~ msgid "Select and Move"
+#~ msgstr "Выделить и Переместить"
+
+#~ msgid "Select a point to merge with"
+#~ msgstr "Выберите точку для слияния"
+
+#~ msgid "Drag this point to change its nature."
+#~ msgstr "Передвиньте эту точку мышью чтобы изменить ее вид."
+
+#~ msgid ""
+#~ "Pressing down the [Shift] key you can drag and change the nature of free "
+#~ "point or intersection point."
+#~ msgstr ""
+#~ "При нажатой клавише [Shift] вы можете менять вид свободной точки или "
+#~ "точки пересечения."
+
+#~ msgid ""
+#~ "Several objects can be selected. Please, select one clicking the mouse."
+#~ msgstr ""
+#~ "Несколько объектов не могут быть выделены. Пожалуйста, выделите один "
+#~ "объект мышью."
+
+#~ msgid "Edit an object style."
+#~ msgstr "Редактировать стиль объекта."
+
+#~ msgid "Edit Style"
+#~ msgstr "Редактировать стиль."
+
+#~ msgid "Select an object"
+#~ msgstr "Выделить объект"
+
+#~ msgid "Several objects can be selected. Please, choose one."
+#~ msgstr "Несколько объектов могут быть выбраны. Пожалуйста, выберите один."
+
+#~ msgid "Colour"
+#~ msgstr "Цвет"
+
+#~ msgid "Shape"
+#~ msgstr "Форма"
+
+#~ msgid "Size"
+#~ msgstr "Размер"
+
+#~ msgid "Mark"
+#~ msgstr "Отметить"
+
+#~ msgid "Background"
+#~ msgstr "Фон"
+
+#~ msgid "Animate at speed 1."
+#~ msgstr "Анимировать на скорости 1"
+
+#~ msgid "Animate x1"
+#~ msgstr "Анимировать x1"
+
+#~ msgid "Animate at speed 2."
+#~ msgstr "Анимировать на скорости 2"
+
+#~ msgid "Animate x2"
+#~ msgstr "Анимировать x2"
+
+#~ msgid "Animate at speed 3."
+#~ msgstr "Анимировать на скорости 3"
+
+#~ msgid "Animate x3"
+#~ msgstr "Анимировать x3"
+
+#~ msgid "Animate at speed 4."
+#~ msgstr "Анимировать на скорости 4"
+
+#~ msgid "Animate x4"
+#~ msgstr "Анимировать x4"
+
+#~ msgid "Show or hide grid."
+#~ msgstr "Скрыть/показать координатную сетку"
+
+#~ msgid "Save"
+#~ msgstr "Сохранить"
+
+#~ msgid "Delete a macro-construction from the registry."
+#~ msgstr "Удалить определение макроса из хранилища."
+
+#~ msgid "Delete macro"
+#~ msgstr "Удалить определение макроса."
+
+#~ msgid "Snap to grid."
+#~ msgstr "Выровнять по сетке"
+
+#~ msgid ""
+#~ "Toggle between the build of several geometric objects and the build of "
+#~ "one geometric object then move it."
+#~ msgstr ""
+#~ "Переключитесь между построением одного или нескольких геометрических "
+#~ "объектов, затем перемещайте его"
+
+#~ msgid "New"
+#~ msgstr "Новый эскиз"
+
+#~ msgid "Open a new blank sketch."
+#~ msgstr "Открыть новый пустой эскиз"
+
+#~ msgid "Open a sketch."
+#~ msgstr "Открыть эскиз"
+
+#~ msgid "Redo"
+#~ msgstr "Повторить"
+
+#~ msgid "Redo last action."
+#~ msgstr "Повторить последнее действие"
+
+#~ msgid "Edit a script"
+#~ msgstr "Редактировать скрипт"
+
+#~ msgid "Undo"
+#~ msgstr "Отменить"
+
+#~ msgid "Undo last action"
+#~ msgstr "Отменить последнее действие"
+
+#~ msgid "Open at..."
+#~ msgstr "Открыть в..."
+
+#~ msgid "Description:"
+#~ msgstr "Описание:"
+
+#~ msgid "Title:"
+#~ msgstr "Заголовок:"
