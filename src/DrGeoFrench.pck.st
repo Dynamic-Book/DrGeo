@@ -1,6 +1,6 @@
-'From Cuis7.7 [latest update: #7839] on 17 February 2026 at 8:45:21 pm'!
+'From Cuis7.7 [latest update: #7839] on 18 February 2026 at 4:05:06 pm'!
 'Description '!
-!provides: 'DrGeoFrench' 1 22!
+!provides: 'DrGeoFrench' 1 23!
 !requires: 'DrGeoCore' 1 33 nil!
 !requires: 'CuisFrench' 1 0 nil!
 SystemOrganization addCategory: #DrGeoFrench!
@@ -1198,7 +1198,7 @@ fig _ DrGeoFigure nouveau.
 monTexte _ fig texte: ''Hello''.
 monTexte texte: ''Au revoir'']]] withDrGeoActions') data: ((Dictionary new)); yourself); subsections: (OrderedCollection new yourself); yourself)! !
 
-!DrGeoTutorial methodsFor: 'as yet unclassified' stamp: 'hlsf 17/Feb/2026 20:38:47'!
+!DrGeoTutorial methodsFor: 'as yet unclassified' stamp: 'hlsf 18/Feb/2026 15:42:29'!
 section_NumériqueTexte_ValeurRéglette
 ^(EruditeBookSection basicNew title: 'Valeur & Réglette'; document: ((EruditeDocument contents: '!!!!!!Valeur libre
 //<valeur>// **valeur:** //v//
@@ -1241,7 +1241,7 @@ Une réglette est de valeur entière ou décimale.
 //b//, booléen (true|false), affiche ou non la valeur numérique avec le nom sous la forme ’a = 1.2’
 ⇒ un bloc de code retournant la valeur courante, décimale ou entière, de la réglette
 
-[[[| fig r | "XXX TO MAKE WORKING"
+[[[| fig r | 
 fig _ DrGeoFigure nouveau.
 fig axesMontrer.
 r _ fig entier: 1 à: 0@-5 min: 1 max: 5.
@@ -1265,7 +1265,7 @@ Déplie la section **▶ Point** pour explorer ces types de point !!') data: ((D
         add: self section_Point_BlocDeCode;
  yourself); yourself)! !
 
-!DrGeoTutorial methodsFor: 'as yet unclassified' stamp: 'hlsf 21/Dec/2022 22:16:02'!
+!DrGeoTutorial methodsFor: 'as yet unclassified' stamp: 'hlsf 18/Feb/2026 15:41:46'!
 section_Point_BlocDeCode
 ^(EruditeBookSection basicNew title: 'Bloc de code'; document: ((EruditeDocument contents: '!!!!!!Bloc de code
 Fonctionalité avancée où la position du point est définie par un bloc de code.
@@ -1292,8 +1292,8 @@ d _ figure droitePassantPar: -2 @ 1 et: 3 @ 3.
 d couleur: Color blue.
 m _ figure point: 1 @ -1.
 p _ figure 
-   point: [:parents | 
-	parents first closestPointTo: parents second point]
+   point: [:droite :unPoint | 
+	droite closestPointTo: unPoint point]
    parents: {d . m}]]] withDrGeoActions') data: ((Dictionary new)); yourself); subsections: (OrderedCollection new yourself); yourself)! !
 
 !DrGeoTutorial methodsFor: 'as yet unclassified' stamp: 'hlsf 17/Feb/2026 15:41:25'!

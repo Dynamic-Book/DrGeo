@@ -1,14 +1,23 @@
-2025-04-06  hilaire  <hilaire@gnu.org>
+2026-02-18  hilaire  <hilaire@gnu.org>
 
-	* Release 25.06 beta Details at
-	https://github.com/Dynamic-Book/drgeo/milestone/2?closed=1
-	* Build with Cuis-Smalltalk 6.3
+	* Release 26.02 beta Details at
+	https://github.com/Dynamic-Book/DrGeo/milestone/2?closed=1
+	* Build with Cuis-Smalltalk 7.7
+	* #51 Option to save DrGeo image at an alternate place in user
+	space
+	* #52 Ray rendering
+	* #53 Multiuser start-up script
+	* #54 DrGeo on Cuis-Smalltalk 7.5
+	* #55 Script and Macro dialog fields not visible
+	* #56 Style dialog font list
+	* #57 Smalltalk sketch with n points polygon
+	* #58 Ray clipping
 	* #50 Toolbar button without border
 	* #49 Check button in Style dialog not updated
 	* #48 State of the toolbar buttons
 	* #47 Style dialog not visible in specific circumstance
 	* #49 Drop down menu of the style dialog
-	* #44 Path to user resourcesbu
+	* #44 Path to user resources
 	* #42 Wheel toolbar and tablet
 
 2024-06-01  hilaire  <hilaire@gnu.org>

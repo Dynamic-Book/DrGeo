@@ -1,6 +1,6 @@
-'From Cuis7.7 [latest update: #7839] on 17 February 2026 at 7:21:48 pm'!
+'From Cuis7.7 [latest update: #7839] on 18 February 2026 at 4:05:08 pm'!
 'Description '!
-!provides: 'DrGeoCore' 1 43!
+!provides: 'DrGeoCore' 1 44!
 !requires: 'UI-Preference' 1 28 nil!
 !requires: 'UI-Panel' 1 140 nil!
 !requires: 'Graphics-Files-Additional' 1 30 nil!
@@ -7010,7 +7010,7 @@ doParentsExist
 isConstrainedPointItem
 	^ true! !
 
-!DrGPointBlockItem methodsFor: 'updating' stamp: 'hlsf 17/Feb/2026 16:07:27'!
+!DrGPointBlockItem methodsFor: 'updating' stamp: 'hlsf 18/Feb/2026 15:40:16'!
 update
 | evaluator |
 	self doParentsExist ifFalse: [^ self exist: false].
@@ -7018,7 +7018,7 @@ update
 		ifNotEmpty: [
 			parents size = 1
 			ifTrue: [ [ pointBlock value: parents first ] ]
-			ifFalse: [ [pointBlock value: parents] ]].
+			ifFalse: [ [pointBlock valueWithArguments: parents] ]].
 	point := evaluator on: Error do: [:msg | msg print ].
 	self exist: point notNil ! !
 
@@ -8359,7 +8359,7 @@ valueBlock: aBlock
 rehash
 	^ hash := super rehash bitXor: valueBlock hash! !
 
-!DrGValueBlockItem methodsFor: 'updating' stamp: 'hlsf 17/Feb/2026 16:08:10'!
+!DrGValueBlockItem methodsFor: 'updating' stamp: 'hlsf 18/Feb/2026 15:40:30'!
 update
 	| evaluator |
 	self doParentsExist ifFalse: [^ self exist: false].
@@ -8367,7 +8367,7 @@ update
 		ifNotEmpty: [
 			parents size = 1
 				ifTrue: [ [ valueBlock value: parents first ] ] 
-				ifFalse: [ [valueBlock value: parents] ]].
+				ifFalse: [ [valueBlock valueWithArguments: parents] ]].
 	value := evaluator on: Error do: [:msg | msg print]. 
 	self exist: value notNil ! !
 
@@ -11509,9 +11509,9 @@ aboutDrgeo
 cuisVersion
 	^ SystemVersion current versionString, ' #', SystemVersion current highestUpdate printString! !
 
-!DrGeo class methodsFor: 'user interface' stamp: 'hlsf 8/Jan/2026 22:05:55'!
+!DrGeo class methodsFor: 'user interface' stamp: 'hlsf 18/Feb/2026 15:09:59'!
 drgeoCopyright
-	^ 'Source code application: Copyright 1996-2025 Hilaire Fernandes
+	^ 'Source code application: Copyright 1996-2026 Hilaire Fernandes
 Icons: Copyright 1999 Frédéric Toussaint
 Icons: Copyright 2021-2022 David Caula (imppao)'! !
 
@@ -11533,10 +11533,10 @@ and programmed interactive sketches.
 LICENSE: GPL' translated format: {self drgeoVersion. self drgeoCopyright. self cuisVersion }.
 	^ text! !
 
-!DrGeo class methodsFor: 'user interface' stamp: 'hlsf 27/May/2025 17:47:01'!
+!DrGeo class methodsFor: 'user interface' stamp: 'hlsf 18/Feb/2026 15:10:22'!
 drgeoVersion
 	^ 'Installed version: ' translated, 
-		'25.08a beta (code revision ', 
+		'26.02a beta (code revision ', 
 		(String streamContents: [:str | 
 			(CodePackage installedPackages at: 'DrGeo') featureSpec provides printVersionRevisionOn: str]), ')'! !
 
@@ -13340,10 +13340,13 @@ vectorPreferences
 	{#vectorStyle. 'Style' translated. category. DrGTypeStyle with: #vectorStyle in: preferences. #plain}
 	}! !
 
-!DrGPlatform methodsFor: 'initialize-release' stamp: 'hlsf 17/Feb/2026 14:57:00'!
+!DrGPlatform methodsFor: 'initialize-release' stamp: 'hlsf 18/Feb/2026 16:05:02'!
 launch
 	self setCodeCompletion.
-	Transcript show: '[DrGeo] Code completion set'; cr! !
+	Transcript show: '[DrGeo] Code completion set'; cr.
+	"Set a default name for authoring"
+	Utilities setAuthorName: 'Dr. Geo User' initials: 'drgeo'.
+	Transcript show: '[DrGeo] Author set to "DrGeo User" (drgeo)'; cr.! !
 
 !DrGPlatform methodsFor: 'initialize-release' stamp: 'hlsf 6/Jul/2022 09:25:01'!
 reset
@@ -13621,7 +13624,7 @@ isiPad
 cleanUp
 	"Smalltalk reduceCuis "! !
 
-!DrGeoSystem class methodsFor: 'install' stamp: 'hlsf 17/Feb/2026 18:58:36'!
+!DrGeoSystem class methodsFor: 'install' stamp: 'hlsf 18/Feb/2026 16:03:50'!
 install
 	| world |
 	"Report by any mean installation and run time"
@@ -13647,8 +13650,6 @@ install
 	TextDomainManager registerCategoryPrefix: 'DrGeo' domain: 'drgeo'.
 	TextDomainManager registerCategoryPrefix: 'DrGeoCore' domain: 'drgeocore'.
 	TextDomainManager registerCategoryPrefix: 'cuis' domain: 'cuis'.	
-	"Set a default name for authoring"
-	Utilities setAuthorName: 'Dr. Geo User' initials: 'drgeo'.
 
 	'Finalizing installation...' print.
 	world := UISupervisor ui.
@@ -30278,11 +30279,11 @@ launchSketch: aScriptFile
 "Launch a test"
 	(DrGeoSystem smalltalkSketchesPath // aScriptFile) readStream fileIn! !
 
-!DrGeoSmalltalkSketchTest methodsFor: 'helpers' stamp: 'hlsf 8/Jan/2026 21:56:18'!
+!DrGeoSmalltalkSketchTest methodsFor: 'helpers' stamp: 'hlsf 18/Feb/2026 15:48:36'!
 tearDown
 	(Delay forMilliseconds: 200) wait.
 	DrGeoSketch allInstancesDo: [:aSketch | aSketch terminateDo ].
-	DrGeoAppView allInstancesDo: [:drMorph | drMorph deleteWithoutConfirmation ].! !
+	DrGeoView allInstancesDo: [:drMorph | drMorph deleteWithoutConfirmation ].! !
 
 !DrGeoSmalltalkSketchTest methodsFor: 'helpers' stamp: 'hlsf 13/Jun/2021 11:03:31'!
 testOnSketch: aScriptFile
