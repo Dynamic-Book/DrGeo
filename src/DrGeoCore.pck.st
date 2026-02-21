@@ -1,6 +1,6 @@
-'From Cuis7.7 [latest update: #7839] on 18 February 2026 at 4:05:08 pm'!
+'From Cuis7.7 [latest update: #7840] on 21 February 2026 at 10:16:01 am'!
 'Description '!
-!provides: 'DrGeoCore' 1 44!
+!provides: 'DrGeoCore' 1 45!
 !requires: 'UI-Preference' 1 28 nil!
 !requires: 'UI-Panel' 1 140 nil!
 !requires: 'Graphics-Files-Additional' 1 30 nil!
@@ -13517,10 +13517,10 @@ beWorkstation
 	"self beWorkstation"
 	platform := DrGWorkstation new! !
 
-!DrGeoSystem class methodsFor: 'class initialization' stamp: 'Install-DrGeoFrench 7/Dec/2022 16:16:08'!
+!DrGeoSystem class methodsFor: 'class initialization' stamp: 'hlsf 21/Feb/2026 10:15:20'!
 initialize
 	"Erudite extention for Dr. Geo"
-	EruditeMarkupGrammar addCodeAction: 'withDrGeoActions'! !
+	Smalltalk at: #EruditeMarkupGrammar ifPresent: [:aClass | aClass addCodeAction: 'withDrGeoActions']! !
 
 !DrGeoSystem class methodsFor: 'class initialization' stamp: 'hlsf 3/Jul/2022 12:50:46'!
 reset
