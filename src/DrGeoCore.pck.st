@@ -1,10 +1,10 @@
-'From Cuis7.7 [latest update: #7840] on 21 February 2026 at 10:16:01 am'!
+'From Cuis7.7 [latest update: #7840] on 22 February 2026 at 12:04:12 pm'!
 'Description '!
-!provides: 'DrGeoCore' 1 45!
+!provides: 'DrGeoCore' 1 46!
 !requires: 'UI-Preference' 1 28 nil!
 !requires: 'UI-Panel' 1 140 nil!
-!requires: 'Graphics-Files-Additional' 1 30 nil!
 !requires: 'YAXO' 1 28 nil!
+!requires: 'Graphics-Files-Additional' 1 30 nil!
 SystemOrganization addCategory: #'DrGeoCore-Model'!
 SystemOrganization addCategory: #'DrGeoCore-Model-Smalltalk'!
 SystemOrganization addCategory: #'DrGeoCore-Model-Item'!
@@ -22,6 +22,16 @@ SystemOrganization addCategory: #'DrGeoCore-System'!
 SystemOrganization addCategory: #'DrGeoCore-Test'!
 SystemOrganization addCategory: #DrGeoCore!
 
+
+!classDefinition: #DrGScriptPlayTool category: #'DrGeoCore-Presenter-Tool'!
+ProtoObject subclass: #DrGScriptPlayTool
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'DrGeoCore-Presenter-Tool'!
+!classDefinition: 'DrGScriptPlayTool class' category: #'DrGeoCore-Presenter-Tool'!
+DrGScriptPlayTool class
+	instanceVariableNames: ''!
 
 !classDefinition: #DrGFactory category: #'DrGeoCore-Factories'!
 Object subclass: #DrGFactory
@@ -1511,16 +1521,6 @@ DrGTool subclass: #DrGBuildTool
 	category: 'DrGeoCore-Presenter-Tool'!
 !classDefinition: 'DrGBuildTool class' category: #'DrGeoCore-Presenter-Tool'!
 DrGBuildTool class
-	instanceVariableNames: ''!
-
-!classDefinition: #DrGScriptPlayTool category: #'DrGeoCore-Presenter-Tool'!
-DrGMacroBuildTool subclass: #DrGScriptPlayTool
-	instanceVariableNames: ''
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'DrGeoCore-Presenter-Tool'!
-!classDefinition: 'DrGScriptPlayTool class' category: #'DrGeoCore-Presenter-Tool'!
-DrGScriptPlayTool class
 	instanceVariableNames: ''!
 
 !classDefinition: #DrGFlyPointBuildTool category: #'DrGeoCore-Presenter-Tool'!
@@ -3036,6 +3036,19 @@ A preference type representing the different possible style of a line.!
 
 !DrGTypeThickness commentStamp: '<historical>' prior: 0!
 A preference type representing the different possible thickness of a line.!
+
+!DrGScriptPlayTool methodsFor: 'initialize-release' stamp: ''!
+registerDependant: anObject
+	builder when: #changedState send: #switchState: to: self.
+	builder when: #cancel send: #cancel to: self.
+	builder when: #readyToBuild send: #readyToBuild to: anObject.
+	builder when: #changedScript send: #changedScript to: self! !
+
+!DrGScriptPlayTool methodsFor: 'updating' stamp: 'hlsf 11/Apr/2021 12:31:09'!
+changedScript
+" the builder inform us the user selected another script,
+do some cleaning"
+	self selectNoMorph! !
 
 !DrGFactory methodsFor: 'accessing' stamp: 'hlsf 10/Feb/2022 10:03:01'!
 add: item 
@@ -11499,24 +11512,32 @@ unsavedData
 		addAll: (self figuresArray select: [:each | each third propertyValue]).
 	^ unsavedData! !
 
-!DrGeo class methodsFor: 'user interface' stamp: 'hlsf 8/Jan/2026 22:05:51'!
-aboutDrgeo
+!DrGeo class methodsFor: 'menu' stamp: 'hlsf 22/Feb/2026 10:28:33'!
+about
 	UISupervisor whenUIinSafeState: [
 		(PopUpMenu labels: ' Ok ' icons: {DrGIcons drgeo}) 
-			startUpNonModalWithCaption:  self drgeoInformationString ]! !
+			startUpNonModalWithCaption:  self informationString ]! !
 
-!DrGeo class methodsFor: 'user interface' stamp: 'hlsf 8/Jan/2026 22:05:47'!
-cuisVersion
-	^ SystemVersion current versionString, ' #', SystemVersion current highestUpdate printString! !
-
-!DrGeo class methodsFor: 'user interface' stamp: 'hlsf 18/Feb/2026 15:09:59'!
-drgeoCopyright
+!DrGeo class methodsFor: 'menu' stamp: 'hlsf 22/Feb/2026 10:28:19'!
+copyright
 	^ 'Source code application: Copyright 1996-2026 Hilaire Fernandes
 Icons: Copyright 1999 Frédéric Toussaint
 Icons: Copyright 2021-2022 David Caula (imppao)'! !
 
-!DrGeo class methodsFor: 'user interface' stamp: 'hlsf 8/Jan/2026 22:05:58'!
-drgeoInformationString
+!DrGeo class methodsFor: 'menu' stamp: 'hlsf 8/Jan/2026 22:05:47'!
+cuisVersion
+	^ SystemVersion current versionString, ' #', SystemVersion current highestUpdate printString! !
+
+!DrGeo class methodsFor: 'menu' stamp: 'hlsf 3/Aug/2023 21:47:35'!
+getMenuIn: aWorld at: aHand
+	| menu |
+	menu :=  (CommandBuilder on: #drgeoWorldMenu) getMenu.
+	menu addStayUpIcons ;
+		addTitle: 'System menu' translated.
+	^ menu! !
+
+!DrGeo class methodsFor: 'menu' stamp: 'hlsf 22/Feb/2026 10:28:33'!
+informationString
 	|text |
 	text := 'Dr. Geo is about interactive geometry and programming.
 {1} - {3}
@@ -11530,25 +11551,10 @@ and programmed interactive sketches.
 
 {2}
 
-LICENSE: GPL' translated format: {self drgeoVersion. self drgeoCopyright. self cuisVersion }.
+LICENSE: GPL' translated format: {self version. self copyright. self cuisVersion }.
 	^ text! !
 
-!DrGeo class methodsFor: 'user interface' stamp: 'hlsf 18/Feb/2026 15:10:22'!
-drgeoVersion
-	^ 'Installed version: ' translated, 
-		'26.02a beta (code revision ', 
-		(String streamContents: [:str | 
-			(CodePackage installedPackages at: 'DrGeo') featureSpec provides printVersionRevisionOn: str]), ')'! !
-
-!DrGeo class methodsFor: 'user interface' stamp: 'hlsf 3/Aug/2023 21:47:35'!
-getMenuIn: aWorld at: aHand
-	| menu |
-	menu :=  (CommandBuilder on: #drgeoWorldMenu) getMenu.
-	menu addStayUpIcons ;
-		addTitle: 'System menu' translated.
-	^ menu! !
-
-!DrGeo class methodsFor: 'user interface' stamp: 'hlsf 3/Apr/2024 17:11:51'!
+!DrGeo class methodsFor: 'menu' stamp: 'hlsf 3/Apr/2024 17:11:51'!
 preferencesMenu: builder
 	<drgeoWorldMenu>
 	(builder newEntry: 'Settings' translated in: 'Preferences' translated)
@@ -11565,14 +11571,14 @@ preferencesMenu: builder
 		order: 3.
 		! !
 
-!DrGeo class methodsFor: 'user interface' stamp: 'hlsf 3/Aug/2023 21:44:17'!
+!DrGeo class methodsFor: 'menu' stamp: 'hlsf 3/Aug/2023 21:44:17'!
 quit
 	self unsavedData isEmpty ifFalse: [ 
 		(self confirm: 'There is unsaved data!! 
 Are you sure to quit Dr. Geo environment?' translated) ifFalse: [ ^ self]].
 	Smalltalk quitPrimitive! !
 
-!DrGeo class methodsFor: 'user interface' stamp: 'hlsf 26/May/2024 11:23:04'!
+!DrGeo class methodsFor: 'menu' stamp: 'hlsf 26/May/2024 11:23:04'!
 toolsMenu: builder
 	<drgeoWorldMenu>
 	(builder newEntry: 'System Browser' translated in: 'Tools' translated)
@@ -11618,7 +11624,14 @@ toolsMenu: builder
 		icon:	 #saveIcon;
 		help: 'Save this Dr. Geo session.' translated! !
 
-!DrGeo class methodsFor: 'user interface' stamp: 'hlsf 3/Apr/2024 17:10:15'!
+!DrGeo class methodsFor: 'menu' stamp: 'hlsf 22/Feb/2026 10:27:21'!
+version
+	^ 'Installed version: ' translated, 
+		'26.02a beta (code revision ', 
+		(String streamContents: [:str | 
+			(CodePackage installedPackages at: 'DrGeo') featureSpec provides printVersionRevisionOn: str]), ')'! !
+
+!DrGeo class methodsFor: 'menu' stamp: 'hlsf 22/Feb/2026 10:27:58'!
 worldMenu: builder
 	<drgeoWorldMenu>
 	(builder newEntry: 'New sketch' translated)
@@ -11640,7 +11653,7 @@ worldMenu: builder
 	(builder newEntry: 'Tools' translated)
 		icon:	 #systemIcon.
 	(builder newEntry: 'About' translated)
-		action: [ DrGeo aboutDrgeo ];
+		action: [ DrGeo about ];
 		order: 7.
 	(builder newEntry:  'Quit' translated)
 		action: [ DrGeo quit ];
@@ -12232,19 +12245,6 @@ builder: aBuilderClassName presenter: aPresenter
 		presenter: aPresenter;
 		initialize;
 		yourself! !
-
-!DrGScriptPlayTool methodsFor: 'initialize-release' stamp: ''!
-registerDependant: anObject
-	builder when: #changedState send: #switchState: to: self.
-	builder when: #cancel send: #cancel to: self.
-	builder when: #readyToBuild send: #readyToBuild to: anObject.
-	builder when: #changedScript send: #changedScript to: self! !
-
-!DrGScriptPlayTool methodsFor: 'updating' stamp: 'hlsf 11/Apr/2021 12:31:09'!
-changedScript
-" the builder inform us the user selected another script,
-do some cleaning"
-	self selectNoMorph! !
 
 !DrGFlyPointBuildTool methodsFor: 'initialize' stamp: ''!
 initialize
@@ -13624,7 +13624,7 @@ isiPad
 cleanUp
 	"Smalltalk reduceCuis "! !
 
-!DrGeoSystem class methodsFor: 'install' stamp: 'hlsf 18/Feb/2026 16:03:50'!
+!DrGeoSystem class methodsFor: 'install' stamp: 'hlsf 22/Feb/2026 10:08:08'!
 install
 	| world |
 	"Report by any mean installation and run time"
@@ -13668,7 +13668,7 @@ install
 		(world submorphs reject: [:aMorph | aMorph is: #TaskbarMorph]) 
 			do: [:each | each delete].
 		'Morphs deleted' print.
-		'Installing App luanch sequence...' print.
+		'Installing App launch sequence...' print.
 		Smalltalk at: #drgeoApp put: DrGeoSystem.
 		AppLauncher appGlobalName: #drgeoApp appSelector: #launch.
 		'Cleaning image' print.
