@@ -1,15 +1,13 @@
 From DrGeo image, with Gettext package installed, execute:
 
-     TextDomainManager registerCategoryPrefix: 'DrGeo' domain: 'drgeo'.
+     TextDomainManager registerCategoryPrefix: 'DrGeo/Core' domain: 'drgeo/drgeocore'.
+      
      GetTextExporter exportTemplate.
 
 To see the locale and locale directories, in the DrGeo image:
 
      Locale determineCurrentLocale
      GetTextTranslator defaultLocaleDirs
-
-At user root directory (on Linux), a po/ folder is created containing the drgeo.pot
-file with the up to date message.
 
 Beware, carriage return (CR) are \r in the messages, keep it like
 this.

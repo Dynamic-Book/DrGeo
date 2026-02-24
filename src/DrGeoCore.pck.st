@@ -1,10 +1,10 @@
-'From Cuis7.7 [latest update: #7840] on 22 February 2026 at 12:04:12 pm'!
+'From Cuis7.7 [latest update: #7840] on 24 February 2026 at 2:33:55 pm'!
 'Description '!
-!provides: 'DrGeoCore' 1 46!
+!provides: 'DrGeoCore' 1 47!
 !requires: 'UI-Preference' 1 28 nil!
 !requires: 'UI-Panel' 1 140 nil!
-!requires: 'YAXO' 1 28 nil!
 !requires: 'Graphics-Files-Additional' 1 30 nil!
+!requires: 'YAXO' 1 28 nil!
 SystemOrganization addCategory: #'DrGeoCore-Model'!
 SystemOrganization addCategory: #'DrGeoCore-Model-Smalltalk'!
 SystemOrganization addCategory: #'DrGeoCore-Model-Item'!
@@ -10919,7 +10919,7 @@ newFigure
 openFigureThumbnail
 	DrGFileOpenMorph open! !
 
-!DrGeo methodsFor: 'callback UI' stamp: 'hlsf 17/Feb/2026 14:46:41'!
+!DrGeo methodsFor: 'callback UI' stamp: 'drgeo 24/Feb/2026 14:18:19'!
 save
 "Save the sketch with the current filename"
 | stream |
@@ -10929,7 +10929,7 @@ save
 		DrGeoXml new 
 			presenter: self; 
 			saveOn: stream.
-		self previewOnFile: DrGeoSystem mySketchesPath // (sketchName, '.png')].
+		self previewIn: DrGeoSystem mySketchesPath // (sketchName, '.png')].
 	self saved: true.
 	stream close]
 		on: Error 
@@ -11293,18 +11293,16 @@ useScript: aScript
 	self tool builder scriptClass: aScript.
 	self tool switchState: DrGMacroPlayToolStateSelect! !
 
-!DrGeo methodsFor: 'canvas' stamp: 'hlsf 3/Aug/2023 23:22:11'!
-previewOnFile: aFileEntry
+!DrGeo methodsFor: 'canvas' stamp: 'drgeo 24/Feb/2026 14:21:30'!
+previewIn: aFileEntry
 "compute a preview and save it in the file entry"
-	| stream |
-	[ 	[stream := aFileEntry forceWriteStream.
-		self drawable previewOn: stream] 				
-			on: Error
-			do:[: e| self halt.] 
-	] 
-		ensure: [	stream close]
-		 
-! !
+	| stream form |
+	stream := aFileEntry forceWriteStream.
+	[[form := self drawable previewOn: stream] 				
+		on: Error
+		do:[:msg| msg print]] 
+		ensure: [stream close].
+	^ form! !
 
 !DrGeo methodsFor: 'initialize-release' stamp: 'hlsf 7/Jan/2026 16:10:42'!
 initialize
@@ -28030,10 +28028,11 @@ preview
 "Return a form preview"
 	^ self previewOn: ByteArray new writeStream! !
 
-!DrGDrawable methodsFor: 'accessing' stamp: 'hlsf 2/Apr/2024 18:54:08'!
+!DrGDrawable methodsFor: 'accessing' stamp: 'drgeo 24/Feb/2026 14:31:41'!
 previewOn: aStream
 "compute an PNG preiview, put it in the stream and return its form"
 	|form |
+	self morphExtent: self defaultExtent.
 	form := (self imageForm: 32) magnifyBy: Theme current previewSize x / self morphExtent x.
 	PNGReadWriter putForm: form onStream: aStream.
 	^ form! !
@@ -28556,6 +28555,10 @@ updateGridScaleForGrid
 !DrGDrawable methodsFor: 'halos and balloon help' stamp: 'hlsf 21/Jun/2021 21:55:43'!
 wantsHalo
 	^true! !
+
+!DrGDrawable methodsFor: 'initialize-release' stamp: 'drgeo 24/Feb/2026 14:29:23'!
+defaultExtent
+	^ `750@500` ! !
 
 !DrGDrawable methodsFor: 'initialize-release' stamp: 'hlsf 4/Aug/2023 17:42:44'!
 dismissMorph

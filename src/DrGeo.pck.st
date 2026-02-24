@@ -1,6 +1,6 @@
-'From Cuis7.7 [latest update: #7839] on 17 February 2026 at 7:21:45 pm'!
+'From Cuis7.7 [latest update: #7840] on 24 February 2026 at 2:33:53 pm'!
 'Description '!
-!provides: 'DrGeo' 1 793!
+!provides: 'DrGeo' 1 794!
 !requires: 'Gettext' 1 17 nil!
 !requires: 'SVG' 1 16 nil!
 !requires: 'YAXO' 1 19 nil!
@@ -102,6 +102,26 @@ Object subclass: #DrGeoUserScript
 !classDefinition: 'DrGeoUserScript class' category: #'DrGeo-Model-Script'!
 DrGeoUserScript class
 	instanceVariableNames: 'argumentsType'!
+
+!classDefinition: #DrGeoScript129864977 category: #'DrGeo-Model-Script'!
+DrGeoUserScript subclass: #DrGeoScript129864977
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'DrGeo-Model-Script'!
+!classDefinition: 'DrGeoScript129864977 class' category: #'DrGeo-Model-Script'!
+DrGeoScript129864977 class
+	instanceVariableNames: ''!
+
+!classDefinition: #DrGeoScript164164955 category: #'DrGeo-Model-Script'!
+DrGeoUserScript subclass: #DrGeoScript164164955
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'DrGeo-Model-Script'!
+!classDefinition: 'DrGeoScript164164955 class' category: #'DrGeo-Model-Script'!
+DrGeoScript164164955 class
+	instanceVariableNames: ''!
 
 !classDefinition: #LanguageFont category: #'DrGeo-System'!
 Object subclass: #LanguageFont
@@ -1039,6 +1059,38 @@ description
 scriptName
 "I appear in the scripts menu"
 	^ 'A script' translated! !
+
+!DrGeoScript129864977 methodsFor: 'public' stamp: ''!
+compute
+	^ self arg1 valueItem + self arg2 valueItem.! !
+
+!DrGeoScript129864977 class methodsFor: 'public' stamp: ''!
+description
+	^ 'additionne  deux valeurs.'.! !
+
+!DrGeoScript129864977 class methodsFor: 'public' stamp: ''!
+scriptName
+	^ 'somme'.! !
+
+!DrGeoScript129864977 class methodsFor: 'private' stamp: ''!
+newArgumentsType
+	^ {DrGValueItem. DrGValueItem}.! !
+
+!DrGeoScript164164955 methodsFor: 'public' stamp: ''!
+compute
+	^ self arg1 valueItem * self arg2 valueItem.! !
+
+!DrGeoScript164164955 class methodsFor: 'public' stamp: ''!
+description
+	^ 'multiplie les deux valeurs.'.! !
+
+!DrGeoScript164164955 class methodsFor: 'public' stamp: ''!
+scriptName
+	^ 'produit'.! !
+
+!DrGeoScript164164955 class methodsFor: 'private' stamp: ''!
+newArgumentsType
+	^ {DrGValueItem. DrGValueItem}.! !
 
 !LanguageFont methodsFor: 'accessing' stamp: 'hlsf 16/Nov/2023 23:00:43'!
 addLocale: aLocaleID
@@ -2306,17 +2358,16 @@ buildPane
 	DrGeoSystem stopSpinner.
 	^ panel! !
 
-!DrGFileOpenMorph methodsFor: 'GUI building' stamp: 'hlsf 23/Nov/2023 17:50:41'!
+!DrGFileOpenMorph methodsFor: 'GUI building' stamp: 'drgeo 24/Feb/2026 14:18:19'!
 computePreviewFor: aSketchFile
-	| stream drgeo form |
+	| stream drgeo |
 	stream := aSketchFile readStream.
 	[[drgeo := (DrGeoXml new loadOnlyFigureFrom: stream for: #service) first]
-		on: Error do: []] 
+		on: Error do: [:msg | msg print]] 
 		ensure: [stream close].
-	drgeo 
-		ifNil: [form := Form extent: 1@1] 
-		ifNotNil: [drgeo previewOnFile: ((aSketchFile pathName allButLast: 4), 'png') asFileEntry	].
-	^ form! !
+	^ drgeo 
+		ifNil: [Form extent: 1@1] 
+		ifNotNil: [drgeo previewIn: ((aSketchFile pathName allButLast: 4), 'png') asFileEntry]! !
 
 !DrGFileOpenMorph methodsFor: 'GUI building' stamp: 'hlsf 11/Apr/2022 21:24:20'!
 newButtonArea
@@ -2364,13 +2415,13 @@ newPane
 		scrollDeltaHeight: 80; 
 		yourself! !
 
-!DrGFileOpenMorph methodsFor: 'GUI building' stamp: 'hlsf 2/Apr/2024 18:53:40'!
+!DrGFileOpenMorph methodsFor: 'GUI building' stamp: 'drgeo 24/Feb/2026 14:09:06'!
 previewFor: aSketchEntry
 	| imageFilename form |
 	imageFilename := ((aSketchEntry pathName allButLast: 4), 'png') asFileEntry.
-	imageFilename exists 
-		ifTrue: [	form := Form fromFileEntry: imageFilename]
-		ifFalse: [form := self computePreviewFor: aSketchEntry ].
+	form := imageFilename exists 
+		ifTrue: [Form fromFileEntry: imageFilename]
+		ifFalse: [self computePreviewFor: aSketchEntry ].
 	^ form magnifyBy: (Theme current scale: Theme current previewSize x) / form width! !
 
 !DrGFileOpenMorph methodsFor: 'GUI building' stamp: 'hlsf 12/Jan/2025 12:57:47'!
