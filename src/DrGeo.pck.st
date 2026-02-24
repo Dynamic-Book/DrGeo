@@ -1,6 +1,6 @@
-'From Cuis7.7 [latest update: #7840] on 24 February 2026 at 2:33:53 pm'!
+'From Cuis7.7 [latest update: #7840] on 24 February 2026 at 2:49:50 pm'!
 'Description '!
-!provides: 'DrGeo' 1 794!
+!provides: 'DrGeo' 1 795!
 !requires: 'Gettext' 1 17 nil!
 !requires: 'SVG' 1 16 nil!
 !requires: 'YAXO' 1 19 nil!
@@ -1284,8 +1284,9 @@ handleChoice: aMorphCollection
 		changed: #outputNames.
 	context selectOutputMorph! !
 
-!DrGDevelopment methodsFor: 'initialization' stamp: 'hlsf 17/Feb/2026 15:54:20'!
+!DrGDevelopment methodsFor: 'initialization' stamp: 'drgeo 24/Feb/2026 14:45:49'!
 initialize
+	super initialize.
 	canWeDisplaySpinner := false.
 	self flag: #drgeoTodo.
 	Preferences 
@@ -1314,8 +1315,9 @@ setFontPreferences
 	Preferences at: #defaultFontSize put: 14.
 ! !
 
-!DrGWorkstation methodsFor: 'initialize-release' stamp: 'hlsf 3/Apr/2024 12:12:01'!
+!DrGWorkstation methodsFor: 'initialize-release' stamp: 'drgeo 24/Feb/2026 14:46:10'!
 initialize
+	super initialize .
 	self initFontManager.
 	canWeDisplaySpinner := true.
 	Preferences 

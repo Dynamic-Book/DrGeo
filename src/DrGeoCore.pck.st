@@ -1,6 +1,6 @@
-'From Cuis7.7 [latest update: #7840] on 24 February 2026 at 2:33:55 pm'!
+'From Cuis7.7 [latest update: #7840] on 24 February 2026 at 2:49:52 pm'!
 'Description '!
-!provides: 'DrGeoCore' 1 47!
+!provides: 'DrGeoCore' 1 48!
 !requires: 'UI-Preference' 1 28 nil!
 !requires: 'UI-Panel' 1 140 nil!
 !requires: 'Graphics-Files-Additional' 1 30 nil!
@@ -1795,7 +1795,7 @@ DrGPropertyToolState class
 
 !classDefinition: #DrGPlatform category: #'DrGeoCore-System'!
 Object subclass: #DrGPlatform
-	instanceVariableNames: 'toolbarIconSize canWeDisplaySpinner preferences fontManager'
+	instanceVariableNames: 'toolbarIconSize canWeDisplaySpinner preferences fontManager fullscreen'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'DrGeoCore-System'!
@@ -13338,9 +13338,14 @@ vectorPreferences
 	{#vectorStyle. 'Style' translated. category. DrGTypeStyle with: #vectorStyle in: preferences. #plain}
 	}! !
 
-!DrGPlatform methodsFor: 'initialize-release' stamp: 'hlsf 18/Feb/2026 16:05:02'!
+!DrGPlatform methodsFor: 'initialize-release' stamp: 'drgeo 24/Feb/2026 14:44:52'!
+initialize
+	fullscreen := false.! !
+
+!DrGPlatform methodsFor: 'initialize-release' stamp: 'drgeo 24/Feb/2026 14:42:49'!
 launch
 	self setCodeCompletion.
+	self fullscreen: false.
 	Transcript show: '[DrGeo] Code completion set'; cr.
 	"Set a default name for authoring"
 	Utilities setAuthorName: 'Dr. Geo User' initials: 'drgeo'.
@@ -13440,19 +13445,18 @@ userPathFromPreference
 		ifEmpty: [self resourcesPath]
 		! !
 
+!DrGPlatform methodsFor: 'user interface' stamp: 'drgeo 24/Feb/2026 14:42:49'!
+fullscreen: boolean
+	fullscreen := boolean.
+	Display fullScreenMode: fullscreen! !
+
 !DrGPlatform methodsFor: 'user interface' stamp: ''!
 showVirtualKeyboard: boolean
 ! !
 
-!DrGPlatform methodsFor: 'user interface' stamp: 'hlsf 4/Aug/2022 23:06:44'!
+!DrGPlatform methodsFor: 'user interface' stamp: 'drgeo 24/Feb/2026 14:42:49'!
 toggleFullscreen
-	| isFullscreen |
-	isFullscreen := [ Preferences at: #fullscreen ] 
-		on: Error 
-		do: [Preferences name: #fullscreen category: #gui value: true.
-			true].
-	Preferences at: #fullscreen put: isFullscreen not.
-	Display fullScreenMode: isFullscreen not! !
+	self fullscreen: fullscreen not! !
 
 !DrGPlatform methodsFor: 'testing' stamp: 'hlsf 21/Apr/2020 21:32:20'!
 canWeDisplaySpinner
