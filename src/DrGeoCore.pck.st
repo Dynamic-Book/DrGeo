@@ -1,6 +1,6 @@
-'From Cuis7.7 [latest update: #7840] on 24 February 2026 at 2:49:52 pm'!
+'From Cuis7.7 [latest update: #7840] on 9 March 2026 at 10:26:45 pm'!
 'Description '!
-!provides: 'DrGeoCore' 1 48!
+!provides: 'DrGeoCore' 1 51!
 !requires: 'UI-Preference' 1 28 nil!
 !requires: 'UI-Panel' 1 140 nil!
 !requires: 'Graphics-Files-Additional' 1 30 nil!
@@ -1835,7 +1835,7 @@ DrGAbstractControlsManager class
 
 !classDefinition: #DrGMinimalControlsManager category: #'DrGeoCore-View'!
 DrGAbstractControlsManager subclass: #DrGMinimalControlsManager
-	instanceVariableNames: ''
+	instanceVariableNames: 'verticalBar horizontalBar'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'DrGeoCore-View'!
@@ -14267,10 +14267,15 @@ transformationMenu
 	^ menu
 		! !
 
-!DrGMinimalControlsManager methodsFor: 'initialization' stamp: 'hlsf 10/Aug/2025 11:52:13'!
+!DrGMinimalControlsManager methodsFor: 'initialization' stamp: 'hlsf 9/Mar/2026 21:56:47'!
+hideTools
+	verticalBar hide.
+	horizontalBar hide! !
+
+!DrGMinimalControlsManager methodsFor: 'initialization' stamp: 'hlsf 9/Mar/2026 21:56:22'!
 installTools
 " Install menu, toolbar, tree, wheels, statusbar "
-	| row col wheelHeight wheelWidth |
+	| row  wheelHeight wheelWidth |
 	super initialize.		
 	wheelHeight := Theme current wheelHeight .
 	wheelWidth := Theme current smWheelWidth.
@@ -14278,26 +14283,31 @@ installTools
 	row := LayoutMorph newRow.
 	row addMorphUseAll: self view drawable.
 	"Install the wheels at the right"
-	col := LayoutMorph newColumn name: #wheelsYZ; color: view defaultColor; yourself.
-	col 
+	verticalBar := LayoutMorph newColumn name: #wheelsYZ; color: view defaultColor; yourself.
+	verticalBar 
 		addMorph: (self zoomWheel borderWidth: 2) 
 		layoutSpec: (LayoutSpec fixedExtent: wheelWidth @ wheelHeight);
 		addMorphUseAll: self transparentMorph;
 		addMorph: (self verticalWheel borderWidth: 2) 
 		layoutSpec: (LayoutSpec fixedExtent: wheelWidth @ wheelHeight).			
 	""	
-	row addMorph: col layoutSpec: (LayoutSpec fixedWidth: wheelWidth proportionalHeight: 1).	
+	row addMorph: verticalBar layoutSpec: (LayoutSpec fixedWidth: wheelWidth proportionalHeight: 1).	
 	view addMorph: row.
 	
 	"Install wheel at the bottom"	
-	row := LayoutMorph newRow name: #wheelX; color: view defaultColor; yourself.
-	row addMorphUseAll: self statusBarInScroller;
+	horizontalBar := LayoutMorph newRow name: #wheelX; color: view defaultColor; yourself.
+	horizontalBar addMorphUseAll: self statusBarInScroller;
 		addMorph: (self horizontalWheel borderWidth: 2) 
-		layoutSpec: 		(LayoutSpec 	fixedExtent:  wheelHeight @ wheelWidth );
+		layoutSpec: 	(LayoutSpec fixedExtent:  wheelHeight @ wheelWidth );
 		addMorph: self transparentMorph 
-		layoutSpec: 	(LayoutSpec 		fixedExtent: wheelWidth asPoint) .
+		layoutSpec: 	(LayoutSpec fixedExtent: wheelWidth asPoint) .
 	
-	view addMorph: row layoutSpec: (LayoutSpec fixedHeight: wheelWidth)! !
+	view addMorph: horizontalBar layoutSpec: (LayoutSpec fixedHeight: wheelWidth)! !
+
+!DrGMinimalControlsManager methodsFor: 'initialization' stamp: 'hlsf 9/Mar/2026 21:56:58'!
+showTools
+	verticalBar show.
+	horizontalBar show! !
 
 !DrGMinimalControlsManager methodsFor: 'widget access' stamp: 'hlsf 10/Apr/2022 16:36:58'!
 openTools
@@ -28808,11 +28818,15 @@ defaultColor
 deleteWithoutConfirmation
 	self delete! !
 
-!DrGeoMiniView methodsFor: 'initialize-release' stamp: 'hlsf 10/Aug/2025 12:03:25'!
+!DrGeoMiniView methodsFor: 'initialize-release' stamp: 'hlsf 9/Mar/2026 22:25:26'!
 initialize
 	super initialize.
 	self color: self defaultColor .
-	drawable := DrGDrawable newOn: presenter! !
+	drawable := DrGDrawable newOn: presenter.
+	" 	Used in Dybo to show/hide controls depending on the halo statis of the annotator. 
+		Makes no arm otherwise "
+	self when: #haloAdded send: #showTools to: presenter controlsManager.
+	self when: #haloRemoved send: #hideTools to: presenter controlsManager.! !
 
 !DrGeoMiniView methodsFor: 'initialize-release' stamp: 'hlsf 19/Jun/2021 10:01:18'!
 installTools 
@@ -31168,11 +31182,6 @@ morphCenter: aPoint
 !MenuItemMorph methodsFor: '*DrGeoCore' stamp: 'hlsf 3/Jan/2022 09:01:34'!
 arguments
 	^ arguments! !
-
-!WorldMorph methodsFor: '*DrGeoCore-testing' stamp: 'hlsf 10/Jan/2026 18:22:50'!
-isStepping: aMorph
-" Does this morph stepping? "
-	^ stepList anySatisfy: [:aStepMessage | aStepMessage receiver == aMorph] ! !
 
 !AbstractVectorCanvas methodsFor: '*DrGeoCore' stamp: 'hlsf 27/May/2025 17:49:22'!
 strokeWidth: borderWidth color: borderColor strokeDashArray: dashedBorder 	do: pathCommandsBlock
