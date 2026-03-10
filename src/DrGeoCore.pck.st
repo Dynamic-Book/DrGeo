@@ -1,6 +1,6 @@
-'From Cuis7.7 [latest update: #7840] on 9 March 2026 at 10:26:45 pm'!
+'From Cuis7.7 [latest update: #7840] on 10 March 2026 at 7:21:46 pm'!
 'Description '!
-!provides: 'DrGeoCore' 1 51!
+!provides: 'DrGeoCore' 1 52!
 !requires: 'UI-Preference' 1 28 nil!
 !requires: 'UI-Panel' 1 140 nil!
 !requires: 'Graphics-Files-Additional' 1 30 nil!
@@ -28818,15 +28818,15 @@ defaultColor
 deleteWithoutConfirmation
 	self delete! !
 
-!DrGeoMiniView methodsFor: 'initialize-release' stamp: 'hlsf 9/Mar/2026 22:25:26'!
+!DrGeoMiniView methodsFor: 'initialize-release' stamp: 'hlsf 10/Mar/2026 18:58:52'!
 initialize
 	super initialize.
 	self color: self defaultColor .
 	drawable := DrGDrawable newOn: presenter.
 	" 	Used in Dybo to show/hide controls depending on the halo statis of the annotator. 
 		Makes no arm otherwise "
-	self when: #haloAdded send: #showTools to: presenter controlsManager.
-	self when: #haloRemoved send: #hideTools to: presenter controlsManager.! !
+	self when: #enterAnnotator send: #showTools to: presenter controlsManager.
+	self when: #leaveAnnotator send: #hideTools to: presenter controlsManager.! !
 
 !DrGeoMiniView methodsFor: 'initialize-release' stamp: 'hlsf 19/Jun/2021 10:01:18'!
 installTools 
