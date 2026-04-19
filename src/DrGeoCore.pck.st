@@ -1,10 +1,10 @@
-'From Cuis7.7 [latest update: #7840] on 10 March 2026 at 7:21:46 pm'!
+'From Cuis7.7 [latest update: #7879] on 19 April 2026 at 12:25:25 pm'!
 'Description '!
-!provides: 'DrGeoCore' 1 52!
+!provides: 'DrGeoCore' 1 53!
 !requires: 'UI-Preference' 1 28 nil!
 !requires: 'UI-Panel' 1 140 nil!
-!requires: 'Graphics-Files-Additional' 1 30 nil!
 !requires: 'YAXO' 1 28 nil!
+!requires: 'Graphics-Files-Additional' 1 30 nil!
 SystemOrganization addCategory: #'DrGeoCore-Model'!
 SystemOrganization addCategory: #'DrGeoCore-Model-Smalltalk'!
 SystemOrganization addCategory: #'DrGeoCore-Model-Item'!
@@ -3000,7 +3000,7 @@ I am a contextual menu used when the user needs to select an items among several
 
 !DrGLabel commentStamp: '<historical>' prior: 0!
 I am a label sticked arround a math object.
-I can be dragged arround the objet and renammed from the Style tool.
+I can be dragged arround the objet and renamed from the Style tool.
 - itemMorph is the view of a math Item I am attached too
 - delta : my x@y delta to the reference point of the itemMorph I am attached to!
 
