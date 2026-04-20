@@ -1,6 +1,6 @@
-'From Cuis7.7 [latest update: #7840] on 24 February 2026 at 2:49:50 pm'!
+'From Cuis7.7 [latest update: #7880] on 20 April 2026 at 10:12:08 pm'!
 'Description '!
-!provides: 'DrGeo' 1 795!
+!provides: 'DrGeo' 1 796!
 !requires: 'Gettext' 1 17 nil!
 !requires: 'SVG' 1 16 nil!
 !requires: 'YAXO' 1 19 nil!
@@ -1893,12 +1893,10 @@ readyToBuild
 the system checks wheter the macro can be instiated"
 	^false! !
 
-!DrGMacroBuilder methodsFor: 'initialize-release' stamp: 'hlsf 6/Apr/2022 16:35:50'!
+!DrGMacroBuilder methodsFor: 'initialize-release' stamp: 'drgeo 20/Apr/2026 21:37:47'!
 initialize
 	self reset.
-	wizard := (DrGWizardMacroBuild open: self) 
-		addPages;
-		openInWorld.
+	wizard := (DrGWizardMacroBuild open: self) openInWorld.
 	wizard morphPosition: 0@0.
 	wizard when: #page send: #page: to: self.
 	wizard when: #apply send: #apply to: self.
@@ -1972,11 +1970,9 @@ addItem: aMathItemCollection at: aPoint
 	super addItem: aMathItemCollection at: aPoint.
 	self addToggleItem: aMathItemCollection in: input! !
 
-!DrGMacroPlayer methodsFor: 'initialize-release' stamp: 'hlsf 6/Apr/2022 16:34:27'!
+!DrGMacroPlayer methodsFor: 'initialize-release' stamp: 'drgeo 20/Apr/2026 21:50:56'!
 initialize
-	wizard := (DrGWizardMacroPlay open: self) 
-		addPages;
-		openInWorld.
+	wizard := (DrGWizardMacroPlay open: self) openInWorld.
 	wizard morphPosition: 0@0.
 	input := OrderedCollection new.
 	wizard when: #page send: #page: to: self.
@@ -2162,11 +2158,9 @@ scriptClass: anObject
 basicInitialize
 	input := OrderedCollection new.! !
 
-!DrGScriptPlayer methodsFor: 'initialize-release' stamp: 'hlsf 6/Apr/2022 16:36:57'!
+!DrGScriptPlayer methodsFor: 'initialize-release' stamp: 'drgeo 20/Apr/2026 21:54:30'!
 initialize
-	wizard := (DrGWizardScript open: self)
-		addPages;
-		openInWorld.
+	wizard := (DrGWizardScript open: self) openInWorld.
 	input := OrderedCollection new.
 	wizard when: #page send: #page: to: self.
 	wizard when: #cancel send: #cancel to: self.! !
@@ -3507,6 +3501,10 @@ fourthPage
 		contents: page;
 		yourself! !
 
+!DrGWizardMacroBuild methodsFor: 'pages' stamp: 'drgeo 20/Apr/2026 21:37:15'!
+pageBuilders
+	^ #(firstPage secondPage thirdPage fourthPage) ! !
+
 !DrGWizardMacroBuild methodsFor: 'pages' stamp: 'hlsf 10/Aug/2025 11:36:43'!
 secondPage
 | list pane |
@@ -3554,32 +3552,13 @@ isReadyToApply
 "Can we apply the macro-construction to the selected geometric items?"
 	^ model isMacroValid ! !
 
-!DrGWizardMacroBuild methodsFor: 'initialize-release' stamp: 'hlsf 27/Dec/2021 11:03:49'!
-addPages
-	self addPage: self firstPage;
-		addPage: self secondPage ;
-		addPage: self thirdPage ;
-		addPage: self fourthPage ! !
-
 !DrGWizardMacroBuild methodsFor: 'initialization' stamp: 'hlsf 28/Jul/2024 10:26:04'!
 defaultColor
 	^ Theme current workspace ! !
 
-!DrGWizardMacroPlay methodsFor: 'initialize-release' stamp: 'hlsf 27/Dec/2021 11:03:07'!
-addPages
-
-	^ self
-		addPage: self firstPage;
-		addPage: self secondPage! !
-
-!DrGWizardMacroPlay methodsFor: 'initialize-release' stamp: 'hlsf 27/Dec/2021 11:03:24'!
-initialize
-	super initialize.
-	macroFactories := DrGMacroFactory new! !
-
-!DrGWizardMacroPlay methodsFor: 'pages' stamp: 'hlsf 27/Dec/2021 10:00:29'!
+!DrGWizardMacroPlay methodsFor: 'pages' stamp: 'drgeo 20/Apr/2026 21:51:37'!
 firstPage
-	^ (WizardPage firstPage: 'Execute a macro-construction' translated on: self) 	contents: 
+	^ (WizardPage firstPage: 'Execute a macro-construction' translated on: self) contents: 
 'To execute a macro-construction,
 
  1. First select a macro-construction from the list,
@@ -3589,11 +3568,15 @@ firstPage
  automaticly executed.
  To start press the ''next'' button.' translated! !
 
-!DrGWizardMacroPlay methodsFor: 'pages' stamp: 'hlsf 10/Aug/2025 11:48:26'!
+!DrGWizardMacroPlay methodsFor: 'pages' stamp: 'drgeo 20/Apr/2026 21:50:44'!
+pageBuilders
+	^#(firstPage secondPage)! !
+
+!DrGWizardMacroPlay methodsFor: 'pages' stamp: 'drgeo 20/Apr/2026 21:51:30'!
 secondPage
 | page list description  |
 	list := PluggableListMorph 
-		withModel: self listGetter: #macroList 	indexGetter: #selectedMacro indexSetter: #selectedMacro:.
+		withModel: self listGetter: #macroList indexGetter: #selectedMacro indexSetter: #selectedMacro:.
 	list borderWidth: 1.
 	description := TextModelMorph textProvider: model textGetter: #description textSetter: #description:.
 	description borderWidth: 1.
@@ -3634,6 +3617,11 @@ isSelectPage
 defaultColor
 	^ Theme current workspace ! !
 
+!DrGWizardMacroPlay methodsFor: 'initialization' stamp: 'hlsf 27/Dec/2021 11:03:24'!
+initialize
+	super initialize.
+	macroFactories := DrGMacroFactory new! !
+
 !DrGWizardScript methodsFor: 'accessing' stamp: 'hlsf 7/Apr/2022 15:17:16'!
 argumentsName
 	| labels |
@@ -3665,11 +3653,6 @@ selectedScript: anIndex
 	self changed: #argumentsName.
 	model changed: #description! !
 
-!DrGWizardScript methodsFor: 'pages' stamp: 'hlsf 7/Apr/2022 15:28:50'!
-addPages
-	self addPage: self firstPage ;
-		addPage: self secondPage ! !
-
 !DrGWizardScript methodsFor: 'pages' stamp: 'hlsf 7/Apr/2022 15:29:09'!
 firstPage
 	^ (WizardPage firstPage: 'Use a script in the sketch' translated on: self) 	contents: 
@@ -3681,6 +3664,10 @@ firstPage
  Once enough items are selected, the script is
  inserted in the sketch, at the user selected position.
  To start press the ''next'' button.' translated! !
+
+!DrGWizardScript methodsFor: 'pages' stamp: 'drgeo 20/Apr/2026 21:53:51'!
+pageBuilders
+	^ #(firstPage secondPage) ! !
 
 !DrGWizardScript methodsFor: 'pages' stamp: 'hlsf 10/Aug/2025 11:47:41'!
 secondPage

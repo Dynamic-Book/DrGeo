@@ -1,10 +1,10 @@
-'From Cuis7.7 [latest update: #7879] on 19 April 2026 at 12:25:25 pm'!
+'From Cuis7.7 [latest update: #7880] on 20 April 2026 at 10:12:13 pm'!
 'Description '!
-!provides: 'DrGeoCore' 1 53!
+!provides: 'DrGeoCore' 1 54!
 !requires: 'UI-Preference' 1 28 nil!
 !requires: 'UI-Panel' 1 140 nil!
-!requires: 'YAXO' 1 28 nil!
 !requires: 'Graphics-Files-Additional' 1 30 nil!
+!requires: 'YAXO' 1 28 nil!
 SystemOrganization addCategory: #'DrGeoCore-Model'!
 SystemOrganization addCategory: #'DrGeoCore-Model-Smalltalk'!
 SystemOrganization addCategory: #'DrGeoCore-Model-Item'!
@@ -22,16 +22,6 @@ SystemOrganization addCategory: #'DrGeoCore-System'!
 SystemOrganization addCategory: #'DrGeoCore-Test'!
 SystemOrganization addCategory: #DrGeoCore!
 
-
-!classDefinition: #DrGScriptPlayTool category: #'DrGeoCore-Presenter-Tool'!
-ProtoObject subclass: #DrGScriptPlayTool
-	instanceVariableNames: ''
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'DrGeoCore-Presenter-Tool'!
-!classDefinition: 'DrGScriptPlayTool class' category: #'DrGeoCore-Presenter-Tool'!
-DrGScriptPlayTool class
-	instanceVariableNames: ''!
 
 !classDefinition: #DrGFactory category: #'DrGeoCore-Factories'!
 Object subclass: #DrGFactory
@@ -1521,6 +1511,16 @@ DrGTool subclass: #DrGBuildTool
 	category: 'DrGeoCore-Presenter-Tool'!
 !classDefinition: 'DrGBuildTool class' category: #'DrGeoCore-Presenter-Tool'!
 DrGBuildTool class
+	instanceVariableNames: ''!
+
+!classDefinition: #DrGScriptPlayTool category: #'DrGeoCore-Presenter-Tool'!
+DrGMacroBuildTool subclass: #DrGScriptPlayTool
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'DrGeoCore-Presenter-Tool'!
+!classDefinition: 'DrGScriptPlayTool class' category: #'DrGeoCore-Presenter-Tool'!
+DrGScriptPlayTool class
 	instanceVariableNames: ''!
 
 !classDefinition: #DrGFlyPointBuildTool category: #'DrGeoCore-Presenter-Tool'!
@@ -3036,19 +3036,6 @@ A preference type representing the different possible style of a line.!
 
 !DrGTypeThickness commentStamp: '<historical>' prior: 0!
 A preference type representing the different possible thickness of a line.!
-
-!DrGScriptPlayTool methodsFor: 'initialize-release' stamp: ''!
-registerDependant: anObject
-	builder when: #changedState send: #switchState: to: self.
-	builder when: #cancel send: #cancel to: self.
-	builder when: #readyToBuild send: #readyToBuild to: anObject.
-	builder when: #changedScript send: #changedScript to: self! !
-
-!DrGScriptPlayTool methodsFor: 'updating' stamp: 'hlsf 11/Apr/2021 12:31:09'!
-changedScript
-" the builder inform us the user selected another script,
-do some cleaning"
-	self selectNoMorph! !
 
 !DrGFactory methodsFor: 'accessing' stamp: 'hlsf 10/Feb/2022 10:03:01'!
 add: item 
@@ -12243,6 +12230,19 @@ builder: aBuilderClassName presenter: aPresenter
 		presenter: aPresenter;
 		initialize;
 		yourself! !
+
+!DrGScriptPlayTool methodsFor: 'initialize-release' stamp: ''!
+registerDependant: anObject
+	builder when: #changedState send: #switchState: to: self.
+	builder when: #cancel send: #cancel to: self.
+	builder when: #readyToBuild send: #readyToBuild to: anObject.
+	builder when: #changedScript send: #changedScript to: self! !
+
+!DrGScriptPlayTool methodsFor: 'updating' stamp: 'hlsf 11/Apr/2021 12:31:09'!
+changedScript
+" the builder inform us the user selected another script,
+do some cleaning"
+	self selectNoMorph! !
 
 !DrGFlyPointBuildTool methodsFor: 'initialize' stamp: ''!
 initialize
@@ -31182,6 +31182,11 @@ morphCenter: aPoint
 !MenuItemMorph methodsFor: '*DrGeoCore' stamp: 'hlsf 3/Jan/2022 09:01:34'!
 arguments
 	^ arguments! !
+
+!WorldMorph methodsFor: '*DrGeoCore' stamp: 'drgeo 20/Apr/2026 21:43:43'!
+isStepping: aMorph
+" Does this morph stepping? "
+	^ stepList anySatisfy: [:aStepMessage | aStepMessage receiver == aMorph] ! !
 
 !AbstractVectorCanvas methodsFor: '*DrGeoCore' stamp: 'hlsf 27/May/2025 17:49:22'!
 strokeWidth: borderWidth color: borderColor strokeDashArray: dashedBorder 	do: pathCommandsBlock
