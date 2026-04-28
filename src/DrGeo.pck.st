@@ -1,6 +1,6 @@
-'From Cuis7.7 [latest update: #7880] on 25 April 2026 at 7:30:29 pm'!
+'From Cuis7.7 [latest update: #7880] on 28 April 2026 at 2:26:39 pm'!
 'Description '!
-!provides: 'DrGeo' 1 797!
+!provides: 'DrGeo' 1 798!
 !requires: 'Gettext' 1 17 nil!
 !requires: 'SVG' 1 16 nil!
 !requires: 'YAXO' 1 19 nil!
@@ -171,6 +171,16 @@ DrGMacroBuildTool subclass: #DrGMacroPlayTool
 	category: 'DrGeo-Presenter-Tool'!
 !classDefinition: 'DrGMacroPlayTool class' category: #'DrGeo-Presenter-Tool'!
 DrGMacroPlayTool class
+	instanceVariableNames: ''!
+
+!classDefinition: #DrGScriptPlayTool category: #'DrGeo-Presenter-Tool'!
+DrGMacroBuildTool subclass: #DrGScriptPlayTool
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'DrGeo-Presenter-Tool'!
+!classDefinition: 'DrGScriptPlayTool class' category: #'DrGeo-Presenter-Tool'!
+DrGScriptPlayTool class
 	instanceVariableNames: ''!
 
 !classDefinition: #DrGMacroToolStateNeutral category: #'DrGeo-Presenter-Tool'!
@@ -1239,6 +1249,19 @@ release
 !DrGMacroPlayTool methodsFor: 'updating' stamp: 'hlsf 11/Apr/2021 12:31:09'!
 changedMacro
 " the builder inform us the user selected another macro-construction,
+do some cleaning"
+	self selectNoMorph! !
+
+!DrGScriptPlayTool methodsFor: 'initialize-release' stamp: ''!
+registerDependant: anObject
+	builder when: #changedState send: #switchState: to: self.
+	builder when: #cancel send: #cancel to: self.
+	builder when: #readyToBuild send: #readyToBuild to: anObject.
+	builder when: #changedScript send: #changedScript to: self! !
+
+!DrGScriptPlayTool methodsFor: 'updating' stamp: 'hlsf 11/Apr/2021 12:31:09'!
+changedScript
+" the builder inform us the user selected another script,
 do some cleaning"
 	self selectNoMorph! !
 

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: drgeo\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2026-02-17 18:57-0000\n"
+"POT-Creation-Date: 2026-04-28 14:02-0000\n"
 "PO-Revision-Date: 2024-05-26 13:29+0000\n"
 "Last-Translator: Yuri Chornoivan <yurchor@gmail.com>\n"
 "Language-Team: Ukrainian <uk@li.org>\n"
@@ -26,6 +26,47 @@ msgstr "Це опис скрипту. Змініть його."
 #: DrGeo-Model-Script,DrGeoUserScript_class>>scriptName
 msgid "A script"
 msgstr "Скрипт"
+
+#: DrGeo-Presenter-Builder,DrGMacroBuilder_class>>description
+msgid "Construct a macro-construction with input and output items."
+msgstr "Виконати макропобудову за вхідними і вихідними елементами."
+
+#: DrGeo-Presenter-Builder,DrGMacroBuilder_class>>title
+msgid "Build macro"
+msgstr "Побудувати макрос"
+
+#: DrGeo-Presenter-Builder,DrGMacroBuilder>>apply
+msgid "Input and output items don't match"
+msgstr "Вхідний і вихідний елементи не збігаються."
+
+#: DrGeo-Presenter-Builder,DrGMacroBuilder>>apply
+msgid "Please, enter a proper title and description"
+msgstr "Будь ласка, вкажіть належний заголовок і опис"
+
+#: DrGeo-Presenter-Builder,DrGMacroPlayer_class>>description
+msgid ""
+"Execute a pre-built macro-construction on selected input items. To edit a "
+"macro description, edit its text and apply with the keys [alt/ctrl]+s."
+msgstr ""
+"Виконати попередньо створену макропобудову для позначених вхідних елементів. "
+"Для редагування опису макроса внесіть зміни до його тексту і застосуйте "
+"зміни натисканням комбінації клавіш [Alt/Ctrl]+S."
+
+#: DrGeo-Presenter-Builder,DrGMacroPlayer_class>>title
+msgid "Execute/edit macro"
+msgstr "Виконати/Редагувати макрос"
+
+#: DrGeo-Presenter-Builder,DrGScriptPlayer_class>>description
+msgid "Insert a Smalltalk script in the drawing area."
+msgstr "Вставити результат роботи сценарію Smalltalk на креслення"
+
+#: DrGeo-Presenter-Builder,DrGScriptPlayer_class>>title
+msgid "Use a script"
+msgstr "Використати сценарій"
+
+#: DrGeo-Presenter-Builder,DrGScriptPlayer>>description
+msgid "No description, write one in the description method of this script."
+msgstr "Немає опису. Створіть опис у методі description скрипту."
 
 #: DrGeo-View,DrGMinControlsManager>>editMenu
 msgid "Copy"
@@ -317,6 +358,10 @@ msgstr "Підручник з Dr. Geo"
 #: DrGeo-View-Dialog,DrGSmalltalkSketchEditor>>newToolbar
 msgid "Edit a Smalltalk sketch."
 msgstr "Редагувати ескіз Smalltalk."
+
+#: DrGeo-View-Dialog,DrGSmalltalkSketchEditor>>newToolbar
+msgid "Generate a prompt for AI and copy it in the host clipboard."
+msgstr ""
 
 #: DrGeo-View-Dialog,DrGSmalltalkSketchEditor>>newToolbar,DrGSmalltalkSketchEditor>>switchToPlayButton
 msgid "Play the Smalltalk sketch."
@@ -956,29 +1001,6 @@ msgstr "Аргументи, які приймає цей скрипт."
 #~ "Геометричне місце точок, що визначається довільною точкою на кривій і "
 #~ "зв’язаною точкою."
 
-#~ msgid "Construct a macro-construction with input and output items."
-#~ msgstr "Виконати макропобудову за вхідними і вихідними елементами."
-
-#~ msgid "Build macro"
-#~ msgstr "Побудувати макрос"
-
-#~ msgid "Input and output items don't match"
-#~ msgstr "Вхідний і вихідний елементи не збігаються."
-
-#~ msgid "Please, enter a proper title and description"
-#~ msgstr "Будь ласка, вкажіть належний заголовок і опис"
-
-#~ msgid ""
-#~ "Execute a pre-built macro-construction on selected input items. To edit a "
-#~ "macro description, edit its text and apply with the keys [alt/ctrl]+s."
-#~ msgstr ""
-#~ "Виконати попередньо створену макропобудову для позначених вхідних "
-#~ "елементів. Для редагування опису макроса внесіть зміни до його тексту і "
-#~ "застосуйте зміни натисканням комбінації клавіш [Alt/Ctrl]+S."
-
-#~ msgid "Execute/edit macro"
-#~ msgstr "Виконати/Редагувати макрос"
-
 #~ msgid "The midpoint of a segment or between two points."
 #~ msgstr "Середина відрізку або середня точка між двома точками."
 
@@ -1065,15 +1087,6 @@ msgstr "Аргументи, які приймає цей скрипт."
 
 #~ msgid "Rotation"
 #~ msgstr "Обертання"
-
-#~ msgid "Insert a Smalltalk script in the drawing area."
-#~ msgstr "Вставити результат роботи сценарію Smalltalk на креслення"
-
-#~ msgid "Use a script"
-#~ msgstr "Використати сценарій"
-
-#~ msgid "No description, write one in the description method of this script."
-#~ msgstr "Немає опису. Створіть опис у методі description скрипту."
 
 #~ msgid "Segment defined by two points."
 #~ msgstr "Відрізок за двома точками."

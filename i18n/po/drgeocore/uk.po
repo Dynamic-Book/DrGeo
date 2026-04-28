@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: drgeo\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2026-02-17 18:57-0000\n"
+"POT-Creation-Date: 2026-04-28 14:02-0000\n"
 "PO-Revision-Date: 2024-05-26 13:29+0000\n"
 "Last-Translator: Yuri Chornoivan <yurchor@gmail.com>\n"
 "Language-Team: Ukrainian <uk@li.org>\n"
@@ -323,7 +323,15 @@ msgstr "Розмір шрифту"
 msgid "Set the font size."
 msgstr "Встановити розмір шрифту."
 
-#: DrGeoCore-Presenter,DrGeo_class>>drgeoInformationString
+#: DrGeoCore-Presenter,DrGeo_class>>figuresArray
+msgid "Fig. - "
+msgstr "Рис. - "
+
+#: DrGeoCore-Presenter,DrGeo_class>>getMenuIn:at:
+msgid "System menu"
+msgstr "Системне меню"
+
+#: DrGeoCore-Presenter,DrGeo_class>>informationString
 msgid ""
 "Dr. Geo is about interactive geometry and programming.\n"
 "{1} - {3}\n"
@@ -354,18 +362,6 @@ msgstr ""
 "{2}\n"
 "\n"
 "УМОВИ ЛІЦЕНЗУВАННЯ: GPL"
-
-#: DrGeoCore-Presenter,DrGeo_class>>drgeoVersion
-msgid "Installed version: "
-msgstr "Встановлена версія: "
-
-#: DrGeoCore-Presenter,DrGeo_class>>figuresArray
-msgid "Fig. - "
-msgstr "Рис. - "
-
-#: DrGeoCore-Presenter,DrGeo_class>>getMenuIn:at:
-msgid "System menu"
-msgstr "Системне меню"
 
 #: DrGeoCore-Presenter,DrGeo_class>>macrosArray
 msgid "Macro - "
@@ -489,6 +485,10 @@ msgstr "Transcript"
 #: DrGeoCore-Presenter,DrGeo_class>>toolsMenu:
 msgid "Workspace"
 msgstr "Робочий простір"
+
+#: DrGeoCore-Presenter,DrGeo_class>>version
+msgid "Installed version: "
+msgstr "Встановлена версія: "
 
 #: DrGeoCore-Presenter,DrGeo_class>>worldMenu:
 msgid "About"
@@ -811,18 +811,6 @@ msgstr ""
 #: DrGeoCore-Presenter-Builder,DrGRotationBuilder_class>>title
 msgid "Rotation"
 msgstr "Обертання"
-
-#: DrGeoCore-Presenter-Builder,DrGScriptPlayer_class>>description
-msgid "Insert a Smalltalk script in the drawing area."
-msgstr "Вставити результат роботи сценарію Smalltalk на креслення"
-
-#: DrGeoCore-Presenter-Builder,DrGScriptPlayer_class>>title
-msgid "Use a script"
-msgstr "Використати сценарій"
-
-#: DrGeoCore-Presenter-Builder,DrGScriptPlayer>>description
-msgid "No description, write one in the description method of this script."
-msgstr "Немає опису. Створіть опис у методі description скрипту."
 
 #: DrGeoCore-Presenter-Builder,DrGSegmentBuilder_class>>description
 msgid "Segment defined by two points."
@@ -1305,6 +1293,15 @@ msgstr "Перетворення"
 #: DrGeoCore-View,DrGeoMiniView>>label
 msgid "A Dr. Geo sketch"
 msgstr "Ескіз Dr. Geo"
+
+#~ msgid "Insert a Smalltalk script in the drawing area."
+#~ msgstr "Вставити результат роботи сценарію Smalltalk на креслення"
+
+#~ msgid "Use a script"
+#~ msgstr "Використати сценарій"
+
+#~ msgid "No description, write one in the description method of this script."
+#~ msgstr "Немає опису. Створіть опис у методі description скрипту."
 
 #~ msgid "I am the description of this script. Please edit me."
 #~ msgstr "Це опис скрипту. Змініть його."

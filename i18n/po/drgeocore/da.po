@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-02-17 18:57-0000\n"
+"POT-Creation-Date: 2026-04-28 14:02-0000\n"
 "PO-Revision-Date: 2015-08-12 11:07+0000\n"
 "Last-Translator: Aputsiak Niels Janussen <Unknown>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -317,7 +317,15 @@ msgstr ""
 msgid "Set the font size."
 msgstr ""
 
-#: DrGeoCore-Presenter,DrGeo_class>>drgeoInformationString
+#: DrGeoCore-Presenter,DrGeo_class>>figuresArray
+msgid "Fig. - "
+msgstr "Fig. - "
+
+#: DrGeoCore-Presenter,DrGeo_class>>getMenuIn:at:
+msgid "System menu"
+msgstr ""
+
+#: DrGeoCore-Presenter,DrGeo_class>>informationString
 msgid ""
 "Dr. Geo is about interactive geometry and programming.\n"
 "{1} - {3}\n"
@@ -332,18 +340,6 @@ msgid ""
 "{2}\n"
 "\n"
 "LICENSE: GPL"
-msgstr ""
-
-#: DrGeoCore-Presenter,DrGeo_class>>drgeoVersion
-msgid "Installed version: "
-msgstr ""
-
-#: DrGeoCore-Presenter,DrGeo_class>>figuresArray
-msgid "Fig. - "
-msgstr "Fig. - "
-
-#: DrGeoCore-Presenter,DrGeo_class>>getMenuIn:at:
-msgid "System menu"
 msgstr ""
 
 #: DrGeoCore-Presenter,DrGeo_class>>macrosArray
@@ -452,6 +448,10 @@ msgstr ""
 
 #: DrGeoCore-Presenter,DrGeo_class>>toolsMenu:
 msgid "Workspace"
+msgstr ""
+
+#: DrGeoCore-Presenter,DrGeo_class>>version
+msgid "Installed version: "
 msgstr ""
 
 #: DrGeoCore-Presenter,DrGeo_class>>worldMenu:
@@ -747,18 +747,6 @@ msgstr ""
 #: DrGeoCore-Presenter-Builder,DrGRotationBuilder_class>>title
 msgid "Rotation"
 msgstr "Rotation"
-
-#: DrGeoCore-Presenter-Builder,DrGScriptPlayer_class>>description
-msgid "Insert a Smalltalk script in the drawing area."
-msgstr "Indsæt et Smalltalk-skript i tegneområdet."
-
-#: DrGeoCore-Presenter-Builder,DrGScriptPlayer_class>>title
-msgid "Use a script"
-msgstr "Brug et skript"
-
-#: DrGeoCore-Presenter-Builder,DrGScriptPlayer>>description
-msgid "No description, write one in the description method of this script."
-msgstr ""
 
 #: DrGeoCore-Presenter-Builder,DrGSegmentBuilder_class>>description
 msgid "Segment defined by two points."
@@ -1228,6 +1216,12 @@ msgstr "Transformationer"
 #: DrGeoCore-View,DrGeoMiniView>>label
 msgid "A Dr. Geo sketch"
 msgstr ""
+
+#~ msgid "Insert a Smalltalk script in the drawing area."
+#~ msgstr "Indsæt et Smalltalk-skript i tegneområdet."
+
+#~ msgid "Use a script"
+#~ msgstr "Brug et skript"
 
 #~ msgid "Name this value"
 #~ msgstr "Navngiv denne værdi"

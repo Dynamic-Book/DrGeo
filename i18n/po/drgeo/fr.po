@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Cuis\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-02-17 18:57-0000\n"
-"PO-Revision-Date: 2024-06-06 11:43+0200\n"
+"POT-Creation-Date: 2026-04-28 14:02-0000\n"
+"PO-Revision-Date: 2026-04-28 14:11+0200\n"
 "Last-Translator: hilaire <hilaire@gnu.org>\n"
 "Language-Team: \n"
 "Language: fr\n"
@@ -22,6 +22,49 @@ msgstr "Je suis la description de ce script. Modifiez-moi."
 #: DrGeo-Model-Script,DrGeoUserScript_class>>scriptName
 msgid "A script"
 msgstr "Un script"
+
+#: DrGeo-Presenter-Builder,DrGMacroBuilder_class>>description
+msgid "Construct a macro-construction with input and output items."
+msgstr ""
+"Construire une macro-construction avec des items en entrée et en sortie."
+
+#: DrGeo-Presenter-Builder,DrGMacroBuilder_class>>title
+msgid "Build macro"
+msgstr "Construire une macro"
+
+#: DrGeo-Presenter-Builder,DrGMacroBuilder>>apply
+msgid "Input and output items don't match"
+msgstr "Les items en entrée et en sortie ne correspondent pas"
+
+#: DrGeo-Presenter-Builder,DrGMacroBuilder>>apply
+msgid "Please, enter a proper title and description"
+msgstr "Veuillez saisir un titre et une description valides"
+
+#: DrGeo-Presenter-Builder,DrGMacroPlayer_class>>description
+msgid ""
+"Execute a pre-built macro-construction on selected input items. To edit a "
+"macro description, edit its text and apply with the keys [alt/ctrl]+s."
+msgstr ""
+"Exécuter une macro-construction sur des objets sélectionnés. Pour éditer la "
+"description d'une macro-construction, éditer son texte et appliquer avec la "
+"combinaison de touches [alt/ctrl]+s."
+
+#: DrGeo-Presenter-Builder,DrGMacroPlayer_class>>title
+msgid "Execute/edit macro"
+msgstr "Exécuter/éditer une macro"
+
+#: DrGeo-Presenter-Builder,DrGScriptPlayer_class>>description
+msgid "Insert a Smalltalk script in the drawing area."
+msgstr "Insérer un script Smalltalk dans la figure."
+
+#: DrGeo-Presenter-Builder,DrGScriptPlayer_class>>title
+msgid "Use a script"
+msgstr "Utiliser un script"
+
+#: DrGeo-Presenter-Builder,DrGScriptPlayer>>description
+msgid "No description, write one in the description method of this script."
+msgstr ""
+"Aucune description, écrivez-en une dans la méthode description de ce script."
 
 #: DrGeo-View,DrGMinControlsManager>>editMenu
 msgid "Copy"
@@ -318,6 +361,10 @@ msgstr "Tutoriel Dr. Geo"
 #: DrGeo-View-Dialog,DrGSmalltalkSketchEditor>>newToolbar
 msgid "Edit a Smalltalk sketch."
 msgstr "Editer une figure Smalltalk."
+
+#: DrGeo-View-Dialog,DrGSmalltalkSketchEditor>>newToolbar
+msgid "Generate a prompt for AI and copy it in the host clipboard."
+msgstr "Générer un prompt pour IA et le copier dans le presse-papiers du système."
 
 #: DrGeo-View-Dialog,DrGSmalltalkSketchEditor>>newToolbar,DrGSmalltalkSketchEditor>>switchToPlayButton
 msgid "Play the Smalltalk sketch."
@@ -957,30 +1004,6 @@ msgstr "Les arguments acceptés par ce script."
 #~ msgid "Locus defined by a free point on a curve and a relative point."
 #~ msgstr "Lieu défini par un point libre et un point dépendant."
 
-#~ msgid "Construct a macro-construction with input and output items."
-#~ msgstr ""
-#~ "Construire une macro-construction avec des items en entrée et en sortie."
-
-#~ msgid "Build macro"
-#~ msgstr "Construire une macro"
-
-#~ msgid "Input and output items don't match"
-#~ msgstr "Les items en entrée et en sortie ne correspondent pas"
-
-#~ msgid "Please, enter a proper title and description"
-#~ msgstr "Veuillez saisir un titre et une description valides"
-
-#~ msgid ""
-#~ "Execute a pre-built macro-construction on selected input items. To edit a "
-#~ "macro description, edit its text and apply with the keys [alt/ctrl]+s."
-#~ msgstr ""
-#~ "Exécuter une macro-construction sur des objets sélectionnés. Pour éditer "
-#~ "la description d'une macro-construction, éditer son texte et appliquer "
-#~ "avec la combinaison de touches [alt/ctrl]+s."
-
-#~ msgid "Execute/edit macro"
-#~ msgstr "Exécuter/éditer une macro"
-
 #~ msgid "The midpoint of a segment or between two points."
 #~ msgstr "Le milieu d'un segment ou de deux points"
 
@@ -1064,17 +1087,6 @@ msgstr "Les arguments acceptés par ce script."
 
 #~ msgid "Rotation"
 #~ msgstr "Rotation"
-
-#~ msgid "Insert a Smalltalk script in the drawing area."
-#~ msgstr "Insérer un script Smalltalk dans la figure."
-
-#~ msgid "Use a script"
-#~ msgstr "Utiliser un script"
-
-#~ msgid "No description, write one in the description method of this script."
-#~ msgstr ""
-#~ "Aucune description, écrivez-en une dans la méthode description de ce "
-#~ "script."
 
 #~ msgid "Segment defined by two points."
 #~ msgstr "Segment défini par deux points."

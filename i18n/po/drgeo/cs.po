@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: drgeo\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2026-02-17 18:57-0000\n"
+"POT-Creation-Date: 2026-04-28 14:02-0000\n"
 "PO-Revision-Date: 2018-06-11 08:30+0000\n"
 "Last-Translator: Pavel Borecki <Unknown>\n"
 "Language-Team: Czech <cs@li.org>\n"
@@ -25,6 +25,47 @@ msgstr "Toto je popis tohoto skriptu. Upravte ho."
 #: DrGeo-Model-Script,DrGeoUserScript_class>>scriptName
 msgid "A script"
 msgstr "Skript"
+
+#: DrGeo-Presenter-Builder,DrGMacroBuilder_class>>description
+msgid "Construct a macro-construction with input and output items."
+msgstr "Vytvořit makrokonstrukci se vstupními  a výstupními položkami."
+
+#: DrGeo-Presenter-Builder,DrGMacroBuilder_class>>title
+msgid "Build macro"
+msgstr "Vytvořit makro"
+
+#: DrGeo-Presenter-Builder,DrGMacroBuilder>>apply
+msgid "Input and output items don't match"
+msgstr "Položky vstupu a výstupu si neodpovídají"
+
+#: DrGeo-Presenter-Builder,DrGMacroBuilder>>apply
+msgid "Please, enter a proper title and description"
+msgstr "Zadejte příhodný název a popis"
+
+#: DrGeo-Presenter-Builder,DrGMacroPlayer_class>>description
+msgid ""
+"Execute a pre-built macro-construction on selected input items. To edit a "
+"macro description, edit its text and apply with the keys [alt/ctrl]+s."
+msgstr ""
+"Spustit předsestavené macro-konstrukce na označených položkách vstupu. Pro "
+"úpravu popisu makra, upravte jeho text a uplatněte pomocí kláves [alt/"
+"ctrl]+s."
+
+#: DrGeo-Presenter-Builder,DrGMacroPlayer_class>>title
+msgid "Execute/edit macro"
+msgstr "Spustit/upravit makro"
+
+#: DrGeo-Presenter-Builder,DrGScriptPlayer_class>>description
+msgid "Insert a Smalltalk script in the drawing area."
+msgstr "Vložit do kreslící oblasti skript v jazyce Smalltalk"
+
+#: DrGeo-Presenter-Builder,DrGScriptPlayer_class>>title
+msgid "Use a script"
+msgstr "Použít skript"
+
+#: DrGeo-Presenter-Builder,DrGScriptPlayer>>description
+msgid "No description, write one in the description method of this script."
+msgstr "Popis není k dispozici – zadejte ho do popisu metody tohoto skriptu."
 
 #: DrGeo-View,DrGMinControlsManager>>editMenu
 msgid "Copy"
@@ -311,6 +352,10 @@ msgstr ""
 
 #: DrGeo-View-Dialog,DrGSmalltalkSketchEditor>>newToolbar
 msgid "Edit a Smalltalk sketch."
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGSmalltalkSketchEditor>>newToolbar
+msgid "Generate a prompt for AI and copy it in the host clipboard."
 msgstr ""
 
 #: DrGeo-View-Dialog,DrGSmalltalkSketchEditor>>newToolbar,DrGSmalltalkSketchEditor>>switchToPlayButton
@@ -759,29 +804,6 @@ msgstr ""
 #~ msgid "Locus defined by a free point on a curve and a relative point."
 #~ msgstr "Lokus určený libovolným bodem křivky a vztažným bodem."
 
-#~ msgid "Construct a macro-construction with input and output items."
-#~ msgstr "Vytvořit makrokonstrukci se vstupními  a výstupními položkami."
-
-#~ msgid "Build macro"
-#~ msgstr "Vytvořit makro"
-
-#~ msgid "Input and output items don't match"
-#~ msgstr "Položky vstupu a výstupu si neodpovídají"
-
-#~ msgid "Please, enter a proper title and description"
-#~ msgstr "Zadejte příhodný název a popis"
-
-#~ msgid ""
-#~ "Execute a pre-built macro-construction on selected input items. To edit a "
-#~ "macro description, edit its text and apply with the keys [alt/ctrl]+s."
-#~ msgstr ""
-#~ "Spustit předsestavené macro-konstrukce na označených položkách vstupu. "
-#~ "Pro úpravu popisu makra, upravte jeho text a uplatněte pomocí kláves [alt/"
-#~ "ctrl]+s."
-
-#~ msgid "Execute/edit macro"
-#~ msgstr "Spustit/upravit makro"
-
 #~ msgid "The midpoint of a segment or between two points."
 #~ msgstr "Střed úsečky nebo vzdálnosti mezi dvěma body."
 
@@ -861,16 +883,6 @@ msgstr ""
 
 #~ msgid "Rotation"
 #~ msgstr "Otočení"
-
-#~ msgid "Insert a Smalltalk script in the drawing area."
-#~ msgstr "Vložit do kreslící oblasti skript v jazyce Smalltalk"
-
-#~ msgid "Use a script"
-#~ msgstr "Použít skript"
-
-#~ msgid "No description, write one in the description method of this script."
-#~ msgstr ""
-#~ "Popis není k dispozici – zadejte ho do popisu metody tohoto skriptu."
 
 #~ msgid "Segment defined by two points."
 #~ msgstr "Úsečka určená dvěma body."

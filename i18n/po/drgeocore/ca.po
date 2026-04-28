@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: drgeo\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2026-02-17 18:57-0000\n"
+"POT-Creation-Date: 2026-04-28 14:02-0000\n"
 "PO-Revision-Date: 2024-05-26 16:24+0000\n"
 "Last-Translator: VPablo <villumar@gmail.com>\n"
 "Language-Team: Catalan <ca@li.org>\n"
@@ -322,7 +322,15 @@ msgstr "Mida de lletra"
 msgid "Set the font size."
 msgstr "Ajusta la mida de la lletra."
 
-#: DrGeoCore-Presenter,DrGeo_class>>drgeoInformationString
+#: DrGeoCore-Presenter,DrGeo_class>>figuresArray
+msgid "Fig. - "
+msgstr "Fig. - "
+
+#: DrGeoCore-Presenter,DrGeo_class>>getMenuIn:at:
+msgid "System menu"
+msgstr "Menú del sistema"
+
+#: DrGeoCore-Presenter,DrGeo_class>>informationString
 msgid ""
 "Dr. Geo is about interactive geometry and programming.\n"
 "{1} - {3}\n"
@@ -351,18 +359,6 @@ msgstr ""
 "{2}\n"
 "\n"
 "LICENSE: GPL"
-
-#: DrGeoCore-Presenter,DrGeo_class>>drgeoVersion
-msgid "Installed version: "
-msgstr "Versió instal·lada: "
-
-#: DrGeoCore-Presenter,DrGeo_class>>figuresArray
-msgid "Fig. - "
-msgstr "Fig. - "
-
-#: DrGeoCore-Presenter,DrGeo_class>>getMenuIn:at:
-msgid "System menu"
-msgstr "Menú del sistema"
 
 #: DrGeoCore-Presenter,DrGeo_class>>macrosArray
 msgid "Macro - "
@@ -486,6 +482,10 @@ msgstr "Transcripció"
 #: DrGeoCore-Presenter,DrGeo_class>>toolsMenu:
 msgid "Workspace"
 msgstr "Espai de treball"
+
+#: DrGeoCore-Presenter,DrGeo_class>>version
+msgid "Installed version: "
+msgstr "Versió instal·lada: "
 
 #: DrGeoCore-Presenter,DrGeo_class>>worldMenu:
 msgid "About"
@@ -808,18 +808,6 @@ msgstr ""
 #: DrGeoCore-Presenter-Builder,DrGRotationBuilder_class>>title
 msgid "Rotation"
 msgstr "Rotació"
-
-#: DrGeoCore-Presenter-Builder,DrGScriptPlayer_class>>description
-msgid "Insert a Smalltalk script in the drawing area."
-msgstr "Insereix un guió Smalltalk a l'àrea de dibuix."
-
-#: DrGeoCore-Presenter-Builder,DrGScriptPlayer_class>>title
-msgid "Use a script"
-msgstr "Usa un guió"
-
-#: DrGeoCore-Presenter-Builder,DrGScriptPlayer>>description
-msgid "No description, write one in the description method of this script."
-msgstr "Sense descripció, escriga una al mètode de descripció d'este script."
 
 #: DrGeoCore-Presenter-Builder,DrGSegmentBuilder_class>>description
 msgid "Segment defined by two points."
@@ -1303,6 +1291,16 @@ msgstr "Transformacions"
 #: DrGeoCore-View,DrGeoMiniView>>label
 msgid "A Dr. Geo sketch"
 msgstr "Un esquema de Dr.Geo"
+
+#~ msgid "Insert a Smalltalk script in the drawing area."
+#~ msgstr "Insereix un guió Smalltalk a l'àrea de dibuix."
+
+#~ msgid "Use a script"
+#~ msgstr "Usa un guió"
+
+#~ msgid "No description, write one in the description method of this script."
+#~ msgstr ""
+#~ "Sense descripció, escriga una al mètode de descripció d'este script."
 
 #~ msgid "I am the description of this script. Please edit me."
 #~ msgstr "Soc la descripció d'este script. Per favor, edite'm."

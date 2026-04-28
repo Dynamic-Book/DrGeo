@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: drgeo\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2026-02-17 18:57-0000\n"
+"POT-Creation-Date: 2026-04-28 14:02-0000\n"
 "PO-Revision-Date: 2014-10-04 06:08+0000\n"
 "Last-Translator: Nguyen Lan <lanbk@yahoo.com>\n"
 "Language-Team: Vietnamese <vi@li.org>\n"
@@ -24,6 +24,45 @@ msgstr ""
 
 #: DrGeo-Model-Script,DrGeoUserScript_class>>scriptName
 msgid "A script"
+msgstr ""
+
+#: DrGeo-Presenter-Builder,DrGMacroBuilder_class>>description
+msgid "Construct a macro-construction with input and output items."
+msgstr "Xây dựng một cấu trúc macro với các mục đầu vào và đầu ra"
+
+#: DrGeo-Presenter-Builder,DrGMacroBuilder_class>>title
+msgid "Build macro"
+msgstr "Xây dựng macro"
+
+#: DrGeo-Presenter-Builder,DrGMacroBuilder>>apply
+msgid "Input and output items don't match"
+msgstr "Dữ liệu nhập và xuất không tương thích"
+
+#: DrGeo-Presenter-Builder,DrGMacroBuilder>>apply
+msgid "Please, enter a proper title and description"
+msgstr "Bạn vui lòng nhập tiêu đề và mô tả"
+
+#: DrGeo-Presenter-Builder,DrGMacroPlayer_class>>description
+msgid ""
+"Execute a pre-built macro-construction on selected input items. To edit a "
+"macro description, edit its text and apply with the keys [alt/ctrl]+s."
+msgstr ""
+
+#: DrGeo-Presenter-Builder,DrGMacroPlayer_class>>title
+#, fuzzy
+msgid "Execute/edit macro"
+msgstr "Xóa macro"
+
+#: DrGeo-Presenter-Builder,DrGScriptPlayer_class>>description
+msgid "Insert a Smalltalk script in the drawing area."
+msgstr "Chèn một đoạn mã Smalltalk vào trong khu vực hình vẽ"
+
+#: DrGeo-Presenter-Builder,DrGScriptPlayer_class>>title
+msgid "Use a script"
+msgstr "Sử dụng một đoạn mã"
+
+#: DrGeo-Presenter-Builder,DrGScriptPlayer>>description
+msgid "No description, write one in the description method of this script."
 msgstr ""
 
 #: DrGeo-View,DrGMinControlsManager>>editMenu
@@ -307,6 +346,10 @@ msgstr ""
 
 #: DrGeo-View-Dialog,DrGSmalltalkSketchEditor>>newToolbar
 msgid "Edit a Smalltalk sketch."
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGSmalltalkSketchEditor>>newToolbar
+msgid "Generate a prompt for AI and copy it in the host clipboard."
 msgstr ""
 
 #: DrGeo-View-Dialog,DrGSmalltalkSketchEditor>>newToolbar,DrGSmalltalkSketchEditor>>switchToPlayButton
@@ -662,18 +705,6 @@ msgstr ""
 #~ "Quỹ tích được xác định bởi một điểm trên cung tròn và một điểm có liên "
 #~ "quan"
 
-#~ msgid "Construct a macro-construction with input and output items."
-#~ msgstr "Xây dựng một cấu trúc macro với các mục đầu vào và đầu ra"
-
-#~ msgid "Build macro"
-#~ msgstr "Xây dựng macro"
-
-#~ msgid "Input and output items don't match"
-#~ msgstr "Dữ liệu nhập và xuất không tương thích"
-
-#~ msgid "Please, enter a proper title and description"
-#~ msgstr "Bạn vui lòng nhập tiêu đề và mô tả"
-
 #~ msgid "The midpoint of a segment or between two points."
 #~ msgstr "Trung điểm của một đoạn thẳng hoặc giữa 2 điểm."
 
@@ -747,12 +778,6 @@ msgstr ""
 
 #~ msgid "Rotation"
 #~ msgstr "Quay"
-
-#~ msgid "Insert a Smalltalk script in the drawing area."
-#~ msgstr "Chèn một đoạn mã Smalltalk vào trong khu vực hình vẽ"
-
-#~ msgid "Use a script"
-#~ msgstr "Sử dụng một đoạn mã"
 
 #~ msgid "Segment defined by two points."
 #~ msgstr "Cạnh được xác định bởi 2 điểm"
@@ -860,9 +885,6 @@ msgstr ""
 
 #~ msgid "Delete a macro-construction from the registry."
 #~ msgstr "Xóa một cấu trúc macro từ registry"
-
-#~ msgid "Delete macro"
-#~ msgstr "Xóa macro"
 
 #~ msgid "Snap to grid."
 #~ msgstr "Dính vào lưới"

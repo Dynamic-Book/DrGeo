@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: drgeo\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2026-02-17 18:57-0000\n"
+"POT-Creation-Date: 2026-04-28 14:02-0000\n"
 "PO-Revision-Date: 2019-06-05 10:11+0000\n"
 "Last-Translator: VPablo <villumar@gmail.com>\n"
 "Language-Team: Catalan (Valencian) <ca@valencia@li.org>\n"
@@ -25,6 +25,49 @@ msgstr "Sóc la descripció d'aquest script. Editeu-me."
 #: DrGeo-Model-Script,DrGeoUserScript_class>>scriptName
 msgid "A script"
 msgstr "Un script"
+
+#: DrGeo-Presenter-Builder,DrGMacroBuilder_class>>description
+msgid "Construct a macro-construction with input and output items."
+msgstr "Construeix una macro amb elements d'entrada i eixida."
+
+#: DrGeo-Presenter-Builder,DrGMacroBuilder_class>>title
+msgid "Build macro"
+msgstr "Construcció de macros"
+
+#: DrGeo-Presenter-Builder,DrGMacroBuilder>>apply
+msgid "Input and output items don't match"
+msgstr "Els elements d'entrada i eixida no coincideixen."
+
+#: DrGeo-Presenter-Builder,DrGMacroBuilder>>apply
+msgid "Please, enter a proper title and description"
+msgstr "Introduïu un títol adequat i una descripció"
+
+#: DrGeo-Presenter-Builder,DrGMacroPlayer_class>>description
+msgid ""
+"Execute a pre-built macro-construction on selected input items. To edit a "
+"macro description, edit its text and apply with the keys [alt/ctrl]+s."
+msgstr ""
+"Executa una macro construïda prèviament en els elements d'entrada "
+"seleccionats. Per a editar la descripció d'una macro, editeu-ne el text i "
+"apliqueu amb les tecles [alt/ctrl]+s."
+
+#: DrGeo-Presenter-Builder,DrGMacroPlayer_class>>title
+msgid "Execute/edit macro"
+msgstr "Executa/edita la macro"
+
+#: DrGeo-Presenter-Builder,DrGScriptPlayer_class>>description
+msgid "Insert a Smalltalk script in the drawing area."
+msgstr "Insereix un script Smalltalk a l'àrea de dibuix."
+
+#: DrGeo-Presenter-Builder,DrGScriptPlayer_class>>title
+msgid "Use a script"
+msgstr "Utilitza un script"
+
+#: DrGeo-Presenter-Builder,DrGScriptPlayer>>description
+msgid "No description, write one in the description method of this script."
+msgstr ""
+"No hi ha cap descripció, escriviu-ne una en el mètode de descripció d'aquest "
+"script."
 
 #: DrGeo-View,DrGMinControlsManager>>editMenu
 msgid "Copy"
@@ -313,6 +356,10 @@ msgstr ""
 
 #: DrGeo-View-Dialog,DrGSmalltalkSketchEditor>>newToolbar
 msgid "Edit a Smalltalk sketch."
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGSmalltalkSketchEditor>>newToolbar
+msgid "Generate a prompt for AI and copy it in the host clipboard."
 msgstr ""
 
 #: DrGeo-View-Dialog,DrGSmalltalkSketchEditor>>newToolbar,DrGSmalltalkSketchEditor>>switchToPlayButton
@@ -793,29 +840,6 @@ msgstr ""
 #~ msgid "Locus defined by a free point on a curve and a relative point."
 #~ msgstr "Posició definida per un punt lliure en una corba i un punt relatiu."
 
-#~ msgid "Construct a macro-construction with input and output items."
-#~ msgstr "Construeix una macro amb elements d'entrada i eixida."
-
-#~ msgid "Build macro"
-#~ msgstr "Construcció de macros"
-
-#~ msgid "Input and output items don't match"
-#~ msgstr "Els elements d'entrada i eixida no coincideixen."
-
-#~ msgid "Please, enter a proper title and description"
-#~ msgstr "Introduïu un títol adequat i una descripció"
-
-#~ msgid ""
-#~ "Execute a pre-built macro-construction on selected input items. To edit a "
-#~ "macro description, edit its text and apply with the keys [alt/ctrl]+s."
-#~ msgstr ""
-#~ "Executa una macro construïda prèviament en els elements d'entrada "
-#~ "seleccionats. Per a editar la descripció d'una macro, editeu-ne el text i "
-#~ "apliqueu amb les tecles [alt/ctrl]+s."
-
-#~ msgid "Execute/edit macro"
-#~ msgstr "Executa/edita la macro"
-
 #~ msgid "The midpoint of a segment or between two points."
 #~ msgstr "El punt mitjà d'un segment o entre dos punts."
 
@@ -901,17 +925,6 @@ msgstr ""
 
 #~ msgid "Rotation"
 #~ msgstr "Rotació"
-
-#~ msgid "Insert a Smalltalk script in the drawing area."
-#~ msgstr "Insereix un script Smalltalk a l'àrea de dibuix."
-
-#~ msgid "Use a script"
-#~ msgstr "Utilitza un script"
-
-#~ msgid "No description, write one in the description method of this script."
-#~ msgstr ""
-#~ "No hi ha cap descripció, escriviu-ne una en el mètode de descripció "
-#~ "d'aquest script."
 
 #~ msgid "Segment defined by two points."
 #~ msgstr "Segment definit per dos punts."

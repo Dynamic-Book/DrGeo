@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-02-17 18:57-0000\n"
+"POT-Creation-Date: 2026-04-28 14:02-0000\n"
 "PO-Revision-Date: 2013-08-15 12:23+0000\n"
 "Last-Translator: Chris Leonard <Unknown>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,6 +21,45 @@ msgstr ""
 
 #: DrGeo-Model-Script,DrGeoUserScript_class>>scriptName
 msgid "A script"
+msgstr ""
+
+#: DrGeo-Presenter-Builder,DrGMacroBuilder_class>>description
+msgid "Construct a macro-construction with input and output items."
+msgstr "Կառուցել մակրո կառույց մուտքագրման և ելքագրման տարրերով:"
+
+#: DrGeo-Presenter-Builder,DrGMacroBuilder_class>>title
+msgid "Build macro"
+msgstr "Կառուցել մակրո"
+
+#: DrGeo-Presenter-Builder,DrGMacroBuilder>>apply
+msgid "Input and output items don't match"
+msgstr "Մուտքագրման և ելքագրման կետերը չեն համընկնում"
+
+#: DrGeo-Presenter-Builder,DrGMacroBuilder>>apply
+msgid "Please, enter a proper title and description"
+msgstr "Խնդրում ենք մուտքագրել համապատասխան վերնագիրը և նկարագրությունը"
+
+#: DrGeo-Presenter-Builder,DrGMacroPlayer_class>>description
+msgid ""
+"Execute a pre-built macro-construction on selected input items. To edit a "
+"macro description, edit its text and apply with the keys [alt/ctrl]+s."
+msgstr ""
+
+#: DrGeo-Presenter-Builder,DrGMacroPlayer_class>>title
+#, fuzzy
+msgid "Execute/edit macro"
+msgstr "Ջնջել մակրոն"
+
+#: DrGeo-Presenter-Builder,DrGScriptPlayer_class>>description
+msgid "Insert a Smalltalk script in the drawing area."
+msgstr "Մուտքագրել «Smalltalk» սցենարը գծագրի տարածքում:"
+
+#: DrGeo-Presenter-Builder,DrGScriptPlayer_class>>title
+msgid "Use a script"
+msgstr "Օգտագործել սցենար"
+
+#: DrGeo-Presenter-Builder,DrGScriptPlayer>>description
+msgid "No description, write one in the description method of this script."
 msgstr ""
 
 #: DrGeo-View,DrGMinControlsManager>>editMenu
@@ -306,6 +345,10 @@ msgstr ""
 msgid "Edit a Smalltalk sketch."
 msgstr ""
 
+#: DrGeo-View-Dialog,DrGSmalltalkSketchEditor>>newToolbar
+msgid "Generate a prompt for AI and copy it in the host clipboard."
+msgstr ""
+
 #: DrGeo-View-Dialog,DrGSmalltalkSketchEditor>>newToolbar,DrGSmalltalkSketchEditor>>switchToPlayButton
 msgid "Play the Smalltalk sketch."
 msgstr ""
@@ -553,18 +596,6 @@ msgstr ""
 #~ msgstr ""
 #~ "Երկրաչափական տեղ` կորի վրա ազատ կետով և հարաբերական կետով սահմանված:"
 
-#~ msgid "Construct a macro-construction with input and output items."
-#~ msgstr "Կառուցել մակրո կառույց մուտքագրման և ելքագրման տարրերով:"
-
-#~ msgid "Build macro"
-#~ msgstr "Կառուցել մակրո"
-
-#~ msgid "Input and output items don't match"
-#~ msgstr "Մուտքագրման և ելքագրման կետերը չեն համընկնում"
-
-#~ msgid "Please, enter a proper title and description"
-#~ msgstr "Խնդրում ենք մուտքագրել համապատասխան վերնագիրը և նկարագրությունը"
-
 #~ msgid "The midpoint of a segment or between two points."
 #~ msgstr "Հատվածի միջնակետը, կամ կետ երկու կետերի միջև:"
 
@@ -632,12 +663,6 @@ msgstr ""
 
 #~ msgid "Rotation"
 #~ msgstr "Պտույտ"
-
-#~ msgid "Insert a Smalltalk script in the drawing area."
-#~ msgstr "Մուտքագրել «Smalltalk» սցենարը գծագրի տարածքում:"
-
-#~ msgid "Use a script"
-#~ msgstr "Օգտագործել սցենար"
 
 #~ msgid "Segment defined by two points."
 #~ msgstr "Հատված` սահմանված երկու կետերով:"
@@ -733,9 +758,6 @@ msgstr ""
 
 #~ msgid "Delete a macro-construction from the registry."
 #~ msgstr "Ջնջել մակրո կառույցն արձանագրությունից:"
-
-#~ msgid "Delete macro"
-#~ msgstr "Ջնջել մակրոն"
 
 #~ msgid "Snap to grid."
 #~ msgstr "Տեղադրել վանդակի վրա:"

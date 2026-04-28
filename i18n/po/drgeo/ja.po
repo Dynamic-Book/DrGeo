@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Cuis\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-02-17 18:57-0000\n"
+"POT-Creation-Date: 2026-04-28 14:02-0000\n"
 "PO-Revision-Date: 2024-05-26 13:35+0000\n"
 "Last-Translator: makoto <makoto@kobe-u.ac.jp>\n"
 "Language-Team: \n"
@@ -22,6 +22,47 @@ msgstr "このスクリプトの説明です．編集して下さい．"
 #: DrGeo-Model-Script,DrGeoUserScript_class>>scriptName
 msgid "A script"
 msgstr "スクリプト"
+
+#: DrGeo-Presenter-Builder,DrGMacroBuilder_class>>description
+msgid "Construct a macro-construction with input and output items."
+msgstr "入力と出力項目から作図マクロを作成します．"
+
+#: DrGeo-Presenter-Builder,DrGMacroBuilder_class>>title
+msgid "Build macro"
+msgstr "マクロを作成"
+
+#: DrGeo-Presenter-Builder,DrGMacroBuilder>>apply
+msgid "Input and output items don't match"
+msgstr "入出力の項目が対応しません"
+
+#: DrGeo-Presenter-Builder,DrGMacroBuilder>>apply
+msgid "Please, enter a proper title and description"
+msgstr "適切な表題と説明を入力してください"
+
+#: DrGeo-Presenter-Builder,DrGMacroPlayer_class>>description
+msgid ""
+"Execute a pre-built macro-construction on selected input items. To edit a "
+"macro description, edit its text and apply with the keys [alt/ctrl]+s."
+msgstr ""
+"選択された入力項目に対して予めビルトされた作図マクロを実行します．マクロ記述"
+"を編集するには，マクロが定義されているテキストを編集後，キーボートから[alt/"
+"ctrl]+s を押して適用してください．"
+
+#: DrGeo-Presenter-Builder,DrGMacroPlayer_class>>title
+msgid "Execute/edit macro"
+msgstr "マクロの実行／編集"
+
+#: DrGeo-Presenter-Builder,DrGScriptPlayer_class>>description
+msgid "Insert a Smalltalk script in the drawing area."
+msgstr "描画領域にSmalltalkのスクリプトを埋め込みます．"
+
+#: DrGeo-Presenter-Builder,DrGScriptPlayer_class>>title
+msgid "Use a script"
+msgstr "スクリプトを使う"
+
+#: DrGeo-Presenter-Builder,DrGScriptPlayer>>description
+msgid "No description, write one in the description method of this script."
+msgstr "説明がありません．このスクリプトの説明を書いて下さい。"
 
 #: DrGeo-View,DrGMinControlsManager>>editMenu
 msgid "Copy"
@@ -313,6 +354,10 @@ msgstr "Dr. Geo チュートリアル"
 #: DrGeo-View-Dialog,DrGSmalltalkSketchEditor>>newToolbar
 msgid "Edit a Smalltalk sketch."
 msgstr "Smalltalkスケッチを編集する。"
+
+#: DrGeo-View-Dialog,DrGSmalltalkSketchEditor>>newToolbar
+msgid "Generate a prompt for AI and copy it in the host clipboard."
+msgstr ""
 
 #: DrGeo-View-Dialog,DrGSmalltalkSketchEditor>>newToolbar,DrGSmalltalkSketchEditor>>switchToPlayButton
 msgid "Play the Smalltalk sketch."
@@ -890,29 +935,6 @@ msgstr "このスクリプトが受け取る引数。"
 #~ msgid "Locus defined by a free point on a curve and a relative point."
 #~ msgstr "軌跡：曲線上の自由点とそれに依存する点で定まる軌跡"
 
-#~ msgid "Construct a macro-construction with input and output items."
-#~ msgstr "入力と出力項目から作図マクロを作成します．"
-
-#~ msgid "Build macro"
-#~ msgstr "マクロを作成"
-
-#~ msgid "Input and output items don't match"
-#~ msgstr "入出力の項目が対応しません"
-
-#~ msgid "Please, enter a proper title and description"
-#~ msgstr "適切な表題と説明を入力してください"
-
-#~ msgid ""
-#~ "Execute a pre-built macro-construction on selected input items. To edit a "
-#~ "macro description, edit its text and apply with the keys [alt/ctrl]+s."
-#~ msgstr ""
-#~ "選択された入力項目に対して予めビルトされた作図マクロを実行します．マクロ記"
-#~ "述を編集するには，マクロが定義されているテキストを編集後，キーボートから"
-#~ "[alt/ctrl]+s を押して適用してください．"
-
-#~ msgid "Execute/edit macro"
-#~ msgstr "マクロの実行／編集"
-
 #~ msgid "The midpoint of a segment or between two points."
 #~ msgstr "線分や2点の中点"
 
@@ -989,15 +1011,6 @@ msgstr "このスクリプトが受け取る引数。"
 
 #~ msgid "Rotation"
 #~ msgstr "回転"
-
-#~ msgid "Insert a Smalltalk script in the drawing area."
-#~ msgstr "描画領域にSmalltalkのスクリプトを埋め込みます．"
-
-#~ msgid "Use a script"
-#~ msgstr "スクリプトを使う"
-
-#~ msgid "No description, write one in the description method of this script."
-#~ msgstr "説明がありません．このスクリプトの説明を書いて下さい。"
 
 #~ msgid "Segment defined by two points."
 #~ msgstr "線分：2点で定まる線分"

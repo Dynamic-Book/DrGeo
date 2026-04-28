@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Cuis\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-02-17 18:57-0000\n"
+"POT-Creation-Date: 2026-04-28 14:02-0000\n"
 "PO-Revision-Date: 2024-05-27 00:04+0000\n"
 "Last-Translator: ttkk1024 <Unknown>\n"
 "Language-Team: \n"
@@ -22,6 +22,46 @@ msgstr "我是这个脚本的描述。请编辑我。"
 #: DrGeo-Model-Script,DrGeoUserScript_class>>scriptName
 msgid "A script"
 msgstr "一个脚本"
+
+#: DrGeo-Presenter-Builder,DrGMacroBuilder_class>>description
+msgid "Construct a macro-construction with input and output items."
+msgstr "构建带有输入输出项的宏"
+
+#: DrGeo-Presenter-Builder,DrGMacroBuilder_class>>title
+msgid "Build macro"
+msgstr "构建宏"
+
+#: DrGeo-Presenter-Builder,DrGMacroBuilder>>apply
+msgid "Input and output items don't match"
+msgstr "输入和输出项不匹配"
+
+#: DrGeo-Presenter-Builder,DrGMacroBuilder>>apply
+msgid "Please, enter a proper title and description"
+msgstr "请输入一个正确的标题和描述"
+
+#: DrGeo-Presenter-Builder,DrGMacroPlayer_class>>description
+msgid ""
+"Execute a pre-built macro-construction on selected input items. To edit a "
+"macro description, edit its text and apply with the keys [alt/ctrl]+s."
+msgstr ""
+"使用预先内置的宏结构在选定输入项目上执行。若要编辑宏描述，编辑其文字，然后按 "
+"[alt/ctrl]+s 键应用。"
+
+#: DrGeo-Presenter-Builder,DrGMacroPlayer_class>>title
+msgid "Execute/edit macro"
+msgstr "执行/编辑 宏"
+
+#: DrGeo-Presenter-Builder,DrGScriptPlayer_class>>description
+msgid "Insert a Smalltalk script in the drawing area."
+msgstr "在绘图区域插入一条Smalltalk脚本。"
+
+#: DrGeo-Presenter-Builder,DrGScriptPlayer_class>>title
+msgid "Use a script"
+msgstr "使用脚本"
+
+#: DrGeo-Presenter-Builder,DrGScriptPlayer>>description
+msgid "No description, write one in the description method of this script."
+msgstr "无描述：为该脚本写一个描述方法"
 
 #: DrGeo-View,DrGMinControlsManager>>editMenu
 msgid "Copy"
@@ -303,6 +343,10 @@ msgstr "Dr. Geo教程"
 #: DrGeo-View-Dialog,DrGSmalltalkSketchEditor>>newToolbar
 msgid "Edit a Smalltalk sketch."
 msgstr "编辑一个Smalltalk草图。"
+
+#: DrGeo-View-Dialog,DrGSmalltalkSketchEditor>>newToolbar
+msgid "Generate a prompt for AI and copy it in the host clipboard."
+msgstr ""
 
 #: DrGeo-View-Dialog,DrGSmalltalkSketchEditor>>newToolbar,DrGSmalltalkSketchEditor>>switchToPlayButton
 msgid "Play the Smalltalk sketch."
@@ -913,28 +957,6 @@ msgstr "选择一个脚本，然后在草图中选择项目。"
 #~ msgid "Locus defined by a free point on a curve and a relative point."
 #~ msgstr "通过圆弧上任意点和参照点定义的轨迹。"
 
-#~ msgid "Construct a macro-construction with input and output items."
-#~ msgstr "构建带有输入输出项的宏"
-
-#~ msgid "Build macro"
-#~ msgstr "构建宏"
-
-#~ msgid "Input and output items don't match"
-#~ msgstr "输入和输出项不匹配"
-
-#~ msgid "Please, enter a proper title and description"
-#~ msgstr "请输入一个正确的标题和描述"
-
-#~ msgid ""
-#~ "Execute a pre-built macro-construction on selected input items. To edit a "
-#~ "macro description, edit its text and apply with the keys [alt/ctrl]+s."
-#~ msgstr ""
-#~ "使用预先内置的宏结构在选定输入项目上执行。若要编辑宏描述，编辑其文字，然后"
-#~ "按 [alt/ctrl]+s 键应用。"
-
-#~ msgid "Execute/edit macro"
-#~ msgstr "执行/编辑 宏"
-
 #~ msgid "The midpoint of a segment or between two points."
 #~ msgstr "线段的中点或两点间的均分点。"
 
@@ -1006,15 +1028,6 @@ msgstr "选择一个脚本，然后在草图中选择项目。"
 
 #~ msgid "Rotation"
 #~ msgstr "旋转"
-
-#~ msgid "Insert a Smalltalk script in the drawing area."
-#~ msgstr "在绘图区域插入一条Smalltalk脚本。"
-
-#~ msgid "Use a script"
-#~ msgstr "使用脚本"
-
-#~ msgid "No description, write one in the description method of this script."
-#~ msgstr "无描述：为该脚本写一个描述方法"
 
 #~ msgid "Segment defined by two points."
 #~ msgstr "两点确定的线段。"

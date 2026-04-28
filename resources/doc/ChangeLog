@@ -1,3 +1,11 @@
+2026-04-28  Hilaire Fernandes  <hilaire@gnu.org>
+
+	* Release 26.06a beta
+	* The Smalltalk sketch editor can now generate a prompt for AIs,
+	to teach them how to write valid DrGeo Smalltalk sketches.
+	* Fix an issue with the script player wizard (it was not working
+	anymore)
+
 2026-02-18  hilaire  <hilaire@gnu.org>
 
 	* Release 26.02 beta Details at

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Cuis\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-02-17 18:57-0000\n"
+"POT-Creation-Date: 2026-04-28 14:02-0000\n"
 "PO-Revision-Date: 2023-12-31 13:12+0000\n"
 "Last-Translator: Markus Schlager <Unknown>\n"
 "Language-Team: \n"
@@ -22,6 +22,49 @@ msgstr "Hier steht die Beschreibung dieses Skriptes. Bitte bearbeiten."
 #: DrGeo-Model-Script,DrGeoUserScript_class>>scriptName
 msgid "A script"
 msgstr "Ein Skript"
+
+#: DrGeo-Presenter-Builder,DrGMacroBuilder_class>>description
+msgid "Construct a macro-construction with input and output items."
+msgstr "Erzeuge eine Makro-Konstruktion mit Ein- und Ausgabe-Objekten."
+
+#: DrGeo-Presenter-Builder,DrGMacroBuilder_class>>title
+msgid "Build macro"
+msgstr "Makro erstellen"
+
+#: DrGeo-Presenter-Builder,DrGMacroBuilder>>apply
+msgid "Input and output items don't match"
+msgstr "Ein- und Ausgabe-Objekte stimmen nicht überein."
+
+#: DrGeo-Presenter-Builder,DrGMacroBuilder>>apply
+msgid "Please, enter a proper title and description"
+msgstr "Gib bitte einen passenden Titel und eine Beschreibung ein."
+
+#: DrGeo-Presenter-Builder,DrGMacroPlayer_class>>description
+msgid ""
+"Execute a pre-built macro-construction on selected input items. To edit a "
+"macro description, edit its text and apply with the keys [alt/ctrl]+s."
+msgstr ""
+"Führe eine vorgefertigte Makrokonstruktion mit den gewählten Eingabeobjekten "
+"aus. Wenn du die Makro-Beschreibung ändern willst, editiere ihren Text und "
+"speichere ihn mit der Tastekombination [Alt/Strg]+s."
+
+#: DrGeo-Presenter-Builder,DrGMacroPlayer_class>>title
+msgid "Execute/edit macro"
+msgstr "Makro ausführen/bearbeiten"
+
+#: DrGeo-Presenter-Builder,DrGScriptPlayer_class>>description
+msgid "Insert a Smalltalk script in the drawing area."
+msgstr "Füge ein Smalltalk-Skript in die Zeichenebene ein."
+
+#: DrGeo-Presenter-Builder,DrGScriptPlayer_class>>title
+msgid "Use a script"
+msgstr "Skript benutzen"
+
+#: DrGeo-Presenter-Builder,DrGScriptPlayer>>description
+msgid "No description, write one in the description method of this script."
+msgstr ""
+"Keine Beschreibung vorhanden; schreibe eine in der Beschreibungsmethode "
+"(description) dieses Skriptes."
 
 #: DrGeo-View,DrGMinControlsManager>>editMenu
 msgid "Copy"
@@ -317,6 +360,10 @@ msgstr "Dr.Geo-Anleitung"
 #: DrGeo-View-Dialog,DrGSmalltalkSketchEditor>>newToolbar
 msgid "Edit a Smalltalk sketch."
 msgstr "Eine Smalltalk-Konstruktion bearbeiten"
+
+#: DrGeo-View-Dialog,DrGSmalltalkSketchEditor>>newToolbar
+msgid "Generate a prompt for AI and copy it in the host clipboard."
+msgstr ""
 
 #: DrGeo-View-Dialog,DrGSmalltalkSketchEditor>>newToolbar,DrGSmalltalkSketchEditor>>switchToPlayButton
 msgid "Play the Smalltalk sketch."
@@ -893,30 +940,6 @@ msgstr "Die Argumente, die von diesem Skript akzeptiert werden."
 #~ "Geometrischer Ort, definiert durch einen freien Punkt auf einer Linie und "
 #~ "einen davon abhängigen Punkt"
 
-#~ msgid "Construct a macro-construction with input and output items."
-#~ msgstr "Erzeuge eine Makro-Konstruktion mit Ein- und Ausgabe-Objekten."
-
-#~ msgid "Build macro"
-#~ msgstr "Makro erstellen"
-
-#~ msgid "Input and output items don't match"
-#~ msgstr "Ein- und Ausgabe-Objekte stimmen nicht überein."
-
-#~ msgid "Please, enter a proper title and description"
-#~ msgstr "Gib bitte einen passenden Titel und eine Beschreibung ein."
-
-#~ msgid ""
-#~ "Execute a pre-built macro-construction on selected input items. To edit a "
-#~ "macro description, edit its text and apply with the keys [alt/ctrl]+s."
-#~ msgstr ""
-#~ "Führe eine vorgefertigte Makrokonstruktion mit den gewählten "
-#~ "Eingabeobjekten aus. Wenn du die Makro-Beschreibung ändern willst, "
-#~ "editiere ihren Text und speichere ihn mit der Tastekombination [Alt/"
-#~ "Strg]+s."
-
-#~ msgid "Execute/edit macro"
-#~ msgstr "Makro ausführen/bearbeiten"
-
 #~ msgid "The midpoint of a segment or between two points."
 #~ msgstr "Der Mittelpunkt einer Strecke oder zwischen zwei Punkten"
 
@@ -1003,17 +1026,6 @@ msgstr "Die Argumente, die von diesem Skript akzeptiert werden."
 
 #~ msgid "Rotation"
 #~ msgstr "Drehung"
-
-#~ msgid "Insert a Smalltalk script in the drawing area."
-#~ msgstr "Füge ein Smalltalk-Skript in die Zeichenebene ein."
-
-#~ msgid "Use a script"
-#~ msgstr "Skript benutzen"
-
-#~ msgid "No description, write one in the description method of this script."
-#~ msgstr ""
-#~ "Keine Beschreibung vorhanden; schreibe eine in der Beschreibungsmethode "
-#~ "(description) dieses Skriptes."
 
 #~ msgid "Segment defined by two points."
 #~ msgstr "Strecke, definiert durch zwei Punkte"

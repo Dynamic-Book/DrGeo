@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: drgeo\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2026-02-17 18:57-0000\n"
+"POT-Creation-Date: 2026-04-28 14:02-0000\n"
 "PO-Revision-Date: 2024-05-09 07:31+0000\n"
 "Last-Translator: Paulo Francisco Slomp <slomp@ufrgs.br>\n"
 "Language-Team: Brazilian Portuguese <pt_BR@li.org>\n"
@@ -25,6 +25,47 @@ msgstr "Eu sou a descrição desse script. Por favor, me edite."
 #: DrGeo-Model-Script,DrGeoUserScript_class>>scriptName
 msgid "A script"
 msgstr "Um script"
+
+#: DrGeo-Presenter-Builder,DrGMacroBuilder_class>>description
+msgid "Construct a macro-construction with input and output items."
+msgstr "Constrói uma macro de construção com itens de entrada e de saída."
+
+#: DrGeo-Presenter-Builder,DrGMacroBuilder_class>>title
+msgid "Build macro"
+msgstr "Construir macro"
+
+#: DrGeo-Presenter-Builder,DrGMacroBuilder>>apply
+msgid "Input and output items don't match"
+msgstr "Itens de entrada e saída não correspondem"
+
+#: DrGeo-Presenter-Builder,DrGMacroBuilder>>apply
+msgid "Please, enter a proper title and description"
+msgstr "Por favor, insira um título e uma descrição adequada"
+
+#: DrGeo-Presenter-Builder,DrGMacroPlayer_class>>description
+msgid ""
+"Execute a pre-built macro-construction on selected input items. To edit a "
+"macro description, edit its text and apply with the keys [alt/ctrl]+s."
+msgstr ""
+"Executa uma macro de construção pré-construída nos itens de entrada "
+"selecionados. Para editar uma descrição de macro, edite seu texto e aplique "
+"com as teclas [alt/ctrl]+s."
+
+#: DrGeo-Presenter-Builder,DrGMacroPlayer_class>>title
+msgid "Execute/edit macro"
+msgstr "Executar/editar macro"
+
+#: DrGeo-Presenter-Builder,DrGScriptPlayer_class>>description
+msgid "Insert a Smalltalk script in the drawing area."
+msgstr "Insere um script Smalltalk na área de desenho."
+
+#: DrGeo-Presenter-Builder,DrGScriptPlayer_class>>title
+msgid "Use a script"
+msgstr "Usar um script"
+
+#: DrGeo-Presenter-Builder,DrGScriptPlayer>>description
+msgid "No description, write one in the description method of this script."
+msgstr "Sem descrição, escreva um descrição no método deste script."
 
 #: DrGeo-View,DrGMinControlsManager>>editMenu
 msgid "Copy"
@@ -312,6 +353,10 @@ msgstr ""
 
 #: DrGeo-View-Dialog,DrGSmalltalkSketchEditor>>newToolbar
 msgid "Edit a Smalltalk sketch."
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGSmalltalkSketchEditor>>newToolbar
+msgid "Generate a prompt for AI and copy it in the host clipboard."
 msgstr ""
 
 #: DrGeo-View-Dialog,DrGSmalltalkSketchEditor>>newToolbar,DrGSmalltalkSketchEditor>>switchToPlayButton
@@ -779,29 +824,6 @@ msgstr ""
 #~ "Lugar geométrico definido por um ponto livre numa curva e um ponto "
 #~ "relativo."
 
-#~ msgid "Construct a macro-construction with input and output items."
-#~ msgstr "Constrói uma macro de construção com itens de entrada e de saída."
-
-#~ msgid "Build macro"
-#~ msgstr "Construir macro"
-
-#~ msgid "Input and output items don't match"
-#~ msgstr "Itens de entrada e saída não correspondem"
-
-#~ msgid "Please, enter a proper title and description"
-#~ msgstr "Por favor, insira um título e uma descrição adequada"
-
-#~ msgid ""
-#~ "Execute a pre-built macro-construction on selected input items. To edit a "
-#~ "macro description, edit its text and apply with the keys [alt/ctrl]+s."
-#~ msgstr ""
-#~ "Executa uma macro de construção pré-construída nos itens de entrada "
-#~ "selecionados. Para editar uma descrição de macro, edite seu texto e "
-#~ "aplique com as teclas [alt/ctrl]+s."
-
-#~ msgid "Execute/edit macro"
-#~ msgstr "Executar/editar macro"
-
 #~ msgid "The midpoint of a segment or between two points."
 #~ msgstr "O ponto médio de um segmento ou entre dois pontos"
 
@@ -884,15 +906,6 @@ msgstr ""
 
 #~ msgid "Rotation"
 #~ msgstr "Rotação"
-
-#~ msgid "Insert a Smalltalk script in the drawing area."
-#~ msgstr "Insere um script Smalltalk na área de desenho."
-
-#~ msgid "Use a script"
-#~ msgstr "Usar um script"
-
-#~ msgid "No description, write one in the description method of this script."
-#~ msgstr "Sem descrição, escreva um descrição no método deste script."
 
 #~ msgid "Segment defined by two points."
 #~ msgstr "Segmento definido por dois pontos."

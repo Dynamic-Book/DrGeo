@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Pharo\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-02-17 18:57-0000\n"
+"POT-Creation-Date: 2026-04-28 14:02-0000\n"
 "PO-Revision-Date: 2015-06-01 06:00+0000\n"
 "Last-Translator: ☠Jay ZDLin☠ <Unknown>\n"
 "Language-Team: \n"
@@ -21,6 +21,45 @@ msgstr ""
 
 #: DrGeo-Model-Script,DrGeoUserScript_class>>scriptName
 msgid "A script"
+msgstr ""
+
+#: DrGeo-Presenter-Builder,DrGMacroBuilder_class>>description
+msgid "Construct a macro-construction with input and output items."
+msgstr "Создать макрос с входными и выходными элементами"
+
+#: DrGeo-Presenter-Builder,DrGMacroBuilder_class>>title
+msgid "Build macro"
+msgstr "Создать макрос"
+
+#: DrGeo-Presenter-Builder,DrGMacroBuilder>>apply
+msgid "Input and output items don't match"
+msgstr "Входные и выходные элементы не совпадают"
+
+#: DrGeo-Presenter-Builder,DrGMacroBuilder>>apply
+msgid "Please, enter a proper title and description"
+msgstr "Пожалуйста введите правильные заголовок и описание"
+
+#: DrGeo-Presenter-Builder,DrGMacroPlayer_class>>description
+msgid ""
+"Execute a pre-built macro-construction on selected input items. To edit a "
+"macro description, edit its text and apply with the keys [alt/ctrl]+s."
+msgstr ""
+
+#: DrGeo-Presenter-Builder,DrGMacroPlayer_class>>title
+#, fuzzy
+msgid "Execute/edit macro"
+msgstr "Удалить определение макроса."
+
+#: DrGeo-Presenter-Builder,DrGScriptPlayer_class>>description
+msgid "Insert a Smalltalk script in the drawing area."
+msgstr "Вставить Smalltalk-скрипт в область рисования"
+
+#: DrGeo-Presenter-Builder,DrGScriptPlayer_class>>title
+msgid "Use a script"
+msgstr "Использовать скрипт"
+
+#: DrGeo-Presenter-Builder,DrGScriptPlayer>>description
+msgid "No description, write one in the description method of this script."
 msgstr ""
 
 #: DrGeo-View,DrGMinControlsManager>>editMenu
@@ -304,6 +343,10 @@ msgstr ""
 
 #: DrGeo-View-Dialog,DrGSmalltalkSketchEditor>>newToolbar
 msgid "Edit a Smalltalk sketch."
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGSmalltalkSketchEditor>>newToolbar
+msgid "Generate a prompt for AI and copy it in the host clipboard."
 msgstr ""
 
 #: DrGeo-View-Dialog,DrGSmalltalkSketchEditor>>newToolbar,DrGSmalltalkSketchEditor>>switchToPlayButton
@@ -704,18 +747,6 @@ msgstr ""
 #~ msgstr ""
 #~ "Место, определенное свободной точкой на кривой и относительной точкой."
 
-#~ msgid "Construct a macro-construction with input and output items."
-#~ msgstr "Создать макрос с входными и выходными элементами"
-
-#~ msgid "Build macro"
-#~ msgstr "Создать макрос"
-
-#~ msgid "Input and output items don't match"
-#~ msgstr "Входные и выходные элементы не совпадают"
-
-#~ msgid "Please, enter a proper title and description"
-#~ msgstr "Пожалуйста введите правильные заголовок и описание"
-
 #~ msgid "The midpoint of a segment or between two points."
 #~ msgstr "Промежуточная точка отрезка или между двумя точками"
 
@@ -799,12 +830,6 @@ msgstr ""
 
 #~ msgid "Rotation"
 #~ msgstr "Поворот"
-
-#~ msgid "Insert a Smalltalk script in the drawing area."
-#~ msgstr "Вставить Smalltalk-скрипт в область рисования"
-
-#~ msgid "Use a script"
-#~ msgstr "Использовать скрипт"
 
 #~ msgid "Segment defined by two points."
 #~ msgstr "Отрезок, определенный двумя точками."
@@ -951,9 +976,6 @@ msgstr ""
 
 #~ msgid "Delete a macro-construction from the registry."
 #~ msgstr "Удалить определение макроса из хранилища."
-
-#~ msgid "Delete macro"
-#~ msgstr "Удалить определение макроса."
 
 #~ msgid "Snap to grid."
 #~ msgstr "Выровнять по сетке"

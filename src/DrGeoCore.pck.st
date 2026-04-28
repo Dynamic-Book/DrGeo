@@ -1,10 +1,10 @@
-'From Cuis7.7 [latest update: #7880] on 20 April 2026 at 10:12:13 pm'!
+'From Cuis7.7 [latest update: #7880] on 28 April 2026 at 2:26:43 pm'!
 'Description '!
-!provides: 'DrGeoCore' 1 54!
+!provides: 'DrGeoCore' 1 56!
 !requires: 'UI-Preference' 1 28 nil!
 !requires: 'UI-Panel' 1 140 nil!
-!requires: 'Graphics-Files-Additional' 1 30 nil!
 !requires: 'YAXO' 1 28 nil!
+!requires: 'Graphics-Files-Additional' 1 30 nil!
 SystemOrganization addCategory: #'DrGeoCore-Model'!
 SystemOrganization addCategory: #'DrGeoCore-Model-Smalltalk'!
 SystemOrganization addCategory: #'DrGeoCore-Model-Item'!
@@ -1511,16 +1511,6 @@ DrGTool subclass: #DrGBuildTool
 	category: 'DrGeoCore-Presenter-Tool'!
 !classDefinition: 'DrGBuildTool class' category: #'DrGeoCore-Presenter-Tool'!
 DrGBuildTool class
-	instanceVariableNames: ''!
-
-!classDefinition: #DrGScriptPlayTool category: #'DrGeoCore-Presenter-Tool'!
-DrGMacroBuildTool subclass: #DrGScriptPlayTool
-	instanceVariableNames: ''
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'DrGeoCore-Presenter-Tool'!
-!classDefinition: 'DrGScriptPlayTool class' category: #'DrGeoCore-Presenter-Tool'!
-DrGScriptPlayTool class
 	instanceVariableNames: ''!
 
 !classDefinition: #DrGFlyPointBuildTool category: #'DrGeoCore-Presenter-Tool'!
@@ -11609,10 +11599,10 @@ toolsMenu: builder
 		icon:	 #saveIcon;
 		help: 'Save this Dr. Geo session.' translated! !
 
-!DrGeo class methodsFor: 'menu' stamp: 'hlsf 22/Feb/2026 10:27:21'!
+!DrGeo class methodsFor: 'menu' stamp: 'drgeo 28/Apr/2026 13:42:39'!
 version
 	^ 'Installed version: ' translated, 
-		'26.02a beta (code revision ', 
+		'26.06a beta (code revision ', 
 		(String streamContents: [:str | 
 			(CodePackage installedPackages at: 'DrGeo') featureSpec provides printVersionRevisionOn: str]), ')'! !
 
@@ -12230,19 +12220,6 @@ builder: aBuilderClassName presenter: aPresenter
 		presenter: aPresenter;
 		initialize;
 		yourself! !
-
-!DrGScriptPlayTool methodsFor: 'initialize-release' stamp: ''!
-registerDependant: anObject
-	builder when: #changedState send: #switchState: to: self.
-	builder when: #cancel send: #cancel to: self.
-	builder when: #readyToBuild send: #readyToBuild to: anObject.
-	builder when: #changedScript send: #changedScript to: self! !
-
-!DrGScriptPlayTool methodsFor: 'updating' stamp: 'hlsf 11/Apr/2021 12:31:09'!
-changedScript
-" the builder inform us the user selected another script,
-do some cleaning"
-	self selectNoMorph! !
 
 !DrGFlyPointBuildTool methodsFor: 'initialize' stamp: ''!
 initialize
