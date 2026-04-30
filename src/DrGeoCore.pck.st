@@ -1,10 +1,10 @@
-'From Cuis7.7 [latest update: #7880] on 28 April 2026 at 2:26:43 pm'!
+'From Cuis7.7 [latest update: #7880] on 30 April 2026 at 10:34:57 am'!
 'Description '!
-!provides: 'DrGeoCore' 1 56!
+!provides: 'DrGeoCore' 1 57!
 !requires: 'UI-Preference' 1 28 nil!
 !requires: 'UI-Panel' 1 140 nil!
-!requires: 'YAXO' 1 28 nil!
 !requires: 'Graphics-Files-Additional' 1 30 nil!
+!requires: 'YAXO' 1 28 nil!
 SystemOrganization addCategory: #'DrGeoCore-Model'!
 SystemOrganization addCategory: #'DrGeoCore-Model-Smalltalk'!
 SystemOrganization addCategory: #'DrGeoCore-Model-Item'!
@@ -11529,18 +11529,21 @@ and programmed interactive sketches.
 LICENSE: GPL' translated format: {self version. self copyright. self cuisVersion }.
 	^ text! !
 
-!DrGeo class methodsFor: 'menu' stamp: 'hlsf 3/Apr/2024 17:11:51'!
+!DrGeo class methodsFor: 'menu' stamp: 'drgeo 30/Apr/2026 10:32:14'!
 preferencesMenu: builder
 	<drgeoWorldMenu>
-	(builder newEntry: 'Settings' translated in: 'Preferences' translated)
+	(builder newEntry: #settings in: #preferences)
+		label: 'Settings' translated;
 		icon: #graphicsIcon;
 		action: [PreferenceBrowser open: DrGeoSystem preferences label: 'Dr. Geo Preferences' translated.];
 		order: 1.
-	(builder newEntry: 'Size of GUI elements' translated in: 'Preferences' translated)
+	(builder newEntry: #sizeGUI in: #preferences)
+		label: 'Size of GUI elements' translated;
 		target: Theme; selector: #changeFontSizes;
 		icon: #preferencesDesktopFontIcon;
 		order: 2.
-	(builder newEntry: 'Theme' translated in: 'Preferences' translated)
+	(builder newEntry: #theme in: #preferences)
+		label: 'Theme' translated;
 		target: Theme; selector: #changeTheme;
 		icon: #appearanceIcon;
 		order: 3.
@@ -11553,47 +11556,53 @@ quit
 Are you sure to quit Dr. Geo environment?' translated) ifFalse: [ ^ self]].
 	Smalltalk quitPrimitive! !
 
-!DrGeo class methodsFor: 'menu' stamp: 'hlsf 26/May/2024 11:23:04'!
+!DrGeo class methodsFor: 'menu' stamp: 'drgeo 30/Apr/2026 10:33:25'!
 toolsMenu: builder
 	<drgeoWorldMenu>
-	(builder newEntry: 'System Browser' translated in: 'Tools' translated)
+	(builder newEntry: #systemBrowser in: #tools)
+		label: 'System Browser' translated;
 		icon: #developmentIcon;
 		action: [HierarchyBrowserWindow onClass: DrGeoSketch selector: nil];
 		help:'A source code browser to view, edit and save Dr. Geo code. I open the browser on the DrGeoSketch class you can study to design your own Smalltalk sketch.' translated;
 		order: 40.
 
-	(builder newEntry: 'Smalltalk Sketch Editor' translated in: 'Tools' translated)
+	(builder newEntry: #smalltalkSketchEditor in: #tools)
+		label: 'Smalltalk Sketch Editor' translated;
 		icon: #textEditorIcon;
-		help: 'An editor to write and to test new Smalltalk sketch.' 	translated;
+		help: 'An editor to write and to test new Smalltalk sketch.' translated;
 		action: [DrGSmalltalkSketchEditor open: '' label: 'Edit Smalltalk Sketch' translated.];
 		order: 20.
 
-	(builder newEntry: 'Browse Smalltalk Sketches' translated in: 'Tools' translated)
+	(builder newEntry: #browseSmalltalkSketches in: #tools)
+		label: 'Browse Smalltalk Sketches' translated;
 		icon: #scriptIcon;
 		help: 'A tool to browse and to test both system and personal Smalltalk Sketches.' 	translated;
 		action: [DrGSmalltalkSketchBrowser open: DrGeoSystem smalltalkSketchesPath label: 'Browse' translated.];
 		order: 10.
 
-	(builder newEntry: 'Workspace' translated in: 'Tools' translated)
+	(builder newEntry: #workspace in: #tools)
+		label: 'Workspace' translated;
 		icon: #terminalIcon;
 		action: [Workspace open ];
-		help: 'A window used as a scratchpad area where fragments of Cuis-Smalltalk code can be entered, stored, edited, and evaluated. To edit Smalltalk sketch, use the Smalltalk Sketch Editor tool above.'	translated;
+		help: 'A window used as a scratchpad area where fragments of Cuis-Smalltalk code can be entered, stored, edited, and evaluated. To edit Smalltalk sketch, use the Smalltalk Sketch Editor tool above.' translated;
 		order: 30.
 
-	(builder newEntry: 'Transcript' translated in: 'Tools' translated)
+	(builder newEntry: #transcript in: #tools)
+		label: 'Transcript' translated;
 		icon: #printerIcon;
 		action: [Transcript open ];
 		help: 'A window used to print information from the code - text output. Any object receiving the message #print is output in the Transcript: ''hello'' print, (k * 5) print. Use the Transcript class for more elaborated output.' 	translated;
 		order: 35.
 
-		
-	(builder newEntry: 'Open a file' translated in: 'Tools' translated)
+	(builder newEntry: #openFile in: #tools)
+		label: 'Open a file' translated;
 		icon: #systemFileManagerIcon;
 		action: [FileList open];
 		help: 'Open the filer on your personal sketches collection.' translated;
 		order: 50.
 		
-	(builder newEntry: 'Save session' translated in: 'Tools' translated)
+	(builder newEntry: #saveSession in: #tools)
+		label: 'Save session' translated;
 		order: 999;
 		action: [Smalltalk saveImage];
 		icon:	 #saveIcon;
@@ -11606,31 +11615,38 @@ version
 		(String streamContents: [:str | 
 			(CodePackage installedPackages at: 'DrGeo') featureSpec provides printVersionRevisionOn: str]), ')'! !
 
-!DrGeo class methodsFor: 'menu' stamp: 'hlsf 22/Feb/2026 10:27:58'!
+!DrGeo class methodsFor: 'menu' stamp: 'drgeo 30/Apr/2026 10:34:08'!
 worldMenu: builder
 	<drgeoWorldMenu>
-	(builder newEntry: 'New sketch' translated)
+	(builder newEntry: #newSketch)
+		label: 'New sketch' translated;
 		icon: #newIcon;
 		action: [DrGeo new];
 		order: 0.
-	(builder newEntry: 'Open a sketch' translated)
+	(builder newEntry: #openSketch)
+		label: 'Open a sketch' translated;
 		icon: #openIcon;
 		action: [DrGFileOpenMorph open];
 		order: 1.
-	(builder newEntry: 'Preferences' translated)
+	(builder newEntry: #preferences)
+		label: 'Preferences' translated;
 		icon: #preferencesIcon;
 		order: 2.
-	(builder newEntry: 'Toggle full screen mode' translated)
+	(builder newEntry: #toggleFullscreen)
+		label: 'Toggle full screen mode' translated;
 		icon: #viewFullscreenIcon;
 		action: [DrGeoSystem toggleFullscreen];
-		help: 'Turn full screen mode on when it is off, off when it is on.'	translated;
+		help: 'Turn full screen mode on when it is off, off when it is on.' translated;
 		order: 3.
-	(builder newEntry: 'Tools' translated)
-		icon:	 #systemIcon.
-	(builder newEntry: 'About' translated)
+	(builder newEntry: #tools)
+		label: 'Tools' translated;
+		icon: #systemIcon.
+	(builder newEntry: #about)
+		label: 'About' translated;
 		action: [ DrGeo about ];
 		order: 7.
-	(builder newEntry:  'Quit' translated)
+	(builder newEntry: #quit)
+		label: 'Quit' translated;
 		action: [ DrGeo quit ];
 		icon: #quitIcon;
 		order: 999! !
