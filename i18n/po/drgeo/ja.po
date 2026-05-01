@@ -357,7 +357,7 @@ msgstr "Smalltalkスケッチを編集する。"
 
 #: DrGeo-View-Dialog,DrGSmalltalkSketchEditor>>newToolbar
 msgid "Generate a prompt for AI and copy it in the host clipboard."
-msgstr ""
+msgstr "AIへのプロンプトを生成し、ホストのクリップボードにコピーする。"
 
 #: DrGeo-View-Dialog,DrGSmalltalkSketchEditor>>newToolbar,DrGSmalltalkSketchEditor>>switchToPlayButton
 msgid "Play the Smalltalk sketch."

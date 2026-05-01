@@ -1,12 +1,14 @@
 #!/bin/bash
 
-# Start-up script when DrGeo is installed in a read only direction
-# (e.g. /opt). This script is to be used in a multi-user environment.
-# For a given user, at the inital start-up, the image is copied in the
-# user space in a MyDrGeo directory
+# Start-up script for DrGeo, when it is installed in a read only
+# directory (e.g. /opt). The script can be used when DrGeo is used by
+# several users, in a multi-user environment.  For a given user, at
+# the inital start-up, the image is copied in the user space at
+# $HOME/$USERDATA location. If required, adjust the variable USERDATA
+# below.
 
 
-# Path to user data and Smalltalk image in HOME directory
+# Path to user data and Smalltalk image in user HOME directory
 USERDATA="Documents/myDrGeo"
 
 # Uncomment for composed key-in input
