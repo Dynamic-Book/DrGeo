@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Cuis\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-04-28 14:02-0000\n"
-"PO-Revision-Date: 2024-05-28 22:38+0000\n"
+"PO-Revision-Date: 2026-05-17 16:28+0200\n"
 "Last-Translator: heppe <heppew@yahoo.com>\n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -11,7 +11,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Launchpad-Export-Date: 2024-05-29 04:54+0000\n"
-"X-Generator: Launchpad (build a60fb269857abd7169036a2da5afd37a6a1d41e8)\n"
+"X-Generator: Poedit 3.9\n"
 "X-Cuis-SystemVersion: Cuis7.1 update 6409\n"
 "X-Cuis-Domain: drgeo\n"
 
@@ -173,7 +173,7 @@ msgstr "Voer de code uit tot aan de cursorpositie."
 
 #: DrGeo-View-Dialog,DrGDebuggerWindow>>customButtonSpecs
 msgid "Execute the current message and go to the next message."
-msgstr "Voer dit bericht uit en ga naar het volgende bericht"
+msgstr "Voer dit bericht uit en ga naar het volgende bericht."
 
 #: DrGeo-View-Dialog,DrGDebuggerWindow>>customButtonSpecs
 msgid "Restart"
@@ -197,7 +197,7 @@ msgstr "Stap in"
 
 #: DrGeo-View-Dialog,DrGDebuggerWindow>>customButtonSpecs
 msgid "Step into a block."
-msgstr "Stap in een blok"
+msgstr "Stap in een blok."
 
 #: DrGeo-View-Dialog,DrGFileOpenMorph_class>>open
 msgid "Open a sketch"
@@ -286,7 +286,7 @@ msgstr "Bouw"
 
 #: DrGeo-View-Dialog,DrGScriptDesignerDialog>>newButtonArea
 msgid "Build a script with these settings."
-msgstr "Bouw een script met deze instellingen"
+msgstr "Bouw een script met deze instellingen."
 
 #: DrGeo-View-Dialog,DrGScriptDesignerDialog>>newDescriptionMorph
 msgid ""
@@ -315,7 +315,7 @@ msgstr "De naam van het script."
 
 #: DrGeo-View-Dialog,DrGSmalltalkSketchBrowser>>newButtonArea
 msgid "Browse my collection of Smalltalk sketches."
-msgstr "Doorzoek mijn verzameling van Smalltalk schetsen"
+msgstr "Doorzoek mijn verzameling van Smalltalk schetsen."
 
 #: DrGeo-View-Dialog,DrGSmalltalkSketchBrowser>>newButtonArea
 msgid "Delete"
@@ -323,7 +323,7 @@ msgstr "Verwijderen"
 
 #: DrGeo-View-Dialog,DrGSmalltalkSketchBrowser>>newButtonArea
 msgid "Delete permanently this Smalltalk Sketch from disk."
-msgstr "Definitief deze Smalltalk Sketch verwijderen van de schijf"
+msgstr "Definitief deze Smalltalk Sketch verwijderen van de schijf."
 
 #: DrGeo-View-Dialog,DrGSmalltalkSketchBrowser>>newSketchesColumn
 msgid "Code"
@@ -343,7 +343,7 @@ msgstr ""
 
 #: DrGeo-View-Dialog,DrGSmalltalkSketchEditor>>keepSketch
 msgid "Name the sketch to keep."
-msgstr "Benoem de te bewaren schets"
+msgstr "Benoem de te bewaren schets."
 
 #: DrGeo-View-Dialog,DrGSmalltalkSketchEditor>>newToolbar
 msgid "Debug the Smalltalk sketch."
@@ -359,7 +359,7 @@ msgstr "Bewerk de Smalltalk schets."
 
 #: DrGeo-View-Dialog,DrGSmalltalkSketchEditor>>newToolbar
 msgid "Generate a prompt for AI and copy it in the host clipboard."
-msgstr ""
+msgstr "Genereer een prompt voor AI en kopieer in het klembord."
 
 #: DrGeo-View-Dialog,DrGSmalltalkSketchEditor>>newToolbar,DrGSmalltalkSketchEditor>>switchToPlayButton
 msgid "Play the Smalltalk sketch."
@@ -463,7 +463,7 @@ msgstr ""
 "3. Klik ergens op de achtergrond, \n"
 "Zodra genoeg items geselecteerd zijn, wordt het script\n"
 "toegevoegd in de sketch, op de aangewezen positie.\n"
-"Druk op de 'volgende' knop om te beginnen"
+"Druk op de 'volgende' knop om te beginnen."
 
 #: DrGeo-View-Dialog,DrGWizardScript>>firstPage
 msgid "Use a script in the sketch"

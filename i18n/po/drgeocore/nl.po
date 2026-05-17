@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Cuis\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-04-28 14:02-0000\n"
-"PO-Revision-Date: 2024-05-28 22:38+0000\n"
+"PO-Revision-Date: 2026-05-17 16:34+0200\n"
 "Last-Translator: heppe <heppew@yahoo.com>\n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -11,7 +11,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Launchpad-Export-Date: 2024-05-29 04:54+0000\n"
-"X-Generator: Launchpad (build a60fb269857abd7169036a2da5afd37a6a1d41e8)\n"
+"X-Generator: Poedit 3.9\n"
 "X-Cuis-SystemVersion: Cuis7.1 update 6409\n"
 "X-Cuis-Domain: drgeo\n"
 
@@ -317,11 +317,11 @@ msgstr "Lettergrootte"
 
 #: DrGeoCore-Model-Style,DrGTextStyle>>fontSizeWidget
 msgid "Set the font size."
-msgstr "Stel lettergrootte in"
+msgstr "Stel lettergrootte in."
 
 #: DrGeoCore-Presenter,DrGeo_class>>figuresArray
 msgid "Fig. - "
-msgstr "Afb. "
+msgstr "Afb. - "
 
 #: DrGeoCore-Presenter,DrGeo_class>>getMenuIn:at:
 msgid "System menu"
@@ -451,7 +451,7 @@ msgstr "Open een bestand"
 
 #: DrGeoCore-Presenter,DrGeo_class>>toolsMenu:
 msgid "Open the filer on your personal sketches collection."
-msgstr "Open de zoeker voor he persoonlijke schetsenverzameling"
+msgstr "Open de zoeker voor he persoonlijke schetsenverzameling."
 
 #: DrGeoCore-Presenter,DrGeo_class>>toolsMenu:
 msgid "Save session"
@@ -508,7 +508,7 @@ msgstr "Wissel geheel scherm modus"
 #: DrGeoCore-Presenter,DrGeo_class>>worldMenu:
 msgid "Turn full screen mode on when it is off, off when it is on."
 msgstr ""
-"Zet volledig scherm modus aan als die uit staat en uit als die aan staat"
+"Zet volledig scherm modus aan als die uit staat en uit als die aan staat."
 
 #: DrGeoCore-Presenter,DrGeo>>axesWording
 msgid "<no> Axes"
@@ -536,7 +536,7 @@ msgstr "Bewerk of maak scripts aan"
 
 #: DrGeoCore-Presenter,DrGeo>>exportToImageAs
 msgid "Name the image to keep."
-msgstr "Geef de afbeelding een naam om te bewaren"
+msgstr "Geef de afbeelding een naam om te bewaren."
 
 #: DrGeoCore-Presenter,DrGeo>>gridWording
 msgid "<no> Grid"
@@ -564,7 +564,7 @@ msgstr ""
 
 #: DrGeoCore-Presenter,DrGeo>>saveSketchAs
 msgid "Name the sketch to keep."
-msgstr "Benoem de te bewaren schets"
+msgstr "Benoem de te bewaren schets."
 
 #: DrGeoCore-Presenter-Builder,DrGAngleBisectorBuilder_class>>description
 msgid ""
@@ -604,7 +604,7 @@ msgstr "Georiënteerde hoek."
 
 #: DrGeoCore-Presenter-Builder,DrGArcBuilder_class>>description
 msgid "Arc defined by three points."
-msgstr "Cirkelboog bepaald door drie punten"
+msgstr "Cirkelboog bepaald door drie punten."
 
 #: DrGeoCore-Presenter-Builder,DrGArcBuilder_class>>title
 msgid "Arc"
@@ -891,7 +891,7 @@ msgstr "Wijzig als dit snijpunt."
 
 #: DrGeoCore-Presenter-Tool,DrGPropertyTool_class>>description
 msgid "Edit an item's property"
-msgstr "Bewerk een item's eigenschappen."
+msgstr "Bewerk een item's eigenschappen"
 
 #: DrGeoCore-Presenter-Tool,DrGPropertyTool_class>>title
 msgid "Property"
@@ -976,7 +976,7 @@ msgstr ""
 "Pad voor door gebruiker aangemaakte bronnen zoals schetsen, Smalltalk "
 "schetsen, geëxporteerde afbeeldingen. Een leeg pad verwijst naar de folder "
 "waar de Dr. Geo applicatie staat. Relatief pad is toegestaan, dan wordt home/"
-"user directory ervoor gezet."
+"user directory ervoor gezet"
 
 #: DrGeoCore-System,DrGPlatform>>miscPreferences
 msgid "miscellaneous"
@@ -1004,7 +1004,7 @@ msgstr "Code gereed op"
 
 #: DrGeoCore-System,DrGPlatform>>programmingPreferences
 msgid "Full debugger when executing Smalltalk sketch."
-msgstr "Volledige debugger bij uitvoeren van Smalltalk schets"
+msgstr "Volledige debugger bij uitvoeren van Smalltalk schets."
 
 #: DrGeoCore-System,DrGPlatform>>programmingPreferences
 msgid "programming"
@@ -1048,7 +1048,7 @@ msgstr "vector"
 
 #: DrGeoCore-View,DrGAbstractControlsManager>>animate1ButtonData
 msgid "Animate at speed 1."
-msgstr "Animatie op snelheid 1"
+msgstr "Animatie op snelheid 1."
 
 #: DrGeoCore-View,DrGAbstractControlsManager>>animate1ButtonData
 msgid "Animate x1"
