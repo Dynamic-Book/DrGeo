@@ -1,6 +1,6 @@
-'From Cuis7.7 [latest update: #7880] on 30 April 2026 at 10:42:09 am'!
+'From Cuis7.7 [latest update: #7941] on 17 May 2026 at 12:45:25 pm'!
 'Description '!
-!provides: 'DrGeoCore' 1 58!
+!provides: 'DrGeoCore' 1 60!
 !requires: 'UI-Preference' 1 28 nil!
 !requires: 'UI-Panel' 1 140 nil!
 !requires: 'Graphics-Files-Additional' 1 30 nil!
@@ -4752,7 +4752,7 @@ intersectionWith: aCurveItem flag: aFlag
 pointAt: anAbscissa
 	self subclassResponsibility ! !
 
-!DrGMathItem methodsFor: 'updating' stamp: 'hlsf 19/Mar/2022 17:08:27'!
+!DrGMathItem methodsFor: 'updating' stamp: 'hlsf 17/May/2026 12:33:30'!
 changed
 	self triggerEvent: #updateMyView! !
 
@@ -27936,13 +27936,13 @@ isText
 wantsContour
 	^ false! !
 
-!DrGTextMorph methodsFor: 'testing' stamp: 'hlsf 5/Sep/2024 16:29:51'!
+!DrGTextMorph methodsFor: 'testing' stamp: 'hlsf 17/May/2026 12:21:18'!
 containsPoint: localPoint
 "We really want rectangle detection, more user friendly, otherwise it is pixel detecting on each character"
 	^ self canBeDrawn 
 		and: [self displayBounds 
 			ifNil: [false] 
-			ifNotNil: [:d | d containsPoint: self drawable positionInWorld + localPoint ]]
+			ifNotNil: [:d | d containsPoint: (self externalizeToWorld: localPoint) ]]
 		! !
 
 !DrGValueMorph methodsFor: 'accessing' stamp: 'hlsf 17/Feb/2026 14:47:11'!
@@ -31175,11 +31175,6 @@ morphCenter: aPoint
 !MenuItemMorph methodsFor: '*DrGeoCore' stamp: 'hlsf 3/Jan/2022 09:01:34'!
 arguments
 	^ arguments! !
-
-!WorldMorph methodsFor: '*DrGeoCore' stamp: 'drgeo 20/Apr/2026 21:43:43'!
-isStepping: aMorph
-" Does this morph stepping? "
-	^ stepList anySatisfy: [:aStepMessage | aStepMessage receiver == aMorph] ! !
 
 !AbstractVectorCanvas methodsFor: '*DrGeoCore' stamp: 'hlsf 27/May/2025 17:49:22'!
 strokeWidth: borderWidth color: borderColor strokeDashArray: dashedBorder 	do: pathCommandsBlock
