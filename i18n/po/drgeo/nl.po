@@ -359,7 +359,7 @@ msgstr "Bewerk de Smalltalk schets."
 
 #: DrGeo-View-Dialog,DrGSmalltalkSketchEditor>>newToolbar
 msgid "Generate a prompt for AI and copy it in the host clipboard."
-msgstr "Genereer een prompt voor AI en kopieer in het klembord."
+msgstr "Genereer een prompt voor AI en kopieer naar het klembord."
 
 #: DrGeo-View-Dialog,DrGSmalltalkSketchEditor>>newToolbar,DrGSmalltalkSketchEditor>>switchToPlayButton
 msgid "Play the Smalltalk sketch."
