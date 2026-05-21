@@ -1,10 +1,10 @@
-'From Cuis7.7 [latest update: #7941] on 17 May 2026 at 12:45:25 pm'!
+'From Cuis7.7 [latest update: #7955] on 21 May 2026 at 11:05:20 am'!
 'Description '!
-!provides: 'DrGeoCore' 1 60!
+!provides: 'DrGeoCore' 1 61!
 !requires: 'UI-Preference' 1 28 nil!
 !requires: 'UI-Panel' 1 140 nil!
-!requires: 'Graphics-Files-Additional' 1 30 nil!
 !requires: 'YAXO' 1 28 nil!
+!requires: 'Graphics-Files-Additional' 1 30 nil!
 SystemOrganization addCategory: #'DrGeoCore-Model'!
 SystemOrganization addCategory: #'DrGeoCore-Model-Smalltalk'!
 SystemOrganization addCategory: #'DrGeoCore-Model-Item'!
@@ -31162,15 +31162,6 @@ vectorReflexionBy: aDirection
 			normal := 0@0].
 	^((self dotProduct: unit) * unit) - ((self dotProduct: normal) * normal)
 ! !
-
-!BoxMorph methodsFor: '*DrGeoCore' stamp: 'hlsf 18/Sep/2024 20:57:09'!
-morphCenter
-	^ extent // 2! !
-
-!BoxMorph methodsFor: '*DrGeoCore' stamp: 'hlsf 18/Sep/2024 20:57:21'!
-morphCenter: aPoint
-"Positionning centered in its owner, according to its extent"
-	self morphPosition: aPoint - (extent // 2) + (`1@1`)! !
 
 !MenuItemMorph methodsFor: '*DrGeoCore' stamp: 'hlsf 3/Jan/2022 09:01:34'!
 arguments
