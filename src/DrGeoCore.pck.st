@@ -1,6 +1,6 @@
-'From Cuis7.7 [latest update: #7955] on 21 May 2026 at 11:05:20 am'!
+'From Cuis7.7 [latest update: #7963] on 23 May 2026 at 4:38:05 pm'!
 'Description '!
-!provides: 'DrGeoCore' 1 61!
+!provides: 'DrGeoCore' 1 62!
 !requires: 'UI-Preference' 1 28 nil!
 !requires: 'UI-Panel' 1 140 nil!
 !requires: 'YAXO' 1 28 nil!
@@ -31166,6 +31166,10 @@ vectorReflexionBy: aDirection
 !MenuItemMorph methodsFor: '*DrGeoCore' stamp: 'hlsf 3/Jan/2022 09:01:34'!
 arguments
 	^ arguments! !
+
+!WorldMorph methodsFor: '*DrGeoCore' stamp: 'hlsf 26/Feb/2026 11:10:57'!
+isStepping: aMorph
+	^ stepList anySatisfy: [:stepMsg | stepMsg receiver == aMorph]! !
 
 !AbstractVectorCanvas methodsFor: '*DrGeoCore' stamp: 'hlsf 27/May/2025 17:49:22'!
 strokeWidth: borderWidth color: borderColor strokeDashArray: dashedBorder 	do: pathCommandsBlock
