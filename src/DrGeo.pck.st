@@ -1,6 +1,6 @@
-'From Cuis7.7 [latest update: #7880] on 28 April 2026 at 2:26:39 pm'!
+'From Cuis7.7 [latest update: #7964] on 25 May 2026 at 5:20:11 pm'!
 'Description '!
-!provides: 'DrGeo' 1 798!
+!provides: 'DrGeo' 1 799!
 !requires: 'Gettext' 1 17 nil!
 !requires: 'SVG' 1 16 nil!
 !requires: 'YAXO' 1 19 nil!
@@ -2272,11 +2272,6 @@ presenter: aPresenter
 
 !DrGeoView methodsFor: 'open/close' stamp: 'hlsf 4/Aug/2023 17:04:50'!
 delete
-	super delete.
-	presenter ifNotNil: [presenter release]! !
-
-!DrGeoView methodsFor: 'open/close' stamp: 'hlsf 4/Aug/2023 12:40:10'!
-deleteWithoutConfirmation
 	super delete.
 	presenter ifNotNil: [presenter release]! !
 

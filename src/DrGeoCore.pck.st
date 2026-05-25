@@ -1,6 +1,6 @@
-'From Cuis7.7 [latest update: #7963] on 23 May 2026 at 4:38:05 pm'!
+'From Cuis7.7 [latest update: #7964] on 25 May 2026 at 5:20:14 pm'!
 'Description '!
-!provides: 'DrGeoCore' 1 62!
+!provides: 'DrGeoCore' 1 64!
 !requires: 'UI-Preference' 1 28 nil!
 !requires: 'UI-Panel' 1 140 nil!
 !requires: 'YAXO' 1 28 nil!
@@ -8940,9 +8940,9 @@ value: aNumber
 	(self mathItem respondsTo: #valueItem:) 
 		ifTrue: [self mathItem valueItem: aNumber]! !
 
-!DrGeoSketch methodsFor: 'initialize-release' stamp: 'hlsf 25/Sep/2022 11:32:31'!
+!DrGeoSketch methodsFor: 'initialize-release' stamp: 'drgeo 25/May/2026 17:08:16'!
 delete
-	self view deleteWithoutConfirmation.
+	self view delete.
 	self release! !
 
 !DrGeoSketch methodsFor: 'initialize-release' stamp: 'hlsf 20/Apr/2024 11:04:09'!
@@ -13695,13 +13695,12 @@ installTools
 
 	self subclassResponsibility! !
 
-!DrGAbstractControlsManager methodsFor: 'initialization' stamp: 'hlsf 7/Jan/2026 15:37:11'!
+!DrGAbstractControlsManager methodsFor: 'initialization' stamp: 'drgeo 25/May/2026 17:15:16'!
 release
 	presenter := nil.
 	tools ifNotNil: [
 		tools delete.
 		tools := nil].
-	view release.
 	view := nil! !
 
 !DrGAbstractControlsManager methodsFor: 'tools collections' stamp: 'hlsf 7/Jan/2026 15:38:34'!
@@ -28807,9 +28806,10 @@ self flag: #drgeoTodo! !
 defaultColor
 	^ Theme current paneBackgroundFrom: Theme current defaultWindowColor ! !
 
-!DrGeoMiniView methodsFor: 'initialize-release' stamp: ''!
-deleteWithoutConfirmation
-	self delete! !
+!DrGeoMiniView methodsFor: 'initialize-release' stamp: 'drgeo 25/May/2026 17:08:34'!
+delete 
+	super delete.
+	self release! !
 
 !DrGeoMiniView methodsFor: 'initialize-release' stamp: 'hlsf 10/Mar/2026 18:58:52'!
 initialize
@@ -28826,8 +28826,10 @@ installTools
 	self beColumn
 		addMorphUseAll: drawable! !
 
-!DrGeoMiniView methodsFor: 'initialize-release' stamp: 'hlsf 6/Jun/2024 17:24:31'!
+!DrGeoMiniView methodsFor: 'initialize-release' stamp: 'hlsf 25/May/2026 16:58:51'!
 release
+	presenter release.
+	self removeAllActions.
 	presenter := drawable := nil.! !
 
 !DrGeoMiniView methodsFor: 'geometry testing' stamp: 'hlsf 5/Jun/2021 12:16:21'!
@@ -30293,11 +30295,11 @@ launchSketch: aScriptFile
 "Launch a test"
 	(DrGeoSystem smalltalkSketchesPath // aScriptFile) readStream fileIn! !
 
-!DrGeoSmalltalkSketchTest methodsFor: 'helpers' stamp: 'hlsf 18/Feb/2026 15:48:36'!
+!DrGeoSmalltalkSketchTest methodsFor: 'helpers' stamp: 'drgeo 25/May/2026 17:08:44'!
 tearDown
 	(Delay forMilliseconds: 200) wait.
 	DrGeoSketch allInstancesDo: [:aSketch | aSketch terminateDo ].
-	DrGeoView allInstancesDo: [:drMorph | drMorph deleteWithoutConfirmation ].! !
+	DrGeoView allInstancesDo: [:drMorph | drMorph delete].! !
 
 !DrGeoSmalltalkSketchTest methodsFor: 'helpers' stamp: 'hlsf 13/Jun/2021 11:03:31'!
 testOnSketch: aScriptFile
