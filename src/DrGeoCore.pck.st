@@ -1,6 +1,6 @@
-'From Cuis7.7 [latest update: #7964] on 27 May 2026 at 9:33:00 pm'!
+'From Cuis7.7 [latest update: #7964] on 27 May 2026 at 9:44:52 pm'!
 'Description '!
-!provides: 'DrGeoCore' 1 66!
+!provides: 'DrGeoCore' 1 67!
 !requires: 'UI-Preference' 1 28 nil!
 !requires: 'UI-Panel' 1 140 nil!
 !requires: 'Graphics-Files-Additional' 1 30 nil!
@@ -28834,13 +28834,6 @@ initialize
 		Makes no arm otherwise "
 	self when: #enterAnnotator send: #showTools to: presenter controlsManager.
 	self when: #leaveAnnotator send: #hideTools to: presenter controlsManager.! !
-
-!DrGeoMiniView methodsFor: 'initialize-release' stamp: 'hlsf 27/May/2026 17:12:14'!
-installTools 
-	self addMorph: drawable
-		layoutSpec: (LayoutEdgesSpec 
-			tlEdgesWeight: 0@0 offset:  0@0
-			brEdgesWeight: 0@0 offset: Theme current smWheelWidth negated asPoint)! !
 
 !DrGeoMiniView methodsFor: 'initialize-release' stamp: 'hlsf 25/May/2026 16:58:51'!
 release
