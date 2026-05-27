@@ -1,6 +1,6 @@
-'From Cuis7.7 [latest update: #7964] on 27 May 2026 at 7:07:15 pm'!
+'From Cuis7.7 [latest update: #7964] on 27 May 2026 at 9:33:00 pm'!
 'Description '!
-!provides: 'DrGeoCore' 1 65!
+!provides: 'DrGeoCore' 1 66!
 !requires: 'UI-Preference' 1 28 nil!
 !requires: 'UI-Panel' 1 140 nil!
 !requires: 'Graphics-Files-Additional' 1 30 nil!
@@ -12187,11 +12187,11 @@ initialize
 registerDependant: anObject
 	builder when: #readyToBuild send: #readyToBuild to: anObject! !
 
-!DrGBuildTool methodsFor: 'initialize-release' stamp: ''!
+!DrGBuildTool methodsFor: 'initialize-release' stamp: 'hlsf 27/May/2026 21:28:39'!
 release
 	super release.
 	builder release.
-	self releaseActionMap. ! !
+	self removeAllActions! !
 
 !DrGBuildTool methodsFor: 'updating' stamp: 'hlsf 11/Apr/2021 12:06:31'!
 redrawFlyingMorph
@@ -14017,7 +14017,7 @@ setStatusBarMessage: aString
 			redrawNeeded]
 		! !
 
-!DrGAbstractControlsManager methodsFor: 'widget access' stamp: 'hlsf 27/May/2026 18:48:54'!
+!DrGAbstractControlsManager methodsFor: 'widget access' stamp: 'hlsf 8/Jan/2026 21:51:17'!
 statusBar
 "A bar to print contextual information"
 	^ statusBar ifNil: [
@@ -14152,13 +14152,13 @@ tools
 hideTools
 	self retractableWidgets do: [:each | each hide]! !
 
-!DrGMinimalControlsManager methodsFor: 'initialization' stamp: 'hlsf 27/May/2026 19:03:20'!
+!DrGMinimalControlsManager methodsFor: 'initialization' stamp: 'hlsf 27/May/2026 21:13:52'!
 installTools
 " Install menu, toolbar, tree, wheels, statusbar "
 	| wheelHeight wheelWidth |
 	super initialize.		
 	wheelHeight := Theme current wheelHeight .
-	wheelWidth := Theme current smWheelWidth.
+	wheelWidth := Theme current wheelWidth.
 	view := DrGeoMiniView for: presenter.
 	view addMorph: view drawable
 		layoutSpec: (LayoutEdgesSpec 
@@ -14315,6 +14315,15 @@ transformationMenu
 	self transformationTools do: [ :symbol | self addMenuItem: symbol to: menu ].
 	^ menu
 		! !
+
+!DrGMinimalControlsManager methodsFor: 'as yet unclassified' stamp: 'hlsf 27/May/2026 21:08:36'!
+statusBarInScroller
+	^ PluggableScrollPane new scroller: self statusBar; 
+		name: #statusBar;
+		borderWidth: 0;
+		padding: 0@0;
+		color: Color white;
+		yourself! !
 
 !DrGIcons class methodsFor: 'accessing' stamp: ''!
 angleGeometric
@@ -24712,9 +24721,9 @@ addToggleItem: aMathItemCollection in: aCollection
 		ifAbsent: [aCollection add: aMathItemCollection first]
 ! !
 
-!DrGMathItemBuilder methodsFor: 'as yet unclassified' stamp: 'hlsf 20/Jun/2021 11:20:07'!
+!DrGMathItemBuilder methodsFor: 'as yet unclassified' stamp: 'hlsf 27/May/2026 21:29:00'!
 release
-	self releaseActionMap.
+	self removeAllActions .
 	self reset.! !
 
 !DrGMathItemBuilder class methodsFor: 'documentation' stamp: ''!
@@ -26439,11 +26448,9 @@ release
 	self removeEvents.
 	mathItem := nil! !
 
-!DrGMorph methodsFor: 'initialize-release' stamp: 'hlsf 20/May/2024 16:04:41'!
+!DrGMorph methodsFor: 'initialize-release' stamp: 'hlsf 27/May/2026 21:28:22'!
 removeEvents
-	mathItem ifNotNil: 
-		[mathItem releaseActionMap].
-"	'Remove events' print"! !
+	mathItem ifNotNil: [mathItem removeAllActions]! !
 
 !DrGMorph methodsFor: 'initialize-release' stamp: 'hlsf 12/Apr/2024 12:51:46'!
 removeLabelMorph
