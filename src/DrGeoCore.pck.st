@@ -1,10 +1,10 @@
-'From Cuis7.7 [latest update: #7964] on 25 May 2026 at 5:20:14 pm'!
+'From Cuis7.7 [latest update: #7964] on 27 May 2026 at 7:07:15 pm'!
 'Description '!
-!provides: 'DrGeoCore' 1 64!
+!provides: 'DrGeoCore' 1 65!
 !requires: 'UI-Preference' 1 28 nil!
 !requires: 'UI-Panel' 1 140 nil!
-!requires: 'YAXO' 1 28 nil!
 !requires: 'Graphics-Files-Additional' 1 30 nil!
+!requires: 'YAXO' 1 28 nil!
 SystemOrganization addCategory: #'DrGeoCore-Model'!
 SystemOrganization addCategory: #'DrGeoCore-Model-Smalltalk'!
 SystemOrganization addCategory: #'DrGeoCore-Model-Item'!
@@ -1825,7 +1825,7 @@ DrGAbstractControlsManager class
 
 !classDefinition: #DrGMinimalControlsManager category: #'DrGeoCore-View'!
 DrGAbstractControlsManager subclass: #DrGMinimalControlsManager
-	instanceVariableNames: 'verticalBar horizontalBar'
+	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'DrGeoCore-View'!
@@ -2454,7 +2454,7 @@ DrGDrawable class
 	instanceVariableNames: ''!
 
 !classDefinition: #DrGeoMiniView category: #'DrGeoCore-View'!
-LinearLayoutMorph subclass: #DrGeoMiniView
+FormLayoutMorph subclass: #DrGeoMiniView
 	instanceVariableNames: 'drawable presenter'
 	classVariableNames: ''
 	poolDictionaries: ''
@@ -13979,11 +13979,12 @@ wheelYButtonData
 wheelZButtonData
 	 ^ {'Zoom wheel' translated . nil . #scale: . 'A wheel to zoom in, zoom out the sketch.' translated}! !
 
-!DrGAbstractControlsManager methodsFor: 'widget access' stamp: 'hlsf 8/Jan/2026 21:50:46'!
+!DrGAbstractControlsManager methodsFor: 'widget access' stamp: 'hlsf 27/May/2026 18:27:51'!
 horizontalWheel 
 	| array |
 	array := self wheelXButtonData.
 	^ (WheelMorph target: presenter actionSelector: array third)
+		name: #xWheel;
 		beHorizontal; 
 		factor: 0.05; 
 		setBalloonText: array first;
@@ -14016,7 +14017,7 @@ setStatusBarMessage: aString
 			redrawNeeded]
 		! !
 
-!DrGAbstractControlsManager methodsFor: 'widget access' stamp: 'hlsf 8/Jan/2026 21:51:17'!
+!DrGAbstractControlsManager methodsFor: 'widget access' stamp: 'hlsf 27/May/2026 18:48:54'!
 statusBar
 "A bar to print contextual information"
 	^ statusBar ifNil: [
@@ -14028,12 +14029,13 @@ statusBar
 	
 	! !
 
-!DrGAbstractControlsManager methodsFor: 'widget access' stamp: 'hlsf 8/Jan/2026 21:51:23'!
+!DrGAbstractControlsManager methodsFor: 'widget access' stamp: 'hlsf 27/May/2026 18:49:09'!
 statusBarInScroller
 	^ PluggableScrollPane new scroller: self statusBar; 
+		name: #statusBar;
 		borderWidth: 2;
 		borderColor: Color transparent ;
-		color: Color transparent;
+		color: Color white;
 		yourself! !
 
 !DrGAbstractControlsManager methodsFor: 'widget access' stamp: 'hlsf 8/Jan/2026 21:50:05'!
@@ -14047,11 +14049,12 @@ stylerFor: aStyle
 		self contextualEditingFor: editPanel ]
 		! !
 
-!DrGAbstractControlsManager methodsFor: 'widget access' stamp: 'hlsf 8/Jan/2026 21:51:30'!
+!DrGAbstractControlsManager methodsFor: 'widget access' stamp: 'hlsf 27/May/2026 18:28:03'!
 verticalWheel 
 	| array |
 	array := self wheelYButtonData.
 	^  (WheelMorph target: presenter actionSelector: array third)
+		name: #yWheel;
 		beVertical; 
 		factor: 0.05; 
 		setBalloonText: array first; 
@@ -14061,11 +14064,12 @@ verticalWheel
 		yourself		
 		! !
 
-!DrGAbstractControlsManager methodsFor: 'widget access' stamp: 'hlsf 8/Jan/2026 21:51:34'!
+!DrGAbstractControlsManager methodsFor: 'widget access' stamp: 'hlsf 27/May/2026 18:28:11'!
 zoomWheel 
 	| array |
 	array := self wheelZButtonData.
 	^  (WheelMorph target: presenter actionSelector: array third)
+		name: #zWheel;
 		beVertical; 
 		factor: 1; 
 		setBalloonText: array first; 
@@ -14129,6 +14133,59 @@ for: aPresenter
 	^ self basicNew
 		presenter: aPresenter;
 		initialize! !
+
+!DrGMinimalControlsManager methodsFor: 'access widget' stamp: 'hlsf 10/Apr/2022 16:36:58'!
+openTools
+	self tools popUpInWorld ! !
+
+!DrGMinimalControlsManager methodsFor: 'access widget' stamp: 'hlsf 27/May/2026 18:36:54'!
+retractableWidgets
+"	Those are the wheels and the status bar widgets"
+	
+	^ view submorphsSatisfying: [:aMorph | `#(xWheel yWheel zWheel statusBar)` includes: aMorph name]! !
+
+!DrGMinimalControlsManager methodsFor: 'access widget' stamp: 'hlsf 10/Apr/2022 16:25:16'!
+tools
+	^ tools ifNil: [tools := self mainMenu]! !
+
+!DrGMinimalControlsManager methodsFor: 'initialization' stamp: 'hlsf 27/May/2026 18:37:48'!
+hideTools
+	self retractableWidgets do: [:each | each hide]! !
+
+!DrGMinimalControlsManager methodsFor: 'initialization' stamp: 'hlsf 27/May/2026 19:03:20'!
+installTools
+" Install menu, toolbar, tree, wheels, statusbar "
+	| wheelHeight wheelWidth |
+	super initialize.		
+	wheelHeight := Theme current wheelHeight .
+	wheelWidth := Theme current smWheelWidth.
+	view := DrGeoMiniView for: presenter.
+	view addMorph: view drawable
+		layoutSpec: (LayoutEdgesSpec 
+			tlEdgesWeight: 0@0 offset:  0@0
+			brEdgesWeight: 1@1 offset: wheelWidth negated asPoint).
+"	Install the wheels at the right "
+	view addMorph: (self zoomWheel borderWidth: 2)
+		layoutSpec: (LayoutEdgesSpec 
+			tlEdgesWeight: 1@0 offset:  wheelWidth negated @ 0
+			brEdgesWeight: 1@0 offset: 0 @ wheelHeight);
+		addMorph: (self verticalWheel borderWidth: 2) 
+		layoutSpec: (LayoutEdgesSpec 
+			tlEdgesWeight: 1@1 offset: (wheelWidth negated @ (wheelHeight + wheelWidth) negated)
+			brEdgesWeight: 1@1 offset: 0 @ wheelWidth negated).			
+" 	Install statusbar and wheel at the bottom "
+	view addMorph: (self horizontalWheel borderWidth: 2)
+		layoutSpec: (LayoutEdgesSpec 
+			tlEdgesWeight: 1@1 offset:  (wheelHeight + wheelWidth) negated @ wheelWidth negated
+			brEdgesWeight: 1@1 offset: wheelWidth negated @ 0);
+		addMorph: self statusBarInScroller 
+		layoutSpec: 	(LayoutEdgesSpec 
+			tlEdgesWeight: 0@1 offset: 0 @ wheelWidth negated
+			brEdgesWeight: 1@1 offset:  (wheelHeight + wheelWidth) negated @ 0)! !
+
+!DrGMinimalControlsManager methodsFor: 'initialization' stamp: 'hlsf 27/May/2026 18:38:00'!
+showTools
+	self retractableWidgets do: [:each | each show]! !
 
 !DrGMinimalControlsManager methodsFor: 'menus' stamp: 'hlsf 10/Apr/2022 14:55:40'!
 addMenuItem: toolSymbol to: menu
@@ -14258,56 +14315,6 @@ transformationMenu
 	self transformationTools do: [ :symbol | self addMenuItem: symbol to: menu ].
 	^ menu
 		! !
-
-!DrGMinimalControlsManager methodsFor: 'initialization' stamp: 'hlsf 9/Mar/2026 21:56:47'!
-hideTools
-	verticalBar hide.
-	horizontalBar hide! !
-
-!DrGMinimalControlsManager methodsFor: 'initialization' stamp: 'hlsf 9/Mar/2026 21:56:22'!
-installTools
-" Install menu, toolbar, tree, wheels, statusbar "
-	| row  wheelHeight wheelWidth |
-	super initialize.		
-	wheelHeight := Theme current wheelHeight .
-	wheelWidth := Theme current smWheelWidth.
-	view := DrGeoMiniView for: presenter.
-	row := LayoutMorph newRow.
-	row addMorphUseAll: self view drawable.
-	"Install the wheels at the right"
-	verticalBar := LayoutMorph newColumn name: #wheelsYZ; color: view defaultColor; yourself.
-	verticalBar 
-		addMorph: (self zoomWheel borderWidth: 2) 
-		layoutSpec: (LayoutSpec fixedExtent: wheelWidth @ wheelHeight);
-		addMorphUseAll: self transparentMorph;
-		addMorph: (self verticalWheel borderWidth: 2) 
-		layoutSpec: (LayoutSpec fixedExtent: wheelWidth @ wheelHeight).			
-	""	
-	row addMorph: verticalBar layoutSpec: (LayoutSpec fixedWidth: wheelWidth proportionalHeight: 1).	
-	view addMorph: row.
-	
-	"Install wheel at the bottom"	
-	horizontalBar := LayoutMorph newRow name: #wheelX; color: view defaultColor; yourself.
-	horizontalBar addMorphUseAll: self statusBarInScroller;
-		addMorph: (self horizontalWheel borderWidth: 2) 
-		layoutSpec: 	(LayoutSpec fixedExtent:  wheelHeight @ wheelWidth );
-		addMorph: self transparentMorph 
-		layoutSpec: 	(LayoutSpec fixedExtent: wheelWidth asPoint) .
-	
-	view addMorph: horizontalBar layoutSpec: (LayoutSpec fixedHeight: wheelWidth)! !
-
-!DrGMinimalControlsManager methodsFor: 'initialization' stamp: 'hlsf 9/Mar/2026 21:56:58'!
-showTools
-	verticalBar show.
-	horizontalBar show! !
-
-!DrGMinimalControlsManager methodsFor: 'widget access' stamp: 'hlsf 10/Apr/2022 16:36:58'!
-openTools
-	self tools popUpInWorld ! !
-
-!DrGMinimalControlsManager methodsFor: 'widget access' stamp: 'hlsf 10/Apr/2022 16:25:16'!
-tools
-	^ tools ifNil: [tools := self mainMenu]! !
 
 !DrGIcons class methodsFor: 'accessing' stamp: ''!
 angleGeometric
@@ -28802,29 +28809,31 @@ macroMenu: aMenuMorph
 scriptMenu: aMenu
 self flag: #drgeoTodo! !
 
-!DrGeoMiniView methodsFor: 'initialize-release' stamp: 'hlsf 30/Mar/2024 16:45:35'!
+!DrGeoMiniView methodsFor: 'initialize-release' stamp: 'hlsf 27/May/2026 18:54:59'!
 defaultColor
-	^ Theme current paneBackgroundFrom: Theme current defaultWindowColor ! !
+	^ Color transparent! !
 
 !DrGeoMiniView methodsFor: 'initialize-release' stamp: 'drgeo 25/May/2026 17:08:34'!
 delete 
 	super delete.
 	self release! !
 
-!DrGeoMiniView methodsFor: 'initialize-release' stamp: 'hlsf 10/Mar/2026 18:58:52'!
+!DrGeoMiniView methodsFor: 'initialize-release' stamp: 'hlsf 27/May/2026 17:03:56'!
 initialize
 	super initialize.
 	self color: self defaultColor .
 	drawable := DrGDrawable newOn: presenter.
-	" 	Used in Dybo to show/hide controls depending on the halo statis of the annotator. 
+	" 	Used in Dybo to show/hide controls depending on the halo status of the annotator. 
 		Makes no arm otherwise "
 	self when: #enterAnnotator send: #showTools to: presenter controlsManager.
 	self when: #leaveAnnotator send: #hideTools to: presenter controlsManager.! !
 
-!DrGeoMiniView methodsFor: 'initialize-release' stamp: 'hlsf 19/Jun/2021 10:01:18'!
+!DrGeoMiniView methodsFor: 'initialize-release' stamp: 'hlsf 27/May/2026 17:12:14'!
 installTools 
-	self beColumn
-		addMorphUseAll: drawable! !
+	self addMorph: drawable
+		layoutSpec: (LayoutEdgesSpec 
+			tlEdgesWeight: 0@0 offset:  0@0
+			brEdgesWeight: 0@0 offset: Theme current smWheelWidth negated asPoint)! !
 
 !DrGeoMiniView methodsFor: 'initialize-release' stamp: 'hlsf 25/May/2026 16:58:51'!
 release
@@ -28836,12 +28845,11 @@ release
 clipsSubmorphs
 	^ false! !
 
-!DrGeoMiniView class methodsFor: 'instance creation' stamp: 'hlsf 10/Aug/2025 12:03:40'!
+!DrGeoMiniView class methodsFor: 'instance creation' stamp: 'hlsf 27/May/2026 18:22:39'!
 for: aPresenter
 	^ self basicNew 
 		presenter: aPresenter ;
 		initialize;
-		beColumn;
 		morphExtent: 750@500;
 		yourself! !
 
