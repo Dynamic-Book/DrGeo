@@ -29,8 +29,8 @@ if ! [ -f $userImage/drgeo.image ];
 then
     mkdir -p $userImage
     cp -f $stockImage/drgeo.* $userImage
-    ln -s $stockImage/Cuis*.sources $userImage
-    ln -s $stockImage/locale $userImage
+    cp -f $stockImage/Cuis*.sources $userImage
+    cp -rf $stockImage/locale $userImage
 fi
 
 
