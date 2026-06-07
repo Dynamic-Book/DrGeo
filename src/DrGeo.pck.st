@@ -1,6 +1,6 @@
-'From Cuis7.7 [latest update: #7964] on 25 May 2026 at 5:20:11 pm'!
+'From Cuis7.9 [latest update: #7979] on 7 June 2026 at 12:24:19 pm'!
 'Description '!
-!provides: 'DrGeo' 1 799!
+!provides: 'DrGeo' 1 800!
 !requires: 'Gettext' 1 17 nil!
 !requires: 'SVG' 1 16 nil!
 !requires: 'YAXO' 1 19 nil!
@@ -21,6 +21,7 @@ SystemOrganization addCategory: #'DrGeo-System'!
 SystemOrganization addCategory: #DrGeo!
 SystemOrganization addCategory: #'DrGeo-Presenter-Builder'!
 SystemOrganization addCategory: #'DrGeo-Presenter-Tool'!
+SystemOrganization addCategory: #'DrGeo-Script-Items'!
 
 
 !classDefinition: #DrGeoTree category: #'DrGeo-Model'!
@@ -121,6 +122,36 @@ DrGeoUserScript subclass: #DrGeoScript164164955
 	category: 'DrGeo-Model-Script'!
 !classDefinition: 'DrGeoScript164164955 class' category: #'DrGeo-Model-Script'!
 DrGeoScript164164955 class
+	instanceVariableNames: ''!
+
+!classDefinition: #DrGeoScript126328658 category: #'DrGeo-Script-Items'!
+DrGeoUserScript subclass: #DrGeoScript126328658
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'DrGeo-Script-Items'!
+!classDefinition: 'DrGeoScript126328658 class' category: #'DrGeo-Script-Items'!
+DrGeoScript126328658 class
+	instanceVariableNames: ''!
+
+!classDefinition: #DrGeoScript75108106 category: #'DrGeo-Script-Items'!
+DrGeoUserScript subclass: #DrGeoScript75108106
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'DrGeo-Script-Items'!
+!classDefinition: 'DrGeoScript75108106 class' category: #'DrGeo-Script-Items'!
+DrGeoScript75108106 class
+	instanceVariableNames: ''!
+
+!classDefinition: #DrGeoScript88541399 category: #'DrGeo-Script-Items'!
+DrGeoUserScript subclass: #DrGeoScript88541399
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'DrGeo-Script-Items'!
+!classDefinition: 'DrGeoScript88541399 class' category: #'DrGeo-Script-Items'!
+DrGeoScript88541399 class
 	instanceVariableNames: ''!
 
 !classDefinition: #LanguageFont category: #'DrGeo-System'!
@@ -580,11 +611,11 @@ pool
 				hasContents: aMorph mathItem parents isNil not ;
 				yourself]! !
 
-!DrGeoTree methodsFor: 'accessing' stamp: 'hlsf 4/Aug/2023 12:49:59'!
+!DrGeoTree methodsFor: 'accessing' stamp: 'drgeo 7/Jun/2026 10:44:54'!
 presenter: aPresenter
 	presenter := aPresenter .
 	presenter domain
-		when: #updatedItems
+		when: #updatedMathItems
 		send: #changed:
 		to: self
 		with: #pool
@@ -1101,6 +1132,66 @@ scriptName
 !DrGeoScript164164955 class methodsFor: 'private' stamp: ''!
 newArgumentsType
 	^ {DrGValueItem. DrGValueItem}.! !
+
+!DrGeoScript126328658 methodsFor: 'public' stamp: 'drgeo 7/Jun/2026 12:00:52'!
+compute
+"Edit me"
+	^[:x |(x/8) + (5*x) cos ]! !
+
+!DrGeoScript126328658 class methodsFor: 'public' stamp: 'HilaireFernandes 9/Dec/2014 14:50:00'!
+description
+	^'The function to be plotted. Return a bloc of code'! !
+
+!DrGeoScript126328658 class methodsFor: 'public' stamp: 'HilaireFernandes 9/Dec/2014 14:43:00'!
+scriptName
+	^'Function'! !
+
+!DrGeoScript126328658 class methodsFor: 'private' stamp: 'HilaireFernandes 9/Dec/2014 14:43:00'!
+newArgumentsType
+	^{}! !
+
+!DrGeoScript75108106 methodsFor: 'public' stamp: 'HilaireFernandes 9/Dec/2014 15:18:00'!
+compute
+"Edit me"
+	| p x |
+	x _ self arg1 point x.
+	p _ ((self arg2 compute value: x +0.0001) - (self arg2 compute value: x)) / 0.0001.
+	^ self arg1 point + (1 @ p)! !
+
+!DrGeoScript75108106 class methodsFor: 'private' stamp: 'HilaireFernandes 9/Dec/2014 15:15:00'!
+newArgumentsType
+	^{DrGPointItem.DrGValueItem}! !
+
+!DrGeoScript75108106 class methodsFor: 'public' stamp: 'HilaireFernandes 9/Dec/2014 15:15:00'!
+description
+	^'Compute the coordinates of a point on the slope.
+Arguments:
+- Script returning a function as a bloc of code
+- A point whose x-coordinates is used as the base computation'! !
+
+!DrGeoScript75108106 class methodsFor: 'public' stamp: 'HilaireFernandes 9/Dec/2014 15:15:00'!
+scriptName
+	^'Point on slope'! !
+
+!DrGeoScript88541399 methodsFor: 'public' stamp: 'HilaireFernandes 9/Dec/2014 15:04:00'!
+compute
+"Edit me"
+	^ (self arg1 point x) @ (self arg2 compute value: self arg1 point x)! !
+
+!DrGeoScript88541399 class methodsFor: 'private' stamp: 'HilaireFernandes 9/Dec/2014 15:02:00'!
+newArgumentsType
+	^{DrGPointItem.DrGValueItem}! !
+
+!DrGeoScript88541399 class methodsFor: 'public' stamp: 'HilaireFernandes 9/Dec/2014 15:02:00'!
+description
+	^'Calculate the image of a point x-coordinates.
+Arguments:
+- Point
+- Script returning a bloc of code, a function'! !
+
+!DrGeoScript88541399 class methodsFor: 'public' stamp: 'HilaireFernandes 9/Dec/2014 15:02:00'!
+scriptName
+	^'Image'! !
 
 !LanguageFont methodsFor: 'accessing' stamp: 'hlsf 16/Nov/2023 23:00:43'!
 addLocale: aLocaleID

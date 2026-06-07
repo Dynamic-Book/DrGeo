@@ -1,10 +1,10 @@
-'From Cuis7.7 [latest update: #7964] on 27 May 2026 at 9:44:52 pm'!
+'From Cuis7.9 [latest update: #7979] on 7 June 2026 at 12:24:16 pm'!
 'Description '!
-!provides: 'DrGeoCore' 1 67!
+!provides: 'DrGeoCore' 1 68!
 !requires: 'UI-Preference' 1 28 nil!
 !requires: 'UI-Panel' 1 140 nil!
-!requires: 'Graphics-Files-Additional' 1 30 nil!
 !requires: 'YAXO' 1 28 nil!
+!requires: 'Graphics-Files-Additional' 1 30 nil!
 SystemOrganization addCategory: #'DrGeoCore-Model'!
 SystemOrganization addCategory: #'DrGeoCore-Model-Smalltalk'!
 SystemOrganization addCategory: #'DrGeoCore-Model-Item'!
@@ -4752,7 +4752,7 @@ intersectionWith: aCurveItem flag: aFlag
 pointAt: anAbscissa
 	self subclassResponsibility ! !
 
-!DrGMathItem methodsFor: 'updating' stamp: 'hlsf 17/May/2026 12:33:30'!
+!DrGMathItem methodsFor: 'updating' stamp: 'drgeo 7/Jun/2026 10:59:39'!
 changed
 	self triggerEvent: #updateMyView! !
 
@@ -6701,11 +6701,12 @@ adaptiveDescriptiveName
 squareNorm: aPoint 
 	^ aPoint x * aPoint x + (aPoint y * aPoint y)! !
 
-!DrGLocus2ptsItem methodsFor: 'updating' stamp: 'hlsf 20/May/2024 12:07:01'!
+!DrGLocus2ptsItem methodsFor: 'updating' stamp: 'drgeo 7/Jun/2026 10:58:22'!
 update
 "Special: update does not occure there but in the view.
 Indeed, a Locus is sampled from its view, because it depends on the visible portion of the drawable"
-	self exist: self doParentsExist! !
+	self exist: self doParentsExist.
+	exist ifTrue: [self triggerEvent: #resampleView]! !
 
 !DrGLocus2ptsItem methodsFor: 'accessing' stamp: 'hlsf 26/Jan/2026 19:27:43'!
 abscissaOf: aPoint 
@@ -6796,7 +6797,7 @@ isSampled
 nodeType
 	^ #Translation! !
 
-!DrGLocusTranslationItem methodsFor: 'updating' stamp: 'hlsf 10/Aug/2025 13:21:53'!
+!DrGLocusTranslationItem methodsFor: 'updating' stamp: 'drgeo 7/Jun/2026 10:57:23'!
 update
 	| locusPoints direction|
 	self doParentsExist ifFalse: [^ self exist: false].
@@ -6805,7 +6806,8 @@ update
 	samplesQty := parents first samplesQty.
 	p := Array new: samplesQty.
 	1 to: samplesQty do: [:i | p at: i put: (locusPoints at: i) + direction].
-	self exist: true! !
+	self exist: true.
+	self triggerEvent: #resampleView! !
 
 !DrGLocusTranslationItem methodsFor: 'accessing' stamp: ''!
 constrainedPoint
@@ -6833,7 +6835,7 @@ doParentsExist
 If not we will wait for the next round of view update"
 	^ super doParentsExist and: [parents first isSampled]! !
 
-!DrGLocusHomothetyItem methodsFor: 'updating' stamp: 'hlsf 10/Aug/2025 13:22:01'!
+!DrGLocusHomothetyItem methodsFor: 'updating' stamp: 'drgeo 7/Jun/2026 10:58:36'!
 update
 	| locusPoints center factor|
 	self doParentsExist ifFalse: [^ self exist: false].
@@ -6843,13 +6845,14 @@ update
 	samplesQty := parents first samplesQty.
 	p := Array new: samplesQty.
 	1 to: samplesQty do: [:i | p at: i put: center + (factor * ((locusPoints at: i) - center))].
-	self exist: true! !
+	self exist: true.
+	self triggerEvent: #resampleView! !
 
 !DrGLocusHomothetyItem methodsFor: 'xml writing' stamp: ''!
 nodeType
 	^#Scale! !
 
-!DrGLocusReflexionItem methodsFor: 'updating' stamp: 'hlsf 20/May/2024 12:08:14'!
+!DrGLocusReflexionItem methodsFor: 'updating' stamp: 'drgeo 7/Jun/2026 10:58:41'!
 update
 	| locusPoints axe|
 	self doParentsExist ifFalse: [^ self exist: false].
@@ -6859,13 +6862,14 @@ update
 	p := Array new: samplesQty.
 	1 to: samplesQty do: [:i |
 		p at: i put: ((locusPoints at: i) reflexionBy: axe origin direction: axe direction)].
-	self exist: true! !
+	self exist: true.
+	self triggerEvent: #resampleView! !
 
 !DrGLocusReflexionItem methodsFor: 'xml writing' stamp: ''!
 nodeType
 	^#Reflexion! !
 
-!DrGLocusRotationItem methodsFor: 'updating' stamp: 'hlsf 20/May/2024 12:08:32'!
+!DrGLocusRotationItem methodsFor: 'updating' stamp: 'drgeo 7/Jun/2026 10:58:46'!
 update
 	| locusPoints center angle|
 	self doParentsExist ifFalse: [^ self exist: false].
@@ -6876,13 +6880,14 @@ update
 	p := Array new: samplesQty.
 	1 to: samplesQty do: [:i |
 		p at: i put: ((locusPoints at: i) rotateBy: angle about: center)].
-	self exist: true! !
+	self exist: true.
+	self triggerEvent: #resampleView! !
 
 !DrGLocusRotationItem methodsFor: 'xml writing' stamp: ''!
 nodeType
 	^#Rotation! !
 
-!DrGLocusSymmetryItem methodsFor: 'updating' stamp: 'hlsf 10/Aug/2025 13:22:19'!
+!DrGLocusSymmetryItem methodsFor: 'updating' stamp: 'drgeo 7/Jun/2026 10:58:52'!
 update
 	| locusPoints center|
 	self doParentsExist ifFalse: [^ self exist: false].
@@ -6891,7 +6896,8 @@ update
 	samplesQty := parents first samplesQty.
 	p := Array new: samplesQty.
 	1 to: samplesQty do: [:i | p at: i put: 2 * center - (locusPoints at: i)].
-	self exist: true! !
+	self exist: true.
+	self triggerEvent: #resampleView! !
 
 !DrGLocusSymmetryItem methodsFor: 'xml writing' stamp: ''!
 nodeType
@@ -10170,10 +10176,10 @@ arrow: anObject
 	morph arrow: anObject;
 		redrawNeeded ! !
 
-!DrGFinitCurveStyle methodsFor: 'xml writing' stamp: 'hlsf 11/Apr/2021 12:22:39'!
+!DrGFinitCurveStyle methodsFor: 'xml writing' stamp: 'drgeo 7/Jun/2026 11:33:24'!
 writeAttributesTo: aNode
 	super writeAttributesTo: aNode.
-	morph isCircle ifFalse: [aNode attributeAt: #arrow put: self arrow.]! !
+	(morph is: #CircleMorph) ifFalse: [aNode attributeAt: #arrow put: self arrow.]! !
 
 !DrGFinitCurveStyle methodsFor: 'widget' stamp: 'hlsf 5/Jun/2022 14:39:22'!
 arrowIndex
@@ -10204,9 +10210,9 @@ arrowWidget
 		named: 'Arrow' translated 
 		help: 'Set arrow(s) to the line.' translated! !
 
-!DrGFinitCurveStyle methodsFor: 'widget' stamp: 'hlsf 11/Apr/2021 12:25:24'!
+!DrGFinitCurveStyle methodsFor: 'widget' stamp: 'drgeo 7/Jun/2026 11:30:38'!
 myWidgets
-	^ (morph isSegment or: [morph isArc]) 
+	^ ( (morph is: #SegmentMorph) or: [morph is: #ArcMorph]) 
 		ifTrue: [super myWidgets addAll: {self arrowWidget}; yourself]
 		ifFalse: [super myWidgets]! !
 
@@ -11432,12 +11438,13 @@ updateSelection
 			ifTrue: [self tool morph: nil]
 			ifFalse: [	self tool morph: (self drawable viewOf: aMathItem)]]! !
 
-!DrGeo class methodsFor: 'file' stamp: 'hlsf 17/Feb/2026 14:47:44'!
+!DrGeo class methodsFor: 'file' stamp: 'drgeo 7/Jun/2026 11:59:31'!
 file: fileEntry
 	|answer|
 	DrGeoSystem startSpinner.
 	answer := DrGeoXml new load: fileEntry for: #new.
 	DrGeoSystem stopSpinner.
+	answer do: [:drgeoPresenter | drgeoPresenter drawable resampleLocusViews].
 	^ answer! !
 
 !DrGeo class methodsFor: 'file' stamp: 'hlsf 4/Aug/2023 18:07:41'!
@@ -12080,20 +12087,20 @@ myMorphsNear: aPoint
 			and: [(self isWanted: {aMorph mathItem})
 			and: [aMorph containsPoint: aPoint]]]! !
 
-!DrGTool methodsFor: 'private' stamp: 'hlsf 23/Jun/2021 15:47:53'!
+!DrGTool methodsFor: 'private' stamp: 'drgeo 7/Jun/2026 11:38:21'!
 pointMorphsFirstNear: aPoint 
 	"When the user moves the mouse over a collection of geometric items, if there
 are any point items, we discard all the other geometric items"
 	| myMorphs pointMorphs |
 	myMorphs := self myMorphsNear: aPoint.
-	pointMorphs := myMorphs select: [:aMorph | aMorph isPoint].
+	pointMorphs := myMorphs select: [:aMorph | aMorph is: #PointMorph].
 	pointMorphs ifNotEmpty: [ ^ pointMorphs ].
 	^ myMorphs! !
 
-!DrGTool methodsFor: 'private' stamp: 'hlsf 23/Jun/2021 15:47:53'!
+!DrGTool methodsFor: 'private' stamp: 'drgeo 7/Jun/2026 11:38:31'!
 pointMorphsNear: aPoint 
 	"List of point under the mouse cursor"
-	^ (self myMorphsNear: aPoint) select: [:aMorph | aMorph isPoint].! !
+	^ (self myMorphsNear: aPoint) select: [:aMorph | aMorph is: #PointMorph].! !
 
 !DrGTool methodsFor: 'testing' stamp: 'hlsf 20/Jun/2021 17:15:14'!
 isBuilding
@@ -12253,7 +12260,7 @@ intersectableCurves: aCollection at: aPoint
 		ifTrue: [ aCollection ]
 		ifFalse: [self intersectableCurves: aCollection allButFirst at: aPoint ]! !
 
-!DrGFlyPointBuildTool methodsFor: 'accessing' stamp: 'hlsf 23/Jun/2021 15:47:53'!
+!DrGFlyPointBuildTool methodsFor: 'accessing' stamp: 'drgeo 7/Jun/2026 11:34:41'!
 relevantMorphsNear: aPoint
 	| intersectables curves | 
 	intersectables := self 
@@ -12262,7 +12269,7 @@ relevantMorphsNear: aPoint
 		at: aPoint.
 	"if no intersectable, return the non intersectable only if one, otherwise it is considered for interesction"
 	^ intersectables ifEmpty: [
-		curves := (self myMorphsNear: aPoint) select: [:aMorph | aMorph isCurve].
+		curves := (self myMorphsNear: aPoint) select: [:aMorph | aMorph is: #CurveMorph].
 		curves size > 1 
 			ifTrue: [ #() ]
 			ifFalse: [ curves]]! !
@@ -12941,13 +12948,13 @@ magnifyBitmap: aPoint
 	context domain updateAllMathItems.
 	context last: griddedPoint.! !
 
-!DrGSelectToolStateGrabbed methodsFor: 'handling' stamp: 'hlsf 11/Aug/2025 18:29:14'!
+!DrGSelectToolStateGrabbed methodsFor: 'handling' stamp: 'drgeo 7/Jun/2026 11:31:43'!
 handleMouseAt: aPoint 
 	"The user is moving, switch to dragging state"
 	context
 		start: aPoint;
 		last: aPoint.
-	context morph isBitmap 
+	(context morph is: #BitmapMorph)
 		ifTrue: [self switchState: DrGSelectToolStateDraggedBitmap] 
 		ifFalse: [self drawable dottedLinesToParentsOf: self  mathItem.
 			self switchState: DrGSelectToolStateDragged].
@@ -24421,12 +24428,12 @@ merge: aMathItem with: aTarget
 	"create a merge command"
 	cmdManager mergeCommandFor: aMathItem with: aTarget! !
 
-!DrGeoDomain methodsFor: 'building' stamp: 'hlsf 10/Feb/2022 10:42:45'!
+!DrGeoDomain methodsFor: 'building' stamp: 'drgeo 7/Jun/2026 10:45:02'!
 moveMathItem: aMathItem with: aPoint
 	"create a move command"
 	cmdManager moveCommandFor: aMathItem with: aPoint.
 	"We do not really need to update the canvas view, but still need to inform dependent for other kinds of view updating only when mouse button is released"
-	self triggerEvent: #updatedItems! !
+	self triggerEvent: #updatedMathItems! !
 
 !DrGeoDomain methodsFor: 'building' stamp: 'hlsf 4/Aug/2023 17:32:56'!
 playMacro: aBuilder in: presenter 
@@ -24497,10 +24504,10 @@ mutateAsFreePoint: aPointItem
 	aPointItem become: freePointItem.
 	^ freePointItem! !
 
-!DrGeoDomain methodsFor: 'updating' stamp: 'hlsf 14/Apr/2022 10:47:17'!
+!DrGeoDomain methodsFor: 'updating' stamp: 'drgeo 7/Jun/2026 11:03:45'!
 updateAllMathItems
 	factory updateAllMathItems.
-	self triggerEvent: #updatedItems! !
+	self triggerEvent: #updatedMathItems! !
 
 !DrGeoDomain methodsFor: 'updating' stamp: 'hlsf 17/May/2020 16:57:35'!
 updateDirty: mathItems
@@ -26404,9 +26411,9 @@ printOn: aStream
 handlesMouseDown: evt
 	^ false! !
 
-!DrGMorph methodsFor: 'initialize-release' stamp: 'hlsf 6/Jun/2024 11:56:56'!
+!DrGMorph methodsFor: 'initialize-release' stamp: 'drgeo 7/Jun/2026 11:32:00'!
 addMyMorphTo: aDrawable
-	self isBitmap 
+	(self is: #BitmapMorph)
 		ifTrue: [aDrawable addMorphBack: self]
 		ifFalse: [aDrawable addMorph: self].
 	self labelMorph: mathItem name.! !
@@ -26593,62 +26600,6 @@ requiresVectorCanvas
 wantsContour
 	^ true! !
 
-!DrGMorph methodsFor: 'testing type' stamp: 'hlsf 4/Apr/2021 14:20:32'!
-isAngle
-	^ false! !
-
-!DrGMorph methodsFor: 'testing type' stamp: 'hlsf 4/Apr/2021 14:20:36'!
-isArc
-	^ false! !
-
-!DrGMorph methodsFor: 'testing type' stamp: 'hlsf 4/Apr/2021 14:20:42'!
-isBitmap
-	^ false! !
-
-!DrGMorph methodsFor: 'testing type' stamp: 'hlsf 4/Apr/2021 14:20:47'!
-isCircle
-	^ false! !
-
-!DrGMorph methodsFor: 'testing type' stamp: 'hlsf 4/Apr/2021 14:20:52'!
-isCurve
-	^ false! !
-
-!DrGMorph methodsFor: 'testing type' stamp: 'hlsf 4/Apr/2021 14:20:56'!
-isFinitCurve
-	^ false! !
-
-!DrGMorph methodsFor: 'testing type' stamp: 'hlsf 4/Apr/2021 14:21:00'!
-isLine
-	^ false! !
-
-!DrGMorph methodsFor: 'testing type' stamp: 'hlsf 4/Apr/2021 14:21:09'!
-isLocus
-	^ false! !
-
-!DrGMorph methodsFor: 'testing type' stamp: 'hlsf 4/Apr/2021 14:21:13'!
-isPoint
-	^ false! !
-
-!DrGMorph methodsFor: 'testing type' stamp: 'hlsf 4/Apr/2021 14:19:20'!
-isRay
-	^ false! !
-
-!DrGMorph methodsFor: 'testing type' stamp: 'hlsf 4/Apr/2021 14:19:26'!
-isSegment
-	^ false! !
-
-!DrGMorph methodsFor: 'testing type' stamp: 'hlsf 6/Apr/2021 19:32:15'!
-isText
-	^ false! !
-
-!DrGMorph methodsFor: 'testing type' stamp: 'hlsf 4/Apr/2021 14:20:18'!
-isValue
-	^ false! !
-
-!DrGMorph methodsFor: 'testing type' stamp: 'hlsf 4/Apr/2021 14:20:23'!
-isVector
-	^ false! !
-
 !DrGMorph methodsFor: 'updating' stamp: 'drgeo 10/Sep/2022 14:43:34'!
 forceHiddenColor
 	color := DrGTypeColor hiddenColor.
@@ -26744,10 +26695,6 @@ roundedValueString
 !DrGAngleGeometricMorph methodsFor: 'accessing' stamp: 'hlsf 5/Jun/2021 20:16:48'!
 styleClass
 	^ DrGValueStyle ! !
-
-!DrGAngleGeometricMorph methodsFor: 'testing type' stamp: 'hlsf 7/Apr/2021 10:46:20'!
-isAngle
-	^ true! !
 
 !DrGAngleGeometricMorph methodsFor: 'label' stamp: 'hlsf 25/Sep/2021 14:34:10'!
 labelPosition
@@ -26893,9 +26840,9 @@ initialize
 	previousMagnify := mathItem magnifyBy.
 	style color: Color black! !
 
-!DrGBitmapMorph methodsFor: 'testing type' stamp: 'hlsf 6/Apr/2021 19:10:42'!
-isBitmap
-	^ true! !
+!DrGBitmapMorph methodsFor: 'testing' stamp: 'drgeo 7/Jun/2026 11:31:29'!
+is: aSymbol
+	^ aSymbol == #BitmapMorph or: [super is: aSymbol]! !
 
 !DrGCurveMorph methodsFor: 'accessing' stamp: 'hlsf 4/Apr/2021 19:06:06'!
 anchorAbscissa: number
@@ -26908,6 +26855,10 @@ borderColor: aColor
 !DrGCurveMorph methodsFor: 'accessing' stamp: 'hlsf 2/Dec/2021 10:53:50'!
 borderWidth: pixels
 	borderWidth := pixels! !
+
+!DrGCurveMorph methodsFor: 'accessing' stamp: 'hlsf 23/May/2021 13:06:53'!
+styleClass
+	^ DrGCurveStyle! !
 
 !DrGCurveMorph methodsFor: 'dashes' stamp: 'hlsf 5/Aug/2021 15:41:30'!
 dashedBorder: dashSpec
@@ -26942,13 +26893,9 @@ step
 		ifTrue: [borderColor := Theme current adjustColor: style borderColor]
 		ifFalse: [borderColor := DrGTypeColor blinkingColor]! !
 
-!DrGCurveMorph methodsFor: 'testing type' stamp: 'hlsf 4/Apr/2021 19:06:59'!
-isCurve
-	^ true! !
-
-!DrGCurveMorph methodsFor: 'testing type' stamp: 'hlsf 23/May/2021 13:06:53'!
-styleClass
-	^ DrGCurveStyle! !
+!DrGCurveMorph methodsFor: 'testing' stamp: 'drgeo 7/Jun/2026 11:34:59'!
+is: aSymbol
+	^ aSymbol == #CurveMorph or: [super is: aSymbol]! !
 
 !DrGCurveMorph methodsFor: 'xml writting' stamp: 'hlsf 28/Mar/2022 14:12:04'!
 writeAttributesTo: aNode
@@ -26965,10 +26912,6 @@ forceHiddenColor
 restoreNormalColor
 	color :=  (style isFilled ifTrue: [Theme current adjustColor: style color] ifFalse: [Color transparent]).
 	borderColor := Theme current adjustColor: style borderColor! !
-
-!DrGArcMorph methodsFor: 'testing type' stamp: 'hlsf 4/Apr/2021 19:23:09'!
-isArc
-	^ true! !
 
 !DrGArcMorph methodsFor: 'accessing' stamp: 'hlsf 17/Jun/2021 17:58:25'!
 arrow: aSymbol 
@@ -27013,6 +26956,10 @@ drawOn: canvas from: start to: end radius: r lF: largeFlag sF: orientation
 !DrGArcMorph methodsFor: 'testing' stamp: 'hlsf 9/Mar/2023 14:36:14'!
 containsPoint: localPoint
 	^ self containsPointInWorld: localPoint! !
+
+!DrGArcMorph methodsFor: 'testing' stamp: 'drgeo 7/Jun/2026 11:29:57'!
+is: aSymbol
+	^ aSymbol == #ArcMorph or: [super is: aSymbol]! !
 
 !DrGCircleMorph methodsFor: 'drawing' stamp: 'hlsf 27/May/2025 17:39:43'!
 drawCircleOn: aCanvas
@@ -27059,13 +27006,13 @@ styleClass
 containsPoint: localPoint
 	^ self containsPointInWorld: localPoint! !
 
+!DrGCircleMorph methodsFor: 'testing' stamp: 'drgeo 7/Jun/2026 11:33:09'!
+is: aSymbol
+	^ aSymbol == #CircleMorph or: [super is: aSymbol]! !
+
 !DrGCircleMorph methodsFor: 'testing' stamp: 'hlsf 9/Mar/2023 12:27:08'!
 isDrawnAsCircle
 	^ mathItem radius < 1e5 ! !
-
-!DrGCircleMorph methodsFor: 'testing type' stamp: 'hlsf 4/Apr/2021 19:19:51'!
-isCircle
-	^ true! !
 
 !DrGPolylineMorph methodsFor: 'accessing' stamp: 'hlsf 30/May/2021 09:53:25'!
 getVertices
@@ -27415,10 +27362,6 @@ getVertices
 styleClass
 	^DrGLineStyle! !
 
-!DrGLineMorph methodsFor: 'testing type' stamp: 'hlsf 4/Apr/2021 19:36:34'!
-isLine
-	^ true! !
-
 !DrGLineMorph class methodsFor: 'helper' stamp: 'hlsf 16/May/2025 23:13:02'!
 extend: origin inDirection: u toBorder: extent
 	| points c ex ey coordinate |
@@ -27471,10 +27414,6 @@ getVertices
 !DrGRayMorph methodsFor: 'accessing' stamp: 'hlsf 7/Apr/2021 19:55:56'!
 styleClass
 	^DrGRayStyle! !
-
-!DrGRayMorph methodsFor: 'testing type' stamp: 'hlsf 5/Apr/2021 10:38:28'!
-isRay
-	^ true! !
 
 !DrGRayMorph class methodsFor: 'as yet unclassified' stamp: 'hlsf 16/May/2025 23:19:09'!
 extend: origin inDirection: u toBorder: extent
@@ -27594,9 +27533,9 @@ drawOn: aCanvas
 	(super drawOn: aCanvas) ifTrue: [ self drawMarkOn: aCanvas ]
 		! !
 
-!DrGSegmentMorph methodsFor: 'testing type' stamp: 'hlsf 5/Apr/2021 11:33:18'!
-isSegment
-	^ true! !
+!DrGSegmentMorph methodsFor: 'testing' stamp: 'drgeo 7/Jun/2026 11:41:00'!
+is: aSymbol
+	^ aSymbol == #SegmentMorph or: [super is: aSymbol]! !
 
 !DrGIconSegmentMorph methodsFor: 'accessing' stamp: 'hlsf 6/Jan/2022 19:56:50'!
 forcedMark: symbol
@@ -27657,11 +27596,10 @@ initialize
 	maxScreenDelta := 64.
 	maxAbscissaDelta := 1e-1! !
 
-!DrGLocusMorph methodsFor: 'drawing' stamp: 'hlsf 27/May/2025 17:39:31'!
+!DrGLocusMorph methodsFor: 'drawing' stamp: 'drgeo 7/Jun/2026 11:02:06'!
 drawOn: aCanvas 
 	| prevPoint p |
 	self isDrawNeeded ifFalse: [^ self].
-	self getVertices.
 	self canBeDrawn ifFalse: [^ self].
 	self updateLabelStatus.
 	prevPoint := vertices first.
@@ -27750,10 +27688,6 @@ selectValidSamples
 				prevLink := sample].
 	^ validSamples ! !
 
-!DrGLocusMorph methodsFor: 'testing type' stamp: 'hlsf 5/Apr/2021 11:22:27'!
-isLocus
-	^ true! !
-
 !DrGLocusMorph methodsFor: 'testing' stamp: 'hlsf 5/Jun/2021 12:14:34'!
 canBeDrawn
 	^ vertices isEmptyOrNil not! !
@@ -27761,6 +27695,10 @@ canBeDrawn
 !DrGLocusMorph methodsFor: 'testing' stamp: 'hlsf 9/Mar/2023 14:36:14'!
 containsPoint: localPoint
 	^ self containsPointInWorld: localPoint! !
+
+!DrGLocusMorph methodsFor: 'testing' stamp: 'drgeo 7/Jun/2026 11:37:32'!
+is: aSymbol
+	^ aSymbol == #LocusMorph or: [super is: aSymbol]! !
 
 !DrGLocusMorph methodsFor: 'label' stamp: 'hlsf 5/Jun/2021 15:05:07'!
 updateLabelStatus
@@ -27771,6 +27709,16 @@ updateLabelStatus
 				labelMorph owner ifNil: [self drawable addMorph: labelMorph].
 				labelMorph show; morphPosition: self labelPosition]
 			ifFalse: [labelMorph hide]	]! !
+
+!DrGLocusMorph methodsFor: 'initialize-release' stamp: 'drgeo 7/Jun/2026 11:01:45'!
+registerEventsIn: aDrawable
+	super registerEventsIn: aDrawable.
+	mathItem ifNotNil: [
+		mathItem 
+			when: #resampleView
+			send: #getVertices
+			to: self
+		].! !
 
 !DrGLocusTransformedMorph methodsFor: 'accessing' stamp: 'hlsf 31/May/2021 18:24:46'!
 getVertices
@@ -27850,10 +27798,6 @@ constrainedLabelPosition: unconstrainedPosition
 labelPosition
 	^(self drawable worldToMorph: mathItem point) + self labelPositionDelta! !
 
-!DrGPointMorph methodsFor: 'testing type' stamp: 'hlsf 5/Apr/2021 11:37:24'!
-isPoint
-	^ true! !
-
 !DrGPointMorph methodsFor: 'obselete' stamp: 'hlsf 5/Aug/2021 14:50:03'!
 distanceTo: aPoint
 	^ self morphCenter dist: aPoint  ! !
@@ -27865,6 +27809,10 @@ morphCenter
 !DrGPointMorph methodsFor: 'accessing' stamp: 'hlsf 7/Apr/2021 19:56:13'!
 styleClass
 	^DrGPointStyle! !
+
+!DrGPointMorph methodsFor: 'testing' stamp: 'drgeo 7/Jun/2026 11:39:37'!
+is: aSymbol
+	^ aSymbol == #PointMorph or: [super is: aSymbol]! !
 
 !DrGIconPointMorph methodsFor: 'accessing' stamp: 'hlsf 14/Mar/2023 21:02:53'!
 labelMorph: anObject
@@ -27941,10 +27889,6 @@ initialize
 	" Taken from DrGTextMorph >> #compose: "
 	extent := textComposition usedExtent + 8.! !
 
-!DrGTextMorph methodsFor: 'testing type' stamp: 'hlsf 6/Apr/2021 19:24:39'!
-isText
-	^ true! !
-
 !DrGTextMorph methodsFor: 'geometry testing' stamp: 'hlsf 22/Oct/2021 22:59:16'!
 wantsContour
 	^ false! !
@@ -27998,10 +27942,6 @@ drawOn: aCanvas
 !DrGValueMorph methodsFor: 'label' stamp: 'hlsf 6/Apr/2021 19:34:44'!
 constrainedLabelPosition: aVector
 	^ aVector! !
-
-!DrGValueMorph methodsFor: 'testing type' stamp: 'hlsf 6/Apr/2021 19:34:16'!
-isValue
-	^ true! !
 
 !DrGDrawable methodsFor: 'accessing' stamp: 'hlsf 4/Aug/2023 17:42:50'!
 domain
@@ -28061,19 +28001,6 @@ previewOn: aStream
 scale
 	^ scale! !
 
-!DrGDrawable methodsFor: 'accessing' stamp: 'hlsf 5/Aug/2021 12:47:36'!
-scale: increment
-	self scaleNoRedraw: increment.
-	self updateGrid.
-	self redrawNeeded ! !
-
-!DrGDrawable methodsFor: 'accessing' stamp: ''!
-scaleNoRedraw: increment
-	scale := (scale + increment) .
-	scale < 1 ifTrue: [scale := 1.0].
-	scale > 1000 ifTrue: [scale := 1000.0].
-! !
-
 !DrGDrawable methodsFor: 'accessing' stamp: 'hlsf 16/Apr/2022 17:53:55'!
 setScaleTo: number
 	scale := number asNumber.
@@ -28121,28 +28048,38 @@ gridVisibleOnOff
 	self updateGrid.
 	self redrawNeeded ! !
 
-!DrGDrawable methodsFor: 'callback' stamp: 'hlsf 1/May/2020 16:37:02'!
+!DrGDrawable methodsFor: 'callback' stamp: 'drgeo 7/Jun/2026 11:48:25'!
 moveOx: increment
 	ox := ox - increment.
+	self resampleLocusViews .
 	self redrawNeeded! !
 
-!DrGDrawable methodsFor: 'callback' stamp: 'hlsf 1/May/2020 16:34:10'!
+!DrGDrawable methodsFor: 'callback' stamp: 'drgeo 7/Jun/2026 11:48:49'!
 moveOxy: pointIncrement
 	ox := ox - pointIncrement x.
 	oy := oy - pointIncrement y.
+	self resampleLocusViews.
 	self redrawNeeded.! !
 
-!DrGDrawable methodsFor: 'callback' stamp: 'hlsf 1/May/2020 16:34:27'!
+!DrGDrawable methodsFor: 'callback' stamp: 'drgeo 7/Jun/2026 11:49:28'!
 moveOy: increment
 	oy := oy + increment.
+	self resampleLocusViews.
 	self redrawNeeded! !
 
-!DrGDrawable methodsFor: 'callback' stamp: 'hlsf 5/Aug/2021 12:48:46'!
-zoom: anExtent
-	scale := (scale + ((anExtent x + anExtent y) / 5)) asInteger.
-	scale := scale min: 200.
+!DrGDrawable methodsFor: 'callback' stamp: 'drgeo 7/Jun/2026 11:17:15'!
+scale: increment
+	self scaleNoRedraw: increment.
 	self updateGrid.
-	self redrawNeeded! !
+	self resampleLocusViews.
+	self redrawNeeded ! !
+
+!DrGDrawable methodsFor: 'callback' stamp: ''!
+scaleNoRedraw: increment
+	scale := (scale + increment) .
+	scale < 1 ifTrue: [scale := 1.0].
+	scale > 1000 ifTrue: [scale := 1000.0].
+! !
 
 !DrGDrawable methodsFor: 'coordinates' stamp: 'hlsf 1/May/2020 16:59:05'!
 defaultScalePosition
@@ -28609,7 +28546,7 @@ initialize
 		morphPosition: self morphPosition;
 		hide."	! !
 
-!DrGDrawable methodsFor: 'initialize-release' stamp: 'hlsf 4/Aug/2023 12:17:03'!
+!DrGDrawable methodsFor: 'initialize-release' stamp: 'drgeo 7/Jun/2026 10:45:26'!
 registerEvents
 	self domain
 		when: #redoMathItem
@@ -28620,7 +28557,7 @@ registerEvents
 		send: #itemView:
 		to: self.
 	self domain
-		when: #updatedItems
+		when: #updatedMathItems
 		send: #redrawNeeded
 		to: self.
 	self domain
@@ -28673,7 +28610,7 @@ lastItemView
 		ifFound: [ :aMorph | aMorph ]
 		ifNone: [ nil]! !
 
-!DrGDrawable methodsFor: 'item-view' stamp: 'hlsf 12/Apr/2024 15:12:01'!
+!DrGDrawable methodsFor: 'item-view' stamp: 'drgeo 7/Jun/2026 11:32:19'!
 recoverViewOf: aMathItem 
 	"a redo math item event : a math item has been recalled, find its morph "
 	| itemMorph |
@@ -28682,7 +28619,7 @@ recoverViewOf: aMathItem
 		ifFound: [:morph | morph ]
 		ifNone: [^ self itemView: aMathItem].
 	itemMorph mathItem: aMathItem in: self.
-	itemMorph isBitmap 
+	(itemMorph is: #BitmapMorph)
 		ifTrue: [self addMorphBack: itemMorph ]
 		ifFalse: [self addMorph: itemMorph].
 	itemMorph 
@@ -28734,6 +28671,14 @@ addMorph: newMorph
 		ifNil: [self addMorphFront: newMorph]  
 		ifNotNil: [self addMorph: newMorph behind: aLabel]! !
 
+!DrGDrawable methodsFor: 'submorphs-add/remove' stamp: 'drgeo 7/Jun/2026 12:10:34'!
+resampleLocusViews
+"	Our locus view are sampled, and it depends on both its model and the drawable status (scale and visible area)"
+	'reseample' print.
+	submorphs 
+		select: [:each | each is:#LocusMorph] 
+		thenDo: [:locusMorph | locusMorph getVertices ]! !
+
 !DrGDrawable methodsFor: 'tip' stamp: 'hlsf 7/Feb/2026 12:00:59'!
 hideTip
 	balloonTarget setBalloonText: nil.
@@ -28773,6 +28718,12 @@ updateUnderMouseMorphPosition
 		[self activeHand morphPosition x - self morphPosition x > (self morphWidth // 2 )
 			ifTrue: [underMouse position: self morphPosition] 
 			ifFalse: [underMouse position: (self morphWidth - underMouse width) @ self morphPosition y]]! !
+
+!DrGDrawable methodsFor: 'geometry' stamp: 'drgeo 7/Jun/2026 11:58:23'!
+extentChanged: oldExtent 
+	super extentChanged: oldExtent.
+	self resampleLocusViews.
+	self redrawNeeded ! !
 
 !DrGDrawable class methodsFor: 'instance creation' stamp: 'hlsf 4/Aug/2023 12:40:52'!
 newOn: aPresenter
