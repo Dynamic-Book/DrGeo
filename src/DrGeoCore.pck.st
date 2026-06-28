@@ -1,6 +1,6 @@
-'From Cuis7.9 [latest update: #8031] on 28 June 2026 at 10:33:10 am'!
+'From Cuis7.9 [latest update: #8031] on 28 June 2026 at 11:13:20 am'!
 'Description '!
-!provides: 'DrGeoCore' 1 70!
+!provides: 'DrGeoCore' 1 71!
 !requires: 'UI-Preference' 1 28 nil!
 !requires: 'UI-Panel' 1 140 nil!
 !requires: 'YAXO' 1 28 nil!
@@ -7419,10 +7419,10 @@ toolsMenu: builder
 		icon:	 #saveIcon;
 		help: 'Save this Dr. Geo session.' translated! !
 
-!DrGeo class methodsFor: 'menu' stamp: 'drgeo 30/Apr/2026, 8:41:53 am (UTC)'!
+!DrGeo class methodsFor: 'menu' stamp: 'drgeo 28/Jun/2026, 9:13:08 am (UTC)'!
 version
 	^ 'Installed version: ' translated, 
-		'26.06b beta (code revision ', 
+		'26.07b beta (code revision ', 
 		(String streamContents: [:str | 
 			(CodePackage installedPackages at: 'DrGeo') featureSpec provides printVersionRevisionOn: str]), ')'! !
 
