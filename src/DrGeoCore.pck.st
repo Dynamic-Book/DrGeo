@@ -1,10 +1,10 @@
-'From Cuis7.9 [latest update: #7979] on 7 June 2026 at 12:51:34 pm'!
+'From Cuis7.9 [latest update: #8031] on 28 June 2026 at 10:33:10 am'!
 'Description '!
-!provides: 'DrGeoCore' 1 69!
+!provides: 'DrGeoCore' 1 70!
 !requires: 'UI-Preference' 1 28 nil!
 !requires: 'UI-Panel' 1 140 nil!
-!requires: 'Graphics-Files-Additional' 1 30 nil!
 !requires: 'YAXO' 1 28 nil!
+!requires: 'Graphics-Files-Additional' 1 30 nil!
 SystemOrganization addCategory: #'DrGeoCore-Model'!
 SystemOrganization addCategory: #'DrGeoCore-Model-Smalltalk'!
 SystemOrganization addCategory: #'DrGeoCore-Model-Item'!
@@ -3027,30 +3027,30 @@ A preference type representing the different possible style of a line.!
 !DrGTypeThickness commentStamp: '<historical>' prior: 0!
 A preference type representing the different possible thickness of a line.!
 
-!DrGFactory methodsFor: 'accessing' stamp: 'hlsf 10/Feb/2022 10:03:01'!
+!DrGFactory methodsFor: 'accessing' stamp: 'hlsf 10/Feb/2022, 8:03:01 am (UTC)'!
 add: item 
 	self last: item.
 	pool addLast: item.
 	^ item! !
 
-!DrGFactory methodsFor: 'accessing' stamp: 'hlsf 10/Feb/2022 10:04:11'!
+!DrGFactory methodsFor: 'accessing' stamp: 'hlsf 10/Feb/2022, 8:04:11 am (UTC)'!
 add: anObject beforeIndex: index
 	^ pool add: anObject beforeIndex: index! !
 
-!DrGFactory methodsFor: 'accessing' stamp: 'hlsf 6/Jun/2024 12:47:33'!
+!DrGFactory methodsFor: 'accessing' stamp: 'hlsf 6/Jun/2024, 10:47:33 am (UTC)'!
 at: integer
 	^ pool at: integer ifAbsent: [nil]! !
 
-!DrGFactory methodsFor: 'accessing' stamp: 'hlsf 6/Jun/2024 12:45:47'!
+!DrGFactory methodsFor: 'accessing' stamp: 'hlsf 6/Jun/2024, 10:45:47 am (UTC)'!
 findInPool: item 
 	"Try to find a twin of this mathItem, if so return the twin, otherwise nil"
 	^ self at: (self indexOf: item in: pool)! !
 
-!DrGFactory methodsFor: 'accessing' stamp: 'hlsf 6/Jun/2024 12:45:36'!
+!DrGFactory methodsFor: 'accessing' stamp: 'hlsf 6/Jun/2024, 10:45:36 am (UTC)'!
 indexOf: anItem
 	^ self indexOf: anItem in: pool! !
 
-!DrGFactory methodsFor: 'accessing' stamp: 'hlsf 11/Aug/2025 19:45:03'!
+!DrGFactory methodsFor: 'accessing' stamp: 'hlsf 11/Aug/2025, 5:45:03 pm (UTC)'!
 indexOf: anItem in: aPool
 "No identity equality but hashed value to detect duplicated object we must consider as equal"
  ^ anItem 
@@ -3083,19 +3083,19 @@ subPool: item from: aPool
 "The items comming after me in aPool"
 	^ aPool allButFirst: (self indexOf: item in: aPool)! !
 
-!DrGFactory methodsFor: 'removing' stamp: 'hlsf 10/Feb/2022 09:03:23'!
+!DrGFactory methodsFor: 'removing' stamp: 'hlsf 10/Feb/2022, 7:03:23 am (UTC)'!
 purge
 	pool do: [ :aMathItem | aMathItem release].
 	pool := OrderedCollection new.
 	self changed: #pool! !
 
-!DrGFactory methodsFor: 'removing' stamp: 'hlsf 25/May/2023 18:59:55'!
+!DrGFactory methodsFor: 'removing' stamp: 'hlsf 25/May/2023, 4:59:55 pm (UTC)'!
 remove: itemCollection 
 	pool := pool copyWithoutAll: itemCollection.
 	itemCollection do: [ :aMathItem | aMathItem release ].
 	self flag: #drgeoEvent! !
 
-!DrGFactory methodsFor: 'removing' stamp: 'hlsf 10/Feb/2022 10:05:07'!
+!DrGFactory methodsFor: 'removing' stamp: 'hlsf 10/Feb/2022, 8:05:07 am (UTC)'!
 removeAt: index
 	| item |
 	item := self at: index.
@@ -3114,7 +3114,7 @@ initialize
 	pool := OrderedCollection new.
 ! !
 
-!DrGFactory methodsFor: 'initialize-release' stamp: 'hlsf 24/Apr/2020 12:56:14'!
+!DrGFactory methodsFor: 'initialize-release' stamp: 'hlsf 24/Apr/2020, 10:56:14 am (UTC)'!
 release
 	pool do: [ :item | item release].! !
 
@@ -3162,7 +3162,7 @@ dependentMathItem: theMathItem
 	Caution: it is not following the creation order, further traitment is need for that"
 	^ self dependentMathItem: theMathItem in: (self subPool: theMathItem )! !
 
-!DrGMathItemFactory methodsFor: 'accessing' stamp: 'hlsf 20/Jun/2021 10:32:58'!
+!DrGMathItemFactory methodsFor: 'accessing' stamp: 'hlsf 20/Jun/2021, 8:32:58 am (UTC)'!
 dependentMathItem: dependentItem in: subPool
 	"Return a collection of the dependents items of theMathItem in a subpool"
 	| dependents |
@@ -3214,7 +3214,7 @@ orderedDependentMathItem: aMathItem
 rehash
 	pool do: [:mathIten | mathIten rehash]! !
 
-!DrGMathItemFactory methodsFor: 'updating' stamp: 'hlsf 4/May/2020 21:28:54'!
+!DrGMathItemFactory methodsFor: 'updating' stamp: 'hlsf 4/May/2020, 7:28:54 pm (UTC)'!
 updateAllMathItems
 	"stupidly update all math item"
 	pool
@@ -3235,45 +3235,45 @@ updateAllMathItemsButLocusFrom: startIndex to: endIndex
 		do: [:aMathItem | aMathItem isLocusItem not
 				ifTrue: [aMathItem update]]! !
 
-!DrGSvgCanvas methodsFor: 'accessing' stamp: 'hlsf 4/Aug/2023 17:47:51'!
+!DrGSvgCanvas methodsFor: 'accessing' stamp: 'hlsf 4/Aug/2023, 3:47:51 pm (UTC)'!
 drawable
 	^presenter drawable ! !
 
-!DrGSvgCanvas methodsFor: 'accessing' stamp: 'hlsf 18/Mar/2023 15:28:18'!
+!DrGSvgCanvas methodsFor: 'accessing' stamp: 'hlsf 18/Mar/2023, 1:28:18 pm (UTC)'!
 engine
 "In case the Morph uses directly the VectorGraphics engine.
 We are our own engine, there is no such things as a SVG engine"
 	^ self! !
 
-!DrGSvgCanvas methodsFor: 'accessing' stamp: 'hlsf 4/Aug/2023 17:48:33'!
+!DrGSvgCanvas methodsFor: 'accessing' stamp: 'hlsf 4/Aug/2023, 3:48:33 pm (UTC)'!
 presenter: aPresenter
 	presenter := aPresenter ! !
 
-!DrGSvgCanvas methodsFor: 'accessing' stamp: 'hlsf 18/Mar/2023 10:14:12'!
+!DrGSvgCanvas methodsFor: 'accessing' stamp: 'hlsf 18/Mar/2023, 8:14:12 am (UTC)'!
 topNode: xmlNode
 	svgTree := 	xmlNode ! !
 
-!DrGSvgCanvas methodsFor: 'path' stamp: 'hlsf 18/Mar/2023 15:30:10'!
+!DrGSvgCanvas methodsFor: 'path' stamp: 'hlsf 18/Mar/2023, 1:30:10 pm (UTC)'!
 fillColor: fillColor do: pathCommandsBlock
 	self pathStrokeWidth: nil color: nil fillColor: fillColor.
 	self doPath: pathCommandsBlock ensureClosePath: true! !
 
-!DrGSvgCanvas methodsFor: 'path' stamp: 'hlsf 18/Mar/2023 16:55:17'!
+!DrGSvgCanvas methodsFor: 'path' stamp: 'hlsf 18/Mar/2023, 2:55:17 pm (UTC)'!
 strokeWidth: strokeWidth color: strokeColor do: pathCommandsBlock
 	self pathStrokeWidth: strokeWidth color: strokeColor fillColor: nil.
 	self doPath: pathCommandsBlock ensureClosePath: false! !
 
-!DrGSvgCanvas methodsFor: 'path' stamp: 'hlsf 18/Mar/2023 15:30:10'!
+!DrGSvgCanvas methodsFor: 'path' stamp: 'hlsf 18/Mar/2023, 1:30:10 pm (UTC)'!
 strokeWidth: strokeWidth color: strokeColor fillColor: fillColor do: pathCommandsBlock
 	self pathStrokeWidth: strokeWidth color: strokeColor fillColor: fillColor.
 	self doPath: pathCommandsBlock ensureClosePath: true! !
 
-!DrGSvgCanvas methodsFor: 'path' stamp: 'hlsf 27/May/2025 17:44:45'!
+!DrGSvgCanvas methodsFor: 'path' stamp: 'hlsf 27/May/2025, 3:44:45 pm (UTC)'!
 strokeWidth: strokeWidth color: strokeColor strokeDashArray: sda do: pathCommandsBlock
 	self pathStrokeWidth: strokeWidth color: strokeColor strokeDashArray: sda fillColor: nil.
 	self doPath: pathCommandsBlock ensureClosePath: false! !
 
-!DrGSvgCanvas methodsFor: 'drawing' stamp: 'hlsf 18/Mar/2023 16:03:56'!
+!DrGSvgCanvas methodsFor: 'drawing' stamp: 'hlsf 18/Mar/2023, 2:03:56 pm (UTC)'!
 arcTo: point radius: radius angleOfXAxis: theta largeFlag: doLargerArc sweepFlag: useIncreasingAngles
 	self addPathCommands: (		String streamContents: [:str |	
 		str nextPutAll: 'A ';
@@ -3284,7 +3284,7 @@ arcTo: point radius: radius angleOfXAxis: theta largeFlag: doLargerArc sweepFlag
 			nextPutAll: point printMini ]).
 	currentPoint := point! !
 
-!DrGSvgCanvas methodsFor: 'drawing' stamp: 'hlsf 18/Mar/2023 15:29:10'!
+!DrGSvgCanvas methodsFor: 'drawing' stamp: 'hlsf 18/Mar/2023, 1:29:10 pm (UTC)'!
 circleCenter: c radius: r
 	pathNode ifNil: [^ self]. "This method must be called in the context of a xxxxx:do: method"
 	pathNode name: #circle.
@@ -3292,7 +3292,7 @@ circleCenter: c radius: r
 	pathNode attributeAt: #cy put: c y asString.
 	pathNode attributeAt: #r put: r asString.! !
 
-!DrGSvgCanvas methodsFor: 'drawing' stamp: 'hlsf 18/Mar/2023 11:01:54'!
+!DrGSvgCanvas methodsFor: 'drawing' stamp: 'hlsf 18/Mar/2023, 9:01:54 am (UTC)'!
 drawString: s at: pt font: fontOrNil color: aColor
 	| text fontSize zoom | 
 	zoom := 1.4.
@@ -3307,7 +3307,7 @@ drawString: s at: pt font: fontOrNil color: aColor
 	svgTree addElement: text 
 ! !
 
-!DrGSvgCanvas methodsFor: 'drawing' stamp: 'hlsf 4/Dec/2023 11:07:09'!
+!DrGSvgCanvas methodsFor: 'drawing' stamp: 'hlsf 4/Dec/2023, 9:07:09 am (UTC)'!
 drawTextComposition: aTextComposition at: aPoint extent: anEextent color: c selectionColor: sc
 " This is a short cut. I am but lazy to implement complet Morphic Canvas compatibility "
 	| position delta |
@@ -3321,7 +3321,7 @@ drawTextComposition: aTextComposition at: aPoint extent: anEextent color: c sele
 			color: c.
 		position := position + delta]! !
 
-!DrGSvgCanvas methodsFor: 'drawing' stamp: 'hlsf 18/Mar/2023 19:21:23'!
+!DrGSvgCanvas methodsFor: 'drawing' stamp: 'hlsf 18/Mar/2023, 5:21:23 pm (UTC)'!
 ellipseCenter: center radius: radius borderWidth: bw borderColor: bc fillColor: fillColor
 	| ellipse |
 	ellipse := XMLElement 
@@ -3332,28 +3332,28 @@ ellipseCenter: center radius: radius borderWidth: bw borderColor: bc fillColor: 
 	self styleOf: ellipse StrokeWidth: bw color: bc fillColor: 	fillColor.
 	svgTree addElement: ellipse ! !
 
-!DrGSvgCanvas methodsFor: 'drawing' stamp: 'hlsf 18/Mar/2023 19:16:46'!
+!DrGSvgCanvas methodsFor: 'drawing' stamp: 'hlsf 18/Mar/2023, 5:16:46 pm (UTC)'!
 fillRectangle: rect color: fillColor
 	| rectNode |
 	rectNode := self rectangle: rect.
 	self styleOf: rectNode StrokeWidth: nil color: nil fillColor: fillColor.
 	svgTree addElement: rectNode! !
 
-!DrGSvgCanvas methodsFor: 'drawing' stamp: 'hlsf 25/May/2023 19:21:05'!
+!DrGSvgCanvas methodsFor: 'drawing' stamp: 'hlsf 25/May/2023, 5:21:05 pm (UTC)'!
 fillRectangle: aRectangle color: fillColor borderWidth: bw borderStyleSymbol: aSymbol baseColorForBorder: bc
 	| rect |
 	rect := self rectangle: aRectangle .
 	self styleOf: rect	 StrokeWidth: bw color: bc fillColor: 		fillColor.
 	svgTree addElement: rect! !
 
-!DrGSvgCanvas methodsFor: 'drawing' stamp: 'hlsf 18/Mar/2023 19:21:49'!
+!DrGSvgCanvas methodsFor: 'drawing' stamp: 'hlsf 18/Mar/2023, 5:21:49 pm (UTC)'!
 frameRectangle: aRectangle color: bc borderWidth: bw borderStyleSymbol: aSymbol
 	| rect |
 	rect := self rectangle: aRectangle.
 	self styleOf: rect StrokeWidth: bw color: bc fillColor: nil.
 	svgTree addElement: rect! !
 
-!DrGSvgCanvas methodsFor: 'drawing' stamp: 'hlsf 7/Nov/2023 20:19:32'!
+!DrGSvgCanvas methodsFor: 'drawing' stamp: 'hlsf 7/Nov/2023, 6:19:32 pm (UTC)'!
 line: pt1 to: pt2 width: w color: c
 	| line |
 	line := XMLElement 
@@ -3366,19 +3366,19 @@ line: pt1 to: pt2 width: w color: c
 	svgTree addElement: line
 	! !
 
-!DrGSvgCanvas methodsFor: 'drawing' stamp: 'hlsf 18/Mar/2023 16:43:29'!
+!DrGSvgCanvas methodsFor: 'drawing' stamp: 'hlsf 18/Mar/2023, 2:43:29 pm (UTC)'!
 lineTo: point
 	firstPoint ifNil: [^ self].
 	self addPathCommands: 'L ', point printMini.
 	currentPoint := point ! !
 
-!DrGSvgCanvas methodsFor: 'drawing' stamp: 'hlsf 18/Mar/2023 15:52:42'!
+!DrGSvgCanvas methodsFor: 'drawing' stamp: 'hlsf 18/Mar/2023, 1:52:42 pm (UTC)'!
 moveTo: point
 	firstPoint ifNil: [firstPoint := point].
 	self addPathCommands: 'M ', point printMini.
 	currentPoint := point ! !
 
-!DrGSvgCanvas methodsFor: 'drawing' stamp: 'hlsf 18/Mar/2023 16:27:03'!
+!DrGSvgCanvas methodsFor: 'drawing' stamp: 'hlsf 18/Mar/2023, 2:27:03 pm (UTC)'!
 polyLine: vertices
 	| coordinates |
 	pathNode name: #polyline.
@@ -3389,15 +3389,15 @@ polyLine: vertices
 		
 		! !
 
-!DrGSvgCanvas methodsFor: 'rendering' stamp: 'hlsf 4/Aug/2023 17:48:04'!
+!DrGSvgCanvas methodsFor: 'rendering' stamp: 'hlsf 4/Aug/2023, 3:48:04 pm (UTC)'!
 renderAxes
 	self drawable axesVisible ifTrue: [self drawable drawAxesOn: self]! !
 
-!DrGSvgCanvas methodsFor: 'rendering' stamp: 'hlsf 4/Aug/2023 17:48:11'!
+!DrGSvgCanvas methodsFor: 'rendering' stamp: 'hlsf 4/Aug/2023, 3:48:11 pm (UTC)'!
 renderGrid
 	self drawable gridVisible ifTrue: [self drawable drawGridOn: self]! !
 
-!DrGSvgCanvas methodsFor: 'rendering' stamp: 'hlsf 17/Feb/2026 14:43:25'!
+!DrGSvgCanvas methodsFor: 'rendering' stamp: 'hlsf 17/Feb/2026, 12:43:25 pm (UTC)'!
 renderLabelOf: aMorph
 	aMorph labelMorph ifNotNil: [
 		self drawString: aMorph mathItem name 
@@ -3405,7 +3405,7 @@ renderLabelOf: aMorph
 		font: DrGeoSystem canvasFont 
 		color: Color black]! !
 
-!DrGSvgCanvas methodsFor: 'private' stamp: 'hlsf 18/Mar/2023 16:36:21'!
+!DrGSvgCanvas methodsFor: 'private' stamp: 'hlsf 18/Mar/2023, 2:36:21 pm (UTC)'!
 add: addArg toAttribute: symbol
 "
 	Append the arguments (addArg) to the existing ones of the current pathNode 
@@ -3424,7 +3424,7 @@ add: addArg toAttribute: symbol
 	
 	! !
 
-!DrGSvgCanvas methodsFor: 'private' stamp: 'hlsf 18/Mar/2023 16:24:26'!
+!DrGSvgCanvas methodsFor: 'private' stamp: 'hlsf 18/Mar/2023, 2:24:26 pm (UTC)'!
 addPathCommands: cmds
 "
 	Append the commands (cmds) to the existing ones of the current pathNode 
@@ -3435,14 +3435,14 @@ addPathCommands: cmds
 	
 	! !
 
-!DrGSvgCanvas methodsFor: 'private' stamp: 'hlsf 18/Mar/2023 11:32:23'!
+!DrGSvgCanvas methodsFor: 'private' stamp: 'hlsf 18/Mar/2023, 9:32:23 am (UTC)'!
 doPath: pathCommandsBlock ensureClosePath: ensureClosePath
 "Evaluate a sequence of path commands"
 	self initializePath.
 	pathCommandsBlock valueWithPossibleArgument:self.
 	self finalizePath: ensureClosePath! !
 
-!DrGSvgCanvas methodsFor: 'private' stamp: 'hlsf 18/Mar/2023 16:36:30'!
+!DrGSvgCanvas methodsFor: 'private' stamp: 'hlsf 18/Mar/2023, 2:36:30 pm (UTC)'!
 finalizePath: ensureClosePath
 	ensureClosePath ifTrue: [
 		pathNode name caseOf: {
@@ -3452,25 +3452,25 @@ finalizePath: ensureClosePath
 	svgTree addElement: pathNode.
 	pathNode := nil! !
 
-!DrGSvgCanvas methodsFor: 'private' stamp: 'hlsf 18/Mar/2023 10:31:46'!
+!DrGSvgCanvas methodsFor: 'private' stamp: 'hlsf 18/Mar/2023, 8:31:46 am (UTC)'!
 initializePath
 "Perform any initialization needed before starting a Path"
 	firstPoint := nil.
 	currentPoint := `0.0@0.0`.
 ! !
 
-!DrGSvgCanvas methodsFor: 'private' stamp: 'hlsf 27/May/2025 17:38:12'!
+!DrGSvgCanvas methodsFor: 'private' stamp: 'hlsf 27/May/2025, 3:38:12 pm (UTC)'!
 pathStrokeWidth: strokeWidth color: strokeColor fillColor: fillColor
 	self pathStrokeWidth: strokeWidth color: strokeColor strokeDashArray: nil fillColor: fillColor ! !
 
-!DrGSvgCanvas methodsFor: 'private' stamp: 'hlsf 27/May/2025 17:37:54'!
+!DrGSvgCanvas methodsFor: 'private' stamp: 'hlsf 27/May/2025, 3:37:54 pm (UTC)'!
 pathStrokeWidth: strokeWidth color: strokeColor strokeDashArray: sda fillColor: fillColor
 	pathNode := XMLElement named: #path.
 	self styleOf: pathNode StrokeWidth: strokeWidth color: strokeColor strokeDashArray: sda fillColor: fillColor.
 	^ pathNode
 ! !
 
-!DrGSvgCanvas methodsFor: 'private' stamp: 'hlsf 18/Mar/2023 19:15:59'!
+!DrGSvgCanvas methodsFor: 'private' stamp: 'hlsf 18/Mar/2023, 5:15:59 pm (UTC)'!
 rectangle: rect
 	| rectNode |
 	rectNode := XMLElement 
@@ -3480,12 +3480,12 @@ rectangle: rect
 			#width -> rect width asString . #height -> rect height asString } asDictionary.
 	^ rectNode! !
 
-!DrGSvgCanvas methodsFor: 'private' stamp: 'hlsf 27/May/2025 17:40:29'!
+!DrGSvgCanvas methodsFor: 'private' stamp: 'hlsf 27/May/2025, 3:40:29 pm (UTC)'!
 styleOf: element StrokeWidth: strokeWidth color: strokeColor fillColor: fillColor
 	self styleOf: element StrokeWidth: strokeWidth color: strokeColor 
 		strokeDashArray: nil fillColor: fillColor ! !
 
-!DrGSvgCanvas methodsFor: 'private' stamp: 'hlsf 27/May/2025 17:36:57'!
+!DrGSvgCanvas methodsFor: 'private' stamp: 'hlsf 27/May/2025, 3:36:57 pm (UTC)'!
 styleOf: element StrokeWidth: strokeWidth color: strokeColor strokeDashArray: sda fillColor: fillColor
 "
 	Apply style to a given element (node) 
@@ -3518,7 +3518,7 @@ checkForFile: aString
 	aString asFileReference exists
 		ifFalse: [ ^ self exitFailure: aString, ' does not exist!!' ]! !
 
-!DrGeoCommandLineHandler methodsFor: 'as yet unclassified' stamp: 'hlsf 9/Dec/2022 22:12:01'!
+!DrGeoCommandLineHandler methodsFor: 'as yet unclassified' stamp: 'hlsf 9/Dec/2022, 8:12:01 pm (UTC)'!
 loadScript: aString
 "	| workspace utfString |
 	utfString := aString convertFromWithConverter: UTF8TextConverter new.
@@ -3527,7 +3527,7 @@ loadScript: aString
 	workspace containingWindow fullscreen.
 	Smalltalk compiler evaluate: workspace contents"! !
 
-!DrGeoCommandLineHandler methodsFor: 'as yet unclassified' stamp: 'hlsf 9/Dec/2022 22:12:09'!
+!DrGeoCommandLineHandler methodsFor: 'as yet unclassified' stamp: 'hlsf 9/Dec/2022, 8:12:09 pm (UTC)'!
 loadSketch: aString
 "	| utfString |
 	utfString := aString convertFromWithConverter: UTF8TextConverter new.
@@ -3542,15 +3542,15 @@ commandName
 description
 	^ 'Command line for Dr. Geo'! !
 
-!DrGeoCommandLineHandler class methodsFor: 'accessing' stamp: 'hlsf 9/Dec/2022 22:11:07'!
+!DrGeoCommandLineHandler class methodsFor: 'accessing' stamp: 'hlsf 9/Dec/2022, 8:11:07 pm (UTC)'!
 priority
 "	^ STCommandLineHandler priority + 1"! !
 
-!DrGeoXml methodsFor: 'accessing' stamp: 'hlsf 4/Aug/2023 17:48:55'!
+!DrGeoXml methodsFor: 'accessing' stamp: 'hlsf 4/Aug/2023, 3:48:55 pm (UTC)'!
 domain
 	^ presenter domain! !
 
-!DrGeoXml methodsFor: 'accessing' stamp: 'hlsf 4/Aug/2023 17:49:02'!
+!DrGeoXml methodsFor: 'accessing' stamp: 'hlsf 4/Aug/2023, 3:49:02 pm (UTC)'!
 drawable
 	^ presenter drawable! !
 
@@ -3558,35 +3558,35 @@ drawable
 factory
 	^ self domain factory! !
 
-!DrGeoXml methodsFor: 'accessing' stamp: 'hlsf 19/Jun/2021 10:07:28'!
+!DrGeoXml methodsFor: 'accessing' stamp: 'hlsf 19/Jun/2021, 8:07:28 am (UTC)'!
 ox
 	 ^ self drawable ox! !
 
-!DrGeoXml methodsFor: 'accessing' stamp: 'hlsf 19/Jun/2021 10:07:28'!
+!DrGeoXml methodsFor: 'accessing' stamp: 'hlsf 19/Jun/2021, 8:07:28 am (UTC)'!
 ox: aNumber
 	self drawable ox: aNumber! !
 
-!DrGeoXml methodsFor: 'accessing' stamp: 'hlsf 19/Jun/2021 10:07:28'!
+!DrGeoXml methodsFor: 'accessing' stamp: 'hlsf 19/Jun/2021, 8:07:28 am (UTC)'!
 oy
 	 ^ self drawable oy! !
 
-!DrGeoXml methodsFor: 'accessing' stamp: 'hlsf 19/Jun/2021 10:07:28'!
+!DrGeoXml methodsFor: 'accessing' stamp: 'hlsf 19/Jun/2021, 8:07:28 am (UTC)'!
 oy: aNumber
 	self drawable oy: aNumber! !
 
-!DrGeoXml methodsFor: 'accessing' stamp: 'hlsf 4/Aug/2023 19:52:24'!
+!DrGeoXml methodsFor: 'accessing' stamp: 'hlsf 4/Aug/2023, 5:52:24 pm (UTC)'!
 presenter: aDrGeoPresenter 
 	presenter := aDrGeoPresenter! !
 
-!DrGeoXml methodsFor: 'accessing' stamp: 'hlsf 19/Jun/2021 10:07:28'!
+!DrGeoXml methodsFor: 'accessing' stamp: 'hlsf 19/Jun/2021, 8:07:28 am (UTC)'!
 scale
 	 ^ self drawable scale! !
 
-!DrGeoXml methodsFor: 'accessing' stamp: 'hlsf 19/Jun/2021 10:07:28'!
+!DrGeoXml methodsFor: 'accessing' stamp: 'hlsf 19/Jun/2021, 8:07:28 am (UTC)'!
 setScaleTo: aNumber
 	self drawable setScaleTo: aNumber! !
 
-!DrGeoXml methodsFor: 'accessing' stamp: 'hlsf 4/Aug/2023 17:50:55'!
+!DrGeoXml methodsFor: 'accessing' stamp: 'hlsf 4/Aug/2023, 3:50:55 pm (UTC)'!
 view
 	^ presenter view! !
 
@@ -3760,7 +3760,7 @@ parseHalfLineTranslation:aNode
 parseHomothety: aNode 
 	^ self parseItem: aNode with: DrGHomothetyBuilder! !
 
-!DrGeoXml methodsFor: 'parse item' stamp: 'hlsf 4/Aug/2023 17:31:20'!
+!DrGeoXml methodsFor: 'parse item' stamp: 'hlsf 4/Aug/2023, 3:31:20 pm (UTC)'!
 parseItem: aNode with: builderClass 
 	^ self isCreatingMacro 
 		ifFalse: [builderClass itemFrom: aNode in: presenter "an itemStatut"]
@@ -4150,7 +4150,7 @@ parseVectorScale: aNode
 parseVectorSymmetry: aNode 
 	^ self parseSymmetry: aNode! !
 
-!DrGeoXml methodsFor: 'parse style' stamp: 'drgeo 10/Sep/2022 21:22:36'!
+!DrGeoXml methodsFor: 'parse style' stamp: 'drgeo 10/Sep/2022, 7:22:36 pm (UTC)'!
 parseArrowWith: aNode 
 	| arrow |
 	arrow := (aNode attributeAt: #arrow ifAbsent: [#none]) asSymbol.
@@ -4164,14 +4164,14 @@ parseArrowWith: aNode
 		otherwise: [arrow].
 	! !
 
-!DrGeoXml methodsFor: 'parse style' stamp: 'hlsf 20/May/2024 16:41:24'!
+!DrGeoXml methodsFor: 'parse style' stamp: 'hlsf 20/May/2024, 2:41:24 pm (UTC)'!
 parseColorAt: colorAttribute with: aNode 
 | attribute |
 	attribute := (aNode attributeAt: colorAttribute ifAbsent: ['Transparent']) asLowercase.
 	(DrGTypeColor colorSymbols includes: attribute) ifFalse: [attribute := #black].
 	^ Color perform: attribute asSymbol! !
 
-!DrGeoXml methodsFor: 'parse style' stamp: 'hlsf 25/Sep/2021 14:31:47'!
+!DrGeoXml methodsFor: 'parse style' stamp: 'hlsf 25/Sep/2021, 12:31:47 pm (UTC)'!
 parseStyleOf: costume with: aNode 
 	costume name: (aNode attributeAt: #name).
 	costume labelPositionDelta: (Point readFrom: (aNode attributeAt: #delta ifAbsent: ['7@7'])).
@@ -4183,7 +4183,7 @@ parseStyleOf: costume with: aNode
 parseStyleOfAngle: item with: aNode 
 	self parseStyleOfNumeric: item  with: aNode ! !
 
-!DrGeoXml methodsFor: 'parse style' stamp: 'drgeo 10/Sep/2022 21:24:05'!
+!DrGeoXml methodsFor: 'parse style' stamp: 'drgeo 10/Sep/2022, 7:24:05 pm (UTC)'!
 parseStyleOfArc: item with: aNode 
 	|costume|
 	costume := self parseStyleOfCurve: item with: aNode.
@@ -4194,7 +4194,7 @@ parseStyleOfArc: item with: aNode
 parseStyleOfArcCircle: item with: aNode 
 	self parseStyleOfArc: item with: aNode! !
 
-!DrGeoXml methodsFor: 'parse style' stamp: 'hlsf 4/Aug/2023 11:13:03'!
+!DrGeoXml methodsFor: 'parse style' stamp: 'hlsf 4/Aug/2023, 9:13:03 am (UTC)'!
 parseStyleOfBitmap: item with: aNode 
 	| morph |
 	morph := self drawable fastLastItemView .
@@ -4206,7 +4206,7 @@ parseStyleOfCircle: item with: aNode
 	costume := self parseStyleOfCurve: item with: aNode.
 	self parseStyleOfFilledCircle: costume with: aNode! !
 
-!DrGeoXml methodsFor: 'parse style' stamp: 'hlsf 20/May/2024 16:33:14'!
+!DrGeoXml methodsFor: 'parse style' stamp: 'hlsf 20/May/2024, 2:33:14 pm (UTC)'!
 parseStyleOfCurve: item with: aNode 
 	| morph attribute |
 	morph := self drawable fastLastItemView .
@@ -4226,7 +4226,7 @@ parseStyleOfCurve: item with: aNode
 	
 	^ morph! !
 
-!DrGeoXml methodsFor: 'parse style' stamp: 'hlsf 4/Aug/2023 11:11:18'!
+!DrGeoXml methodsFor: 'parse style' stamp: 'hlsf 4/Aug/2023, 9:11:18 am (UTC)'!
 parseStyleOfEquation: item with: aNode 
 	| morph |
 	morph := self drawable fastLastMorph .
@@ -4253,7 +4253,7 @@ parseStyleOfHalfLine: item with: aNode
 parseStyleOfLine: item with: aNode 
 	self parseStyleOfCurve: item with: aNode! !
 
-!DrGeoXml methodsFor: 'parse style' stamp: 'hlsf 20/May/2024 16:35:36'!
+!DrGeoXml methodsFor: 'parse style' stamp: 'hlsf 20/May/2024, 2:35:36 pm (UTC)'!
 parseStyleOfLocus: item with: aNode 
 	self parseStyleOfCurve: item with: aNode! !
 
@@ -4262,7 +4262,7 @@ parseStyleOfNumeric: item with: aNode
  "DrGeo 1.1 xml compatibility"
 	self parseStyleOfValue: item with: aNode! !
 
-!DrGeoXml methodsFor: 'parse style' stamp: 'hlsf 4/Aug/2023 19:52:53'!
+!DrGeoXml methodsFor: 'parse style' stamp: 'hlsf 4/Aug/2023, 5:52:53 pm (UTC)'!
 parseStyleOfPoint: item with: aNode 
 	| morph attribute |
 	morph := self drawable fastLastItemView .
@@ -4292,14 +4292,14 @@ parseStyleOfPolygon: item with: aNode
 parseStyleOfRay: item with: aNode 
 	self parseStyleOfCurve: item with: aNode! !
 
-!DrGeoXml methodsFor: 'parse style' stamp: 'drgeo 10/Sep/2022 21:23:07'!
+!DrGeoXml methodsFor: 'parse style' stamp: 'drgeo 10/Sep/2022, 7:23:07 pm (UTC)'!
 parseStyleOfSegment: item with: aNode 
 	| costume |
 	costume := self parseStyleOfCurve: item with: aNode.
 	costume style mark: (aNode attributeAt: #mark ifAbsent: [#none]) asSymbol.
 	costume style arrow: (self parseArrowWith: aNode)! !
 
-!DrGeoXml methodsFor: 'parse style' stamp: 'hlsf 17/Feb/2026 14:43:34'!
+!DrGeoXml methodsFor: 'parse style' stamp: 'hlsf 17/Feb/2026, 12:43:34 pm (UTC)'!
 parseStyleOfText: item with: aNode 
 	| morph |
 	morph := self drawable fastLastItemView .
@@ -4311,16 +4311,16 @@ parseStyleOfText: item with: aNode
 	morph style
 		fontSize: (aNode attributeAt: #fontSize ifAbsent: DrGeoSystem canvasFontSize) asNumber.! !
 
-!DrGeoXml methodsFor: 'parse style' stamp: 'hlsf 24/May/2023 19:14:39'!
+!DrGeoXml methodsFor: 'parse style' stamp: 'hlsf 24/May/2023, 5:14:39 pm (UTC)'!
 parseStyleOfValue: item with: aNode 
 	self parseStyleOfText: item with: aNode! !
 
-!DrGeoXml methodsFor: 'parse style' stamp: 'hlsf 26/Sep/2021 10:44:41'!
+!DrGeoXml methodsFor: 'parse style' stamp: 'hlsf 26/Sep/2021, 8:44:41 am (UTC)'!
 parseStyleOfVector: item with: aNode 
 	self parseStyleOfCurve: item with: aNode.
 	item origin: (Point readFrom: (aNode attributeAt: #origin ifAbsent: [^self]))! !
 
-!DrGeoXml methodsFor: 'svg write' stamp: 'hlsf 7/Nov/2023 20:21:08'!
+!DrGeoXml methodsFor: 'svg write' stamp: 'hlsf 7/Nov/2023, 6:21:08 pm (UTC)'!
 exportToSvg: stream
 	| doc writer root canvas |
 	doc := XMLDocument new.
@@ -4347,11 +4347,11 @@ exportToSvg: stream
 	doc addElement: root.
 	doc printXMLOn: writer.! !
 
-!DrGeoXml methodsFor: 'testing' stamp: 'hlsf 4/Aug/2023 17:50:15'!
+!DrGeoXml methodsFor: 'testing' stamp: 'hlsf 4/Aug/2023, 3:50:15 pm (UTC)'!
 isCreatingMacro
 	^ presenter isNil! !
 
-!DrGeoXml methodsFor: 'xml read' stamp: 'hlsf 9/Apr/2022 11:21:33'!
+!DrGeoXml methodsFor: 'xml read' stamp: 'hlsf 9/Apr/2022, 9:21:33 am (UTC)'!
 load: fileEntry for: constructor
 	^ self 
 		loadFrom: (fileEntry readStream) 
@@ -4387,7 +4387,7 @@ loadMacroFrom: doc
 		do: [:each | DrGMacroFactory new addUnique: (self parseOneMacro: each)].
 ! !
 
-!DrGeoXml methodsFor: 'xml read' stamp: 'hlsf 8/Jan/2026 22:12:35'!
+!DrGeoXml methodsFor: 'xml read' stamp: 'hlsf 8/Jan/2026, 8:12:35 pm (UTC)'!
 loadOnlyFigureFrom: stream for: constructor
 "One XML document may contain several drgeo figure instances, parse it all,
 and return a DrGeo for each one"
@@ -4396,7 +4396,7 @@ and return a DrGeo for each one"
 	stream close.
 	^ self loadFigureFrom: doc for: constructor! !
 
-!DrGeoXml methodsFor: 'xml read' stamp: 'hlsf 21/Jan/2026 19:12:25'!
+!DrGeoXml methodsFor: 'xml read' stamp: 'hlsf 21/Jan/2026, 5:12:25 pm (UTC)'!
 parseFigureFrom: drgeoNode
 "We parse from the view, because only the view knows both the domain and the view"
 	|  itemStatut |
@@ -4416,7 +4416,7 @@ parseFigureFrom: drgeoNode
 		]
 	].! !
 
-!DrGeoXml methodsFor: 'xml read' stamp: 'hlsf 17/Feb/2026 15:28:49'!
+!DrGeoXml methodsFor: 'xml read' stamp: 'hlsf 17/Feb/2026, 1:28:49 pm (UTC)'!
 parseOneFigure: node for: constructor
 " Instantiate this node in a DrGeo app and return it"
 	self presenter: (DrGeo perform: constructor).
@@ -4428,7 +4428,7 @@ parseOneFigure: node for: constructor
 	presenter saved: true.
 	^ presenter! !
 
-!DrGeoXml methodsFor: 'xml read' stamp: 'hlsf 27/Sep/2021 22:57:06'!
+!DrGeoXml methodsFor: 'xml read' stamp: 'hlsf 27/Sep/2021, 8:57:06 pm (UTC)'!
 parseScript: drgeoNode
 "First do one pass to compile all the script Smalltalk source code"
 	drgeoNode elementsDo: [: node |
@@ -4501,7 +4501,7 @@ parseOutput: node inMacro: macro
 					parentNodes: (self parentMacroNodesIn: macro from: child);
 					yourself)]]! !
 
-!DrGeoXml methodsFor: 'xml write' stamp: 'hlsf 4/Aug/2023 17:28:58'!
+!DrGeoXml methodsFor: 'xml write' stamp: 'hlsf 4/Aug/2023, 3:28:58 pm (UTC)'!
 saveMultiple: sketchesAndMacros on: stream
 	| doc writer root |
 	doc := XMLDocument new version: '1.0'.
@@ -4525,7 +4525,7 @@ saveOn: stream
 	doc addElement: root.
 	doc printXMLOn: writer.! !
 
-!DrGeoXml methodsFor: 'xml write' stamp: 'hlsf 4/Aug/2023 17:52:03'!
+!DrGeoXml methodsFor: 'xml write' stamp: 'hlsf 4/Aug/2023, 3:52:03 pm (UTC)'!
 writeFigureAsXmlTo: aNode 
 	| drgeoNode attr |
 	attr := Dictionary new.
@@ -4546,57 +4546,57 @@ writeFigureAsXmlTo: aNode
 color: aColor
 	self style color: aColor! !
 
-!DrGeoItem methodsFor: 'updating' stamp: 'hlsf 13/Apr/2021 14:03:02'!
+!DrGeoItem methodsFor: 'updating' stamp: 'hlsf 13/Apr/2021, 12:03:02 pm (UTC)'!
 hide
 	self style hidden: true.
 	morph forcedVisibility: false.! !
 
-!DrGeoItem methodsFor: 'updating' stamp: 'hlsf 12/Apr/2021 22:19:13'!
+!DrGeoItem methodsFor: 'updating' stamp: 'hlsf 12/Apr/2021, 8:19:13 pm (UTC)'!
 lock
 	morph locked: true! !
 
 !DrGeoItem methodsFor: 'updating' stamp: ''!
 moveTo: aPoint! !
 
-!DrGeoItem methodsFor: 'updating' stamp: 'hlsf 12/Apr/2021 22:19:13'!
+!DrGeoItem methodsFor: 'updating' stamp: 'hlsf 12/Apr/2021, 8:19:13 pm (UTC)'!
 name: aString
 	morph name: aString asString! !
 
-!DrGeoItem methodsFor: 'updating' stamp: 'hlsf 13/Apr/2021 14:03:02'!
+!DrGeoItem methodsFor: 'updating' stamp: 'hlsf 13/Apr/2021, 12:03:02 pm (UTC)'!
 show
 	morph forcedVisibility: true.
 	self style hidden: false! !
 
-!DrGeoItem methodsFor: 'updating' stamp: 'hlsf 13/Apr/2021 14:03:02'!
+!DrGeoItem methodsFor: 'updating' stamp: 'hlsf 13/Apr/2021, 12:03:02 pm (UTC)'!
 unhide
 	self style hidden: false.
 	morph forcedVisibility: false.! !
 
-!DrGeoItem methodsFor: 'updating' stamp: 'hlsf 12/Apr/2021 22:19:13'!
+!DrGeoItem methodsFor: 'updating' stamp: 'hlsf 12/Apr/2021, 8:19:13 pm (UTC)'!
 unlock
 	morph locked: false! !
 
-!DrGeoItem methodsFor: 'accessing' stamp: 'hlsf 12/Apr/2021 22:19:13'!
+!DrGeoItem methodsFor: 'accessing' stamp: 'hlsf 12/Apr/2021, 8:19:13 pm (UTC)'!
 mathItem
 	^ morph mathItem ! !
 
-!DrGeoItem methodsFor: 'accessing' stamp: 'hlsf 12/Apr/2021 22:19:13'!
+!DrGeoItem methodsFor: 'accessing' stamp: 'hlsf 12/Apr/2021, 8:19:13 pm (UTC)'!
 morph
 	^ morph! !
 
-!DrGeoItem methodsFor: 'accessing' stamp: 'hlsf 6/Jan/2026 15:11:30'!
+!DrGeoItem methodsFor: 'accessing' stamp: 'hlsf 6/Jan/2026, 1:11:30 pm (UTC)'!
 morph: aMorph
 	morph := aMorph ! !
 
-!DrGeoItem methodsFor: 'accessing' stamp: 'hlsf 13/Jun/2021 12:06:25'!
+!DrGeoItem methodsFor: 'accessing' stamp: 'hlsf 13/Jun/2021, 10:06:25 am (UTC)'!
 style
 	^ morph style! !
 
-!DrGeoItem methodsFor: 'printing' stamp: 'hlsf 9/May/2024 10:21:37'!
+!DrGeoItem methodsFor: 'printing' stamp: 'hlsf 9/May/2024, 8:21:37 am (UTC)'!
 printOn: aStream
 	morph mathItem printOn: aStream! !
 
-!DrGeoItem class methodsFor: 'as yet unclassified' stamp: 'hlsf 16/Apr/2022 22:44:00'!
+!DrGeoItem class methodsFor: 'as yet unclassified' stamp: 'hlsf 16/Apr/2022, 8:44:00 pm (UTC)'!
 wrap: aMorph
 	^ self new morph: aMorph! !
 
@@ -4627,15 +4627,15 @@ plain
 small
 	self style thickness: #small! !
 
-!DrGeoFinitCurve methodsFor: 'updating' stamp: 'hlsf 17/Jun/2021 17:54:02'!
+!DrGeoFinitCurve methodsFor: 'updating' stamp: 'hlsf 17/Jun/2021, 3:54:02 pm (UTC)'!
 backArrow
 	self style arrow: #back! !
 
-!DrGeoFinitCurve methodsFor: 'updating' stamp: 'hlsf 17/Jun/2021 17:53:54'!
+!DrGeoFinitCurve methodsFor: 'updating' stamp: 'hlsf 17/Jun/2021, 3:53:54 pm (UTC)'!
 bothArrows
 	self style arrow: #both! !
 
-!DrGeoFinitCurve methodsFor: 'updating' stamp: 'hlsf 17/Jun/2021 17:53:44'!
+!DrGeoFinitCurve methodsFor: 'updating' stamp: 'hlsf 17/Jun/2021, 3:53:44 pm (UTC)'!
 forwardArrow
 	self style arrow: #forward! !
 
@@ -4647,7 +4647,7 @@ filled
 opaque
 	self style translucent: false! !
 
-!DrGeoFilledCurve methodsFor: 'updating' stamp: 'hlsf 1/Feb/2026 10:24:29'!
+!DrGeoFilledCurve methodsFor: 'updating' stamp: 'hlsf 1/Feb/2026, 8:24:29 am (UTC)'!
 translucent
 	self filled.
 	self style translucent: true! !
@@ -4724,12 +4724,12 @@ square
 backgroundColor: aColor
 	self style backgroundColor: aColor! !
 
-!DrGeoText methodsFor: 'updating' stamp: 'hlsf 14/Apr/2022 10:51:10'!
+!DrGeoText methodsFor: 'updating' stamp: 'hlsf 14/Apr/2022, 8:51:10 am (UTC)'!
 moveTo: aPoint
 	self mathItem position: aPoint.
 	morph redrawNeeded! !
 
-!DrGeoText methodsFor: 'updating' stamp: 'hlsf 13/Jun/2021 14:20:11'!
+!DrGeoText methodsFor: 'updating' stamp: 'hlsf 13/Jun/2021, 12:20:11 pm (UTC)'!
 text: aText
 	self mathItem text: aText asText.
 	morph redrawNeeded! !
@@ -4738,7 +4738,7 @@ text: aText
 moveTo: aPoint
 	self mathItem position: aPoint     ! !
 
-!DrGeoValue methodsFor: 'updating' stamp: 'hlsf 29/May/2021 17:31:27'!
+!DrGeoValue methodsFor: 'updating' stamp: 'hlsf 29/May/2021, 3:31:27 pm (UTC)'!
 name: aString 
 	morph mathItem name: aString.
 	morph redrawNeeded! !
@@ -4748,12 +4748,12 @@ value: aNumber
 	(self mathItem respondsTo: #valueItem:) 
 		ifTrue: [self mathItem valueItem: aNumber]! !
 
-!DrGeoSketch methodsFor: 'initialize-release' stamp: 'drgeo 25/May/2026 17:08:16'!
+!DrGeoSketch methodsFor: 'initialize-release' stamp: 'drgeo 25/May/2026, 3:08:16 pm (UTC)'!
 delete
 	self view delete.
 	self release! !
 
-!DrGeoSketch methodsFor: 'initialize-release' stamp: 'hlsf 20/Apr/2024 11:04:09'!
+!DrGeoSketch methodsFor: 'initialize-release' stamp: 'hlsf 20/Apr/2024, 9:04:09 am (UTC)'!
 initialize
 	presenter := DrGeo service
 		stSketch: self;
@@ -4761,17 +4761,17 @@ initialize
 	" From now, my view (empty) is in a presentable state. Inform about it "
 	DrGeoSketch triggerEvent: #newSmalltalkSketch with: self! !
 
-!DrGeoSketch methodsFor: 'initialize-release' stamp: 'hlsf 4/Aug/2023 20:05:38'!
+!DrGeoSketch methodsFor: 'initialize-release' stamp: 'hlsf 4/Aug/2023, 6:05:38 pm (UTC)'!
 release
 	presenter ifNotNil: [presenter release].
 	presenter := nil.
 	self terminateDo ! !
 
-!DrGeoSketch methodsFor: 'obsolete' stamp: 'hlsf 10/Apr/2022 20:30:29'!
+!DrGeoSketch methodsFor: 'obsolete' stamp: 'hlsf 10/Apr/2022, 6:30:29 pm (UTC)'!
 fullscreen
 	! !
 
-!DrGeoSketch methodsFor: 'DSL angle' stamp: 'hlsf 15/Jan/2026 17:58:58'!
+!DrGeoSketch methodsFor: 'DSL angle' stamp: 'hlsf 15/Jan/2026, 3:58:58 pm (UTC)'!
 angle: vector1 to: vector2
 "Oriented angle defined by two vectors
 -vector1: a point or DrGeo vector
@@ -4783,7 +4783,7 @@ angle: vector1 to: vector2
 			with: self aPosition) )
 		hide: false! !
 
-!DrGeoSketch methodsFor: 'DSL angle' stamp: 'hlsf 21/Jan/2026 15:21:56'!
+!DrGeoSketch methodsFor: 'DSL angle' stamp: 'hlsf 21/Jan/2026, 1:21:56 pm (UTC)'!
 angle: vertex to: point1 to: point2
 "Oriented angle in [0 ; 360[ defined by three points
 -vertex: a point, vertex of the angle
@@ -4797,7 +4797,7 @@ angle: vertex to: point1 to: point2
 			with: self aPosition) )
 		hide: false! !
 
-!DrGeoSketch methodsFor: 'DSL angle' stamp: 'hlsf 21/Jan/2026 15:22:08'!
+!DrGeoSketch methodsFor: 'DSL angle' stamp: 'hlsf 21/Jan/2026, 1:22:08 pm (UTC)'!
 geometricAngle: summit to: point1 to: point2
 "Geometric angle in [0 ; 180] defined by three points
 -vertex: a point, vertex of the angle
@@ -4811,17 +4811,17 @@ geometricAngle: summit to: point1 to: point2
 			with: self aPosition) )
 		hide: false! !
 
-!DrGeoSketch methodsFor: 'DSL canvas' stamp: 'hlsf 21/Jan/2026 19:21:27'!
+!DrGeoSketch methodsFor: 'DSL canvas' stamp: 'hlsf 21/Jan/2026, 5:21:27 pm (UTC)'!
 axesOff
 "Hide the x-axis and y-axis"
 	 presenter axesOff ! !
 
-!DrGeoSketch methodsFor: 'DSL canvas' stamp: 'hlsf 21/Jan/2026 19:13:57'!
+!DrGeoSketch methodsFor: 'DSL canvas' stamp: 'hlsf 21/Jan/2026, 5:13:57 pm (UTC)'!
 axesOn
 "Show the x-axis and y-axis"
 	 presenter axesOn ! !
 
-!DrGeoSketch methodsFor: 'DSL canvas' stamp: 'hlsf 17/Jan/2026 09:01:23'!
+!DrGeoSketch methodsFor: 'DSL canvas' stamp: 'hlsf 17/Jan/2026, 7:01:23 am (UTC)'!
 centerTo: center
 "Center the view to a given position
 -center: the point to center the view on"
@@ -4830,21 +4830,21 @@ centerTo: center
 		oy: center y;
 		redrawNeeded! !
 
-!DrGeoSketch methodsFor: 'DSL canvas' stamp: 'hlsf 4/Aug/2023 20:05:38'!
+!DrGeoSketch methodsFor: 'DSL canvas' stamp: 'hlsf 4/Aug/2023, 6:05:38 pm (UTC)'!
 fullScreen
 	presenter view fullScreen! !
 
-!DrGeoSketch methodsFor: 'DSL canvas' stamp: 'hlsf 21/Jan/2026 19:17:12'!
+!DrGeoSketch methodsFor: 'DSL canvas' stamp: 'hlsf 21/Jan/2026, 5:17:12 pm (UTC)'!
 gridOff
 "Hide the grid on the view"
 	 presenter gridOff! !
 
-!DrGeoSketch methodsFor: 'DSL canvas' stamp: 'hlsf 21/Jan/2026 19:12:39'!
+!DrGeoSketch methodsFor: 'DSL canvas' stamp: 'hlsf 21/Jan/2026, 5:12:39 pm (UTC)'!
 gridOn
 "Show the grid on the view"
 	 presenter gridOn! !
 
-!DrGeoSketch methodsFor: 'DSL canvas' stamp: 'hlsf 15/Jan/2026 11:42:19'!
+!DrGeoSketch methodsFor: 'DSL canvas' stamp: 'hlsf 15/Jan/2026, 9:42:19 am (UTC)'!
 scale: integer
 "Change the scale of the sketch
 -integer: the number of pixels used to represent one unit.
@@ -4852,21 +4852,21 @@ The larger this number, the larger the sketch."
 	presenter drawable 
 		setScaleTo: integer! !
 
-!DrGeoSketch methodsFor: 'DSL canvas' stamp: 'hlsf 14/Apr/2022 10:46:54'!
+!DrGeoSketch methodsFor: 'DSL canvas' stamp: 'hlsf 14/Apr/2022, 8:46:54 am (UTC)'!
 update
 	self domain updateAllMathItems! !
 
-!DrGeoSketch methodsFor: 'DSL canvas' stamp: 'hlsf 4/Aug/2023 20:05:38'!
+!DrGeoSketch methodsFor: 'DSL canvas' stamp: 'hlsf 4/Aug/2023, 6:05:38 pm (UTC)'!
 view
 	^ presenter view! !
 
-!DrGeoSketch methodsFor: 'DSL digital ruler' stamp: 'hlsf 17/Jan/2026 09:02:33'!
+!DrGeoSketch methodsFor: 'DSL digital ruler' stamp: 'hlsf 17/Jan/2026, 7:02:33 am (UTC)'!
 float: value at: aPoint from: startValue to: endValue 
 "Ruler for decimal value
 See method float:at:from:to:name:"
 	^ self float: value at: aPoint from: startValue to: endValue name: ''! !
 
-!DrGeoSketch methodsFor: 'DSL digital ruler' stamp: 'hlsf 15/Jan/2026 11:41:05'!
+!DrGeoSketch methodsFor: 'DSL digital ruler' stamp: 'hlsf 15/Jan/2026, 9:41:05 am (UTC)'!
 float: aValue at: aPoint from: startValue to: endValue name: name
 "Ruler for decimal value in the interval [startValue ; endValue] 
 -aValue: initial value
@@ -4877,7 +4877,7 @@ float: aValue at: aPoint from: startValue to: endValue name: name
 ⇒ block of code, request its current value by sending the message #value"
 	^ self float: aValue at: aPoint from: startValue to: endValue name: name showValue: false! !
 
-!DrGeoSketch methodsFor: 'DSL digital ruler' stamp: 'hlsf 1/Feb/2026 10:30:45'!
+!DrGeoSketch methodsFor: 'DSL digital ruler' stamp: 'hlsf 1/Feb/2026, 8:30:45 am (UTC)'!
 float: aValue at: aPoint from: startValue to: endValue name: name showValue: isValueDisplay
 "Ruler for decimal value
 -isValueDisplay: true to show the current value
@@ -4900,19 +4900,19 @@ See method float:at:from:to:name: for the other attributes"
 		ifFalse: [[mobile mathItem abscissa * ( endValue - startValue) + startValue]]  	
 	! !
 
-!DrGeoSketch methodsFor: 'DSL digital ruler' stamp: 'hlsf 17/Jan/2026 09:03:39'!
+!DrGeoSketch methodsFor: 'DSL digital ruler' stamp: 'hlsf 17/Jan/2026, 7:03:39 am (UTC)'!
 integer: value at: aPoint from: startValue to: endValue 
 "Ruler for integer value
 See method float:at:from:to:name:"
 	^ self integer: value at: aPoint from: startValue to: endValue name: ''! !
 
-!DrGeoSketch methodsFor: 'DSL digital ruler' stamp: 'hlsf 17/Jan/2026 09:03:44'!
+!DrGeoSketch methodsFor: 'DSL digital ruler' stamp: 'hlsf 17/Jan/2026, 7:03:44 am (UTC)'!
 integer: aValue at: aPoint from: startValue to: endValue name: name
 "Ruler for integer value
 See method float:at:from:to:name:"
 	^ self integer: aValue at: aPoint from: startValue to: endValue name: name showValue: false! !
 
-!DrGeoSketch methodsFor: 'DSL digital ruler' stamp: 'hlsf 1/Feb/2026 10:30:40'!
+!DrGeoSketch methodsFor: 'DSL digital ruler' stamp: 'hlsf 1/Feb/2026, 8:30:40 am (UTC)'!
 integer: aValue at: aPoint from: startValue to: endValue name: name showValue: isValueDisplay
 "Ruler for integer value
 See method float:at:from:to:name:"
@@ -4934,7 +4934,7 @@ See method float:at:from:to:name:"
 		ifFalse: [[(mobile mathItem abscissa * ( endValue - startValue) + startValue) floor]]  	
 	! !
 
-!DrGeoSketch methodsFor: 'DSL equation' stamp: 'hlsf 17/Jan/2026 09:04:11'!
+!DrGeoSketch methodsFor: 'DSL equation' stamp: 'hlsf 17/Jan/2026, 7:04:11 am (UTC)'!
 equationOf: lineOrCircle
 "Equation of a line or a circle
 -lineOrCirlce: a straight line or circle object 
@@ -4947,13 +4947,13 @@ See DSL line and DSL line curved"
 	^ self finalizeValue: (class newWith: (
 		Array with: lineOrCircle mathItem with: self aPosition) )! !
 
-!DrGeoSketch methodsFor: 'DSL helpers' stamp: 'hlsf 17/Jan/2026 09:04:31'!
+!DrGeoSketch methodsFor: 'DSL helpers' stamp: 'hlsf 17/Jan/2026, 7:04:31 am (UTC)'!
 aPosition
 "A random position (a point) with integer coordinates 
 in the interval [-5 ; 5]"
 	^ 10 atRandom - 5 @ (10 atRandom - 5)! !
 
-!DrGeoSketch methodsFor: 'DSL helpers' stamp: 'hlsf 17/Jan/2026 09:04:47'!
+!DrGeoSketch methodsFor: 'DSL helpers' stamp: 'hlsf 17/Jan/2026, 7:04:47 am (UTC)'!
 do: block
 "Execute code in a forked process (parallel)
 -block: block of code containing constructions or 
@@ -4963,21 +4963,21 @@ do: block
 	doProcess priority: Processor userBackgroundPriority.
 	doProcess resume! !
 
-!DrGeoSketch methodsFor: 'DSL helpers' stamp: 'hlsf 29/Jan/2026 09:06:42'!
+!DrGeoSketch methodsFor: 'DSL helpers' stamp: 'hlsf 29/Jan/2026, 7:06:42 am (UTC)'!
 exportToImage: filename
 "Export to a SVG file the view with its current extent and scale
 -filename: a string without the '.svg' extention. The file is saved
   in the user directory 'myExports'"
 	presenter exportToImage: filename! !
 
-!DrGeoSketch methodsFor: 'DSL line' stamp: 'hlsf 17/Jan/2026 09:06:53'!
+!DrGeoSketch methodsFor: 'DSL line' stamp: 'hlsf 17/Jan/2026, 7:06:53 am (UTC)'!
 angleBisector: angle
 "Bisector of an angle
 -angle: geometric angle defined by three points (see DSL angle)"
 	^ self finalizeCurve: 
 		(DrGLineAngleBisectorItem newWith: (Array with: angle mathItem))! !
 
-!DrGeoSketch methodsFor: 'DSL line' stamp: 'hlsf 15/Jan/2026 12:01:49'!
+!DrGeoSketch methodsFor: 'DSL line' stamp: 'hlsf 15/Jan/2026, 10:01:49 am (UTC)'!
 angleBisectorSummit: summit side1: point1 side2: point2
 "Bisector of an angle defined by three points
 -summit: the point the bisector is passing through, summit of the angle
@@ -4989,7 +4989,7 @@ angleBisectorSummit: summit side1: point1 side2: point2
 			with: (self ensureDrGeoPoint: summit) mathItem
 			with: (self ensureDrGeoPoint: point2 ) mathItem) )! !
 
-!DrGeoSketch methodsFor: 'DSL line' stamp: 'hlsf 15/Jan/2026 11:57:48'!
+!DrGeoSketch methodsFor: 'DSL line' stamp: 'hlsf 15/Jan/2026, 9:57:48 am (UTC)'!
 line: point1 to: point2
 "Line defined by two points
 - point1: a point the line is passing through
@@ -4999,7 +4999,7 @@ line: point1 to: point2
 			with: (self ensureDrGeoPoint: point1 ) mathItem
 			with: (self ensureDrGeoPoint: point2 ) mathItem) )! !
 
-!DrGeoSketch methodsFor: 'DSL line' stamp: 'hlsf 15/Jan/2026 11:59:05'!
+!DrGeoSketch methodsFor: 'DSL line' stamp: 'hlsf 15/Jan/2026, 9:59:05 am (UTC)'!
 parallel: direction at: point
 "Parallel line
 -direction: a direction (straight line, ray, segment, vector) 
@@ -5010,7 +5010,7 @@ parallel: direction at: point
 			with: direction mathItem
 			with: (self ensureDrGeoPoint: point) mathItem) )! !
 
-!DrGeoSketch methodsFor: 'DSL line' stamp: 'hlsf 15/Jan/2026 12:00:18'!
+!DrGeoSketch methodsFor: 'DSL line' stamp: 'hlsf 15/Jan/2026, 10:00:18 am (UTC)'!
 perpendicular: drection at: point 
 "Perpendicular line
 -direction: a direction (straight line, ray, segment, vector) 
@@ -5021,14 +5021,14 @@ perpendicular: drection at: point
 			with: drection mathItem
 			with: (self ensureDrGeoPoint: point) mathItem) )! !
 
-!DrGeoSketch methodsFor: 'DSL line' stamp: 'hlsf 17/Jan/2026 09:08:17'!
+!DrGeoSketch methodsFor: 'DSL line' stamp: 'hlsf 17/Jan/2026, 7:08:17 am (UTC)'!
 perpendicularBisector: segment
 "Perpendicular bisector
 -segment: the segment the line is perpendicular to its middle"
 	^ self finalizeCurve: (
 		DrGPerpendicularBisectorItem newWith: (Array with: segment mathItem) )! !
 
-!DrGeoSketch methodsFor: 'DSL line' stamp: 'hlsf 15/Jan/2026 12:02:46'!
+!DrGeoSketch methodsFor: 'DSL line' stamp: 'hlsf 15/Jan/2026, 10:02:46 am (UTC)'!
 perpendicularBisector: point1 to: point2
 "Perpendicular bisector of a segment defined by two points
 -point1: an extremity of the segment
@@ -5038,7 +5038,7 @@ perpendicularBisector: point1 to: point2
 			with: (self ensureDrGeoPoint: point1) mathItem
 			with: (self ensureDrGeoPoint: point2) mathItem) )! !
 
-!DrGeoSketch methodsFor: 'DSL line' stamp: 'hlsf 15/Jan/2026 12:03:28'!
+!DrGeoSketch methodsFor: 'DSL line' stamp: 'hlsf 15/Jan/2026, 10:03:28 am (UTC)'!
 ray: origin to: anotherPoint
 "Ray 
 -origin: starting point of the ray
@@ -5048,7 +5048,7 @@ ray: origin to: anotherPoint
 			with: (self ensureDrGeoPoint: origin) mathItem
 			with: (self ensureDrGeoPoint: anotherPoint ) mathItem) )! !
 
-!DrGeoSketch methodsFor: 'DSL line' stamp: 'hlsf 15/Jan/2026 12:04:01'!
+!DrGeoSketch methodsFor: 'DSL line' stamp: 'hlsf 15/Jan/2026, 10:04:01 am (UTC)'!
 segment: point1 to: point2
 "Segment 
 -point1: an extremity of the segment
@@ -5059,7 +5059,7 @@ segment: point1 to: point2
 				with: (self ensureDrGeoPoint: point1) mathItem	
 				with: (self ensureDrGeoPoint: point2) mathItem) )! !
 
-!DrGeoSketch methodsFor: 'DSL line curved' stamp: 'hlsf 15/Jan/2026 11:38:04'!
+!DrGeoSketch methodsFor: 'DSL line curved' stamp: 'hlsf 15/Jan/2026, 9:38:04 am (UTC)'!
 arc: start to: aPoint to: end
 "Arc of circle defined by three points
 -start: starting point of the arc
@@ -5071,7 +5071,7 @@ arc: start to: aPoint to: end
 			with: (self ensureDrGeoPoint: aPoint) mathItem
 			with: (self ensureDrGeoPoint: end) mathItem) )! !
 
-!DrGeoSketch methodsFor: 'DSL line curved' stamp: 'hlsf 25/Jan/2026 16:19:44'!
+!DrGeoSketch methodsFor: 'DSL line curved' stamp: 'hlsf 25/Jan/2026, 2:19:44 pm (UTC)'!
 arcCenter: center from: start to: end
 "Oriented arc of circle (anti-clockwised) defined by its center and two points
 -center: a point, center of the circle
@@ -5083,7 +5083,7 @@ arcCenter: center from: start to: end
 			with: (self ensureDrGeoPoint: start ) mathItem
 			with: (self ensureDrGeoPoint: end ) mathItem) )! !
 
-!DrGeoSketch methodsFor: 'DSL line curved' stamp: 'hlsf 15/Jan/2026 12:05:13'!
+!DrGeoSketch methodsFor: 'DSL line curved' stamp: 'hlsf 15/Jan/2026, 10:05:13 am (UTC)'!
 circleCenter: center radius: radius
 "Circle defined by its center and radius
 - center: a point, center of the circle
@@ -5094,7 +5094,7 @@ circleCenter: center radius: radius
 			with: (self ensureDrGeoPoint: center) mathItem
 			with: (self ensureDrGeoValue: radius ) mathItem) )! !
 
-!DrGeoSketch methodsFor: 'DSL line curved' stamp: 'hlsf 17/Jan/2026 09:11:43'!
+!DrGeoSketch methodsFor: 'DSL line curved' stamp: 'hlsf 17/Jan/2026, 7:11:43 am (UTC)'!
 circleCenter: center segment: segment
 "Circle defined by its center and radius
 -center: a point, center of the circle
@@ -5104,7 +5104,7 @@ circleCenter: center segment: segment
 			with: (self ensureDrGeoPoint: center) mathItem 
 			with: segment mathItem) )! !
 
-!DrGeoSketch methodsFor: 'DSL line curved' stamp: 'hlsf 17/Jan/2026 09:12:16'!
+!DrGeoSketch methodsFor: 'DSL line curved' stamp: 'hlsf 17/Jan/2026, 7:12:16 am (UTC)'!
 circleCenter: center to: point
 "Circle defined by two points
 -center: a point, center of the circle
@@ -5114,7 +5114,7 @@ circleCenter: center to: point
 			with: (self ensureDrGeoPoint: center ) mathItem
 			with: (self ensureDrGeoPoint: point ) mathItem) )! !
 
-!DrGeoSketch methodsFor: 'DSL line curved' stamp: 'hlsf 15/Jan/2026 12:12:29'!
+!DrGeoSketch methodsFor: 'DSL line curved' stamp: 'hlsf 15/Jan/2026, 10:12:29 am (UTC)'!
 locusOf: dependent when: mobile
 "Locus of a point given another point
 -mobile: a point mobile on a line (straight or curved)
@@ -5124,7 +5124,7 @@ locusOf: dependent when: mobile
 	^ self finalizeCurve: (
 		DrGLocus2ptsItem newWith: (Array with: mobile mathItem with: dependent mathItem) )! !
 
-!DrGeoSketch methodsFor: 'DSL line curved' stamp: 'hlsf 15/Jan/2026 12:16:38'!
+!DrGeoSketch methodsFor: 'DSL line curved' stamp: 'hlsf 15/Jan/2026, 10:16:38 am (UTC)'!
 plot: f from: x0 to: x1
 "Plot the curve of a one argument function in the x interval [x0 ; x1]
 -f: block of code to compute the function. ex: [:x | x + (10 * x) cos]
@@ -5139,7 +5139,7 @@ plot: f from: x0 to: x1
 	^ (self locusOf: pen when: mobile) color: Color blue
 ! !
 
-!DrGeoSketch methodsFor: 'DSL point' stamp: 'hlsf 28/Jan/2026 17:41:40'!
+!DrGeoSketch methodsFor: 'DSL point' stamp: 'hlsf 28/Jan/2026, 3:41:40 pm (UTC)'!
 altIntersectionOf: line1 and: line2
 "The alternate point of intersection between two lines
 -line1: a straight or curved line
@@ -5152,7 +5152,7 @@ the second point can be asked with this method."
 	item k: 1.
 	^ self finalizePoint: item! !
 
-!DrGeoSketch methodsFor: 'DSL point' stamp: 'hlsf 15/Jan/2026 16:51:55'!
+!DrGeoSketch methodsFor: 'DSL point' stamp: 'hlsf 15/Jan/2026, 2:51:55 pm (UTC)'!
 intersectionOf: line1 and: line2 
 "Point of intersection between two lines
 -line1: a straight or curved line
@@ -5163,14 +5163,14 @@ intersectionOf: line1 and: line2
 	item k: -1.
 	^ self finalizePoint: item! !
 
-!DrGeoSketch methodsFor: 'DSL point' stamp: 'hlsf 28/Jan/2026 17:44:44'!
+!DrGeoSketch methodsFor: 'DSL point' stamp: 'hlsf 28/Jan/2026, 3:44:44 pm (UTC)'!
 middleOf: segment
 "Middle of a segment
 -segment: a DrGeo segment (see DSL line)"
 	^ self
 		finalizePoint: (DrGPointMiddlesegmentItem newWith: (Array with: segment mathItem))! !
 
-!DrGeoSketch methodsFor: 'DSL point' stamp: 'hlsf 17/Jan/2026 09:15:55'!
+!DrGeoSketch methodsFor: 'DSL point' stamp: 'hlsf 17/Jan/2026, 7:15:55 am (UTC)'!
 middleOf: point1 and: point2 
 "The point in the middle of  two points
 -point1: a point
@@ -5180,7 +5180,7 @@ middleOf: point1 and: point2
 			with: (self ensureDrGeoPoint: point1) mathItem 
 			with: (self ensureDrGeoPoint: point2) mathItem) )! !
 
-!DrGeoSketch methodsFor: 'DSL point' stamp: 'hlsf 17/Jan/2026 22:26:32'!
+!DrGeoSketch methodsFor: 'DSL point' stamp: 'hlsf 17/Jan/2026, 8:26:32 pm (UTC)'!
 point: aPointOrBlock
 "Point defined by its coordinates
 Argument can be either:
@@ -5191,7 +5191,7 @@ Argument can be either:
 		ifTrue:  [self finalizePoint: (DrGPointFreeItem newWith: (Array with:aPointOrBlock))]
 		ifFalse: [self finalizePoint: (DrGPointBlockItem newWith: (Array with: aPointOrBlock)	)]! !
 
-!DrGeoSketch methodsFor: 'DSL point' stamp: 'hlsf 15/Jan/2026 16:09:40'!
+!DrGeoSketch methodsFor: 'DSL point' stamp: 'hlsf 15/Jan/2026, 2:09:40 pm (UTC)'!
 point: block parent: drgeoItem
 "Point defined by a block of code
 -block: a block of code with a MathItem argument. 
@@ -5200,7 +5200,7 @@ point: block parent: drgeoItem
    See DrGMathItem class hierarchy"
 	^  self point: block parents: (Array with: drgeoItem)! !
 
-!DrGeoSketch methodsFor: 'DSL point' stamp: 'hlsf 15/Jan/2026 16:09:21'!
+!DrGeoSketch methodsFor: 'DSL point' stamp: 'hlsf 15/Jan/2026, 2:09:21 pm (UTC)'!
 point: block parents: drgeoItems
 "Point defined by a block of code
 -block: a block of code whose argument is a MathItem collection
@@ -5210,7 +5210,7 @@ point: block parents: drgeoItems
 	array := Array with: block withAll: (drgeoItems collect: [:value | value mathItem]).
 	^ self finalizePoint: (DrGPointBlockItem newWith: array)! !
 
-!DrGeoSketch methodsFor: 'DSL point' stamp: 'hlsf 28/Jan/2026 17:46:24'!
+!DrGeoSketch methodsFor: 'DSL point' stamp: 'hlsf 28/Jan/2026, 3:46:24 pm (UTC)'!
 pointOnLine: line at: abscissa 
 "Point mobile on a line
 -line: straight or curved line (see DSL line/line curved)
@@ -5220,7 +5220,7 @@ pointOnLine: line at: abscissa
 	mathItem setCurveAbscissa: abscissa.
 	^ self finalizePoint: mathItem ! !
 
-!DrGeoSketch methodsFor: 'DSL point' stamp: 'hlsf 15/Jan/2026 16:43:34'!
+!DrGeoSketch methodsFor: 'DSL point' stamp: 'hlsf 15/Jan/2026, 2:43:34 pm (UTC)'!
 pointX: value1 Y: value2
 "Point defined by two computed values
 -value1: a computed value for the abscissa
@@ -5229,7 +5229,7 @@ See DSL value"
 	^ self finalizePoint: (DrGPointCoordinateItem  newWith: (
 		Array with: value1 mathItem with:  value2 mathItem) )! !
 
-!DrGeoSketch methodsFor: 'DSL polygon' stamp: 'hlsf 15/Jan/2026 17:01:52'!
+!DrGeoSketch methodsFor: 'DSL polygon' stamp: 'hlsf 15/Jan/2026, 3:01:52 pm (UTC)'!
 polygon: points
 "Polygon defined by its vertices
 -points: a collection of Smalltalk points or DrGeo points
@@ -5238,7 +5238,7 @@ polygon: points
 		DrGPolygonNptsItem newWith: (
 			points collect: [:point | (self ensureDrGeoPoint: point ) mathItem]))! !
 
-!DrGeoSketch methodsFor: 'DSL polygon' stamp: 'hlsf 17/Jan/2026 22:23:12'!
+!DrGeoSketch methodsFor: 'DSL polygon' stamp: 'hlsf 17/Jan/2026, 8:23:12 pm (UTC)'!
 regularPolygonCenter: center vertex: vertex sides: value
 "Regular polygon
 -center: a point, center of the regular polygon
@@ -5251,13 +5251,13 @@ regularPolygonCenter: center vertex: vertex sides: value
 			with: (self ensureDrGeoPoint: vertex ) mathItem
 			with: (self ensureDrGeoValue: value ) mathItem) )! !
 
-!DrGeoSketch methodsFor: 'DSL text' stamp: 'hlsf 15/Jan/2026 17:10:41'!
+!DrGeoSketch methodsFor: 'DSL text' stamp: 'hlsf 15/Jan/2026, 3:10:41 pm (UTC)'!
 text: text
 "Text pinned anywhere in the view
 -text: a string"
 	^ self text: text at: self aPosition! !
 
-!DrGeoSketch methodsFor: 'DSL text' stamp: 'hlsf 15/Jan/2026 17:10:19'!
+!DrGeoSketch methodsFor: 'DSL text' stamp: 'hlsf 15/Jan/2026, 3:10:19 pm (UTC)'!
 text: text at: point
 "Text pinned in the view
 -text: a string
@@ -5268,7 +5268,7 @@ text: text at: point
 	presenter notInteractive: false.
 	^ answer! !
 
-!DrGeoSketch methodsFor: 'DSL transformation' stamp: 'hlsf 29/Jan/2026 23:25:40'!
+!DrGeoSketch methodsFor: 'DSL transformation' stamp: 'hlsf 29/Jan/2026, 9:25:40 pm (UTC)'!
 reflect: geometricItem axis: axis
 "Transformation by axial symmetry
 -geometricItem: the object to transform
@@ -5279,7 +5279,7 @@ reflect: geometricItem axis: axis
 			with: geometricItem 
 			with: axis mathItem)! !
 
-!DrGeoSketch methodsFor: 'DSL transformation' stamp: 'hlsf 29/Jan/2026 23:01:30'!
+!DrGeoSketch methodsFor: 'DSL transformation' stamp: 'hlsf 29/Jan/2026, 9:01:30 pm (UTC)'!
 rotate: geometricItem center: center angle: value
 "Transformation by rotation
 -geometricItem: the object to transform
@@ -5294,7 +5294,7 @@ rotate: geometricItem center: center angle: value
 			with: (self ensureDrGeoPoint: center) mathItem 
 			with: (self ensureDrGeoValue: value) mathItem) 	! !
 
-!DrGeoSketch methodsFor: 'DSL transformation' stamp: 'hlsf 30/Jan/2026 00:18:30'!
+!DrGeoSketch methodsFor: 'DSL transformation' stamp: 'hlsf 29/Jan/2026, 10:18:30 pm (UTC)'!
 rotate: geometricItem center: center angleDegrees: number 
 "Transformation by rotation
 -geometricItem: the object to transform
@@ -5313,7 +5313,7 @@ rotate: geometricItem center: center angleDegrees: number
 	convertedValue ifNil: [self error: 'Can''t convert from Degrees'].
 	^ self rotate: geometricItem center: center angle: convertedValue ! !
 
-!DrGeoSketch methodsFor: 'DSL transformation' stamp: 'hlsf 29/Jan/2026 23:25:49'!
+!DrGeoSketch methodsFor: 'DSL transformation' stamp: 'hlsf 29/Jan/2026, 9:25:49 pm (UTC)'!
 scale: geometricItem center: center factor: value 
 "Transformation by homothety (scale)
 -geometricItem: the object to transform
@@ -5329,7 +5329,7 @@ scale: geometricItem center: center factor: value
 			with: (self ensureDrGeoValue: value) mathItem)
 ! !
 
-!DrGeoSketch methodsFor: 'DSL transformation' stamp: 'hlsf 29/Jan/2026 23:25:54'!
+!DrGeoSketch methodsFor: 'DSL transformation' stamp: 'hlsf 29/Jan/2026, 9:25:54 pm (UTC)'!
 symmetry: geometricItem center: center
 "Transformation by central symmetry
 -geometricItem: the object to transform
@@ -5341,7 +5341,7 @@ symmetry: geometricItem center: center
 			with: geometricItem 
 			with: (self ensureDrGeoPoint: center) mathItem)! !
 
-!DrGeoSketch methodsFor: 'DSL transformation' stamp: 'hlsf 29/Jan/2026 23:25:58'!
+!DrGeoSketch methodsFor: 'DSL transformation' stamp: 'hlsf 29/Jan/2026, 9:25:58 pm (UTC)'!
 translate: geometricItem vector: vector 
 "Transformation by translation
 -geometricItem: the object to transform
@@ -5353,7 +5353,7 @@ translate: geometricItem vector: vector
 			with: geometricItem 
 			with: (self ensureVector: vector) mathItem)! !
 
-!DrGeoSketch methodsFor: 'DSL transformation' stamp: 'hlsf 15/Jan/2026 17:50:15'!
+!DrGeoSketch methodsFor: 'DSL transformation' stamp: 'hlsf 15/Jan/2026, 3:50:15 pm (UTC)'!
 vector: point
 "Vector defined by its coordinates
 -point: a Smalltalk point or DrGeo point"
@@ -5362,7 +5362,7 @@ vector: point
 			with: (self ensureDrGeoPoint: 0@0) mathItem
 			with: (self ensureDrGeoPoint: point) mathItem) )! !
 
-!DrGeoSketch methodsFor: 'DSL transformation' stamp: 'hlsf 15/Jan/2026 17:53:53'!
+!DrGeoSketch methodsFor: 'DSL transformation' stamp: 'hlsf 15/Jan/2026, 3:53:53 pm (UTC)'!
 vector: origin to: extremity 
 "Vector defined by its origin and extremity
 -origin: a Smalltalk point or DrGeo point representing its origin
@@ -5372,7 +5372,7 @@ vector: origin to: extremity
 			with: (self ensureDrGeoPoint: origin) mathItem
 			with: (self ensureDrGeoPoint: extremity) mathItem) )! !
 
-!DrGeoSketch methodsFor: 'DSL value' stamp: 'hlsf 15/Jan/2026 17:57:16'!
+!DrGeoSketch methodsFor: 'DSL value' stamp: 'hlsf 15/Jan/2026, 3:57:16 pm (UTC)'!
 abscissaOf: pointOrVector
 "Abscissa of a point or vector
 -point: a DrGeo point
@@ -5386,7 +5386,7 @@ abscissaOf: pointOrVector
 	^ self finalizeValue: (class newWith: (
 		Array with: drgeoItem mathItem with:  self aPosition) )! !
 
-!DrGeoSketch methodsFor: 'DSL value' stamp: 'hlsf 15/Jan/2026 18:12:30'!
+!DrGeoSketch methodsFor: 'DSL value' stamp: 'hlsf 15/Jan/2026, 4:12:30 pm (UTC)'!
 distance: item1 to: item2 
 "Distance between two points or a point and a straight line
 -item1: a point or a line
@@ -5405,17 +5405,17 @@ Either item1 or item2 must be a point"
 	arg addLast: self aPosition.
 	^ self finalizeValue: (class newWith: arg)! !
 
-!DrGeoSketch methodsFor: 'DSL value' stamp: 'hlsf 13/Apr/2024 11:09:36'!
+!DrGeoSketch methodsFor: 'DSL value' stamp: 'hlsf 13/Apr/2024, 9:09:36 am (UTC)'!
 freeValue: aNumberOrBlock
 " Obsolete use #value: message"
 	^ self value: aNumberOrBlock ! !
 
-!DrGeoSketch methodsFor: 'DSL value' stamp: 'hlsf 17/Jan/2026 22:39:29'!
+!DrGeoSketch methodsFor: 'DSL value' stamp: 'hlsf 17/Jan/2026, 8:39:29 pm (UTC)'!
 freeValue: aNumberOrBlock at: aPosition
 " obsolete "
 	^ self value: aNumberOrBlock parents: Array new at: aPosition! !
 
-!DrGeoSketch methodsFor: 'DSL value' stamp: 'hlsf 15/Jan/2026 18:51:07'!
+!DrGeoSketch methodsFor: 'DSL value' stamp: 'hlsf 15/Jan/2026, 4:51:07 pm (UTC)'!
 lengthOf: finitCurve
 "Length of a curve
 -finitCurve: a segment, circle, arc, polygon or vector"
@@ -5433,7 +5433,7 @@ lengthOf: finitCurve
 
 	^ self finalizeValue: (class newWith: (Array with: finitCurve mathItem with: self aPosition) )! !
 
-!DrGeoSketch methodsFor: 'DSL value' stamp: 'hlsf 15/Jan/2026 18:51:38'!
+!DrGeoSketch methodsFor: 'DSL value' stamp: 'hlsf 15/Jan/2026, 4:51:38 pm (UTC)'!
 ordinateOf: pointOrVector
 "Ordinate of a point or vector
 -point: a DrGeo point
@@ -5447,14 +5447,14 @@ ordinateOf: pointOrVector
 	^ self
 		finalizeValue: (class newWith: (Array with: drgeoItem mathItem with: self aPosition) )! !
 
-!DrGeoSketch methodsFor: 'DSL value' stamp: 'hlsf 15/Jan/2026 18:52:22'!
+!DrGeoSketch methodsFor: 'DSL value' stamp: 'hlsf 15/Jan/2026, 4:52:22 pm (UTC)'!
 slopeOf: line
 "Slope of a straight line
 -line: a straight line"
 	^ self finalizeValue: (DrGValueSlopeItem newWith: (
 		Array with: line mathItem with: self aPosition) )! !
 
-!DrGeoSketch methodsFor: 'DSL value' stamp: 'hlsf 17/Jan/2026 22:40:04'!
+!DrGeoSketch methodsFor: 'DSL value' stamp: 'hlsf 17/Jan/2026, 8:40:04 pm (UTC)'!
 value: aNumberOrBlock
 "Value object pinned at a random position
 Argument can be either:
@@ -5463,7 +5463,7 @@ or
 -block: block of code returning a number"
 	^ self value: aNumberOrBlock parents: `Array new` at: self aPosition ! !
 
-!DrGeoSketch methodsFor: 'DSL value' stamp: 'hlsf 17/Jan/2026 22:41:18'!
+!DrGeoSketch methodsFor: 'DSL value' stamp: 'hlsf 17/Jan/2026, 8:41:18 pm (UTC)'!
 value: aNumberOrBlock at: point
 "Value object
 Argument can be either:
@@ -5473,7 +5473,7 @@ or
 -point: the position where the value is pinned"
 	^ self value: aNumberOrBlock parents: `Array new` at: point ! !
 
-!DrGeoSketch methodsFor: 'DSL value' stamp: 'hlsf 29/Jan/2026 09:44:06'!
+!DrGeoSketch methodsFor: 'DSL value' stamp: 'hlsf 29/Jan/2026, 7:44:06 am (UTC)'!
 value: block parent: drgeoItem
 "Value object
 -block: a block of code with argument a MathItem
@@ -5482,7 +5482,7 @@ value: block parent: drgeoItem
    and passed as argument to the block"
 	^ self value: block parents: (Array with: drgeoItem) at: self aPosition ! !
 
-!DrGeoSketch methodsFor: 'DSL value' stamp: 'hlsf 29/Jan/2026 09:44:59'!
+!DrGeoSketch methodsFor: 'DSL value' stamp: 'hlsf 29/Jan/2026, 7:44:59 am (UTC)'!
 value: block parents: drgeoItems at: point
 "Value object
 -block: a block of code with argument a collection of MathItem
@@ -5507,52 +5507,52 @@ value: block parents: drgeoItems at: point
 	presenter notInteractive: false.
 	^ answer! !
 
-!DrGeoSketch methodsFor: 'private' stamp: 'hlsf 6/Jan/2026 15:34:54'!
+!DrGeoSketch methodsFor: 'private' stamp: 'hlsf 6/Jan/2026, 1:34:54 pm (UTC)'!
 canTransform: drgeoItem
 	drgeoItem mathItem isGeometricItem
 		ifFalse: [self error: 'Only geometric object can be transformed.' translated].! !
 
-!DrGeoSketch methodsFor: 'private' stamp: 'hlsf 4/Aug/2023 20:05:38'!
+!DrGeoSketch methodsFor: 'private' stamp: 'hlsf 4/Aug/2023, 6:05:38 pm (UTC)'!
 domain
 	^ presenter domain! !
 
-!DrGeoSketch methodsFor: 'private' stamp: 'hlsf 4/Aug/2023 20:05:38'!
+!DrGeoSketch methodsFor: 'private' stamp: 'hlsf 4/Aug/2023, 6:05:38 pm (UTC)'!
 drawable
 	^ presenter drawable ! !
 
-!DrGeoSketch methodsFor: 'private' stamp: 'hlsf 6/Jan/2026 15:29:06'!
+!DrGeoSketch methodsFor: 'private' stamp: 'hlsf 6/Jan/2026, 1:29:06 pm (UTC)'!
 ensureDrGeoPoint: aPointOrDrGeoPoint
 	^ aPointOrDrGeoPoint isPoint 
 		ifTrue: [(self point: aPointOrDrGeoPoint ) hide] 
 		ifFalse:   [aPointOrDrGeoPoint ]! !
 
-!DrGeoSketch methodsFor: 'private' stamp: 'hlsf 29/Jan/2026 22:16:00'!
+!DrGeoSketch methodsFor: 'private' stamp: 'hlsf 29/Jan/2026, 8:16:00 pm (UTC)'!
 ensureDrGeoValue: aNumberOrWrappedValueItem
 "ensure a wrapped value"
 	^ (aNumberOrWrappedValueItem  isNumber or: [aNumberOrWrappedValueItem isBlock ])
 		ifTrue: [(self value: aNumberOrWrappedValueItem ) hide] 
 		ifFalse:   [aNumberOrWrappedValueItem]! !
 
-!DrGeoSketch methodsFor: 'private' stamp: 'hlsf 6/Jan/2026 19:53:34'!
+!DrGeoSketch methodsFor: 'private' stamp: 'hlsf 6/Jan/2026, 5:53:34 pm (UTC)'!
 ensureVector: aPointOrDrGeoItem
 "ensure a DrGeo Item vector"
 	^ aPointOrDrGeoItem isPoint 
 		ifTrue: [(self vector: aPointOrDrGeoItem ) hide] 
 		ifFalse:   [aPointOrDrGeoItem ]! !
 
-!DrGeoSketch methodsFor: 'private' stamp: 'hlsf 6/Jan/2026 15:13:07'!
+!DrGeoSketch methodsFor: 'private' stamp: 'hlsf 6/Jan/2026, 1:13:07 pm (UTC)'!
 finalizeCurve: mathItem
 	^ DrGeoCurve wrap: (self morphOf: mathItem ) ! !
 
-!DrGeoSketch methodsFor: 'private' stamp: 'hlsf 6/Jan/2026 15:14:59'!
+!DrGeoSketch methodsFor: 'private' stamp: 'hlsf 6/Jan/2026, 1:14:59 pm (UTC)'!
 finalizeFilledCurve: mathItem
 	^ DrGeoFilledCurve wrap: (self morphOf: mathItem)! !
 
-!DrGeoSketch methodsFor: 'private' stamp: 'hlsf 6/Jan/2026 15:14:28'!
+!DrGeoSketch methodsFor: 'private' stamp: 'hlsf 6/Jan/2026, 1:14:28 pm (UTC)'!
 finalizeFinitCurve: mathItem
 	^ DrGeoFinitCurve wrap: (self morphOf: mathItem )! !
 
-!DrGeoSketch methodsFor: 'private' stamp: 'hlsf 29/Jan/2026 23:09:02'!
+!DrGeoSketch methodsFor: 'private' stamp: 'hlsf 29/Jan/2026, 9:09:02 pm (UTC)'!
 finalizeItem: mathItem as: DrGeoItemClass
 	DrGeoItemClass == DrGeoPoint ifTrue: [^ self finalizePoint: mathItem ].
 	DrGeoItemClass == DrGeoCurve ifTrue: [^ self finalizeCurve: mathItem ].
@@ -5560,22 +5560,22 @@ finalizeItem: mathItem as: DrGeoItemClass
 	DrGeoItemClass == DrGeoFilledCurve ifTrue: [^ self finalizeFilledCurve: mathItem ].
 	DrGeoItemClass == DrGeoSegment ifTrue: [^ self finalizeSegment: mathItem ]! !
 
-!DrGeoSketch methodsFor: 'private' stamp: 'hlsf 6/Jan/2026 15:29:23'!
+!DrGeoSketch methodsFor: 'private' stamp: 'hlsf 6/Jan/2026, 1:29:23 pm (UTC)'!
 finalizePoint: mathItem
 	| drgeoPoint |
 	drgeoPoint := DrGeoPoint wrap: (self morphOf: mathItem).
 	drgeoPoint square.
 	^ drgeoPoint ! !
 
-!DrGeoSketch methodsFor: 'private' stamp: 'hlsf 6/Jan/2026 15:15:28'!
+!DrGeoSketch methodsFor: 'private' stamp: 'hlsf 6/Jan/2026, 1:15:28 pm (UTC)'!
 finalizeSegment: mathItem
 	^ DrGeoSegment wrap: (self morphOf: mathItem )! !
 
-!DrGeoSketch methodsFor: 'private' stamp: 'hlsf 6/Jan/2026 15:17:56'!
+!DrGeoSketch methodsFor: 'private' stamp: 'hlsf 6/Jan/2026, 1:17:56 pm (UTC)'!
 finalizeText: textItem
 	^ DrGeoText wrap: (self morphOf: textItem)! !
 
-!DrGeoSketch methodsFor: 'private' stamp: 'hlsf 1/Feb/2026 10:33:42'!
+!DrGeoSketch methodsFor: 'private' stamp: 'hlsf 1/Feb/2026, 8:33:42 am (UTC)'!
 finalizeTransformation: string with: arguments 
 	| class item drgeoItemClass finalizedItem  |
 	drgeoItemClass := arguments first class.
@@ -5597,7 +5597,7 @@ finalizeValue: item
 "By default we don't hide the value"
 	^ self finalizeValue: item hide: false! !
 
-!DrGeoSketch methodsFor: 'private' stamp: 'hlsf 6/Jan/2026 15:16:48'!
+!DrGeoSketch methodsFor: 'private' stamp: 'hlsf 6/Jan/2026, 1:16:48 pm (UTC)'!
 finalizeValue: mathItem hide: hide
 " Optionally hide the value "
 	| drgeoValue |
@@ -5605,7 +5605,7 @@ finalizeValue: mathItem hide: hide
 	 hide ifTrue: [ drgeoValue hide ].
 	^ drgeoValue ! !
 
-!DrGeoSketch methodsFor: 'private' stamp: 'hlsf 6/Jan/2026 15:34:40'!
+!DrGeoSketch methodsFor: 'private' stamp: 'hlsf 6/Jan/2026, 1:34:40 pm (UTC)'!
 morphOf: mathItem
 	| finalItem |
 	finalItem := self domain createFromMathItemNoCommand: mathItem .
@@ -5613,24 +5613,24 @@ morphOf: mathItem
 		ifTrue: [	self drawable lastItemView ] "We create a new one, get its morph just created"
 		ifFalse: [	self drawable viewOf: finalItem] "For twin items, search for the former item"! !
 
-!DrGeoSketch methodsFor: 'private' stamp: 'hlsf 4/Aug/2023 20:05:38'!
+!DrGeoSketch methodsFor: 'private' stamp: 'hlsf 4/Aug/2023, 6:05:38 pm (UTC)'!
 presenter
 	^ presenter ! !
 
-!DrGeoSketch methodsFor: 'private' stamp: 'hlsf 13/Jun/2021 22:39:05'!
+!DrGeoSketch methodsFor: 'private' stamp: 'hlsf 13/Jun/2021, 8:39:05 pm (UTC)'!
 terminateDo
 	doProcess  ifNotNil: [
 		doProcess terminate.
 		doProcess := nil]! !
 
-!DrGeoSketch class methodsFor: 'as yet unclassified' stamp: 'hlsf 25/Jan/2026 13:03:36'!
+!DrGeoSketch class methodsFor: 'as yet unclassified' stamp: 'hlsf 25/Jan/2026, 11:03:36 am (UTC)'!
 open
 	| instance |
 	instance := self new.
 	instance view openInWorld.
 	^ instance! !
 
-!DrGStyle methodsFor: 'accessing' stamp: 'hlsf 9/Apr/2024 10:22:38'!
+!DrGStyle methodsFor: 'accessing' stamp: 'hlsf 9/Apr/2024, 8:22:38 am (UTC)'!
 arrow: boolean
 " Does nothing by default "! !
 
@@ -5644,13 +5644,13 @@ baseColor
 borderColor
 	self shouldNotImplement ! !
 
-!DrGStyle methodsFor: 'accessing' stamp: 'hlsf 3/Jun/2022 11:39:17'!
+!DrGStyle methodsFor: 'accessing' stamp: 'hlsf 3/Jun/2022, 9:39:17 am (UTC)'!
 color
 	"Answer the value of color"
 
 	^hidden ifTrue: [DrGTypeColor hiddenColor] ifFalse: [color]! !
 
-!DrGStyle methodsFor: 'accessing' stamp: 'hlsf 30/Mar/2024 09:55:58'!
+!DrGStyle methodsFor: 'accessing' stamp: 'hlsf 30/Mar/2024, 7:55:58 am (UTC)'!
 color: anObject
 	"Set the value of color"
 	color := anObject.
@@ -5658,17 +5658,17 @@ color: anObject
 		color: (Theme current adjustColor: self color);
 		redrawNeeded! !
 
-!DrGStyle methodsFor: 'accessing' stamp: 'hlsf 5/Apr/2025 11:25:58'!
+!DrGStyle methodsFor: 'accessing' stamp: 'hlsf 5/Apr/2025, 9:25:58 am (UTC)'!
 feedback
 	^ feedback! !
 
-!DrGStyle methodsFor: 'accessing' stamp: 'hlsf 5/Apr/2025 11:07:52'!
+!DrGStyle methodsFor: 'accessing' stamp: 'hlsf 5/Apr/2025, 9:07:52 am (UTC)'!
 feedback: aBoolean
 " Do I provide feedback when mouse over me?"
 	feedback := aBoolean.
 	self changed: #feedback! !
 
-!DrGStyle methodsFor: 'accessing' stamp: 'hlsf 9/Apr/2024 10:20:49'!
+!DrGStyle methodsFor: 'accessing' stamp: 'hlsf 9/Apr/2024, 8:20:49 am (UTC)'!
 fill: boolean
 " Does nothing by default "! !
 
@@ -5676,7 +5676,7 @@ fill: boolean
 hidden
 	^ self isHidden! !
 
-!DrGStyle methodsFor: 'accessing' stamp: 'hlsf 5/Apr/2025 10:53:51'!
+!DrGStyle methodsFor: 'accessing' stamp: 'hlsf 5/Apr/2025, 8:53:51 am (UTC)'!
 hidden: anObject 
 	"Set the value to isHidden"
 	hidden := anObject.
@@ -5690,27 +5690,27 @@ isHidden
 
 	^ hidden ifNil: [hidden := false]! !
 
-!DrGStyle methodsFor: 'accessing' stamp: 'hlsf 7/Apr/2021 19:49:44'!
+!DrGStyle methodsFor: 'accessing' stamp: 'hlsf 7/Apr/2021, 5:49:44 pm (UTC)'!
 mathItem
 	^ morph mathItem! !
 
-!DrGStyle methodsFor: 'accessing' stamp: 'hlsf 7/Apr/2021 19:50:19'!
+!DrGStyle methodsFor: 'accessing' stamp: 'hlsf 7/Apr/2021, 5:50:19 pm (UTC)'!
 morph
 	^ morph! !
 
-!DrGStyle methodsFor: 'accessing' stamp: 'hlsf 7/Apr/2021 19:51:37'!
+!DrGStyle methodsFor: 'accessing' stamp: 'hlsf 7/Apr/2021, 5:51:37 pm (UTC)'!
 morph: aMorph
 	morph := aMorph ! !
 
-!DrGStyle methodsFor: 'accessing' stamp: 'hlsf 9/Apr/2024 10:20:32'!
+!DrGStyle methodsFor: 'accessing' stamp: 'hlsf 9/Apr/2024, 8:20:32 am (UTC)'!
 translucent: boolean
 " Does nothing by default "! !
 
-!DrGStyle methodsFor: 'accessing' stamp: 'hlsf 7/Apr/2021 19:49:44'!
+!DrGStyle methodsFor: 'accessing' stamp: 'hlsf 7/Apr/2021, 5:49:44 pm (UTC)'!
 view
 	^ morph view! !
 
-!DrGStyle methodsFor: 'initialize-release' stamp: 'hlsf 23/May/2021 13:16:46'!
+!DrGStyle methodsFor: 'initialize-release' stamp: 'hlsf 23/May/2021, 11:16:46 am (UTC)'!
 initialize
 	feedback := true.
 	hidden := false.
@@ -5734,20 +5734,20 @@ isNotHidden
 isTranslucent 
 	^ false! !
 
-!DrGStyle methodsFor: 'widget' stamp: 'hlsf 3/Jun/2022 11:38:08'!
+!DrGStyle methodsFor: 'widget' stamp: 'hlsf 3/Jun/2022, 9:38:08 am (UTC)'!
 colorIndex
 	^ DrGTypeColor colorIndexOf: self baseColor! !
 
-!DrGStyle methodsFor: 'widget' stamp: 'hlsf 3/Jun/2022 11:37:52'!
+!DrGStyle methodsFor: 'widget' stamp: 'hlsf 3/Jun/2022, 9:37:52 am (UTC)'!
 colorIndex: index
 	self color: (DrGTypeColor colorFor: index).
 	self changed: #colorIndex:! !
 
-!DrGStyle methodsFor: 'widget' stamp: 'hlsf 3/Jun/2022 11:38:19'!
+!DrGStyle methodsFor: 'widget' stamp: 'hlsf 3/Jun/2022, 9:38:19 am (UTC)'!
 colorMorphCollection
 	^ DrGTypeColor colorMorphCollection! !
 
-!DrGStyle methodsFor: 'widget' stamp: 'hlsf 5/Apr/2025 11:12:23'!
+!DrGStyle methodsFor: 'widget' stamp: 'hlsf 5/Apr/2025, 9:12:23 am (UTC)'!
 colorWidget
 	^ self widget: (
 		(DropDownButtonMorph 
@@ -5760,7 +5760,7 @@ colorWidget
 		named:  'Colour' translated
 		help: 	'Set the colour.' translated! !
 
-!DrGStyle methodsFor: 'widget' stamp: 'hlsf 5/Apr/2025 11:30:28'!
+!DrGStyle methodsFor: 'widget' stamp: 'hlsf 5/Apr/2025, 9:30:28 am (UTC)'!
 feedbackWidget
 	^ (PluggableCheckboxMorph 
 		model: self 
@@ -5770,7 +5770,7 @@ feedbackWidget
 		setBalloonText:  'Toggle to provide feedback and interaction when the mouse cursor is over the object.' translated;
 		yourself! !
 
-!DrGStyle methodsFor: 'widget' stamp: 'hlsf 12/Feb/2022 14:43:09'!
+!DrGStyle methodsFor: 'widget' stamp: 'hlsf 12/Feb/2022, 12:43:09 pm (UTC)'!
 hiddenWidget
 	^ (PluggableCheckboxMorph 
 		model: self 
@@ -5780,7 +5780,7 @@ hiddenWidget
 		setBalloonText:  'Toggle to hide the object.' translated;
 		yourself! !
 
-!DrGStyle methodsFor: 'widget' stamp: 'hlsf 5/Apr/2025 11:12:08'!
+!DrGStyle methodsFor: 'widget' stamp: 'hlsf 5/Apr/2025, 9:12:08 am (UTC)'!
 lockedWidget
 	morph breakDependents.
 	^ (PluggableCheckboxMorph 
@@ -5796,7 +5796,7 @@ myWidgets
 "overwrite to add specific widget to edit specific style"
 	^ OrderedCollection new! !
 
-!DrGStyle methodsFor: 'widget' stamp: 'hlsf 1/Jun/2024 18:09:14'!
+!DrGStyle methodsFor: 'widget' stamp: 'hlsf 1/Jun/2024, 4:09:14 pm (UTC)'!
 nameWidget
  | inputWidget |
 	inputWidget := (TextModelMorph textProvider: morph textGetter: #name textSetter: #name:)
@@ -5810,7 +5810,7 @@ nameWidget
 		named:  'Name' translated
 		help: 'Rename this object.' translated	! !
 
-!DrGStyle methodsFor: 'widget' stamp: 'hlsf 12/Feb/2022 23:59:23'!
+!DrGStyle methodsFor: 'widget' stamp: 'hlsf 12/Feb/2022, 9:59:23 pm (UTC)'!
 styleWidget
 | controls |
 	controls := 	OrderedCollection new
@@ -5823,7 +5823,7 @@ styleWidget
 	morph isLockable ifTrue: [controls add: self lockedWidget].
 	^controls! !
 
-!DrGStyle methodsFor: 'widget' stamp: 'hlsf 14/Feb/2022 09:01:21'!
+!DrGStyle methodsFor: 'widget' stamp: 'hlsf 14/Feb/2022, 7:01:21 am (UTC)'!
 widget: aWidget named: aLabel help: aString
 | label |
 	^ LayoutMorph newRow
@@ -5836,30 +5836,30 @@ widget: aWidget named: aLabel help: aString
 		yourself.
 		! !
 
-!DrGStyle methodsFor: 'xml writing' stamp: 'hlsf 28/Mar/2022 14:47:22'!
+!DrGStyle methodsFor: 'xml writing' stamp: 'hlsf 28/Mar/2022, 12:47:22 pm (UTC)'!
 writeAttributesTo: aNode
 	aNode 
 		attributeAt: #color put: self baseColor colorName asString capitalized;
 		attributeAt: #masked put: hidden asString capitalized;
 		attributeAt: #feedback put: feedback asString capitalized! !
 
-!DrGStyle class methodsFor: 'instance creation' stamp: 'hlsf 24/Apr/2021 19:49:58'!
+!DrGStyle class methodsFor: 'instance creation' stamp: 'hlsf 24/Apr/2021, 5:49:58 pm (UTC)'!
 newWith: aMorph
 	^self basicNew morph: aMorph; initialize! !
 
-!DrGCurveStyle methodsFor: 'widget' stamp: 'hlsf 5/Jun/2022 12:39:00'!
+!DrGCurveStyle methodsFor: 'widget' stamp: 'hlsf 5/Jun/2022, 10:39:00 am (UTC)'!
 lineStyleIndex
 	"Answer the index of lineStyle"
 	^ DrGTypeStyle styleIndexOf: lineStyle! !
 
-!DrGCurveStyle methodsFor: 'widget' stamp: 'hlsf 5/Jun/2022 12:38:39'!
+!DrGCurveStyle methodsFor: 'widget' stamp: 'hlsf 5/Jun/2022, 10:38:39 am (UTC)'!
 lineStyleIndex: integer
 	"Set the value of lineStyle"
 	self lineStyle: (DrGTypeStyle styleSymbols at: integer).
 	self changed: #lineStyleIndex:
 ! !
 
-!DrGCurveStyle methodsFor: 'widget' stamp: 'hlsf 20/May/2024 15:28:39'!
+!DrGCurveStyle methodsFor: 'widget' stamp: 'hlsf 20/May/2024, 1:28:39 pm (UTC)'!
 lineWidget
 	^ self widget:  (
 		(DropDownButtonMorph 
@@ -5876,27 +5876,27 @@ lineWidget
 myWidgets 
 	^ super myWidgets addAll: {self lineWidget . self thicknessWidget}; yourself! !
 
-!DrGCurveStyle methodsFor: 'widget' stamp: 'hlsf 5/Jun/2022 12:38:11'!
+!DrGCurveStyle methodsFor: 'widget' stamp: 'hlsf 5/Jun/2022, 10:38:11 am (UTC)'!
 styleMorphCollection
 	^ DrGTypeStyle styleMorphCollection! !
 
-!DrGCurveStyle methodsFor: 'widget' stamp: 'hlsf 5/Jun/2022 12:20:51'!
+!DrGCurveStyle methodsFor: 'widget' stamp: 'hlsf 5/Jun/2022, 10:20:51 am (UTC)'!
 thicknessIndex
 	"Answer the index of thickness"
 
 	^DrGTypeThickness thicknessIndexOf: thickness! !
 
-!DrGCurveStyle methodsFor: 'widget' stamp: 'hlsf 5/Jun/2022 12:20:51'!
+!DrGCurveStyle methodsFor: 'widget' stamp: 'hlsf 5/Jun/2022, 10:20:51 am (UTC)'!
 thicknessIndex: integer
 	"Set the value of thickness"
 	self thickness: (DrGTypeThickness thicknessFor: integer).
 	self changed: #thicknessIndex:! !
 
-!DrGCurveStyle methodsFor: 'widget' stamp: 'hlsf 5/Jun/2022 12:20:51'!
+!DrGCurveStyle methodsFor: 'widget' stamp: 'hlsf 5/Jun/2022, 10:20:51 am (UTC)'!
 thicknessMorphCollection
 	^ DrGTypeThickness thicknessMorphCollection! !
 
-!DrGCurveStyle methodsFor: 'widget' stamp: 'hlsf 20/May/2024 15:30:00'!
+!DrGCurveStyle methodsFor: 'widget' stamp: 'hlsf 20/May/2024, 1:30:00 pm (UTC)'!
 thicknessWidget
 	^ self widget: (
 		(DropDownButtonMorph 
@@ -5909,22 +5909,22 @@ thicknessWidget
 		named: 'Thickness' translated
 		help: 'Set the thickness of the line.' translated! !
 
-!DrGCurveStyle methodsFor: 'accessing' stamp: 'hlsf 3/Jun/2022 11:39:21'!
+!DrGCurveStyle methodsFor: 'accessing' stamp: 'hlsf 3/Jun/2022, 9:39:21 am (UTC)'!
 borderColor
 	"Answer the value of border color"
 	^hidden ifTrue: [DrGTypeColor hiddenColor] ifFalse: [self baseColor]! !
 
-!DrGCurveStyle methodsFor: 'accessing' stamp: 'hlsf 29/Mar/2024 10:03:11'!
+!DrGCurveStyle methodsFor: 'accessing' stamp: 'hlsf 29/Mar/2024, 8:03:11 am (UTC)'!
 borderWidth
 	"give the border width"
 	^ Theme current lineWidthFor: thickness! !
 
-!DrGCurveStyle methodsFor: 'accessing' stamp: 'hlsf 18/May/2021 21:24:38'!
+!DrGCurveStyle methodsFor: 'accessing' stamp: 'hlsf 18/May/2021, 7:24:38 pm (UTC)'!
 color
 "Answer the fill color"
 	^self isFilled ifTrue: [color] ifFalse: [Color transparent]! !
 
-!DrGCurveStyle methodsFor: 'accessing' stamp: 'hlsf 30/Mar/2024 09:56:26'!
+!DrGCurveStyle methodsFor: 'accessing' stamp: 'hlsf 30/Mar/2024, 7:56:26 am (UTC)'!
 color: aColor
 "Set the value of fill color and border color"
 	color := self isTranslucent ifTrue: [aColor alpha: 0.3] ifFalse: [aColor alpha: 1].
@@ -5939,7 +5939,7 @@ lineStyle
 
 	^ lineStyle! !
 
-!DrGCurveStyle methodsFor: 'accessing' stamp: 'hlsf 29/Mar/2024 11:07:23'!
+!DrGCurveStyle methodsFor: 'accessing' stamp: 'hlsf 29/Mar/2024, 9:07:23 am (UTC)'!
 lineStyle: aSymbol
 	"Set the value of lineStyle"
 	lineStyle := aSymbol.
@@ -5952,7 +5952,7 @@ thickness
 
 	^ thickness! !
 
-!DrGCurveStyle methodsFor: 'accessing' stamp: 'hlsf 2/Dec/2021 10:46:49'!
+!DrGCurveStyle methodsFor: 'accessing' stamp: 'hlsf 2/Dec/2021, 8:46:49 am (UTC)'!
 thickness: anObject
 	"Set the value of thickness"
 	thickness := anObject.
@@ -5971,35 +5971,35 @@ arrow
 
 	^ arrow! !
 
-!DrGFinitCurveStyle methodsFor: 'accessing' stamp: 'hlsf 17/Jun/2021 17:50:00'!
+!DrGFinitCurveStyle methodsFor: 'accessing' stamp: 'hlsf 17/Jun/2021, 3:50:00 pm (UTC)'!
 arrow: anObject
 	"Set the value of arrows"
 	arrow := anObject.
 	morph arrow: anObject;
 		redrawNeeded ! !
 
-!DrGFinitCurveStyle methodsFor: 'xml writing' stamp: 'drgeo 7/Jun/2026 11:33:24'!
+!DrGFinitCurveStyle methodsFor: 'xml writing' stamp: 'drgeo 7/Jun/2026, 9:33:24 am (UTC)'!
 writeAttributesTo: aNode
 	super writeAttributesTo: aNode.
 	(morph is: #CircleMorph) ifFalse: [aNode attributeAt: #arrow put: self arrow.]! !
 
-!DrGFinitCurveStyle methodsFor: 'widget' stamp: 'hlsf 5/Jun/2022 14:39:22'!
+!DrGFinitCurveStyle methodsFor: 'widget' stamp: 'hlsf 5/Jun/2022, 12:39:22 pm (UTC)'!
 arrowIndex
 	"Answer the index of arrows"
 
 	^ DrGTypeArrow arrowIndexOf: arrow! !
 
-!DrGFinitCurveStyle methodsFor: 'widget' stamp: 'hlsf 5/Jun/2022 14:38:56'!
+!DrGFinitCurveStyle methodsFor: 'widget' stamp: 'hlsf 5/Jun/2022, 12:38:56 pm (UTC)'!
 arrowIndex: index
 	"Set the value of arrows"
 	self arrow: (DrGTypeArrow arrowFor: index).
 	self changed: #arrowIndex:! !
 
-!DrGFinitCurveStyle methodsFor: 'widget' stamp: 'hlsf 5/Jun/2022 14:38:24'!
+!DrGFinitCurveStyle methodsFor: 'widget' stamp: 'hlsf 5/Jun/2022, 12:38:24 pm (UTC)'!
 arrowMorphCollection
 	^ DrGTypeArrow arrowMorphCollection! !
 
-!DrGFinitCurveStyle methodsFor: 'widget' stamp: 'hlsf 20/May/2024 15:30:03'!
+!DrGFinitCurveStyle methodsFor: 'widget' stamp: 'hlsf 20/May/2024, 1:30:03 pm (UTC)'!
 arrowWidget
 	^ self widget: (
 		(DropDownButtonMorph 
@@ -6012,7 +6012,7 @@ arrowWidget
 		named: 'Arrow' translated 
 		help: 'Set arrow(s) to the line.' translated! !
 
-!DrGFinitCurveStyle methodsFor: 'widget' stamp: 'drgeo 7/Jun/2026 11:30:38'!
+!DrGFinitCurveStyle methodsFor: 'widget' stamp: 'drgeo 7/Jun/2026, 9:30:38 am (UTC)'!
 myWidgets
 	^ ( (morph is: #SegmentMorph) or: [morph is: #ArcMorph]) 
 		ifTrue: [super myWidgets addAll: {self arrowWidget}; yourself]
@@ -6022,7 +6022,7 @@ myWidgets
 shape
 	^shape! !
 
-!DrGCompositeStyle methodsFor: 'accessing' stamp: 'hlsf 7/Apr/2021 19:49:44'!
+!DrGCompositeStyle methodsFor: 'accessing' stamp: 'hlsf 7/Apr/2021, 5:49:44 pm (UTC)'!
 shape: anObject
 	shape := anObject.
 	morph shape: anObject! !
@@ -6033,7 +6033,7 @@ writeAttributesTo: aNode
 	aNode attributeAt: #filled put: self isFilled asString capitalized.
 	aNode attributeAt: #translucent put: self isTranslucent asString capitalized! !
 
-!DrGFilledStyle methodsFor: 'widget' stamp: 'hlsf 12/Feb/2022 15:59:50'!
+!DrGFilledStyle methodsFor: 'widget' stamp: 'hlsf 12/Feb/2022, 1:59:50 pm (UTC)'!
 fillWidget
 	^ (PluggableCheckboxMorph 
 		model: self
@@ -6047,7 +6047,7 @@ fillWidget
 myWidgets 
 	^ super myWidgets addAll: {self fillWidget. self translucentWidget}; yourself! !
 
-!DrGFilledStyle methodsFor: 'widget' stamp: 'hlsf 12/Feb/2022 15:58:11'!
+!DrGFilledStyle methodsFor: 'widget' stamp: 'hlsf 12/Feb/2022, 1:58:11 pm (UTC)'!
 translucentWidget
 	^ (PluggableCheckboxMorph 
 		model: self
@@ -6061,18 +6061,18 @@ translucentWidget
 fill
 	^ self isFilled! !
 
-!DrGFilledStyle methodsFor: 'accessing' stamp: 'hlsf 5/Apr/2025 10:53:25'!
+!DrGFilledStyle methodsFor: 'accessing' stamp: 'hlsf 5/Apr/2025, 8:53:25 am (UTC)'!
 fill: boolean
 	fill := boolean.
 	self color: color.
 	self changed: #fill.
 	morph redrawNeeded.! !
 
-!DrGFilledStyle methodsFor: 'accessing' stamp: 'hlsf 17/Jun/2021 18:10:25'!
+!DrGFilledStyle methodsFor: 'accessing' stamp: 'hlsf 17/Jun/2021, 4:10:25 pm (UTC)'!
 isFilled
 	^ fill ifNil: [fill := true]! !
 
-!DrGFilledStyle methodsFor: 'accessing' stamp: 'hlsf 17/Jun/2021 18:10:10'!
+!DrGFilledStyle methodsFor: 'accessing' stamp: 'hlsf 17/Jun/2021, 4:10:10 pm (UTC)'!
 isTranslucent
 	^ translucent ifNil: [translucent := true]! !
 
@@ -6081,7 +6081,7 @@ toggleFilled
 	self fill: fill not.
 	self changed! !
 
-!DrGFilledStyle methodsFor: 'accessing' stamp: 'hlsf 18/May/2021 21:33:44'!
+!DrGFilledStyle methodsFor: 'accessing' stamp: 'hlsf 18/May/2021, 7:33:44 pm (UTC)'!
 toggleTranslucent
 	self translucent: translucent not! !
 
@@ -6089,14 +6089,14 @@ toggleTranslucent
 translucent
 	^ self isTranslucent ! !
 
-!DrGFilledStyle methodsFor: 'accessing' stamp: 'hlsf 5/Apr/2025 10:53:31'!
+!DrGFilledStyle methodsFor: 'accessing' stamp: 'hlsf 5/Apr/2025, 8:53:31 am (UTC)'!
 translucent: boolean
 	translucent := boolean.
 	self color: color.
 	self changed: #translucent.
 	morph redrawNeeded! !
 
-!DrGArcStyle methodsFor: 'initialize-release' stamp: 'hlsf 17/Feb/2026 14:43:54'!
+!DrGArcStyle methodsFor: 'initialize-release' stamp: 'hlsf 17/Feb/2026, 12:43:54 pm (UTC)'!
 initialize
 	super initialize.
 	self color: (DrGeoSystem preferences at: #arcColor).
@@ -6106,7 +6106,7 @@ initialize
 	self fill: (DrGeoSystem preferences at: #arcFilled).
 	self translucent: (DrGeoSystem preferences at: #arcTranslucent).! !
 
-!DrGCircleStyle methodsFor: 'initialize-release' stamp: 'hlsf 17/Feb/2026 14:44:02'!
+!DrGCircleStyle methodsFor: 'initialize-release' stamp: 'hlsf 17/Feb/2026, 12:44:02 pm (UTC)'!
 initialize
 	super initialize.
 	self color: (DrGeoSystem preferences at: #circleColor).
@@ -6115,7 +6115,7 @@ initialize
 	self fill: (DrGeoSystem preferences at: #circleFilled).
 	self translucent:(DrGeoSystem preferences at: #circleTranslucent).! !
 
-!DrGPolygonStyle methodsFor: 'initialize-release' stamp: 'hlsf 17/Feb/2026 14:44:12'!
+!DrGPolygonStyle methodsFor: 'initialize-release' stamp: 'hlsf 17/Feb/2026, 12:44:12 pm (UTC)'!
 initialize
 	super initialize.
 	self color: (DrGeoSystem preferences at: #polygonColor).
@@ -6130,21 +6130,21 @@ writeAttributesTo: aNode
 	super writeAttributesTo: aNode.
 	aNode attributeAt: #mark put: self mark! !
 
-!DrGSegmentStyle methodsFor: 'widget' stamp: 'hlsf 5/Jun/2022 14:14:37'!
+!DrGSegmentStyle methodsFor: 'widget' stamp: 'hlsf 5/Jun/2022, 12:14:37 pm (UTC)'!
 markIndex
 	mark ifNil: [mark := #none].
 	^DrGTypeMark markIndexOf: mark! !
 
-!DrGSegmentStyle methodsFor: 'widget' stamp: 'hlsf 5/Jun/2022 14:14:02'!
+!DrGSegmentStyle methodsFor: 'widget' stamp: 'hlsf 5/Jun/2022, 12:14:02 pm (UTC)'!
 markIndex: index
 	self mark: (DrGTypeMark markFor: index).
 	self changed: #markIndex:.! !
 
-!DrGSegmentStyle methodsFor: 'widget' stamp: 'hlsf 5/Jun/2022 14:15:16'!
+!DrGSegmentStyle methodsFor: 'widget' stamp: 'hlsf 5/Jun/2022, 12:15:16 pm (UTC)'!
 markMorphCollection
 	^ DrGTypeMark markMorphCollection! !
 
-!DrGSegmentStyle methodsFor: 'widget' stamp: 'hlsf 20/May/2024 15:30:06'!
+!DrGSegmentStyle methodsFor: 'widget' stamp: 'hlsf 20/May/2024, 1:30:06 pm (UTC)'!
 markWidget
 	^ self widget: (
 		(DropDownButtonMorph 
@@ -6165,12 +6165,12 @@ myWidgets
 mark
 	^ mark ifNil: [mark := #none]! !
 
-!DrGSegmentStyle methodsFor: 'accessing' stamp: 'hlsf 13/Feb/2022 10:27:22'!
+!DrGSegmentStyle methodsFor: 'accessing' stamp: 'hlsf 13/Feb/2022, 8:27:22 am (UTC)'!
 mark: aSymbol
 	mark := aSymbol.
 	morph redrawNeeded! !
 
-!DrGSegmentStyle methodsFor: 'initialize-release' stamp: 'hlsf 17/Feb/2026 14:44:22'!
+!DrGSegmentStyle methodsFor: 'initialize-release' stamp: 'hlsf 17/Feb/2026, 12:44:22 pm (UTC)'!
 initialize
 	super initialize.
 	self color: (DrGeoSystem preferences at: #segmentColor).
@@ -6179,32 +6179,32 @@ initialize
 	self mark: (DrGeoSystem preferences at: #segmentMark).
 	self arrow: (DrGeoSystem preferences at: #segmentArrow)! !
 
-!DrGLineStyle methodsFor: 'initialize-release' stamp: 'hlsf 17/Feb/2026 14:44:33'!
+!DrGLineStyle methodsFor: 'initialize-release' stamp: 'hlsf 17/Feb/2026, 12:44:33 pm (UTC)'!
 initialize
 	super initialize.
 	self color: (DrGeoSystem preferences at: #lineColor).
 	self lineStyle: (DrGeoSystem preferences at: #lineStyle).
 	self thickness: (DrGeoSystem preferences at: #lineThickness)! !
 
-!DrGLocusStyle methodsFor: 'initialize-release' stamp: 'hlsf 17/Feb/2026 14:44:38'!
+!DrGLocusStyle methodsFor: 'initialize-release' stamp: 'hlsf 17/Feb/2026, 12:44:38 pm (UTC)'!
 initialize
 	super initialize.
 	self color: (DrGeoSystem preferences at: #locusColor).
 	self lineStyle: (DrGeoSystem preferences at: #locusStyle).
 	self thickness: (DrGeoSystem preferences at: #locusThickness)! !
 
-!DrGLocusStyle methodsFor: 'widget' stamp: 'hlsf 28/May/2025 15:47:36'!
+!DrGLocusStyle methodsFor: 'widget' stamp: 'hlsf 28/May/2025, 1:47:36 pm (UTC)'!
 myWidgets 
 	^ OrderedCollection with: self thicknessWidget! !
 
-!DrGRayStyle methodsFor: 'initialize-release' stamp: 'hlsf 17/Feb/2026 14:44:43'!
+!DrGRayStyle methodsFor: 'initialize-release' stamp: 'hlsf 17/Feb/2026, 12:44:43 pm (UTC)'!
 initialize
 	super initialize.
 	self color: (DrGeoSystem preferences at: #rayColor).
 	self lineStyle: (DrGeoSystem preferences at: #rayStyle).
 	self thickness: (DrGeoSystem preferences at: #rayThickness)! !
 
-!DrGVectorStyle methodsFor: 'initialize-release' stamp: 'hlsf 17/Feb/2026 14:44:48'!
+!DrGVectorStyle methodsFor: 'initialize-release' stamp: 'hlsf 17/Feb/2026, 12:44:48 pm (UTC)'!
 initialize
 	super initialize.
 	self color: (DrGeoSystem preferences at: #vectorColor).
@@ -6215,11 +6215,11 @@ initialize
 myWidgets 
 	^ super myWidgets addAll: {self shapeWidget. self sizeWidget}; yourself! !
 
-!DrGPointStyle methodsFor: 'widget' stamp: 'hlsf 5/Jun/2022 11:00:28'!
+!DrGPointStyle methodsFor: 'widget' stamp: 'hlsf 5/Jun/2022, 9:00:28 am (UTC)'!
 shapeMorphCollection
 	^ DrGTypePointShape shapeMorphCollection ! !
 
-!DrGPointStyle methodsFor: 'widget' stamp: 'hlsf 20/May/2024 15:27:06'!
+!DrGPointStyle methodsFor: 'widget' stamp: 'hlsf 20/May/2024, 1:27:06 pm (UTC)'!
 shapeWidget
 	^  self widget: (
 		(DropDownButtonMorph 
@@ -6232,11 +6232,11 @@ shapeWidget
 		named:  'Shape' translated
 		help: 'Set the shape of the point.' translated! !
 
-!DrGPointStyle methodsFor: 'widget' stamp: 'hlsf 4/Jun/2022 14:50:31'!
+!DrGPointStyle methodsFor: 'widget' stamp: 'hlsf 4/Jun/2022, 12:50:31 pm (UTC)'!
 sizeMorphCollection
 	^ DrGTypePointSize sizeMorphCollection: shape! !
 
-!DrGPointStyle methodsFor: 'widget' stamp: 'hlsf 20/May/2024 15:27:17'!
+!DrGPointStyle methodsFor: 'widget' stamp: 'hlsf 20/May/2024, 1:27:17 pm (UTC)'!
 sizeWidget
 	^ self widget: (
 		(DropDownButtonMorph 
@@ -6249,11 +6249,11 @@ sizeWidget
 		named: 'Size' translated 
 		help:  'Set the size of the point.' translated! !
 
-!DrGPointStyle methodsFor: 'widget' stamp: 'hlsf 14/Feb/2022 09:32:31'!
+!DrGPointStyle methodsFor: 'widget' stamp: 'hlsf 14/Feb/2022, 7:32:31 am (UTC)'!
 updateStylePanel
 	self view presenter controlsManager updateStylerFor: self! !
 
-!DrGPointStyle methodsFor: 'initialize-release' stamp: 'hlsf 17/Feb/2026 14:44:53'!
+!DrGPointStyle methodsFor: 'initialize-release' stamp: 'hlsf 17/Feb/2026, 12:44:53 pm (UTC)'!
 initialize
 	super initialize.
 	self color: (DrGeoSystem preferences at: #pointColor).
@@ -6288,7 +6288,7 @@ curvilinearAbscissa: aText
 	self changed.
 	^ true! !
 
-!DrGPointStyle methodsFor: 'accessing' stamp: 'hlsf 26/Mar/2024 21:49:17'!
+!DrGPointStyle methodsFor: 'accessing' stamp: 'hlsf 26/Mar/2024, 7:49:17 pm (UTC)'!
 extent
 	^ extent! !
 
@@ -6312,7 +6312,7 @@ pointSize
 
 	^ pointSize! !
 
-!DrGPointStyle methodsFor: 'accessing' stamp: 'hlsf 26/Mar/2024 21:48:53'!
+!DrGPointStyle methodsFor: 'accessing' stamp: 'hlsf 26/Mar/2024, 7:48:53 pm (UTC)'!
 pointSize: anObject
 	"Set the value of thickness"
 	pointSize := anObject.
@@ -6320,12 +6320,12 @@ pointSize: anObject
 	morph redrawNeeded
 ! !
 
-!DrGPointStyle methodsFor: 'accessing' stamp: 'hlsf 4/Jun/2022 14:51:28'!
+!DrGPointStyle methodsFor: 'accessing' stamp: 'hlsf 4/Jun/2022, 12:51:28 pm (UTC)'!
 pointSizeIndex
 	"Answer the index of thickness"
 	^DrGTypePointSize pointSizeIndexOf: pointSize! !
 
-!DrGPointStyle methodsFor: 'accessing' stamp: 'hlsf 4/Jun/2022 14:55:37'!
+!DrGPointStyle methodsFor: 'accessing' stamp: 'hlsf 4/Jun/2022, 12:55:37 pm (UTC)'!
 pointSizeIndex: index
 	"Set the value of thickness"
 	self pointSize: (DrGTypePointSize pointSizeFor: index).
@@ -6337,18 +6337,18 @@ shape
 
 	^ shape! !
 
-!DrGPointStyle methodsFor: 'accessing' stamp: 'hlsf 14/Feb/2022 09:20:45'!
+!DrGPointStyle methodsFor: 'accessing' stamp: 'hlsf 14/Feb/2022, 7:20:45 am (UTC)'!
 shape: anObject
 	"Set the value of shape"
 	shape := anObject.
 	morph redrawNeeded! !
 
-!DrGPointStyle methodsFor: 'accessing' stamp: 'hlsf 5/Jun/2022 10:54:33'!
+!DrGPointStyle methodsFor: 'accessing' stamp: 'hlsf 5/Jun/2022, 8:54:33 am (UTC)'!
 shapeIndex
 	"Answer the index of the shape"
 	^ DrGTypePointShape pointShapeIndexOf: shape! !
 
-!DrGPointStyle methodsFor: 'accessing' stamp: 'hlsf 5/Jun/2022 10:51:32'!
+!DrGPointStyle methodsFor: 'accessing' stamp: 'hlsf 5/Jun/2022, 8:51:32 am (UTC)'!
 shapeIndex: index
 	"Set the value of shape"
 	self shape: (DrGTypePointShape pointShapeFor: index).
@@ -6372,7 +6372,7 @@ writeAttributesTo: aNode
 backgroundColor
 	^ backgroundColor ! !
 
-!DrGTextStyle methodsFor: 'accessing' stamp: 'hlsf 15/May/2021 21:38:26'!
+!DrGTextStyle methodsFor: 'accessing' stamp: 'hlsf 15/May/2021, 7:38:26 pm (UTC)'!
 backgroundColor: aColor
 	backgroundColor := aColor.
 	self changed! !
@@ -6382,7 +6382,7 @@ backgroundColorIndex
 	^ self class backgroundColors indexOf: self baseBackgroundColor
 	! !
 
-!DrGTextStyle methodsFor: 'accessing' stamp: 'hlsf 13/Feb/2022 10:29:08'!
+!DrGTextStyle methodsFor: 'accessing' stamp: 'hlsf 13/Feb/2022, 8:29:08 am (UTC)'!
 backgroundColorIndex: index
 	| aColor |
 	aColor := Color perform: (self class backgroundColorSymbols at: index).
@@ -6401,7 +6401,7 @@ baseBackgroundColor
 borderColor
 	^ borderColor ! !
 
-!DrGTextStyle methodsFor: 'accessing' stamp: 'hlsf 18/May/2021 21:26:36'!
+!DrGTextStyle methodsFor: 'accessing' stamp: 'hlsf 18/May/2021, 7:26:36 pm (UTC)'!
 borderColor: aColor
 	borderColor := aColor.
 	morph redrawNeeded! !
@@ -6410,7 +6410,7 @@ borderColor: aColor
 borderColorIndex
 	^ self class backgroundColors indexOf: borderColor! !
 
-!DrGTextStyle methodsFor: 'accessing' stamp: 'hlsf 13/Feb/2022 10:29:24'!
+!DrGTextStyle methodsFor: 'accessing' stamp: 'hlsf 13/Feb/2022, 8:29:24 am (UTC)'!
 borderColorIndex: index
 	| aColor |
 	aColor := Color perform: (self class backgroundColorSymbols at: index).
@@ -6418,36 +6418,36 @@ borderColorIndex: index
 	self changed: #borderColorIndex:
 ! !
 
-!DrGTextStyle methodsFor: 'accessing' stamp: 'hlsf 24/May/2023 18:43:58'!
+!DrGTextStyle methodsFor: 'accessing' stamp: 'hlsf 24/May/2023, 4:43:58 pm (UTC)'!
 fontSize: integer
 	fontSize := integer.
 	morph fontSize: integer.
 	self changed! !
 
-!DrGTextStyle methodsFor: 'accessing' stamp: 'hlsf 12/Feb/2022 23:36:04'!
+!DrGTextStyle methodsFor: 'accessing' stamp: 'hlsf 12/Feb/2022, 9:36:04 pm (UTC)'!
 fontSizeIndex
 	^ self fontSizesCollection indexOf: fontSize
 	! !
 
-!DrGTextStyle methodsFor: 'accessing' stamp: 'hlsf 13/Feb/2022 10:29:41'!
+!DrGTextStyle methodsFor: 'accessing' stamp: 'hlsf 13/Feb/2022, 8:29:41 am (UTC)'!
 fontSizeIndex: index
 	self fontSize: (self fontSizesCollection at: index).
 	self changed: #fontSizeIndex:
 ! !
 
-!DrGTextStyle methodsFor: 'accessing' stamp: 'hlsf 24/Mar/2022 16:54:27'!
+!DrGTextStyle methodsFor: 'accessing' stamp: 'hlsf 24/Mar/2022, 2:54:27 pm (UTC)'!
 setTranslucent: aColor
 	aColor isTransparent 
 		ifFalse: [self backgroundColor: (aColor alpha: 0.6)] 
 		ifTrue: [self backgroundColor: aColor]
 ! !
 
-!DrGTextStyle methodsFor: 'widget' stamp: 'hlsf 30/Aug/2025 11:41:55'!
+!DrGTextStyle methodsFor: 'widget' stamp: 'hlsf 30/Aug/2025, 9:41:55 am (UTC)'!
 backgroundMorphCollection
 	^ self class backgroundColors collect: [:aColor |
 		ImageMorph newWith: (DrGIcons colorForm: aColor)]! !
 
-!DrGTextStyle methodsFor: 'widget' stamp: 'hlsf 20/May/2024 15:30:12'!
+!DrGTextStyle methodsFor: 'widget' stamp: 'hlsf 20/May/2024, 1:30:12 pm (UTC)'!
 backgroundWidget
 	^  self widget: (
 		(DropDownButtonMorph 
@@ -6460,7 +6460,7 @@ backgroundWidget
 		named: 'Background' translated 
 		help: 'Set the background colour.' translated! !
 
-!DrGTextStyle methodsFor: 'widget' stamp: 'hlsf 20/May/2024 15:30:15'!
+!DrGTextStyle methodsFor: 'widget' stamp: 'hlsf 20/May/2024, 1:30:15 pm (UTC)'!
 borderWidget
 	^  self widget: (
 		(DropDownButtonMorph 
@@ -6473,7 +6473,7 @@ borderWidget
 		named: 'Border' translated 
 		help: 'Set the border colour.' translated! !
 
-!DrGTextStyle methodsFor: 'widget' stamp: 'hlsf 23/Aug/2025 12:58:02'!
+!DrGTextStyle methodsFor: 'widget' stamp: 'hlsf 23/Aug/2025, 10:58:02 am (UTC)'!
 fontSizeWidget
 	^ self widget: (
 		(DropDownButtonMorph 
@@ -6487,11 +6487,11 @@ fontSizeWidget
 		named: 'Font size' translated
 		help: 'Set the font size.' translated! !
 
-!DrGTextStyle methodsFor: 'widget' stamp: 'hlsf 24/Mar/2022 11:37:26'!
+!DrGTextStyle methodsFor: 'widget' stamp: 'hlsf 24/Mar/2022, 9:37:26 am (UTC)'!
 fontSizesCollection
 	^#(9 10 12 14 16)! !
 
-!DrGTextStyle methodsFor: 'widget' stamp: 'hlsf 1/Apr/2024 17:18:23'!
+!DrGTextStyle methodsFor: 'widget' stamp: 'hlsf 1/Apr/2024, 3:18:23 pm (UTC)'!
 fontSizesMorphCollection
 	^ self fontSizesCollection collect: [:pt | 
 			LabelMorph 
@@ -6506,7 +6506,7 @@ myWidgets
 		addAll: {self backgroundWidget . self borderWidget . self fontSizeWidget}; 
 		yourself! !
 
-!DrGTextStyle methodsFor: 'widget' stamp: 'hlsf 24/Mar/2022 17:04:13'!
+!DrGTextStyle methodsFor: 'widget' stamp: 'hlsf 24/Mar/2022, 3:04:13 pm (UTC)'!
 styleWidget
 | controls |
 " There is no name for text object"
@@ -6519,7 +6519,7 @@ styleWidget
 	morph isLockable ifTrue: [controls add: self lockedWidget].
 	^controls! !
 
-!DrGTextStyle methodsFor: 'initialize-release' stamp: 'hlsf 17/Feb/2026 14:45:01'!
+!DrGTextStyle methodsFor: 'initialize-release' stamp: 'hlsf 17/Feb/2026, 12:45:01 pm (UTC)'!
 initialize 
 	super initialize.
 	self color: (DrGeoSystem preferences at: #textColor).
@@ -6527,14 +6527,14 @@ initialize
 	self borderColor: (DrGeoSystem preferences at: #textBorderColor).
 	fontSize := 12 .! !
 
-!DrGTextStyle methodsFor: 'xml writing' stamp: 'drgeo 10/Sep/2022 12:06:57'!
+!DrGTextStyle methodsFor: 'xml writing' stamp: 'drgeo 10/Sep/2022, 10:06:57 am (UTC)'!
 writeAttributesTo: aNode
 	super writeAttributesTo: aNode.
 	aNode attributeAt: #background put: self baseBackgroundColor colorName asString capitalized.
 	aNode attributeAt: #border put: self borderColor colorName asString capitalized.
 	aNode attributeAt: #fontSize put: fontSize asString! !
 
-!DrGTextStyle class methodsFor: 'as yet unclassified' stamp: 'hlsf 3/Jun/2022 11:38:45'!
+!DrGTextStyle class methodsFor: 'as yet unclassified' stamp: 'hlsf 3/Jun/2022, 9:38:45 am (UTC)'!
 backgroundColorSymbols
 	^ OrderedCollection new
 		add: #transparent;
@@ -6545,13 +6545,13 @@ backgroundColorSymbols
 backgroundColors
 	^ self backgroundColorSymbols collect: [:symbol | Color perform: symbol]! !
 
-!DrGValueStyle methodsFor: 'initialize-release' stamp: 'hlsf 17/Feb/2026 14:45:06'!
+!DrGValueStyle methodsFor: 'initialize-release' stamp: 'hlsf 17/Feb/2026, 12:45:06 pm (UTC)'!
 initialize 
 	super initialize.
 	self color: (DrGeoSystem preferences at: #valueColor)
 ! !
 
-!DrGValueStyle methodsFor: 'widget' stamp: 'hlsf 24/Mar/2022 16:59:01'!
+!DrGValueStyle methodsFor: 'widget' stamp: 'hlsf 24/Mar/2022, 2:59:01 pm (UTC)'!
 styleWidget
 | controls |
 	controls := 	OrderedCollection new
@@ -6564,7 +6564,7 @@ styleWidget
 	morph isLockable ifTrue: [controls add: self lockedWidget].
 	^controls! !
 
-!DrGeo methodsFor: 'accessing' stamp: 'hlsf 19/Jun/2021 15:18:35'!
+!DrGeo methodsFor: 'accessing' stamp: 'hlsf 19/Jun/2021, 1:18:35 pm (UTC)'!
 axesWording
 	^self isAxesVisible
 		ifTrue: ['<yes> Axes' translated]
@@ -6574,42 +6574,42 @@ axesWording
 controlsManager
 	^ controlsManager! !
 
-!DrGeo methodsFor: 'accessing' stamp: 'hlsf 4/Aug/2023 18:23:44'!
+!DrGeo methodsFor: 'accessing' stamp: 'hlsf 4/Aug/2023, 4:23:44 pm (UTC)'!
 controlsManager: aClass
 	controlsManager := aClass for: self.
 	controlsManager installTools! !
 
-!DrGeo methodsFor: 'accessing' stamp: 'hlsf 19/Jun/2021 14:52:52'!
+!DrGeo methodsFor: 'accessing' stamp: 'hlsf 19/Jun/2021, 12:52:52 pm (UTC)'!
 createMultipleModeWording
 	^isCreateMultipleMode
 		ifTrue: ['<yes> Create Multiple' translated]
 		ifFalse: ['<no> Create Multiple' translated]! !
 
-!DrGeo methodsFor: 'accessing' stamp: 'hlsf 4/Aug/2023 12:38:49'!
+!DrGeo methodsFor: 'accessing' stamp: 'hlsf 4/Aug/2023, 10:38:49 am (UTC)'!
 domain
 	^ domain ! !
 
-!DrGeo methodsFor: 'accessing' stamp: 'hlsf 19/Jun/2021 10:07:28'!
+!DrGeo methodsFor: 'accessing' stamp: 'hlsf 19/Jun/2021, 8:07:28 am (UTC)'!
 drawable
 	^ self view ifNotNil: [self view drawable]! !
 
-!DrGeo methodsFor: 'accessing' stamp: 'hlsf 19/Jun/2021 15:16:09'!
+!DrGeo methodsFor: 'accessing' stamp: 'hlsf 19/Jun/2021, 1:16:09 pm (UTC)'!
 gridWording
 	^self isGridVisible
 		ifTrue: ['<yes> Grid' translated]
 		ifFalse: ['<no> Grid' translated]! !
 
-!DrGeo methodsFor: 'accessing' stamp: 'hlsf 19/Jun/2021 15:20:26'!
+!DrGeo methodsFor: 'accessing' stamp: 'hlsf 19/Jun/2021, 1:20:26 pm (UTC)'!
 magneticGridWording
 	^self isGridded 
 		ifTrue: ['<yes> Magnetic Grid' translated]
 		ifFalse: ['<no> Magnetic Grid' translated]! !
 
-!DrGeo methodsFor: 'accessing' stamp: 'hlsf 3/Aug/2023 21:10:34'!
+!DrGeo methodsFor: 'accessing' stamp: 'hlsf 3/Aug/2023, 7:10:34 pm (UTC)'!
 notInteractive: boolean
 	notInteractive := boolean! !
 
-!DrGeo methodsFor: 'accessing' stamp: 'hlsf 3/Aug/2023 20:52:32'!
+!DrGeo methodsFor: 'accessing' stamp: 'hlsf 3/Aug/2023, 6:52:32 pm (UTC)'!
 saved: bool
 	| title |
 	title := (sketchName ifNil: ['Dr. Geo --  ' , Date today yyyymmdd]) 	capitalized.
@@ -6622,11 +6622,11 @@ saved: bool
 selection
 	^selection! !
 
-!DrGeo methodsFor: 'accessing' stamp: 'hlsf 28/Mar/2022 14:22:25'!
+!DrGeo methodsFor: 'accessing' stamp: 'hlsf 28/Mar/2022, 12:22:25 pm (UTC)'!
 sketchName
 	^ sketchName! !
 
-!DrGeo methodsFor: 'accessing' stamp: 'hlsf 14/Nov/2023 00:17:46'!
+!DrGeo methodsFor: 'accessing' stamp: 'hlsf 13/Nov/2023, 10:17:46 pm (UTC)'!
 stSketch: aDrGeoSketch
 	stSketch := aDrGeoSketch ! !
 
@@ -6634,7 +6634,7 @@ stSketch: aDrGeoSketch
 tool
 	^tool! !
 
-!DrGeo methodsFor: 'accessing' stamp: 'hlsf 9/Apr/2022 21:48:04'!
+!DrGeo methodsFor: 'accessing' stamp: 'hlsf 9/Apr/2022, 7:48:04 pm (UTC)'!
 tool: aTool 
 	tool ifNotNil: [tool release].
 	tool := aTool.
@@ -6642,11 +6642,11 @@ tool: aTool
 	(tool notNil and: [self view notNil])  ifTrue: [
 		controlsManager setStatusBarMessage: tool description]! !
 
-!DrGeo methodsFor: 'accessing' stamp: 'hlsf 10/Apr/2022 12:42:08'!
+!DrGeo methodsFor: 'accessing' stamp: 'hlsf 10/Apr/2022, 10:42:08 am (UTC)'!
 view
 	^ controlsManager view! !
 
-!DrGeo methodsFor: 'callback UI' stamp: 'hlsf 9/Dec/2022 22:10:35'!
+!DrGeo methodsFor: 'callback UI' stamp: 'hlsf 9/Dec/2022, 8:10:35 pm (UTC)'!
 exportToClipboard: isBackgroundTransparent
 "	| command |
 	self 
@@ -6657,7 +6657,7 @@ exportToClipboard: isBackgroundTransparent
 			<< (DrGeoSystem myExportsPath / 'clipboard.png') pathString].
 	OSPlatform current runCommand: command."! !
 
-!DrGeo methodsFor: 'callback UI' stamp: 'hlsf 17/Feb/2026 15:27:03'!
+!DrGeo methodsFor: 'callback UI' stamp: 'hlsf 17/Feb/2026, 1:27:03 pm (UTC)'!
 exportToImage: aFilename
 	| stream |
 	[stream := (DrGeoSystem myExportsPath // (aFilename, '.svg')) forceWriteStream.
@@ -6684,7 +6684,7 @@ Check the local resource or the server.' translated].
 	DrGeoSystem stopSpinner.
 "! !
 
-!DrGeo methodsFor: 'callback UI' stamp: 'hlsf 17/Feb/2026 14:46:31'!
+!DrGeo methodsFor: 'callback UI' stamp: 'drgeo 28/Jun/2026, 8:02:00 am (UTC)'!
 exportToImageAs
 	| model |
 	DrGeoSystem showVirtualKeyboard: true.
@@ -6694,17 +6694,18 @@ exportToImageAs
 		self exportToImage: exportImageName ].
 	(StringEntryPanel openWide: model label: 'Name the image to keep.' translated)
 		morphCenter: self view fullBoundsInOwner center;
+		widgetsColor: Theme current browser;
 		setProperty: #layerNumber toValue: 20! !
 
-!DrGeo methodsFor: 'callback UI' stamp: 'hlsf 8/Aug/2023 19:13:55'!
+!DrGeo methodsFor: 'callback UI' stamp: 'hlsf 8/Aug/2023, 5:13:55 pm (UTC)'!
 newFigure
 	DrGeo new! !
 
-!DrGeo methodsFor: 'callback UI' stamp: 'hlsf 2/Dec/2021 10:00:04'!
+!DrGeo methodsFor: 'callback UI' stamp: 'hlsf 2/Dec/2021, 8:00:04 am (UTC)'!
 openFigureThumbnail
 	DrGFileOpenMorph open! !
 
-!DrGeo methodsFor: 'callback UI' stamp: 'drgeo 24/Feb/2026 14:18:19'!
+!DrGeo methodsFor: 'callback UI' stamp: 'drgeo 24/Feb/2026, 12:18:19 pm (UTC)'!
 save
 "Save the sketch with the current filename"
 | stream |
@@ -6725,14 +6726,14 @@ save
 Check the local resource or the server.' translated].
 	DrGeoSystem stopSpinner.! !
 
-!DrGeo methodsFor: 'callback UI' stamp: 'hlsf 5/Apr/2025 15:01:49'!
+!DrGeo methodsFor: 'callback UI' stamp: 'hlsf 5/Apr/2025, 1:01:49 pm (UTC)'!
 saveSketch
 	sketchName 
 		ifNil: [self saveSketchAs]
 		ifNotNil: [self save]
 ! !
 
-!DrGeo methodsFor: 'callback UI' stamp: 'hlsf 17/Feb/2026 14:46:46'!
+!DrGeo methodsFor: 'callback UI' stamp: 'drgeo 28/Jun/2026, 8:02:10 am (UTC)'!
 saveSketchAs
 | model |
 	DrGeoSystem showVirtualKeyboard: true.
@@ -6742,9 +6743,10 @@ saveSketchAs
 		self saveSketch].
 	(StringEntryPanel openWide: model label: 'Name the sketch to keep.' translated)
 		morphCenter: self view fullBoundsInOwner center;
+		widgetsColor: Theme current browser;
 		setProperty: #layerNumber toValue: 20! !
 
-!DrGeo methodsFor: 'callback UI' stamp: 'hlsf 17/Feb/2026 14:46:50'!
+!DrGeo methodsFor: 'callback UI' stamp: 'hlsf 17/Feb/2026, 12:46:50 pm (UTC)'!
 saveWithinLimitedTime: aBlock
 	[aBlock value]
 		valueWithin: 10 seconds
@@ -6753,7 +6755,7 @@ saveWithinLimitedTime: aBlock
 			PopUpMenu inform: 'I can''t save the sketch.
 Check the local resource or the server.' translated].! !
 
-!DrGeo methodsFor: 'callback canvas' stamp: 'hlsf 5/Apr/2025 11:56:09'!
+!DrGeo methodsFor: 'callback canvas' stamp: 'hlsf 5/Apr/2025, 9:56:09 am (UTC)'!
 animate
 	selectedTool == #animate 	ifFalse: [
 		selectedTool := #animate.
@@ -6783,243 +6785,243 @@ animate4
 	self tool animateStep: 0.1
 ! !
 
-!DrGeo methodsFor: 'callback canvas' stamp: 'hlsf 21/Jan/2026 19:13:40'!
+!DrGeo methodsFor: 'callback canvas' stamp: 'hlsf 21/Jan/2026, 5:13:40 pm (UTC)'!
 axesOff
 	self drawable axesVisible: false
 	! !
 
-!DrGeo methodsFor: 'callback canvas' stamp: 'hlsf 21/Jan/2026 19:12:17'!
+!DrGeo methodsFor: 'callback canvas' stamp: 'hlsf 21/Jan/2026, 5:12:17 pm (UTC)'!
 axesOn
 	self drawable axesVisible: true
 	! !
 
-!DrGeo methodsFor: 'callback canvas' stamp: 'hlsf 21/Jan/2026 19:14:33'!
+!DrGeo methodsFor: 'callback canvas' stamp: 'hlsf 21/Jan/2026, 5:14:33 pm (UTC)'!
 axesOnOff
 	self drawable axesVisible: self drawable axesVisible not
 	! !
 
-!DrGeo methodsFor: 'callback canvas' stamp: 'hlsf 19/Jun/2021 16:57:23'!
+!DrGeo methodsFor: 'callback canvas' stamp: 'hlsf 19/Jun/2021, 2:57:23 pm (UTC)'!
 createMultipleOnOff
 	isCreateMultipleMode := isCreateMultipleMode not! !
 
-!DrGeo methodsFor: 'callback canvas' stamp: 'hlsf 21/Jan/2026 19:15:23'!
+!DrGeo methodsFor: 'callback canvas' stamp: 'hlsf 21/Jan/2026, 5:15:23 pm (UTC)'!
 gridOff
 	self drawable gridVisible: false! !
 
-!DrGeo methodsFor: 'callback canvas' stamp: 'hlsf 21/Jan/2026 19:11:43'!
+!DrGeo methodsFor: 'callback canvas' stamp: 'hlsf 21/Jan/2026, 5:11:43 pm (UTC)'!
 gridOn
 	self drawable gridVisible: true! !
 
-!DrGeo methodsFor: 'callback canvas' stamp: 'hlsf 21/Jan/2026 19:15:12'!
+!DrGeo methodsFor: 'callback canvas' stamp: 'hlsf 21/Jan/2026, 5:15:12 pm (UTC)'!
 gridOnOff
 	self drawable gridVisible: self drawable gridVisible not! !
 
-!DrGeo methodsFor: 'callback canvas' stamp: 'hlsf 19/Jun/2021 16:57:50'!
+!DrGeo methodsFor: 'callback canvas' stamp: 'hlsf 19/Jun/2021, 2:57:50 pm (UTC)'!
 gridStuckOnOff
 	gridStuck := gridStuck not.! !
 
-!DrGeo methodsFor: 'callback canvas' stamp: 'hlsf 5/Apr/2025 12:15:13'!
+!DrGeo methodsFor: 'callback canvas' stamp: 'hlsf 5/Apr/2025, 10:15:13 am (UTC)'!
 move
 	selectedTool := #move.
 	self selectTool: DrGSelectTool.
 	self view redrawNeeded ! !
 
-!DrGeo methodsFor: 'callback canvas' stamp: 'hlsf 19/Jun/2021 10:07:28'!
+!DrGeo methodsFor: 'callback canvas' stamp: 'hlsf 19/Jun/2021, 8:07:28 am (UTC)'!
 moveOx: increment
 	self drawable moveOx: increment.! !
 
-!DrGeo methodsFor: 'callback canvas' stamp: 'hlsf 19/Jun/2021 10:07:28'!
+!DrGeo methodsFor: 'callback canvas' stamp: 'hlsf 19/Jun/2021, 8:07:28 am (UTC)'!
 moveOy: increment
 	self drawable moveOy: increment negated.! !
 
-!DrGeo methodsFor: 'callback canvas' stamp: 'hlsf 3/Aug/2023 20:53:22'!
+!DrGeo methodsFor: 'callback canvas' stamp: 'hlsf 3/Aug/2023, 6:53:22 pm (UTC)'!
 redo
 	self domain redo.
 	self domain updateAllMathItems.
 	self saved: false! !
 
-!DrGeo methodsFor: 'callback canvas' stamp: 'hlsf 19/Jun/2021 10:07:28'!
+!DrGeo methodsFor: 'callback canvas' stamp: 'hlsf 19/Jun/2021, 8:07:28 am (UTC)'!
 scale: increment
 	self drawable scale: increment negated.! !
 
-!DrGeo methodsFor: 'callback canvas' stamp: 'hlsf 5/Apr/2025 11:55:03'!
+!DrGeo methodsFor: 'callback canvas' stamp: 'hlsf 5/Apr/2025, 9:55:03 am (UTC)'!
 style
 	selectedTool := #style.
 	self selectTool: DrGStyleTool.
 	self drawable redrawNeeded .
 ! !
 
-!DrGeo methodsFor: 'callback canvas' stamp: 'hlsf 3/Aug/2023 20:53:36'!
+!DrGeo methodsFor: 'callback canvas' stamp: 'hlsf 3/Aug/2023, 6:53:36 pm (UTC)'!
 undo
 	self tool resetForFreshStart.
 	self domain undo.
 	self domain updateAllMathItems.
 	self saved: false! !
 
-!DrGeo methodsFor: 'callback create' stamp: 'hlsf 5/Apr/2025 12:00:13'!
+!DrGeo methodsFor: 'callback create' stamp: 'hlsf 5/Apr/2025, 10:00:13 am (UTC)'!
 createAngleBisector
 	selectedTool := #angleBisector.
 	self selectTool: DrGFlyBuildTool with: DrGAngleBisectorBuilder! !
 
-!DrGeo methodsFor: 'callback create' stamp: 'hlsf 5/Apr/2025 12:00:22'!
+!DrGeo methodsFor: 'callback create' stamp: 'hlsf 5/Apr/2025, 10:00:22 am (UTC)'!
 createAngleGeometric
 	selectedTool := #geometricAngle.
 	self selectTool: DrGBuildTool with: DrGAngleGeometricBuilder.! !
 
-!DrGeo methodsFor: 'callback create' stamp: 'hlsf 5/Apr/2025 12:01:20'!
+!DrGeo methodsFor: 'callback create' stamp: 'hlsf 5/Apr/2025, 10:01:20 am (UTC)'!
 createAngleOriented
 	selectedTool := #orientedAngle.
 	self selectTool: DrGBuildTool with: DrGAngleOrientedBuilder! !
 
-!DrGeo methodsFor: 'callback create' stamp: 'hlsf 5/Apr/2025 12:01:29'!
+!DrGeo methodsFor: 'callback create' stamp: 'hlsf 5/Apr/2025, 10:01:29 am (UTC)'!
 createArc
 	selectedTool := #arc.
 	self selectTool: DrGFlyBuildTool with: DrGArcBuilder! !
 
-!DrGeo methodsFor: 'callback create' stamp: 'hlsf 5/Apr/2025 12:01:38'!
+!DrGeo methodsFor: 'callback create' stamp: 'hlsf 5/Apr/2025, 10:01:38 am (UTC)'!
 createArcCenter
 	selectedTool := #arcCenter.
 	self selectTool: DrGFlyBuildTool with: DrGArcCenterBuilder! !
 
-!DrGeo methodsFor: 'callback create' stamp: 'hlsf 5/Apr/2025 12:01:48'!
+!DrGeo methodsFor: 'callback create' stamp: 'hlsf 5/Apr/2025, 10:01:48 am (UTC)'!
 createCircle
 	selectedTool := #circle.
 	self selectTool: DrGFlyBuildTouchTool with: DrGCircleBuilder! !
 
-!DrGeo methodsFor: 'callback create' stamp: 'hlsf 5/Apr/2025 12:01:58'!
+!DrGeo methodsFor: 'callback create' stamp: 'hlsf 5/Apr/2025, 10:01:58 am (UTC)'!
 createCoordinatePoint
 	selectedTool := #pointDefinedByCoordindates.
 	self selectTool: DrGBuildTool with: DrGPointByCoordinatesBuilder! !
 
-!DrGeo methodsFor: 'callback create' stamp: 'hlsf 5/Apr/2025 12:02:09'!
+!DrGeo methodsFor: 'callback create' stamp: 'hlsf 5/Apr/2025, 10:02:09 am (UTC)'!
 createCoordinates
 	selectedTool := #coordinates.
 	self selectTool: DrGBuildTool with: DrGCoordinatesBuilder! !
 
-!DrGeo methodsFor: 'callback create' stamp: 'hlsf 5/Apr/2025 12:02:19'!
+!DrGeo methodsFor: 'callback create' stamp: 'hlsf 5/Apr/2025, 10:02:19 am (UTC)'!
 createDistance
 	selectedTool := #distance.
 	self selectTool: DrGBuildTool with: DrGValueBuilder! !
 
-!DrGeo methodsFor: 'callback create' stamp: 'hlsf 5/Apr/2025 12:02:27'!
+!DrGeo methodsFor: 'callback create' stamp: 'hlsf 5/Apr/2025, 10:02:27 am (UTC)'!
 createFreePoint
 	selectedTool := #freePoint.
 	self selectTool: DrGFlyPointBuildTool with: DrGFlyPointBuilder! !
 
-!DrGeo methodsFor: 'callback create' stamp: 'hlsf 5/Apr/2025 12:02:35'!
+!DrGeo methodsFor: 'callback create' stamp: 'hlsf 5/Apr/2025, 10:02:35 am (UTC)'!
 createHomothety
 	selectedTool := #scale.
 	self selectTool: DrGBuildTool with: DrGHomothetyBuilder! !
 
-!DrGeo methodsFor: 'callback create' stamp: 'hlsf 5/Apr/2025 12:02:43'!
+!DrGeo methodsFor: 'callback create' stamp: 'hlsf 5/Apr/2025, 10:02:43 am (UTC)'!
 createLine
 	selectedTool := #line.
 	self selectTool: DrGFlyBuildTouchTool with: DrGLineBuilder! !
 
-!DrGeo methodsFor: 'callback create' stamp: 'hlsf 5/Apr/2025 12:02:53'!
+!DrGeo methodsFor: 'callback create' stamp: 'hlsf 5/Apr/2025, 10:02:53 am (UTC)'!
 createLocus
 	selectedTool := #locus.
 	self selectTool: DrGBuildTool with: DrGLocusBuilder
 ! !
 
-!DrGeo methodsFor: 'callback create' stamp: 'hlsf 5/Apr/2025 12:03:01'!
+!DrGeo methodsFor: 'callback create' stamp: 'hlsf 5/Apr/2025, 10:03:01 am (UTC)'!
 createMacro
 	selectedTool := #macroBuild.
 	self selectTool: DrGMacroBuildTool with: DrGMacroBuilder! !
 
-!DrGeo methodsFor: 'callback create' stamp: 'hlsf 5/Apr/2025 12:03:11'!
+!DrGeo methodsFor: 'callback create' stamp: 'hlsf 5/Apr/2025, 10:03:11 am (UTC)'!
 createMiddlePoint
 	selectedTool := #middle.
 	self selectTool: DrGBuildTool with: DrGMiddleBuilder! !
 
-!DrGeo methodsFor: 'callback create' stamp: 'hlsf 5/Apr/2025 12:03:19'!
+!DrGeo methodsFor: 'callback create' stamp: 'hlsf 5/Apr/2025, 10:03:19 am (UTC)'!
 createParallel
 	selectedTool := #parallel.
 	self selectTool: DrGFlyBuildTouchTool with: DrGParallelBuilder! !
 
-!DrGeo methodsFor: 'callback create' stamp: 'hlsf 5/Apr/2025 12:03:32'!
+!DrGeo methodsFor: 'callback create' stamp: 'hlsf 5/Apr/2025, 10:03:32 am (UTC)'!
 createPerpendicular
 	selectedTool := #perpendicular.
 	self selectTool: DrGFlyBuildTouchTool with: DrGPerpendicularBuilder! !
 
-!DrGeo methodsFor: 'callback create' stamp: 'hlsf 5/Apr/2025 12:03:41'!
+!DrGeo methodsFor: 'callback create' stamp: 'hlsf 5/Apr/2025, 10:03:41 am (UTC)'!
 createPerpendicularBisector
 	selectedTool := #perpendicularBisector.
 	self selectTool: DrGFlyBuildTouchTool with: DrGPerpendicularBisectorBuilder! !
 
-!DrGeo methodsFor: 'callback create' stamp: 'hlsf 5/Apr/2025 12:03:49'!
+!DrGeo methodsFor: 'callback create' stamp: 'hlsf 5/Apr/2025, 10:03:49 am (UTC)'!
 createPointByCoordinates
 	selectedTool := #pointDefinedByCoordinates.
 	self selectTool: DrGBuildTool with: DrGPointByCoordinatesBuilder! !
 
-!DrGeo methodsFor: 'callback create' stamp: 'hlsf 5/Apr/2025 12:03:58'!
+!DrGeo methodsFor: 'callback create' stamp: 'hlsf 5/Apr/2025, 10:03:58 am (UTC)'!
 createPointIntersection
 	selectedTool := #intersection.
 	self selectTool: DrGBuildTool with: DrGPointIntersectionBuilder! !
 
-!DrGeo methodsFor: 'callback create' stamp: 'hlsf 5/Apr/2025 12:04:05'!
+!DrGeo methodsFor: 'callback create' stamp: 'hlsf 5/Apr/2025, 10:04:05 am (UTC)'!
 createPolygon
 	selectedTool := #polygon.
 	self selectTool: DrGFlyBuildTool with: DrGPolygonBuilder! !
 
-!DrGeo methodsFor: 'callback create' stamp: 'hlsf 5/Apr/2025 12:04:14'!
+!DrGeo methodsFor: 'callback create' stamp: 'hlsf 5/Apr/2025, 10:04:14 am (UTC)'!
 createPolygonRegular
 	selectedTool := #polygonRegular.
 	self selectTool: DrGFlyBuildTool with: DrGPolygonRegularBuilder! !
 
-!DrGeo methodsFor: 'callback create' stamp: 'hlsf 5/Apr/2025 12:04:22'!
+!DrGeo methodsFor: 'callback create' stamp: 'hlsf 5/Apr/2025, 10:04:22 am (UTC)'!
 createRay
 	selectedTool := #ray.
 	self selectTool: DrGFlyBuildTouchTool with: DrGRayBuilder! !
 
-!DrGeo methodsFor: 'callback create' stamp: 'hlsf 5/Apr/2025 12:04:31'!
+!DrGeo methodsFor: 'callback create' stamp: 'hlsf 5/Apr/2025, 10:04:31 am (UTC)'!
 createReflection
 	selectedTool := #axialSymmetry.
 	self selectTool: DrGBuildTool with: DrGReflectionBuilder! !
 
-!DrGeo methodsFor: 'callback create' stamp: 'hlsf 5/Apr/2025 12:04:39'!
+!DrGeo methodsFor: 'callback create' stamp: 'hlsf 5/Apr/2025, 10:04:39 am (UTC)'!
 createRotation
 	selectedTool := #rotation.
 	self selectTool: DrGBuildTool with: DrGRotationBuilder! !
 
-!DrGeo methodsFor: 'callback create' stamp: 'hlsf 5/Apr/2025 12:04:52'!
+!DrGeo methodsFor: 'callback create' stamp: 'hlsf 5/Apr/2025, 10:04:52 am (UTC)'!
 createScript
 	"We force to select/move mode as we do not interact with the sketch"	
 	self move.
 	DrGScriptDesignerDialog open: self label: 'Build a new script' translated! !
 
-!DrGeo methodsFor: 'callback create' stamp: 'hlsf 5/Apr/2025 12:05:02'!
+!DrGeo methodsFor: 'callback create' stamp: 'hlsf 5/Apr/2025, 10:05:02 am (UTC)'!
 createSegment
 	selectedTool := #segment.
 	self selectTool: DrGFlyBuildTouchTool with: DrGSegmentBuilder! !
 
-!DrGeo methodsFor: 'callback create' stamp: 'hlsf 5/Apr/2025 12:05:09'!
+!DrGeo methodsFor: 'callback create' stamp: 'hlsf 5/Apr/2025, 10:05:09 am (UTC)'!
 createSymmetry
 	selectedTool := #centralSymmetry.
 	self selectTool: DrGBuildTool with: DrGSymmetryBuilder! !
 
-!DrGeo methodsFor: 'callback create' stamp: 'hlsf 5/Apr/2025 12:05:16'!
+!DrGeo methodsFor: 'callback create' stamp: 'hlsf 5/Apr/2025, 10:05:16 am (UTC)'!
 createText
 	selectedTool := #text.
 	self selectTool: DrGBuildTool with: DrGTextBuilder! !
 
-!DrGeo methodsFor: 'callback create' stamp: 'hlsf 5/Apr/2025 12:05:25'!
+!DrGeo methodsFor: 'callback create' stamp: 'hlsf 5/Apr/2025, 10:05:25 am (UTC)'!
 createTranslation
 	selectedTool := #translation.
 	self selectTool: DrGBuildTool with: DrGTranslationBuilder! !
 
-!DrGeo methodsFor: 'callback create' stamp: 'hlsf 5/Apr/2025 12:05:32'!
+!DrGeo methodsFor: 'callback create' stamp: 'hlsf 5/Apr/2025, 10:05:32 am (UTC)'!
 createVector
 	selectedTool := #vector.
 	self selectTool: DrGFlyBuildTouchTool with: DrGVectorBuilder! !
 
-!DrGeo methodsFor: 'callback create' stamp: 'hlsf 5/Apr/2025 11:55:52'!
+!DrGeo methodsFor: 'callback create' stamp: 'hlsf 5/Apr/2025, 9:55:52 am (UTC)'!
 deleteMacro
 	selectedTool := #deleteMacro.
 	self selectTool: DrGSelectTool.
 ! !
 
-!DrGeo methodsFor: 'callback create' stamp: 'hlsf 5/Apr/2025 12:05:54'!
+!DrGeo methodsFor: 'callback create' stamp: 'hlsf 5/Apr/2025, 10:05:54 am (UTC)'!
 editScript
 	| menu |
 	"We force to select mode, then open a browser on the script classes"
@@ -7034,7 +7036,7 @@ editScript
 			setBalloonText: aScriptClass description].
 	menu popUpInWorld! !
 
-!DrGeo methodsFor: 'callback create' stamp: 'hlsf 9/Apr/2024 15:54:00'!
+!DrGeo methodsFor: 'callback create' stamp: 'hlsf 9/Apr/2024, 1:54:00 pm (UTC)'!
 editScript: aScriptClass
 	|  browser |
 	browser := Browser new setClass: aScriptClass selector: #compute.
@@ -7043,42 +7045,42 @@ editScript: aScriptClass
 		
 	! !
 
-!DrGeo methodsFor: 'callback create' stamp: 'hlsf 5/Apr/2025 11:55:43'!
+!DrGeo methodsFor: 'callback create' stamp: 'hlsf 5/Apr/2025, 9:55:43 am (UTC)'!
 eraser
 	selectedTool := #eraser.
 	self selectTool: DrGDeleteTool.
 ! !
 
-!DrGeo methodsFor: 'callback create' stamp: 'hlsf 5/Apr/2025 12:06:09'!
+!DrGeo methodsFor: 'callback create' stamp: 'hlsf 5/Apr/2025, 10:06:09 am (UTC)'!
 executeMacro
 	selectedTool := #macroExecute.
 	self selectTool: DrGMacroPlayTool with: DrGMacroPlayer! !
 
-!DrGeo methodsFor: 'callback create' stamp: 'hlsf 5/Apr/2025 12:06:24'!
+!DrGeo methodsFor: 'callback create' stamp: 'hlsf 5/Apr/2025, 10:06:24 am (UTC)'!
 executeMacro: aMacro
 	selectedTool := #macroExecute. 
 	self selectTool: DrGMacroPlayTool with: DrGMacroPlayerHeadless.
 	self tool builder selectedMacro: aMacro.
 	self tool switchState: DrGMacroPlayToolStateSelect! !
 
-!DrGeo methodsFor: 'callback create' stamp: 'hlsf 5/Apr/2025 11:55:17'!
+!DrGeo methodsFor: 'callback create' stamp: 'hlsf 5/Apr/2025, 9:55:17 am (UTC)'!
 property 
 	selectedTool := #property.
 	self selectTool: DrGPropertyTool.! !
 
-!DrGeo methodsFor: 'callback create' stamp: 'hlsf 5/Apr/2025 12:06:33'!
+!DrGeo methodsFor: 'callback create' stamp: 'hlsf 5/Apr/2025, 10:06:33 am (UTC)'!
 useScript
 	selectedTool := #useScript.
 	self selectTool: DrGScriptPlayTool with: DrGScriptPlayer! !
 
-!DrGeo methodsFor: 'callback create' stamp: 'hlsf 5/Apr/2025 12:06:43'!
+!DrGeo methodsFor: 'callback create' stamp: 'hlsf 5/Apr/2025, 10:06:43 am (UTC)'!
 useScript: aScript
 	selectedTool := #useScript.
 	self selectTool: DrGScriptPlayTool with: DrGScriptPlayerHeadless.	
 	self tool builder scriptClass: aScript.
 	self tool switchState: DrGMacroPlayToolStateSelect! !
 
-!DrGeo methodsFor: 'canvas' stamp: 'drgeo 24/Feb/2026 14:21:30'!
+!DrGeo methodsFor: 'canvas' stamp: 'drgeo 24/Feb/2026, 12:21:30 pm (UTC)'!
 previewIn: aFileEntry
 "compute a preview and save it in the file entry"
 	| stream form |
@@ -7089,14 +7091,14 @@ previewIn: aFileEntry
 		ensure: [stream close].
 	^ form! !
 
-!DrGeo methodsFor: 'initialize-release' stamp: 'hlsf 7/Jan/2026 16:10:42'!
+!DrGeo methodsFor: 'initialize-release' stamp: 'hlsf 7/Jan/2026, 2:10:42 pm (UTC)'!
 initialize
 	self initializeBasic.
 	self controlsManager: DrGControlsManager.
 	self move.
 	self view openInWorld ! !
 
-!DrGeo methodsFor: 'initialize-release' stamp: 'hlsf 4/Aug/2023 18:16:58'!
+!DrGeo methodsFor: 'initialize-release' stamp: 'hlsf 4/Aug/2023, 4:16:58 pm (UTC)'!
 initializeBasic
 	super initialize.
 	isCreateMultipleMode := false.
@@ -7106,13 +7108,13 @@ initializeBasic
 	notInteractive := false.
 	domain := DrGeoDomain new.! !
 
-!DrGeo methodsFor: 'initialize-release' stamp: 'hlsf 7/Jan/2026 15:33:59'!
+!DrGeo methodsFor: 'initialize-release' stamp: 'hlsf 7/Jan/2026, 1:33:59 pm (UTC)'!
 initializeService
 	self initializeBasic.
 	self controlsManager: DrGMinimalControlsManager.
 	self move.! !
 
-!DrGeo methodsFor: 'initialize-release' stamp: 'hlsf 14/Nov/2023 00:18:55'!
+!DrGeo methodsFor: 'initialize-release' stamp: 'hlsf 13/Nov/2023, 10:18:55 pm (UTC)'!
 release
 	tool release.
 	self drawable ifNotNil: [:dr | dr release].
@@ -7123,7 +7125,7 @@ release
 	controlsManager := nil.
 	sketchName := nil! !
 
-!DrGeo methodsFor: 'testing' stamp: 'hlsf 19/Jun/2021 10:07:28'!
+!DrGeo methodsFor: 'testing' stamp: 'hlsf 19/Jun/2021, 8:07:28 am (UTC)'!
 isAxesVisible
 	^ self drawable 
 		ifNotNil: [self drawable axesVisible]
@@ -7138,7 +7140,7 @@ isForceVisible
 	"We force unvisible costume to be visible when in style mode only"
 	^ (self isTool: #style) or: [self isTool: #eraser]! !
 
-!DrGeo methodsFor: 'testing' stamp: 'hlsf 19/Jun/2021 10:07:28'!
+!DrGeo methodsFor: 'testing' stamp: 'hlsf 19/Jun/2021, 8:07:28 am (UTC)'!
 isGridVisible
 	^ self drawable 
 		ifNotNil: [self drawable gridVisible]
@@ -7148,11 +7150,11 @@ isGridVisible
 isGridded
 	^ gridStuck! !
 
-!DrGeo methodsFor: 'testing' stamp: 'hlsf 3/Aug/2023 21:21:36'!
+!DrGeo methodsFor: 'testing' stamp: 'hlsf 3/Aug/2023, 7:21:36 pm (UTC)'!
 isNotInteractive
 	^ notInteractive ! !
 
-!DrGeo methodsFor: 'testing' stamp: 'hlsf 3/Aug/2023 20:51:22'!
+!DrGeo methodsFor: 'testing' stamp: 'hlsf 3/Aug/2023, 6:51:22 pm (UTC)'!
 isSaved
 	^ saved! !
 
@@ -7161,22 +7163,22 @@ isTool: symbolTool
 "Do we have this symbolTool selected"
 	^ selectedTool == symbolTool ! !
 
-!DrGeo methodsFor: 'tool' stamp: 'hlsf 10/Apr/2022 14:59:57'!
+!DrGeo methodsFor: 'tool' stamp: 'hlsf 10/Apr/2022, 12:59:57 pm (UTC)'!
 openTools
 	controlsManager openTools! !
 
-!DrGeo methodsFor: 'tool' stamp: 'hlsf 5/Apr/2025 11:58:45'!
+!DrGeo methodsFor: 'tool' stamp: 'hlsf 5/Apr/2025, 9:58:45 am (UTC)'!
 selectTool: aToolClassName
 	self tool: nil.
 	self tool: (aToolClassName presenter: self).
 	self changed: #selectedTool! !
 
-!DrGeo methodsFor: 'tool' stamp: 'hlsf 5/Apr/2025 12:09:49'!
+!DrGeo methodsFor: 'tool' stamp: 'hlsf 5/Apr/2025, 10:09:49 am (UTC)'!
 selectTool: aToolClassName with: aBuilderClass
 	self tool: (aToolClassName builder: aBuilderClass presenter: self).
 	self changed: #isTool:! !
 
-!DrGeo methodsFor: 'tool' stamp: 'hlsf 19/Jun/2021 14:53:45'!
+!DrGeo methodsFor: 'tool' stamp: 'hlsf 19/Jun/2021, 12:53:45 pm (UTC)'!
 selectToolAfterBuilding
 	self isCreateMultipleMode
 		ifFalse: 	[self move]! !
@@ -7201,7 +7203,7 @@ deleteMathItem: aCostume
 	self domain deleteMathItem: aCostume mathItem.
 	self domain updateAllMathItems! !
 
-!DrGeo methodsFor: 'updating' stamp: 'hlsf 4/Aug/2023 12:19:10'!
+!DrGeo methodsFor: 'updating' stamp: 'hlsf 4/Aug/2023, 10:19:10 am (UTC)'!
 readyToBuild
 	|answer|
 	"readyToBuild event, the builder is ready to build, request to the domain the construction of the math item under the builder"
@@ -7226,13 +7228,13 @@ readyToBuildMacro
 	self domain createMacro: self tool builder.
 	self move! !
 
-!DrGeo methodsFor: 'updating' stamp: 'hlsf 4/Aug/2023 17:33:11'!
+!DrGeo methodsFor: 'updating' stamp: 'hlsf 4/Aug/2023, 3:33:11 pm (UTC)'!
 readyToPlayMacro
 	"readyToBuild event, the builder is ready to play a macro (enought input items), request to the domain the construction of the math items under the builder"
 	self domain playMacro: self tool builder in: self.
 	self move! !
 
-!DrGeo methodsFor: 'updating' stamp: 'hlsf 4/Aug/2023 12:19:10'!
+!DrGeo methodsFor: 'updating' stamp: 'hlsf 4/Aug/2023, 10:19:10 am (UTC)'!
 updateSelection
 	(self isTool: #move) ifTrue: [|aMathItem| 
 		aMathItem := controlsManager tree selectedItem withoutListWrapper.
@@ -7240,7 +7242,7 @@ updateSelection
 			ifTrue: [self tool morph: nil]
 			ifFalse: [	self tool morph: (self drawable viewOf: aMathItem)]]! !
 
-!DrGeo class methodsFor: 'file' stamp: 'drgeo 7/Jun/2026 11:59:31'!
+!DrGeo class methodsFor: 'file' stamp: 'drgeo 7/Jun/2026, 9:59:31 am (UTC)'!
 file: fileEntry
 	|answer|
 	DrGeoSystem startSpinner.
@@ -7249,19 +7251,19 @@ file: fileEntry
 	answer do: [:drgeoPresenter | drgeoPresenter drawable resampleLocusViews].
 	^ answer! !
 
-!DrGeo class methodsFor: 'file' stamp: 'hlsf 4/Aug/2023 18:07:41'!
+!DrGeo class methodsFor: 'file' stamp: 'hlsf 4/Aug/2023, 4:07:41 pm (UTC)'!
 serviceXml: fileEntry
 	^ DrGeoXml new load: fileEntry for: #service
 ! !
 
-!DrGeo class methodsFor: 'instance creation' stamp: 'hlsf 4/Aug/2023 18:03:35'!
+!DrGeo class methodsFor: 'instance creation' stamp: 'hlsf 4/Aug/2023, 4:03:35 pm (UTC)'!
 service
 "instanciate a DrGeo service, to embbed in third party Morph. It is just the canvas without surounding menu and icon"
 	^ self basicNew
 		initializeService;
 		yourself! !
 
-!DrGeo class methodsFor: 'saved status' stamp: 'hlsf 17/Feb/2026 16:27:46'!
+!DrGeo class methodsFor: 'saved status' stamp: 'hlsf 17/Feb/2026, 2:27:46 pm (UTC)'!
 figuresArray
 	|items activeViews|
 	activeViews := OrderedCollection new.
@@ -7276,7 +7278,7 @@ figuresArray
 	^ items
 ! !
 
-!DrGeo class methodsFor: 'saved status' stamp: 'hlsf 3/Aug/2023 21:40:18'!
+!DrGeo class methodsFor: 'saved status' stamp: 'hlsf 3/Aug/2023, 7:40:18 pm (UTC)'!
 macrosArray
 	|items|
 	items := OrderedCollection new.
@@ -7287,7 +7289,7 @@ macrosArray
 			with: (ValueHolder with: macro isSaved not) )].
 	^ items! !
 
-!DrGeo class methodsFor: 'saved status' stamp: 'hlsf 8/Jan/2026 22:04:37'!
+!DrGeo class methodsFor: 'saved status' stamp: 'hlsf 8/Jan/2026, 8:04:37 pm (UTC)'!
 unsavedData
 "Answer a collection of unsaved data"
 	| unsavedData |
@@ -7296,23 +7298,23 @@ unsavedData
 		addAll: (self figuresArray select: [:each | each third propertyValue]).
 	^ unsavedData! !
 
-!DrGeo class methodsFor: 'menu' stamp: 'hlsf 22/Feb/2026 10:28:33'!
+!DrGeo class methodsFor: 'menu' stamp: 'hlsf 22/Feb/2026, 8:28:33 am (UTC)'!
 about
 	UISupervisor whenUIinSafeState: [
 		(PopUpMenu labels: ' Ok ' icons: {DrGIcons drgeo}) 
 			startUpNonModalWithCaption:  self informationString ]! !
 
-!DrGeo class methodsFor: 'menu' stamp: 'hlsf 22/Feb/2026 10:28:19'!
+!DrGeo class methodsFor: 'menu' stamp: 'hlsf 22/Feb/2026, 8:28:19 am (UTC)'!
 copyright
 	^ 'Source code application: Copyright 1996-2026 Hilaire Fernandes
 Icons: Copyright 1999 Frédéric Toussaint
 Icons: Copyright 2021-2022 David Caula (imppao)'! !
 
-!DrGeo class methodsFor: 'menu' stamp: 'hlsf 8/Jan/2026 22:05:47'!
+!DrGeo class methodsFor: 'menu' stamp: 'hlsf 8/Jan/2026, 8:05:47 pm (UTC)'!
 cuisVersion
 	^ SystemVersion current versionString, ' #', SystemVersion current highestUpdate printString! !
 
-!DrGeo class methodsFor: 'menu' stamp: 'hlsf 3/Aug/2023 21:47:35'!
+!DrGeo class methodsFor: 'menu' stamp: 'hlsf 3/Aug/2023, 7:47:35 pm (UTC)'!
 getMenuIn: aWorld at: aHand
 	| menu |
 	menu :=  (CommandBuilder on: #drgeoWorldMenu) getMenu.
@@ -7320,7 +7322,7 @@ getMenuIn: aWorld at: aHand
 		addTitle: 'System menu' translated.
 	^ menu! !
 
-!DrGeo class methodsFor: 'menu' stamp: 'hlsf 22/Feb/2026 10:28:33'!
+!DrGeo class methodsFor: 'menu' stamp: 'hlsf 22/Feb/2026, 8:28:33 am (UTC)'!
 informationString
 	|text |
 	text := 'Dr. Geo is about interactive geometry and programming.
@@ -7338,7 +7340,7 @@ and programmed interactive sketches.
 LICENSE: GPL' translated format: {self version. self copyright. self cuisVersion }.
 	^ text! !
 
-!DrGeo class methodsFor: 'menu' stamp: 'drgeo 30/Apr/2026 10:32:14'!
+!DrGeo class methodsFor: 'menu' stamp: 'drgeo 30/Apr/2026, 8:32:14 am (UTC)'!
 preferencesMenu: builder
 	<drgeoWorldMenu>
 	(builder newEntry: #settings in: #preferences)
@@ -7358,14 +7360,14 @@ preferencesMenu: builder
 		order: 3.
 		! !
 
-!DrGeo class methodsFor: 'menu' stamp: 'hlsf 3/Aug/2023 21:44:17'!
+!DrGeo class methodsFor: 'menu' stamp: 'hlsf 3/Aug/2023, 7:44:17 pm (UTC)'!
 quit
 	self unsavedData isEmpty ifFalse: [ 
 		(self confirm: 'There is unsaved data!! 
 Are you sure to quit Dr. Geo environment?' translated) ifFalse: [ ^ self]].
 	Smalltalk quitPrimitive! !
 
-!DrGeo class methodsFor: 'menu' stamp: 'drgeo 30/Apr/2026 10:33:25'!
+!DrGeo class methodsFor: 'menu' stamp: 'drgeo 30/Apr/2026, 8:33:25 am (UTC)'!
 toolsMenu: builder
 	<drgeoWorldMenu>
 	(builder newEntry: #systemBrowser in: #tools)
@@ -7417,14 +7419,14 @@ toolsMenu: builder
 		icon:	 #saveIcon;
 		help: 'Save this Dr. Geo session.' translated! !
 
-!DrGeo class methodsFor: 'menu' stamp: 'drgeo 30/Apr/2026 10:41:53'!
+!DrGeo class methodsFor: 'menu' stamp: 'drgeo 30/Apr/2026, 8:41:53 am (UTC)'!
 version
 	^ 'Installed version: ' translated, 
 		'26.06b beta (code revision ', 
 		(String streamContents: [:str | 
 			(CodePackage installedPackages at: 'DrGeo') featureSpec provides printVersionRevisionOn: str]), ')'! !
 
-!DrGeo class methodsFor: 'menu' stamp: 'drgeo 30/Apr/2026 10:34:08'!
+!DrGeo class methodsFor: 'menu' stamp: 'drgeo 30/Apr/2026, 8:34:08 am (UTC)'!
 worldMenu: builder
 	<drgeoWorldMenu>
 	(builder newEntry: #newSketch)
@@ -7472,7 +7474,7 @@ unexecute
 domain: aDomain
 	domain := aDomain.! !
 
-!DrGCommand methodsFor: 'as yet unclassified' stamp: 'hlsf 2/May/2020 00:06:31'!
+!DrGCommand methodsFor: 'as yet unclassified' stamp: 'hlsf 1/May/2020, 10:06:31 pm (UTC)'!
 release
 "Let my child do some clean up"! !
 
@@ -7485,7 +7487,7 @@ compileComposite: theMathItems
 execute
 	domain triggerEvent: #groupCostumes with: compositeItem.! !
 
-!DrGCompositeCommand methodsFor: 'as yet unclassified' stamp: 'hlsf 29/Apr/2020 23:55:00'!
+!DrGCompositeCommand methodsFor: 'as yet unclassified' stamp: 'hlsf 29/Apr/2020, 9:55:00 pm (UTC)'!
 release
 	compositeItem release.
 ! !
@@ -7504,16 +7506,16 @@ with: theMathItems in: aDomain
 deleteMathItem: aMathItem 
 	mathItems := domain factory orderedDependentMathItem: aMathItem.! !
 
-!DrGDeleteCommand methodsFor: 'as yet unclassified' stamp: 'hlsf 29/Apr/2020 23:55:22'!
+!DrGDeleteCommand methodsFor: 'as yet unclassified' stamp: 'hlsf 29/Apr/2020, 9:55:22 pm (UTC)'!
 release
 	mathItems do: [:m | m release].! !
 
-!DrGDeleteCommand methodsFor: 'command' stamp: 'hlsf 10/Feb/2022 10:17:17'!
+!DrGDeleteCommand methodsFor: 'command' stamp: 'hlsf 10/Feb/2022, 8:17:17 am (UTC)'!
 execute
 	domain factory 
 		remove: mathItems! !
 
-!DrGDeleteCommand methodsFor: 'command' stamp: 'hlsf 10/Feb/2022 10:05:42'!
+!DrGDeleteCommand methodsFor: 'command' stamp: 'hlsf 10/Feb/2022, 8:05:42 am (UTC)'!
 unexecute
 	mathItems do: [:aMathItem|
 		domain factory add: aMathItem.
@@ -7527,7 +7529,7 @@ for: aMathItem in: aDomain
 		domain: aDomain;
 		deleteMathItem: aMathItem.! !
 
-!DrGMathItemCommand methodsFor: 'accessing' stamp: 'hlsf 9/Mar/2023 17:24:03'!
+!DrGMathItemCommand methodsFor: 'accessing' stamp: 'hlsf 9/Mar/2023, 3:24:03 pm (UTC)'!
 createMathItem: aBuilder
 	mathItems := aBuilder getItem.
 	mathItems do: [:each | domain autoname: each]
@@ -7538,11 +7540,11 @@ fromMathItem: aMathItem
 	mathItems := {aMathItem}.
 ! !
 
-!DrGMathItemCommand methodsFor: 'dependents access' stamp: 'hlsf 29/Apr/2020 23:56:37'!
+!DrGMathItemCommand methodsFor: 'dependents access' stamp: 'hlsf 29/Apr/2020, 9:56:37 pm (UTC)'!
 release
 	mathItems do: [:m | m release]! !
 
-!DrGMathItemCommand methodsFor: 'command' stamp: 'hlsf 10/Feb/2022 10:16:35'!
+!DrGMathItemCommand methodsFor: 'command' stamp: 'hlsf 10/Feb/2022, 8:16:35 am (UTC)'!
 execute
 	"Remove any previous dependant"
 	mathItems do: [:aMathItem| 
@@ -7551,7 +7553,7 @@ execute
 		domain triggerEvent: #redoMathItem with: aMathItem].
 	^mathItems! !
 
-!DrGMathItemCommand methodsFor: 'command' stamp: 'hlsf 10/Feb/2022 10:16:41'!
+!DrGMathItemCommand methodsFor: 'command' stamp: 'hlsf 10/Feb/2022, 8:16:41 am (UTC)'!
 unexecute
 	"remove the mathItem in the factory"
 	domain factory 
@@ -7610,11 +7612,11 @@ merge: aMathItem with: aTarget in: aDomain
 		domain: aDomain;
 		merge: aMathItem with: aTarget ! !
 
-!DrGMoveCommand methodsFor: 'command' stamp: 'hlsf 10/Feb/2022 10:16:21'!
+!DrGMoveCommand methodsFor: 'command' stamp: 'hlsf 10/Feb/2022, 8:16:21 am (UTC)'!
 execute
 	domain moveEvent: mathItem inDirection: vector! !
 
-!DrGMoveCommand methodsFor: 'command' stamp: 'hlsf 10/Feb/2022 10:16:25'!
+!DrGMoveCommand methodsFor: 'command' stamp: 'hlsf 10/Feb/2022, 8:16:25 am (UTC)'!
 unexecute
 	domain moveEvent: mathItem inDirection: vector negated! !
 
@@ -7661,7 +7663,7 @@ for: aMathItem with: aProperty in: aDomain
 		mathItem: aMathItem;
 		property: aProperty! !
 
-!DrGCommandManager methodsFor: 'dependents access' stamp: 'hlsf 24/Apr/2020 12:56:20'!
+!DrGCommandManager methodsFor: 'dependents access' stamp: 'hlsf 24/Apr/2020, 10:56:20 am (UTC)'!
 release
 	stack contents do: [:c | c release].! !
 
@@ -7726,11 +7728,11 @@ undo
 domain: aDomain
 	domain := aDomain! !
 
-!DrGTool methodsFor: 'handling' stamp: 'hlsf 11/Apr/2021 12:04:52'!
+!DrGTool methodsFor: 'handling' stamp: 'hlsf 11/Apr/2021, 10:04:52 am (UTC)'!
 chooseMorph: morphs 
 	self chooseMorph: morphs title: 'Select an object' translated.! !
 
-!DrGTool methodsFor: 'handling' stamp: 'hlsf 3/Aug/2021 13:00:01'!
+!DrGTool methodsFor: 'handling' stamp: 'hlsf 3/Aug/2021, 11:00:01 am (UTC)'!
 chooseMorph: morphs title: aTitle
 	| menu |
 	menu := DrGDrawableMenu entitled: aTitle.
@@ -7739,15 +7741,15 @@ chooseMorph: morphs title: aTitle
 		menu add: aMorph asString target: self action: #handleChoice: argument: {aMorph}].
 	menu popUpInWorld. ! !
 
-!DrGTool methodsFor: 'handling' stamp: 'hlsf 11/Apr/2021 12:05:08'!
+!DrGTool methodsFor: 'handling' stamp: 'hlsf 11/Apr/2021, 10:05:08 am (UTC)'!
 handleChoice: aMorphCollection
 	^ self state handleChoice: aMorphCollection ! !
 
-!DrGTool methodsFor: 'handling' stamp: 'hlsf 20/Jun/2021 16:52:25'!
+!DrGTool methodsFor: 'handling' stamp: 'hlsf 20/Jun/2021, 2:52:25 pm (UTC)'!
 handleMouseAt: aPoint
 	^self state handleMouseAt: aPoint! !
 
-!DrGTool methodsFor: 'handling' stamp: 'hlsf 20/Jun/2021 22:08:39'!
+!DrGTool methodsFor: 'handling' stamp: 'hlsf 20/Jun/2021, 8:08:39 pm (UTC)'!
 handlePress: aPoint
 	^self state handlePress: aPoint ! !
 
@@ -7755,7 +7757,7 @@ handlePress: aPoint
 handlePressShiftKey: aPoint
 	^self state handlePressShiftKey: aPoint ! !
 
-!DrGTool methodsFor: 'handling' stamp: 'hlsf 20/Jun/2021 22:42:51'!
+!DrGTool methodsFor: 'handling' stamp: 'hlsf 20/Jun/2021, 8:42:51 pm (UTC)'!
 handleRelease: aPoint
 	self state handleRelease: aPoint ! !
 
@@ -7775,18 +7777,18 @@ handleShiftKeyMouseAt: aPoint
 handleStillPress: aPoint
 	self state handleStillPress: aPoint! !
 
-!DrGTool methodsFor: 'updating' stamp: 'hlsf 19/Jun/2021 10:07:28'!
+!DrGTool methodsFor: 'updating' stamp: 'hlsf 19/Jun/2021, 8:07:28 am (UTC)'!
 gridPoint: ungriddedPoint
 	^ self drawable gridPoint: ungriddedPoint.! !
 
-!DrGTool methodsFor: 'updating' stamp: 'hlsf 11/Apr/2021 12:06:31'!
+!DrGTool methodsFor: 'updating' stamp: 'hlsf 11/Apr/2021, 10:06:31 am (UTC)'!
 redrawFlyingMorph! !
 
-!DrGTool methodsFor: 'updating' stamp: 'hlsf 31/May/2025 15:43:18'!
+!DrGTool methodsFor: 'updating' stamp: 'hlsf 31/May/2025, 1:43:18 pm (UTC)'!
 switchState: aStateClass
 	self state: (aStateClass new context: self)! !
 
-!DrGTool methodsFor: 'initialize-release' stamp: 'hlsf 11/Apr/2021 12:03:29'!
+!DrGTool methodsFor: 'initialize-release' stamp: 'hlsf 11/Apr/2021, 10:03:29 am (UTC)'!
 initialize
 	morph := nil.
 	self last: 0@0.! !
@@ -7794,11 +7796,11 @@ initialize
 !DrGTool methodsFor: 'initialize-release' stamp: ''!
 registerDependant: anObject! !
 
-!DrGTool methodsFor: 'initialize-release' stamp: 'hlsf 24/Apr/2020 12:02:18'!
+!DrGTool methodsFor: 'initialize-release' stamp: 'hlsf 24/Apr/2020, 10:02:18 am (UTC)'!
 release
 	self reset.! !
 
-!DrGTool methodsFor: 'initialize-release' stamp: 'hlsf 7/Feb/2026 11:25:26'!
+!DrGTool methodsFor: 'initialize-release' stamp: 'hlsf 7/Feb/2026, 9:25:26 am (UTC)'!
 reset
 	self morph: nil;
 		last: nil;
@@ -7816,7 +7818,7 @@ description
 domain 
 	^presenter domain! !
 
-!DrGTool methodsFor: 'accessing' stamp: 'hlsf 19/Jun/2021 10:07:28'!
+!DrGTool methodsFor: 'accessing' stamp: 'hlsf 19/Jun/2021, 8:07:28 am (UTC)'!
 drawable 
 	^presenter drawable! !
 
@@ -7832,15 +7834,15 @@ last
 last: aPoint
 	last := aPoint! !
 
-!DrGTool methodsFor: 'accessing' stamp: 'hlsf 11/Apr/2021 12:46:23'!
+!DrGTool methodsFor: 'accessing' stamp: 'hlsf 11/Apr/2021, 10:46:23 am (UTC)'!
 mathItem
 	^self morph mathItem! !
 
-!DrGTool methodsFor: 'accessing' stamp: 'hlsf 11/Apr/2021 12:46:23'!
+!DrGTool methodsFor: 'accessing' stamp: 'hlsf 11/Apr/2021, 10:46:23 am (UTC)'!
 morph
 	^morph ! !
 
-!DrGTool methodsFor: 'accessing' stamp: 'hlsf 12/Apr/2024 12:23:50'!
+!DrGTool methodsFor: 'accessing' stamp: 'hlsf 12/Apr/2024, 10:23:50 am (UTC)'!
 morph: aMorph
 	morph ifNotNil: [
 		morph stopStepping. "Blinking"
@@ -7860,7 +7862,7 @@ presenter
 presenter: aPresenter
 	presenter := aPresenter ! !
 
-!DrGTool methodsFor: 'accessing' stamp: 'hlsf 23/Jun/2021 15:47:53'!
+!DrGTool methodsFor: 'accessing' stamp: 'hlsf 23/Jun/2021, 1:47:53 pm (UTC)'!
 relevantMorphsNear: aPoint
 "return the list of morphs at position aPoint relevant to me, override if needed"
 	^self myMorphsNear: aPoint ! !
@@ -7881,7 +7883,7 @@ state
 state: aState
 	state :=	aState ! !
 
-!DrGTool methodsFor: 'private' stamp: 'hlsf 4/Aug/2023 11:39:29'!
+!DrGTool methodsFor: 'private' stamp: 'hlsf 4/Aug/2023, 9:39:29 am (UTC)'!
 myMorphsNear: aPoint
 "Only morphs where feedback and action are wished,  	not hidden, wanted and under mouse cursor"
 	^self drawable itemViews select: [:aMorph | 
@@ -7889,7 +7891,7 @@ myMorphsNear: aPoint
 			and: [(self isWanted: {aMorph mathItem})
 			and: [aMorph containsPoint: aPoint]]]! !
 
-!DrGTool methodsFor: 'private' stamp: 'drgeo 7/Jun/2026 11:38:21'!
+!DrGTool methodsFor: 'private' stamp: 'drgeo 7/Jun/2026, 9:38:21 am (UTC)'!
 pointMorphsFirstNear: aPoint 
 	"When the user moves the mouse over a collection of geometric items, if there
 are any point items, we discard all the other geometric items"
@@ -7899,12 +7901,12 @@ are any point items, we discard all the other geometric items"
 	pointMorphs ifNotEmpty: [ ^ pointMorphs ].
 	^ myMorphs! !
 
-!DrGTool methodsFor: 'private' stamp: 'drgeo 7/Jun/2026 11:38:31'!
+!DrGTool methodsFor: 'private' stamp: 'drgeo 7/Jun/2026, 9:38:31 am (UTC)'!
 pointMorphsNear: aPoint 
 	"List of point under the mouse cursor"
 	^ (self myMorphsNear: aPoint) select: [:aMorph | aMorph is: #PointMorph].! !
 
-!DrGTool methodsFor: 'testing' stamp: 'hlsf 20/Jun/2021 17:15:14'!
+!DrGTool methodsFor: 'testing' stamp: 'hlsf 20/Jun/2021, 3:15:14 pm (UTC)'!
 isBuilding
 "does the tool build new object ?"
 	^ true! !
@@ -7921,11 +7923,11 @@ isGridded
 isWanted: aMathItem
 	^true! !
 
-!DrGTool class methodsFor: 'instance creation' stamp: 'hlsf 13/Feb/2022 11:06:59'!
+!DrGTool class methodsFor: 'instance creation' stamp: 'hlsf 13/Feb/2022, 9:06:59 am (UTC)'!
 new
 	self error: 'Instanciate with #presenter: message'! !
 
-!DrGTool class methodsFor: 'instance creation' stamp: 'hlsf 13/Feb/2022 11:06:20'!
+!DrGTool class methodsFor: 'instance creation' stamp: 'hlsf 13/Feb/2022, 9:06:20 am (UTC)'!
 presenter: aPresenter
 	^ self basicNew
 		presenter: aPresenter;
@@ -7948,7 +7950,7 @@ description
 isAnimating
 	^ self state isAnimating ! !
 
-!DrGAnimateTool methodsFor: 'accessing' stamp: 'hlsf 23/Jun/2021 15:43:01'!
+!DrGAnimateTool methodsFor: 'accessing' stamp: 'hlsf 23/Jun/2021, 1:43:01 pm (UTC)'!
 relevantMorphsNear: aPoint
 	^ (self pointMorphsNear: aPoint) select: [:aMorph | aMorph mathItem isPointItemOnCurve]! !
 
@@ -7980,13 +7982,13 @@ title
 isWanted: aMathItemCollection
 	^builder isWanted: aMathItemCollection  ! !
 
-!DrGBuildTool methodsFor: 'adding' stamp: 'hlsf 4/Aug/2021 12:34:24'!
+!DrGBuildTool methodsFor: 'adding' stamp: 'hlsf 4/Aug/2021, 10:34:24 am (UTC)'!
 add: aMorph
 	self stopBlinking.
 	selectedMorphs add: aMorph.
 	self startBlinking.! !
 
-!DrGBuildTool methodsFor: 'initialize-release' stamp: 'hlsf 11/Apr/2021 12:28:10'!
+!DrGBuildTool methodsFor: 'initialize-release' stamp: 'hlsf 11/Apr/2021, 10:28:10 am (UTC)'!
 initialize
 	super initialize.
 	self switchState:  DrGBuildToolState.
@@ -7996,28 +7998,28 @@ initialize
 registerDependant: anObject
 	builder when: #readyToBuild send: #readyToBuild to: anObject! !
 
-!DrGBuildTool methodsFor: 'initialize-release' stamp: 'hlsf 27/May/2026 21:28:39'!
+!DrGBuildTool methodsFor: 'initialize-release' stamp: 'hlsf 27/May/2026, 7:28:39 pm (UTC)'!
 release
 	super release.
 	builder release.
 	self removeAllActions! !
 
-!DrGBuildTool methodsFor: 'updating' stamp: 'hlsf 11/Apr/2021 12:06:31'!
+!DrGBuildTool methodsFor: 'updating' stamp: 'hlsf 11/Apr/2021, 10:06:31 am (UTC)'!
 redrawFlyingMorph
 	builder redrawFlyingMorph ! !
 
-!DrGBuildTool methodsFor: 'updating' stamp: 'hlsf 11/Apr/2021 12:28:10'!
+!DrGBuildTool methodsFor: 'updating' stamp: 'hlsf 11/Apr/2021, 10:28:10 am (UTC)'!
 reset
 	super reset.
 	self stopBlinking.
 	self builder reset.
 	selectedMorphs := OrderedCollection new! !
 
-!DrGBuildTool methodsFor: 'updating' stamp: 'hlsf 12/Apr/2024 12:24:04'!
+!DrGBuildTool methodsFor: 'updating' stamp: 'hlsf 12/Apr/2024, 10:24:04 am (UTC)'!
 startBlinking
 	selectedMorphs do: [ :aMorph | aMorph startStepping " blinking"]! !
 
-!DrGBuildTool methodsFor: 'updating' stamp: 'hlsf 12/Apr/2024 12:21:34'!
+!DrGBuildTool methodsFor: 'updating' stamp: 'hlsf 12/Apr/2024, 10:21:34 am (UTC)'!
 stopBlinking
 	selectedMorphs do: [ :aMorph | aMorph stopStepping ]! !
 
@@ -8033,12 +8035,12 @@ builder: aBuilder
 description 
 	^ builder class description! !
 
-!DrGBuildTool methodsFor: 'accessing' stamp: 'hlsf 4/Aug/2023 17:25:21'!
+!DrGBuildTool methodsFor: 'accessing' stamp: 'hlsf 4/Aug/2023, 3:25:21 pm (UTC)'!
 presenter: aPresenter
 	super presenter: aPresenter.
 	builder presenter: aPresenter .! !
 
-!DrGBuildTool class methodsFor: 'instance creation' stamp: 'hlsf 13/Feb/2022 11:09:38'!
+!DrGBuildTool class methodsFor: 'instance creation' stamp: 'hlsf 13/Feb/2022, 9:09:38 am (UTC)'!
 builder: aBuilderClassName presenter: aPresenter
 	^self basicNew
 		builder: aBuilderClassName new;
@@ -8062,7 +8064,7 @@ intersectableCurves: aCollection at: aPoint
 		ifTrue: [ aCollection ]
 		ifFalse: [self intersectableCurves: aCollection allButFirst at: aPoint ]! !
 
-!DrGFlyPointBuildTool methodsFor: 'accessing' stamp: 'drgeo 7/Jun/2026 11:34:41'!
+!DrGFlyPointBuildTool methodsFor: 'accessing' stamp: 'drgeo 7/Jun/2026, 9:34:41 am (UTC)'!
 relevantMorphsNear: aPoint
 	| intersectables curves | 
 	intersectables := self 
@@ -8076,11 +8078,11 @@ relevantMorphsNear: aPoint
 			ifTrue: [ #() ]
 			ifFalse: [ curves]]! !
 
-!DrGFlyBuildTool methodsFor: 'adding' stamp: 'hlsf 11/Apr/2021 12:32:36'!
+!DrGFlyBuildTool methodsFor: 'adding' stamp: 'hlsf 11/Apr/2021, 10:32:36 am (UTC)'!
 add: aMorph
 	mathItemTool add: aMorph ! !
 
-!DrGFlyBuildTool methodsFor: 'initialize-release' stamp: 'hlsf 4/Aug/2023 17:25:59'!
+!DrGFlyBuildTool methodsFor: 'initialize-release' stamp: 'hlsf 4/Aug/2023, 3:25:59 pm (UTC)'!
 initialize
 	super initialize.
 	self switchState: DrGFlyBuildToolState.
@@ -8089,22 +8091,22 @@ initialize
 	flyPointTool presenter: presenter.
 	mathItemTool builder presenter: presenter ! !
 
-!DrGFlyBuildTool methodsFor: 'initialize-release' stamp: 'hlsf 4/Aug/2021 11:22:35'!
+!DrGFlyBuildTool methodsFor: 'initialize-release' stamp: 'hlsf 4/Aug/2021, 9:22:35 am (UTC)'!
 registerDependant: anObject
 	mathItemTool registerDependant: anObject.
 	flyPointTool registerDependant: anObject! !
 
-!DrGFlyBuildTool methodsFor: 'initialize-release' stamp: 'hlsf 4/Aug/2021 11:22:35'!
+!DrGFlyBuildTool methodsFor: 'initialize-release' stamp: 'hlsf 4/Aug/2021, 9:22:35 am (UTC)'!
 release
 	super release
 	mathItemTool release.
 	flyPointTool release.! !
 
-!DrGFlyBuildTool methodsFor: 'updating' stamp: 'hlsf 11/Apr/2021 12:06:31'!
+!DrGFlyBuildTool methodsFor: 'updating' stamp: 'hlsf 11/Apr/2021, 10:06:31 am (UTC)'!
 redrawFlyingMorph
 	mathItemTool builder redrawFlyingMorph ! !
 
-!DrGFlyBuildTool methodsFor: 'updating' stamp: 'hlsf 4/Aug/2021 11:22:35'!
+!DrGFlyBuildTool methodsFor: 'updating' stamp: 'hlsf 4/Aug/2021, 9:22:35 am (UTC)'!
 reset
 "Why do we reset?"
 	"because intermediate point where created"
@@ -8115,7 +8117,7 @@ reset
 
 ! !
 
-!DrGFlyBuildTool methodsFor: 'updating' stamp: 'hlsf 4/Aug/2021 11:22:35'!
+!DrGFlyBuildTool methodsFor: 'updating' stamp: 'hlsf 4/Aug/2021, 9:22:35 am (UTC)'!
 resetForFreshStart
 "Reset to restart over the user  build process"
 	mathItemTool reset.
@@ -8125,7 +8127,7 @@ resetForFreshStart
 isWanted: aMathItem
 	^mathItemTool isWanted: aMathItem! !
 
-!DrGFlyBuildTool methodsFor: 'accessing' stamp: 'hlsf 4/Aug/2021 11:22:35'!
+!DrGFlyBuildTool methodsFor: 'accessing' stamp: 'hlsf 4/Aug/2021, 9:22:35 am (UTC)'!
 builder
 "We have two builder, the flyPointBuilder and the other one (line, segment,...)"
 	flyPointTool builder readyToBuild 
@@ -8140,7 +8142,7 @@ builder: aBuilder
 description 
 	^ mathItemTool builder class description ! !
 
-!DrGFlyBuildTool methodsFor: 'accessing' stamp: 'hlsf 4/Aug/2021 11:22:35'!
+!DrGFlyBuildTool methodsFor: 'accessing' stamp: 'hlsf 4/Aug/2021, 9:22:35 am (UTC)'!
 flyPointTool
 	^flyPointTool! !
 
@@ -8148,12 +8150,12 @@ flyPointTool
 mathItemTool
 	^mathItemTool! !
 
-!DrGFlyBuildTool methodsFor: 'accessing' stamp: 'hlsf 13/Feb/2022 11:13:01'!
+!DrGFlyBuildTool methodsFor: 'accessing' stamp: 'hlsf 13/Feb/2022, 9:13:01 am (UTC)'!
 mathItemTool: aBuilderClassName
 	mathItemTool ifNil: 
 		[mathItemTool := DrGBuildTool builder: aBuilderClassName presenter: presenter] ! !
 
-!DrGFlyBuildTool class methodsFor: 'as yet unclassified' stamp: 'hlsf 13/Feb/2022 11:18:03'!
+!DrGFlyBuildTool class methodsFor: 'as yet unclassified' stamp: 'hlsf 13/Feb/2022, 9:18:03 am (UTC)'!
 builder: aBuilderClass presenter: aPresenter
 	^self basicNew
 		presenter: aPresenter ;
@@ -8161,7 +8163,7 @@ builder: aBuilderClass presenter: aPresenter
 		initialize ;
 		yourself! !
 
-!DrGFlyBuildTool class methodsFor: 'as yet unclassified' stamp: 'hlsf 4/Aug/2021 11:26:34'!
+!DrGFlyBuildTool class methodsFor: 'as yet unclassified' stamp: 'hlsf 4/Aug/2021, 9:26:34 am (UTC)'!
 with: aBuilderClass
 	^self new mathItemTool: aBuilderClass! !
 
@@ -8170,7 +8172,7 @@ initialize
 	super initialize.
 	self switchState: DrGFlyBuildTouchToolState.! !
 
-!DrGSelectTool methodsFor: 'testing' stamp: 'hlsf 20/Jun/2021 17:15:36'!
+!DrGSelectTool methodsFor: 'testing' stamp: 'hlsf 20/Jun/2021, 3:15:36 pm (UTC)'!
 isBuilding
 	^ false! !
 
@@ -8191,7 +8193,7 @@ registerDependant: anObject
 builder
 	^ builder! !
 
-!DrGSelectTool methodsFor: 'accessing' stamp: 'hlsf 31/May/2025 15:09:43'!
+!DrGSelectTool methodsFor: 'accessing' stamp: 'hlsf 31/May/2025, 1:09:43 pm (UTC)'!
 curvesToMutatePointIntoNear: aPoint
 "Search for the curves the point can mutate into. In priority intersectable curves, then curves."
 	| curves intersectables |
@@ -8214,11 +8216,11 @@ description
 mathItems 
 	^ mathItems ! !
 
-!DrGSelectTool methodsFor: 'accessing' stamp: 'hlsf 11/Apr/2021 12:35:13'!
+!DrGSelectTool methodsFor: 'accessing' stamp: 'hlsf 11/Apr/2021, 10:35:13 am (UTC)'!
 morphs
 	^ morphs ! !
 
-!DrGSelectTool methodsFor: 'accessing' stamp: 'hlsf 23/Jun/2021 15:39:01'!
+!DrGSelectTool methodsFor: 'accessing' stamp: 'hlsf 23/Jun/2021, 1:39:01 pm (UTC)'!
 mutableMorphsAt: aPoint
 "select the morph we can mutate"
 	^ (self relevantMorphsNear: aPoint) select: [:aMorph | |item|
@@ -8227,7 +8229,7 @@ mutableMorphsAt: aPoint
 			or: [(item isPointItemOnCurve and: [(self factory is: item parentWithTest: #isLocusItem) not])
 				or: [item isIntersectionPointItem]]]! !
 
-!DrGSelectTool methodsFor: 'accessing' stamp: 'hlsf 4/Aug/2023 17:34:16'!
+!DrGSelectTool methodsFor: 'accessing' stamp: 'hlsf 4/Aug/2023, 3:34:16 pm (UTC)'!
 pointMorphToMergeWithAt: aPoint
 "A collection of point we can merge with. Only free point on plane are merge-able, and the merger should not depend on the initial point as well"
 	| dependents myMorphs |
@@ -8241,7 +8243,7 @@ pointMorphToMergeWithAt: aPoint
 					and: [(dependents includes: aMorph mathItem) not]]]
 		ifFalse: [#()]! !
 
-!DrGSelectTool methodsFor: 'accessing' stamp: 'hlsf 23/Jun/2021 15:43:20'!
+!DrGSelectTool methodsFor: 'accessing' stamp: 'hlsf 23/Jun/2021, 1:43:20 pm (UTC)'!
 relevantMorphsNear: aPoint
 	^ self pointMorphsFirstNear: aPoint! !
 
@@ -8253,7 +8255,7 @@ start
 start: aPoint
 	start := aPoint ! !
 
-!DrGSelectTool methodsFor: 'updating' stamp: 'hlsf 4/Aug/2023 12:19:10'!
+!DrGSelectTool methodsFor: 'updating' stamp: 'hlsf 4/Aug/2023, 10:19:10 am (UTC)'!
 grabClone: clone
 "We cloned!! We want to grab the clone to let the user move it somewhere in the canvas"
 	self morph: (self drawable viewOf: clone).
@@ -8261,7 +8263,7 @@ grabClone: clone
 	self switchState: DrGSelectToolStateDragged.
 ! !
 
-!DrGSelectTool methodsFor: 'updating' stamp: 'hlsf 6/May/2020 14:23:57'!
+!DrGSelectTool methodsFor: 'updating' stamp: 'hlsf 6/May/2020, 12:23:57 pm (UTC)'!
 reset
 	super reset.
 	start := nil.
@@ -8269,7 +8271,7 @@ reset
 	mathItems := nil.
 	builder ifNotNil: [builder reset].! !
 
-!DrGSelectTool methodsFor: 'updating' stamp: 'hlsf 4/Aug/2023 11:39:39'!
+!DrGSelectTool methodsFor: 'updating' stamp: 'hlsf 4/Aug/2023, 9:39:39 am (UTC)'!
 updateDirtyItemsList
 "Dirty items are the one needing update, both model and view. Don't try to be smart, update all of them."
 	mathItems := self factory pool.
@@ -8288,13 +8290,13 @@ isWanted: aMathItemCollection
 " only items whose property are editable "
 	^ aMathItemCollection first isPropertyEditable! !
 
-!DrGPropertyTool methodsFor: 'updating' stamp: 'hlsf 19/Mar/2022 16:19:20'!
+!DrGPropertyTool methodsFor: 'updating' stamp: 'hlsf 19/Mar/2022, 2:19:20 pm (UTC)'!
 reset
 	super reset.
 	presenter controlsManager propertyFor: nil.
 	self switchState: DrGPropertyToolState! !
 
-!DrGPropertyTool methodsFor: 'accessing' stamp: 'hlsf 4/Aug/2023 11:25:09'!
+!DrGPropertyTool methodsFor: 'accessing' stamp: 'hlsf 4/Aug/2023, 9:25:09 am (UTC)'!
 presenter: aPresenter
 	super presenter: aPresenter.
 	self drawable forcedVisibility: false.! !
@@ -8307,7 +8309,7 @@ description
 title
 	^ 'Property' translated! !
 
-!DrGStyleTool methodsFor: 'updating' stamp: 'hlsf 13/Feb/2022 11:26:27'!
+!DrGStyleTool methodsFor: 'updating' stamp: 'hlsf 13/Feb/2022, 9:26:27 am (UTC)'!
 reset
 	super reset.
 	presenter controlsManager stylerFor: nil.
@@ -8318,7 +8320,7 @@ initialize
 	super initialize.
 	self reset.! !
 
-!DrGStyleTool methodsFor: 'initialize-release' stamp: 'hlsf 17/Feb/2026 14:46:53'!
+!DrGStyleTool methodsFor: 'initialize-release' stamp: 'hlsf 17/Feb/2026, 12:46:53 pm (UTC)'!
 release
 	self drawable forcedVisibility: false.
 	self presenter controlsManager stylerFor: nil.
@@ -8329,26 +8331,26 @@ release
 description 
 	^ self class description! !
 
-!DrGStyleTool methodsFor: 'accessing' stamp: 'hlsf 11/Apr/2021 12:52:56'!
+!DrGStyleTool methodsFor: 'accessing' stamp: 'hlsf 11/Apr/2021, 10:52:56 am (UTC)'!
 morphStyle
 	^ self morph style! !
 
-!DrGStyleTool methodsFor: 'accessing' stamp: 'hlsf 4/Aug/2023 11:25:16'!
+!DrGStyleTool methodsFor: 'accessing' stamp: 'hlsf 4/Aug/2023, 9:25:16 am (UTC)'!
 presenter: aPresenter
 	super presenter: aPresenter.
 	self drawable forcedVisibility: true.! !
 
-!DrGStyleTool methodsFor: 'accessing' stamp: 'hlsf 23/Jun/2021 15:52:55'!
+!DrGStyleTool methodsFor: 'accessing' stamp: 'hlsf 23/Jun/2021, 1:52:55 pm (UTC)'!
 relevantMorphsNear: aPoint
 	^self pointMorphsFirstNear: aPoint ! !
 
-!DrGStyleTool methodsFor: 'private' stamp: 'hlsf 4/Aug/2023 11:39:51'!
+!DrGStyleTool methodsFor: 'private' stamp: 'hlsf 4/Aug/2023, 9:39:51 am (UTC)'!
 myMorphsNear: aPoint
 "return the list of morph at position aPoint"
 	^self drawable itemViews select: [:aMorph |
 		(self isWanted: aMorph mathItem)			and: [aMorph containsPoint: aPoint]]! !
 
-!DrGStyleTool methodsFor: 'testing' stamp: 'hlsf 20/Jun/2021 17:15:50'!
+!DrGStyleTool methodsFor: 'testing' stamp: 'hlsf 20/Jun/2021, 3:15:50 pm (UTC)'!
 isBuilding
 	^ false! !
 
@@ -8365,7 +8367,7 @@ reset
 	super reset.
 	self switchState: DrGDeleteToolState! !
 
-!DrGDeleteTool methodsFor: 'accessing' stamp: 'hlsf 23/Jun/2021 15:47:53'!
+!DrGDeleteTool methodsFor: 'accessing' stamp: 'hlsf 23/Jun/2021, 1:47:53 pm (UTC)'!
 relevantMorphsNear: aPoint
 	^self myMorphsNear: aPoint ! !
 
@@ -8377,10 +8379,10 @@ description
 title 
 	^'Eraser' translated ! !
 
-!DrGToolState methodsFor: 'handling' stamp: 'hlsf 4/Aug/2021 11:47:54'!
+!DrGToolState methodsFor: 'handling' stamp: 'hlsf 4/Aug/2021, 9:47:54 am (UTC)'!
 handleChoice: aMorphCollection! !
 
-!DrGToolState methodsFor: 'handling' stamp: 'hlsf 31/May/2025 15:47:14'!
+!DrGToolState methodsFor: 'handling' stamp: 'hlsf 31/May/2025, 1:47:14 pm (UTC)'!
 handleMouseAt: aPoint 
 	"Return true if we can process something or we are over something"
 	| morphs aTip feedback |
@@ -8429,7 +8431,7 @@ handleShiftKeyMouseAt: aPoint
 handleStillPress: aPoint
 	"A 2s mouse down evt, by default do nothing"! !
 
-!DrGToolState methodsFor: 'state' stamp: 'hlsf 31/May/2025 15:47:26'!
+!DrGToolState methodsFor: 'state' stamp: 'hlsf 31/May/2025, 1:47:26 pm (UTC)'!
 switchState: aStateClass
 	context switchState: aStateClass! !
 
@@ -8441,19 +8443,19 @@ context
 context: aContext
 	context := aContext ! !
 
-!DrGToolState methodsFor: 'accessing' stamp: 'hlsf 31/May/2025 15:47:08'!
+!DrGToolState methodsFor: 'accessing' stamp: 'hlsf 31/May/2025, 1:47:08 pm (UTC)'!
 drawable
 	^ context drawable! !
 
-!DrGToolState methodsFor: 'accessing' stamp: 'hlsf 31/May/2025 15:47:20'!
+!DrGToolState methodsFor: 'accessing' stamp: 'hlsf 31/May/2025, 1:47:20 pm (UTC)'!
 presenter
 	^context presenter! !
 
-!DrGToolState methodsFor: 'accessing' stamp: 'hlsf 31/May/2025 15:47:33'!
+!DrGToolState methodsFor: 'accessing' stamp: 'hlsf 31/May/2025, 1:47:33 pm (UTC)'!
 view
 	^ context presenter view! !
 
-!DrGBuildToolState methodsFor: 'handling' stamp: 'hlsf 31/May/2025 15:47:44'!
+!DrGBuildToolState methodsFor: 'handling' stamp: 'hlsf 31/May/2025, 1:47:44 pm (UTC)'!
 handleChoice: aMorphCollection
 	| items |
 	items := aMorphCollection collect: [:aMorph |
@@ -8463,7 +8465,7 @@ handleChoice: aMorphCollection
 		add: items 
 		at: (self drawable gridWorldPoint: context last).! !
 
-!DrGBuildToolState methodsFor: 'handling' stamp: 'hlsf 31/May/2025 15:48:17'!
+!DrGBuildToolState methodsFor: 'handling' stamp: 'hlsf 31/May/2025, 1:48:17 pm (UTC)'!
 handlePress: aPoint 
 	"return true if we process something (including additional user choice)"
 	| morphs |
@@ -8482,7 +8484,7 @@ handlePress: aPoint
 		^ true].
 	^ false! !
 
-!DrGFlyPointBuildToolState methodsFor: 'handling' stamp: 'hlsf 31/May/2025 15:48:23'!
+!DrGFlyPointBuildToolState methodsFor: 'handling' stamp: 'hlsf 31/May/2025, 1:48:23 pm (UTC)'!
 handleMouseAt: aPoint 
 	| morphs aTip |
 	morphs := context relevantMorphsNear: aPoint.
@@ -8495,7 +8497,7 @@ handleMouseAt: aPoint
 		ifNotNil: [self drawable tip: aTip at: aPoint].
 	^ aTip notNil! !
 
-!DrGFlyPointBuildToolState methodsFor: 'handling' stamp: 'hlsf 31/May/2025 15:48:33'!
+!DrGFlyPointBuildToolState methodsFor: 'handling' stamp: 'hlsf 31/May/2025, 1:48:33 pm (UTC)'!
 handlePress: aPoint 
 "return true as we always do something in this context."
 	self drawable hideTip.
@@ -8504,7 +8506,7 @@ handlePress: aPoint
 	self handleChoice: (context relevantMorphsNear: aPoint).
 	^ true! !
 
-!DrGFlyBuildToolState methodsFor: 'processing' stamp: 'hlsf 31/May/2025 15:49:36'!
+!DrGFlyBuildToolState methodsFor: 'processing' stamp: 'hlsf 31/May/2025, 1:49:36 pm (UTC)'!
 addFlyingPointToBuiltItemAt: aPoint
 	context mathItemTool 
 		add: context drawable lastItemView.
@@ -8512,21 +8514,21 @@ addFlyingPointToBuiltItemAt: aPoint
 		add: {context domain factory last} 
 		at: (self drawable morphToWorld: aPoint).! !
 
-!DrGFlyBuildToolState methodsFor: 'testing' stamp: 'hlsf 31/May/2025 15:50:37'!
+!DrGFlyBuildToolState methodsFor: 'testing' stamp: 'hlsf 31/May/2025, 1:50:37 pm (UTC)'!
 isFlyingPointConstructedAt: aPoint
 "return true whenever a flypoint is constructed, the new point instance is then 
  ready to use, from the flyPointTool builder"
 	^ (context mathItemTool builder isWanted: { (DrGPointItem new) }) 
 		and: [context flyPointTool handlePress: aPoint]! !
 
-!DrGFlyBuildToolState methodsFor: 'testing' stamp: 'hlsf 31/May/2025 15:50:45'!
+!DrGFlyBuildToolState methodsFor: 'testing' stamp: 'hlsf 31/May/2025, 1:50:45 pm (UTC)'!
 isFlyingPointWantedAt: aPoint
 "are we interested by a point at position aPoint"
 	^ (context mathItemTool builder isWanted: { (DrGPointItem new) }) 
 		ifTrue: [context flyPointTool handleMouseAt: aPoint]
 		ifFalse: [false]! !
 
-!DrGFlyBuildToolState methodsFor: 'handling' stamp: 'hlsf 31/May/2025 15:49:46'!
+!DrGFlyBuildToolState methodsFor: 'handling' stamp: 'hlsf 31/May/2025, 1:49:46 pm (UTC)'!
 handleMouseAt: aPoint 
 	context builder moveFlyingMorphAt: (self drawable  morphToWorld: aPoint).
 	context last: aPoint.
@@ -8536,7 +8538,7 @@ handleMouseAt: aPoint
 		ifFalse: [self isFlyingPointWantedAt: aPoint]
 		ifTrue: [true]! !
 
-!DrGFlyBuildToolState methodsFor: 'handling' stamp: 'hlsf 31/May/2025 15:50:06'!
+!DrGFlyBuildToolState methodsFor: 'handling' stamp: 'hlsf 31/May/2025, 1:50:06 pm (UTC)'!
 handlePress: aPoint 
 	context last: aPoint.
 	"do we select an item underneath? If so we are done"
@@ -8546,38 +8548,38 @@ handlePress: aPoint
 	self addFlyingPointToBuiltItemAt: aPoint.
 	^ true! !
 
-!DrGFlyBuildToolState methodsFor: 'handling' stamp: 'hlsf 31/May/2025 15:50:28'!
+!DrGFlyBuildToolState methodsFor: 'handling' stamp: 'hlsf 31/May/2025, 1:50:28 pm (UTC)'!
 handleRelease: aPoint
 	context mathItemTool handleRelease: aPoint.
 	context flyPointTool handleRelease: aPoint.! !
 
-!DrGFlyBuildTouchToolState methodsFor: 'handling' stamp: 'hlsf 31/May/2025 15:40:15'!
+!DrGFlyBuildTouchToolState methodsFor: 'handling' stamp: 'hlsf 31/May/2025, 1:40:15 pm (UTC)'!
 handlePress: aPoint
 	| answer |
 	answer := super handlePress: aPoint.
 	answer ifTrue: [self switchState: DrGFlyBuildTouchToolStateGrabbed].
 	^ answer! !
 
-!DrGFlyBuildTouchToolStateGrabbed methodsFor: 'handling' stamp: 'hlsf 4/Aug/2021 15:22:19'!
+!DrGFlyBuildTouchToolStateGrabbed methodsFor: 'handling' stamp: 'hlsf 4/Aug/2021, 1:22:19 pm (UTC)'!
 handleMouseAt: aPoint
 	self switchState: DrGFlyBuildTouchToolStateSlided.
 	^ true! !
 
-!DrGFlyBuildTouchToolStateGrabbed methodsFor: 'handling' stamp: 'hlsf 4/Aug/2021 12:17:21'!
+!DrGFlyBuildTouchToolStateGrabbed methodsFor: 'handling' stamp: 'hlsf 4/Aug/2021, 10:17:21 am (UTC)'!
 handlePress: aPoint
 	"We cannot clic again as the finger is stuck on the screen"
 	^ false! !
 
-!DrGFlyBuildTouchToolStateGrabbed methodsFor: 'handling' stamp: 'hlsf 4/Aug/2021 12:23:43'!
+!DrGFlyBuildTouchToolStateGrabbed methodsFor: 'handling' stamp: 'hlsf 4/Aug/2021, 10:23:43 am (UTC)'!
 handleRelease: aPoint
 	self switchState: DrGFlyBuildTouchToolState! !
 
-!DrGFlyBuildTouchToolStateSlided methodsFor: 'handling' stamp: 'hlsf 4/Aug/2021 11:43:38'!
+!DrGFlyBuildTouchToolStateSlided methodsFor: 'handling' stamp: 'hlsf 4/Aug/2021, 9:43:38 am (UTC)'!
 handlePress: aPoint
 	"the finger is stuck on the screen, we cannot clic again, can't do anything"
 	^ false! !
 
-!DrGFlyBuildTouchToolStateSlided methodsFor: 'handling' stamp: 'hlsf 31/May/2025 15:50:51'!
+!DrGFlyBuildTouchToolStateSlided methodsFor: 'handling' stamp: 'hlsf 31/May/2025, 1:50:51 pm (UTC)'!
 handleRelease: aPoint
 	self switchState: DrGFlyBuildTouchToolState.
 	context last: aPoint.
@@ -8588,12 +8590,12 @@ handleRelease: aPoint
 	self addFlyingPointToBuiltItemAt: aPoint.
 	^ true! !
 
-!DrGSelectToolState methodsFor: 'accessing' stamp: 'hlsf 31/May/2025 15:51:08'!
+!DrGSelectToolState methodsFor: 'accessing' stamp: 'hlsf 31/May/2025, 1:51:08 pm (UTC)'!
 mathItem 
 "the selected math item"
 	^ context mathItem ! !
 
-!DrGSelectToolState methodsFor: 'handling' stamp: 'hlsf 31/May/2025 15:51:03'!
+!DrGSelectToolState methodsFor: 'handling' stamp: 'hlsf 31/May/2025, 1:51:03 pm (UTC)'!
 handleChoice: aMorphCollection 
 	^ aMorphCollection 
 		ifEmpty: [
@@ -8605,7 +8607,7 @@ handleChoice: aMorphCollection
 			true]
 		! !
 
-!DrGSelectToolStateDragged methodsFor: 'handling' stamp: 'hlsf 31/May/2025 15:51:18'!
+!DrGSelectToolStateDragged methodsFor: 'handling' stamp: 'hlsf 31/May/2025, 1:51:18 pm (UTC)'!
 handleChoice: aMorphCollection 
 "In this state, handle a choice to merge two points"
 	aMorphCollection ifNotEmpty: [
@@ -8616,7 +8618,7 @@ handleChoice: aMorphCollection
 		self presenter saved: false].
 	context reset.! !
 
-!DrGSelectToolStateDragged methodsFor: 'handling' stamp: 'hlsf 31/May/2025 15:51:43'!
+!DrGSelectToolStateDragged methodsFor: 'handling' stamp: 'hlsf 31/May/2025, 1:51:43 pm (UTC)'!
 handleMouseAt: aPoint
 	| gridded |
 	(context isGridded and: [self mathItem isFreePointItem])
@@ -8639,7 +8641,7 @@ handleMouseAt: aPoint
 	self drawable restartMouseStillDownHandle.
 	^ true! !
 
-!DrGSelectToolStateDragged methodsFor: 'handling' stamp: 'hlsf 11/Aug/2025 18:34:21'!
+!DrGSelectToolStateDragged methodsFor: 'handling' stamp: 'hlsf 11/Aug/2025, 4:34:21 pm (UTC)'!
 handleRelease: aPoint 
 	self switchState: DrGSelectToolStateNeutral.
 	"issue a moveCommand"
@@ -8652,7 +8654,7 @@ handleRelease: aPoint
 	"No need here, done in model>>exist: "
 	"context factory rehash". "After move event rehash the the free positionnable item"! !
 
-!DrGSelectToolStateDragged methodsFor: 'handling' stamp: 'hlsf 31/May/2025 15:52:01'!
+!DrGSelectToolStateDragged methodsFor: 'handling' stamp: 'hlsf 31/May/2025, 1:52:01 pm (UTC)'!
 handleStillPress: aPoint
 	|merger|
 	(merger := context pointMorphToMergeWithAt: aPoint) notEmpty  ifTrue: 
@@ -8665,7 +8667,7 @@ handleStillPress: aPoint
 isMutantFreePoint
 	^ originalPointClass = DrGPointFreeItem! !
 
-!DrGMutatorToolStateDragged methodsFor: 'handling' stamp: 'hlsf 8/Jan/2026 22:39:04'!
+!DrGMutatorToolStateDragged methodsFor: 'handling' stamp: 'hlsf 8/Jan/2026, 8:39:04 pm (UTC)'!
 handleMouseAt: aPoint
 	| morphs aTip|
 	"First handle the redraw"
@@ -8683,7 +8685,7 @@ handleMouseAt: aPoint
 		ifNotNil: [self drawable tip: aTip at: aPoint].
 	^ aTip notNil! !
 
-!DrGMutatorToolStateDragged methodsFor: 'handling' stamp: 'hlsf 11/Aug/2025 18:32:11'!
+!DrGMutatorToolStateDragged methodsFor: 'handling' stamp: 'hlsf 11/Aug/2025, 4:32:11 pm (UTC)'!
 handleRelease: aPoint
 	| morphs |
 	self drawable hideTip.
@@ -8710,12 +8712,12 @@ context: aContext
 	super context: aContext.
 	originalPointClass := context mathItem class.! !
 
-!DrGSelectToolStateDraggedBitmap methodsFor: 'accessing' stamp: 'hlsf 31/May/2025 15:52:34'!
+!DrGSelectToolStateDraggedBitmap methodsFor: 'accessing' stamp: 'hlsf 31/May/2025, 1:52:34 pm (UTC)'!
 context: aContext
 	super context: aContext.
 	draggedCorner := context morph isAnyCornerIn: context start.! !
 
-!DrGSelectToolStateDraggedBitmap methodsFor: 'handling' stamp: 'hlsf 19/Jun/2021 09:35:00'!
+!DrGSelectToolStateDraggedBitmap methodsFor: 'handling' stamp: 'hlsf 19/Jun/2021, 7:35:00 am (UTC)'!
 handleMouseAt: aPoint 
 	| processSomething |
 	draggedCorner 
@@ -8725,7 +8727,7 @@ handleMouseAt: aPoint
 	^ processSomething 
 ! !
 
-!DrGSelectToolStateDraggedBitmap methodsFor: 'handling' stamp: 'hlsf 31/May/2025 15:52:53'!
+!DrGSelectToolStateDraggedBitmap methodsFor: 'handling' stamp: 'hlsf 31/May/2025, 1:52:53 pm (UTC)'!
 magnifyBitmap: aPoint
 	| displacement unitVector image factor griddedPoint |
 	griddedPoint := context gridPoint: aPoint.
@@ -8750,7 +8752,7 @@ magnifyBitmap: aPoint
 	context domain updateAllMathItems.
 	context last: griddedPoint.! !
 
-!DrGSelectToolStateGrabbed methodsFor: 'handling' stamp: 'drgeo 7/Jun/2026 11:31:43'!
+!DrGSelectToolStateGrabbed methodsFor: 'handling' stamp: 'drgeo 7/Jun/2026, 9:31:43 am (UTC)'!
 handleMouseAt: aPoint 
 	"The user is moving, switch to dragging state"
 	context
@@ -8762,12 +8764,12 @@ handleMouseAt: aPoint
 			self switchState: DrGSelectToolStateDragged].
 	^ true! !
 
-!DrGSelectToolStateGrabbed methodsFor: 'handling' stamp: 'hlsf 11/Aug/2025 18:29:41'!
+!DrGSelectToolStateGrabbed methodsFor: 'handling' stamp: 'hlsf 11/Aug/2025, 4:29:41 pm (UTC)'!
 handleRelease: aPoint 
 	self switchState: DrGSelectToolStateNeutral.
 	context reset! !
 
-!DrGSelectToolStateGrabbed methodsFor: 'handling' stamp: 'hlsf 31/May/2025 15:53:11'!
+!DrGSelectToolStateGrabbed methodsFor: 'handling' stamp: 'hlsf 31/May/2025, 1:53:11 pm (UTC)'!
 handleStillPress: aPoint
 "The user keeps pressing without moving, he wants a clone"
 	context 
@@ -8777,7 +8779,7 @@ handleStillPress: aPoint
 		add: {context mathItem}
 		at: aPoint.! !
 
-!DrGMutatorToolStateGrabbed methodsFor: 'handling' stamp: 'hlsf 31/May/2025 15:53:18'!
+!DrGMutatorToolStateGrabbed methodsFor: 'handling' stamp: 'hlsf 31/May/2025, 1:53:18 pm (UTC)'!
 handleMouseAt: aPoint 
 	"The user is moving, detach the point as a free point and switch to dragging state"
 	|griddedPoint|
@@ -8791,7 +8793,7 @@ handleMouseAt: aPoint
 
 ! !
 
-!DrGSelectToolStateNeutral methodsFor: 'handling' stamp: 'hlsf 28/Jan/2026 18:03:10'!
+!DrGSelectToolStateNeutral methodsFor: 'handling' stamp: 'hlsf 28/Jan/2026, 4:03:10 pm (UTC)'!
 handleMouseAt: aPoint
 	| processSomething |
 	(processSomething := super handleMouseAt: aPoint)
@@ -8799,7 +8801,7 @@ handleMouseAt: aPoint
 		ifFalse: [Cursor normalCursor activateCursor].
 	^ processSomething ! !
 
-!DrGSelectToolStateNeutral methodsFor: 'handling' stamp: 'hlsf 31/May/2025 15:53:42'!
+!DrGSelectToolStateNeutral methodsFor: 'handling' stamp: 'hlsf 31/May/2025, 1:53:42 pm (UTC)'!
 handlePress: aPoint 
 	| morphs griddedPoint|
 	self drawable hideTip.
@@ -8819,7 +8821,7 @@ handlePress: aPoint
 	" Do user user clicked in the background, if so reset selection"
 	^ morphs size >= 1 or: [context reset. false].! !
 
-!DrGSelectToolStateNeutral methodsFor: 'handling' stamp: 'hlsf 31/May/2025 15:54:05'!
+!DrGSelectToolStateNeutral methodsFor: 'handling' stamp: 'hlsf 31/May/2025, 1:54:05 pm (UTC)'!
 handlePressShiftKey: aPoint 
 	| morphs griddedPoint|
 	self drawable hideTip.
@@ -8838,7 +8840,7 @@ handlePressShiftKey: aPoint
 	"Do the user clicked in the background, if so clear the selection"
 	morphs size >=1 or: [context reset. false]! !
 
-!DrGSelectToolStateNeutral methodsFor: 'handling' stamp: 'hlsf 31/May/2025 15:54:10'!
+!DrGSelectToolStateNeutral methodsFor: 'handling' stamp: 'hlsf 31/May/2025, 1:54:10 pm (UTC)'!
 handleShiftKeyMouseAt: aPoint
 	"Let's inform about the mutate mode"
 	| morphs aTip |
@@ -8856,7 +8858,7 @@ handleShiftKeyMouseAt: aPoint
 isSelectNeutral
 	^ true! !
 
-!DrGSelectToolStateSelected methodsFor: 'handling' stamp: 'hlsf 31/May/2025 15:54:17'!
+!DrGSelectToolStateSelected methodsFor: 'handling' stamp: 'hlsf 31/May/2025, 1:54:17 pm (UTC)'!
 handleMouseAt: aPoint
 	| morphs |
 	morphs := context relevantMorphsNear: aPoint.
@@ -8868,7 +8870,7 @@ handleMouseAt: aPoint
 			[self drawable hideTip.
 			false]! !
 
-!DrGSelectToolStateSelected methodsFor: 'handling' stamp: 'hlsf 31/May/2025 15:54:27'!
+!DrGSelectToolStateSelected methodsFor: 'handling' stamp: 'hlsf 31/May/2025, 1:54:27 pm (UTC)'!
 handlePress: aPoint 
 	self drawable hideTip.
 	^ ((context relevantMorphsNear: aPoint) includes: context morph) 
@@ -8880,7 +8882,7 @@ handlePress: aPoint
 			context reset.
 			false]! !
 
-!DrGSelectToolStateSelected methodsFor: 'handling' stamp: 'hlsf 31/May/2025 15:54:38'!
+!DrGSelectToolStateSelected methodsFor: 'handling' stamp: 'hlsf 31/May/2025, 1:54:38 pm (UTC)'!
 handlePressShiftKey: aPoint 
 	self drawable hideTip.
 	^ ((context relevantMorphsNear: aPoint) includes: context morph) 
@@ -8892,11 +8894,11 @@ handlePressShiftKey: aPoint
 			context reset.
 			false]! !
 
-!DrGStyleToolState methodsFor: 'as yet unclassified' stamp: 'hlsf 31/May/2025 15:55:03'!
+!DrGStyleToolState methodsFor: 'as yet unclassified' stamp: 'hlsf 31/May/2025, 1:55:03 pm (UTC)'!
 morphStyle
 	^ context morphStyle! !
 
-!DrGStyleToolState methodsFor: 'handling' stamp: 'hlsf 31/May/2025 15:54:46'!
+!DrGStyleToolState methodsFor: 'handling' stamp: 'hlsf 31/May/2025, 1:54:46 pm (UTC)'!
 handleChoice: aMorphCollection
 	aMorphCollection 
 		ifNotEmpty: [
@@ -8904,7 +8906,7 @@ handleChoice: aMorphCollection
 			context presenter controlsManager stylerFor: self morphStyle]
 		ifEmpty: [context reset]! !
 
-!DrGStyleToolState methodsFor: 'handling' stamp: 'hlsf 31/May/2025 15:54:58'!
+!DrGStyleToolState methodsFor: 'handling' stamp: 'hlsf 31/May/2025, 1:54:58 pm (UTC)'!
 handlePress: aPoint
 	| morphs |
 	self drawable hideTip.
@@ -8919,7 +8921,7 @@ handlePress: aPoint
 	" Do the user clicked in the background, if so clear the selection"
 	^ (morphs size >= 1) or: [context reset. false]! !
 
-!DrGAnimateToolState methodsFor: 'handling' stamp: 'hlsf 31/May/2025 15:55:16'!
+!DrGAnimateToolState methodsFor: 'handling' stamp: 'hlsf 31/May/2025, 1:55:16 pm (UTC)'!
 handleChoice: aMorphCollection
 	aMorphCollection 
 		ifNotEmpty: [
@@ -8936,7 +8938,7 @@ handleChoice: aMorphCollection
 isAnimating
 	^ false! !
 
-!DrGAnimateToolState methodsFor: 'accessing' stamp: 'hlsf 31/May/2025 15:55:07'!
+!DrGAnimateToolState methodsFor: 'accessing' stamp: 'hlsf 31/May/2025, 1:55:07 pm (UTC)'!
 animateStep 
 	^ context animateStep  ! !
 
@@ -8948,7 +8950,7 @@ animate
 stopAnimating
 	"we are not animating in this state, do nothing"! !
 
-!DrGAnimateToolStateSelected methodsFor: 'animate' stamp: 'hlsf 31/May/2025 15:55:41'!
+!DrGAnimateToolStateSelected methodsFor: 'animate' stamp: 'hlsf 31/May/2025, 1:55:41 pm (UTC)'!
 animate
 	| a | 
 	a := self mathItem abscissa + self animateStep.
@@ -8956,18 +8958,18 @@ animate
 	self mathItem abscissa: a.
 	context domain updateAllMathItems ! !
 
-!DrGAnimateToolStateSelected methodsFor: 'animate' stamp: 'hlsf 19/Jun/2021 10:07:28'!
+!DrGAnimateToolStateSelected methodsFor: 'animate' stamp: 'hlsf 19/Jun/2021, 8:07:28 am (UTC)'!
 startAnimating
 	abscissa := self mathItem abscissa.
 	self drawable arrangeToStartStepping.! !
 
-!DrGAnimateToolStateSelected methodsFor: 'animate' stamp: 'hlsf 31/May/2025 15:55:46'!
+!DrGAnimateToolStateSelected methodsFor: 'animate' stamp: 'hlsf 31/May/2025, 1:55:46 pm (UTC)'!
 stopAnimating
 	self drawable stopStepping.
 	self mathItem abscissa: abscissa.
 	context domain updateAllMathItems! !
 
-!DrGAnimateToolStateSelected methodsFor: 'accessing' stamp: 'hlsf 19/Jun/2021 10:07:28'!
+!DrGAnimateToolStateSelected methodsFor: 'accessing' stamp: 'hlsf 19/Jun/2021, 8:07:28 am (UTC)'!
 context: aContext
 	super context: aContext.
 	self drawable arrangeToStartStepping.! !
@@ -8976,7 +8978,7 @@ context: aContext
 isAnimating
 	^ true! !
 
-!DrGDeleteToolState methodsFor: 'handling' stamp: 'hlsf 31/May/2025 15:45:32'!
+!DrGDeleteToolState methodsFor: 'handling' stamp: 'hlsf 31/May/2025, 1:45:32 pm (UTC)'!
 handleChoice: aMorphCollection
 	aMorphCollection ifNotEmpty: [
 		context presenter 
@@ -8984,14 +8986,14 @@ handleChoice: aMorphCollection
 			selectToolAfterBuilding].
 	context reset! !
 
-!DrGPropertyToolState methodsFor: 'handling' stamp: 'hlsf 31/May/2025 15:45:21'!
+!DrGPropertyToolState methodsFor: 'handling' stamp: 'hlsf 31/May/2025, 1:45:21 pm (UTC)'!
 handleChoice: aMorphCollection
 	aMorphCollection ifNotEmpty: [
 		context morph: aMorphCollection first.
 		context presenter controlsManager propertyFor: context mathItem]
 ! !
 
-!DrGPlatform methodsFor: 'default preferences' stamp: 'hlsf 25/Sep/2022 10:22:26'!
+!DrGPlatform methodsFor: 'default preferences' stamp: 'hlsf 25/Sep/2022, 8:22:26 am (UTC)'!
 arcPreferences
 " name - description - category - type - value "
 | category |
@@ -9005,7 +9007,7 @@ arcPreferences
 	{#arcTranslucent. 'Translucent' translated. category. Boolean. false}
 	}! !
 
-!DrGPlatform methodsFor: 'default preferences' stamp: 'hlsf 25/Sep/2022 10:23:10'!
+!DrGPlatform methodsFor: 'default preferences' stamp: 'hlsf 25/Sep/2022, 8:23:10 am (UTC)'!
 circlePreferences
 " name - description - category - type - value "
 | category |
@@ -9018,7 +9020,7 @@ circlePreferences
 	{#circleTranslucent. 'Translucent' translated. category. Boolean. false}
 	}! !
 
-!DrGPlatform methodsFor: 'default preferences' stamp: 'hlsf 25/Sep/2022 10:23:49'!
+!DrGPlatform methodsFor: 'default preferences' stamp: 'hlsf 25/Sep/2022, 8:23:49 am (UTC)'!
 linePreferences
 " name - description - category - type - value "
 | category |
@@ -9029,7 +9031,7 @@ linePreferences
 	{#lineStyle. 'Style' translated. category. DrGTypeStyle with: #lineStyle in: preferences. #plain}
 	}! !
 
-!DrGPlatform methodsFor: 'default preferences' stamp: 'hlsf 25/Sep/2022 10:25:16'!
+!DrGPlatform methodsFor: 'default preferences' stamp: 'hlsf 25/Sep/2022, 8:25:16 am (UTC)'!
 locusPreferences
 " name - description - category - type - value "
 | category |
@@ -9040,7 +9042,7 @@ locusPreferences
 	{#locusStyle. 'Style' translated. category. DrGTypeStyle with: #locusStyle in: preferences. #plain}
 	}! !
 
-!DrGPlatform methodsFor: 'default preferences' stamp: 'hlsf 9/May/2024 08:58:32'!
+!DrGPlatform methodsFor: 'default preferences' stamp: 'hlsf 9/May/2024, 6:58:32 am (UTC)'!
 miscPreferences
 " name - description - category - type - value "
 | category |
@@ -9050,7 +9052,7 @@ miscPreferences
 	{#autoName. 'Autoname new object' translated. category. Boolean. false}
 	}! !
 
-!DrGPlatform methodsFor: 'default preferences' stamp: 'hlsf 25/Sep/2022 10:25:11'!
+!DrGPlatform methodsFor: 'default preferences' stamp: 'hlsf 25/Sep/2022, 8:25:11 am (UTC)'!
 pointPreferences
 " name - description - category - type - value "
 | category |
@@ -9061,7 +9063,7 @@ pointPreferences
 	{#pointShape. 'Shape' translated. category. DrGTypePointShape with: #pointShape in: preferences. #cross}
 	}! !
 
-!DrGPlatform methodsFor: 'default preferences' stamp: 'hlsf 25/Sep/2022 10:24:59'!
+!DrGPlatform methodsFor: 'default preferences' stamp: 'hlsf 25/Sep/2022, 8:24:59 am (UTC)'!
 polygonPreferences
 " name - description - category - type - value "
 | category |
@@ -9074,7 +9076,7 @@ polygonPreferences
 	{#polygonTranslucent. 'Translucent' translated. category. Boolean. false}
 	}! !
 
-!DrGPlatform methodsFor: 'default preferences' stamp: 'hlsf 9/May/2024 11:06:26'!
+!DrGPlatform methodsFor: 'default preferences' stamp: 'hlsf 9/May/2024, 9:06:26 am (UTC)'!
 programmingPreferences
 " name - description - category - type - value "
 | category |
@@ -9084,7 +9086,7 @@ programmingPreferences
 	{#advancedDebugger. 'Full debugger when executing Smalltalk sketch.' translated . category. Boolean. false }
 	}! !
 
-!DrGPlatform methodsFor: 'default preferences' stamp: 'hlsf 25/Sep/2022 10:26:19'!
+!DrGPlatform methodsFor: 'default preferences' stamp: 'hlsf 25/Sep/2022, 8:26:19 am (UTC)'!
 rayPreferences
 " name - description - category - type - value "
 | category |
@@ -9095,7 +9097,7 @@ rayPreferences
 	{#rayStyle. 'Style' translated. category. DrGTypeStyle with: #rayStyle in: preferences. #plain}
 	}! !
 
-!DrGPlatform methodsFor: 'default preferences' stamp: 'hlsf 25/Sep/2022 10:26:51'!
+!DrGPlatform methodsFor: 'default preferences' stamp: 'hlsf 25/Sep/2022, 8:26:51 am (UTC)'!
 segmentPreferences
 " name - description - category - type - value "
 | category |
@@ -9108,7 +9110,7 @@ segmentPreferences
 	{#segmentArrow. 'Arrow' translated. category. DrGTypeArrow with: #segmentArrow in: preferences. #none	}
 	}! !
 
-!DrGPlatform methodsFor: 'default preferences' stamp: 'hlsf 25/Sep/2022 10:27:20'!
+!DrGPlatform methodsFor: 'default preferences' stamp: 'hlsf 25/Sep/2022, 8:27:20 am (UTC)'!
 textPreferences
 " name - description - category - type - value "
 | category |
@@ -9119,7 +9121,7 @@ textPreferences
 	{#textBorderColor. 'Border' translated. category. DrGTypeColor with: #textBorderColor in: preferences. Color white }.	
 	}! !
 
-!DrGPlatform methodsFor: 'default preferences' stamp: 'hlsf 25/Sep/2022 10:27:40'!
+!DrGPlatform methodsFor: 'default preferences' stamp: 'hlsf 25/Sep/2022, 8:27:40 am (UTC)'!
 valuePreferences
 " name - description - category - type - value "
 | category |
@@ -9129,7 +9131,7 @@ valuePreferences
 	{#valueDecimal. 'Number of decimal' translated. category. (0 to: 9) asArray. 2}
 	}! !
 
-!DrGPlatform methodsFor: 'default preferences' stamp: 'hlsf 25/Sep/2022 10:28:12'!
+!DrGPlatform methodsFor: 'default preferences' stamp: 'hlsf 25/Sep/2022, 8:28:12 am (UTC)'!
 vectorPreferences
 " name - description - category - type - value "
 | category |
@@ -9140,11 +9142,11 @@ vectorPreferences
 	{#vectorStyle. 'Style' translated. category. DrGTypeStyle with: #vectorStyle in: preferences. #plain}
 	}! !
 
-!DrGPlatform methodsFor: 'initialize-release' stamp: 'drgeo 24/Feb/2026 14:44:52'!
+!DrGPlatform methodsFor: 'initialize-release' stamp: 'drgeo 24/Feb/2026, 12:44:52 pm (UTC)'!
 initialize
 	fullscreen := false.! !
 
-!DrGPlatform methodsFor: 'initialize-release' stamp: 'drgeo 24/Feb/2026 14:42:49'!
+!DrGPlatform methodsFor: 'initialize-release' stamp: 'drgeo 24/Feb/2026, 12:42:49 pm (UTC)'!
 launch
 	self setCodeCompletion.
 	self fullscreen: false.
@@ -9153,12 +9155,12 @@ launch
 	Utilities setAuthorName: 'Dr. Geo User' initials: 'drgeo'.
 	Transcript show: '[DrGeo] Author set to "DrGeo User" (drgeo)'; cr.! !
 
-!DrGPlatform methodsFor: 'initialize-release' stamp: 'hlsf 6/Jul/2022 09:25:01'!
+!DrGPlatform methodsFor: 'initialize-release' stamp: 'hlsf 6/Jul/2022, 7:25:01 am (UTC)'!
 reset
 	toolbarIconSize := nil.
 	preferences := nil! !
 
-!DrGPlatform methodsFor: 'initialize-release' stamp: 'hlsf 14/Dec/2023 09:03:33'!
+!DrGPlatform methodsFor: 'initialize-release' stamp: 'hlsf 14/Dec/2023, 7:03:33 am (UTC)'!
 setCodeCompletion
 	| class |
 	class := Locale current isoLanguage asSymbol 
@@ -9169,7 +9171,7 @@ setCodeCompletion
 		 otherwise: [DrGeoSketch].
 	DrGeoSystem preferences at: #programmingCodeCompletion put: class! !
 
-!DrGPlatform methodsFor: 'initialize-release' stamp: 'hlsf 17/Feb/2026 14:35:47'!
+!DrGPlatform methodsFor: 'initialize-release' stamp: 'hlsf 17/Feb/2026, 12:35:47 pm (UTC)'!
 setDefaultPreferences
 	preferences := PreferenceSet new.
 	#(pointPreferences linePreferences rayPreferences segmentPreferences circlePreferences 
@@ -9184,53 +9186,53 @@ setDefaultPreferences
 				value: data fifth ] ].
 	^ preferences! !
 
-!DrGPlatform methodsFor: 'path' stamp: 'drgeo 10/Sep/2022 16:16:25'!
+!DrGPlatform methodsFor: 'path' stamp: 'drgeo 10/Sep/2022, 2:16:25 pm (UTC)'!
 examplesPath
 	^ self resourcesPath / 'Sketches'! !
 
-!DrGPlatform methodsFor: 'path' stamp: 'hlsf 16/Aug/2022 11:34:26'!
+!DrGPlatform methodsFor: 'path' stamp: 'hlsf 16/Aug/2022, 9:34:26 am (UTC)'!
 fontPath
 	^  self resourcesPath / 'fonts'! !
 
-!DrGPlatform methodsFor: 'path' stamp: 'hlsf 16/Aug/2022 11:34:14'!
+!DrGPlatform methodsFor: 'path' stamp: 'hlsf 16/Aug/2022, 9:34:14 am (UTC)'!
 iconsPath
 	^ self resourcesPath / 'icons'! !
 
-!DrGPlatform methodsFor: 'path' stamp: 'hlsf 23/Feb/2023 10:49:39'!
+!DrGPlatform methodsFor: 'path' stamp: 'hlsf 23/Feb/2023, 8:49:39 am (UTC)'!
 myExportsPath
 	^ self userPath / 'MyExports'! !
 
-!DrGPlatform methodsFor: 'path' stamp: 'hlsf 23/Feb/2023 10:49:45'!
+!DrGPlatform methodsFor: 'path' stamp: 'hlsf 23/Feb/2023, 8:49:45 am (UTC)'!
 mySketchesPath
 	^self userPath / 'MySketches'! !
 
-!DrGPlatform methodsFor: 'path' stamp: 'hlsf 23/Feb/2023 10:49:52'!
+!DrGPlatform methodsFor: 'path' stamp: 'hlsf 23/Feb/2023, 8:49:52 am (UTC)'!
 mySmalltalkSketchesPath
 	^self userPath / 'MySmalltalkSketches'! !
 
-!DrGPlatform methodsFor: 'path' stamp: 'hlsf 23/Feb/2023 10:47:05'!
+!DrGPlatform methodsFor: 'path' stamp: 'hlsf 23/Feb/2023, 8:47:05 am (UTC)'!
 resourcesPath
 "Where are located folders for icons, fonts, sketches, scripts, documentation, images, user created resources"
 	^ self rootPath / 'Resources'! !
 
-!DrGPlatform methodsFor: 'path' stamp: 'hlsf 16/May/2025 23:39:42'!
+!DrGPlatform methodsFor: 'path' stamp: 'hlsf 16/May/2025, 9:39:42 pm (UTC)'!
 rootPath
 " When deployed, the DrGeo/ directory
 Global variable #rootPath may be set by DrGeo start-up script to indicate it, if not try to deduce it from 
 image location  "
 	^ Smalltalk at: #rootPath ifAbsent: [DirectoryEntry smalltalkImageDirectory parent parent]! !
 
-!DrGPlatform methodsFor: 'path' stamp: 'hlsf 16/Aug/2022 11:36:11'!
+!DrGPlatform methodsFor: 'path' stamp: 'hlsf 16/Aug/2022, 9:36:11 am (UTC)'!
 smalltalkSketchesPath
 	^self resourcesPath / 'SmalltalkSketches'! !
 
-!DrGPlatform methodsFor: 'path' stamp: 'hlsf 16/May/2025 23:37:55'!
+!DrGPlatform methodsFor: 'path' stamp: 'hlsf 16/May/2025, 9:37:55 pm (UTC)'!
 userPath
 "Where are located user created resources as sketch, Smalltalk sketch and exported sketch to image
 Global variable userPath may be set by DrGeo start-up script "
 	^ Smalltalk at: #userPath ifAbsent: [self userPathFromPreference]! !
 
-!DrGPlatform methodsFor: 'path' stamp: 'hlsf 16/May/2025 23:36:23'!
+!DrGPlatform methodsFor: 'path' stamp: 'hlsf 16/May/2025, 9:36:23 pm (UTC)'!
 userPathFromPreference
 " Is there a user prefrerence set to save user data ?
 (e.g. sketch, Smalltalk sketch and exported sketch to picture) "
@@ -9247,7 +9249,7 @@ userPathFromPreference
 		ifEmpty: [self resourcesPath]
 		! !
 
-!DrGPlatform methodsFor: 'user interface' stamp: 'drgeo 24/Feb/2026 14:42:49'!
+!DrGPlatform methodsFor: 'user interface' stamp: 'drgeo 24/Feb/2026, 12:42:49 pm (UTC)'!
 fullscreen: boolean
 	fullscreen := boolean.
 	Display fullScreenMode: fullscreen! !
@@ -9256,11 +9258,11 @@ fullscreen: boolean
 showVirtualKeyboard: boolean
 ! !
 
-!DrGPlatform methodsFor: 'user interface' stamp: 'drgeo 24/Feb/2026 14:42:49'!
+!DrGPlatform methodsFor: 'user interface' stamp: 'drgeo 24/Feb/2026, 12:42:49 pm (UTC)'!
 toggleFullscreen
 	self fullscreen: fullscreen not! !
 
-!DrGPlatform methodsFor: 'testing' stamp: 'hlsf 21/Apr/2020 21:32:20'!
+!DrGPlatform methodsFor: 'testing' stamp: 'hlsf 21/Apr/2020, 7:32:20 pm (UTC)'!
 canWeDisplaySpinner
 	^ canWeDisplaySpinner! !
 
@@ -9268,7 +9270,7 @@ canWeDisplaySpinner
 isAndroid
 	^ false! !
 
-!DrGPlatform methodsFor: 'testing' stamp: 'hlsf 17/Feb/2026 14:39:18'!
+!DrGPlatform methodsFor: 'testing' stamp: 'hlsf 17/Feb/2026, 12:39:18 pm (UTC)'!
 isDybo
 	^ false! !
 
@@ -9281,7 +9283,7 @@ isWorkstation
 isiPad
 	^ false! !
 
-!DrGPlatform methodsFor: 'accessing' stamp: 'hlsf 3/Jul/2022 12:54:50'!
+!DrGPlatform methodsFor: 'accessing' stamp: 'hlsf 3/Jul/2022, 10:54:50 am (UTC)'!
 preferences
 	^ preferences ifNil: [self setDefaultPreferences]! !
 
@@ -9289,70 +9291,70 @@ preferences
 canvasFontSize
 	^ 9! !
 
-!DrGDybo methodsFor: 'path' stamp: 'hlsf 17/Feb/2026 14:36:50'!
+!DrGDybo methodsFor: 'path' stamp: 'hlsf 17/Feb/2026, 12:36:50 pm (UTC)'!
 userPath
 	^ DirectoryEntry userBaseDirectory! !
 
-!DrGDybo methodsFor: 'testing' stamp: 'hlsf 17/Feb/2026 14:39:32'!
+!DrGDybo methodsFor: 'testing' stamp: 'hlsf 17/Feb/2026, 12:39:32 pm (UTC)'!
 isDybo
 	^ true! !
 
-!DrGeoSystem class methodsFor: 'system startup' stamp: 'hlsf 17/May/2025 20:42:27'!
+!DrGeoSystem class methodsFor: 'system startup' stamp: 'hlsf 17/May/2025, 6:42:27 pm (UTC)'!
 launch
 	Transcript show: '[DrGeo] launching started'; cr.
 	platform launch.
 	Transcript show: '[DrGeo] launching ended'; cr.
 	! !
 
-!DrGeoSystem class methodsFor: 'class initialization' stamp: 'hlsf 1/Jun/2025 11:59:39'!
+!DrGeoSystem class methodsFor: 'class initialization' stamp: 'hlsf 1/Jun/2025, 9:59:39 am (UTC)'!
 beDevelopment
 	" Be like the Cuis environment for DrGeo development "
 	"self beDevelopment"
 	platform := DrGDevelopment new.
 	platform launch. "manual launch for additional initialization occuring right after system start up"! !
 
-!DrGeoSystem class methodsFor: 'class initialization' stamp: 'hlsf 17/Feb/2026 14:40:49'!
+!DrGeoSystem class methodsFor: 'class initialization' stamp: 'hlsf 17/Feb/2026, 12:40:49 pm (UTC)'!
 beDybo
 	"self beDybo"
 	platform := DrGDybo new! !
 
-!DrGeoSystem class methodsFor: 'class initialization' stamp: 'hlsf 17/May/2025 20:38:29'!
+!DrGeoSystem class methodsFor: 'class initialization' stamp: 'hlsf 17/May/2025, 6:38:29 pm (UTC)'!
 beWorkstation
 	"self beWorkstation"
 	platform := DrGWorkstation new! !
 
-!DrGeoSystem class methodsFor: 'class initialization' stamp: 'hlsf 21/Feb/2026 10:15:20'!
+!DrGeoSystem class methodsFor: 'class initialization' stamp: 'hlsf 21/Feb/2026, 8:15:20 am (UTC)'!
 initialize
 	"Erudite extention for Dr. Geo"
 	Smalltalk at: #EruditeMarkupGrammar ifPresent: [:aClass | aClass addCodeAction: 'withDrGeoActions']! !
 
-!DrGeoSystem class methodsFor: 'class initialization' stamp: 'hlsf 3/Jul/2022 12:50:46'!
+!DrGeoSystem class methodsFor: 'class initialization' stamp: 'hlsf 3/Jul/2022, 10:50:46 am (UTC)'!
 reset
 	platform reset.
 	DrGIcons reset.  "flush icons cach"! !
 
-!DrGeoSystem class methodsFor: 'user interface' stamp: 'hlsf 3/Jul/2022 13:36:53'!
+!DrGeoSystem class methodsFor: 'user interface' stamp: 'hlsf 3/Jul/2022, 11:36:53 am (UTC)'!
 preferences
 	^ platform preferences ! !
 
-!DrGeoSystem class methodsFor: 'user interface' stamp: 'hlsf 4/Aug/2021 10:49:08'!
+!DrGeoSystem class methodsFor: 'user interface' stamp: 'hlsf 4/Aug/2021, 8:49:08 am (UTC)'!
 showVirtualKeyboard: boolean
 	platform ifNotNil: [
 		platform showVirtualKeyboard: boolean]! !
 
-!DrGeoSystem class methodsFor: 'user interface' stamp: 'hlsf 21/Apr/2020 21:31:40'!
+!DrGeoSystem class methodsFor: 'user interface' stamp: 'hlsf 21/Apr/2020, 7:31:40 pm (UTC)'!
 startSpinner
 	self canWeDisplaySpinner ifTrue: [WaitSpinner start]! !
 
-!DrGeoSystem class methodsFor: 'user interface' stamp: 'hlsf 21/Apr/2020 21:31:02'!
+!DrGeoSystem class methodsFor: 'user interface' stamp: 'hlsf 21/Apr/2020, 7:31:02 pm (UTC)'!
 stopSpinner
 	WaitSpinner stop! !
 
-!DrGeoSystem class methodsFor: 'user interface' stamp: 'hlsf 4/Aug/2022 22:55:40'!
+!DrGeoSystem class methodsFor: 'user interface' stamp: 'hlsf 4/Aug/2022, 8:55:40 pm (UTC)'!
 toggleFullscreen
 	platform toggleFullscreen ! !
 
-!DrGeoSystem class methodsFor: 'font' stamp: 'hlsf 11/Mar/2022 23:07:10'!
+!DrGeoSystem class methodsFor: 'font' stamp: 'hlsf 11/Mar/2022, 9:07:10 pm (UTC)'!
 canvasFont
 	^ self fontOfSize: self canvasFontSize! !
 
@@ -9360,7 +9362,7 @@ canvasFont
 canvasFontSize
 	^ platform canvasFontSize! !
 
-!DrGeoSystem class methodsFor: 'font' stamp: 'hlsf 1/Apr/2024 17:13:30'!
+!DrGeoSystem class methodsFor: 'font' stamp: 'hlsf 1/Apr/2024, 3:13:30 pm (UTC)'!
 fontOfSize: anInteger
 	^ FontFamily defaultFamilyPointSize: (Theme current scale: anInteger)! !
 
@@ -9368,30 +9370,30 @@ fontOfSize: anInteger
 examplesPath
 	^ platform examplesPath! !
 
-!DrGeoSystem class methodsFor: 'path' stamp: 'hlsf 4/Dec/2021 19:40:05'!
+!DrGeoSystem class methodsFor: 'path' stamp: 'hlsf 4/Dec/2021, 5:40:05 pm (UTC)'!
 iconsPath
 	^ platform iconsPath! !
 
-!DrGeoSystem class methodsFor: 'path' stamp: 'hlsf 12/Jan/2025 13:32:14'!
+!DrGeoSystem class methodsFor: 'path' stamp: 'hlsf 12/Jan/2025, 11:32:14 am (UTC)'!
 myExportsPath
 	^ platform myExportsPath assureExistence! !
 
-!DrGeoSystem class methodsFor: 'path' stamp: 'hlsf 12/Jan/2025 13:32:40'!
+!DrGeoSystem class methodsFor: 'path' stamp: 'hlsf 12/Jan/2025, 11:32:40 am (UTC)'!
 mySketchesPath
 "Access to the my Sketch files. There are descirption in XML of geometry sketches."
 	^ platform mySketchesPath assureExistence! !
 
-!DrGeoSystem class methodsFor: 'path' stamp: 'hlsf 12/Jan/2025 13:33:00'!
+!DrGeoSystem class methodsFor: 'path' stamp: 'hlsf 12/Jan/2025, 11:33:00 am (UTC)'!
 mySmalltalkSketchesPath
 "Access to my Script files. There are Smalltalk scripts computing geometry sketches."
 	^ platform mySmalltalkSketchesPath assureExistence ! !
 
-!DrGeoSystem class methodsFor: 'path' stamp: 'hlsf 11/Apr/2022 21:44:47'!
+!DrGeoSystem class methodsFor: 'path' stamp: 'hlsf 11/Apr/2022, 7:44:47 pm (UTC)'!
 smalltalkSketchesPath
 "Path to the Smalltalk sketches examples. There are written with Smalltalk code."
 	^ platform smalltalkSketchesPath ! !
 
-!DrGeoSystem class methodsFor: 'testing' stamp: 'hlsf 21/Apr/2020 21:31:40'!
+!DrGeoSystem class methodsFor: 'testing' stamp: 'hlsf 21/Apr/2020, 7:31:40 pm (UTC)'!
 canWeDisplaySpinner
 	^ platform canWeDisplaySpinner! !
 
@@ -9424,11 +9426,11 @@ isWorkstation
 isiPad
 	^ platform isiPad! !
 
-!DrGeoSystem class methodsFor: 'install' stamp: 'hlsf 7/Aug/2022 13:18:13'!
+!DrGeoSystem class methodsFor: 'install' stamp: 'hlsf 7/Aug/2022, 11:18:13 am (UTC)'!
 cleanUp
 	"Smalltalk reduceCuis "! !
 
-!DrGeoSystem class methodsFor: 'install' stamp: 'hlsf 22/Feb/2026 10:08:08'!
+!DrGeoSystem class methodsFor: 'install' stamp: 'hlsf 22/Feb/2026, 8:08:08 am (UTC)'!
 install
 	| world |
 	"Report by any mean installation and run time"
@@ -9483,28 +9485,28 @@ install
 ] fork
 ! !
 
-!DrGAbstractControlsManager methodsFor: 'accessing' stamp: 'hlsf 7/Jan/2026 15:36:29'!
+!DrGAbstractControlsManager methodsFor: 'accessing' stamp: 'hlsf 7/Jan/2026, 1:36:29 pm (UTC)'!
 presenter: aPresenter
 	presenter := aPresenter! !
 
-!DrGAbstractControlsManager methodsFor: 'accessing' stamp: 'hlsf 8/Jan/2026 21:52:40'!
+!DrGAbstractControlsManager methodsFor: 'accessing' stamp: 'hlsf 8/Jan/2026, 7:52:40 pm (UTC)'!
 tools
 	self subclassResponsibility ! !
 
-!DrGAbstractControlsManager methodsFor: 'accessing' stamp: 'hlsf 10/Jan/2026 20:12:49'!
+!DrGAbstractControlsManager methodsFor: 'accessing' stamp: 'hlsf 10/Jan/2026, 6:12:49 pm (UTC)'!
 tree
 	^ nil! !
 
-!DrGAbstractControlsManager methodsFor: 'accessing' stamp: 'hlsf 7/Jan/2026 15:36:35'!
+!DrGAbstractControlsManager methodsFor: 'accessing' stamp: 'hlsf 7/Jan/2026, 1:36:35 pm (UTC)'!
 view
 	^ view! !
 
-!DrGAbstractControlsManager methodsFor: 'initialization' stamp: 'hlsf 8/Jan/2026 21:53:11'!
+!DrGAbstractControlsManager methodsFor: 'initialization' stamp: 'hlsf 8/Jan/2026, 7:53:11 pm (UTC)'!
 installTools
 
 	self subclassResponsibility! !
 
-!DrGAbstractControlsManager methodsFor: 'initialization' stamp: 'drgeo 25/May/2026 17:15:16'!
+!DrGAbstractControlsManager methodsFor: 'initialization' stamp: 'drgeo 25/May/2026, 3:15:16 pm (UTC)'!
 release
 	presenter := nil.
 	tools ifNotNil: [
@@ -9512,19 +9514,19 @@ release
 		tools := nil].
 	view := nil! !
 
-!DrGAbstractControlsManager methodsFor: 'tools collections' stamp: 'hlsf 7/Jan/2026 15:38:34'!
+!DrGAbstractControlsManager methodsFor: 'tools collections' stamp: 'hlsf 7/Jan/2026, 1:38:34 pm (UTC)'!
 animateTools
 	^ #(#animate1 #animate2 #animate3 #animate4)! !
 
-!DrGAbstractControlsManager methodsFor: 'tools collections' stamp: 'hlsf 7/Jan/2026 15:38:38'!
+!DrGAbstractControlsManager methodsFor: 'tools collections' stamp: 'hlsf 7/Jan/2026, 1:38:38 pm (UTC)'!
 curveTools
 	^ #(#line #parallel #perpendicular #perpendicularBisector #angleBisector #ray #segment #vector #circle #arc #arcCenter #polygon #polygonRegular #locus)! !
 
-!DrGAbstractControlsManager methodsFor: 'tools collections' stamp: 'hlsf 7/Jan/2026 15:38:43'!
+!DrGAbstractControlsManager methodsFor: 'tools collections' stamp: 'hlsf 7/Jan/2026, 1:38:43 pm (UTC)'!
 macroTools
 	^ #(#macroBuild #macroExecute)! !
 
-!DrGAbstractControlsManager methodsFor: 'tools collections' stamp: 'hlsf 7/Jan/2026 15:38:49'!
+!DrGAbstractControlsManager methodsFor: 'tools collections' stamp: 'hlsf 7/Jan/2026, 1:38:49 pm (UTC)'!
 miscTools
 	^ #(#new #open #keep #exportImage
 	#undo #redo 
@@ -9532,263 +9534,263 @@ miscTools
 	#multipleMode #move
 	#eraser #style #property)! !
 
-!DrGAbstractControlsManager methodsFor: 'tools collections' stamp: 'hlsf 7/Jan/2026 15:39:00'!
+!DrGAbstractControlsManager methodsFor: 'tools collections' stamp: 'hlsf 7/Jan/2026, 1:39:00 pm (UTC)'!
 numericTools
 	^ #(#distance #angleOriented #angleGeometric #coordinates #text)! !
 
-!DrGAbstractControlsManager methodsFor: 'tools collections' stamp: 'hlsf 7/Jan/2026 15:38:53'!
+!DrGAbstractControlsManager methodsFor: 'tools collections' stamp: 'hlsf 7/Jan/2026, 1:38:53 pm (UTC)'!
 pointTools
 	^ #(#freePoint #middle #intersection #pointByCoordinates)! !
 
-!DrGAbstractControlsManager methodsFor: 'tools collections' stamp: 'hlsf 7/Jan/2026 15:39:06'!
+!DrGAbstractControlsManager methodsFor: 'tools collections' stamp: 'hlsf 7/Jan/2026, 1:39:06 pm (UTC)'!
 scriptTools
 	^ #(#scriptRun #scriptEdit #scriptCreate)! !
 
-!DrGAbstractControlsManager methodsFor: 'tools collections' stamp: 'hlsf 7/Jan/2026 15:39:11'!
+!DrGAbstractControlsManager methodsFor: 'tools collections' stamp: 'hlsf 7/Jan/2026, 1:39:11 pm (UTC)'!
 transformationTools
 	^ #(#symmetry #reflection #translation #rotation #homothety)! !
 
-!DrGAbstractControlsManager methodsFor: 'tools data' stamp: 'hlsf 7/Jan/2026 15:39:23'!
+!DrGAbstractControlsManager methodsFor: 'tools data' stamp: 'hlsf 7/Jan/2026, 1:39:23 pm (UTC)'!
 angleBisectorButtonData
 	^ {DrGAngleBisectorBuilder  title. #angleBisector. #createAngleBisector. DrGAngleBisectorBuilder description}! !
 
-!DrGAbstractControlsManager methodsFor: 'tools data' stamp: 'hlsf 7/Jan/2026 15:45:41'!
+!DrGAbstractControlsManager methodsFor: 'tools data' stamp: 'hlsf 7/Jan/2026, 1:45:41 pm (UTC)'!
 angleGeometricButtonData
 	^ {DrGAngleGeometricBuilder title. #geometricAngle. #createAngleGeometric. DrGAngleGeometricBuilder description}! !
 
-!DrGAbstractControlsManager methodsFor: 'tools data' stamp: 'hlsf 7/Jan/2026 15:46:00'!
+!DrGAbstractControlsManager methodsFor: 'tools data' stamp: 'hlsf 7/Jan/2026, 1:46:00 pm (UTC)'!
 angleOrientedButtonData
 	^ {DrGAngleOrientedBuilder title. #orientedAngle. #createAngleOriented. DrGAngleOrientedBuilder description}! !
 
-!DrGAbstractControlsManager methodsFor: 'tools data' stamp: 'hlsf 7/Jan/2026 15:46:03'!
+!DrGAbstractControlsManager methodsFor: 'tools data' stamp: 'hlsf 7/Jan/2026, 1:46:03 pm (UTC)'!
 animate1ButtonData
 	^ {'Animate x1' translated. #animate1. #animate1. 'Animate at speed 1.' translated}! !
 
-!DrGAbstractControlsManager methodsFor: 'tools data' stamp: 'hlsf 7/Jan/2026 15:46:05'!
+!DrGAbstractControlsManager methodsFor: 'tools data' stamp: 'hlsf 7/Jan/2026, 1:46:05 pm (UTC)'!
 animate2ButtonData
 	^ {'Animate x2' translated. #animate2. #animate2. 'Animate at speed 2.' translated}! !
 
-!DrGAbstractControlsManager methodsFor: 'tools data' stamp: 'hlsf 7/Jan/2026 15:39:29'!
+!DrGAbstractControlsManager methodsFor: 'tools data' stamp: 'hlsf 7/Jan/2026, 1:39:29 pm (UTC)'!
 animate3ButtonData
 	^ {'Animate x3' translated. #animate3. #animate3. 'Animate at speed 3.' translated}! !
 
-!DrGAbstractControlsManager methodsFor: 'tools data' stamp: 'hlsf 7/Jan/2026 15:39:37'!
+!DrGAbstractControlsManager methodsFor: 'tools data' stamp: 'hlsf 7/Jan/2026, 1:39:37 pm (UTC)'!
 animate4ButtonData
 	^ {'Animate x4' translated. #animate3. #animate3. 'Animate at speed 4.' translated}! !
 
-!DrGAbstractControlsManager methodsFor: 'tools data' stamp: 'hlsf 7/Jan/2026 15:46:06'!
+!DrGAbstractControlsManager methodsFor: 'tools data' stamp: 'hlsf 7/Jan/2026, 1:46:06 pm (UTC)'!
 arcButtonData
 	^ {DrGArcBuilder title. #arc. #createArc. DrGArcBuilder description}! !
 
-!DrGAbstractControlsManager methodsFor: 'tools data' stamp: 'hlsf 7/Jan/2026 15:45:32'!
+!DrGAbstractControlsManager methodsFor: 'tools data' stamp: 'hlsf 7/Jan/2026, 1:45:32 pm (UTC)'!
 arcCenterButtonData
 	^ {DrGArcCenterBuilder title. #arcCenter. #createArcCenter. DrGArcCenterBuilder description}! !
 
-!DrGAbstractControlsManager methodsFor: 'tools data' stamp: 'hlsf 7/Jan/2026 15:46:08'!
+!DrGAbstractControlsManager methodsFor: 'tools data' stamp: 'hlsf 7/Jan/2026, 1:46:08 pm (UTC)'!
 axesButtonData
 	^ {#axesWording. #axes. #axesOnOff. 'Show or hide the ox and oy axes.' translated. #isAxesVisible}! !
 
-!DrGAbstractControlsManager methodsFor: 'tools data' stamp: 'hlsf 7/Jan/2026 15:46:09'!
+!DrGAbstractControlsManager methodsFor: 'tools data' stamp: 'hlsf 7/Jan/2026, 1:46:09 pm (UTC)'!
 circleButtonData
 	^ {DrGCircleBuilder title. #circle. #createCircle. DrGCircleBuilder description}! !
 
-!DrGAbstractControlsManager methodsFor: 'tools data' stamp: 'hlsf 7/Jan/2026 15:46:11'!
+!DrGAbstractControlsManager methodsFor: 'tools data' stamp: 'hlsf 7/Jan/2026, 1:46:11 pm (UTC)'!
 coordinatesButtonData
 	^ {DrGCoordinatesBuilder title. #coordinates. #createCoordinates. DrGCoordinatesBuilder description}! !
 
-!DrGAbstractControlsManager methodsFor: 'tools data' stamp: 'hlsf 7/Jan/2026 15:46:12'!
+!DrGAbstractControlsManager methodsFor: 'tools data' stamp: 'hlsf 7/Jan/2026, 1:46:12 pm (UTC)'!
 distanceButtonData
 	^ {DrGValueBuilder title. #distance. #createDistance. DrGValueBuilder description}! !
 
-!DrGAbstractControlsManager methodsFor: 'tools data' stamp: 'hlsf 7/Jan/2026 15:46:13'!
+!DrGAbstractControlsManager methodsFor: 'tools data' stamp: 'hlsf 7/Jan/2026, 1:46:13 pm (UTC)'!
 eraserButtonData
 	^ {DrGDeleteTool title. #eraser. #eraser. DrGDeleteTool description}! !
 
-!DrGAbstractControlsManager methodsFor: 'tools data' stamp: 'hlsf 7/Jan/2026 15:39:42'!
+!DrGAbstractControlsManager methodsFor: 'tools data' stamp: 'hlsf 7/Jan/2026, 1:39:42 pm (UTC)'!
 exportImageButtonData
 	^ {'Save as image' translated. #exportToImage. #exportToImageAs. 'Export this sketch as SVG image.' translated }! !
 
-!DrGAbstractControlsManager methodsFor: 'tools data' stamp: 'hlsf 7/Jan/2026 15:46:15'!
+!DrGAbstractControlsManager methodsFor: 'tools data' stamp: 'hlsf 7/Jan/2026, 1:46:15 pm (UTC)'!
 freePointButtonData
 	^ {DrGFlyPointBuilder title. #freePoint. #createFreePoint. DrGFlyPointBuilder description}! !
 
-!DrGAbstractControlsManager methodsFor: 'tools data' stamp: 'hlsf 7/Jan/2026 15:39:53'!
+!DrGAbstractControlsManager methodsFor: 'tools data' stamp: 'hlsf 7/Jan/2026, 1:39:53 pm (UTC)'!
 gridButtonData
 	^ {#gridWording. #grid. #gridOnOff. 'Show or hide grid.' translated. #isGridVisible}! !
 
-!DrGAbstractControlsManager methodsFor: 'tools data' stamp: 'hlsf 7/Jan/2026 15:46:16'!
+!DrGAbstractControlsManager methodsFor: 'tools data' stamp: 'hlsf 7/Jan/2026, 1:46:16 pm (UTC)'!
 homothetyButtonData
 	^ {DrGHomothetyBuilder title. #scale. #createHomothety. DrGHomothetyBuilder description}! !
 
-!DrGAbstractControlsManager methodsFor: 'tools data' stamp: 'hlsf 7/Jan/2026 15:46:17'!
+!DrGAbstractControlsManager methodsFor: 'tools data' stamp: 'hlsf 7/Jan/2026, 1:46:17 pm (UTC)'!
 intersectionButtonData
 	^ {DrGPointIntersectionBuilder title. #intersection. #createPointIntersection. DrGPointIntersectionBuilder description}! !
 
-!DrGAbstractControlsManager methodsFor: 'tools data' stamp: 'hlsf 7/Jan/2026 15:39:46'!
+!DrGAbstractControlsManager methodsFor: 'tools data' stamp: 'hlsf 7/Jan/2026, 1:39:46 pm (UTC)'!
 keepButtonData
 	^ {'Save' translated. #keep. #saveSketch. 'Keep this sketch permanently.' translated}! !
 
-!DrGAbstractControlsManager methodsFor: 'tools data' stamp: 'hlsf 7/Jan/2026 15:46:18'!
+!DrGAbstractControlsManager methodsFor: 'tools data' stamp: 'hlsf 7/Jan/2026, 1:46:18 pm (UTC)'!
 lineButtonData
 	^ {DrGLineBuilder title. #line. #createLine. DrGLineBuilder description}! !
 
-!DrGAbstractControlsManager methodsFor: 'tools data' stamp: 'hlsf 7/Jan/2026 15:46:20'!
+!DrGAbstractControlsManager methodsFor: 'tools data' stamp: 'hlsf 7/Jan/2026, 1:46:20 pm (UTC)'!
 locusButtonData
 	^ {DrGLocusBuilder title. #locus. #createLocus. DrGLocusBuilder description}! !
 
-!DrGAbstractControlsManager methodsFor: 'tools data' stamp: 'hlsf 7/Jan/2026 15:39:49'!
+!DrGAbstractControlsManager methodsFor: 'tools data' stamp: 'hlsf 7/Jan/2026, 1:39:49 pm (UTC)'!
 macroBuildButtonData
 	^ {DrGMacroBuilder title. #macroBuild. #createMacro. DrGMacroBuilder description}! !
 
-!DrGAbstractControlsManager methodsFor: 'tools data' stamp: 'hlsf 7/Jan/2026 15:46:21'!
+!DrGAbstractControlsManager methodsFor: 'tools data' stamp: 'hlsf 7/Jan/2026, 1:46:21 pm (UTC)'!
 macroDeleteButtonData
 	^ {'Delete macro' translated.
 	#eraser .
 	#deleteMacro .
 	'Delete a macro-construction from the registry.' translated}! !
 
-!DrGAbstractControlsManager methodsFor: 'tools data' stamp: 'hlsf 7/Jan/2026 15:46:22'!
+!DrGAbstractControlsManager methodsFor: 'tools data' stamp: 'hlsf 7/Jan/2026, 1:46:22 pm (UTC)'!
 macroExecuteButtonData
 	^ {DrGMacroPlayer title. #macroExecute. #executeMacro. DrGMacroPlayer description}! !
 
-!DrGAbstractControlsManager methodsFor: 'tools data' stamp: 'hlsf 7/Jan/2026 15:46:23'!
+!DrGAbstractControlsManager methodsFor: 'tools data' stamp: 'hlsf 7/Jan/2026, 1:46:23 pm (UTC)'!
 magneticGridButtonData
 	^ {#magneticGridWording. #gridMagnet. #gridStuckOnOff. 'Snap to grid.' translated. #isGridded}! !
 
-!DrGAbstractControlsManager methodsFor: 'tools data' stamp: 'hlsf 7/Jan/2026 15:46:24'!
+!DrGAbstractControlsManager methodsFor: 'tools data' stamp: 'hlsf 7/Jan/2026, 1:46:24 pm (UTC)'!
 menuButtonData 
 	^ {'Menu' translated. nil . nil . 'An unobtrusive menu with all Dr. Geo tools.' translated}! !
 
-!DrGAbstractControlsManager methodsFor: 'tools data' stamp: 'hlsf 7/Jan/2026 15:46:26'!
+!DrGAbstractControlsManager methodsFor: 'tools data' stamp: 'hlsf 7/Jan/2026, 1:46:26 pm (UTC)'!
 middleButtonData
 	^ {DrGMiddleBuilder title. #middle. #createMiddlePoint. DrGMiddleBuilder description}! !
 
-!DrGAbstractControlsManager methodsFor: 'tools data' stamp: 'hlsf 7/Jan/2026 15:46:27'!
+!DrGAbstractControlsManager methodsFor: 'tools data' stamp: 'hlsf 7/Jan/2026, 1:46:27 pm (UTC)'!
 moveButtonData
 	^ {DrGSelectTool title. #move. #move. DrGSelectTool description}! !
 
-!DrGAbstractControlsManager methodsFor: 'tools data' stamp: 'hlsf 7/Jan/2026 15:46:28'!
+!DrGAbstractControlsManager methodsFor: 'tools data' stamp: 'hlsf 7/Jan/2026, 1:46:28 pm (UTC)'!
 multipleModeButtonData
 	^ {#createMultipleModeWording. #createMultiple. #createMultipleOnOff. 'Toggle between the build of several geometric objects and the build of one geometric object then move it.' translated. #isCreateMultipleMode}! !
 
-!DrGAbstractControlsManager methodsFor: 'tools data' stamp: 'hlsf 7/Jan/2026 15:46:29'!
+!DrGAbstractControlsManager methodsFor: 'tools data' stamp: 'hlsf 7/Jan/2026, 1:46:29 pm (UTC)'!
 newButtonData
 	^ {'New' translated. #newSketch. #newFigure. 'Open a new blank sketch.' translated}! !
 
-!DrGAbstractControlsManager methodsFor: 'tools data' stamp: 'hlsf 7/Jan/2026 15:46:31'!
+!DrGAbstractControlsManager methodsFor: 'tools data' stamp: 'hlsf 7/Jan/2026, 1:46:31 pm (UTC)'!
 openButtonData
 	^ {'Open' translated. #open. #openFigureThumbnail. 'Open a sketch.' translated}! !
 
-!DrGAbstractControlsManager methodsFor: 'tools data' stamp: 'hlsf 7/Jan/2026 15:46:32'!
+!DrGAbstractControlsManager methodsFor: 'tools data' stamp: 'hlsf 7/Jan/2026, 1:46:32 pm (UTC)'!
 parallelButtonData
 	^ {DrGParallelBuilder title. #parallel. #createParallel. DrGParallelBuilder description}! !
 
-!DrGAbstractControlsManager methodsFor: 'tools data' stamp: 'hlsf 7/Jan/2026 15:46:33'!
+!DrGAbstractControlsManager methodsFor: 'tools data' stamp: 'hlsf 7/Jan/2026, 1:46:33 pm (UTC)'!
 perpendicularBisectorButtonData
 	^ {DrGPerpendicularBisectorBuilder  title. #perpendicularBisector. #createPerpendicularBisector. DrGPerpendicularBisectorBuilder description}! !
 
-!DrGAbstractControlsManager methodsFor: 'tools data' stamp: 'hlsf 7/Jan/2026 15:46:34'!
+!DrGAbstractControlsManager methodsFor: 'tools data' stamp: 'hlsf 7/Jan/2026, 1:46:34 pm (UTC)'!
 perpendicularButtonData
 	^ {DrGPerpendicularBuilder title. #perpendicular. #createPerpendicular. DrGPerpendicularBuilder description}! !
 
-!DrGAbstractControlsManager methodsFor: 'tools data' stamp: 'hlsf 7/Jan/2026 15:46:35'!
+!DrGAbstractControlsManager methodsFor: 'tools data' stamp: 'hlsf 7/Jan/2026, 1:46:35 pm (UTC)'!
 pointByCoordinatesButtonData
 	^ {DrGPointByCoordinatesBuilder title. #pointDefinedByCoordinates. #createPointByCoordinates. DrGPointByCoordinatesBuilder description}! !
 
-!DrGAbstractControlsManager methodsFor: 'tools data' stamp: 'hlsf 7/Jan/2026 15:46:37'!
+!DrGAbstractControlsManager methodsFor: 'tools data' stamp: 'hlsf 7/Jan/2026, 1:46:37 pm (UTC)'!
 polygonButtonData
 	^ {DrGPolygonBuilder title. #polygon. #createPolygon. DrGPolygonBuilder description}! !
 
-!DrGAbstractControlsManager methodsFor: 'tools data' stamp: 'hlsf 7/Jan/2026 15:46:38'!
+!DrGAbstractControlsManager methodsFor: 'tools data' stamp: 'hlsf 7/Jan/2026, 1:46:38 pm (UTC)'!
 polygonRegularButtonData
 	^ {DrGPolygonRegularBuilder title. #polygonRegular. #createPolygonRegular. DrGPolygonRegularBuilder  description}! !
 
-!DrGAbstractControlsManager methodsFor: 'tools data' stamp: 'hlsf 7/Jan/2026 15:46:39'!
+!DrGAbstractControlsManager methodsFor: 'tools data' stamp: 'hlsf 7/Jan/2026, 1:46:39 pm (UTC)'!
 propertyButtonData
 	^ {DrGPropertyTool title.
 	#property .
 	#property .
 	DrGPropertyTool description}! !
 
-!DrGAbstractControlsManager methodsFor: 'tools data' stamp: 'hlsf 7/Jan/2026 15:46:40'!
+!DrGAbstractControlsManager methodsFor: 'tools data' stamp: 'hlsf 7/Jan/2026, 1:46:40 pm (UTC)'!
 rayButtonData
 	^ {DrGRayBuilder title. #ray. #createRay. DrGRayBuilder description}! !
 
-!DrGAbstractControlsManager methodsFor: 'tools data' stamp: 'hlsf 7/Jan/2026 15:46:41'!
+!DrGAbstractControlsManager methodsFor: 'tools data' stamp: 'hlsf 7/Jan/2026, 1:46:41 pm (UTC)'!
 redoButtonData
 	^ {'Redo' translated.
 	#redo .
 	#redo .
 	'Redo last action.' translated}! !
 
-!DrGAbstractControlsManager methodsFor: 'tools data' stamp: 'hlsf 7/Jan/2026 15:46:43'!
+!DrGAbstractControlsManager methodsFor: 'tools data' stamp: 'hlsf 7/Jan/2026, 1:46:43 pm (UTC)'!
 reflectionButtonData
 	^ {DrGReflectionBuilder title. #axialSymmetry. #createReflection.DrGReflectionBuilder description}! !
 
-!DrGAbstractControlsManager methodsFor: 'tools data' stamp: 'hlsf 7/Jan/2026 15:46:44'!
+!DrGAbstractControlsManager methodsFor: 'tools data' stamp: 'hlsf 7/Jan/2026, 1:46:44 pm (UTC)'!
 rotationButtonData
 	^ {DrGRotationBuilder title. #rotation. #createRotation. DrGRotationBuilder description}! !
 
-!DrGAbstractControlsManager methodsFor: 'tools data' stamp: 'hlsf 7/Jan/2026 15:46:46'!
+!DrGAbstractControlsManager methodsFor: 'tools data' stamp: 'hlsf 7/Jan/2026, 1:46:46 pm (UTC)'!
 scriptCreateButtonData
 	^ {'Create a script' translated. #createScript . #createScript . 'Create a Smalltalk script.' translated}! !
 
-!DrGAbstractControlsManager methodsFor: 'tools data' stamp: 'hlsf 7/Jan/2026 15:46:48'!
+!DrGAbstractControlsManager methodsFor: 'tools data' stamp: 'hlsf 7/Jan/2026, 1:46:48 pm (UTC)'!
 scriptEditButtonData
 	^ {'Edit a script' translated.	#editScript.	#editScript .	'Edit a Smalltalk script.' translated}! !
 
-!DrGAbstractControlsManager methodsFor: 'tools data' stamp: 'hlsf 7/Jan/2026 15:46:49'!
+!DrGAbstractControlsManager methodsFor: 'tools data' stamp: 'hlsf 7/Jan/2026, 1:46:49 pm (UTC)'!
 scriptRunButtonData
 	^ {DrGScriptPlayer title. #useScript. #useScript. DrGScriptPlayer description}! !
 
-!DrGAbstractControlsManager methodsFor: 'tools data' stamp: 'hlsf 7/Jan/2026 15:46:50'!
+!DrGAbstractControlsManager methodsFor: 'tools data' stamp: 'hlsf 7/Jan/2026, 1:46:50 pm (UTC)'!
 segmentButtonData
 	^ {DrGSegmentBuilder title. #segment. #createSegment. DrGSegmentBuilder description}! !
 
-!DrGAbstractControlsManager methodsFor: 'tools data' stamp: 'hlsf 7/Jan/2026 15:46:51'!
+!DrGAbstractControlsManager methodsFor: 'tools data' stamp: 'hlsf 7/Jan/2026, 1:46:51 pm (UTC)'!
 styleButtonData
 	^ {DrGStyleTool title. #style. #style. DrGStyleTool description}! !
 
-!DrGAbstractControlsManager methodsFor: 'tools data' stamp: 'hlsf 7/Jan/2026 15:46:53'!
+!DrGAbstractControlsManager methodsFor: 'tools data' stamp: 'hlsf 7/Jan/2026, 1:46:53 pm (UTC)'!
 symmetryButtonData
 	^ {DrGSymmetryBuilder title. #centralSymmetry. #createSymmetry. DrGSymmetryBuilder description}! !
 
-!DrGAbstractControlsManager methodsFor: 'tools data' stamp: 'hlsf 7/Jan/2026 15:46:54'!
+!DrGAbstractControlsManager methodsFor: 'tools data' stamp: 'hlsf 7/Jan/2026, 1:46:54 pm (UTC)'!
 textButtonData
 	^ {DrGTextBuilder title. #text. #createText. DrGTextBuilder description}! !
 
-!DrGAbstractControlsManager methodsFor: 'tools data' stamp: 'hlsf 7/Jan/2026 15:46:55'!
+!DrGAbstractControlsManager methodsFor: 'tools data' stamp: 'hlsf 7/Jan/2026, 1:46:55 pm (UTC)'!
 translationButtonData
 	^ {DrGTranslationBuilder title. #translation. #createTranslation. DrGTranslationBuilder description}! !
 
-!DrGAbstractControlsManager methodsFor: 'tools data' stamp: 'hlsf 7/Jan/2026 15:46:56'!
+!DrGAbstractControlsManager methodsFor: 'tools data' stamp: 'hlsf 7/Jan/2026, 1:46:56 pm (UTC)'!
 treeButtonData 
 	^ {'Construction tree' translated. nil . nil . 'The hierarchy tree presenting the visible constructed items.' translated}! !
 
-!DrGAbstractControlsManager methodsFor: 'tools data' stamp: 'hlsf 7/Jan/2026 15:46:57'!
+!DrGAbstractControlsManager methodsFor: 'tools data' stamp: 'hlsf 7/Jan/2026, 1:46:57 pm (UTC)'!
 undoButtonData
 	^ {'Undo' translated.
 	#undo .
 	#undo .
 	'Undo last action' translated}! !
 
-!DrGAbstractControlsManager methodsFor: 'tools data' stamp: 'hlsf 7/Jan/2026 15:46:59'!
+!DrGAbstractControlsManager methodsFor: 'tools data' stamp: 'hlsf 7/Jan/2026, 1:46:59 pm (UTC)'!
 vectorButtonData
 	^ {DrGVectorBuilder title. #vector. #createVector. DrGVectorBuilder description}! !
 
-!DrGAbstractControlsManager methodsFor: 'tools data' stamp: 'hlsf 7/Jan/2026 15:47:00'!
+!DrGAbstractControlsManager methodsFor: 'tools data' stamp: 'hlsf 7/Jan/2026, 1:47:00 pm (UTC)'!
 wheelXButtonData 
 	^ {'Horizontal wheel' translated. nil . #moveOx: . 'A wheel to move horizontally the sketch.' translated}! !
 
-!DrGAbstractControlsManager methodsFor: 'tools data' stamp: 'hlsf 7/Jan/2026 15:47:01'!
+!DrGAbstractControlsManager methodsFor: 'tools data' stamp: 'hlsf 7/Jan/2026, 1:47:01 pm (UTC)'!
 wheelYButtonData
 	 ^ {'Vertical wheel' translated . nil . #moveOy: . 'A wheel to move vertically the sketch.' translated}! !
 
-!DrGAbstractControlsManager methodsFor: 'tools data' stamp: 'hlsf 7/Jan/2026 15:47:02'!
+!DrGAbstractControlsManager methodsFor: 'tools data' stamp: 'hlsf 7/Jan/2026, 1:47:02 pm (UTC)'!
 wheelZButtonData
 	 ^ {'Zoom wheel' translated . nil . #scale: . 'A wheel to zoom in, zoom out the sketch.' translated}! !
 
-!DrGAbstractControlsManager methodsFor: 'widget access' stamp: 'hlsf 27/May/2026 18:27:51'!
+!DrGAbstractControlsManager methodsFor: 'widget access' stamp: 'hlsf 27/May/2026, 4:27:51 pm (UTC)'!
 horizontalWheel 
 	| array |
 	array := self wheelXButtonData.
@@ -9802,12 +9804,12 @@ horizontalWheel
 		borderColor: Theme current drgeoButtonColor muchDarker;
 		yourself! !
 
-!DrGAbstractControlsManager methodsFor: 'widget access' stamp: 'hlsf 8/Jan/2026 21:54:28'!
+!DrGAbstractControlsManager methodsFor: 'widget access' stamp: 'hlsf 8/Jan/2026, 7:54:28 pm (UTC)'!
 openTools
 
 	self subclassResponsibility! !
 
-!DrGAbstractControlsManager methodsFor: 'widget access' stamp: 'hlsf 8/Jan/2026 21:50:30'!
+!DrGAbstractControlsManager methodsFor: 'widget access' stamp: 'hlsf 8/Jan/2026, 7:50:30 pm (UTC)'!
 propertyFor: aMathItem
 "Open a property Panel to edit the math item"
 	editPanel ifNotNil: [
@@ -9818,7 +9820,7 @@ propertyFor: aMathItem
 		self contextualEditingFor: editPanel]
 		! !
 
-!DrGAbstractControlsManager methodsFor: 'widget access' stamp: 'hlsf 8/Jan/2026 21:51:13'!
+!DrGAbstractControlsManager methodsFor: 'widget access' stamp: 'hlsf 8/Jan/2026, 7:51:13 pm (UTC)'!
 setStatusBarMessage: aString
 	statusBar ifNotNil: [
 		statusBar contents: aString;
@@ -9826,7 +9828,7 @@ setStatusBarMessage: aString
 			redrawNeeded]
 		! !
 
-!DrGAbstractControlsManager methodsFor: 'widget access' stamp: 'hlsf 8/Jan/2026 21:51:17'!
+!DrGAbstractControlsManager methodsFor: 'widget access' stamp: 'hlsf 8/Jan/2026, 7:51:17 pm (UTC)'!
 statusBar
 "A bar to print contextual information"
 	^ statusBar ifNil: [
@@ -9838,7 +9840,7 @@ statusBar
 	
 	! !
 
-!DrGAbstractControlsManager methodsFor: 'widget access' stamp: 'hlsf 27/May/2026 18:49:09'!
+!DrGAbstractControlsManager methodsFor: 'widget access' stamp: 'hlsf 27/May/2026, 4:49:09 pm (UTC)'!
 statusBarInScroller
 	^ PluggableScrollPane new scroller: self statusBar; 
 		name: #statusBar;
@@ -9847,7 +9849,7 @@ statusBarInScroller
 		color: Color white;
 		yourself! !
 
-!DrGAbstractControlsManager methodsFor: 'widget access' stamp: 'hlsf 8/Jan/2026 21:50:05'!
+!DrGAbstractControlsManager methodsFor: 'widget access' stamp: 'hlsf 8/Jan/2026, 7:50:05 pm (UTC)'!
 stylerFor: aStyle
 "Open a style Panel to edit aStyle"
 	editPanel ifNotNil: [
@@ -9858,7 +9860,7 @@ stylerFor: aStyle
 		self contextualEditingFor: editPanel ]
 		! !
 
-!DrGAbstractControlsManager methodsFor: 'widget access' stamp: 'hlsf 27/May/2026 18:28:03'!
+!DrGAbstractControlsManager methodsFor: 'widget access' stamp: 'hlsf 27/May/2026, 4:28:03 pm (UTC)'!
 verticalWheel 
 	| array |
 	array := self wheelYButtonData.
@@ -9873,7 +9875,7 @@ verticalWheel
 		yourself		
 		! !
 
-!DrGAbstractControlsManager methodsFor: 'widget access' stamp: 'hlsf 27/May/2026 18:28:11'!
+!DrGAbstractControlsManager methodsFor: 'widget access' stamp: 'hlsf 27/May/2026, 4:28:11 pm (UTC)'!
 zoomWheel 
 	| array |
 	array := self wheelZButtonData.
@@ -9887,7 +9889,7 @@ zoomWheel
 		borderColor: Color black;
 		yourself! !
 
-!DrGAbstractControlsManager methodsFor: 'widget helpers' stamp: 'hlsf 8/Jan/2026 21:52:17'!
+!DrGAbstractControlsManager methodsFor: 'widget helpers' stamp: 'hlsf 8/Jan/2026, 7:52:17 pm (UTC)'!
 contextualEditingFor: panel
 "Ensure the panel is located close to the user mouse action"
 	| mousePosition |
@@ -9899,13 +9901,13 @@ contextualEditingFor: panel
 			+ (20@ (panel morphHeight // -2) )].
 	(panel respondsTo: #fitInWorld) ifTrue: [panel fitInWorld]! !
 
-!DrGAbstractControlsManager methodsFor: 'widget helpers' stamp: 'hlsf 8/Jan/2026 21:52:03'!
+!DrGAbstractControlsManager methodsFor: 'widget helpers' stamp: 'hlsf 8/Jan/2026, 7:52:03 pm (UTC)'!
 transparentMorph
 	^ ColoredBoxMorph new 
 		color: Color transparent; 
 		yourself! !
 
-!DrGAbstractControlsManager methodsFor: 'widget helpers' stamp: 'hlsf 8/Jan/2026 21:50:17'!
+!DrGAbstractControlsManager methodsFor: 'widget helpers' stamp: 'hlsf 8/Jan/2026, 7:50:17 pm (UTC)'!
 updateStylerFor: aStyle
 "Update the styler if any matching the given style"
 	(editPanel notNil and: [editPanel model == aStyle]) ifTrue: [ | position |
@@ -9914,7 +9916,7 @@ updateStylerFor: aStyle
 		editPanel morphPosition: position]
 		! !
 
-!DrGAbstractControlsManager class methodsFor: 'instance creation' stamp: 'hlsf 8/Jan/2026 21:55:20'!
+!DrGAbstractControlsManager class methodsFor: 'instance creation' stamp: 'hlsf 8/Jan/2026, 7:55:20 pm (UTC)'!
 exportIconSet
 "Export the icon set: name, description and icon as a PNG file
  See addButton:to: for icon data description"
@@ -9937,31 +9939,31 @@ exportIconSet
 			onFile: path / iconName // (iconName, '.png')	 ].
 	! !
 
-!DrGAbstractControlsManager class methodsFor: 'instance creation' stamp: 'hlsf 8/Jan/2026 21:55:23'!
+!DrGAbstractControlsManager class methodsFor: 'instance creation' stamp: 'hlsf 8/Jan/2026, 7:55:23 pm (UTC)'!
 for: aPresenter
 	^ self basicNew
 		presenter: aPresenter;
 		initialize! !
 
-!DrGMinimalControlsManager methodsFor: 'access widget' stamp: 'hlsf 10/Apr/2022 16:36:58'!
+!DrGMinimalControlsManager methodsFor: 'access widget' stamp: 'hlsf 10/Apr/2022, 2:36:58 pm (UTC)'!
 openTools
 	self tools popUpInWorld ! !
 
-!DrGMinimalControlsManager methodsFor: 'access widget' stamp: 'hlsf 27/May/2026 18:36:54'!
+!DrGMinimalControlsManager methodsFor: 'access widget' stamp: 'hlsf 27/May/2026, 4:36:54 pm (UTC)'!
 retractableWidgets
 "	Those are the wheels and the status bar widgets"
 	
 	^ view submorphsSatisfying: [:aMorph | `#(xWheel yWheel zWheel statusBar)` includes: aMorph name]! !
 
-!DrGMinimalControlsManager methodsFor: 'access widget' stamp: 'hlsf 10/Apr/2022 16:25:16'!
+!DrGMinimalControlsManager methodsFor: 'access widget' stamp: 'hlsf 10/Apr/2022, 2:25:16 pm (UTC)'!
 tools
 	^ tools ifNil: [tools := self mainMenu]! !
 
-!DrGMinimalControlsManager methodsFor: 'initialization' stamp: 'hlsf 27/May/2026 18:37:48'!
+!DrGMinimalControlsManager methodsFor: 'initialization' stamp: 'hlsf 27/May/2026, 4:37:48 pm (UTC)'!
 hideTools
 	self retractableWidgets do: [:each | each hide]! !
 
-!DrGMinimalControlsManager methodsFor: 'initialization' stamp: 'hlsf 27/May/2026 21:13:52'!
+!DrGMinimalControlsManager methodsFor: 'initialization' stamp: 'hlsf 27/May/2026, 7:13:52 pm (UTC)'!
 installTools
 " Install menu, toolbar, tree, wheels, statusbar "
 	| wheelHeight wheelWidth |
@@ -9992,11 +9994,11 @@ installTools
 			tlEdgesWeight: 0@1 offset: 0 @ wheelWidth negated
 			brEdgesWeight: 1@1 offset:  (wheelHeight + wheelWidth) negated @ 0)! !
 
-!DrGMinimalControlsManager methodsFor: 'initialization' stamp: 'hlsf 27/May/2026 18:38:00'!
+!DrGMinimalControlsManager methodsFor: 'initialization' stamp: 'hlsf 27/May/2026, 4:38:00 pm (UTC)'!
 showTools
 	self retractableWidgets do: [:each | each show]! !
 
-!DrGMinimalControlsManager methodsFor: 'menus' stamp: 'hlsf 10/Apr/2022 14:55:40'!
+!DrGMinimalControlsManager methodsFor: 'menus' stamp: 'hlsf 10/Apr/2022, 12:55:40 pm (UTC)'!
 addMenuItem: toolSymbol to: menu
 	| array |
 	"access the buttonData method from the tool symbol"
@@ -10008,12 +10010,12 @@ addMenuItem: toolSymbol to: menu
 	(DrGIcons respondsTo: array second)
 		ifTrue: [	 menu lastItem setIcon: (DrGIcons perform: array second) ]! !
 
-!DrGMinimalControlsManager methodsFor: 'menus' stamp: 'hlsf 13/Aug/2023 15:06:36'!
+!DrGMinimalControlsManager methodsFor: 'menus' stamp: 'hlsf 13/Aug/2023, 1:06:36 pm (UTC)'!
 addUpdatingMenuItem: array to: menu
 	(menu addUpdating: array first action: array third)
 		setBalloonText: array fourth.! !
 
-!DrGMinimalControlsManager methodsFor: 'menus' stamp: 'hlsf 10/Apr/2022 14:55:54'!
+!DrGMinimalControlsManager methodsFor: 'menus' stamp: 'hlsf 10/Apr/2022, 12:55:54 pm (UTC)'!
 animateMenu
 	| menu |
 	menu := self newMenu.
@@ -10021,14 +10023,14 @@ animateMenu
 	^ menu
 		! !
 
-!DrGMinimalControlsManager methodsFor: 'menus' stamp: 'hlsf 10/Apr/2022 14:55:59'!
+!DrGMinimalControlsManager methodsFor: 'menus' stamp: 'hlsf 10/Apr/2022, 12:55:59 pm (UTC)'!
 curveMenu
 	| lineMenu |
 	lineMenu := self newMenu.
 	self curveTools  do: [ :symbol | self addMenuItem: symbol to: lineMenu ].
 	^ lineMenu! !
 
-!DrGMinimalControlsManager methodsFor: 'menus' stamp: 'hlsf 10/Apr/2022 14:56:06'!
+!DrGMinimalControlsManager methodsFor: 'menus' stamp: 'hlsf 10/Apr/2022, 12:56:06 pm (UTC)'!
 editMenu
 	| menu |
 	menu := self newMenu.
@@ -10058,7 +10060,7 @@ editMenu
 	^ menu
 		! !
 
-!DrGMinimalControlsManager methodsFor: 'menus' stamp: 'hlsf 10/Jan/2026 20:22:28'!
+!DrGMinimalControlsManager methodsFor: 'menus' stamp: 'hlsf 10/Jan/2026, 6:22:28 pm (UTC)'!
 fileMenu
 	| fileMenu |
 	fileMenu := self newMenu.
@@ -10067,7 +10069,7 @@ fileMenu
 	^ fileMenu
 		! !
 
-!DrGMinimalControlsManager methodsFor: 'menus' stamp: 'hlsf 12/Feb/2026 21:00:28'!
+!DrGMinimalControlsManager methodsFor: 'menus' stamp: 'hlsf 12/Feb/2026, 7:00:28 pm (UTC)'!
 mainMenu
 	| mainMenu menu |
 	mainMenu := MenuMorph entitled: self view label.
@@ -10095,13 +10097,13 @@ mainMenu
 	^ mainMenu 
 ! !
 
-!DrGMinimalControlsManager methodsFor: 'menus' stamp: 'hlsf 10/Apr/2022 14:56:21'!
+!DrGMinimalControlsManager methodsFor: 'menus' stamp: 'hlsf 10/Apr/2022, 12:56:21 pm (UTC)'!
 newMenu
 	^ MenuMorph new 
 		defaultTarget: presenter;
 		yourself! !
 
-!DrGMinimalControlsManager methodsFor: 'menus' stamp: 'hlsf 10/Apr/2022 14:56:25'!
+!DrGMinimalControlsManager methodsFor: 'menus' stamp: 'hlsf 10/Apr/2022, 12:56:25 pm (UTC)'!
 numericMenu
 	| menu |
 	menu := self newMenu.
@@ -10109,7 +10111,7 @@ numericMenu
 	^ menu
 		! !
 
-!DrGMinimalControlsManager methodsFor: 'menus' stamp: 'hlsf 10/Apr/2022 14:56:28'!
+!DrGMinimalControlsManager methodsFor: 'menus' stamp: 'hlsf 10/Apr/2022, 12:56:28 pm (UTC)'!
 pointMenu
 	| pointMenu |
 	pointMenu := self newMenu.
@@ -10117,7 +10119,7 @@ pointMenu
 	^ pointMenu
 		! !
 
-!DrGMinimalControlsManager methodsFor: 'menus' stamp: 'hlsf 10/Apr/2022 14:56:36'!
+!DrGMinimalControlsManager methodsFor: 'menus' stamp: 'hlsf 10/Apr/2022, 12:56:36 pm (UTC)'!
 transformationMenu
 	| menu |
 	menu := self newMenu.
@@ -10125,7 +10127,7 @@ transformationMenu
 	^ menu
 		! !
 
-!DrGMinimalControlsManager methodsFor: 'as yet unclassified' stamp: 'hlsf 27/May/2026 21:08:36'!
+!DrGMinimalControlsManager methodsFor: 'as yet unclassified' stamp: 'hlsf 27/May/2026, 7:08:36 pm (UTC)'!
 statusBarInScroller
 	^ PluggableScrollPane new scroller: self statusBar; 
 		name: #statusBar;
@@ -10185,7 +10187,7 @@ drgeo
 eraser
 	^self formFromGraphic:  #(137 80 78 71 13 10 26 10 0 0 0 13 73 72 68 82 0 0 0 48 0 0 0 48 16 6 0 0 0 7 146 37 196 0 0 0 6 98 75 71 68 255 255 255 255 255 255 9 88 247 220 0 0 0 9 112 72 89 115 0 0 0 72 0 0 0 72 0 70 201 107 62 0 0 9 239 73 68 65 84 120 218 237 90 91 76 92 85 27 93 231 54 55 152 2 214 182 64 165 23 27 72 109 129 137 144 106 133 146 42 84 45 137 6 155 246 129 55 83 245 193 7 180 49 26 77 154 152 244 197 24 19 125 52 49 233 19 154 152 38 53 40 15 42 38 26 172 166 25 40 49 150 166 173 45 246 70 129 82 58 148 12 12 157 203 185 109 31 190 255 251 247 204 80 34 197 78 161 237 172 4 14 251 156 189 55 103 214 218 123 125 223 222 123 128 60 242 200 35 143 60 242 200 35 143 60 242 200 35 143 60 242 120 152 160 44 245 11 204 135 221 187 119 239 126 249 101 33 250 250 250 250 126 255 125 169 223 6 136 70 163 209 104 84 185 235 124 45 59 1 246 236 217 179 103 223 62 33 82 41 211 92 181 10 168 174 174 174 110 110 6 132 160 31 134 101 89 150 227 0 66 184 174 101 1 182 237 186 174 11 56 142 109 11 1 40 138 108 67 127 187 174 227 200 246 174 75 189 101 223 87 20 69 81 20 192 113 132 72 165 128 174 174 163 71 63 252 48 119 2 168 75 77 56 163 181 181 181 181 181 85 136 222 222 222 222 159 127 6 170 171 107 106 154 155 1 215 101 98 29 199 113 0 203 178 109 38 222 113 232 190 16 146 120 215 117 28 219 166 50 61 183 109 203 146 253 240 53 155 120 134 16 66 8 1 12 14 254 249 231 79 63 229 254 115 47 185 0 7 14 28 56 112 224 128 16 225 112 56 28 14 3 29 29 111 191 221 217 121 59 98 120 36 19 65 92 6 84 85 85 1 85 165 146 162 168 170 166 205 157 49 11 197 216 216 216 216 153 51 192 35 143 148 148 148 151 231 254 243 47 185 0 157 157 157 157 157 157 192 59 239 188 247 222 215 95 203 251 76 164 162 48 181 124 63 243 135 159 26 134 97 80 125 178 16 85 101 97 52 77 215 101 125 22 48 27 60 51 38 39 35 145 75 151 128 141 27 55 109 218 182 237 1 22 160 184 184 184 184 184 88 136 215 94 123 253 245 79 62 1 52 77 81 104 84 51 129 153 126 75 116 166 11 65 53 52 77 211 52 77 122 186 166 209 125 238 135 173 198 117 133 112 221 249 223 103 116 116 100 164 175 15 168 168 168 168 168 173 5 10 11 11 10 124 190 220 243 160 223 107 226 219 219 219 219 219 219 133 16 66 81 54 108 0 86 174 124 244 209 245 235 165 151 43 10 224 186 146 64 121 117 93 46 3 233 22 67 191 229 172 96 233 92 151 37 35 226 89 80 110 37 132 162 0 211 211 211 211 99 99 192 173 91 241 120 44 6 212 214 214 214 110 221 10 152 166 101 217 118 238 249 184 103 51 160 163 163 163 163 163 67 136 158 158 158 158 158 30 250 160 207 62 75 65 147 9 33 106 136 182 116 139 73 31 251 60 19 88 24 38 54 187 44 99 2 205 16 69 81 20 77 227 62 164 48 103 207 158 57 211 211 3 212 215 215 215 191 248 34 160 105 186 174 40 148 101 89 214 3 36 192 241 227 199 143 159 58 5 116 116 188 245 214 225 195 233 132 18 45 76 180 28 201 154 150 62 162 165 167 83 59 69 33 193 164 101 105 26 181 167 145 205 245 185 63 182 42 77 211 117 77 3 70 70 174 94 253 227 15 96 211 166 202 202 167 159 6 130 193 96 176 168 8 72 36 18 9 203 2 226 241 120 124 102 230 1 16 32 20 10 133 154 155 133 216 177 163 169 169 189 29 240 251 3 129 96 48 189 70 118 72 36 33 152 64 77 35 33 184 156 253 92 8 114 255 249 130 43 11 195 87 33 92 55 149 2 70 71 71 71 79 159 6 182 108 121 226 137 237 219 1 211 52 77 74 79 169 159 104 52 26 189 113 227 62 22 96 255 254 253 251 247 239 23 162 170 170 170 170 174 14 40 45 45 43 123 252 241 219 213 204 14 182 50 185 164 17 76 115 68 215 117 157 5 97 43 161 214 50 216 210 58 128 130 45 7 101 238 207 227 209 117 93 7 6 7 7 7 127 252 17 216 182 237 169 167 218 218 50 179 38 0 176 109 219 118 93 224 216 177 95 127 253 226 11 160 178 178 178 178 178 242 62 20 224 220 185 243 231 35 17 160 166 38 20 106 105 89 192 139 252 143 0 182 34 190 74 194 217 162 50 45 137 5 20 130 131 181 140 10 220 175 174 3 215 174 141 141 157 61 11 20 20 20 20 20 21 1 171 87 175 94 189 110 29 165 159 0 144 74 165 82 150 37 189 127 235 214 234 234 93 187 128 129 129 129 129 129 129 187 191 2 206 153 0 85 85 85 85 79 62 41 68 75 75 75 203 171 175 74 11 89 240 11 169 183 15 194 210 146 200 195 179 211 80 77 203 204 154 120 228 235 58 89 207 185 115 231 206 253 242 11 80 87 87 87 183 107 151 252 127 108 57 241 120 60 110 154 192 55 223 28 61 250 193 7 192 198 141 27 54 20 20 0 109 109 109 109 109 109 139 89 210 45 12 119 45 13 13 133 66 161 29 59 132 104 104 104 108 220 183 239 118 94 255 111 200 76 19 21 133 214 5 236 236 186 78 22 98 219 182 109 219 153 158 158 30 140 53 205 48 12 67 182 159 152 24 31 63 127 30 88 183 110 253 250 80 136 250 241 120 0 219 182 44 215 5 18 137 100 50 149 154 155 245 196 98 177 88 52 10 116 119 119 119 119 119 47 227 25 208 212 212 212 244 202 43 66 212 214 134 66 205 205 192 99 143 85 84 108 222 44 159 115 126 47 61 250 118 59 48 115 133 72 183 154 244 167 60 163 116 157 102 134 174 27 70 250 125 190 222 184 49 49 113 225 2 112 226 196 137 19 93 93 64 77 77 77 77 99 163 220 196 75 165 76 211 178 164 245 124 251 109 87 215 193 131 192 206 157 59 119 238 220 41 137 207 245 12 88 180 178 188 146 205 213 139 253 87 172 89 179 102 77 105 41 176 121 243 230 205 47 188 64 155 123 13 13 68 184 227 208 194 43 149 2 174 95 31 31 31 26 2 188 94 143 103 108 12 56 114 228 200 145 175 190 146 196 231 122 6 252 103 11 234 237 125 243 205 131 7 129 217 217 120 60 30 151 158 204 150 192 150 33 199 62 239 241 240 182 175 101 153 102 122 90 73 121 188 162 144 197 112 62 147 93 214 52 42 235 58 197 4 85 165 25 243 238 187 199 143 255 240 3 112 242 228 153 51 167 79 3 207 61 215 210 82 83 35 131 173 244 252 217 217 217 89 224 242 229 75 151 194 97 224 228 201 147 39 143 29 155 75 252 161 67 135 14 29 58 36 4 93 239 190 16 119 44 0 143 252 149 43 11 11 131 65 242 202 217 89 73 168 105 90 86 50 9 88 150 227 88 150 36 84 85 105 133 169 235 114 43 64 8 18 136 77 201 178 136 88 195 0 52 77 8 190 79 2 8 145 105 70 170 74 94 79 105 231 244 116 42 101 154 192 216 216 196 196 245 235 178 150 207 231 245 122 60 210 202 226 241 68 194 52 129 161 161 191 255 254 237 183 249 137 231 114 174 136 95 180 0 140 206 206 189 123 223 120 99 238 72 54 12 195 208 117 32 16 8 4 252 126 34 138 151 246 142 3 24 6 237 78 186 46 29 164 56 14 187 120 230 246 155 16 142 147 190 48 50 12 175 151 219 1 233 231 3 212 239 151 95 14 14 246 247 3 229 229 229 229 229 229 64 36 50 57 57 57 73 239 99 24 178 221 236 108 44 54 53 5 248 253 62 159 162 200 44 39 155 248 92 91 15 99 209 65 152 211 62 30 149 193 96 48 88 88 40 137 103 139 160 92 132 136 231 116 146 218 19 49 154 70 130 249 124 62 159 199 3 148 148 172 88 177 98 5 80 82 82 84 84 84 4 20 23 83 57 24 244 251 3 1 96 197 138 194 194 64 0 8 4 168 126 32 16 8 4 2 64 56 124 241 226 249 243 192 199 31 63 255 252 222 189 233 66 146 101 205 204 204 204 196 227 192 240 240 240 240 224 32 189 175 105 206 13 182 217 214 147 107 1 22 60 3 216 122 250 251 223 127 255 163 143 0 219 166 244 205 113 40 157 99 41 88 16 199 81 85 215 165 160 103 154 116 196 7 0 94 111 230 74 214 182 229 238 165 109 147 69 80 44 201 76 43 29 135 44 200 227 161 25 164 170 126 191 174 3 87 174 68 163 55 111 210 127 86 20 160 162 98 237 218 244 131 148 100 210 52 77 19 152 154 154 154 154 156 36 65 98 177 249 137 191 87 214 115 199 2 52 54 110 223 254 204 51 64 48 232 245 22 20 0 138 226 243 21 22 206 221 26 96 200 147 43 69 73 183 18 0 184 93 125 18 13 176 109 211 164 35 71 110 79 87 185 25 199 91 20 36 208 247 223 247 247 247 246 2 189 189 159 125 246 249 231 128 235 70 163 177 88 186 0 228 249 87 174 92 190 124 226 4 16 14 135 195 223 125 55 63 241 247 202 122 238 88 128 210 82 211 36 34 2 1 159 15 112 28 191 223 48 36 65 138 66 158 205 87 41 4 121 53 91 145 244 122 185 128 250 255 203 232 228 245 148 5 81 16 230 45 6 106 153 254 70 20 188 7 6 134 135 47 92 0 20 133 118 49 45 107 122 122 118 86 214 26 31 191 118 237 175 191 128 181 107 43 42 54 110 4 218 218 86 175 94 14 196 51 22 28 3 182 108 41 45 173 168 32 66 57 173 164 223 68 168 227 144 199 243 209 158 116 123 143 199 235 5 92 151 60 219 117 41 109 116 93 143 71 215 1 199 49 12 143 71 182 119 28 154 31 150 69 177 193 113 232 234 186 30 15 157 245 82 48 22 194 239 247 122 129 161 161 241 241 209 81 192 52 147 201 68 2 152 152 32 171 97 68 34 145 200 197 139 128 101 165 82 67 67 75 239 249 217 88 240 12 176 109 202 227 109 155 22 48 201 228 212 212 244 52 61 35 139 161 145 234 186 84 143 13 71 211 232 32 132 211 80 222 163 231 153 160 170 180 53 144 157 231 243 186 129 251 179 109 90 185 242 174 102 60 78 49 163 189 189 190 190 161 1 184 121 115 98 226 198 13 96 102 38 22 75 183 160 178 178 178 50 85 93 62 158 191 104 1 70 70 110 222 140 68 104 223 60 145 144 249 59 125 101 132 238 155 38 144 76 38 147 201 36 221 231 44 136 199 149 16 128 174 123 60 134 33 133 224 249 194 66 102 30 35 146 240 188 14 224 5 89 122 12 73 36 40 200 143 143 15 15 95 189 10 148 148 148 148 148 148 200 231 255 70 252 82 89 207 29 11 224 243 145 149 156 58 53 58 58 50 2 172 90 101 24 100 45 252 61 155 204 19 42 199 225 163 196 116 138 129 84 138 206 90 169 13 45 184 210 219 101 7 95 69 161 172 135 173 143 131 176 215 75 11 172 91 183 82 169 68 2 8 4 10 11 11 10 128 151 94 58 124 248 211 79 229 23 169 150 43 241 140 59 126 129 229 190 7 180 80 226 115 189 197 144 51 100 239 14 222 239 229 251 22 75 77 220 67 75 124 54 150 154 200 135 150 248 60 242 200 35 143 60 242 200 35 143 60 242 88 60 254 1 118 124 0 146 139 47 157 2 0 0 0 0 73 69 78 68 174 66 96 130)! !
 
-!DrGIcons class methodsFor: 'accessing' stamp: 'hlsf 11/Feb/2022 21:40:33'!
+!DrGIcons class methodsFor: 'accessing' stamp: 'hlsf 11/Feb/2022, 7:40:33 pm (UTC)'!
 forms
 	^ forms ifNil: [forms := Dictionary new]! !
 
@@ -10205,7 +10207,7 @@ gridMagnet
 group
 	^self formFromGraphic: #(137 80 78 71 13 10 26 10 0 0 0 13 73 72 68 82 0 0 0 24 0 0 0 24 8 2 0 0 0 111 21 170 175 0 0 0 9 112 72 89 115 0 0 11 19 0 0 11 19 1 0 154 156 24 0 0 1 13 73 68 65 84 56 203 173 85 65 106 133 48 20 156 212 224 33 220 231 44 66 90 193 75 40 180 123 93 181 171 118 231 82 104 241 30 173 224 70 240 28 185 129 17 92 199 77 186 248 16 196 95 53 166 153 85 120 129 121 147 153 199 11 209 90 195 7 40 128 199 231 119 66 136 51 133 214 250 231 235 141 2 32 132 124 127 190 58 19 61 189 124 0 120 128 39 80 115 202 243 124 28 199 101 89 76 37 8 130 40 138 154 166 185 70 36 165 172 170 138 49 102 42 66 136 162 40 46 43 82 74 173 89 0 48 198 140 192 44 203 164 148 7 122 169 101 195 105 154 142 245 218 154 125 172 215 103 106 187 68 125 223 167 105 10 128 115 206 57 7 144 36 73 215 117 231 102 111 80 215 245 159 166 196 113 124 162 40 12 67 33 132 189 41 187 138 230 121 46 203 82 41 245 223 201 30 134 97 125 113 243 229 0 66 8 74 233 185 71 123 48 13 40 165 235 157 113 153 168 109 219 107 241 123 155 163 77 136 247 166 216 206 209 125 136 27 83 108 137 54 33 186 63 205 101 142 180 214 183 189 235 188 252 1 16 95 223 209 47 26 227 127 226 181 183 68 199 0 0 0 0 73 69 78 68 174 66 96 130)! !
 
-!DrGIcons class methodsFor: 'accessing' stamp: 'hlsf 11/Feb/2022 21:41:38'!
+!DrGIcons class methodsFor: 'accessing' stamp: 'hlsf 11/Feb/2022, 7:41:38 pm (UTC)'!
 hatchForm
 	^ self forms
 		at: #hatch
@@ -19986,7 +19988,7 @@ undo
 vector
 	^self formFromGraphic: #(137 80 78 71 13 10 26 10 0 0 0 13 73 72 68 82 0 0 0 48 0 0 0 48 16 6 0 0 0 7 146 37 196 0 0 0 6 98 75 71 68 255 255 255 255 255 255 9 88 247 220 0 0 0 9 112 72 89 115 0 0 0 72 0 0 0 72 0 70 201 107 62 0 0 1 73 73 68 65 84 120 218 237 213 49 142 130 64 20 128 225 113 59 11 14 65 193 77 188 0 23 152 120 3 206 194 13 204 196 130 154 130 202 214 83 88 16 19 75 58 10 27 34 86 47 36 99 8 236 46 227 51 248 127 141 25 108 204 255 230 161 49 0 0 0 0 0 0 111 179 209 254 1 159 226 126 207 178 44 235 123 255 249 249 92 150 101 105 204 110 87 215 117 189 89 188 215 215 13 96 44 244 237 86 85 85 53 156 175 215 174 235 58 99 142 199 166 105 26 99 30 143 52 77 83 99 156 115 206 185 229 6 177 250 1 204 13 46 36 188 144 1 28 14 109 219 182 203 111 192 143 118 160 208 182 219 60 207 243 33 220 220 240 62 107 173 181 246 117 144 255 181 250 13 240 93 46 73 146 36 67 200 177 240 161 95 61 98 245 27 48 102 234 198 11 9 31 106 3 190 102 0 99 255 5 114 211 199 206 18 62 212 6 172 158 132 151 87 207 233 20 199 113 220 247 251 125 20 69 209 48 16 57 203 167 127 227 67 109 192 106 205 13 239 135 157 250 30 19 254 26 254 183 103 120 8 175 100 169 240 62 6 49 33 84 120 31 225 61 239 10 15 15 225 149 16 94 9 225 149 16 94 9 225 149 16 94 9 225 149 16 94 9 225 149 16 94 9 225 149 16 94 9 225 149 244 125 81 20 5 225 213 17 254 195 16 254 67 16 30 0 0 0 175 158 187 58 229 157 66 156 78 5 0 0 0 0 73 69 78 68 174 66 96 130)! !
 
-!DrGIcons class methodsFor: 'form' stamp: 'hlsf 18/Sep/2024 20:57:53'!
+!DrGIcons class methodsFor: 'form' stamp: 'hlsf 18/Sep/2024, 6:57:53 pm (UTC)'!
 colorForm: aColor
  | graphic |
 	graphic :=  aColor isTransparent
@@ -20017,7 +20019,7 @@ iconWith: morphOrForm background: aColor
 	^ self iconWith: morphOrForm extent: self menuExtent inset: self menuInset background: aColor
 ! !
 
-!DrGIcons class methodsFor: 'form' stamp: 'hlsf 18/Sep/2024 20:58:03'!
+!DrGIcons class methodsFor: 'form' stamp: 'hlsf 18/Sep/2024, 6:58:03 pm (UTC)'!
 iconWith: morphOrForm extent: extent inset: inset background: aColor
 	| form imageForm  |
 	(morphOrForm is: #Morph)
@@ -20037,7 +20039,7 @@ iconWith: morphOrForm extent: extent inset: inset background: aColor
 iconWithBackground: morphOrForm
 	^ self iconWith: morphOrForm background: Color white! !
 
-!DrGIcons class methodsFor: 'form' stamp: 'hlsf 26/Mar/2024 21:50:39'!
+!DrGIcons class methodsFor: 'form' stamp: 'hlsf 26/Mar/2024, 7:50:39 pm (UTC)'!
 point: pointSize color: color shape: shape
 	^ self 
 		iconWith: (self pointMorph: pointSize color: color shape: shape)
@@ -20045,7 +20047,7 @@ point: pointSize color: color shape: shape
 		inset: self menuInset 
 		background: Color white.! !
 
-!DrGIcons class methodsFor: 'form' stamp: 'hlsf 6/Jan/2022 21:55:51'!
+!DrGIcons class methodsFor: 'form' stamp: 'hlsf 6/Jan/2022, 7:55:51 pm (UTC)'!
 pointMorph: sizeSymbol color: color shape: shapeSymbol
 	| morph |
 	morph := DrGIconPointMorph new
@@ -20060,7 +20062,7 @@ segment: thick color: color dash: dash
 	^ self iconWithBackground: (self segmentMorph: thick color: color dash: dash).
 ! !
 
-!DrGIcons class methodsFor: 'form' stamp: 'hlsf 12/Feb/2022 15:50:25'!
+!DrGIcons class methodsFor: 'form' stamp: 'hlsf 12/Feb/2022, 1:50:25 pm (UTC)'!
 segment: thick color: color dash: dash arrow: symbol
 "#makeBackArrow #makeForwardArrow #makeBothArrows"
 	| morph |
@@ -20069,7 +20071,7 @@ segment: thick color: color dash: dash arrow: symbol
 	^ self iconWithBackground: morph
 ! !
 
-!DrGIcons class methodsFor: 'form' stamp: 'hlsf 11/Feb/2022 10:42:11'!
+!DrGIcons class methodsFor: 'form' stamp: 'hlsf 11/Feb/2022, 8:42:11 am (UTC)'!
 segment: thick color: color mark: mark
 " #none #mark1 #mark2 #mark3 #disc #circle "
 	| morph |
@@ -20079,19 +20081,19 @@ segment: thick color: color mark: mark
 	^ self iconWithBackground: morph.
 ! !
 
-!DrGIcons class methodsFor: 'form' stamp: 'hlsf 31/May/2023 18:02:30'!
+!DrGIcons class methodsFor: 'form' stamp: 'hlsf 31/May/2023, 4:02:30 pm (UTC)'!
 segmentMorph: thick color: color dash: dash
 	^ (DrGIconSegmentMorph from: 0@0 to: self menuExtent x @0 color: color)
 		borderWidth: thick;
 		dashedBorder: dash;
 		yourself! !
 
-!DrGIcons class methodsFor: 'helpers' stamp: 'hlsf 24/Mar/2024 15:37:17'!
+!DrGIcons class methodsFor: 'helpers' stamp: 'hlsf 24/Mar/2024, 1:37:17 pm (UTC)'!
 for: symbol
 " Return a form representing the icon at the toolbar icon size "
 	^ self scale: symbol to: Theme current toolbarIconSize! !
 
-!DrGIcons class methodsFor: 'helpers' stamp: 'hlsf 30/Mar/2024 08:49:21'!
+!DrGIcons class methodsFor: 'helpers' stamp: 'hlsf 30/Mar/2024, 6:49:21 am (UTC)'!
 iconUI: symbol
 "The icons as display in the UI"
 	| finalForm iconForm |
@@ -20106,7 +20108,7 @@ iconUI: symbol
 		rule: Form blend .
 	^ finalForm ! !
 
-!DrGIcons class methodsFor: 'helpers' stamp: 'hlsf 1/Apr/2024 17:20:34'!
+!DrGIcons class methodsFor: 'helpers' stamp: 'hlsf 1/Apr/2024, 3:20:34 pm (UTC)'!
 menuExtent
 	^ Theme current scale: 60@12! !
 
@@ -20114,7 +20116,7 @@ menuExtent
 menuInset
 	^ 4! !
 
-!DrGIcons class methodsFor: 'helpers' stamp: 'hlsf 19/Oct/2022 15:51:51'!
+!DrGIcons class methodsFor: 'helpers' stamp: 'hlsf 19/Oct/2022, 1:51:51 pm (UTC)'!
 scale: symbol to: integer
 | formSymbol |
 	formSymbol := (symbol, integer asString) asSymbol.
@@ -20155,14 +20157,14 @@ previous
 new
 	^self on: Array new! !
 
-!DrGeoDomain methodsFor: 'initialize-release' stamp: 'hlsf 9/Mar/2023 17:26:59'!
+!DrGeoDomain methodsFor: 'initialize-release' stamp: 'hlsf 9/Mar/2023, 3:26:59 pm (UTC)'!
 initialize
 	super initialize.
 	factory := DrGMathItemFactory new.
 	cmdManager := DrGCommandManager new domain: self.
 	pointNameIndex := 0! !
 
-!DrGeoDomain methodsFor: 'initialize-release' stamp: 'hlsf 20/May/2024 16:09:17'!
+!DrGeoDomain methodsFor: 'initialize-release' stamp: 'hlsf 20/May/2024, 2:09:17 pm (UTC)'!
 release
 	"factory release.
 	cmdManager release."
@@ -20182,7 +20184,7 @@ in case the caller want to do something with it"
 	cmdManager buildCommandFor: aMathItem.
 	^{ aMathItem. true }! !
 
-!DrGeoDomain methodsFor: 'building' stamp: 'hlsf 28/Sep/2022 17:26:57'!
+!DrGeoDomain methodsFor: 'building' stamp: 'hlsf 28/Sep/2022, 3:26:57 pm (UTC)'!
 createFromMathItemNoCommand: aMathItem
 "Return the mathItem (newly created or an existing one in the factory)
 No command in the undo/redo stack"
@@ -20191,7 +20193,7 @@ No command in the undo/redo stack"
 	self triggerEvent: #newMathItem with: aMathItem.
 	^aMathItem! !
 
-!DrGeoDomain methodsFor: 'building' stamp: 'hlsf 28/Sep/2022 17:24:10'!
+!DrGeoDomain methodsFor: 'building' stamp: 'hlsf 28/Sep/2022, 3:24:10 pm (UTC)'!
 createFromMathItemNoCommandNoFactoryCheck: aMathItem
 	"return the mathItem. we do not check in the facory pool, without command in the undo/redo stack"
 	factory add: aMathItem.
@@ -20230,14 +20232,14 @@ merge: aMathItem with: aTarget
 	"create a merge command"
 	cmdManager mergeCommandFor: aMathItem with: aTarget! !
 
-!DrGeoDomain methodsFor: 'building' stamp: 'drgeo 7/Jun/2026 10:45:02'!
+!DrGeoDomain methodsFor: 'building' stamp: 'drgeo 7/Jun/2026, 8:45:02 am (UTC)'!
 moveMathItem: aMathItem with: aPoint
 	"create a move command"
 	cmdManager moveCommandFor: aMathItem with: aPoint.
 	"We do not really need to update the canvas view, but still need to inform dependent for other kinds of view updating only when mouse button is released"
 	self triggerEvent: #updatedMathItems! !
 
-!DrGeoDomain methodsFor: 'building' stamp: 'hlsf 4/Aug/2023 17:32:56'!
+!DrGeoDomain methodsFor: 'building' stamp: 'hlsf 4/Aug/2023, 3:32:56 pm (UTC)'!
 playMacro: aBuilder in: presenter 
 	| answer macroTree |
 	macroTree := aBuilder getItem.
@@ -20270,18 +20272,18 @@ moveEvent: aMathItem at: aPoint withDirty: mathItems
 	aMathItem moveAt: aPoint.
 	self updateDirty: mathItems! !
 
-!DrGeoDomain methodsFor: 'updating' stamp: 'hlsf 10/Feb/2022 10:39:36'!
+!DrGeoDomain methodsFor: 'updating' stamp: 'hlsf 10/Feb/2022, 8:39:36 am (UTC)'!
 moveEvent: aMathItem inDirection: aPoint 
 	aMathItem moveEvent: aPoint.
 	self updateAllMathItems ! !
 
-!DrGeoDomain methodsFor: 'updating' stamp: 'hlsf 20/Jun/2021 10:48:45'!
+!DrGeoDomain methodsFor: 'updating' stamp: 'hlsf 20/Jun/2021, 8:48:45 am (UTC)'!
 moveEvent: aMathItem inDirection: aPoint withDirty: mathItems
 	aPoint isZero ifFalse: [
 		aMathItem moveEvent: aPoint.
 		self updateDirty: mathItems]! !
 
-!DrGeoDomain methodsFor: 'updating' stamp: 'hlsf 29/May/2025 10:17:05'!
+!DrGeoDomain methodsFor: 'updating' stamp: 'hlsf 29/May/2025, 8:17:05 am (UTC)'!
 mutate: aPointItem asFreeOn: aCurveItem at: aPosition
 	|item|
 	item := DrGPointOncurveItem newWith: {aCurveItem .  aPosition}.
@@ -20289,7 +20291,7 @@ mutate: aPointItem asFreeOn: aCurveItem at: aPosition
 	aPointItem become: item.
 	self updateAllMathItems ! !
 
-!DrGeoDomain methodsFor: 'updating' stamp: 'hlsf 29/May/2025 10:17:09'!
+!DrGeoDomain methodsFor: 'updating' stamp: 'hlsf 29/May/2025, 8:17:09 am (UTC)'!
 mutate: aPointItem asIntersectionWith: curveA and: curveB at: aPosition
 	|item|
 	item :=  DrGPointIntersectionItem newWith: {curveA. curveB.  aPosition}.
@@ -20297,7 +20299,7 @@ mutate: aPointItem asIntersectionWith: curveA and: curveB at: aPosition
 	aPointItem become: item.
 	self updateAllMathItems.! !
 
-!DrGeoDomain methodsFor: 'updating' stamp: 'hlsf 29/May/2025 10:17:13'!
+!DrGeoDomain methodsFor: 'updating' stamp: 'hlsf 29/May/2025, 8:17:13 am (UTC)'!
 mutateAsFreePoint: aPointItem
 	|freePointItem|
 	(aPointItem isFreePointItem and: [aPointItem isPointItemOnCurve not]) ifTrue: [^aPointItem].
@@ -20306,12 +20308,12 @@ mutateAsFreePoint: aPointItem
 	aPointItem become: freePointItem.
 	^ freePointItem! !
 
-!DrGeoDomain methodsFor: 'updating' stamp: 'drgeo 7/Jun/2026 11:03:45'!
+!DrGeoDomain methodsFor: 'updating' stamp: 'drgeo 7/Jun/2026, 9:03:45 am (UTC)'!
 updateAllMathItems
 	factory updateAllMathItems.
 	self triggerEvent: #updatedMathItems! !
 
-!DrGeoDomain methodsFor: 'updating' stamp: 'hlsf 17/May/2020 16:57:35'!
+!DrGeoDomain methodsFor: 'updating' stamp: 'hlsf 17/May/2020, 2:57:35 pm (UTC)'!
 updateDirty: mathItems
 	mathItems do: [:item | item update].
 	self triggerEvent: #updatedDirtyItems! !
@@ -20332,12 +20334,12 @@ redo
 undo
 	cmdManager undo! !
 
-!DrGeoDomain methodsFor: 'autoname' stamp: 'hlsf 17/Feb/2026 14:46:55'!
+!DrGeoDomain methodsFor: 'autoname' stamp: 'hlsf 17/Feb/2026, 12:46:55 pm (UTC)'!
 autoname: aMathItem
 	(DrGeoSystem preferences at: #autoName) ifFalse: [^ self].
 	aMathItem isPointItem ifTrue: [self autonamePoint: aMathItem]! !
 
-!DrGeoDomain methodsFor: 'autoname' stamp: 'drgeo 16/Mar/2024 19:52:00'!
+!DrGeoDomain methodsFor: 'autoname' stamp: 'drgeo 16/Mar/2024, 5:52:00 pm (UTC)'!
 autonamePoint: pointItem
 	| name letter index |
 	letter :=  Character codePoint: (pointNameIndex \\ 26) + 65.
@@ -20353,7 +20355,7 @@ autonamePoint: pointItem
 basicType
 	^#mathItem! !
 
-!DrGMathItem methodsFor: 'accessing' stamp: 'hlsf 4/May/2020 12:30:16'!
+!DrGMathItem methodsFor: 'accessing' stamp: 'hlsf 4/May/2020, 10:30:16 am (UTC)'!
 descriptiveName
 	^ self adaptiveDescriptiveName 
 		copyReplaceAll: '%1'
@@ -20363,14 +20365,14 @@ descriptiveName
 exist
 	^exist! !
 
-!DrGMathItem methodsFor: 'accessing' stamp: 'hlsf 10/Aug/2025 23:54:28'!
+!DrGMathItem methodsFor: 'accessing' stamp: 'hlsf 10/Aug/2025, 9:54:28 pm (UTC)'!
 exist: aBoolean
 	exist ~= aBoolean ifTrue: [
 		exist := aBoolean.
 		self triggerEvent: #existence with: exist].
 	exist ifTrue: [self rehash]! !
 
-!DrGMathItem methodsFor: 'accessing' stamp: 'hlsf 11/Feb/2022 08:56:49'!
+!DrGMathItem methodsFor: 'accessing' stamp: 'hlsf 11/Feb/2022, 6:56:49 am (UTC)'!
 icon
 	^ nil! !
 
@@ -20382,7 +20384,7 @@ id
 id: aSymbol
 	id := aSymbol! !
 
-!DrGMathItem methodsFor: 'accessing' stamp: 'hlsf 12/Apr/2021 22:27:45'!
+!DrGMathItem methodsFor: 'accessing' stamp: 'hlsf 12/Apr/2021, 8:27:45 pm (UTC)'!
 morphClass
 	^ DrGMorph! !
 
@@ -20402,7 +20404,7 @@ parents
 parents: aCollection
 	parents := aCollection.! !
 
-!DrGMathItem methodsFor: 'accessing' stamp: 'hlsf 4/Aug/2023 17:11:29'!
+!DrGMathItem methodsFor: 'accessing' stamp: 'hlsf 4/Aug/2023, 3:11:29 pm (UTC)'!
 parents: aCollection in: presenter
 	self parents: aCollection! !
 
@@ -20428,7 +20430,7 @@ printCoordinates: aPoint on: aStream
 		aStream nextPut: $)].
 ! !
 
-!DrGMathItem methodsFor: 'printing' stamp: 'hlsf 2/May/2020 12:42:44'!
+!DrGMathItem methodsFor: 'printing' stamp: 'hlsf 2/May/2020, 10:42:44 am (UTC)'!
 printDecimal: aValue on: aStream
 	aValue isInfinite 
 		ifTrue: [aStream nextPutAll: 'inf.']
@@ -20456,7 +20458,7 @@ printType: aString on: aStream
 		nextPut: Character space;
 		nextPutAll: self safeName! !
 
-!DrGMathItem methodsFor: 'comparing' stamp: 'hlsf 29/May/2025 12:02:22'!
+!DrGMathItem methodsFor: 'comparing' stamp: 'hlsf 29/May/2025, 10:02:22 am (UTC)'!
 = aMathItem 
 	^ aMathItem isMathItem 
 		and: [self basicType == aMathItem basicType
@@ -20476,7 +20478,7 @@ parentsIncludes: aMathItem
 "An idendity comparaison"
 	^ parents notNil and: [parents anySatisfy: [:each | each == aMathItem]]! !
 
-!DrGMathItem methodsFor: 'comparing' stamp: 'hlsf 29/May/2025 09:50:22'!
+!DrGMathItem methodsFor: 'comparing' stamp: 'hlsf 29/May/2025, 7:50:22 am (UTC)'!
 rehash
 	^ hash := (parents hash 
 	bitXor: self nodeType hash) 
@@ -20491,7 +20493,7 @@ initialize
 initialize: theParents
 ! !
 
-!DrGMathItem methodsFor: 'initialize-release' stamp: 'hlsf 25/May/2023 18:58:03'!
+!DrGMathItem methodsFor: 'initialize-release' stamp: 'hlsf 25/May/2023, 4:58:03 pm (UTC)'!
 release
 	self triggerEvent: #deletedMathItem.
 	"Do it last otherwise our deletedMathItem will never be sent"
@@ -20559,7 +20561,7 @@ intersectionWith: aCurveItem flag: aFlag
 pointAt: anAbscissa
 	self subclassResponsibility ! !
 
-!DrGMathItem methodsFor: 'updating' stamp: 'drgeo 7/Jun/2026 10:59:39'!
+!DrGMathItem methodsFor: 'updating' stamp: 'drgeo 7/Jun/2026, 8:59:39 am (UTC)'!
 changed
 	self triggerEvent: #updateMyView! !
 
@@ -20605,7 +20607,7 @@ update
 contains: aPoint
 	self subclassResponsibility ! !
 
-!DrGMathItem methodsFor: 'testing' stamp: 'hlsf 10/Aug/2025 12:35:50'!
+!DrGMathItem methodsFor: 'testing' stamp: 'hlsf 10/Aug/2025, 10:35:50 am (UTC)'!
 doParentsExist
 	^ parents 
 		ifNotNil: [parents allSatisfy: [:parent | parent exist] ]
@@ -20631,7 +20633,7 @@ isAngleItem
 isArcItem
 	^false! !
 
-!DrGMathItem methodsFor: 'testing-model' stamp: 'HilaireFernandes 27/Feb/2013 14:21:00'!
+!DrGMathItem methodsFor: 'testing-model' stamp: 'HilaireFernandes 27/Feb/2013, 12:21:00 pm (UTC)'!
 isBitmapItem
 	^false! !
 
@@ -20647,17 +20649,17 @@ isCompositeItem
 isConstrainedPointItem
 	^false! !
 
-!DrGMathItem methodsFor: 'testing-model' stamp: 'HilaireFernandes 24/Feb/2013 08:37:00'!
+!DrGMathItem methodsFor: 'testing-model' stamp: 'HilaireFernandes 24/Feb/2013, 6:37:00 am (UTC)'!
 isCurveItem
 "When true, free point can be constrained on this item line"
 	^false! !
 
-!DrGMathItem methodsFor: 'testing-model' stamp: 'HilaireFernandes 24/Feb/2013 08:37:00'!
+!DrGMathItem methodsFor: 'testing-model' stamp: 'HilaireFernandes 24/Feb/2013, 6:37:00 am (UTC)'!
 isDirectionItem
 "When true, this item are straight line with normal and unit vector"
 	^false! !
 
-!DrGMathItem methodsFor: 'testing-model' stamp: 'HilaireFernandes 2/Aug/2012 23:10:00'!
+!DrGMathItem methodsFor: 'testing-model' stamp: 'HilaireFernandes 2/Aug/2012, 9:10:00 pm (UTC)'!
 isEquation
 	^ false! !
 
@@ -20665,7 +20667,7 @@ isEquation
 isFreePointItem
 	^false! !
 
-!DrGMathItem methodsFor: 'testing-model' stamp: 'HilaireFernandes 24/Jul/2012 22:16:00'!
+!DrGMathItem methodsFor: 'testing-model' stamp: 'HilaireFernandes 24/Jul/2012, 8:16:00 pm (UTC)'!
 isFreePointOnPlaneItem
 	^false! !
 
@@ -20673,7 +20675,7 @@ isFreePointOnPlaneItem
 isGeometricItem
 	^false! !
 
-!DrGMathItem methodsFor: 'testing-model' stamp: 'HilaireFernandes 24/Feb/2013 08:46:00'!
+!DrGMathItem methodsFor: 'testing-model' stamp: 'HilaireFernandes 24/Feb/2013, 6:46:00 am (UTC)'!
 isIntersectableItem
 "When true, this curve can be intersected"
 	^self isCurveItem! !
@@ -20745,7 +20747,7 @@ newWith: theParents
 		rehash;
 		yourself! !
 
-!DrGMathItem class methodsFor: 'instance creation' stamp: 'hlsf 4/Aug/2023 17:13:54'!
+!DrGMathItem class methodsFor: 'instance creation' stamp: 'hlsf 4/Aug/2023, 3:13:54 pm (UTC)'!
 newWith: theParents in: aPresenter
 	"Instantiate this mathItem with these parents
 	Parents contains other MathItem instance, sometime it contains other object as Point"
@@ -20766,7 +20768,7 @@ printOn: aStream
 adaptiveDescriptiveName
 	^ 'This Arc Circle %1' translated! !
 
-!DrGArcItem methodsFor: 'private' stamp: 'hlsf 5/Jun/2021 20:18:05'!
+!DrGArcItem methodsFor: 'private' stamp: 'hlsf 5/Jun/2021, 6:18:05 pm (UTC)'!
 angleOf: aPoint
 	"Compute the angle position of aPoint in the circle"
 	| angleM pointM |
@@ -20852,7 +20854,7 @@ pointAt: anAbscissa
 	^center + (radius * (angle cos @ angle sin))
 	! !
 
-!DrGArcItem methodsFor: 'testing' stamp: 'hlsf 5/Jun/2021 20:17:40'!
+!DrGArcItem methodsFor: 'testing' stamp: 'hlsf 5/Jun/2021, 6:17:40 pm (UTC)'!
 contains: aPoint 
 	| angleM pointM |
 	((center dist: aPoint) closeTo: radius) ifFalse: [^false].
@@ -20895,7 +20897,7 @@ length
 length: aFloat
 	length := aFloat ! !
 
-!DrGArcItem methodsFor: 'accessing' stamp: 'hlsf 12/Apr/2021 22:27:45'!
+!DrGArcItem methodsFor: 'accessing' stamp: 'hlsf 12/Apr/2021, 8:27:45 pm (UTC)'!
 morphClass 
 	^DrGArcMorph! !
 
@@ -20915,19 +20917,19 @@ radius
 radius: aFloat
 	radius := aFloat! !
 
-!DrGArcItem methodsFor: 'testing-model' stamp: 'hlsf 4/May/2020 18:22:39'!
+!DrGArcItem methodsFor: 'testing-model' stamp: 'hlsf 4/May/2020, 4:22:39 pm (UTC)'!
 isArcItem
 	^true! !
 
-!DrGArcItem methodsFor: 'testing-model' stamp: 'hlsf 4/May/2020 18:23:03'!
+!DrGArcItem methodsFor: 'testing-model' stamp: 'hlsf 4/May/2020, 4:23:03 pm (UTC)'!
 isCurveItem
 	^true! !
 
-!DrGArcItem methodsFor: 'testing-model' stamp: 'hlsf 4/May/2020 18:26:01'!
+!DrGArcItem methodsFor: 'testing-model' stamp: 'hlsf 4/May/2020, 4:26:01 pm (UTC)'!
 isGeometricItem
 	^ true! !
 
-!DrGArc3ptsItem methodsFor: 'updating' stamp: 'hlsf 10/Aug/2025 23:50:56'!
+!DrGArc3ptsItem methodsFor: 'updating' stamp: 'hlsf 10/Aug/2025, 9:50:56 pm (UTC)'!
 update
 	| direction1 direction2 a b c ab |
 	self doParentsExist 	ifFalse: [^ self exist: false].
@@ -20958,7 +20960,7 @@ update
 			(ab > length or: [ab < 0]) ifTrue: [length := length - Float twoPi] ].
 	self exist: true! !
 
-!DrGArc3ptsItem methodsFor: 'updating' stamp: 'hlsf 20/May/2024 11:47:52'!
+!DrGArc3ptsItem methodsFor: 'updating' stamp: 'hlsf 20/May/2024, 9:47:52 am (UTC)'!
 updateAsSegmentOrRay
 "the three point are aligned, the arc is a segment"
 	self exist: false.! !
@@ -20972,14 +20974,14 @@ parentsEqual: aMathItem
 	^ parents = aMathItem parents
 		or: [parents reverse = aMathItem parents]! !
 
-!DrGArc3ptsItem methodsFor: 'comparing' stamp: 'hlsf 29/May/2025 09:51:53'!
+!DrGArc3ptsItem methodsFor: 'comparing' stamp: 'hlsf 29/May/2025, 7:51:53 am (UTC)'!
 rehash
  ^ hash := ((parents hash 
 	bitXor: parents reverse hash) 
 	bitXor: self nodeType hash) 
 	bitXor: self basicType hash! !
 
-!DrGArcCenterAngleItem methodsFor: 'updating' stamp: 'hlsf 25/Jan/2026 17:02:31'!
+!DrGArcCenterAngleItem methodsFor: 'updating' stamp: 'hlsf 25/Jan/2026, 3:02:31 pm (UTC)'!
 update
 | u v |
 	self doParentsExist ifFalse: [^ self exist: false].
@@ -21006,7 +21008,7 @@ nodeType
 moveParent: aPoint
 	^false! !
 
-!DrGArcHomothetyItem methodsFor: 'updating' stamp: 'hlsf 20/May/2024 11:50:09'!
+!DrGArcHomothetyItem methodsFor: 'updating' stamp: 'hlsf 20/May/2024, 9:50:09 am (UTC)'!
 update
 |arcItem centerHomothety|
 	self doParentsExist ifFalse: [^ self exist: false].
@@ -21027,7 +21029,7 @@ nodeType
 moveParent: aPoint
 	^false! !
 
-!DrGArcReflexionItem methodsFor: 'updating' stamp: 'hlsf 20/May/2024 11:51:30'!
+!DrGArcReflexionItem methodsFor: 'updating' stamp: 'hlsf 20/May/2024, 9:51:30 am (UTC)'!
 update
 |pointA|
 	self doParentsExist ifFalse: [^ self exist: false].
@@ -21054,7 +21056,7 @@ nodeType
 moveParent: aPoint
 	^false! !
 
-!DrGArcRotationItem methodsFor: 'updating' stamp: 'hlsf 20/May/2024 11:51:50'!
+!DrGArcRotationItem methodsFor: 'updating' stamp: 'hlsf 20/May/2024, 9:51:50 am (UTC)'!
 update
 |arcItem|
 	self doParentsExist ifFalse: [^ self exist: false].
@@ -21072,7 +21074,7 @@ update
 moveParent: aPoint
 	^false! !
 
-!DrGArcSymmetryItem methodsFor: 'updating' stamp: 'hlsf 20/May/2024 11:52:28'!
+!DrGArcSymmetryItem methodsFor: 'updating' stamp: 'hlsf 20/May/2024, 9:52:28 am (UTC)'!
 update
 	self doParentsExist ifFalse: [^ self exist: false].
 	origin := parents first origin + Float pi.
@@ -21094,7 +21096,7 @@ nodeType
 moveParent: aPoint
 	^false! !
 
-!DrGArcTranslationItem methodsFor: 'updating' stamp: 'hlsf 20/May/2024 11:52:49'!
+!DrGArcTranslationItem methodsFor: 'updating' stamp: 'hlsf 20/May/2024, 9:52:49 am (UTC)'!
 update
 	self doParentsExist ifFalse: [^ self exist: false].
 	origin := parents first origin.
@@ -21143,7 +21145,7 @@ writeAsXmlPositionTo: aNode
 				addContent: (XMLStringNode string: position y asString)).
 	^ aNode! !
 
-!DrGBitmapItem methodsFor: 'xml writing' stamp: 'hlsf 17/Feb/2026 14:43:39'!
+!DrGBitmapItem methodsFor: 'xml writing' stamp: 'hlsf 17/Feb/2026, 12:43:39 pm (UTC)'!
 writeAsXmlTo: aNode
 	|node stream |
 	stream := ByteArray new writeStream.
@@ -21221,7 +21223,7 @@ magnifyBy
 magnifyBy: aFloat
 	magnifyBy := aFloat ! !
 
-!DrGBitmapItem methodsFor: 'accessing' stamp: 'hlsf 12/Apr/2021 22:27:45'!
+!DrGBitmapItem methodsFor: 'accessing' stamp: 'hlsf 12/Apr/2021, 8:27:45 pm (UTC)'!
 morphClass
 	^ DrGBitmapMorph! !
 
@@ -21257,7 +21259,7 @@ initialize: theParents
 adaptiveDescriptiveName 
 	^ 'This picture' translated! !
 
-!DrGBitmapItem methodsFor: 'testing-model' stamp: 'hlsf 4/May/2020 18:23:56'!
+!DrGBitmapItem methodsFor: 'testing-model' stamp: 'hlsf 4/May/2020, 4:23:56 pm (UTC)'!
 isBitmapItem
 	^ true! !
 
@@ -21306,7 +21308,7 @@ intersectionWith: aCurveItem flag: aFlag
 	aCurveItem isArcItem
 		ifTrue: [^aCurveItem intersectionWith: self flag: aFlag]! !
 
-!DrGCircleItem methodsFor: 'computing' stamp: 'hlsf 10/Aug/2025 13:48:24'!
+!DrGCircleItem methodsFor: 'computing' stamp: 'hlsf 10/Aug/2025, 11:48:24 am (UTC)'!
 intersectionWithCircle: aCircleItem flag: aFlag 
 	| directionItem aVector aRadius x d |
 	directionItem := DrGDirectionItem new.
@@ -21319,7 +21321,7 @@ intersectionWithCircle: aCircleItem flag: aFlag
 	directionItem origin: x * aVector + center.
 	^self intersectionWithDirection: directionItem flag: aFlag! !
 
-!DrGCircleItem methodsFor: 'computing' stamp: 'hlsf 10/Aug/2025 13:10:48'!
+!DrGCircleItem methodsFor: 'computing' stamp: 'hlsf 10/Aug/2025, 11:10:48 am (UTC)'!
 intersectionWithDirection: aDirectionItem flag: aFlag
 |a b c d k vector|
 	vector := aDirectionItem direction.
@@ -21331,7 +21333,7 @@ intersectionWithDirection: aDirectionItem flag: aFlag
 	k := (b negated + (aFlag * d sqrt)) / a.
 	^ aDirectionItem origin + (k * vector)! !
 
-!DrGCircleItem methodsFor: 'accessing' stamp: 'hlsf 25/Feb/2024 00:31:13'!
+!DrGCircleItem methodsFor: 'accessing' stamp: 'hlsf 24/Feb/2024, 10:31:13 pm (UTC)'!
 abscissaOf: aPoint 
 	| angle vector |
 	vector := aPoint - self center.
@@ -21357,11 +21359,11 @@ closestPointTo: aPoint
 	[v := (aPoint - self center) normalized] on: ZeroDivide do: [ v := 0 @ 0 ].
 	^self center + (self radius * v)! !
 
-!DrGCircleItem methodsFor: 'accessing' stamp: 'hlsf 12/Apr/2021 22:27:45'!
+!DrGCircleItem methodsFor: 'accessing' stamp: 'hlsf 12/Apr/2021, 8:27:45 pm (UTC)'!
 morphClass 
 	^DrGCircleMorph! !
 
-!DrGCircleItem methodsFor: 'accessing' stamp: 'hlsf 25/Feb/2024 00:31:48'!
+!DrGCircleItem methodsFor: 'accessing' stamp: 'hlsf 24/Feb/2024, 10:31:48 pm (UTC)'!
 pointAt: anAbscissa
 	|angle|
 	angle := Float twoPi * anAbscissa.
@@ -21375,15 +21377,15 @@ radius
 radius: aFlaot
 	radius := aFlaot ! !
 
-!DrGCircleItem methodsFor: 'testing-model' stamp: 'hlsf 4/May/2020 18:24:23'!
+!DrGCircleItem methodsFor: 'testing-model' stamp: 'hlsf 4/May/2020, 4:24:23 pm (UTC)'!
 isCircleItem
 	^ true! !
 
-!DrGCircleItem methodsFor: 'testing-model' stamp: 'hlsf 4/May/2020 18:24:19'!
+!DrGCircleItem methodsFor: 'testing-model' stamp: 'hlsf 4/May/2020, 4:24:19 pm (UTC)'!
 isCurveItem
 	^ true! !
 
-!DrGCircleItem methodsFor: 'testing-model' stamp: 'hlsf 4/May/2020 18:26:10'!
+!DrGCircleItem methodsFor: 'testing-model' stamp: 'hlsf 4/May/2020, 4:26:10 pm (UTC)'!
 isGeometricItem
 	^ true! !
 
@@ -21391,7 +21393,7 @@ isGeometricItem
 nodeType
 	^#'2pts'! !
 
-!DrGCircle2ptsItem methodsFor: 'updating' stamp: 'hlsf 20/May/2024 11:53:16'!
+!DrGCircle2ptsItem methodsFor: 'updating' stamp: 'hlsf 20/May/2024, 9:53:16 am (UTC)'!
 update
 	self doParentsExist ifFalse: [^ self exist: false].
 	center := parents first point.
@@ -21406,7 +21408,7 @@ nodeType
 moveParent: aPoint
 	^false! !
 
-!DrGCircleHomothetyItem methodsFor: 'updating' stamp: 'hlsf 20/May/2024 11:53:34'!
+!DrGCircleHomothetyItem methodsFor: 'updating' stamp: 'hlsf 20/May/2024, 9:53:34 am (UTC)'!
 update
 |centerHomothety|
 	self doParentsExist ifFalse: [^ self exist: false].
@@ -21435,7 +21437,7 @@ moveParent: aPoint
 	thePoint moveEvent: aPoint.
 	^ true! !
 
-!DrGCircleRadiusItem methodsFor: 'updating' stamp: 'hlsf 20/May/2024 11:53:48'!
+!DrGCircleRadiusItem methodsFor: 'updating' stamp: 'hlsf 20/May/2024, 9:53:48 am (UTC)'!
 update
 	self doParentsExist ifFalse: [^ self exist: false].
 	center := parents first point.
@@ -21458,7 +21460,7 @@ clone
 nodeType
 	^ #segment! !
 
-!DrGCircleSegmentItem methodsFor: 'updating' stamp: 'hlsf 20/May/2024 11:54:05'!
+!DrGCircleSegmentItem methodsFor: 'updating' stamp: 'hlsf 20/May/2024, 9:54:05 am (UTC)'!
 update
 	self doParentsExist ifFalse: [^ self exist: false].
 	center := parents first point.
@@ -21473,7 +21475,7 @@ nodeType
 moveParent: aPoint
 	^false! !
 
-!DrGCircleReflexionItem methodsFor: 'updating' stamp: 'hlsf 20/May/2024 11:54:21'!
+!DrGCircleReflexionItem methodsFor: 'updating' stamp: 'hlsf 20/May/2024, 9:54:21 am (UTC)'!
 update
 	self doParentsExist ifFalse: [^ self exist: false].
 	self radius: parents first radius.
@@ -21486,7 +21488,7 @@ update
 moveParent: aPoint
 	^false! !
 
-!DrGCircleRotationItem methodsFor: 'updating' stamp: 'hlsf 20/May/2024 11:54:34'!
+!DrGCircleRotationItem methodsFor: 'updating' stamp: 'hlsf 20/May/2024, 9:54:34 am (UTC)'!
 update
 	self doParentsExist ifFalse: [^ self exist: false].
 	radius := parents first radius.
@@ -21508,7 +21510,7 @@ nodeType
 moveParent: aPoint
 	^false! !
 
-!DrGCircleSymmetryItem methodsFor: 'updating' stamp: 'hlsf 20/May/2024 11:54:48'!
+!DrGCircleSymmetryItem methodsFor: 'updating' stamp: 'hlsf 20/May/2024, 9:54:48 am (UTC)'!
 update
 	self doParentsExist ifFalse: [^ self exist: false].
 	self radius: parents first radius.
@@ -21524,7 +21526,7 @@ nodeType
 moveParent: aPoint
 	^false! !
 
-!DrGCircleTranslationItem methodsFor: 'updating' stamp: 'hlsf 20/May/2024 11:55:00'!
+!DrGCircleTranslationItem methodsFor: 'updating' stamp: 'hlsf 20/May/2024, 9:55:00 am (UTC)'!
 update
 	self doParentsExist ifFalse: [^ self exist: false].
 	self center: parents first center + parents second direction.
@@ -21567,11 +21569,11 @@ move: aPoint
 moveParent: aPoint
 	^false! !
 
-!DrGCompositeItem methodsFor: 'as yet unclassified' stamp: 'hlsf 4/May/2020 18:24:59'!
+!DrGCompositeItem methodsFor: 'as yet unclassified' stamp: 'hlsf 4/May/2020, 4:24:59 pm (UTC)'!
 isCompositeItem
 	^true! !
 
-!DrGCompositeItem methodsFor: 'as yet unclassified' stamp: 'hlsf 4/May/2020 18:25:15'!
+!DrGCompositeItem methodsFor: 'as yet unclassified' stamp: 'hlsf 4/May/2020, 4:25:15 pm (UTC)'!
 isGeometricItem
 "if all subitem are geometric item, considere ourself as a geometric item"
 	subItems do: [:aMathItem |
@@ -21591,7 +21593,7 @@ printOn: aStream
 	self printCoordinates: vector on: aStream 
 ! !
 
-!DrGDirectionItem methodsFor: 'updating' stamp: 'hlsf 20/May/2024 12:42:52'!
+!DrGDirectionItem methodsFor: 'updating' stamp: 'hlsf 20/May/2024, 10:42:52 am (UTC)'!
 homothetyUpdate
 	|center|
 	self doParentsExist ifFalse: [^ self exist: false].
@@ -21601,7 +21603,7 @@ homothetyUpdate
 	vector := parents first direction * parents third valueItem.
 	self exist: true! !
 
-!DrGDirectionItem methodsFor: 'updating' stamp: 'hlsf 20/May/2024 12:43:28'!
+!DrGDirectionItem methodsFor: 'updating' stamp: 'hlsf 20/May/2024, 10:43:28 am (UTC)'!
 reflexionUpdate
 	self doParentsExist ifFalse: [^ self exist: false].
 	self origin: (parents first origin
@@ -21611,7 +21613,7 @@ reflexionUpdate
 			vectorReflexionBy: parents second direction).
 	self exist: true! !
 
-!DrGDirectionItem methodsFor: 'updating' stamp: 'hlsf 20/May/2024 12:43:44'!
+!DrGDirectionItem methodsFor: 'updating' stamp: 'hlsf 20/May/2024, 10:43:44 am (UTC)'!
 rotationUpdate
 	self doParentsExist ifFalse: [^ self exist: false].
 	origin := parents first origin
@@ -21621,21 +21623,21 @@ rotationUpdate
 		rotateVector: parents third valueItem.
 	self exist: true! !
 
-!DrGDirectionItem methodsFor: 'updating' stamp: 'hlsf 20/May/2024 12:43:57'!
+!DrGDirectionItem methodsFor: 'updating' stamp: 'hlsf 20/May/2024, 10:43:57 am (UTC)'!
 symmetryUpdate
 	self doParentsExist ifFalse: [^ self exist: false].
 	self origin: (2 * parents second point) - parents first origin.
 	self direction: parents first direction negated.
 	self exist: true! !
 
-!DrGDirectionItem methodsFor: 'updating' stamp: 'hlsf 20/May/2024 12:44:13'!
+!DrGDirectionItem methodsFor: 'updating' stamp: 'hlsf 20/May/2024, 10:44:13 am (UTC)'!
 translationUpdate
 	self doParentsExist ifFalse: [^ self exist: false].
 	self origin: parents first origin + parents second direction.
 	self direction: parents first direction.
 	self exist: true! !
 
-!DrGDirectionItem methodsFor: 'updating' stamp: 'hlsf 20/May/2024 12:46:11'!
+!DrGDirectionItem methodsFor: 'updating' stamp: 'hlsf 20/May/2024, 10:46:11 am (UTC)'!
 update
 	self doParentsExist ifFalse: [^ self exist: false].
 	"default behavior for segment, line and ray defined by 2 points"
@@ -21676,7 +21678,7 @@ origin
 origin: anOrigin
 	origin := anOrigin ! !
 
-!DrGDirectionItem methodsFor: 'computing' stamp: 'hlsf 23/Mar/2023 20:57:58'!
+!DrGDirectionItem methodsFor: 'computing' stamp: 'hlsf 23/Mar/2023, 6:57:58 pm (UTC)'!
 intersectionWithDirection: aDirectionItem
 | det c1 c2 direction |
 	direction := aDirectionItem  direction.
@@ -21686,15 +21688,15 @@ intersectionWithDirection: aDirectionItem
 	c2 := aDirectionItem  origin crossProduct: direction.
 	^ ((c2 * vector x - (c1 * direction x) ) / det) @ ((vector y * c2 - (direction y * c1)) / det)! !
 
-!DrGDirectionItem methodsFor: 'testing-model' stamp: 'hlsf 4/May/2020 18:28:11'!
+!DrGDirectionItem methodsFor: 'testing-model' stamp: 'hlsf 4/May/2020, 4:28:11 pm (UTC)'!
 isCurveItem
 	^ true! !
 
-!DrGDirectionItem methodsFor: 'testing-model' stamp: 'hlsf 4/May/2020 18:26:35'!
+!DrGDirectionItem methodsFor: 'testing-model' stamp: 'hlsf 4/May/2020, 4:26:35 pm (UTC)'!
 isDirectionItem
 	^ true! !
 
-!DrGDirectionItem methodsFor: 'testing-model' stamp: 'hlsf 4/May/2020 18:26:18'!
+!DrGDirectionItem methodsFor: 'testing-model' stamp: 'hlsf 4/May/2020, 4:26:18 pm (UTC)'!
 isGeometricItem
 	^ true! !
 
@@ -21774,7 +21776,7 @@ pointAt:	anAbscissa
 basicType
 	^#line! !
 
-!DrGLineItem methodsFor: 'accessing' stamp: 'hlsf 12/Apr/2021 22:27:45'!
+!DrGLineItem methodsFor: 'accessing' stamp: 'hlsf 12/Apr/2021, 8:27:45 pm (UTC)'!
 morphClass 
 	^ DrGLineMorph! !
 
@@ -21782,7 +21784,7 @@ morphClass
 adaptiveDescriptiveName
 	^ 'This line %1' translated! !
 
-!DrGLineItem methodsFor: 'testing-model' stamp: 'hlsf 4/May/2020 18:26:55'!
+!DrGLineItem methodsFor: 'testing-model' stamp: 'hlsf 4/May/2020, 4:26:55 pm (UTC)'!
 isLineItem
 	^ true! !
 
@@ -21795,7 +21797,7 @@ parentsEqual: aMathItem
 	^ parents = aMathItem parents
 		or: [parents reverse = aMathItem parents]! !
 
-!DrGAngleBisector3ptsItem methodsFor: 'updating' stamp: 'hlsf 20/May/2024 12:49:40'!
+!DrGAngleBisector3ptsItem methodsFor: 'updating' stamp: 'hlsf 20/May/2024, 10:49:40 am (UTC)'!
 update
 	| v1 v2 |
 	self doParentsExist ifFalse: [^ self exist: false].
@@ -21818,7 +21820,7 @@ nodeType
 adaptiveDescriptiveName
 	^ 'This angle bisector %1' translated! !
 
-!DrGLineAngleBisectorItem methodsFor: 'updating' stamp: 'hlsf 20/May/2024 12:49:03'!
+!DrGLineAngleBisectorItem methodsFor: 'updating' stamp: 'hlsf 20/May/2024, 10:49:03 am (UTC)'!
 update
 	| angle v1 v2 |
 	self doParentsExist ifFalse: [^ self exist: false].
@@ -21860,7 +21862,7 @@ moveParent: aPoint
 	parents isEmptyOrNil ifFalse: [parents second moveEvent: aPoint].
 	^true! !
 
-!DrGLineParallelItem methodsFor: 'updating' stamp: 'hlsf 20/May/2024 11:58:59'!
+!DrGLineParallelItem methodsFor: 'updating' stamp: 'hlsf 20/May/2024, 9:58:59 am (UTC)'!
 update
 	self doParentsExist ifFalse: [^ self exist: false].
 	self direction: (parents at: 1) direction.
@@ -21872,7 +21874,7 @@ update
 adaptiveDescriptiveName
 	^ 'This parallel line %1' translated! !
 
-!DrGLinePerpendicularItem methodsFor: 'updating' stamp: 'hlsf 20/May/2024 11:59:11'!
+!DrGLinePerpendicularItem methodsFor: 'updating' stamp: 'hlsf 20/May/2024, 9:59:11 am (UTC)'!
 update
 	self doParentsExist ifFalse: [^ self exist: false].
 	self direction: (parents at: 1) normal.
@@ -21936,13 +21938,13 @@ moveParent: aPoint
 update
 	self translationUpdate! !
 
-!DrGPerpendicularBisectorItem methodsFor: 'comparing' stamp: 'hlsf 29/May/2025 10:27:51'!
+!DrGPerpendicularBisectorItem methodsFor: 'comparing' stamp: 'hlsf 29/May/2025, 8:27:51 am (UTC)'!
 = aMathItem
 	^ aMathItem isMathItem and: [
 		super = aMathItem 
 		or: [ self equalOtherNodeType: aMathItem ]]! !
 
-!DrGPerpendicularBisectorItem methodsFor: 'comparing' stamp: 'hlsf 29/May/2025 11:57:28'!
+!DrGPerpendicularBisectorItem methodsFor: 'comparing' stamp: 'hlsf 29/May/2025, 9:57:28 am (UTC)'!
 equalOtherNodeType: aMathItem 
 " Am I equal to a perpendicular bissector defined from two points, instead of a segment? "
 	^ aMathItem isMathItem and: [
@@ -21953,13 +21955,13 @@ equalOtherNodeType: aMathItem
 			]
 		]! !
 
-!DrGPerpendicularBisectorItem methodsFor: 'comparing' stamp: 'hlsf 29/May/2025 10:33:03'!
+!DrGPerpendicularBisectorItem methodsFor: 'comparing' stamp: 'hlsf 29/May/2025, 8:33:03 am (UTC)'!
 rehash
 	^ hash := ( (Array with: parents first extremity1 with: parents first extremity2) asSet hash
 	bitXor: self nodeType hash) 
 	bitXor: self basicType hash! !
 
-!DrGPerpendicularBisectorItem methodsFor: 'updating' stamp: 'hlsf 20/May/2024 12:00:01'!
+!DrGPerpendicularBisectorItem methodsFor: 'updating' stamp: 'hlsf 20/May/2024, 10:00:01 am (UTC)'!
 update
 	|segment |
 	self doParentsExist ifFalse: [^ self exist: false].
@@ -21968,7 +21970,7 @@ update
 	self origin: segment middle.
 	self exist: true! !
 
-!DrGPerpendicularBisectorItem methodsFor: 'xml writing' stamp: 'hlsf 29/May/2025 11:37:01'!
+!DrGPerpendicularBisectorItem methodsFor: 'xml writing' stamp: 'hlsf 29/May/2025, 9:37:01 am (UTC)'!
 nodeType
 	^ #perpendicularBisectorSegment! !
 
@@ -21976,7 +21978,7 @@ nodeType
 adaptiveDescriptiveName
 	^ 'This perpendicular bisector %1' translated! !
 
-!DrGLinePerpendicularBisector2ptsItem methodsFor: 'comparing' stamp: 'hlsf 29/May/2025 11:37:44'!
+!DrGLinePerpendicularBisector2ptsItem methodsFor: 'comparing' stamp: 'hlsf 29/May/2025, 9:37:44 am (UTC)'!
 equalOtherNodeType: aMathItem 
 	^ aMathItem isMathItem and: [
 		self basicType = aMathItem basicType
@@ -21986,11 +21988,11 @@ equalOtherNodeType: aMathItem
 			]
 		]! !
 
-!DrGLinePerpendicularBisector2ptsItem methodsFor: 'comparing' stamp: 'hlsf 29/May/2025 11:29:20'!
+!DrGLinePerpendicularBisector2ptsItem methodsFor: 'comparing' stamp: 'hlsf 29/May/2025, 9:29:20 am (UTC)'!
 parentsEqual: aMathItem
 	^ self parents asSet = aMathItem parents asSet! !
 
-!DrGLinePerpendicularBisector2ptsItem methodsFor: 'comparing' stamp: 'hlsf 29/May/2025 10:45:09'!
+!DrGLinePerpendicularBisector2ptsItem methodsFor: 'comparing' stamp: 'hlsf 29/May/2025, 8:45:09 am (UTC)'!
 rehash
 	^ hash := ( (Array with: parents first point with: parents second point) asSet hash
 	bitXor: super nodeType hash) "We really want this "
@@ -22000,7 +22002,7 @@ rehash
 adaptiveDescriptiveName
 	^ 'This perpendicular bisector %1' translated! !
 
-!DrGLinePerpendicularBisector2ptsItem methodsFor: 'updating' stamp: 'hlsf 20/May/2024 12:05:03'!
+!DrGLinePerpendicularBisector2ptsItem methodsFor: 'updating' stamp: 'hlsf 20/May/2024, 10:05:03 am (UTC)'!
 update
 	self doParentsExist ifFalse: [^ self exist: false].
 	(parents first point = parents second point) 
@@ -22032,7 +22034,7 @@ contains: aPoint
 basicType
 	^#ray! !
 
-!DrGRayItem methodsFor: 'accessing' stamp: 'hlsf 12/Apr/2021 22:27:45'!
+!DrGRayItem methodsFor: 'accessing' stamp: 'hlsf 12/Apr/2021, 8:27:45 pm (UTC)'!
 morphClass 
 	^DrGRayMorph! !
 
@@ -22103,7 +22105,7 @@ pointAt: anAbscissa
 	^point
 ! !
 
-!DrGRayItem methodsFor: 'testing-model' stamp: 'hlsf 4/May/2020 18:28:33'!
+!DrGRayItem methodsFor: 'testing-model' stamp: 'hlsf 4/May/2020, 4:28:33 pm (UTC)'!
 isRayItem
 	^ true! !
 
@@ -22204,7 +22206,7 @@ length
 middle
 	^ self extremity1 + self extremity2 / 2! !
 
-!DrGSegmentItem methodsFor: 'accessing' stamp: 'hlsf 12/Apr/2021 22:27:45'!
+!DrGSegmentItem methodsFor: 'accessing' stamp: 'hlsf 12/Apr/2021, 8:27:45 pm (UTC)'!
 morphClass 
 	^DrGSegmentMorph! !
 
@@ -22220,7 +22222,7 @@ clone
 	clone := DrGSegment2ptsItem newWith: {pointA . pointB}.
 	^ {pointA . pointB . clone}! !
 
-!DrGSegmentItem methodsFor: 'computing' stamp: 'hlsf 20/Jun/2021 11:05:29'!
+!DrGSegmentItem methodsFor: 'computing' stamp: 'hlsf 20/Jun/2021, 9:05:29 am (UTC)'!
 closestPointTo: aPoint
 	|abscissa squareNorm|
 	abscissa := (aPoint - origin) dotProduct: vector.
@@ -22260,16 +22262,16 @@ pointAt: anAbscissa
 adaptiveDescriptiveName
 	^ 'This segment %1' translated! !
 
-!DrGSegmentItem methodsFor: 'as yet unclassified' stamp: 'hlsf 4/May/2020 18:28:46'!
+!DrGSegmentItem methodsFor: 'as yet unclassified' stamp: 'hlsf 4/May/2020, 4:28:46 pm (UTC)'!
 isSegmentItem
 	^ true! !
 
-!DrGSegment2ptsItem methodsFor: 'comparing' stamp: 'hlsf 29/May/2025 09:53:13'!
+!DrGSegment2ptsItem methodsFor: 'comparing' stamp: 'hlsf 29/May/2025, 7:53:13 am (UTC)'!
 parentsEqual: aMathItem
 	^ parents asSet = aMathItem parents asSet 
 ! !
 
-!DrGSegment2ptsItem methodsFor: 'comparing' stamp: 'hlsf 29/May/2025 09:53:25'!
+!DrGSegment2ptsItem methodsFor: 'comparing' stamp: 'hlsf 29/May/2025, 7:53:25 am (UTC)'!
 rehash
 	^ hash := (parents asSet hash 
 	bitXor: self nodeType hash) 
@@ -22279,7 +22281,7 @@ rehash
 nodeType
 	^#'2pts'! !
 
-!DrGSegment2ptsItem methodsFor: 'accessing' stamp: 'hlsf 29/May/2025 11:52:33'!
+!DrGSegment2ptsItem methodsFor: 'accessing' stamp: 'hlsf 29/May/2025, 9:52:33 am (UTC)'!
 extremity2
 	^ (parents at: 2) point.! !
 
@@ -22371,7 +22373,7 @@ clone
 basicType
 	^#vector! !
 
-!DrGVectorItem methodsFor: 'accessing' stamp: 'hlsf 12/Apr/2021 22:27:45'!
+!DrGVectorItem methodsFor: 'accessing' stamp: 'hlsf 12/Apr/2021, 8:27:45 pm (UTC)'!
 morphClass 
 	^ DrGVectorMorph! !
 
@@ -22385,19 +22387,19 @@ moveParent: aPoint
 "We don't want to move the parents, as the whole vector representation can be move all arround"
 	^false! !
 
-!DrGVectorItem methodsFor: 'testing-model' stamp: 'hlsf 4/May/2020 18:29:50'!
+!DrGVectorItem methodsFor: 'testing-model' stamp: 'hlsf 4/May/2020, 4:29:50 pm (UTC)'!
 isCurveItem
 	^ false! !
 
-!DrGVectorItem methodsFor: 'testing-model' stamp: 'hlsf 4/May/2020 18:29:58'!
+!DrGVectorItem methodsFor: 'testing-model' stamp: 'hlsf 4/May/2020, 4:29:58 pm (UTC)'!
 isSegmentItem
 	^ false! !
 
-!DrGVectorItem methodsFor: 'testing-model' stamp: 'hlsf 4/May/2020 18:30:07'!
+!DrGVectorItem methodsFor: 'testing-model' stamp: 'hlsf 4/May/2020, 4:30:07 pm (UTC)'!
 isVectorItem
 	^ true! !
 
-!DrGVector2ptsItem methodsFor: 'updating' stamp: 'hlsf 20/May/2024 12:05:51'!
+!DrGVector2ptsItem methodsFor: 'updating' stamp: 'hlsf 20/May/2024, 10:05:51 am (UTC)'!
 update
 	self doParentsExist ifFalse: [^ self exist: false].
 	self direction: (parents at: 2) point - (parents at: 1) point.
@@ -22422,7 +22424,7 @@ initialize: theParents
 moveParent: aPoint
 	^false! !
 
-!DrGVectorHomothetyItem methodsFor: 'updating' stamp: 'hlsf 20/May/2024 12:06:05'!
+!DrGVectorHomothetyItem methodsFor: 'updating' stamp: 'hlsf 20/May/2024, 10:06:05 am (UTC)'!
 update
 	self doParentsExist ifFalse: [^ self exist: false].
 	vector := parents first direction * parents third valueItem.
@@ -22440,7 +22442,7 @@ nodeType
 moveParent: aPoint
 	^false! !
 
-!DrGVectorReflexionItem methodsFor: 'updating' stamp: 'hlsf 25/Jan/2026 17:11:44'!
+!DrGVectorReflexionItem methodsFor: 'updating' stamp: 'hlsf 25/Jan/2026, 3:11:44 pm (UTC)'!
 update
 	self doParentsExist ifFalse: [^ self exist: false].
 	self direction: (parents first direction vectorReflexionBy: parents second direction).
@@ -22456,7 +22458,7 @@ initialize: theParents
 moveParent: aPoint
 	^false! !
 
-!DrGVectorRotationItem methodsFor: 'updating' stamp: 'hlsf 25/Jan/2026 17:11:49'!
+!DrGVectorRotationItem methodsFor: 'updating' stamp: 'hlsf 25/Jan/2026, 3:11:49 pm (UTC)'!
 update
 	self doParentsExist ifFalse: [^ self exist: false].
 	vector := parents first direction rotateVector: parents third valueItem.
@@ -22485,7 +22487,7 @@ nodeType
 moveParent: aPoint
 	^false! !
 
-!DrGVectorSymmetryItem methodsFor: 'updating' stamp: 'hlsf 20/May/2024 12:06:45'!
+!DrGVectorSymmetryItem methodsFor: 'updating' stamp: 'hlsf 20/May/2024, 10:06:45 am (UTC)'!
 update
 	self doParentsExist ifFalse: [^ self exist: false].
 	self direction: parents first direction negated.
@@ -22508,14 +22510,14 @@ adaptiveDescriptiveName
 squareNorm: aPoint 
 	^ aPoint x * aPoint x + (aPoint y * aPoint y)! !
 
-!DrGLocus2ptsItem methodsFor: 'updating' stamp: 'drgeo 7/Jun/2026 10:58:22'!
+!DrGLocus2ptsItem methodsFor: 'updating' stamp: 'drgeo 7/Jun/2026, 8:58:22 am (UTC)'!
 update
 "Special: update does not occure there but in the view.
 Indeed, a Locus is sampled from its view, because it depends on the visible portion of the drawable"
 	self exist: self doParentsExist.
 	exist ifTrue: [self triggerEvent: #resampleView]! !
 
-!DrGLocus2ptsItem methodsFor: 'accessing' stamp: 'hlsf 26/Jan/2026 19:27:43'!
+!DrGLocus2ptsItem methodsFor: 'accessing' stamp: 'hlsf 26/Jan/2026, 5:27:43 pm (UTC)'!
 abscissaOf: aPoint 
 	| i distance |
 	p ifNil: [^0].
@@ -22531,7 +22533,7 @@ abscissaOf: aPoint
 basicType
 	^ #locus! !
 
-!DrGLocus2ptsItem methodsFor: 'accessing' stamp: 'hlsf 26/Jan/2026 19:27:25'!
+!DrGLocus2ptsItem methodsFor: 'accessing' stamp: 'hlsf 26/Jan/2026, 5:27:25 pm (UTC)'!
 closestPointTo: aPoint 
 	| distance d m |
 	p ifNil: [^aPoint].
@@ -22552,11 +22554,11 @@ constrainedPoint
 freePoint
 	^ parents first! !
 
-!DrGLocus2ptsItem methodsFor: 'accessing' stamp: 'hlsf 12/Apr/2021 22:27:45'!
+!DrGLocus2ptsItem methodsFor: 'accessing' stamp: 'hlsf 12/Apr/2021, 8:27:45 pm (UTC)'!
 morphClass 
 	^ DrGLocusMorph! !
 
-!DrGLocus2ptsItem methodsFor: 'accessing' stamp: 'hlsf 13/Jun/2021 11:26:20'!
+!DrGLocus2ptsItem methodsFor: 'accessing' stamp: 'hlsf 13/Jun/2021, 9:26:20 am (UTC)'!
 pointAt: anAbscissa 
 	| m |
 	samplesQty ifNil: [^0@0].
@@ -22572,31 +22574,31 @@ points
 points: aCollection 
 	p := aCollection! !
 
-!DrGLocus2ptsItem methodsFor: 'accessing' stamp: 'hlsf 13/Jun/2021 11:26:20'!
+!DrGLocus2ptsItem methodsFor: 'accessing' stamp: 'hlsf 13/Jun/2021, 9:26:20 am (UTC)'!
 samplesQty
 	^ samplesQty! !
 
-!DrGLocus2ptsItem methodsFor: 'accessing' stamp: 'hlsf 13/Jun/2021 11:26:20'!
+!DrGLocus2ptsItem methodsFor: 'accessing' stamp: 'hlsf 13/Jun/2021, 9:26:20 am (UTC)'!
 samplesQty: aNumber 
 	samplesQty := aNumber! !
 
-!DrGLocus2ptsItem methodsFor: 'testing-model' stamp: 'hlsf 4/May/2020 18:30:31'!
+!DrGLocus2ptsItem methodsFor: 'testing-model' stamp: 'hlsf 4/May/2020, 4:30:31 pm (UTC)'!
 isCurveItem
 	^ true! !
 
-!DrGLocus2ptsItem methodsFor: 'testing-model' stamp: 'hlsf 4/May/2020 18:30:26'!
+!DrGLocus2ptsItem methodsFor: 'testing-model' stamp: 'hlsf 4/May/2020, 4:30:26 pm (UTC)'!
 isGeometricItem
 	^ true! !
 
-!DrGLocus2ptsItem methodsFor: 'testing-model' stamp: 'hlsf 4/May/2020 18:31:15'!
+!DrGLocus2ptsItem methodsFor: 'testing-model' stamp: 'hlsf 4/May/2020, 4:31:15 pm (UTC)'!
 isIntersectableItem
 	^ false! !
 
-!DrGLocus2ptsItem methodsFor: 'testing-model' stamp: 'hlsf 4/May/2020 18:30:36'!
+!DrGLocus2ptsItem methodsFor: 'testing-model' stamp: 'hlsf 4/May/2020, 4:30:36 pm (UTC)'!
 isLocusItem
 	^ true! !
 
-!DrGLocus2ptsItem methodsFor: 'testing' stamp: 'hlsf 13/Jun/2021 11:37:34'!
+!DrGLocus2ptsItem methodsFor: 'testing' stamp: 'hlsf 13/Jun/2021, 9:37:34 am (UTC)'!
 isSampled
 	^ samplesQty notNil! !
 
@@ -22604,7 +22606,7 @@ isSampled
 nodeType
 	^ #Translation! !
 
-!DrGLocusTranslationItem methodsFor: 'updating' stamp: 'drgeo 7/Jun/2026 10:57:23'!
+!DrGLocusTranslationItem methodsFor: 'updating' stamp: 'drgeo 7/Jun/2026, 8:57:23 am (UTC)'!
 update
 	| locusPoints direction|
 	self doParentsExist ifFalse: [^ self exist: false].
@@ -22624,7 +22626,7 @@ constrainedPoint
 freePoint
 	self shouldNotImplement ! !
 
-!DrGLocusTranslationItem methodsFor: 'accessing' stamp: 'hlsf 12/Apr/2021 22:27:45'!
+!DrGLocusTranslationItem methodsFor: 'accessing' stamp: 'hlsf 12/Apr/2021, 8:27:45 pm (UTC)'!
 morphClass
 	^ DrGLocusTransformedMorph! !
 
@@ -22632,17 +22634,17 @@ morphClass
 points: aCollection
 	self shouldNotImplement ! !
 
-!DrGLocusTranslationItem methodsFor: 'accessing' stamp: 'hlsf 13/Jun/2021 11:24:55'!
+!DrGLocusTranslationItem methodsFor: 'accessing' stamp: 'hlsf 13/Jun/2021, 9:24:55 am (UTC)'!
 samplesQty: anInteger
 	self shouldNotImplement ! !
 
-!DrGLocusTranslationItem methodsFor: 'testing' stamp: 'hlsf 20/May/2024 11:31:24'!
+!DrGLocusTranslationItem methodsFor: 'testing' stamp: 'hlsf 20/May/2024, 9:31:24 am (UTC)'!
 doParentsExist
 "As a locus is sampled from its view, we need to check if the sampling occured in the view.
 If not we will wait for the next round of view update"
 	^ super doParentsExist and: [parents first isSampled]! !
 
-!DrGLocusHomothetyItem methodsFor: 'updating' stamp: 'drgeo 7/Jun/2026 10:58:36'!
+!DrGLocusHomothetyItem methodsFor: 'updating' stamp: 'drgeo 7/Jun/2026, 8:58:36 am (UTC)'!
 update
 	| locusPoints center factor|
 	self doParentsExist ifFalse: [^ self exist: false].
@@ -22659,7 +22661,7 @@ update
 nodeType
 	^#Scale! !
 
-!DrGLocusReflexionItem methodsFor: 'updating' stamp: 'drgeo 7/Jun/2026 10:58:41'!
+!DrGLocusReflexionItem methodsFor: 'updating' stamp: 'drgeo 7/Jun/2026, 8:58:41 am (UTC)'!
 update
 	| locusPoints axe|
 	self doParentsExist ifFalse: [^ self exist: false].
@@ -22676,7 +22678,7 @@ update
 nodeType
 	^#Reflexion! !
 
-!DrGLocusRotationItem methodsFor: 'updating' stamp: 'drgeo 7/Jun/2026 10:58:46'!
+!DrGLocusRotationItem methodsFor: 'updating' stamp: 'drgeo 7/Jun/2026, 8:58:46 am (UTC)'!
 update
 	| locusPoints center angle|
 	self doParentsExist ifFalse: [^ self exist: false].
@@ -22694,7 +22696,7 @@ update
 nodeType
 	^#Rotation! !
 
-!DrGLocusSymmetryItem methodsFor: 'updating' stamp: 'drgeo 7/Jun/2026 10:58:52'!
+!DrGLocusSymmetryItem methodsFor: 'updating' stamp: 'drgeo 7/Jun/2026, 8:58:52 am (UTC)'!
 update
 	| locusPoints center|
 	self doParentsExist ifFalse: [^ self exist: false].
@@ -22742,7 +22744,7 @@ closestPointTo: aPoint
 basicType
 	^#point! !
 
-!DrGPointItem methodsFor: 'accessing' stamp: 'hlsf 12/Apr/2021 22:27:45'!
+!DrGPointItem methodsFor: 'accessing' stamp: 'hlsf 12/Apr/2021, 8:27:45 pm (UTC)'!
 morphClass 
 	^DrGPointMorph! !
 
@@ -22768,15 +22770,15 @@ moveTo: aPoint
 	self update.
 	self rehash.! !
 
-!DrGPointItem methodsFor: 'testing-model' stamp: 'hlsf 4/May/2020 18:32:24'!
+!DrGPointItem methodsFor: 'testing-model' stamp: 'hlsf 4/May/2020, 4:32:24 pm (UTC)'!
 isGeometricItem
 	^ true! !
 
-!DrGPointItem methodsFor: 'testing-model' stamp: 'hlsf 4/May/2020 18:32:29'!
+!DrGPointItem methodsFor: 'testing-model' stamp: 'hlsf 4/May/2020, 4:32:29 pm (UTC)'!
 isPointItem
 	^ true! !
 
-!DrGPointBlockItem methodsFor: 'accessing' stamp: 'hlsf 2/Nov/2022 23:04:49'!
+!DrGPointBlockItem methodsFor: 'accessing' stamp: 'hlsf 2/Nov/2022, 9:04:49 pm (UTC)'!
 parents: aCollection
 	aCollection isEmptyOrNil ifTrue: [
 		parents := aCollection.
@@ -22804,16 +22806,16 @@ pointBlock: aBlock
 rehash
 	^ hash := super rehash bitXor: pointBlock hash! !
 
-!DrGPointBlockItem methodsFor: 'testing' stamp: 'hlsf 20/May/2024 11:31:31'!
+!DrGPointBlockItem methodsFor: 'testing' stamp: 'hlsf 20/May/2024, 9:31:31 am (UTC)'!
 doParentsExist 
 	^ super doParentsExist and: [pointBlock isNil not]
 ! !
 
-!DrGPointBlockItem methodsFor: 'testing-model' stamp: 'hlsf 13/Apr/2024 09:36:30'!
+!DrGPointBlockItem methodsFor: 'testing-model' stamp: 'hlsf 13/Apr/2024, 7:36:30 am (UTC)'!
 isConstrainedPointItem
 	^ true! !
 
-!DrGPointBlockItem methodsFor: 'updating' stamp: 'hlsf 18/Feb/2026 15:40:16'!
+!DrGPointBlockItem methodsFor: 'updating' stamp: 'hlsf 18/Feb/2026, 1:40:16 pm (UTC)'!
 update
 | evaluator |
 	self doParentsExist ifFalse: [^ self exist: false].
@@ -22829,21 +22831,21 @@ update
 nodeType
 	^#Block! !
 
-!DrGPointBlockItem methodsFor: 'xml writing' stamp: 'hlsf 13/Apr/2024 09:54:41'!
+!DrGPointBlockItem methodsFor: 'xml writing' stamp: 'hlsf 13/Apr/2024, 7:54:41 am (UTC)'!
 writeAsXmlTo: aNode
 	|node|
 	node := super writeAsXmlTo: aNode.
 	node addElement: ((XMLElement named: #code) addContent: (XMLStringNode string: pointBlock decompile asString)).
 	^node! !
 
-!DrGPointCoordinateItem methodsFor: 'updating' stamp: 'hlsf 4/Aug/2023 17:22:24'!
+!DrGPointCoordinateItem methodsFor: 'updating' stamp: 'hlsf 4/Aug/2023, 3:22:24 pm (UTC)'!
 editPropertyIn: presenter
 	| holder |
 	holder := ValueHolder with: point.
 	holder action: [:newPoint | presenter domain propertyCommandFor: self with: newPoint].
 	^ PointEntryPanel open: holder label: 'Edit the coordinates' translated.! !
 
-!DrGPointCoordinateItem methodsFor: 'updating' stamp: 'hlsf 20/May/2024 12:12:19'!
+!DrGPointCoordinateItem methodsFor: 'updating' stamp: 'hlsf 20/May/2024, 10:12:19 am (UTC)'!
 update
 	self doParentsExist ifFalse: [^ self exist: false].
 	self point: parents first valueItem @ parents second valueItem.
@@ -22854,7 +22856,7 @@ update
 nodeType
 	^#Coordinate! !
 
-!DrGPointCoordinateItem methodsFor: 'testing-model' stamp: 'hlsf 4/May/2020 18:33:53'!
+!DrGPointCoordinateItem methodsFor: 'testing-model' stamp: 'hlsf 4/May/2020, 4:33:53 pm (UTC)'!
 isConstrainedPointItem
 	^ true! !
 
@@ -22912,7 +22914,7 @@ writeAsXmlTo: aNode
 		addElement: ((XMLElement named: #y) addContent: (XMLStringNode string: point y asString)).
 	^node! !
 
-!DrGPointFreeItem methodsFor: 'updating' stamp: 'hlsf 4/Aug/2023 17:22:30'!
+!DrGPointFreeItem methodsFor: 'updating' stamp: 'hlsf 4/Aug/2023, 3:22:30 pm (UTC)'!
 editPropertyIn: presenter
 	| holder |
 	holder := ValueHolder with: point.
@@ -22947,15 +22949,15 @@ doParentsExist
 isLockable 
 	^ true! !
 
-!DrGPointFreeItem methodsFor: 'testing-model' stamp: 'hlsf 4/May/2020 18:35:22'!
+!DrGPointFreeItem methodsFor: 'testing-model' stamp: 'hlsf 4/May/2020, 4:35:22 pm (UTC)'!
 isFreePointItem
 	^true! !
 
-!DrGPointFreeItem methodsFor: 'testing-model' stamp: 'hlsf 4/May/2020 18:35:31'!
+!DrGPointFreeItem methodsFor: 'testing-model' stamp: 'hlsf 4/May/2020, 4:35:31 pm (UTC)'!
 isFreePointOnPlaneItem
 	^true! !
 
-!DrGPointHomothetyItem methodsFor: 'updating' stamp: 'hlsf 20/May/2024 12:12:37'!
+!DrGPointHomothetyItem methodsFor: 'updating' stamp: 'hlsf 20/May/2024, 10:12:37 am (UTC)'!
 update
 	|center|
 	self doParentsExist ifFalse: [^ self exist: false].
@@ -22967,11 +22969,11 @@ update
 nodeType
 	^#Scale! !
 
-!DrGPointHomothetyItem methodsFor: 'testing-model' stamp: 'hlsf 4/May/2020 18:36:57'!
+!DrGPointHomothetyItem methodsFor: 'testing-model' stamp: 'hlsf 4/May/2020, 4:36:57 pm (UTC)'!
 isConstrainedPointItem
 	^true! !
 
-!DrGPointIntersectionItem methodsFor: 'updating' stamp: 'hlsf 10/Aug/2025 12:40:17'!
+!DrGPointIntersectionItem methodsFor: 'updating' stamp: 'hlsf 10/Aug/2025, 10:40:17 am (UTC)'!
 update
 	|aPoint|
 	self doParentsExist ifFalse: [^ self exist: false].
@@ -23045,11 +23047,11 @@ initialize: theParents
 rehash
 	^hash := (super rehash bitXor: k ) bitXor: point hash ! !
 
-!DrGPointIntersectionItem methodsFor: 'testing-model' stamp: 'hlsf 4/May/2020 18:37:52'!
+!DrGPointIntersectionItem methodsFor: 'testing-model' stamp: 'hlsf 4/May/2020, 4:37:52 pm (UTC)'!
 isConstrainedPointItem
 	^true! !
 
-!DrGPointIntersectionItem methodsFor: 'testing-model' stamp: 'hlsf 4/May/2020 18:38:59'!
+!DrGPointIntersectionItem methodsFor: 'testing-model' stamp: 'hlsf 4/May/2020, 4:38:59 pm (UTC)'!
 isIntersectionPointItem
 	^true! !
 
@@ -23068,28 +23070,28 @@ newWith: theParents k: integer
 nodeType
 	^#'Middle_2pts'! !
 
-!DrGPointMiddle2ptsItem methodsFor: 'comparing' stamp: 'hlsf 29/May/2025 09:48:17'!
+!DrGPointMiddle2ptsItem methodsFor: 'comparing' stamp: 'hlsf 29/May/2025, 7:48:17 am (UTC)'!
 parentsEqual: aMathItem
 	^ parents asSet = aMathItem parents asSet ! !
 
-!DrGPointMiddle2ptsItem methodsFor: 'comparing' stamp: 'hlsf 29/May/2025 09:47:57'!
+!DrGPointMiddle2ptsItem methodsFor: 'comparing' stamp: 'hlsf 29/May/2025, 7:47:57 am (UTC)'!
 rehash
 	^ hash := (parents asSet hash 
 	bitXor: self nodeType hash) 
 	bitXor: self basicType hash! !
 
-!DrGPointMiddle2ptsItem methodsFor: 'updating' stamp: 'hlsf 20/May/2024 12:15:06'!
+!DrGPointMiddle2ptsItem methodsFor: 'updating' stamp: 'hlsf 20/May/2024, 10:15:06 am (UTC)'!
 update
 	self doParentsExist ifFalse: [^ self exist: false].
 	self point: (parents first point + parents second point) / 2.0.
 	self exist: true
 ! !
 
-!DrGPointMiddle2ptsItem methodsFor: 'testing-model' stamp: 'hlsf 4/May/2020 18:37:58'!
+!DrGPointMiddle2ptsItem methodsFor: 'testing-model' stamp: 'hlsf 4/May/2020, 4:37:58 pm (UTC)'!
 isConstrainedPointItem
 	^true! !
 
-!DrGPointMiddlesegmentItem methodsFor: 'updating' stamp: 'hlsf 20/May/2024 12:15:22'!
+!DrGPointMiddlesegmentItem methodsFor: 'updating' stamp: 'hlsf 20/May/2024, 10:15:22 am (UTC)'!
 update
 	self doParentsExist ifFalse: [^ self exist: false].
 	self point: (parents first origin + (parents first direction / 2.0)).
@@ -23103,7 +23105,7 @@ nodeType
 parentsEqual: aMathItem 
 	^ parents first = aMathItem parents first! !
 
-!DrGPointOncurveItem methodsFor: 'updating' stamp: 'hlsf 4/Aug/2023 17:22:02'!
+!DrGPointOncurveItem methodsFor: 'updating' stamp: 'hlsf 4/Aug/2023, 3:22:02 pm (UTC)'!
 editPropertyIn: presenter
 	| holder |
 	holder := ValueHolder with: abscissa.
@@ -23114,7 +23116,7 @@ editPropertyIn: presenter
 		label: 'Edit this curvilinear abscissa in [0;1]' translated
 ! !
 
-!DrGPointOncurveItem methodsFor: 'updating' stamp: 'hlsf 20/Jun/2021 10:55:09'!
+!DrGPointOncurveItem methodsFor: 'updating' stamp: 'hlsf 20/Jun/2021, 8:55:09 am (UTC)'!
 move: aVector
 	self isLocked ifFalse: [
 		self point: (parents first closestPointTo: point + aVector).
@@ -23128,7 +23130,7 @@ moveAt: aPoint
 		self abscissa: (parents first abscissaOf: self point)]
 ! !
 
-!DrGPointOncurveItem methodsFor: 'updating' stamp: 'hlsf 20/May/2024 12:15:56'!
+!DrGPointOncurveItem methodsFor: 'updating' stamp: 'hlsf 20/May/2024, 10:15:56 am (UTC)'!
 update
 	self doParentsExist ifFalse: [^ self exist: false].
 	self point: (parents first pointAt: abscissa).
@@ -23210,11 +23212,11 @@ setCurveAbscissa: aFloat
 	self abscissa: aFloat.
 	self update! !
 
-!DrGPointOncurveItem methodsFor: 'testing-model' stamp: 'hlsf 4/May/2020 18:39:32'!
+!DrGPointOncurveItem methodsFor: 'testing-model' stamp: 'hlsf 4/May/2020, 4:39:32 pm (UTC)'!
 isFreePointItem
 	^true! !
 
-!DrGPointOncurveItem methodsFor: 'testing-model' stamp: 'hlsf 4/May/2020 18:40:14'!
+!DrGPointOncurveItem methodsFor: 'testing-model' stamp: 'hlsf 4/May/2020, 4:40:14 pm (UTC)'!
 isPointItemOnCurve
 	^true! !
 
@@ -23222,7 +23224,7 @@ isPointItemOnCurve
 nodeType
 	^#Reflexion! !
 
-!DrGPointReflexionItem methodsFor: 'updating' stamp: 'hlsf 20/May/2024 12:16:22'!
+!DrGPointReflexionItem methodsFor: 'updating' stamp: 'hlsf 20/May/2024, 10:16:22 am (UTC)'!
 update
 	self doParentsExist ifFalse: [^ self exist: false].
 	self point: (parents first point
@@ -23231,11 +23233,11 @@ update
 	self exist: true
 ! !
 
-!DrGPointReflexionItem methodsFor: 'testing-model' stamp: 'hlsf 4/May/2020 18:38:08'!
+!DrGPointReflexionItem methodsFor: 'testing-model' stamp: 'hlsf 4/May/2020, 4:38:08 pm (UTC)'!
 isConstrainedPointItem
 	^true! !
 
-!DrGPointRotationItem methodsFor: 'updating' stamp: 'hlsf 20/May/2024 12:16:35'!
+!DrGPointRotationItem methodsFor: 'updating' stamp: 'hlsf 20/May/2024, 10:16:35 am (UTC)'!
 update
 	self doParentsExist ifFalse: [^ self exist: false].
 	self point: (parents first point
@@ -23248,11 +23250,11 @@ update
 nodeType
 	^#Rotation! !
 
-!DrGPointRotationItem methodsFor: 'testing-model' stamp: 'hlsf 4/May/2020 18:38:13'!
+!DrGPointRotationItem methodsFor: 'testing-model' stamp: 'hlsf 4/May/2020, 4:38:13 pm (UTC)'!
 isConstrainedPointItem
 	^true! !
 
-!DrGPointScriptItem methodsFor: 'updating' stamp: 'hlsf 20/May/2024 12:16:48'!
+!DrGPointScriptItem methodsFor: 'updating' stamp: 'hlsf 20/May/2024, 10:16:48 am (UTC)'!
 update
 	self doParentsExist ifFalse: [^ self exist: false].
 	self point: parents first valueItem asPoint.
@@ -23263,11 +23265,11 @@ update
 nodeType
 	^#Script! !
 
-!DrGPointScriptItem methodsFor: 'testing-model' stamp: 'hlsf 13/Apr/2024 09:37:30'!
+!DrGPointScriptItem methodsFor: 'testing-model' stamp: 'hlsf 13/Apr/2024, 7:37:30 am (UTC)'!
 isConstrainedPointItem
 	^ true! !
 
-!DrGPointSymmetryItem methodsFor: 'updating' stamp: 'hlsf 20/May/2024 12:16:59'!
+!DrGPointSymmetryItem methodsFor: 'updating' stamp: 'hlsf 20/May/2024, 10:16:59 am (UTC)'!
 update
 	self doParentsExist ifFalse: [^ self exist: false].
 	self point: (2 * parents second point) - parents first point.
@@ -23278,7 +23280,7 @@ update
 nodeType
 	^#Symmetry! !
 
-!DrGPointSymmetryItem methodsFor: 'testing-model' stamp: 'hlsf 4/May/2020 18:38:18'!
+!DrGPointSymmetryItem methodsFor: 'testing-model' stamp: 'hlsf 4/May/2020, 4:38:18 pm (UTC)'!
 isConstrainedPointItem
 	^true! !
 
@@ -23286,14 +23288,14 @@ isConstrainedPointItem
 nodeType
 	^#Translation! !
 
-!DrGPointTranslationItem methodsFor: 'updating' stamp: 'hlsf 20/May/2024 12:17:15'!
+!DrGPointTranslationItem methodsFor: 'updating' stamp: 'hlsf 20/May/2024, 10:17:15 am (UTC)'!
 update
 	self doParentsExist ifFalse: [^ self exist: false].
 	self point: parents first point + parents second direction.
 	self exist: true
 ! !
 
-!DrGPointTranslationItem methodsFor: 'testing-model' stamp: 'hlsf 4/May/2020 18:38:23'!
+!DrGPointTranslationItem methodsFor: 'testing-model' stamp: 'hlsf 4/May/2020, 4:38:23 pm (UTC)'!
 isConstrainedPointItem
 	^true! !
 
@@ -23311,7 +23313,7 @@ basicType
 length
 	^length ! !
 
-!DrGPolygonItem methodsFor: 'accessing' stamp: 'hlsf 12/Apr/2021 22:27:45'!
+!DrGPolygonItem methodsFor: 'accessing' stamp: 'hlsf 12/Apr/2021, 8:27:45 pm (UTC)'!
 morphClass 
 	^ DrGPolygonMorph! !
 
@@ -23417,19 +23419,19 @@ pointAt: anAbscissa
 				^pointA + (vector * leftDistanceToPoint)].
 		leftDistanceToPoint := leftDistanceToPoint - s]! !
 
-!DrGPolygonItem methodsFor: 'testing-model' stamp: 'hlsf 4/May/2020 18:40:51'!
+!DrGPolygonItem methodsFor: 'testing-model' stamp: 'hlsf 4/May/2020, 4:40:51 pm (UTC)'!
 isCurveItem 
 	^ true! !
 
-!DrGPolygonItem methodsFor: 'testing-model' stamp: 'hlsf 4/May/2020 18:41:01'!
+!DrGPolygonItem methodsFor: 'testing-model' stamp: 'hlsf 4/May/2020, 4:41:01 pm (UTC)'!
 isGeometricItem
 	^true! !
 
-!DrGPolygonItem methodsFor: 'testing-model' stamp: 'hlsf 4/May/2020 18:41:13'!
+!DrGPolygonItem methodsFor: 'testing-model' stamp: 'hlsf 4/May/2020, 4:41:13 pm (UTC)'!
 isIntersectableItem
 	^ false! !
 
-!DrGPolygonItem methodsFor: 'testing-model' stamp: 'hlsf 4/May/2020 18:41:22'!
+!DrGPolygonItem methodsFor: 'testing-model' stamp: 'hlsf 4/May/2020, 4:41:22 pm (UTC)'!
 isPolygonItem
 	^true! !
 
@@ -23441,7 +23443,7 @@ nodeType
 moveParent: aPoint
 	^false! !
 
-!DrGPolygonHomothetyItem methodsFor: 'updating' stamp: 'hlsf 10/Aug/2025 13:19:16'!
+!DrGPolygonHomothetyItem methodsFor: 'updating' stamp: 'hlsf 10/Aug/2025, 11:19:16 am (UTC)'!
 update
 	|center factor|
 	self doParentsExist ifFalse: [^ self exist: false].
@@ -23465,13 +23467,13 @@ parentsEqual: aPolygon
 		shiftedCollection := shiftedCollection shiftRight].
 	^ false! !
 
-!DrGPolygonNptsItem methodsFor: 'comparing' stamp: 'hlsf 29/May/2025 10:51:25'!
+!DrGPolygonNptsItem methodsFor: 'comparing' stamp: 'hlsf 29/May/2025, 8:51:25 am (UTC)'!
 rehash
 	^ hash := (parents asSet hash 
 	bitXor: self nodeType hash) 
 	bitXor: self basicType hash! !
 
-!DrGPolygonNptsItem methodsFor: 'updating' stamp: 'hlsf 10/Aug/2025 13:18:02'!
+!DrGPolygonNptsItem methodsFor: 'updating' stamp: 'hlsf 10/Aug/2025, 11:18:02 am (UTC)'!
 update
 	self doParentsExist ifFalse: [ ^ self exist: false].
 	points := parents collect: [:pointItem | pointItem point].
@@ -23491,7 +23493,7 @@ nodeType
 moveParent: aPoint
 	^false! !
 
-!DrGPolygonReflexionItem methodsFor: 'updating' stamp: 'hlsf 10/Aug/2025 13:19:35'!
+!DrGPolygonReflexionItem methodsFor: 'updating' stamp: 'hlsf 10/Aug/2025, 11:19:35 am (UTC)'!
 update
 	|axe|
 	self doParentsExist ifFalse: [^ self exist: false].
@@ -23507,7 +23509,7 @@ moveParent: aPoint
 	parents second moveEvent: aPoint.
 	^ true! !
 
-!DrGPolygonRegularItem methodsFor: 'updating' stamp: 'hlsf 28/Jan/2026 18:07:28'!
+!DrGPolygonRegularItem methodsFor: 'updating' stamp: 'hlsf 28/Jan/2026, 4:07:28 pm (UTC)'!
 update
 |center pointA angle sides|
 	self doParentsExist ifFalse: [^ self exist: false].
@@ -23533,7 +23535,7 @@ nodeType
 moveParent: aPoint
 	^false! !
 
-!DrGPolygonRotationItem methodsFor: 'updating' stamp: 'hlsf 10/Aug/2025 13:20:48'!
+!DrGPolygonRotationItem methodsFor: 'updating' stamp: 'hlsf 10/Aug/2025, 11:20:48 am (UTC)'!
 update
 |center angle|
 	self doParentsExist ifFalse: [^ self exist: false].
@@ -23552,7 +23554,7 @@ nodeType
 moveParent: aPoint
 	^false! !
 
-!DrGPolygonSymmetryItem methodsFor: 'updating' stamp: 'hlsf 10/Aug/2025 13:21:09'!
+!DrGPolygonSymmetryItem methodsFor: 'updating' stamp: 'hlsf 10/Aug/2025, 11:21:09 am (UTC)'!
 update
 	|center|
 	self doParentsExist ifFalse: [^ self exist: false].
@@ -23566,7 +23568,7 @@ update
 moveParent: aPoint
 	^false! !
 
-!DrGPolygonTranslationItem methodsFor: 'updating' stamp: 'hlsf 10/Aug/2025 13:21:31'!
+!DrGPolygonTranslationItem methodsFor: 'updating' stamp: 'hlsf 10/Aug/2025, 11:21:31 am (UTC)'!
 update
 |translation|
 	self doParentsExist ifFalse: [^ self exist: false].
@@ -23633,7 +23635,7 @@ isLocked
 locked: aBoolean
 	locked := aBoolean ! !
 
-!DrGTextItem methodsFor: 'accessing' stamp: 'hlsf 12/Apr/2021 22:27:45'!
+!DrGTextItem methodsFor: 'accessing' stamp: 'hlsf 12/Apr/2021, 8:27:45 pm (UTC)'!
 morphClass 
 	^ DrGTextMorph! !
 
@@ -23660,7 +23662,7 @@ text: aText
 	text := aText.
 	self rehash! !
 
-!DrGTextItem methodsFor: 'updating' stamp: 'hlsf 5/Feb/2026 10:59:25'!
+!DrGTextItem methodsFor: 'updating' stamp: 'hlsf 5/Feb/2026, 8:59:25 am (UTC)'!
 editPropertyIn: presenter
 	| holder |
 	holder := ValueHolder with: text asString.
@@ -23711,7 +23713,7 @@ rehash
 adaptiveDescriptiveName
 	^ 'This text' translated! !
 
-!DrGTextItem methodsFor: 'testing-model' stamp: 'hlsf 4/May/2020 18:42:05'!
+!DrGTextItem methodsFor: 'testing-model' stamp: 'hlsf 4/May/2020, 4:42:05 pm (UTC)'!
 isTextItem
 	^ true! !
 
@@ -23727,7 +23729,7 @@ isLocked
 locked: aBoolean
 	locked := aBoolean ! !
 
-!DrGValueItem methodsFor: 'accessing' stamp: 'hlsf 12/Apr/2021 22:27:45'!
+!DrGValueItem methodsFor: 'accessing' stamp: 'hlsf 12/Apr/2021, 8:27:45 pm (UTC)'!
 morphClass 
 	 ^ DrGValueMorph! !
 
@@ -23795,7 +23797,7 @@ printValueOn: aStream
 isLockable 
 	^ true! !
 
-!DrGValueItem methodsFor: 'testing-model' stamp: 'hlsf 4/May/2020 18:42:49'!
+!DrGValueItem methodsFor: 'testing-model' stamp: 'hlsf 4/May/2020, 4:42:49 pm (UTC)'!
 isValueItem
 	^true! !
 
@@ -23823,7 +23825,7 @@ writeAsXmlPositionTo: aNode
 adaptiveDescriptiveName
 	^ 'This value %1' translated! !
 
-!DrGAngleItem methodsFor: 'printing' stamp: 'hlsf 3/Aug/2021 13:08:24'!
+!DrGAngleItem methodsFor: 'printing' stamp: 'hlsf 3/Aug/2021, 11:08:24 am (UTC)'!
 printOn: aStream
 	self printType: DrGAngleOrientedBuilder title on: aStream.
 	aStream nextPut: Character space.
@@ -23848,7 +23850,7 @@ radianAngle
 adaptiveDescriptiveName
 	^ 'This oriented angle %1' translated! !
 
-!DrGAngleItem methodsFor: 'testing-model' stamp: 'hlsf 4/May/2020 18:43:05'!
+!DrGAngleItem methodsFor: 'testing-model' stamp: 'hlsf 4/May/2020, 4:43:05 pm (UTC)'!
 isAngleItem
 	^true! !
 
@@ -23856,7 +23858,7 @@ isAngleItem
 move: aPoint
 "Don't move when user drag around"! !
 
-!DrGAngle3ptsOrientedItem methodsFor: 'updating' stamp: 'hlsf 20/May/2024 12:46:27'!
+!DrGAngle3ptsOrientedItem methodsFor: 'updating' stamp: 'hlsf 20/May/2024, 10:46:27 am (UTC)'!
 update
 |u v center|
 	self doParentsExist ifFalse: [^ self exist: false].
@@ -23874,7 +23876,7 @@ update
 nodeType
 	^ #'3ptsOriented'! !
 
-!DrGAngle3ptsOrientedItem methodsFor: 'accessing' stamp: 'hlsf 12/Apr/2021 22:27:45'!
+!DrGAngle3ptsOrientedItem methodsFor: 'accessing' stamp: 'hlsf 12/Apr/2021, 8:27:45 pm (UTC)'!
 morphClass
 	^ DrGAngleOrientedMorph ! !
 
@@ -23898,14 +23900,14 @@ summit
 isLockable 
 	^ false! !
 
-!DrGAngle3ptsItem methodsFor: 'as yet unclassified' stamp: 'hlsf 3/Aug/2021 13:08:29'!
+!DrGAngle3ptsItem methodsFor: 'as yet unclassified' stamp: 'hlsf 3/Aug/2021, 11:08:29 am (UTC)'!
 printOn: aStream
 	self printType: DrGAngleGeometricBuilder title on: aStream.
 	aStream nextPut: Character space.
 	self printInteger: self degreeAngle on: aStream.
 	aStream nextPutAll: '°'.! !
 
-!DrGAngle3ptsItem methodsFor: 'updating' stamp: 'hlsf 20/May/2024 12:58:39'!
+!DrGAngle3ptsItem methodsFor: 'updating' stamp: 'hlsf 20/May/2024, 10:58:39 am (UTC)'!
 update
 "Update for an angle in [0 ; 180]"
 	|u v center|
@@ -23920,7 +23922,7 @@ update
 			degreeValue := radianValue radiansToDegrees.
 			self exist: true]! !
 
-!DrGAngle3ptsItem methodsFor: 'accessing' stamp: 'hlsf 12/Apr/2021 22:27:45'!
+!DrGAngle3ptsItem methodsFor: 'accessing' stamp: 'hlsf 12/Apr/2021, 8:27:45 pm (UTC)'!
 morphClass
 	^ DrGAngleGeometricMorph! !
 
@@ -23953,7 +23955,7 @@ writeAsXmlTo: aNode
 	node := super writeAsXmlTo: aNode.
 	^ self writeAsXmlPositionTo: node.! !
 
-!DrGAngleVectorsItem methodsFor: 'updating' stamp: 'hlsf 20/May/2024 12:47:02'!
+!DrGAngleVectorsItem methodsFor: 'updating' stamp: 'hlsf 20/May/2024, 10:47:02 am (UTC)'!
 update
 	|u v|
 	self doParentsExist ifFalse: [^ self exist: false].
@@ -23973,7 +23975,7 @@ writeAsXmlTo: aNode
 	node := super writeAsXmlTo: aNode.
 	^ self writeAsXmlPositionTo: node.! !
 
-!DrGComputedValueItem methodsFor: 'initialize-release' stamp: 'hlsf 19/Oct/2022 16:03:46'!
+!DrGComputedValueItem methodsFor: 'initialize-release' stamp: 'hlsf 19/Oct/2022, 2:03:46 pm (UTC)'!
 initialize
 	super initialize.
 	value := ''! !
@@ -23987,7 +23989,7 @@ printOn: aStream
 printValueOn: aStream 
 	aStream nextPutAll: value! !
 
-!DrGEquationItem methodsFor: 'as yet unclassified' stamp: 'hlsf 4/May/2020 18:43:45'!
+!DrGEquationItem methodsFor: 'as yet unclassified' stamp: 'hlsf 4/May/2020, 4:43:45 pm (UTC)'!
 isEquationItem 
 	^ true! !
 
@@ -24012,7 +24014,7 @@ valueItem
 adaptiveDescriptiveName
 	^ 'This equation %1' translated! !
 
-!DrGEquationItem methodsFor: 'testing-model' stamp: 'hlsf 4/May/2020 18:43:37'!
+!DrGEquationItem methodsFor: 'testing-model' stamp: 'hlsf 4/May/2020, 4:43:37 pm (UTC)'!
 isValueItem 
 	^ false! !
 
@@ -24020,7 +24022,7 @@ isValueItem
 equation
 	^ value! !
 
-!DrGEquationCircleItem methodsFor: 'updating' stamp: 'hlsf 20/May/2024 12:23:49'!
+!DrGEquationCircleItem methodsFor: 'updating' stamp: 'hlsf 20/May/2024, 10:23:49 am (UTC)'!
 update
 	| circle |
 	self doParentsExist ifFalse: [^ self exist: false].
@@ -24044,7 +24046,7 @@ isVerifiedBy: aPoint
 nodeType
 	^#circle! !
 
-!DrGEquationLineItem methodsFor: 'updating' stamp: 'hlsf 20/May/2024 12:24:08'!
+!DrGEquationLineItem methodsFor: 'updating' stamp: 'hlsf 20/May/2024, 10:24:08 am (UTC)'!
 update
 	| u origin |
 	self doParentsExist ifFalse: [^ self exist: false].
@@ -24087,11 +24089,11 @@ c: aNumber
 equation 
 	^ value := self reducedEquation ! !
 
-!DrGEquationLineItem methodsFor: 'accessing' stamp: 'hlsf 19/Oct/2022 16:13:37'!
+!DrGEquationLineItem methodsFor: 'accessing' stamp: 'hlsf 19/Oct/2022, 2:13:37 pm (UTC)'!
 originY
 	^ b isZero 		ifTrue: [nil] ifFalse: [c negated / b]! !
 
-!DrGEquationLineItem methodsFor: 'accessing' stamp: 'hlsf 10/Dec/2022 18:21:04'!
+!DrGEquationLineItem methodsFor: 'accessing' stamp: 'hlsf 10/Dec/2022, 4:21:04 pm (UTC)'!
 reducedEquation
 	^ b isZero 
 		ifTrue:  [String streamContents: [:stream |
@@ -24112,7 +24114,7 @@ reducedEquation
 						stream nextPutAll: ' + '.
 						originY printParenthesisOn: stream]]]]! !
 
-!DrGEquationLineItem methodsFor: 'accessing' stamp: 'hlsf 19/Oct/2022 16:13:27'!
+!DrGEquationLineItem methodsFor: 'accessing' stamp: 'hlsf 19/Oct/2022, 2:13:27 pm (UTC)'!
 slope
 	^ b isZero 		ifTrue: [nil] ifFalse: [a negated / b]! !
 
@@ -24120,7 +24122,7 @@ slope
 isVerifiedBy: aPoint
 	^ parents first isCollinearWith: (parents first origin - aPoint)! !
 
-!DrGValueArclengthItem methodsFor: 'updating' stamp: 'hlsf 20/May/2024 12:50:03'!
+!DrGValueArclengthItem methodsFor: 'updating' stamp: 'hlsf 20/May/2024, 10:50:03 am (UTC)'!
 update
 	self doParentsExist ifFalse: [^ self exist: false].
 	value := parents first length abs * parents first radius.
@@ -24135,7 +24137,7 @@ nodeType
 adaptiveDescriptiveName
 	^ 'This arc length %1' translated! !
 
-!DrGValueBlockItem methodsFor: 'accessing' stamp: 'hlsf 13/Apr/2024 10:56:39'!
+!DrGValueBlockItem methodsFor: 'accessing' stamp: 'hlsf 13/Apr/2024, 8:56:39 am (UTC)'!
 parents: aCollection
 " First the parents if any, then the bloc of code and last is the position on screen "
 	aCollection isEmptyOrNil ifTrue: [ " Should not happen "
@@ -24146,23 +24148,23 @@ parents: aCollection
 	self valueBlock: (aCollection atWrap: -1).
 ! !
 
-!DrGValueBlockItem methodsFor: 'accessing' stamp: 'hlsf 13/Apr/2024 09:57:38'!
+!DrGValueBlockItem methodsFor: 'accessing' stamp: 'hlsf 13/Apr/2024, 7:57:38 am (UTC)'!
 valueBlock
 	^ valueBlock! !
 
-!DrGValueBlockItem methodsFor: 'accessing' stamp: 'hlsf 13/Apr/2024 09:57:33'!
+!DrGValueBlockItem methodsFor: 'accessing' stamp: 'hlsf 13/Apr/2024, 7:57:33 am (UTC)'!
 valueBlock: aBlock
 	valueBlock := aBlock ! !
 
-!DrGValueBlockItem methodsFor: 'comparing' stamp: 'hlsf 13/Apr/2024 09:52:52'!
+!DrGValueBlockItem methodsFor: 'comparing' stamp: 'hlsf 13/Apr/2024, 7:52:52 am (UTC)'!
 = aMathItem
 	^ super = aMathItem and: [ valueBlock = aMathItem valueBlock ]! !
 
-!DrGValueBlockItem methodsFor: 'comparing' stamp: 'hlsf 13/Apr/2024 09:53:13'!
+!DrGValueBlockItem methodsFor: 'comparing' stamp: 'hlsf 13/Apr/2024, 7:53:13 am (UTC)'!
 rehash
 	^ hash := super rehash bitXor: valueBlock hash! !
 
-!DrGValueBlockItem methodsFor: 'updating' stamp: 'hlsf 18/Feb/2026 15:40:30'!
+!DrGValueBlockItem methodsFor: 'updating' stamp: 'hlsf 18/Feb/2026, 1:40:30 pm (UTC)'!
 update
 	| evaluator |
 	self doParentsExist ifFalse: [^ self exist: false].
@@ -24174,18 +24176,18 @@ update
 	value := evaluator on: Error do: [:msg | msg print]. 
 	self exist: value notNil ! !
 
-!DrGValueBlockItem methodsFor: 'xml writing' stamp: 'hlsf 13/Apr/2024 09:53:35'!
+!DrGValueBlockItem methodsFor: 'xml writing' stamp: 'hlsf 13/Apr/2024, 7:53:35 am (UTC)'!
 nodeType
 	^#Block! !
 
-!DrGValueBlockItem methodsFor: 'xml writing' stamp: 'hlsf 13/Apr/2024 09:54:47'!
+!DrGValueBlockItem methodsFor: 'xml writing' stamp: 'hlsf 13/Apr/2024, 7:54:47 am (UTC)'!
 writeAsXmlTo: aNode
 	|node|
 	node := super writeAsXmlTo: aNode.
 	node addElement: ((XMLElement named: #code) addContent: (XMLStringNode string: valueBlock decompile asString)).
 	^node! !
 
-!DrGValueBlockItem methodsFor: 'testing' stamp: 'hlsf 20/May/2024 11:31:40'!
+!DrGValueBlockItem methodsFor: 'testing' stamp: 'hlsf 20/May/2024, 9:31:40 am (UTC)'!
 doParentsExist 
 	^ super doParentsExist and: [valueBlock isNil not]
 ! !
@@ -24194,7 +24196,7 @@ doParentsExist
 nodeType
 	^#'circle_perimeter'! !
 
-!DrGValueCircleperimeterItem methodsFor: 'updating' stamp: 'hlsf 20/May/2024 12:38:37'!
+!DrGValueCircleperimeterItem methodsFor: 'updating' stamp: 'hlsf 20/May/2024, 10:38:37 am (UTC)'!
 update
 	self doParentsExist ifFalse: [^ self exist: false].
 	value := parents first radius * Float twoPi.
@@ -24220,7 +24222,7 @@ name
 adaptiveDescriptiveName
 	^ 'This distance between two points %1' translated! !
 
-!DrGValueDistance2ptsItem methodsFor: 'updating' stamp: 'hlsf 20/May/2024 12:38:49'!
+!DrGValueDistance2ptsItem methodsFor: 'updating' stamp: 'hlsf 20/May/2024, 10:38:49 am (UTC)'!
 update
 	self doParentsExist ifFalse: [^ self exist: false].
 	value := parents first point dist: parents second point.
@@ -24231,7 +24233,7 @@ update
 nodeType
 	^#'distance_2pts'! !
 
-!DrGValueDistanceptlineItem methodsFor: 'updating' stamp: 'hlsf 20/May/2024 12:39:01'!
+!DrGValueDistanceptlineItem methodsFor: 'updating' stamp: 'hlsf 20/May/2024, 10:39:01 am (UTC)'!
 update
 	self doParentsExist ifFalse: [^ self exist: false].
 	value := ((parents first point - parents second origin) 
@@ -24255,7 +24257,7 @@ adaptiveDescriptiveName
 nodeType
 	^#'polygon_perimeter'! !
 
-!DrGValuePolygonperimeterItem methodsFor: 'updating' stamp: 'hlsf 20/May/2024 12:39:20'!
+!DrGValuePolygonperimeterItem methodsFor: 'updating' stamp: 'hlsf 20/May/2024, 10:39:20 am (UTC)'!
 update
 	self doParentsExist ifFalse: [^ self exist: false].
 	value := parents first length.
@@ -24266,7 +24268,7 @@ update
 adaptiveDescriptiveName
 	^ 'This point abscissa %1' translated! !
 
-!DrGValuePtabscissaItem methodsFor: 'updating' stamp: 'hlsf 20/May/2024 12:39:39'!
+!DrGValuePtabscissaItem methodsFor: 'updating' stamp: 'hlsf 20/May/2024, 10:39:39 am (UTC)'!
 update
 	self doParentsExist ifFalse: [^ self exist: false].
 	value := parents first point x.
@@ -24280,7 +24282,7 @@ nodeType
 adaptiveDescriptiveName
 	^ 'This point ordinate %1' translated! !
 
-!DrGValuePtordinateItem methodsFor: 'updating' stamp: 'hlsf 20/May/2024 12:40:07'!
+!DrGValuePtordinateItem methodsFor: 'updating' stamp: 'hlsf 20/May/2024, 10:40:07 am (UTC)'!
 update
 	self doParentsExist ifFalse: [^ self exist: false].
 	value := parents first point y.
@@ -24294,7 +24296,7 @@ nodeType
 nodeType
 	^#'segment_length'! !
 
-!DrGValueSegmentlengthItem methodsFor: 'updating' stamp: 'hlsf 20/May/2024 12:40:34'!
+!DrGValueSegmentlengthItem methodsFor: 'updating' stamp: 'hlsf 20/May/2024, 10:40:34 am (UTC)'!
 update
 	self doParentsExist ifFalse: [^ self exist: false].
 	value := parents first direction r.
@@ -24321,7 +24323,7 @@ nodeType
 adaptiveDescriptiveName
 	^ 'This line slope %1' translated! !
 
-!DrGValueSlopeItem methodsFor: 'updating' stamp: 'hlsf 20/May/2024 12:41:27'!
+!DrGValueSlopeItem methodsFor: 'updating' stamp: 'hlsf 20/May/2024, 10:41:27 am (UTC)'!
 update
 	|v|
 	self doParentsExist ifFalse: [^ self exist: false].
@@ -24342,7 +24344,7 @@ nodeType
 adaptiveDescriptiveName
 	^ 'This vector abscissa %1' translated! !
 
-!DrGValueVectorabscissaItem methodsFor: 'updating' stamp: 'hlsf 20/May/2024 12:41:43'!
+!DrGValueVectorabscissaItem methodsFor: 'updating' stamp: 'hlsf 20/May/2024, 10:41:43 am (UTC)'!
 update
 	self doParentsExist ifFalse: [^ self exist: false].
 	value := parents first direction x.
@@ -24352,7 +24354,7 @@ update
 nodeType 
 	^ #'vector_ordinate'! !
 
-!DrGValueVectorordinateItem methodsFor: 'updating' stamp: 'hlsf 20/May/2024 12:41:59'!
+!DrGValueVectorordinateItem methodsFor: 'updating' stamp: 'hlsf 20/May/2024, 10:41:59 am (UTC)'!
 update
 	self doParentsExist ifFalse: [^ self exist: false].
 	value := parents first direction y.
@@ -24367,7 +24369,7 @@ initialize: theParentsCostume
 	super initialize: theParentsCostume.
 	self script: (theParentsCostume at: theParentsCostume size - 1)! !
 
-!DrGValueScriptItem methodsFor: 'updating' stamp: 'hlsf 20/May/2024 12:42:16'!
+!DrGValueScriptItem methodsFor: 'updating' stamp: 'hlsf 20/May/2024, 10:42:16 am (UTC)'!
 update
 	self doParentsExist ifFalse: [^ self exist: false].
 	value := script compute.
@@ -24391,15 +24393,15 @@ compute
 "Do the script computation and return its result "
 	^ self script compute! !
 
-!DrGValueScriptItem methodsFor: 'accessing' stamp: 'hlsf 12/Apr/2021 22:27:45'!
+!DrGValueScriptItem methodsFor: 'accessing' stamp: 'hlsf 12/Apr/2021, 8:27:45 pm (UTC)'!
 morphClass 
 	 ^ DrGScriptMorph! !
 
-!DrGValueScriptItem methodsFor: 'accessing' stamp: 'hlsf 4/Aug/2023 11:35:48'!
+!DrGValueScriptItem methodsFor: 'accessing' stamp: 'hlsf 4/Aug/2023, 9:35:48 am (UTC)'!
 morphs
 	^ parentMorphs ! !
 
-!DrGValueScriptItem methodsFor: 'accessing' stamp: 'hlsf 4/Aug/2023 11:35:48'!
+!DrGValueScriptItem methodsFor: 'accessing' stamp: 'hlsf 4/Aug/2023, 9:35:48 am (UTC)'!
 parents: aCollection 
 	"last is the initial screen position of the value, and previous last is the script class"
 	aCollection isEmptyOrNil ifTrue: 
@@ -24413,7 +24415,7 @@ parents: aCollection
 			parents := aCollection ].
 ! !
 
-!DrGValueScriptItem methodsFor: 'accessing' stamp: 'hlsf 4/Aug/2023 17:11:23'!
+!DrGValueScriptItem methodsFor: 'accessing' stamp: 'hlsf 4/Aug/2023, 3:11:23 pm (UTC)'!
 parents: aCollection in: presenter
 	"last is the initial screen position of the value, and previous last is the script class"
 	self parents: aCollection.
@@ -24425,7 +24427,7 @@ parents: aCollection in: presenter
 script
 	^script! !
 
-!DrGValueScriptItem methodsFor: 'accessing' stamp: 'hlsf 9/Apr/2021 19:50:40'!
+!DrGValueScriptItem methodsFor: 'accessing' stamp: 'hlsf 9/Apr/2021, 5:50:40 pm (UTC)'!
 script: aScriptClass
 	script := aScriptClass new arguments: self morphs.
 	self rehash ! !
@@ -24452,13 +24454,13 @@ writeAsXmlTo: aNode
 rehash
 	^hash := super rehash bitXor: script class hash! !
 
-!DrGValueScriptItem methodsFor: 'testing' stamp: 'hlsf 17/Feb/2026 14:43:43'!
+!DrGValueScriptItem methodsFor: 'testing' stamp: 'hlsf 17/Feb/2026, 12:43:43 pm (UTC)'!
 isPropertyEditable
 	^ DrGeoSystem isTablet 
 		ifTrue: [false]  
 		ifFalse:  [true]! !
 
-!DrGValueScriptItem methodsFor: 'testing' stamp: 'hlsf 4/May/2020 18:44:32'!
+!DrGValueScriptItem methodsFor: 'testing' stamp: 'hlsf 4/May/2020, 4:44:32 pm (UTC)'!
 isScriptItem
 	^true! !
 
@@ -24488,7 +24490,7 @@ argumentsName
 	stream nextPutAll: (parents last safeName ifEmpty: [parents last printString]).
 	^ stream contents! !
 
-!DrGValueScriptItem methodsFor: 'as yet unclassified' stamp: 'hlsf 4/Aug/2023 17:22:48'!
+!DrGValueScriptItem methodsFor: 'as yet unclassified' stamp: 'hlsf 4/Aug/2023, 3:22:48 pm (UTC)'!
 editPropertyIn: presenter
 	^ presenter editScript: script class! !
 
@@ -24514,7 +24516,7 @@ writeAsXmlTo: aNode
 rehash
 	^ hash := (super rehash bitXor: position hash) bitXor: value hash! !
 
-!DrGValueValueItem methodsFor: 'updating' stamp: 'hlsf 4/Aug/2023 17:22:55'!
+!DrGValueValueItem methodsFor: 'updating' stamp: 'hlsf 4/Aug/2023, 3:22:55 pm (UTC)'!
 editPropertyIn: presenter
 	| holder |
 	holder := ValueHolder with: value.
@@ -24547,7 +24549,7 @@ doParentsExist
 isPropertyEditable
 	^ true! !
 
-!DrGMathItemBuilder methodsFor: 'testing' stamp: 'hlsf 4/Aug/2023 17:10:30'!
+!DrGMathItemBuilder methodsFor: 'testing' stamp: 'hlsf 4/Aug/2023, 3:10:30 pm (UTC)'!
 isNotInteractive
 "Are we parsing the figure from a file"
 	^ presenter isNotInteractive! !
@@ -24572,11 +24574,11 @@ arguments
 "an argument list to give to the MathItem new method"
 	self subclassResponsibility ! !
 
-!DrGMathItemBuilder methodsFor: 'accessing' stamp: 'hlsf 4/Aug/2023 12:53:02'!
+!DrGMathItemBuilder methodsFor: 'accessing' stamp: 'hlsf 4/Aug/2023, 10:53:02 am (UTC)'!
 domain
 	^ presenter domain! !
 
-!DrGMathItemBuilder methodsFor: 'accessing' stamp: 'hlsf 4/Aug/2023 12:53:08'!
+!DrGMathItemBuilder methodsFor: 'accessing' stamp: 'hlsf 4/Aug/2023, 10:53:08 am (UTC)'!
 drawable
 	^ presenter drawable! !
 
@@ -24584,11 +24586,11 @@ drawable
 factory
 	^ self domain factory! !
 
-!DrGMathItemBuilder methodsFor: 'accessing' stamp: 'hlsf 4/Aug/2023 12:52:44'!
+!DrGMathItemBuilder methodsFor: 'accessing' stamp: 'hlsf 4/Aug/2023, 10:52:44 am (UTC)'!
 presenter: aPresenter
 	presenter := aPresenter ! !
 
-!DrGMathItemBuilder methodsFor: 'building' stamp: 'hlsf 29/May/2025 15:36:26'!
+!DrGMathItemBuilder methodsFor: 'building' stamp: 'hlsf 29/May/2025, 1:36:26 pm (UTC)'!
 add: aMathItemCollection at: aPoint
 "
 Add a math item in the selection list of the builder, aPoint is the position where the action took place
@@ -24601,7 +24603,7 @@ Return true if mathItem accepted
 			self readyToBuild ifTrue: [self triggerEvent: #readyToBuild].
 			true]! !
 
-!DrGMathItemBuilder methodsFor: 'building' stamp: 'hlsf 4/Aug/2023 17:16:46'!
+!DrGMathItemBuilder methodsFor: 'building' stamp: 'hlsf 4/Aug/2023, 3:16:46 pm (UTC)'!
 buildItem
 	| itemDefinitions |
 	itemDefinitions := self mathItemClass.
@@ -24612,12 +24614,12 @@ buildItem
 				point := point - (0@0.5).
 				class newWith: self arguments in: presenter]]! !
 
-!DrGMathItemBuilder methodsFor: 'building' stamp: 'hlsf 29/May/2025 15:31:24'!
+!DrGMathItemBuilder methodsFor: 'building' stamp: 'hlsf 29/May/2025, 1:31:24 pm (UTC)'!
 getItem
 	"return an instantiated mathItem or nil if not possible"
 	^ self readyToBuild ifTrue: [self buildItem]! !
 
-!DrGMathItemBuilder methodsFor: 'flying objects' stamp: 'hlsf 20/Jun/2021 12:10:30'!
+!DrGMathItemBuilder methodsFor: 'flying objects' stamp: 'hlsf 20/Jun/2021, 10:10:30 am (UTC)'!
 addToFlyingItem: anItem
  "Add an item to the flying item representing the item built by this builder "
 	self isNotInteractive ifTrue: [^self].
@@ -24626,31 +24628,31 @@ addToFlyingItem: anItem
 	self initializeFlyingMorph
 ! !
 
-!DrGMathItemBuilder methodsFor: 'flying objects' stamp: 'hlsf 12/Apr/2021 22:14:28'!
+!DrGMathItemBuilder methodsFor: 'flying objects' stamp: 'hlsf 12/Apr/2021, 8:14:28 pm (UTC)'!
 flyingMathItemArguments
 	self subclassResponsibility ! !
 
-!DrGMathItemBuilder methodsFor: 'flying objects' stamp: 'hlsf 12/Apr/2021 22:04:35'!
+!DrGMathItemBuilder methodsFor: 'flying objects' stamp: 'hlsf 12/Apr/2021, 8:04:35 pm (UTC)'!
 flyingMorphClass
 	self subclassResponsibility ! !
 
-!DrGMathItemBuilder methodsFor: 'flying objects' stamp: 'hlsf 29/May/2025 15:39:57'!
+!DrGMathItemBuilder methodsFor: 'flying objects' stamp: 'hlsf 29/May/2025, 1:39:57 pm (UTC)'!
 initializeFlyingMorph
 	flyingMorph := self flyingMorphClass for: flyingItem in: presenter drawable.
 	flyingMorph style color: Color lightRed! !
 
-!DrGMathItemBuilder methodsFor: 'flying objects' stamp: 'hlsf 14/Oct/2021 10:01:20'!
+!DrGMathItemBuilder methodsFor: 'flying objects' stamp: 'hlsf 14/Oct/2021, 8:01:20 am (UTC)'!
 moveFlyingMorphAt: aPoint
 	flyingMorph ifNotNil: [
 		movingPoint moveAt: aPoint.
 		flyingItem update.
 		flyingMorph redrawNeeded]! !
 
-!DrGMathItemBuilder methodsFor: 'flying objects' stamp: 'hlsf 14/Oct/2021 09:59:20'!
+!DrGMathItemBuilder methodsFor: 'flying objects' stamp: 'hlsf 14/Oct/2021, 7:59:20 am (UTC)'!
 redrawFlyingMorph 
 	flyingMorph ifNotNil: [flyingMorph redrawNeeded]! !
 
-!DrGMathItemBuilder methodsFor: 'xml' stamp: 'hlsf 31/May/2021 18:57:45'!
+!DrGMathItemBuilder methodsFor: 'xml' stamp: 'hlsf 31/May/2021, 4:57:45 pm (UTC)'!
 basicItemFrom: node
 | type itemClass item|
 	"build the item class name from the node description"
@@ -24661,7 +24663,7 @@ basicItemFrom: node
 	self postProcess: item from: node.
 	^ item! !
 
-!DrGMathItemBuilder methodsFor: 'xml' stamp: 'hlsf 28/Sep/2022 17:24:10'!
+!DrGMathItemBuilder methodsFor: 'xml' stamp: 'hlsf 28/Sep/2022, 3:24:10 pm (UTC)'!
 itemFrom: node
 	|item|
 	item := self itemInstanceFrom: node.
@@ -24710,7 +24712,7 @@ mathItemClass
 "Answer the MathItem class for this builder (i.e. self FreePointItem,...)"
 	self subclassResponsibility! !
 
-!DrGMathItemBuilder methodsFor: 'updating' stamp: 'hlsf 12/Apr/2021 22:04:51'!
+!DrGMathItemBuilder methodsFor: 'updating' stamp: 'hlsf 12/Apr/2021, 8:04:51 pm (UTC)'!
 reset
 	point := nil.
 	flyingMorph ifNotNil:
@@ -24728,7 +24730,7 @@ addToggleItem: aMathItemCollection in: aCollection
 		ifAbsent: [aCollection add: aMathItemCollection first]
 ! !
 
-!DrGMathItemBuilder methodsFor: 'as yet unclassified' stamp: 'hlsf 27/May/2026 21:29:00'!
+!DrGMathItemBuilder methodsFor: 'as yet unclassified' stamp: 'hlsf 27/May/2026, 7:29:00 pm (UTC)'!
 release
 	self removeAllActions .
 	self reset.! !
@@ -24750,19 +24752,19 @@ basicItemFrom: node
 	builder := self new.
 	^ builder basicItemFrom: node! !
 
-!DrGMathItemBuilder class methodsFor: 'xml' stamp: 'hlsf 4/Aug/2023 17:09:44'!
+!DrGMathItemBuilder class methodsFor: 'xml' stamp: 'hlsf 4/Aug/2023, 3:09:44 pm (UTC)'!
 itemFrom: node in: aPresenter
 "create an item from this node and add it to the domain, return a couple {item. boolean}"
 	| builder |
 	builder := self new presenter: 	aPresenter ; yourself.
 	^ builder itemFrom: node! !
 
-!DrGAngleGeometricBuilder methodsFor: 'updating' stamp: 'hlsf 20/Jun/2021 11:22:39'!
+!DrGAngleGeometricBuilder methodsFor: 'updating' stamp: 'hlsf 20/Jun/2021, 9:22:39 am (UTC)'!
 reset
 	super reset.
 	pointA := pointB := pointC := nil! !
 
-!DrGAngleGeometricBuilder methodsFor: 'testing' stamp: 'hlsf 29/May/2025 22:18:10'!
+!DrGAngleGeometricBuilder methodsFor: 'testing' stamp: 'hlsf 29/May/2025, 8:18:10 pm (UTC)'!
 isWanted: aMathItemCollection
 	^aMathItemCollection notEmpty
 		and: [aMathItemCollection first isPointItem
@@ -24831,7 +24833,7 @@ readyToBuild
 	^ super readyToBuild or: [vectorA notNil and: [vectorB notNil]]
 			! !
 
-!DrGAngleOrientedBuilder methodsFor: 'updating' stamp: 'hlsf 20/Jun/2021 11:22:42'!
+!DrGAngleOrientedBuilder methodsFor: 'updating' stamp: 'hlsf 20/Jun/2021, 9:22:42 am (UTC)'!
 reset
 	super reset.
 	vectorA := vectorB := nil! !
@@ -24868,12 +24870,12 @@ mathItemClass
 arguments
 	^{pointA . pointB . pointC}! !
 
-!DrGArcBuilder methodsFor: 'flying costume' stamp: 'hlsf 12/Apr/2021 22:14:28'!
+!DrGArcBuilder methodsFor: 'flying costume' stamp: 'hlsf 12/Apr/2021, 8:14:28 pm (UTC)'!
 flyingMathItemArguments
 	^{pointA. pointB. movingPoint}.
 ! !
 
-!DrGArcBuilder methodsFor: 'flying costume' stamp: 'hlsf 12/Apr/2021 22:04:35'!
+!DrGArcBuilder methodsFor: 'flying costume' stamp: 'hlsf 12/Apr/2021, 8:04:35 pm (UTC)'!
 flyingMorphClass
 	^ DrGArcMorph! !
 
@@ -24898,7 +24900,7 @@ isWanted: aMathItemCollection
 readyToBuild
 	^pointA notNil and: [pointB notNil and: [pointC notNil]]! !
 
-!DrGArcBuilder methodsFor: 'updating' stamp: 'hlsf 20/Jun/2021 11:22:49'!
+!DrGArcBuilder methodsFor: 'updating' stamp: 'hlsf 20/Jun/2021, 9:22:49 am (UTC)'!
 reset
 	super reset.
 	pointA := pointB := pointC := nil! !
@@ -24940,17 +24942,17 @@ addItem: aMathItemCollection at: aPoint
 		^ self addToFlyingItem: origin].
 	extremity ifNil: [extremity := aMathItemCollection first]! !
 
-!DrGArcCenterBuilder methodsFor: 'updating' stamp: 'hlsf 20/Jun/2021 11:22:55'!
+!DrGArcCenterBuilder methodsFor: 'updating' stamp: 'hlsf 20/Jun/2021, 9:22:55 am (UTC)'!
 reset
 	super reset.
 	origin := center := extremity := nil! !
 
-!DrGArcCenterBuilder methodsFor: 'flying costume' stamp: 'hlsf 12/Apr/2021 22:14:28'!
+!DrGArcCenterBuilder methodsFor: 'flying costume' stamp: 'hlsf 12/Apr/2021, 8:14:28 pm (UTC)'!
 flyingMathItemArguments
 	^{center. origin. movingPoint}.
 ! !
 
-!DrGArcCenterBuilder methodsFor: 'flying costume' stamp: 'hlsf 12/Apr/2021 22:04:35'!
+!DrGArcCenterBuilder methodsFor: 'flying costume' stamp: 'hlsf 12/Apr/2021, 8:04:35 pm (UTC)'!
 flyingMorphClass 
 	^ DrGArcMorph! !
 
@@ -24968,7 +24970,7 @@ itemInstanceFrom: node
 	^ self getItem first.
 ! !
 
-!DrGBitmapBuilder methodsFor: 'xml' stamp: 'hlsf 8/Jun/2021 19:34:12'!
+!DrGBitmapBuilder methodsFor: 'xml' stamp: 'hlsf 8/Jun/2021, 5:34:12 pm (UTC)'!
 postProcess: item from: node
 	| form |
 	super postProcess: item from: node.
@@ -25058,7 +25060,7 @@ postProcess: item from: node
 arguments
 	^ Array with: ({pointA. vector . line . circle } detect: [:i | i isNil not] ifNone: [nil]) with: point! !
 
-!DrGCoordinatesBuilder methodsFor: 'updating' stamp: 'hlsf 20/Jun/2021 11:23:04'!
+!DrGCoordinatesBuilder methodsFor: 'updating' stamp: 'hlsf 20/Jun/2021, 9:23:04 am (UTC)'!
 reset
 	super reset.
 	pointA := vector := circle := line := nil! !
@@ -25139,7 +25141,7 @@ restoreState: anArray
 saveState
 	^Array with: curveItemA with: curveItemB with: point! !
 
-!DrGFlyPointBuilder methodsFor: 'updating' stamp: 'hlsf 20/Jun/2021 11:20:49'!
+!DrGFlyPointBuilder methodsFor: 'updating' stamp: 'hlsf 20/Jun/2021, 9:20:49 am (UTC)'!
 reset
 	super reset.
 	curveItemA := curveItemB := nil! !
@@ -25165,7 +25167,7 @@ isCurveIntersectionValid: aCollection
 isWanted: aMathItemCollection
 	^self isWanted: aMathItemCollection  at: 0@0! !
 
-!DrGFlyPointBuilder methodsFor: 'testing' stamp: 'hlsf 29/May/2025 15:32:52'!
+!DrGFlyPointBuilder methodsFor: 'testing' stamp: 'hlsf 29/May/2025, 1:32:52 pm (UTC)'!
 isWanted: aMathItemCollection at: aPoint
 	"click on the background?"
 	aMathItemCollection ifEmpty: [^true].
@@ -25181,7 +25183,7 @@ isWanted: aMathItemCollection at: aPoint
 readyToBuild
 	^ curveItemA notNil or: [point notNil]! !
 
-!DrGFlyPointBuilder class methodsFor: 'documentation' stamp: 'hlsf 17/Feb/2026 14:47:48'!
+!DrGFlyPointBuilder class methodsFor: 'documentation' stamp: 'hlsf 17/Feb/2026, 12:47:48 pm (UTC)'!
 description 
 	^ DrGeoSystem isTablet
 		ifTrue: ['Tap to create a point: free point on the background, on a curve or on two curves intersection.' translated]
@@ -25246,7 +25248,7 @@ isWanted: aMathItemCollection
 readyToBuild
 	^ curveItem ~= nil or: [point ~= nil]! !
 
-!DrGLocusBuilder methodsFor: 'updating' stamp: 'hlsf 20/Jun/2021 11:20:58'!
+!DrGLocusBuilder methodsFor: 'updating' stamp: 'hlsf 20/Jun/2021, 9:20:58 am (UTC)'!
 reset
 	super reset.
 	freePoint := constrainedPoint := nil! !
@@ -25274,14 +25276,14 @@ mathItemClass
 arguments
 	^ {freePoint. constrainedPoint}! !
 
-!DrGLocusBuilder methodsFor: 'testing' stamp: 'hlsf 29/May/2025 22:34:08'!
+!DrGLocusBuilder methodsFor: 'testing' stamp: 'hlsf 29/May/2025, 8:34:08 pm (UTC)'!
 isWanted: aMathItemCollection 
 	^ aMathItemCollection notEmpty and: [
 		(aMathItemCollection first isPointItemOnCurve and: [freePoint isNil])			
 		or: [	aMathItemCollection first isConstrainedPointItem and: [constrainedPoint isNil]] ]
 		! !
 
-!DrGLocusBuilder methodsFor: 'testing' stamp: 'hlsf 29/May/2025 22:21:19'!
+!DrGLocusBuilder methodsFor: 'testing' stamp: 'hlsf 29/May/2025, 8:21:19 pm (UTC)'!
 readyToBuild
 	^ freePoint notNil and: [constrainedPoint notNil]! !
 
@@ -25293,7 +25295,7 @@ description
 title 
 	^ 'Locus' translated.! !
 
-!DrGMiddleBuilder methodsFor: 'updating' stamp: 'hlsf 20/Jun/2021 11:21:14'!
+!DrGMiddleBuilder methodsFor: 'updating' stamp: 'hlsf 20/Jun/2021, 9:21:14 am (UTC)'!
 reset
 	super reset.
 	pointA := pointB := segment := nil! !
@@ -25303,7 +25305,7 @@ arguments
 	segment ifNotNil: [^{segment}].
 	^{pointA . pointB}! !
 
-!DrGMiddleBuilder methodsFor: 'testing' stamp: 'hlsf 29/May/2025 15:46:31'!
+!DrGMiddleBuilder methodsFor: 'testing' stamp: 'hlsf 29/May/2025, 1:46:31 pm (UTC)'!
 isWanted: aMathItemCollection
 	^ aMathItemCollection  notEmpty 
 		and: [
@@ -25378,7 +25380,7 @@ readyToBuild
 	^ (valueX notNil and: [valueY notNil])
 		or: [script notNil]! !
 
-!DrGPointByCoordinatesBuilder methodsFor: 'updating' stamp: 'hlsf 20/Jun/2021 11:21:26'!
+!DrGPointByCoordinatesBuilder methodsFor: 'updating' stamp: 'hlsf 20/Jun/2021, 9:21:26 am (UTC)'!
 reset
 	super reset.
 	script := valueX := valueY := nil! !
@@ -25424,7 +25426,7 @@ readyToBuild
 mathItemClass 
 	^ DrGPointIntersectionItem! !
 
-!DrGPointIntersectionBuilder methodsFor: 'as yet unclassified' stamp: 'hlsf 25/Sep/2021 14:44:41'!
+!DrGPointIntersectionBuilder methodsFor: 'as yet unclassified' stamp: 'hlsf 25/Sep/2021, 12:44:41 pm (UTC)'!
 postProcess: item from: node
 	|k|
 	super postProcess: item from: node.
@@ -25439,12 +25441,12 @@ buildItem
 			self mathItemClass newWith: self arguments k: 1.
 			self mathItemClass newWith: self arguments k: -1}]! !
 
-!DrGPointIntersectionBuilder methodsFor: 'updating' stamp: 'hlsf 20/Jun/2021 11:21:30'!
+!DrGPointIntersectionBuilder methodsFor: 'updating' stamp: 'hlsf 20/Jun/2021, 9:21:30 am (UTC)'!
 reset
 	super reset.
 	curveItemA := curveItemB := nil! !
 
-!DrGPointIntersectionBuilder methodsFor: 'xml' stamp: 'hlsf 25/Sep/2021 14:44:19'!
+!DrGPointIntersectionBuilder methodsFor: 'xml' stamp: 'hlsf 25/Sep/2021, 12:44:19 pm (UTC)'!
 itemInstanceFrom: node
 	"We only want intersection point"
 	|arguments k|
@@ -25461,7 +25463,7 @@ description
 title
 	^ 'Intersection' translated! !
 
-!DrGPolygonBuilder methodsFor: 'flying costume' stamp: 'hlsf 20/Jun/2021 12:10:23'!
+!DrGPolygonBuilder methodsFor: 'flying costume' stamp: 'hlsf 20/Jun/2021, 10:10:23 am (UTC)'!
 addToFlyingItem: anItem
 	self isNotInteractive ifTrue: [^self].
 	points size = 2 ifTrue: [
@@ -25476,7 +25478,7 @@ addToFlyingItem: anItem
 								yourself).
 		flyingMorph redrawNeeded]! !
 
-!DrGPolygonBuilder methodsFor: 'flying costume' stamp: 'hlsf 12/Apr/2021 22:04:35'!
+!DrGPolygonBuilder methodsFor: 'flying costume' stamp: 'hlsf 12/Apr/2021, 8:04:35 pm (UTC)'!
 flyingMorphClass
 	^ DrGPolygonMorph ! !
 
@@ -25557,7 +25559,7 @@ isWanted: aMathItemCollection
 readyToBuild
 	^(center notNil and: [pointA notNil and: [value notNil ]])! !
 
-!DrGPolygonRegularBuilder methodsFor: 'updating' stamp: 'hlsf 20/Jun/2021 11:21:37'!
+!DrGPolygonRegularBuilder methodsFor: 'updating' stamp: 'hlsf 20/Jun/2021, 9:21:37 am (UTC)'!
 reset
 	super reset.
 	center := pointA := value := nil! !
@@ -25584,7 +25586,7 @@ isWanted: aMathItemCollection
 readyToBuild
 	^ pointA notNil and: [pointB notNil]! !
 
-!DrGSegmentBuilder methodsFor: 'updating' stamp: 'hlsf 20/Jun/2021 11:21:41'!
+!DrGSegmentBuilder methodsFor: 'updating' stamp: 'hlsf 20/Jun/2021, 9:21:41 am (UTC)'!
 reset
 	super reset.
 	pointA := pointB := nil! !
@@ -25597,16 +25599,16 @@ arguments
 mathItemClass
 	^DrGSegment2ptsItem! !
 
-!DrGSegmentBuilder methodsFor: 'flying costume' stamp: 'hlsf 12/Apr/2021 22:14:28'!
+!DrGSegmentBuilder methodsFor: 'flying costume' stamp: 'hlsf 12/Apr/2021, 8:14:28 pm (UTC)'!
 flyingMathItemArguments
 	^ {pointA. movingPoint}.
 ! !
 
-!DrGSegmentBuilder methodsFor: 'flying costume' stamp: 'hlsf 12/Apr/2021 22:04:35'!
+!DrGSegmentBuilder methodsFor: 'flying costume' stamp: 'hlsf 12/Apr/2021, 8:04:35 pm (UTC)'!
 flyingMorphClass
 	^ DrGSegmentMorph! !
 
-!DrGSegmentBuilder methodsFor: 'private' stamp: 'hlsf 4/Aug/2021 15:22:40'!
+!DrGSegmentBuilder methodsFor: 'private' stamp: 'hlsf 4/Aug/2021, 1:22:40 pm (UTC)'!
 addItem: aMathItemCollection at: aPoint
 	super addItem: aMathItemCollection  at: aPoint.
 	pointA ifNil: 
@@ -25655,7 +25657,7 @@ addItem: aMathItemCollection at: aPoint
 			self addToFlyingItem: pointA]
 		ifNotNil: [pointB := item]! !
 
-!DrGCircleBuilder methodsFor: 'flying costume' stamp: 'hlsf 12/Apr/2021 22:04:35'!
+!DrGCircleBuilder methodsFor: 'flying costume' stamp: 'hlsf 12/Apr/2021, 8:04:35 pm (UTC)'!
 flyingMorphClass
 	^ DrGCircleMorph! !
 
@@ -25694,7 +25696,7 @@ title
 mathItemClass
 	^DrGLine2ptsItem! !
 
-!DrGLineBuilder methodsFor: 'flying costume' stamp: 'hlsf 12/Apr/2021 22:04:35'!
+!DrGLineBuilder methodsFor: 'flying costume' stamp: 'hlsf 12/Apr/2021, 8:04:35 pm (UTC)'!
 flyingMorphClass
 	^ DrGLineMorph! !
 
@@ -25724,7 +25726,7 @@ arguments
 		ifNotNil: [{angle}] 
 		ifNil: [{pointA . pointB . pointC}]! !
 
-!DrGAngleBisectorBuilder methodsFor: 'updating' stamp: 'hlsf 20/Jun/2021 11:21:47'!
+!DrGAngleBisectorBuilder methodsFor: 'updating' stamp: 'hlsf 20/Jun/2021, 9:21:47 am (UTC)'!
 reset
 	super reset.
 	pointC := angle := nil
@@ -25736,7 +25738,7 @@ mathItemClass
 		ifNotNil: [DrGLineAngleBisectorItem] 
 		ifNil: [DrGAngleBisector3ptsItem]! !
 
-!DrGAngleBisectorBuilder methodsFor: 'flying costume' stamp: 'hlsf 12/Apr/2021 22:14:28'!
+!DrGAngleBisectorBuilder methodsFor: 'flying costume' stamp: 'hlsf 12/Apr/2021, 8:14:28 pm (UTC)'!
 flyingMathItemArguments 
 	^ {pointA. pointB. movingPoint}.! !
 
@@ -25778,12 +25780,12 @@ isWanted: aMathItemCollection
 readyToBuild
 	^pointA notNil and: [direction notNil]! !
 
-!DrGParallelBuilder methodsFor: 'flying costume' stamp: 'hlsf 12/Apr/2021 22:14:28'!
+!DrGParallelBuilder methodsFor: 'flying costume' stamp: 'hlsf 12/Apr/2021, 8:14:28 pm (UTC)'!
 flyingMathItemArguments
 	^{direction. movingPoint}.
 ! !
 
-!DrGParallelBuilder methodsFor: 'updating' stamp: 'hlsf 20/Jun/2021 11:22:00'!
+!DrGParallelBuilder methodsFor: 'updating' stamp: 'hlsf 20/Jun/2021, 9:22:00 am (UTC)'!
 reset
 	super reset.
 	pointA := direction := nil! !
@@ -25876,7 +25878,7 @@ title
 mathItemClass
 	^DrGRay2ptsItem! !
 
-!DrGRayBuilder methodsFor: 'flying costume' stamp: 'hlsf 12/Apr/2021 22:04:35'!
+!DrGRayBuilder methodsFor: 'flying costume' stamp: 'hlsf 12/Apr/2021, 8:04:35 pm (UTC)'!
 flyingMorphClass
 	^ DrGRayMorph! !
 
@@ -25888,7 +25890,7 @@ description
 title
 	^'Ray' translated ! !
 
-!DrGVectorBuilder methodsFor: 'flying costume' stamp: 'hlsf 12/Apr/2021 22:04:35'!
+!DrGVectorBuilder methodsFor: 'flying costume' stamp: 'hlsf 12/Apr/2021, 8:04:35 pm (UTC)'!
 flyingMorphClass
 	^ DrGVectorMorph! !
 
@@ -25962,7 +25964,7 @@ buildItem
 		ifFalse:
 			[^super buildItem]! !
 
-!DrGReflectionBuilder methodsFor: 'constant' stamp: 'hlsf 31/May/2021 18:57:50'!
+!DrGReflectionBuilder methodsFor: 'constant' stamp: 'hlsf 31/May/2021, 4:57:50 pm (UTC)'!
 mathItemClass: aMathItem
 	|className|
 	className := 'DrG', aMathItem basicType capitalized, 'ReflexionItem'.
@@ -25991,7 +25993,7 @@ addItem: aMathItemCollection at: aPoint
 		ifTrue: [axe := aMathItemCollection first]
 		ifFalse: [mathItem := aMathItemCollection first]! !
 
-!DrGReflectionBuilder methodsFor: 'updating' stamp: 'hlsf 20/Jun/2021 11:22:05'!
+!DrGReflectionBuilder methodsFor: 'updating' stamp: 'hlsf 20/Jun/2021, 9:22:05 am (UTC)'!
 reset
 	super reset.
 	axe := mathItem := nil! !
@@ -26028,12 +26030,12 @@ addItem: aMathItemCollection at: aPoint
 arguments: aMathItem
 	^{aMathItem . center . value}! !
 
-!DrGRotationBuilder methodsFor: 'updating' stamp: 'hlsf 20/Jun/2021 11:22:14'!
+!DrGRotationBuilder methodsFor: 'updating' stamp: 'hlsf 20/Jun/2021, 9:22:14 am (UTC)'!
 reset
 	super reset.
 	center := value := mathItem := nil! !
 
-!DrGRotationBuilder methodsFor: 'constant' stamp: 'hlsf 31/May/2021 18:57:54'!
+!DrGRotationBuilder methodsFor: 'constant' stamp: 'hlsf 31/May/2021, 4:57:54 pm (UTC)'!
 mathItemClass: aMathItem
 	|className|
 	className := 'DrG', aMathItem basicType capitalized, 'RotationItem'.
@@ -26047,7 +26049,7 @@ description
 title 
 	^ 'Rotation' translated! !
 
-!DrGHomothetyBuilder methodsFor: 'constant' stamp: 'hlsf 31/May/2021 18:57:39'!
+!DrGHomothetyBuilder methodsFor: 'constant' stamp: 'hlsf 31/May/2021, 4:57:39 pm (UTC)'!
 mathItemClass: aMathItem
 	|className|
 	className := 'DrG', aMathItem basicType capitalized, 'HomothetyItem'.
@@ -26065,7 +26067,7 @@ title
 arguments: aMathItem
 	^{aMathItem . center}! !
 
-!DrGSymmetryBuilder methodsFor: 'updating' stamp: 'hlsf 20/Jun/2021 11:22:17'!
+!DrGSymmetryBuilder methodsFor: 'updating' stamp: 'hlsf 20/Jun/2021, 9:22:17 am (UTC)'!
 reset
 	super reset.
 	mathItem := center := nil! !
@@ -26089,7 +26091,7 @@ addItem: aMathItemCollection at: aPoint
 		ifTrue: [center := aMathItemCollection first]
 		ifFalse: [mathItem := aMathItemCollection first]! !
 
-!DrGSymmetryBuilder methodsFor: 'constant' stamp: 'hlsf 31/May/2021 18:58:02'!
+!DrGSymmetryBuilder methodsFor: 'constant' stamp: 'hlsf 31/May/2021, 4:58:02 pm (UTC)'!
 mathItemClass: aMathItem
 	|className|
 	className := 'DrG', aMathItem basicType capitalized, 'SymmetryItem'.
@@ -26103,7 +26105,7 @@ description
 title
 	^'Symmetry' translated ! !
 
-!DrGTranslationBuilder methodsFor: 'constant' stamp: 'hlsf 31/May/2021 18:58:11'!
+!DrGTranslationBuilder methodsFor: 'constant' stamp: 'hlsf 31/May/2021, 4:58:11 pm (UTC)'!
 mathItemClass: aMathItem
 	|className|
 	className := 'DrG', aMathItem basicType capitalized, 'TranslationItem'.
@@ -26126,7 +26128,7 @@ isWanted: aMathItemCollection
 readyToBuild
 	^vector notNil and: [mathItem notNil]! !
 
-!DrGTranslationBuilder methodsFor: 'updating' stamp: 'hlsf 20/Jun/2021 11:22:22'!
+!DrGTranslationBuilder methodsFor: 'updating' stamp: 'hlsf 20/Jun/2021, 9:22:22 am (UTC)'!
 reset
 	super reset.
 	vector := mathItem := nil.! !
@@ -26207,7 +26209,7 @@ mathItemClass
 		ifNotNil: [^ DrGValueDistance2ptsItem].
 	^ DrGValueValueItem! !
 
-!DrGValueBuilder methodsFor: 'updating' stamp: 'hlsf 20/Jun/2021 11:22:28'!
+!DrGValueBuilder methodsFor: 'updating' stamp: 'hlsf 20/Jun/2021, 9:22:28 am (UTC)'!
 reset
 	super reset.
 	pointA := pointB := curveItem := nil! !
@@ -26301,7 +26303,7 @@ x: anObject
 
 	abscissa := anObject! !
 
-!UnderMouseMorph methodsFor: 'drawing' stamp: 'hlsf 9/Dec/2022 22:09:19'!
+!UnderMouseMorph methodsFor: 'drawing' stamp: 'hlsf 9/Dec/2022, 8:09:19 pm (UTC)'!
 drawOn: aCanvas
 "	| areaUnderHand |
 	super drawOn: aCanvas.
@@ -26310,99 +26312,99 @@ drawOn: aCanvas
 			extent: self extent - (self borderWidth * 2)).
 	aCanvas drawImage: areaUnderHand at: self position + self borderWidth"! !
 
-!UnderMouseMorph class methodsFor: 'new-morph participation' stamp: 'hlsf 15/Mar/2022 21:32:29'!
+!UnderMouseMorph class methodsFor: 'new-morph participation' stamp: 'hlsf 15/Mar/2022, 7:32:29 pm (UTC)'!
 includeInNewMorphMenu
 	^ false! !
 
-!DrGMorph methodsFor: 'accessing' stamp: 'hlsf 23/May/2021 12:43:28'!
+!DrGMorph methodsFor: 'accessing' stamp: 'hlsf 23/May/2021, 10:43:28 am (UTC)'!
 color: aColor
 	color := aColor! !
 
-!DrGMorph methodsFor: 'accessing' stamp: 'hlsf 12/Apr/2024 12:32:25'!
+!DrGMorph methodsFor: 'accessing' stamp: 'hlsf 12/Apr/2024, 10:32:25 am (UTC)'!
 domain
 	^ self drawable domain! !
 
-!DrGMorph methodsFor: 'accessing' stamp: 'hlsf 12/Apr/2024 12:32:31'!
+!DrGMorph methodsFor: 'accessing' stamp: 'hlsf 12/Apr/2024, 10:32:31 am (UTC)'!
 drawable
 	^ owner ! !
 
-!DrGMorph methodsFor: 'accessing' stamp: 'hlsf 24/May/2023 19:16:26'!
+!DrGMorph methodsFor: 'accessing' stamp: 'hlsf 24/May/2023, 5:16:26 pm (UTC)'!
 fontSize: aSmallInteger 
 ! !
 
-!DrGMorph methodsFor: 'accessing' stamp: 'hlsf 12/Apr/2024 11:24:33'!
+!DrGMorph methodsFor: 'accessing' stamp: 'hlsf 12/Apr/2024, 9:24:33 am (UTC)'!
 labelPositionDelta
 	^ labelMorph delta! !
 
-!DrGMorph methodsFor: 'accessing' stamp: 'hlsf 30/Mar/2021 13:58:02'!
+!DrGMorph methodsFor: 'accessing' stamp: 'hlsf 30/Mar/2021, 11:58:02 am (UTC)'!
 locked
 	^ mathItem isLocked! !
 
-!DrGMorph methodsFor: 'accessing' stamp: 'hlsf 5/Apr/2025 10:53:03'!
+!DrGMorph methodsFor: 'accessing' stamp: 'hlsf 5/Apr/2025, 8:53:03 am (UTC)'!
 locked: boolean
 	self isLockable ifTrue: [
 		mathItem locked: boolean.
 		self changed: #locked]! !
 
-!DrGMorph methodsFor: 'accessing' stamp: 'hlsf 30/Mar/2021 13:54:57'!
+!DrGMorph methodsFor: 'accessing' stamp: 'hlsf 30/Mar/2021, 11:54:57 am (UTC)'!
 mathItem
 	^ mathItem ! !
 
-!DrGMorph methodsFor: 'accessing' stamp: 'hlsf 20/May/2024 15:54:07'!
+!DrGMorph methodsFor: 'accessing' stamp: 'hlsf 20/May/2024, 1:54:07 pm (UTC)'!
 mathItem: aMathItem
 	"self removeEvents."
 	mathItem := aMathItem.
 	self registerEvents.! !
 
-!DrGMorph methodsFor: 'accessing' stamp: 'hlsf 20/May/2024 15:54:12'!
+!DrGMorph methodsFor: 'accessing' stamp: 'hlsf 20/May/2024, 1:54:12 pm (UTC)'!
 mathItem: aMathItem in: aDrawable
 	"self removeEvents."
 	mathItem := aMathItem.
 	self registerEventsIn: aDrawable .! !
 
-!DrGMorph methodsFor: 'accessing' stamp: 'hlsf 5/Aug/2021 16:05:18'!
+!DrGMorph methodsFor: 'accessing' stamp: 'hlsf 5/Aug/2021, 2:05:18 pm (UTC)'!
 morphCenter
 "Our center in our drawable"
 	^ self displayBounds center - self drawable basicDisplayBounds topLeft! !
 
-!DrGMorph methodsFor: 'accessing' stamp: 'hlsf 30/Mar/2021 13:58:36'!
+!DrGMorph methodsFor: 'accessing' stamp: 'hlsf 30/Mar/2021, 11:58:36 am (UTC)'!
 name
 	^ mathItem name ifNil: [ '' ]
 ! !
 
-!DrGMorph methodsFor: 'accessing' stamp: 'hlsf 24/Mar/2022 12:14:26'!
+!DrGMorph methodsFor: 'accessing' stamp: 'hlsf 24/Mar/2022, 10:14:26 am (UTC)'!
 name: aString
 	mathItem name: aString asString.
 	self labelMorph: mathItem name
 ! !
 
-!DrGMorph methodsFor: 'accessing' stamp: 'hlsf 12/Apr/2024 12:32:36'!
+!DrGMorph methodsFor: 'accessing' stamp: 'hlsf 12/Apr/2024, 10:32:36 am (UTC)'!
 presenter
 	^ self drawable presenter ! !
 
-!DrGMorph methodsFor: 'accessing' stamp: 'hlsf 30/Mar/2021 13:56:00'!
+!DrGMorph methodsFor: 'accessing' stamp: 'hlsf 30/Mar/2021, 11:56:00 am (UTC)'!
 style
 	^ style! !
 
-!DrGMorph methodsFor: 'accessing' stamp: 'hlsf 30/Mar/2021 13:56:33'!
+!DrGMorph methodsFor: 'accessing' stamp: 'hlsf 30/Mar/2021, 11:56:33 am (UTC)'!
 style: aStyle
 	style := aStyle ! !
 
-!DrGMorph methodsFor: 'accessing' stamp: 'hlsf 7/Apr/2021 19:52:49'!
+!DrGMorph methodsFor: 'accessing' stamp: 'hlsf 7/Apr/2021, 5:52:49 pm (UTC)'!
 styleClass
 	^DrGStyle! !
 
-!DrGMorph methodsFor: 'accessing' stamp: 'hlsf 12/Apr/2024 12:32:51'!
+!DrGMorph methodsFor: 'accessing' stamp: 'hlsf 12/Apr/2024, 10:32:51 am (UTC)'!
 view
 	^ self drawable view! !
 
-!DrGMorph methodsFor: 'printing' stamp: 'hlsf 3/Apr/2021 15:17:35'!
+!DrGMorph methodsFor: 'printing' stamp: 'hlsf 3/Apr/2021, 1:17:35 pm (UTC)'!
 asString
 	^ mathItem 
 		ifNil: ['nil']
 		ifNotNil: [mathItem descriptiveName] ! !
 
-!DrGMorph methodsFor: 'printing' stamp: 'hlsf 5/Aug/2021 12:27:48'!
+!DrGMorph methodsFor: 'printing' stamp: 'hlsf 5/Aug/2021, 10:27:48 am (UTC)'!
 printOn: aStream
 	aStream nextPutAll: 'View::'.
 	aStream print: mathItem.! !
@@ -26411,23 +26413,23 @@ printOn: aStream
 handlesMouseDown: evt
 	^ false! !
 
-!DrGMorph methodsFor: 'initialize-release' stamp: 'drgeo 7/Jun/2026 11:32:00'!
+!DrGMorph methodsFor: 'initialize-release' stamp: 'drgeo 7/Jun/2026, 9:32:00 am (UTC)'!
 addMyMorphTo: aDrawable
 	(self is: #BitmapMorph)
 		ifTrue: [aDrawable addMorphBack: self]
 		ifFalse: [aDrawable addMorph: self].
 	self labelMorph: mathItem name.! !
 
-!DrGMorph methodsFor: 'initialize-release' stamp: 'hlsf 6/Jun/2024 11:56:49'!
+!DrGMorph methodsFor: 'initialize-release' stamp: 'hlsf 6/Jun/2024, 9:56:49 am (UTC)'!
 initialize
 	super initialize.
 	self style: (self styleClass newWith: self).! !
 
-!DrGMorph methodsFor: 'initialize-release' stamp: 'hlsf 6/Jun/2024 12:11:32'!
+!DrGMorph methodsFor: 'initialize-release' stamp: 'hlsf 6/Jun/2024, 10:11:32 am (UTC)'!
 registerEvents
 	self registerEventsIn: self drawable! !
 
-!DrGMorph methodsFor: 'initialize-release' stamp: 'hlsf 20/May/2024 15:40:30'!
+!DrGMorph methodsFor: 'initialize-release' stamp: 'hlsf 20/May/2024, 1:40:30 pm (UTC)'!
 registerEventsIn: aDrawable
 	mathItem
 		ifNotNil: [
@@ -26446,7 +26448,7 @@ registerEventsIn: aDrawable
 				to: aDrawable domain].
 	self flag: #drgeoEvent! !
 
-!DrGMorph methodsFor: 'initialize-release' stamp: 'hlsf 6/Jun/2024 16:43:06'!
+!DrGMorph methodsFor: 'initialize-release' stamp: 'hlsf 6/Jun/2024, 2:43:06 pm (UTC)'!
 release
 	" Flying morph use it. Read DrGMathItemBuilder>>reset "
 	self removeLabelMorph.
@@ -26455,17 +26457,17 @@ release
 	self removeEvents.
 	mathItem := nil! !
 
-!DrGMorph methodsFor: 'initialize-release' stamp: 'hlsf 27/May/2026 21:28:22'!
+!DrGMorph methodsFor: 'initialize-release' stamp: 'hlsf 27/May/2026, 7:28:22 pm (UTC)'!
 removeEvents
 	mathItem ifNotNil: [mathItem removeAllActions]! !
 
-!DrGMorph methodsFor: 'initialize-release' stamp: 'hlsf 12/Apr/2024 12:51:46'!
+!DrGMorph methodsFor: 'initialize-release' stamp: 'hlsf 12/Apr/2024, 10:51:46 am (UTC)'!
 removeLabelMorph
 	labelMorph ifNotNil:
 		[self drawable ifNotNil: [:aDrawable | aDrawable removeMorph: labelMorph].
 		labelMorph := nil]! !
 
-!DrGMorph methodsFor: 'label' stamp: 'hlsf 12/Apr/2024 11:10:26'!
+!DrGMorph methodsFor: 'label' stamp: 'hlsf 12/Apr/2024, 9:10:26 am (UTC)'!
 computeLabelPositionDelta: aVector
 	| distance  |
 	labelMorph ifNil: [ ^ `0 @ 0` ].
@@ -26473,17 +26475,17 @@ computeLabelPositionDelta: aVector
 	distance := aVector r min: 40.
 	labelMorph delta: aVector normalized * distance - labelMorph morphCenter! !
 
-!DrGMorph methodsFor: 'label' stamp: 'hlsf 3/Apr/2021 15:16:31'!
+!DrGMorph methodsFor: 'label' stamp: 'hlsf 3/Apr/2021, 1:16:31 pm (UTC)'!
 constrainedLabelPosition: aVector
 "Constrains the label arround an anchor object or position
 aVector is a shifted direction from the center of the label morph"
 	self subclassResponsibility ! !
 
-!DrGMorph methodsFor: 'label' stamp: 'hlsf 30/Mar/2021 13:57:07'!
+!DrGMorph methodsFor: 'label' stamp: 'hlsf 30/Mar/2021, 11:57:07 am (UTC)'!
 labelMorph
 	^ labelMorph ! !
 
-!DrGMorph methodsFor: 'label' stamp: 'hlsf 25/Jan/2026 16:32:42'!
+!DrGMorph methodsFor: 'label' stamp: 'hlsf 25/Jan/2026, 2:32:42 pm (UTC)'!
 labelMorph: aString
 	aString isEmptyOrNil
 		ifTrue: [self removeLabelMorph]
@@ -26494,24 +26496,24 @@ labelMorph: aString
 					labelMorph morphPosition: self labelPosition]]
 			ifNotNil: 	[labelMorph contents: aString]]! !
 
-!DrGMorph methodsFor: 'label' stamp: 'hlsf 3/Apr/2021 15:15:35'!
+!DrGMorph methodsFor: 'label' stamp: 'hlsf 3/Apr/2021, 1:15:35 pm (UTC)'!
 labelPosition
 "get an up to date label position in the drawable world coordinates"
 	self subclassResponsibility! !
 
-!DrGMorph methodsFor: 'label' stamp: 'hlsf 12/Apr/2024 11:17:21'!
+!DrGMorph methodsFor: 'label' stamp: 'hlsf 12/Apr/2024, 9:17:21 am (UTC)'!
 labelPositionDelta: aPoint
 "The position of the label from its math object"
 	labelMorph ifNotNil: [labelMorph delta: aPoint]! !
 
-!DrGMorph methodsFor: 'label' stamp: 'hlsf 20/May/2023 10:36:17'!
+!DrGMorph methodsFor: 'label' stamp: 'hlsf 20/May/2023, 8:36:17 am (UTC)'!
 updateLabelStatus
 "Update position and visibility if needed"
 	labelMorph ifNotNil: [	
 		labelMorph show.
 		labelMorph 	morphPosition: self labelPosition].! !
 
-!DrGMorph methodsFor: 'stepping and presenter' stamp: 'hlsf 12/Apr/2024 12:06:19'!
+!DrGMorph methodsFor: 'stepping and presenter' stamp: 'hlsf 12/Apr/2024, 10:06:19 am (UTC)'!
 step
 	self isBlinking ifFalse: [^self].
 	super step.
@@ -26524,22 +26526,22 @@ step
 stepTime
 	^500! !
 
-!DrGMorph methodsFor: 'stepping and presenter' stamp: 'drgeo 10/Sep/2022 14:49:17'!
+!DrGMorph methodsFor: 'stepping and presenter' stamp: 'drgeo 10/Sep/2022, 12:49:17 pm (UTC)'!
 stopStepping
 	super stopStepping.
 	self restoreNormalColor.
 	self redrawNeeded ! !
 
-!DrGMorph methodsFor: 'testing' stamp: 'hlsf 25/Jan/2026 17:17:59'!
+!DrGMorph methodsFor: 'testing' stamp: 'hlsf 25/Jan/2026, 3:17:59 pm (UTC)'!
 canBeDrawn
 	^ self visible and: [mathItem exist]! !
 
-!DrGMorph methodsFor: 'testing' stamp: 'hlsf 5/Feb/2026 11:31:36'!
+!DrGMorph methodsFor: 'testing' stamp: 'hlsf 5/Feb/2026, 9:31:36 am (UTC)'!
 containsPoint: localPoint
 	^self canBeDrawn 
 	and: [self isCloserThan: 5 toPixel: (self externalizeToWorld: localPoint)]! !
 
-!DrGMorph methodsFor: 'testing' stamp: 'hlsf 10/Aug/2025 13:28:59'!
+!DrGMorph methodsFor: 'testing' stamp: 'hlsf 10/Aug/2025, 11:28:59 am (UTC)'!
 containsPointInWorld: localPoint
 "General expensive version done in DrGeo coordinates. Only used with some morphs.
 Other straight line morph use VectorGraphics detection, see containsPoint:"
@@ -26550,62 +26552,62 @@ Other straight line morph use VectorGraphics detection, see containsPoint:"
 	^ (closestPoint squaredDistanceTo: worldPoint ) <= (self drawable pixelToWorld: 5) squared
 	! !
 
-!DrGMorph methodsFor: 'testing' stamp: 'hlsf 10/Jan/2026 18:23:00'!
+!DrGMorph methodsFor: 'testing' stamp: 'hlsf 10/Jan/2026, 4:23:00 pm (UTC)'!
 isBlinking
 	^ self world 
 		ifNotNil: [:w | w isStepping: self ] 
 		ifNil: [false]! !
 
-!DrGMorph methodsFor: 'testing' stamp: 'hlsf 5/Aug/2021 15:08:51'!
+!DrGMorph methodsFor: 'testing' stamp: 'hlsf 5/Aug/2021, 1:08:51 pm (UTC)'!
 isDrawNeeded
 	^ self itemExist and: [style isNotHidden or: [self isForceVisible]]
 ! !
 
-!DrGMorph methodsFor: 'testing' stamp: 'hlsf 3/Apr/2021 20:19:09'!
+!DrGMorph methodsFor: 'testing' stamp: 'hlsf 3/Apr/2021, 6:19:09 pm (UTC)'!
 isForceVisible
 	^ self presenter isForceVisible ! !
 
-!DrGMorph methodsFor: 'testing' stamp: 'hlsf 28/Apr/2021 20:02:05'!
+!DrGMorph methodsFor: 'testing' stamp: 'hlsf 28/Apr/2021, 6:02:05 pm (UTC)'!
 isLockable
 	^mathItem 
 		ifNil: [false] 
 		ifNotNil: [mathItem isLockable]! !
 
-!DrGMorph methodsFor: 'testing' stamp: 'hlsf 24/Apr/2021 20:15:16'!
+!DrGMorph methodsFor: 'testing' stamp: 'hlsf 24/Apr/2021, 6:15:16 pm (UTC)'!
 isLocked
 	^ self isLockable and: [mathItem isLocked]! !
 
-!DrGMorph methodsFor: 'testing' stamp: 'hlsf 20/Jan/2026 14:38:05'!
+!DrGMorph methodsFor: 'testing' stamp: 'hlsf 20/Jan/2026, 12:38:05 pm (UTC)'!
 isNotFarAway
 "If not attached to a drawable, considers it not far away, likely used for an icon"
 	^ self drawable isNil! !
 
-!DrGMorph methodsFor: 'testing' stamp: 'hlsf 24/May/2023 17:55:40'!
+!DrGMorph methodsFor: 'testing' stamp: 'hlsf 24/May/2023, 3:55:40 pm (UTC)'!
 isNotForAway
 "If not attached to a drawable, considers it not far away, likely used for an icon"
 	^ self drawable isNil! !
 
-!DrGMorph methodsFor: 'testing' stamp: 'hlsf 5/Aug/2021 15:08:34'!
+!DrGMorph methodsFor: 'testing' stamp: 'hlsf 5/Aug/2021, 1:08:34 pm (UTC)'!
 itemExist
 "If there is not mathItem model, we just respond true"
 	^ mathItem 
 		ifNil: [true]
 		ifNotNil: [mathItem exist]! !
 
-!DrGMorph methodsFor: 'testing' stamp: 'hlsf 27/Apr/2021 20:59:19'!
+!DrGMorph methodsFor: 'testing' stamp: 'hlsf 27/Apr/2021, 6:59:19 pm (UTC)'!
 requiresVectorCanvas
 	^ true! !
 
-!DrGMorph methodsFor: 'testing' stamp: 'hlsf 4/Aug/2021 10:56:36'!
+!DrGMorph methodsFor: 'testing' stamp: 'hlsf 4/Aug/2021, 8:56:36 am (UTC)'!
 wantsContour
 	^ true! !
 
-!DrGMorph methodsFor: 'updating' stamp: 'drgeo 10/Sep/2022 14:43:34'!
+!DrGMorph methodsFor: 'updating' stamp: 'drgeo 10/Sep/2022, 12:43:34 pm (UTC)'!
 forceHiddenColor
 	color := DrGTypeColor hiddenColor.
 ! !
 
-!DrGMorph methodsFor: 'updating' stamp: 'hlsf 20/May/2024 15:13:57'!
+!DrGMorph methodsFor: 'updating' stamp: 'hlsf 20/May/2024, 1:13:57 pm (UTC)'!
 forcedVisibility: aBoolean
 "We force this hidden morph to be visible. 
 Necessary when one wants to edit the style of an hidden morph
@@ -26620,18 +26622,18 @@ In the process we change its color to inform the user this is a hidden item temp
 			self restoreNormalColor].
 	^true! !
 
-!DrGMorph methodsFor: 'updating' stamp: 'hlsf 30/Mar/2024 09:58:36'!
+!DrGMorph methodsFor: 'updating' stamp: 'hlsf 30/Mar/2024, 7:58:36 am (UTC)'!
 restoreNormalColor
 	color := Theme current adjustColor: style color! !
 
-!DrGMorph methodsFor: 'updating' stamp: 'hlsf 13/Apr/2021 14:41:36'!
+!DrGMorph methodsFor: 'updating' stamp: 'hlsf 13/Apr/2021, 12:41:36 pm (UTC)'!
 unhide
  "make this morph visible in case it was hidden"
 	style isHidden ifTrue: [
 		self forcedVisibility: true.
 		style hidden: false]! !
 
-!DrGMorph methodsFor: 'updating' stamp: 'hlsf 20/May/2024 15:20:44'!
+!DrGMorph methodsFor: 'updating' stamp: 'hlsf 20/May/2024, 1:20:44 pm (UTC)'!
 visible: isVisible
 	super visible: isVisible.
 	isVisible 
@@ -26641,12 +26643,12 @@ visible: isVisible
 				labelMorph morphPosition: self labelPosition]	 			]			
 	 	ifFalse: [labelMorph ifNotNil: [labelMorph hide] ]! !
 
-!DrGMorph methodsFor: 'xml writting' stamp: 'hlsf 28/Mar/2022 14:09:31'!
+!DrGMorph methodsFor: 'xml writting' stamp: 'hlsf 28/Mar/2022, 12:09:31 pm (UTC)'!
 writeAsXmlTo: aNode 
 "We wrote from the morph because it knows the model, the view and the style"
 	self writeAttributesTo: (mathItem writeAsXmlTo: aNode)! !
 
-!DrGMorph methodsFor: 'xml writting' stamp: 'hlsf 12/Apr/2024 11:21:10'!
+!DrGMorph methodsFor: 'xml writting' stamp: 'hlsf 12/Apr/2024, 9:21:10 am (UTC)'!
 writeAttributesTo: aNode 
 	labelMorph ifNotNil: [aNode	attributeAt: #delta put: self labelPositionDelta asString].
 	self isLockable ifTrue: [
@@ -26654,7 +26656,7 @@ writeAttributesTo: aNode
 	style writeAttributesTo: aNode.
 ! !
 
-!DrGMorph class methodsFor: 'instance creation' stamp: 'hlsf 12/Apr/2024 15:01:43'!
+!DrGMorph class methodsFor: 'instance creation' stamp: 'hlsf 12/Apr/2024, 1:01:43 pm (UTC)'!
 for: aMathItem in: aDrawable
 	^ (aMathItem morphClass basicNew)
 		mathItem: aMathItem in: aDrawable;
@@ -26663,25 +26665,25 @@ for: aMathItem in: aDrawable
 		redrawNeeded;
 		yourself! !
 
-!DrGMorph class methodsFor: 'new-morph participation' stamp: 'hlsf 15/Mar/2022 21:31:32'!
+!DrGMorph class methodsFor: 'new-morph participation' stamp: 'hlsf 15/Mar/2022, 7:31:32 pm (UTC)'!
 includeInNewMorphMenu
 	^ false! !
 
-!DrGAngleGeometricMorph methodsFor: 'accessing' stamp: 'hlsf 25/Sep/2021 14:38:58'!
+!DrGAngleGeometricMorph methodsFor: 'accessing' stamp: 'hlsf 25/Sep/2021, 12:38:58 pm (UTC)'!
 constrainedLabelPosition: aPoint 
 "Does nothing the label position is not user moveable"! !
 
-!DrGAngleGeometricMorph methodsFor: 'accessing' stamp: 'hlsf 18/Mar/2023 19:45:14'!
+!DrGAngleGeometricMorph methodsFor: 'accessing' stamp: 'hlsf 18/Mar/2023, 5:45:14 pm (UTC)'!
 labelMorph: object
 "No label morph for angle"! !
 
-!DrGAngleGeometricMorph methodsFor: 'accessing' stamp: 'hlsf 25/Sep/2021 14:34:05'!
+!DrGAngleGeometricMorph methodsFor: 'accessing' stamp: 'hlsf 25/Sep/2021, 12:34:05 pm (UTC)'!
 length
 	^ length ifNil: [
 		self canComputeArcData.
 		length]! !
 
-!DrGAngleGeometricMorph methodsFor: 'accessing' stamp: 'hlsf 25/Dec/2023 19:14:27'!
+!DrGAngleGeometricMorph methodsFor: 'accessing' stamp: 'hlsf 25/Dec/2023, 5:14:27 pm (UTC)'!
 roundedValueString
 	| roundedValueString |
 	roundedValueString := mathItem degreeAngle rounded asString, '°'.
@@ -26692,17 +26694,17 @@ roundedValueString
 					nextPutAll: roundedValueString] ].
 	^roundedValueString 	! !
 
-!DrGAngleGeometricMorph methodsFor: 'accessing' stamp: 'hlsf 5/Jun/2021 20:16:48'!
+!DrGAngleGeometricMorph methodsFor: 'accessing' stamp: 'hlsf 5/Jun/2021, 6:16:48 pm (UTC)'!
 styleClass
 	^ DrGValueStyle ! !
 
-!DrGAngleGeometricMorph methodsFor: 'label' stamp: 'hlsf 25/Sep/2021 14:34:10'!
+!DrGAngleGeometricMorph methodsFor: 'label' stamp: 'hlsf 25/Sep/2021, 12:34:10 pm (UTC)'!
 labelPosition
 	|angle|
 	angle := self length negated / 2 + origin negated.
 	^ (self drawable worldToMorph: center) + (35 * (angle cos @ angle sin))! !
 
-!DrGAngleGeometricMorph methodsFor: 'drawing' stamp: 'hlsf 15/May/2021 10:51:54'!
+!DrGAngleGeometricMorph methodsFor: 'drawing' stamp: 'hlsf 15/May/2021, 8:51:54 am (UTC)'!
 canComputeArcData
 " Check the angle can be computed and compute its origin and length in radian "
 	| parents end |
@@ -26720,7 +26722,7 @@ canComputeArcData
 		ifTrue: [length := length negated].
 	^ true! !
 
-!DrGAngleGeometricMorph methodsFor: 'drawing' stamp: 'hlsf 30/Mar/2024 11:53:00'!
+!DrGAngleGeometricMorph methodsFor: 'drawing' stamp: 'hlsf 30/Mar/2024, 9:53:00 am (UTC)'!
 drawArcOn: canvas
 	| radius |
 	radius := self drawable pixelToWorld: 15.
@@ -26735,7 +26737,7 @@ drawArcOn: canvas
 			largeFlag: (length abs > `Float pi`)  
 			sweepFlag: length negative	]! !
 
-!DrGAngleGeometricMorph methodsFor: 'drawing' stamp: 'hlsf 17/Feb/2026 14:47:00'!
+!DrGAngleGeometricMorph methodsFor: 'drawing' stamp: 'hlsf 17/Feb/2026, 12:47:00 pm (UTC)'!
 drawOn: canvas
 	| angleString font |
 	self isDrawNeeded ifFalse: [^ self].
@@ -26752,7 +26754,7 @@ drawOn: canvas
 		font: font
 		color: color.! !
 
-!DrGAngleGeometricMorph methodsFor: 'drawing' stamp: 'hlsf 30/Mar/2024 11:53:04'!
+!DrGAngleGeometricMorph methodsFor: 'drawing' stamp: 'hlsf 30/Mar/2024, 9:53:04 am (UTC)'!
 drawRecOn: canvas
 	| size p |
 	size := self drawable pixelToWorld: 10.
@@ -26768,11 +26770,11 @@ drawRecOn: canvas
 		canvas lineTo: p	]
 ! !
 
-!DrGAngleGeometricMorph methodsFor: 'testing' stamp: 'hlsf 25/Dec/2023 19:12:13'!
+!DrGAngleGeometricMorph methodsFor: 'testing' stamp: 'hlsf 25/Dec/2023, 5:12:13 pm (UTC)'!
 wantsContour
 	^ false! !
 
-!DrGAngleOrientedMorph methodsFor: 'drawing' stamp: 'hlsf 15/May/2021 10:55:35'!
+!DrGAngleOrientedMorph methodsFor: 'drawing' stamp: 'hlsf 15/May/2021, 8:55:35 am (UTC)'!
 canComputeArcData
 	|parents |
 	parents := mathItem parents.
@@ -26790,7 +26792,7 @@ extent
 	self extent: paintResource getCheckedResource extent.
 	^ bounds extent! !
 
-!DrGBitmapMorph methodsFor: 'accessing' stamp: 'hlsf 9/Dec/2022 22:18:01'!
+!DrGBitmapMorph methodsFor: 'accessing' stamp: 'hlsf 9/Dec/2022, 8:18:01 pm (UTC)'!
 extent: aPoint
 "	| newExtent |
 	newExtent := (self borderWidth * 2) asPoint + (aPoint * costume myScale) asIntegerPoint.
@@ -26800,7 +26802,7 @@ extent: aPoint
 	self layoutChanged.
 	self changed."! !
 
-!DrGBitmapMorph methodsFor: 'accessing' stamp: 'hlsf 6/Apr/2021 19:08:59'!
+!DrGBitmapMorph methodsFor: 'accessing' stamp: 'hlsf 6/Apr/2021, 5:08:59 pm (UTC)'!
 isAnyCornerIn: aPoint
 	"is aPoint belong to one of the corners of extent 24, if so return its symbole otherwise nil"
 	((self location extent: 24@24) containsPoint: aPoint) ifTrue: [^#topLeft].
@@ -26809,7 +26811,7 @@ isAnyCornerIn: aPoint
 	((self bottomLeft - (0@16) extent: 24@24) containsPoint: aPoint) ifTrue: [^ #bottomLeft].
 	^ nil! !
 
-!DrGBitmapMorph methodsFor: 'accessing' stamp: 'hlsf 6/Apr/2021 19:07:08'!
+!DrGBitmapMorph methodsFor: 'accessing' stamp: 'hlsf 6/Apr/2021, 5:07:08 pm (UTC)'!
 myScale
 	^ self drawable scale * mathItem magnifiedScale! !
 
@@ -26818,53 +26820,53 @@ paintResource: anAthensPaint
 	paintResource := anAthensPaint .
 	self changed! !
 
-!DrGBitmapMorph methodsFor: 'drawing' stamp: 'hlsf 6/Apr/2021 19:06:52'!
+!DrGBitmapMorph methodsFor: 'drawing' stamp: 'hlsf 6/Apr/2021, 5:06:52 pm (UTC)'!
 redraw 
 	super redraw 
 		ifFalse: [^self].
 	self center: (self drawable worldToMorph: mathItem position).! !
 
-!DrGBitmapMorph methodsFor: 'label' stamp: 'hlsf 29/May/2021 17:18:41'!
+!DrGBitmapMorph methodsFor: 'label' stamp: 'hlsf 29/May/2021, 3:18:41 pm (UTC)'!
 constrainedLabelPosition: aVector
 	self computeLabelPositionDelta: aVector
 	! !
 
-!DrGBitmapMorph methodsFor: 'label' stamp: 'hlsf 12/Apr/2024 11:08:59'!
+!DrGBitmapMorph methodsFor: 'label' stamp: 'hlsf 12/Apr/2024, 9:08:59 am (UTC)'!
 labelPosition
 	^(self drawable worldToMorph: mathItem topCenter) + self labelPositionDelta ! !
 
-!DrGBitmapMorph methodsFor: 'initialize-release' stamp: 'hlsf 6/Apr/2021 19:10:01'!
+!DrGBitmapMorph methodsFor: 'initialize-release' stamp: 'hlsf 6/Apr/2021, 5:10:01 pm (UTC)'!
 initialize 
 	super initialize.
 	previousScale := mathItem insertAtScale.
 	previousMagnify := mathItem magnifyBy.
 	style color: Color black! !
 
-!DrGBitmapMorph methodsFor: 'testing' stamp: 'drgeo 7/Jun/2026 11:31:29'!
+!DrGBitmapMorph methodsFor: 'testing' stamp: 'drgeo 7/Jun/2026, 9:31:29 am (UTC)'!
 is: aSymbol
 	^ aSymbol == #BitmapMorph or: [super is: aSymbol]! !
 
-!DrGCurveMorph methodsFor: 'accessing' stamp: 'hlsf 4/Apr/2021 19:06:06'!
+!DrGCurveMorph methodsFor: 'accessing' stamp: 'hlsf 4/Apr/2021, 5:06:06 pm (UTC)'!
 anchorAbscissa: number
 	anchorAbscissa := number ! !
 
-!DrGCurveMorph methodsFor: 'accessing' stamp: 'hlsf 23/May/2021 13:13:59'!
+!DrGCurveMorph methodsFor: 'accessing' stamp: 'hlsf 23/May/2021, 11:13:59 am (UTC)'!
 borderColor: aColor
 	borderColor := aColor ! !
 
-!DrGCurveMorph methodsFor: 'accessing' stamp: 'hlsf 2/Dec/2021 10:53:50'!
+!DrGCurveMorph methodsFor: 'accessing' stamp: 'hlsf 2/Dec/2021, 8:53:50 am (UTC)'!
 borderWidth: pixels
 	borderWidth := pixels! !
 
-!DrGCurveMorph methodsFor: 'accessing' stamp: 'hlsf 23/May/2021 13:06:53'!
+!DrGCurveMorph methodsFor: 'accessing' stamp: 'hlsf 23/May/2021, 11:06:53 am (UTC)'!
 styleClass
 	^ DrGCurveStyle! !
 
-!DrGCurveMorph methodsFor: 'dashes' stamp: 'hlsf 5/Aug/2021 15:41:30'!
+!DrGCurveMorph methodsFor: 'dashes' stamp: 'hlsf 5/Aug/2021, 1:41:30 pm (UTC)'!
 dashedBorder: dashSpec
 	dashedBorder := dashSpec.! !
 
-!DrGCurveMorph methodsFor: 'initialize-release' stamp: 'hlsf 30/Mar/2024 10:56:19'!
+!DrGCurveMorph methodsFor: 'initialize-release' stamp: 'hlsf 30/Mar/2024, 8:56:19 am (UTC)'!
 initialize
 	anchorAbscissa := 0.5.
 	super initialize.
@@ -26872,7 +26874,7 @@ initialize
 	borderWidth := style borderWidth.
 	color := Theme current adjustColor: style color! !
 
-!DrGCurveMorph methodsFor: 'label' stamp: 'hlsf 29/May/2021 17:18:35'!
+!DrGCurveMorph methodsFor: 'label' stamp: 'hlsf 29/May/2021, 3:18:35 pm (UTC)'!
 constrainedLabelPosition: aPosition
 	| center |
 	center := mathItem closestPointTo: (self drawable morphToWorld: aPosition).
@@ -26881,11 +26883,11 @@ constrainedLabelPosition: aPosition
 	self computeLabelPositionDelta: aPosition - center.
 ! !
 
-!DrGCurveMorph methodsFor: 'label' stamp: 'hlsf 12/Apr/2024 11:09:05'!
+!DrGCurveMorph methodsFor: 'label' stamp: 'hlsf 12/Apr/2024, 9:09:05 am (UTC)'!
 labelPosition
 	^(self drawable worldToMorph: (mathItem pointAt: anchorAbscissa)) + self labelPositionDelta! !
 
-!DrGCurveMorph methodsFor: 'stepping and presenter' stamp: 'hlsf 12/Apr/2024 12:06:11'!
+!DrGCurveMorph methodsFor: 'stepping and presenter' stamp: 'hlsf 12/Apr/2024, 10:06:11 am (UTC)'!
 step
 	self isBlinking ifFalse: [^self].
 	super step.
@@ -26893,35 +26895,35 @@ step
 		ifTrue: [borderColor := Theme current adjustColor: style borderColor]
 		ifFalse: [borderColor := DrGTypeColor blinkingColor]! !
 
-!DrGCurveMorph methodsFor: 'testing' stamp: 'drgeo 7/Jun/2026 11:34:59'!
+!DrGCurveMorph methodsFor: 'testing' stamp: 'drgeo 7/Jun/2026, 9:34:59 am (UTC)'!
 is: aSymbol
 	^ aSymbol == #CurveMorph or: [super is: aSymbol]! !
 
-!DrGCurveMorph methodsFor: 'xml writting' stamp: 'hlsf 28/Mar/2022 14:12:04'!
+!DrGCurveMorph methodsFor: 'xml writting' stamp: 'hlsf 28/Mar/2022, 12:12:04 pm (UTC)'!
 writeAttributesTo: aNode
 	aNode attributeAt: #anchor put: anchorAbscissa asString.
 	super writeAttributesTo: aNode.
 ! !
 
-!DrGCurveMorph methodsFor: 'updating' stamp: 'drgeo 10/Sep/2022 14:50:30'!
+!DrGCurveMorph methodsFor: 'updating' stamp: 'drgeo 10/Sep/2022, 12:50:30 pm (UTC)'!
 forceHiddenColor
 	color := (style isFilled ifTrue: [DrGTypeColor hiddenColor] ifFalse: [Color transparent]).
 	borderColor := DrGTypeColor hiddenColor.! !
 
-!DrGCurveMorph methodsFor: 'updating' stamp: 'hlsf 30/Mar/2024 09:59:29'!
+!DrGCurveMorph methodsFor: 'updating' stamp: 'hlsf 30/Mar/2024, 7:59:29 am (UTC)'!
 restoreNormalColor
 	color :=  (style isFilled ifTrue: [Theme current adjustColor: style color] ifFalse: [Color transparent]).
 	borderColor := Theme current adjustColor: style borderColor! !
 
-!DrGArcMorph methodsFor: 'accessing' stamp: 'hlsf 17/Jun/2021 17:58:25'!
+!DrGArcMorph methodsFor: 'accessing' stamp: 'hlsf 17/Jun/2021, 3:58:25 pm (UTC)'!
 arrow: aSymbol 
 	self flag: #drgeo! !
 
-!DrGArcMorph methodsFor: 'accessing' stamp: 'hlsf 7/Apr/2021 19:55:02'!
+!DrGArcMorph methodsFor: 'accessing' stamp: 'hlsf 7/Apr/2021, 5:55:02 pm (UTC)'!
 styleClass
 	^DrGArcStyle! !
 
-!DrGArcMorph methodsFor: 'drawing' stamp: 'hlsf 27/May/2025 17:39:56'!
+!DrGArcMorph methodsFor: 'drawing' stamp: 'hlsf 27/May/2025, 3:39:56 pm (UTC)'!
 drawOn: canvas
 	| center start end mid r orientation alpha1 alpha2 largeFlag |
 	self isDrawNeeded ifFalse: [^ self].
@@ -26948,20 +26950,20 @@ drawOn: canvas
 						arcTo: end radius: r angleOfXAxis: 0 
 						largeFlag: largeFlag sweepFlag: orientation	] ]! !
 
-!DrGArcMorph methodsFor: 'drawing' stamp: 'hlsf 31/May/2023 16:55:35'!
+!DrGArcMorph methodsFor: 'drawing' stamp: 'hlsf 31/May/2023, 2:55:35 pm (UTC)'!
 drawOn: canvas from: start to: end radius: r lF: largeFlag sF: orientation
 	canvas moveTo: start;
 		arcTo: end radius: r angleOfXAxis: 0 largeFlag: largeFlag sweepFlag: orientation	! !
 
-!DrGArcMorph methodsFor: 'testing' stamp: 'hlsf 9/Mar/2023 14:36:14'!
+!DrGArcMorph methodsFor: 'testing' stamp: 'hlsf 9/Mar/2023, 12:36:14 pm (UTC)'!
 containsPoint: localPoint
 	^ self containsPointInWorld: localPoint! !
 
-!DrGArcMorph methodsFor: 'testing' stamp: 'drgeo 7/Jun/2026 11:29:57'!
+!DrGArcMorph methodsFor: 'testing' stamp: 'drgeo 7/Jun/2026, 9:29:57 am (UTC)'!
 is: aSymbol
 	^ aSymbol == #ArcMorph or: [super is: aSymbol]! !
 
-!DrGCircleMorph methodsFor: 'drawing' stamp: 'hlsf 27/May/2025 17:39:43'!
+!DrGCircleMorph methodsFor: 'drawing' stamp: 'hlsf 27/May/2025, 3:39:43 pm (UTC)'!
 drawCircleOn: aCanvas
 	| center r |
 	center := self drawable worldToMorph: mathItem center.
@@ -26974,7 +26976,7 @@ drawCircleOn: aCanvas
 			aCanvas strokeWidth: borderWidth color: borderColor strokeDashArray: dashedBorder do: [
 					aCanvas circleCenter: center  radius: r] ]! !
 
-!DrGCircleMorph methodsFor: 'drawing' stamp: 'hlsf 27/May/2025 17:39:14'!
+!DrGCircleMorph methodsFor: 'drawing' stamp: 'hlsf 27/May/2025, 3:39:14 pm (UTC)'!
 drawLineOn: aCanvas
 	| origin u points area |
 	area := self drawable.
@@ -26989,7 +26991,7 @@ drawLineOn: aCanvas
 		aCanvas strokeWidth: borderWidth color: borderColor strokeDashArray: dashedBorder do: [
 				aCanvas moveTo: points first; lineTo: points second ] ]! !
 
-!DrGCircleMorph methodsFor: 'drawing' stamp: 'hlsf 9/Mar/2023 12:27:46'!
+!DrGCircleMorph methodsFor: 'drawing' stamp: 'hlsf 9/Mar/2023, 10:27:46 am (UTC)'!
 drawOn: aCanvas
 	self isDrawNeeded ifFalse: [^ self].
 	self updateLabelStatus.
@@ -26998,33 +27000,33 @@ drawOn: aCanvas
 		ifFalse: [self drawLineOn: aCanvas]
 		! !
 
-!DrGCircleMorph methodsFor: 'accessing' stamp: 'hlsf 7/Apr/2021 19:55:13'!
+!DrGCircleMorph methodsFor: 'accessing' stamp: 'hlsf 7/Apr/2021, 5:55:13 pm (UTC)'!
 styleClass
 	^DrGCircleStyle! !
 
-!DrGCircleMorph methodsFor: 'testing' stamp: 'hlsf 9/Mar/2023 14:36:14'!
+!DrGCircleMorph methodsFor: 'testing' stamp: 'hlsf 9/Mar/2023, 12:36:14 pm (UTC)'!
 containsPoint: localPoint
 	^ self containsPointInWorld: localPoint! !
 
-!DrGCircleMorph methodsFor: 'testing' stamp: 'drgeo 7/Jun/2026 11:33:09'!
+!DrGCircleMorph methodsFor: 'testing' stamp: 'drgeo 7/Jun/2026, 9:33:09 am (UTC)'!
 is: aSymbol
 	^ aSymbol == #CircleMorph or: [super is: aSymbol]! !
 
-!DrGCircleMorph methodsFor: 'testing' stamp: 'hlsf 9/Mar/2023 12:27:08'!
+!DrGCircleMorph methodsFor: 'testing' stamp: 'hlsf 9/Mar/2023, 10:27:08 am (UTC)'!
 isDrawnAsCircle
 	^ mathItem radius < 1e5 ! !
 
-!DrGPolylineMorph methodsFor: 'accessing' stamp: 'hlsf 30/May/2021 09:53:25'!
+!DrGPolylineMorph methodsFor: 'accessing' stamp: 'hlsf 30/May/2021, 7:53:25 am (UTC)'!
 getVertices
 "Write here how to fetch the vertices"! !
 
-!DrGPolylineMorph methodsFor: 'accessing' stamp: 'hlsf 15/Mar/2023 17:56:01'!
+!DrGPolylineMorph methodsFor: 'accessing' stamp: 'hlsf 15/Mar/2023, 3:56:01 pm (UTC)'!
 labelMorph: aString
 "Dirty. No label morph  for Polyline morph, it is an abstract morph
 May be create a sister class out of this hierarchy "
 	self class == DrGPolylineMorph ifFalse: [super labelMorph: aString]! !
 
-!DrGPolylineMorph methodsFor: 'accessing' stamp: 'hlsf 3/Jul/2020 13:00:04'!
+!DrGPolylineMorph methodsFor: 'accessing' stamp: 'hlsf 3/Jul/2020, 11:00:04 am (UTC)'!
 lineSegmentsDo: endPointsBlock 
 	"Emit a sequence of segment endpoints into endPointsBlock."
 	| beginPoint |
@@ -27040,12 +27042,12 @@ lineSegmentsDo: endPointsBlock
 			endPointsBlock value: beginPoint value: vertices first].
 ! !
 
-!DrGPolylineMorph methodsFor: 'accessing' stamp: 'hlsf 3/Jul/2020 13:00:34'!
+!DrGPolylineMorph methodsFor: 'accessing' stamp: 'hlsf 3/Jul/2020, 11:00:34 am (UTC)'!
 nextToFirstPoint
 	"For arrow direction"
 	^ vertices second! !
 
-!DrGPolylineMorph methodsFor: 'accessing' stamp: 'hlsf 3/Jul/2020 13:00:57'!
+!DrGPolylineMorph methodsFor: 'accessing' stamp: 'hlsf 3/Jul/2020, 11:00:57 am (UTC)'!
 nextToLastPoint
 	"For arrow direction"
 	^ vertices at: vertices size - 1! !
@@ -27054,16 +27056,16 @@ nextToLastPoint
 vertices
 	^ vertices! !
 
-!DrGPolylineMorph methodsFor: 'accessing' stamp: 'hlsf 16/May/2021 21:24:17'!
+!DrGPolylineMorph methodsFor: 'accessing' stamp: 'hlsf 16/May/2021, 7:24:17 pm (UTC)'!
 vertices: newVertices
 	vertices := newVertices.! !
 
-!DrGPolylineMorph methodsFor: 'arrow' stamp: 'hlsf 12/Feb/2022 15:46:40'!
+!DrGPolylineMorph methodsFor: 'arrow' stamp: 'hlsf 12/Feb/2022, 1:46:40 pm (UTC)'!
 arrow: aSymbol
 "Accepted values: #none #back #forward #both "
 	arrows := aSymbol ! !
 
-!DrGPolylineMorph methodsFor: 'arrow' stamp: 'hlsf 2/Dec/2021 10:48:25'!
+!DrGPolylineMorph methodsFor: 'arrow' stamp: 'hlsf 2/Dec/2021, 8:48:25 am (UTC)'!
 arrowBoundsAt: endPoint from: priorPoint 
 	"Answer a triangle oriented along the line from priorPoint to endPoint."
 	| d v angle wingBase arrowSpec length width |
@@ -27083,7 +27085,7 @@ arrowBoundsAt: endPoint from: priorPoint
 					wingBase.
 					wingBase + (Point r: d * width degrees: angle - 125.0) }]! !
 
-!DrGPolylineMorph methodsFor: 'arrow' stamp: 'hlsf 4/Jul/2020 11:14:59'!
+!DrGPolylineMorph methodsFor: 'arrow' stamp: 'hlsf 4/Jul/2020, 9:14:59 am (UTC)'!
 arrowSpec: specPt
 	"Specify a custom arrow for this line.
 	specPt x abs gives the length of the arrow (point to base) in terms of borderWidth.
@@ -27099,11 +27101,11 @@ hasArrows
 	"Are all the conditions meet for having arrows?"
 	^ (closed or: [arrows == #none or: [vertices size < 2]]) not! !
 
-!DrGPolylineMorph methodsFor: 'arrow' stamp: 'hlsf 4/Jul/2020 11:14:14'!
+!DrGPolylineMorph methodsFor: 'arrow' stamp: 'hlsf 4/Jul/2020, 9:14:14 am (UTC)'!
 standardArrows
 	self removeProperty: #arrowSpec.! !
 
-!DrGPolylineMorph methodsFor: 'drawing' stamp: 'hlsf 4/Jul/2020 14:24:56'!
+!DrGPolylineMorph methodsFor: 'drawing' stamp: 'hlsf 4/Jul/2020, 12:24:56 pm (UTC)'!
 adjustSegmentPointsForArrows
 	" In the list of vertices, adjust first and last entry if this polygon uses arrows.
 	Returned the adjusted vertices, and if any the arrow bound"
@@ -27127,7 +27129,7 @@ adjustSegmentPointsForArrows
 				ifFalse: [ verts at: verts size put: (arrow copyFrom: 2 to: 3) average ] ].
 	^ Array with: verts with: arrowsBound ! !
 
-!DrGPolylineMorph methodsFor: 'drawing' stamp: 'hlsf 2/Dec/2021 10:48:34'!
+!DrGPolylineMorph methodsFor: 'drawing' stamp: 'hlsf 2/Dec/2021, 8:48:34 am (UTC)'!
 drawArrow: pts on: aCanvas at: endPoint from: priorPoint 
 	"Draw a triangle oriented along the line from priorPoint to  
 	endPoint. Answer the wingBase."
@@ -27138,7 +27140,7 @@ drawArrow: pts on: aCanvas at: endPoint from: priorPoint
 		ifFalse: 
 			[aCanvas strokeWidth:  (borderWidth + 1) // 2  color: borderColor  do: [aCanvas polyLine: pts]].! !
 
-!DrGPolylineMorph methodsFor: 'drawing' stamp: 'hlsf 3/Jul/2020 22:16:34'!
+!DrGPolylineMorph methodsFor: 'drawing' stamp: 'hlsf 3/Jul/2020, 8:16:34 pm (UTC)'!
 drawArrows: arrowsBound on: aCanvas 
 	"Answer (possibly modified) endpoints for border drawing"
 	"ArrowForms are computed only upon demand"
@@ -27151,7 +27153,7 @@ drawArrows: arrowsBound on: aCanvas
 		self drawArrow: arrow on: aCanvas at: vertices last from: self nextToLastPoint].
 	! !
 
-!DrGPolylineMorph methodsFor: 'drawing' stamp: 'hlsf 20/Jan/2026 14:38:05'!
+!DrGPolylineMorph methodsFor: 'drawing' stamp: 'hlsf 20/Jan/2026, 12:38:05 pm (UTC)'!
 drawOn: aCanvas 
 	| verticesAndArrows |
 	self isDrawNeeded ifFalse: [^ false].
@@ -27178,7 +27180,7 @@ drawOn: aCanvas
 	self drawArrows: verticesAndArrows second on: aCanvas.
 	^ true! !
 
-!DrGPolylineMorph methodsFor: 'geometry' stamp: 'hlsf 5/Aug/2021 12:22:15'!
+!DrGPolylineMorph methodsFor: 'geometry' stamp: 'hlsf 5/Aug/2021, 10:22:15 am (UTC)'!
 closestPointTo: aPoint 
 	| closestPoint minDist |
 	closestPoint := minDist := nil.
@@ -27211,33 +27213,33 @@ closestSegmentTo: aPoint
 					closestVertexIndex := vertexIndex. ]].
 	^ closestVertexIndex! !
 
-!DrGPolylineMorph methodsFor: 'geometry' stamp: 'hlsf 4/Jul/2020 11:14:00'!
+!DrGPolylineMorph methodsFor: 'geometry' stamp: 'hlsf 4/Jul/2020, 9:14:00 am (UTC)'!
 makeClosed
 	closed := true! !
 
-!DrGPolylineMorph methodsFor: 'geometry' stamp: 'hlsf 3/Jul/2020 23:17:40'!
+!DrGPolylineMorph methodsFor: 'geometry' stamp: 'hlsf 3/Jul/2020, 9:17:40 pm (UTC)'!
 makeOpen
 	closed := false.! !
 
-!DrGPolylineMorph methodsFor: 'initialization' stamp: 'hlsf 24/Apr/2021 19:56:19'!
+!DrGPolylineMorph methodsFor: 'initialization' stamp: 'hlsf 24/Apr/2021, 5:56:19 pm (UTC)'!
 initialize
 	super initialize.
 	closed := false.
 	arrows := #none! !
 
-!DrGPolylineMorph methodsFor: 'initialization' stamp: 'hlsf 5/Aug/2021 15:35:30'!
+!DrGPolylineMorph methodsFor: 'initialization' stamp: 'hlsf 5/Aug/2021, 1:35:30 pm (UTC)'!
 vertices: verts color: aColor borderColor: anotherColor 
 	color := aColor.
 	borderColor := anotherColor.
 	self vertices: verts.
 	closed := vertices size > 2.! !
 
-!DrGPolylineMorph methodsFor: 'initialization' stamp: 'hlsf 5/Aug/2021 15:35:40'!
+!DrGPolylineMorph methodsFor: 'initialization' stamp: 'hlsf 5/Aug/2021, 1:35:40 pm (UTC)'!
 vertices: verts color: aColor borderWidth: width borderColor: anotherColor 
 	borderWidth := width.
 	self vertices: verts color: aColor borderColor: anotherColor ! !
 
-!DrGPolylineMorph methodsFor: 'testing' stamp: 'hlsf 20/Jan/2026 14:38:05'!
+!DrGPolylineMorph methodsFor: 'testing' stamp: 'hlsf 20/Jan/2026, 12:38:05 pm (UTC)'!
 isNotFarAway
 " are all vertices in expanded screen area ?"
 	| expandedBound |
@@ -27245,7 +27247,7 @@ isNotFarAway
 		expandedBound := self drawable localBounds expandBy: 10000.
 		vertices allSatisfy: [:v | expandedBound containsPoint: v	] ]! !
 
-!DrGPolylineMorph methodsFor: 'testing' stamp: 'hlsf 5/Sep/2024 16:32:02'!
+!DrGPolylineMorph methodsFor: 'testing' stamp: 'hlsf 5/Sep/2024, 2:32:02 pm (UTC)'!
 isNotForAway
 " are all vertices in expanded screen area ?"
 	| expandedBound |
@@ -27253,7 +27255,7 @@ isNotForAway
 		expandedBound := self drawable localBounds expandBy: 10000.
 		vertices allSatisfy: [:v | 		expandedBound containsPoint: v		] ]! !
 
-!DrGPolylineMorph class methodsFor: 'examples' stamp: 'hlsf 23/May/2021 13:07:37'!
+!DrGPolylineMorph class methodsFor: 'examples' stamp: 'hlsf 23/May/2021, 11:07:37 am (UTC)'!
 example1
 	"self example1"
 	^ DrGPolylineMorph
@@ -27261,7 +27263,7 @@ example1
 		color: Color blue
 		borderColor: Color black! !
 
-!DrGPolylineMorph class methodsFor: 'examples' stamp: 'hlsf 23/May/2021 13:17:21'!
+!DrGPolylineMorph class methodsFor: 'examples' stamp: 'hlsf 23/May/2021, 11:17:21 am (UTC)'!
 example2
 	"self example2"
 	^ DrGPolylineMorph
@@ -27269,7 +27271,7 @@ example2
 		color: Color red
 		borderColor: Color black.! !
 
-!DrGPolylineMorph class methodsFor: 'examples' stamp: 'hlsf 23/May/2021 13:07:44'!
+!DrGPolylineMorph class methodsFor: 'examples' stamp: 'hlsf 23/May/2021, 11:07:44 am (UTC)'!
 example3
 	"self example3"
 	| poly | 
@@ -27280,7 +27282,7 @@ example3
 	poly makeOpen.
 	^ poly ! !
 
-!DrGPolylineMorph class methodsFor: 'examples' stamp: 'hlsf 23/May/2021 13:07:50'!
+!DrGPolylineMorph class methodsFor: 'examples' stamp: 'hlsf 23/May/2021, 11:07:50 am (UTC)'!
 example4
 	"self example4"
 	| poly | 
@@ -27295,7 +27297,7 @@ example4
 		0 }.
 	^ poly ! !
 
-!DrGPolylineMorph class methodsFor: 'instance creation' stamp: 'hlsf 12/Feb/2022 15:48:22'!
+!DrGPolylineMorph class methodsFor: 'instance creation' stamp: 'hlsf 12/Feb/2022, 1:48:22 pm (UTC)'!
 arrowPrototype
 	"Answer an instance of the receiver that will serve as a prototypical arrow"
 	"DrGPolylineMorph arrowPrototype openInWorld"
@@ -27308,12 +27310,12 @@ arrowPrototype
 	aa arrow: #forward.
 	^ aa! !
 
-!DrGPolylineMorph class methodsFor: 'instance creation' stamp: 'hlsf 12/Apr/2024 12:53:57'!
+!DrGPolylineMorph class methodsFor: 'instance creation' stamp: 'hlsf 12/Apr/2024, 10:53:57 am (UTC)'!
 from: start to: end color: lineColor width: width in: aDrawable
 	^ self new vertices: {start. end} color: nil borderWidth: width borderColor: lineColor.
 	! !
 
-!DrGPolylineMorph class methodsFor: 'instance creation' stamp: 'hlsf 23/May/2021 13:19:38'!
+!DrGPolylineMorph class methodsFor: 'instance creation' stamp: 'hlsf 23/May/2021, 11:19:38 am (UTC)'!
 vertices: verts color: c borderColor: bc
 	"(DrGPolylineMorph
 		vertices: {261@400. 388@519. 302@595. 	222@500.	141@583. 34@444}
@@ -27325,25 +27327,25 @@ vertices: verts color: c borderColor: bc
 defaultArrowSpec
 	^ 5@4! !
 
-!DrGCurveStraightMorph methodsFor: 'accessing' stamp: 'hlsf 4/Jul/2020 11:15:11'!
+!DrGCurveStraightMorph methodsFor: 'accessing' stamp: 'hlsf 4/Jul/2020, 9:15:11 am (UTC)'!
 from: startPoint to: endPoint  
 	vertices at: 1 put: startPoint.
 	vertices at: 2 put: endPoint.
 ! !
 
-!DrGCurveStraightMorph methodsFor: 'initialization' stamp: 'hlsf 24/Apr/2021 20:16:46'!
+!DrGCurveStraightMorph methodsFor: 'initialization' stamp: 'hlsf 24/Apr/2021, 6:16:46 pm (UTC)'!
 initialize
 	super initialize.
 	vertices := Array new: 2.! !
 
-!DrGCurveStraightMorph class methodsFor: 'instance creation' stamp: 'hlsf 11/Feb/2022 10:37:09'!
+!DrGCurveStraightMorph class methodsFor: 'instance creation' stamp: 'hlsf 11/Feb/2022, 8:37:09 am (UTC)'!
 from: start to: end color: color
 	^ self new
 		from: start to: end;
 		borderColor: color
 		! !
 
-!DrGLineMorph methodsFor: 'accessing' stamp: 'hlsf 30/Apr/2021 22:14:15'!
+!DrGLineMorph methodsFor: 'accessing' stamp: 'hlsf 30/Apr/2021, 8:14:15 pm (UTC)'!
 from: origin direction: u
 	| points |
 	points := self class extend: origin inDirection: u toBorder: self drawable morphExtent.
@@ -27351,18 +27353,18 @@ from: origin direction: u
 		ifTrue: [self from: `-1 @0` to: `-1 @0` "off-limit, empy draw"]
 		ifFalse: [	self from: points first to: points second]! !
 
-!DrGLineMorph methodsFor: 'accessing' stamp: 'hlsf 30/May/2021 09:54:00'!
+!DrGLineMorph methodsFor: 'accessing' stamp: 'hlsf 30/May/2021, 7:54:00 am (UTC)'!
 getVertices
 	self
 		from: (self drawable worldToMorph: mathItem origin)
 		direction: (self drawable vectorToMorph: mathItem direction).
 ! !
 
-!DrGLineMorph methodsFor: 'accessing' stamp: 'hlsf 7/Apr/2021 19:55:40'!
+!DrGLineMorph methodsFor: 'accessing' stamp: 'hlsf 7/Apr/2021, 5:55:40 pm (UTC)'!
 styleClass
 	^DrGLineStyle! !
 
-!DrGLineMorph class methodsFor: 'helper' stamp: 'hlsf 16/May/2025 23:13:02'!
+!DrGLineMorph class methodsFor: 'helper' stamp: 'hlsf 16/May/2025, 9:13:02 pm (UTC)'!
 extend: origin inDirection: u toBorder: extent
 	| points c ex ey coordinate |
 	points := OrderedCollection new.
@@ -27386,7 +27388,7 @@ extend: origin inDirection: u toBorder: extent
 	^ points
 ! !
 
-!DrGRayMorph methodsFor: 'accessing' stamp: 'hlsf 20/Jan/2026 19:49:23'!
+!DrGRayMorph methodsFor: 'accessing' stamp: 'hlsf 20/Jan/2026, 5:49:23 pm (UTC)'!
 from: origin direction: u
 	| points |
 	points :=  DrGLineMorph extend: origin inDirection: u toBorder: self drawable morphExtent.
@@ -27404,18 +27406,18 @@ from: origin direction: u
 			
 	! !
 
-!DrGRayMorph methodsFor: 'accessing' stamp: 'hlsf 20/Jan/2026 14:57:26'!
+!DrGRayMorph methodsFor: 'accessing' stamp: 'hlsf 20/Jan/2026, 12:57:26 pm (UTC)'!
 getVertices
 	self
 		from: (self drawable worldToMorph: mathItem origin)
 		direction: (self drawable vectorToMorph: mathItem direction).
 ! !
 
-!DrGRayMorph methodsFor: 'accessing' stamp: 'hlsf 7/Apr/2021 19:55:56'!
+!DrGRayMorph methodsFor: 'accessing' stamp: 'hlsf 7/Apr/2021, 5:55:56 pm (UTC)'!
 styleClass
 	^DrGRayStyle! !
 
-!DrGRayMorph class methodsFor: 'as yet unclassified' stamp: 'hlsf 16/May/2025 23:19:09'!
+!DrGRayMorph class methodsFor: 'as yet unclassified' stamp: 'hlsf 16/May/2025, 9:19:09 pm (UTC)'!
 extend: origin inDirection: u toBorder: extent
 	| border c ex ey coordinate |
 	c := (origin x * u y - (origin y * u x)) asFloat.
@@ -27443,32 +27445,32 @@ extend: origin inDirection: u toBorder: extent
 	(coordinate between: 0 and: ey) ifTrue: [ ^ex @ coordinate]
 ! !
 
-!DrGSegmentMorph methodsFor: 'accessing' stamp: 'hlsf 30/May/2021 09:56:14'!
+!DrGSegmentMorph methodsFor: 'accessing' stamp: 'hlsf 30/May/2021, 7:56:14 am (UTC)'!
 getVertices
 	self 
 		from: (self drawable worldToMorph: mathItem origin)
 		to: (self drawable worldToMorph: mathItem origin + mathItem direction).
 ! !
 
-!DrGSegmentMorph methodsFor: 'accessing' stamp: 'hlsf 7/Apr/2021 19:55:32'!
+!DrGSegmentMorph methodsFor: 'accessing' stamp: 'hlsf 7/Apr/2021, 5:55:32 pm (UTC)'!
 styleClass
 	^DrGSegmentStyle! !
 
-!DrGSegmentMorph methodsFor: 'drawing' stamp: 'hlsf 2/Dec/2021 10:48:46'!
+!DrGSegmentMorph methodsFor: 'drawing' stamp: 'hlsf 2/Dec/2021, 8:48:46 am (UTC)'!
 drawCircleOn: aCanvas 
 	| center |
 	center := vertices first + vertices second / 2.0.
 	aCanvas strokeWidth: borderWidth color: borderColor do: [
 		aCanvas circleCenter: center radius:  2 + borderWidth]! !
 
-!DrGSegmentMorph methodsFor: 'drawing' stamp: 'hlsf 2/Dec/2021 10:47:52'!
+!DrGSegmentMorph methodsFor: 'drawing' stamp: 'hlsf 2/Dec/2021, 8:47:52 am (UTC)'!
 drawDiscOn: aCanvas 
 	| center |
 	center := vertices first + vertices second / 2.0.
 	aCanvas fillColor:  borderColor do: [
 		aCanvas circleCenter: center radius: 2 + borderWidth]! !
 
-!DrGSegmentMorph methodsFor: 'drawing' stamp: 'hlsf 2/Dec/2021 10:48:58'!
+!DrGSegmentMorph methodsFor: 'drawing' stamp: 'hlsf 2/Dec/2021, 8:48:58 am (UTC)'!
 drawMark1On: aCanvas 
 	|center vector u n startPoint endPoint |
 	startPoint := vertices at: 1.
@@ -27485,7 +27487,7 @@ drawMark1On: aCanvas
 		width: borderWidth  
 		color: borderColor.! !
 
-!DrGSegmentMorph methodsFor: 'drawing' stamp: 'hlsf 2/Dec/2021 10:49:13'!
+!DrGSegmentMorph methodsFor: 'drawing' stamp: 'hlsf 2/Dec/2021, 8:49:13 am (UTC)'!
 drawMark2On: aCanvas 
 	|center vector u n startPoint endPoint |
 	startPoint := vertices at: 1.
@@ -27500,7 +27502,7 @@ drawMark2On: aCanvas
 		aCanvas line: center - vector to: center + vector width: borderWidth color: borderColor.
 		center := center + (u * (borderWidth  * 3))].! !
 
-!DrGSegmentMorph methodsFor: 'drawing' stamp: 'hlsf 2/Dec/2021 10:49:28'!
+!DrGSegmentMorph methodsFor: 'drawing' stamp: 'hlsf 2/Dec/2021, 8:49:28 am (UTC)'!
 drawMark3On: aCanvas 
 	|center vector u n startPoint endPoint |
 	startPoint := vertices at: 1.
@@ -27515,7 +27517,7 @@ drawMark3On: aCanvas
 		aCanvas line: center - vector to: center + vector width: borderWidth color: borderColor.
 		center := center + (u * (borderWidth  * 3))].! !
 
-!DrGSegmentMorph methodsFor: 'drawing' stamp: 'hlsf 6/Jan/2022 19:56:25'!
+!DrGSegmentMorph methodsFor: 'drawing' stamp: 'hlsf 6/Jan/2022, 5:56:25 pm (UTC)'!
 drawMarkOn: aCanvas
 	|mark|
 	mark := self style mark.
@@ -27528,24 +27530,24 @@ drawMarkOn: aCanvas
 	
 ! !
 
-!DrGSegmentMorph methodsFor: 'drawing' stamp: 'hlsf 6/Jan/2022 09:39:12'!
+!DrGSegmentMorph methodsFor: 'drawing' stamp: 'hlsf 6/Jan/2022, 7:39:12 am (UTC)'!
 drawOn: aCanvas
 	(super drawOn: aCanvas) ifTrue: [ self drawMarkOn: aCanvas ]
 		! !
 
-!DrGSegmentMorph methodsFor: 'testing' stamp: 'drgeo 7/Jun/2026 11:41:00'!
+!DrGSegmentMorph methodsFor: 'testing' stamp: 'drgeo 7/Jun/2026, 9:41:00 am (UTC)'!
 is: aSymbol
 	^ aSymbol == #SegmentMorph or: [super is: aSymbol]! !
 
-!DrGIconSegmentMorph methodsFor: 'accessing' stamp: 'hlsf 6/Jan/2022 19:56:50'!
+!DrGIconSegmentMorph methodsFor: 'accessing' stamp: 'hlsf 6/Jan/2022, 5:56:50 pm (UTC)'!
 forcedMark: symbol
 	self style mark: symbol! !
 
-!DrGIconSegmentMorph methodsFor: 'accessing' stamp: 'hlsf 6/Jan/2022 19:53:52'!
+!DrGIconSegmentMorph methodsFor: 'accessing' stamp: 'hlsf 6/Jan/2022, 5:53:52 pm (UTC)'!
 getVertices
 "No update of the vertices attributes, use its values as is"! !
 
-!DrGIconSegmentMorph methodsFor: 'accessing' stamp: 'hlsf 5/Jun/2022 14:56:20'!
+!DrGIconSegmentMorph methodsFor: 'accessing' stamp: 'hlsf 5/Jun/2022, 12:56:20 pm (UTC)'!
 initialize
 	super initialize.
 	style
@@ -27553,50 +27555,50 @@ initialize
 		arrow: #none
 	! !
 
-!DrGIconSegmentMorph methodsFor: 'accessing' stamp: 'hlsf 14/Mar/2023 21:02:46'!
+!DrGIconSegmentMorph methodsFor: 'accessing' stamp: 'hlsf 14/Mar/2023, 7:02:46 pm (UTC)'!
 labelMorph: anObject
 "No label morph"! !
 
-!DrGVectorMorph methodsFor: 'initializing' stamp: 'hlsf 12/Feb/2022 15:47:54'!
+!DrGVectorMorph methodsFor: 'initializing' stamp: 'hlsf 12/Feb/2022, 1:47:54 pm (UTC)'!
 initialize
 	super initialize.
 	self arrow: #forward! !
 
-!DrGVectorMorph methodsFor: 'testing type' stamp: 'hlsf 5/Apr/2021 11:36:15'!
+!DrGVectorMorph methodsFor: 'testing type' stamp: 'hlsf 5/Apr/2021, 9:36:15 am (UTC)'!
 isVector
 	^ true! !
 
-!DrGVectorMorph methodsFor: 'accessing' stamp: 'hlsf 30/May/2021 09:58:05'!
+!DrGVectorMorph methodsFor: 'accessing' stamp: 'hlsf 30/May/2021, 7:58:05 am (UTC)'!
 getVertices
 	self 
 		from: (self drawable worldToMorph: mathItem origin)
 		to: (self drawable worldToMorph: mathItem origin + mathItem direction).
 ! !
 
-!DrGVectorMorph methodsFor: 'accessing' stamp: 'hlsf 7/Apr/2021 19:56:04'!
+!DrGVectorMorph methodsFor: 'accessing' stamp: 'hlsf 7/Apr/2021, 5:56:04 pm (UTC)'!
 styleClass
 	^DrGVectorStyle! !
 
-!DrGLocusMorph methodsFor: 'accessing' stamp: 'hlsf 30/May/2021 15:37:11'!
+!DrGLocusMorph methodsFor: 'accessing' stamp: 'hlsf 30/May/2021, 1:37:11 pm (UTC)'!
 factory
 	^ self domain factory! !
 
-!DrGLocusMorph methodsFor: 'accessing' stamp: 'hlsf 30/May/2021 12:31:35'!
+!DrGLocusMorph methodsFor: 'accessing' stamp: 'hlsf 30/May/2021, 10:31:35 am (UTC)'!
 getVertices
 	self free: mathItem freePoint constrained: mathItem constrainedPoint.! !
 
-!DrGLocusMorph methodsFor: 'accessing' stamp: 'hlsf 7/Apr/2021 19:55:48'!
+!DrGLocusMorph methodsFor: 'accessing' stamp: 'hlsf 7/Apr/2021, 5:55:48 pm (UTC)'!
 styleClass
 	^ DrGLocusStyle! !
 
-!DrGLocusMorph methodsFor: 'initialization' stamp: 'hlsf 25/Sep/2021 18:18:52'!
+!DrGLocusMorph methodsFor: 'initialization' stamp: 'hlsf 25/Sep/2021, 4:18:52 pm (UTC)'!
 initialize
 	super initialize.
 	minAbscissaDelta := 1e-5.
 	maxScreenDelta := 64.
 	maxAbscissaDelta := 1e-1! !
 
-!DrGLocusMorph methodsFor: 'drawing' stamp: 'drgeo 7/Jun/2026 11:02:06'!
+!DrGLocusMorph methodsFor: 'drawing' stamp: 'drgeo 7/Jun/2026, 9:02:06 am (UTC)'!
 drawOn: aCanvas 
 	| prevPoint p |
 	self isDrawNeeded ifFalse: [^ self].
@@ -27614,7 +27616,7 @@ drawOn: aCanvas
 		]
 ! !
 
-!DrGLocusMorph methodsFor: 'sampling' stamp: 'hlsf 11/Apr/2024 10:41:53'!
+!DrGLocusMorph methodsFor: 'sampling' stamp: 'hlsf 11/Apr/2024, 8:41:53 am (UTC)'!
 free: freeItem constrained: constrainedItem 
 	| link0 link1 x0 validSamples factory  |
 	x0 := freeItem abscissa.
@@ -27637,7 +27639,7 @@ free: freeItem constrained: constrainedItem
 		samplesQty: validSamples size.
 	vertices := validSamples collect: [:s | s pointScreen].! !
 
-!DrGLocusMorph methodsFor: 'sampling' stamp: 'hlsf 30/May/2021 15:37:34'!
+!DrGLocusMorph methodsFor: 'sampling' stamp: 'hlsf 30/May/2021, 1:37:34 pm (UTC)'!
 sample: abscissa 
 "Create a new sample with the given curvilinear abscissa"
 	| sample |
@@ -27650,7 +27652,7 @@ sample: abscissa
 		offScreen: (worldBound containsPoint: constrained point) not].
 	^ sample! !
 
-!DrGLocusMorph methodsFor: 'sampling' stamp: 'hlsf 10/Jan/2026 18:18:10'!
+!DrGLocusMorph methodsFor: 'sampling' stamp: 'hlsf 10/Jan/2026, 4:18:10 pm (UTC)'!
 samplingFrom: sample1 to: sample2
 	| newSample screenSamplesDistance samplesDelta|
 	samplesDelta := sample2 x - sample1 x.
@@ -27666,7 +27668,7 @@ samplingFrom: sample1 to: sample2
 			self samplingFrom: sample1 to: newSample.
 			self samplingFrom: newSample to: sample2]! !
 
-!DrGLocusMorph methodsFor: 'sampling' stamp: 'hlsf 11/Apr/2024 10:37:04'!
+!DrGLocusMorph methodsFor: 'sampling' stamp: 'hlsf 11/Apr/2024, 8:37:04 am (UTC)'!
 selectValidSamples
 	| validSamples prevLink|
 	validSamples := OrderedCollection new.
@@ -27688,19 +27690,19 @@ selectValidSamples
 				prevLink := sample].
 	^ validSamples ! !
 
-!DrGLocusMorph methodsFor: 'testing' stamp: 'hlsf 5/Jun/2021 12:14:34'!
+!DrGLocusMorph methodsFor: 'testing' stamp: 'hlsf 5/Jun/2021, 10:14:34 am (UTC)'!
 canBeDrawn
 	^ vertices isEmptyOrNil not! !
 
-!DrGLocusMorph methodsFor: 'testing' stamp: 'hlsf 9/Mar/2023 14:36:14'!
+!DrGLocusMorph methodsFor: 'testing' stamp: 'hlsf 9/Mar/2023, 12:36:14 pm (UTC)'!
 containsPoint: localPoint
 	^ self containsPointInWorld: localPoint! !
 
-!DrGLocusMorph methodsFor: 'testing' stamp: 'drgeo 7/Jun/2026 11:37:32'!
+!DrGLocusMorph methodsFor: 'testing' stamp: 'drgeo 7/Jun/2026, 9:37:32 am (UTC)'!
 is: aSymbol
 	^ aSymbol == #LocusMorph or: [super is: aSymbol]! !
 
-!DrGLocusMorph methodsFor: 'label' stamp: 'hlsf 5/Jun/2021 15:05:07'!
+!DrGLocusMorph methodsFor: 'label' stamp: 'hlsf 5/Jun/2021, 1:05:07 pm (UTC)'!
 updateLabelStatus
 "In some circumstance, I may be unable to draw myself. So I need to update my label status accordingly"
 	labelMorph ifNotNil: [
@@ -27710,7 +27712,7 @@ updateLabelStatus
 				labelMorph show; morphPosition: self labelPosition]
 			ifFalse: [labelMorph hide]	]! !
 
-!DrGLocusMorph methodsFor: 'initialize-release' stamp: 'drgeo 7/Jun/2026 11:01:45'!
+!DrGLocusMorph methodsFor: 'initialize-release' stamp: 'drgeo 7/Jun/2026, 9:01:45 am (UTC)'!
 registerEventsIn: aDrawable
 	super registerEventsIn: aDrawable.
 	mathItem ifNotNil: [
@@ -27720,7 +27722,7 @@ registerEventsIn: aDrawable
 			to: self
 		].! !
 
-!DrGLocusTransformedMorph methodsFor: 'accessing' stamp: 'hlsf 31/May/2021 18:24:46'!
+!DrGLocusTransformedMorph methodsFor: 'accessing' stamp: 'hlsf 31/May/2021, 4:24:46 pm (UTC)'!
 getVertices
 	vertices := 	mathItem points collect: [:point | self drawable worldToMorph: point].! !
 
@@ -27729,7 +27731,7 @@ initialize
 	super initialize.
 	self makeClosed.! !
 
-!DrGPolygonMorph methodsFor: 'label' stamp: 'hlsf 29/May/2021 17:18:24'!
+!DrGPolygonMorph methodsFor: 'label' stamp: 'hlsf 29/May/2021, 3:18:24 pm (UTC)'!
 constrainedLabelPosition: aPoint
 |center vector answer|
 	answer := mathItem closestPointInfoTo: (self drawable morphToWorld: aPoint).
@@ -27740,28 +27742,28 @@ constrainedLabelPosition: aPoint
 	self computeLabelPositionDelta: vector.
 ! !
 
-!DrGPolygonMorph methodsFor: 'accessing' stamp: 'hlsf 10/Aug/2025 13:33:06'!
+!DrGPolygonMorph methodsFor: 'accessing' stamp: 'hlsf 10/Aug/2025, 11:33:06 am (UTC)'!
 getVertices
 	vertices := mathItem points asOrderedCollection collect: [:point | self drawable worldToMorph: point].
 	vertices add: vertices first
 ! !
 
-!DrGPolygonMorph methodsFor: 'accessing' stamp: 'hlsf 7/Apr/2021 19:55:22'!
+!DrGPolygonMorph methodsFor: 'accessing' stamp: 'hlsf 7/Apr/2021, 5:55:22 pm (UTC)'!
 styleClass
 	^DrGPolygonStyle ! !
 
-!DrGPolygonMorph methodsFor: 'testing' stamp: 'hlsf 25/Jan/2026 16:29:26'!
+!DrGPolygonMorph methodsFor: 'testing' stamp: 'hlsf 25/Jan/2026, 2:29:26 pm (UTC)'!
 canBeDrawn
 	^ vertices isEmptyOrNil not
 		or: [ "Try to get the vertices if not there yet "
 			self getVertices.
 			vertices isEmptyOrNil not]! !
 
-!DrGPolygonMorph methodsFor: 'testing' stamp: 'hlsf 9/Mar/2023 14:36:14'!
+!DrGPolygonMorph methodsFor: 'testing' stamp: 'hlsf 9/Mar/2023, 12:36:14 pm (UTC)'!
 containsPoint: localPoint
 	^ self containsPointInWorld: localPoint! !
 
-!DrGPointMorph methodsFor: 'drawing' stamp: 'hlsf 20/Jan/2026 14:38:05'!
+!DrGPointMorph methodsFor: 'drawing' stamp: 'hlsf 20/Jan/2026, 12:38:05 pm (UTC)'!
 drawOn: aCanvas
 | shape center |
 	self isDrawNeeded ifFalse: [^ self].
@@ -27787,42 +27789,42 @@ drawOn: aCanvas
 				moveTo: center + (e * (-1@1)); lineTo:  center + (e * (1@ -1))			]
 			]! !
 
-!DrGPointMorph methodsFor: 'label' stamp: 'hlsf 29/May/2021 17:17:00'!
+!DrGPointMorph methodsFor: 'label' stamp: 'hlsf 29/May/2021, 3:17:00 pm (UTC)'!
 constrainedLabelPosition: unconstrainedPosition
 	|center |
 	center := self drawable worldToMorph: mathItem point.
 	self computeLabelPositionDelta: unconstrainedPosition - center
 	! !
 
-!DrGPointMorph methodsFor: 'label' stamp: 'hlsf 12/Apr/2024 11:09:17'!
+!DrGPointMorph methodsFor: 'label' stamp: 'hlsf 12/Apr/2024, 9:09:17 am (UTC)'!
 labelPosition
 	^(self drawable worldToMorph: mathItem point) + self labelPositionDelta! !
 
-!DrGPointMorph methodsFor: 'obselete' stamp: 'hlsf 5/Aug/2021 14:50:03'!
+!DrGPointMorph methodsFor: 'obselete' stamp: 'hlsf 5/Aug/2021, 12:50:03 pm (UTC)'!
 distanceTo: aPoint
 	^ self morphCenter dist: aPoint  ! !
 
-!DrGPointMorph methodsFor: 'accessing' stamp: 'hlsf 5/Aug/2021 14:53:56'!
+!DrGPointMorph methodsFor: 'accessing' stamp: 'hlsf 5/Aug/2021, 12:53:56 pm (UTC)'!
 morphCenter
 	^ self drawable worldToMorph: mathItem point! !
 
-!DrGPointMorph methodsFor: 'accessing' stamp: 'hlsf 7/Apr/2021 19:56:13'!
+!DrGPointMorph methodsFor: 'accessing' stamp: 'hlsf 7/Apr/2021, 5:56:13 pm (UTC)'!
 styleClass
 	^DrGPointStyle! !
 
-!DrGPointMorph methodsFor: 'testing' stamp: 'drgeo 7/Jun/2026 11:39:37'!
+!DrGPointMorph methodsFor: 'testing' stamp: 'drgeo 7/Jun/2026, 9:39:37 am (UTC)'!
 is: aSymbol
 	^ aSymbol == #PointMorph or: [super is: aSymbol]! !
 
-!DrGIconPointMorph methodsFor: 'accessing' stamp: 'hlsf 14/Mar/2023 21:02:53'!
+!DrGIconPointMorph methodsFor: 'accessing' stamp: 'hlsf 14/Mar/2023, 7:02:53 pm (UTC)'!
 labelMorph: anObject
 "No label morph"! !
 
-!DrGIconPointMorph methodsFor: 'accessing' stamp: 'hlsf 6/Jan/2022 21:57:28'!
+!DrGIconPointMorph methodsFor: 'accessing' stamp: 'hlsf 6/Jan/2022, 7:57:28 pm (UTC)'!
 morphCenter
 	^ 0@0! !
 
-!DrGTextMorph methodsFor: 'drawing' stamp: 'hlsf 24/May/2023 18:12:07'!
+!DrGTextMorph methodsFor: 'drawing' stamp: 'hlsf 24/May/2023, 4:12:07 pm (UTC)'!
 drawFrame: rect on: aCanvas
 	aCanvas fillRectangle: (rect expandBy: 2)
 		color: style backgroundColor 
@@ -27830,7 +27832,7 @@ drawFrame: rect on: aCanvas
 		borderStyleSymbol: #simple 
 		baseColorForBorder: style borderColor.! !
 
-!DrGTextMorph methodsFor: 'drawing' stamp: 'hlsf 18/Mar/2023 21:29:52'!
+!DrGTextMorph methodsFor: 'drawing' stamp: 'hlsf 18/Mar/2023, 7:29:52 pm (UTC)'!
 drawOn: aCanvas
 	| r bound |
 	self isDrawNeeded ifFalse: [^ self].
@@ -27845,19 +27847,19 @@ drawOn: aCanvas
 		color: color
 		selectionColor: `Color red`.! !
 
-!DrGTextMorph methodsFor: 'accessing' stamp: 'hlsf 24/May/2023 18:41:11'!
+!DrGTextMorph methodsFor: 'accessing' stamp: 'hlsf 24/May/2023, 4:41:11 pm (UTC)'!
 compose: aStringOrText
 	textComposition		
 		setModel: (TextModel withText: aStringOrText);
 		composeAll.
 	extent := textComposition usedExtent + 8! !
 
-!DrGTextMorph methodsFor: 'accessing' stamp: 'hlsf 24/May/2023 18:42:11'!
+!DrGTextMorph methodsFor: 'accessing' stamp: 'hlsf 24/May/2023, 4:42:11 pm (UTC)'!
 contents: aStringOrText
 	textComposition textComposed ~= aStringOrText ifTrue: [
 		self compose: aStringOrText]! !
 
-!DrGTextMorph methodsFor: 'accessing' stamp: 'hlsf 17/Feb/2026 14:47:06'!
+!DrGTextMorph methodsFor: 'accessing' stamp: 'hlsf 17/Feb/2026, 12:47:06 pm (UTC)'!
 fontSize: aSmallInteger 
 	| text |
 	textComposition editor: (TextEditor new defaultFont: (DrGeoSystem fontOfSize: aSmallInteger)).
@@ -27865,19 +27867,19 @@ fontSize: aSmallInteger
 	self compose: text.
 	self redrawNeeded ! !
 
-!DrGTextMorph methodsFor: 'accessing' stamp: 'hlsf 7/Apr/2021 19:56:23'!
+!DrGTextMorph methodsFor: 'accessing' stamp: 'hlsf 7/Apr/2021, 5:56:23 pm (UTC)'!
 styleClass
 	^ DrGTextStyle! !
 
-!DrGTextMorph methodsFor: 'label' stamp: 'hlsf 24/Mar/2022 11:48:09'!
+!DrGTextMorph methodsFor: 'label' stamp: 'hlsf 24/Mar/2022, 9:48:09 am (UTC)'!
 labelMorph: aString
 "There is no label morph for text or value on the canvas"! !
 
-!DrGTextMorph methodsFor: 'label' stamp: 'hlsf 24/Mar/2022 11:49:42'!
+!DrGTextMorph methodsFor: 'label' stamp: 'hlsf 24/Mar/2022, 9:49:42 am (UTC)'!
 labelPosition
 	^self drawable worldToMorph: mathItem position! !
 
-!DrGTextMorph methodsFor: 'initialize-release' stamp: 'FJG 13/Nov/2023 14:41:25'!
+!DrGTextMorph methodsFor: 'initialize-release' stamp: 'FJG 13/Nov/2023, 12:41:25 pm (UTC)'!
 initialize
 	super initialize.
 	textComposition := TextComposition new.
@@ -27889,11 +27891,11 @@ initialize
 	" Taken from DrGTextMorph >> #compose: "
 	extent := textComposition usedExtent + 8.! !
 
-!DrGTextMorph methodsFor: 'geometry testing' stamp: 'hlsf 22/Oct/2021 22:59:16'!
+!DrGTextMorph methodsFor: 'geometry testing' stamp: 'hlsf 22/Oct/2021, 8:59:16 pm (UTC)'!
 wantsContour
 	^ false! !
 
-!DrGTextMorph methodsFor: 'testing' stamp: 'hlsf 17/May/2026 12:21:18'!
+!DrGTextMorph methodsFor: 'testing' stamp: 'hlsf 17/May/2026, 10:21:18 am (UTC)'!
 containsPoint: localPoint
 "We really want rectangle detection, more user friendly, otherwise it is pixel detecting on each character"
 	^ self canBeDrawn 
@@ -27902,7 +27904,7 @@ containsPoint: localPoint
 			ifNotNil: [:d | d containsPoint: (self externalizeToWorld: localPoint) ]]
 		! !
 
-!DrGValueMorph methodsFor: 'accessing' stamp: 'hlsf 17/Feb/2026 14:47:11'!
+!DrGValueMorph methodsFor: 'accessing' stamp: 'hlsf 17/Feb/2026, 12:47:11 pm (UTC)'!
 roundedValueString
 	^ (mathItem valueItem isPoint or: [mathItem valueItem isNumber])
 		ifTrue: [
@@ -27911,15 +27913,15 @@ roundedValueString
 				ifFalse: [mathItem valueItem printShowingDecimalPlaces: (DrGeoSystem preferences at: #valueDecimal)]]
 		ifFalse: [mathItem valueItem asString]! !
 
-!DrGValueMorph methodsFor: 'accessing' stamp: 'hlsf 7/Apr/2021 19:56:32'!
+!DrGValueMorph methodsFor: 'accessing' stamp: 'hlsf 7/Apr/2021, 5:56:32 pm (UTC)'!
 styleClass
 	^DrGValueStyle! !
 
-!DrGValueMorph methodsFor: 'accessing' stamp: 'hlsf 6/Apr/2021 19:38:57'!
+!DrGValueMorph methodsFor: 'accessing' stamp: 'hlsf 6/Apr/2021, 5:38:57 pm (UTC)'!
 valueString
 	^mathItem valueItem asString! !
 
-!DrGValueMorph methodsFor: 'drawing' stamp: 'hlsf 18/Mar/2023 21:36:30'!
+!DrGValueMorph methodsFor: 'drawing' stamp: 'hlsf 18/Mar/2023, 7:36:30 pm (UTC)'!
 drawOn: aCanvas
 	| r bound |
 	self isDrawNeeded ifFalse: [^ self].
@@ -27939,20 +27941,20 @@ drawOn: aCanvas
 		color: color
 		selectionColor: `Color red`.! !
 
-!DrGValueMorph methodsFor: 'label' stamp: 'hlsf 6/Apr/2021 19:34:44'!
+!DrGValueMorph methodsFor: 'label' stamp: 'hlsf 6/Apr/2021, 5:34:44 pm (UTC)'!
 constrainedLabelPosition: aVector
 	^ aVector! !
 
-!DrGDrawable methodsFor: 'accessing' stamp: 'hlsf 4/Aug/2023 17:42:50'!
+!DrGDrawable methodsFor: 'accessing' stamp: 'hlsf 4/Aug/2023, 3:42:50 pm (UTC)'!
 domain
 	^ presenter domain! !
 
-!DrGDrawable methodsFor: 'accessing' stamp: 'hlsf 19/Jun/2021 10:08:59'!
+!DrGDrawable methodsFor: 'accessing' stamp: 'hlsf 19/Jun/2021, 8:08:59 am (UTC)'!
 labels
 	^ submorphs select: [:aMorph| aMorph class == DrGLabel].
 		! !
 
-!DrGDrawable methodsFor: 'accessing' stamp: 'hlsf 19/Jun/2021 10:08:59'!
+!DrGDrawable methodsFor: 'accessing' stamp: 'hlsf 19/Jun/2021, 8:08:59 am (UTC)'!
 mostBehindLabel
 ^ submorphs reverse detect: [:aMorph| aMorph class == DrGLabel] ifNone: [nil].
 		! !
@@ -27975,20 +27977,20 @@ oy
 oy: integer
 	oy := integer asNumber! !
 
-!DrGDrawable methodsFor: 'accessing' stamp: 'hlsf 4/Aug/2023 12:44:35'!
+!DrGDrawable methodsFor: 'accessing' stamp: 'hlsf 4/Aug/2023, 10:44:35 am (UTC)'!
 presenter
 	^ presenter! !
 
-!DrGDrawable methodsFor: 'accessing' stamp: 'hlsf 4/Aug/2023 12:44:22'!
+!DrGDrawable methodsFor: 'accessing' stamp: 'hlsf 4/Aug/2023, 10:44:22 am (UTC)'!
 presenter: aPresenter
 	presenter := aPresenter ! !
 
-!DrGDrawable methodsFor: 'accessing' stamp: 'hlsf 3/Aug/2023 21:35:04'!
+!DrGDrawable methodsFor: 'accessing' stamp: 'hlsf 3/Aug/2023, 7:35:04 pm (UTC)'!
 preview
 "Return a form preview"
 	^ self previewOn: ByteArray new writeStream! !
 
-!DrGDrawable methodsFor: 'accessing' stamp: 'drgeo 24/Feb/2026 14:31:41'!
+!DrGDrawable methodsFor: 'accessing' stamp: 'drgeo 24/Feb/2026, 12:31:41 pm (UTC)'!
 previewOn: aStream
 "compute an PNG preiview, put it in the stream and return its form"
 	|form |
@@ -28001,7 +28003,7 @@ previewOn: aStream
 scale
 	^ scale! !
 
-!DrGDrawable methodsFor: 'accessing' stamp: 'hlsf 16/Apr/2022 17:53:55'!
+!DrGDrawable methodsFor: 'accessing' stamp: 'hlsf 16/Apr/2022, 3:53:55 pm (UTC)'!
 setScaleTo: number
 	scale := number asNumber.
 	self updateGrid.
@@ -28011,63 +28013,63 @@ setScaleTo: number
 tool
 	^self presenter tool! !
 
-!DrGDrawable methodsFor: 'accessing' stamp: 'hlsf 4/Aug/2023 12:47:09'!
+!DrGDrawable methodsFor: 'accessing' stamp: 'hlsf 4/Aug/2023, 10:47:09 am (UTC)'!
 view
 	^presenter view! !
 
-!DrGDrawable methodsFor: 'axes/grid' stamp: 'hlsf 19/Jun/2021 17:13:33'!
+!DrGDrawable methodsFor: 'axes/grid' stamp: 'hlsf 19/Jun/2021, 3:13:33 pm (UTC)'!
 axesVisible
 	^ self valueOfProperty: #axesVisible ifAbsent: [false]! !
 
-!DrGDrawable methodsFor: 'axes/grid' stamp: 'hlsf 21/Jan/2026 19:09:35'!
+!DrGDrawable methodsFor: 'axes/grid' stamp: 'hlsf 21/Jan/2026, 5:09:35 pm (UTC)'!
 axesVisible: aBoolean
 	self setProperty: #axesVisible toValue: aBoolean.
 	self updateGrid.
 	self redrawNeeded ! !
 
-!DrGDrawable methodsFor: 'axes/grid' stamp: 'hlsf 19/Jun/2021 17:16:57'!
+!DrGDrawable methodsFor: 'axes/grid' stamp: 'hlsf 19/Jun/2021, 3:16:57 pm (UTC)'!
 axesVisibleOnOff
 	self setProperty: #axesVisible toValue: self axesVisible not.
 	self updateGrid.
 	self redrawNeeded ! !
 
-!DrGDrawable methodsFor: 'axes/grid' stamp: 'hlsf 21/Jan/2026 19:07:20'!
+!DrGDrawable methodsFor: 'axes/grid' stamp: 'hlsf 21/Jan/2026, 5:07:20 pm (UTC)'!
 gridVisible
 	^ self valueOfProperty: #gridVisible ifAbsent: [false]
 ! !
 
-!DrGDrawable methodsFor: 'axes/grid' stamp: 'hlsf 21/Jan/2026 19:10:38'!
+!DrGDrawable methodsFor: 'axes/grid' stamp: 'hlsf 21/Jan/2026, 5:10:38 pm (UTC)'!
 gridVisible: aBoolean
 	self setProperty: #gridVisible toValue: aBoolean.
 	self updateGrid.
 	self redrawNeeded ! !
 
-!DrGDrawable methodsFor: 'axes/grid' stamp: 'hlsf 19/Jun/2021 17:16:48'!
+!DrGDrawable methodsFor: 'axes/grid' stamp: 'hlsf 19/Jun/2021, 3:16:48 pm (UTC)'!
 gridVisibleOnOff
 	self setProperty: #gridVisible toValue: self gridVisible not.
 	self updateGrid.
 	self redrawNeeded ! !
 
-!DrGDrawable methodsFor: 'callback' stamp: 'drgeo 7/Jun/2026 11:48:25'!
+!DrGDrawable methodsFor: 'callback' stamp: 'drgeo 7/Jun/2026, 9:48:25 am (UTC)'!
 moveOx: increment
 	ox := ox - increment.
 	self resampleLocusViews .
 	self redrawNeeded! !
 
-!DrGDrawable methodsFor: 'callback' stamp: 'drgeo 7/Jun/2026 11:48:49'!
+!DrGDrawable methodsFor: 'callback' stamp: 'drgeo 7/Jun/2026, 9:48:49 am (UTC)'!
 moveOxy: pointIncrement
 	ox := ox - pointIncrement x.
 	oy := oy - pointIncrement y.
 	self resampleLocusViews.
 	self redrawNeeded.! !
 
-!DrGDrawable methodsFor: 'callback' stamp: 'drgeo 7/Jun/2026 11:49:28'!
+!DrGDrawable methodsFor: 'callback' stamp: 'drgeo 7/Jun/2026, 9:49:28 am (UTC)'!
 moveOy: increment
 	oy := oy + increment.
 	self resampleLocusViews.
 	self redrawNeeded! !
 
-!DrGDrawable methodsFor: 'callback' stamp: 'drgeo 7/Jun/2026 11:17:15'!
+!DrGDrawable methodsFor: 'callback' stamp: 'drgeo 7/Jun/2026, 9:17:15 am (UTC)'!
 scale: increment
 	self scaleNoRedraw: increment.
 	self updateGrid.
@@ -28081,20 +28083,20 @@ scaleNoRedraw: increment
 	scale > 1000 ifTrue: [scale := 1000.0].
 ! !
 
-!DrGDrawable methodsFor: 'coordinates' stamp: 'hlsf 1/May/2020 16:59:05'!
+!DrGDrawable methodsFor: 'coordinates' stamp: 'hlsf 1/May/2020, 2:59:05 pm (UTC)'!
 defaultScalePosition
 	ox := oy := 0.0.
 	scale := 34.0.
 	self updateGrid.
 	self redrawNeeded! !
 
-!DrGDrawable methodsFor: 'coordinates' stamp: 'hlsf 25/Apr/2020 19:37:59'!
+!DrGDrawable methodsFor: 'coordinates' stamp: 'hlsf 25/Apr/2020, 5:37:59 pm (UTC)'!
 morphAbscissaToWorld: abscissa
 	"Transform abscissa from DrGeo-Morph to World  system"
 	^ ox + ((abscissa - (extent x / 2.0)) / scale)
 ! !
 
-!DrGDrawable methodsFor: 'coordinates' stamp: 'hlsf 25/Apr/2020 19:38:37'!
+!DrGDrawable methodsFor: 'coordinates' stamp: 'hlsf 25/Apr/2020, 5:38:37 pm (UTC)'!
 morphOrdinateToWorld: ordinate
 	"Transform point coordinate from DrGeo-Morph to World  system"
 	^ oy - ((ordinate  - (extent y / 2.0)) / scale)! !
@@ -28135,18 +28137,18 @@ vectorToMorph: aVector
 		y: aVector y negated asFloat * scale.
 ! !
 
-!DrGDrawable methodsFor: 'coordinates' stamp: 'hlsf 17/Feb/2022 15:33:18'!
+!DrGDrawable methodsFor: 'coordinates' stamp: 'hlsf 17/Feb/2022, 1:33:18 pm (UTC)'!
 worldAbscissaToMorph: x
 	"Transform point abscissa from DrGeo-World to Morph system"
 	^extent x / 2.0 + (scale * (x - ox))! !
 
-!DrGDrawable methodsFor: 'coordinates' stamp: 'hlsf 25/Apr/2020 19:33:08'!
+!DrGDrawable methodsFor: 'coordinates' stamp: 'hlsf 25/Apr/2020, 5:33:08 pm (UTC)'!
 worldBound
 	^ Rectangle
 		origin: (self morphToWorld: 0 @ extent y)
 		corner: (self morphToWorld: extent x @ 0)! !
 
-!DrGDrawable methodsFor: 'coordinates' stamp: 'hlsf 5/Aug/2021 13:05:02'!
+!DrGDrawable methodsFor: 'coordinates' stamp: 'hlsf 5/Aug/2021, 11:05:02 am (UTC)'!
 worldOrdinateToMorph: y
 	"Transform point ordinate from DrGeo-World to Morph system"
 	^ extent y / 2.0 + (scale * (oy - y))! !
@@ -28163,7 +28165,7 @@ worldToPixel: aFloat
 
 ! !
 
-!DrGDrawable methodsFor: 'drawing' stamp: 'hlsf 4/Aug/2023 12:19:10'!
+!DrGDrawable methodsFor: 'drawing' stamp: 'hlsf 4/Aug/2023, 10:19:10 am (UTC)'!
 dottedLinesToParentsOf: anItem
 	| point pointWorld | 
 	(anItem isValueItem not or: [anItem parents isEmptyOrNil]) ifTrue: [^self ].
@@ -28182,7 +28184,7 @@ dottedLinesToParentsOf: anItem
 			yourself].
 	dottedLines do: [:line | self addMorphFront: line].! !
 
-!DrGDrawable methodsFor: 'drawing' stamp: 'hlsf 24/Apr/2020 23:12:32'!
+!DrGDrawable methodsFor: 'drawing' stamp: 'hlsf 24/Apr/2020, 9:12:32 pm (UTC)'!
 drawOn: aCanvas 
 	super drawOn: aCanvas.
 	self gridVisible ifTrue: [self drawGridOn: aCanvas].
@@ -28195,7 +28197,7 @@ removeDottedLinesToParents
 	dottedLines := nil.
 	valueItem := nil! !
 
-!DrGDrawable methodsFor: 'drawing' stamp: 'hlsf 4/Aug/2023 12:19:10'!
+!DrGDrawable methodsFor: 'drawing' stamp: 'hlsf 4/Aug/2023, 10:19:10 am (UTC)'!
 updateDottedLinesToParents
 	| point pointWorld |
 	valueItem ifNil: [^self].
@@ -28207,7 +28209,7 @@ updateDottedLinesToParents
 				with: point 
 				with: (self worldToMorph: (parent closestPointTo: pointWorld)))]! !
 
-!DrGDrawable methodsFor: 'drawing axes & grid' stamp: 'hlsf 17/Feb/2026 14:47:20'!
+!DrGDrawable methodsFor: 'drawing axes & grid' stamp: 'hlsf 17/Feb/2026, 12:47:20 pm (UTC)'!
 drawAxesOn: aCanvas
 	| origin worldBound font p start |
 	origin := self worldToMorph: 0@0.
@@ -28253,7 +28255,7 @@ drawAxesOn: aCanvas
 		aCanvas drawString: '0'  at: (origin + `2@2`) font: font color: Color lightGray].
 ! !
 
-!DrGDrawable methodsFor: 'drawing axes & grid' stamp: 'hlsf 9/Mar/2022 22:11:11'!
+!DrGDrawable methodsFor: 'drawing axes & grid' stamp: 'hlsf 9/Mar/2022, 8:11:11 pm (UTC)'!
 drawGradX: x origin: origin on: canvas font: font
 "Draw a tick on the (ox) axis with a graduation value"
 	| str pos shift |
@@ -28263,7 +28265,7 @@ drawGradX: x origin: origin on: canvas font: font
 	canvas drawString: str  at: pos + shift font: font color: Color lightGray.
 	canvas line: pos - `0@2` to: pos + `0@2` width: 1.5 color: Color lightGray.! !
 
-!DrGDrawable methodsFor: 'drawing axes & grid' stamp: 'hlsf 9/Mar/2022 22:11:23'!
+!DrGDrawable methodsFor: 'drawing axes & grid' stamp: 'hlsf 9/Mar/2022, 8:11:23 pm (UTC)'!
 drawGradY: y origin: origin on: canvas font: font
 "Draw a tick on the (oy) axis with a graduation value"
 	| pos shift |
@@ -28276,7 +28278,7 @@ drawGradY: y origin: origin on: canvas font: font
 		color: Color lightGray.
 	canvas line: pos - `2@0` to: pos + `2@0`  width: 1.5 color: Color lightGray.! !
 
-!DrGDrawable methodsFor: 'drawing axes & grid' stamp: 'hlsf 1/Nov/2022 20:30:25'!
+!DrGDrawable methodsFor: 'drawing axes & grid' stamp: 'hlsf 1/Nov/2022, 6:30:25 pm (UTC)'!
 drawGridOn: aCanvas
 	| worldBound end start length step |
 	worldBound := self worldBound.
@@ -28307,7 +28309,7 @@ labelForAxes: number
 			ifTrue: [number printString allButFirst allButLast]
 			ifFalse: [ number printString]! !
 
-!DrGDrawable methodsFor: 'dropping/grabbing' stamp: 'hlsf 8/Jun/2021 19:33:45'!
+!DrGDrawable methodsFor: 'dropping/grabbing' stamp: 'hlsf 8/Jun/2021, 5:33:45 pm (UTC)'!
 acceptDroppingMorph: dropped event: evt
 "Here we encapsulated the image morph (dropped) in a DrGBitmapItem.
 We do not really need a builder to do so but we have to process it in the command stack"
@@ -28329,20 +28331,20 @@ resizeImage: aForm
 		ifFalse: [resizedForm  := aForm].
 	^ resizedForm ! !
 
-!DrGDrawable methodsFor: 'event handling testing' stamp: 'hlsf 1/May/2020 17:16:55'!
+!DrGDrawable methodsFor: 'event handling testing' stamp: 'hlsf 1/May/2020, 3:16:55 pm (UTC)'!
 allowsSubmorphDrag
 "We are managing by our self item dragging"
 	^ false! !
 
-!DrGDrawable methodsFor: 'event handling testing' stamp: 'hlsf 28/Apr/2020 17:53:34'!
+!DrGDrawable methodsFor: 'event handling testing' stamp: 'hlsf 28/Apr/2020, 3:53:34 pm (UTC)'!
 handlesKeyboard
 	^ true! !
 
-!DrGDrawable methodsFor: 'event handling testing' stamp: 'hlsf 28/Apr/2020 11:18:17'!
+!DrGDrawable methodsFor: 'event handling testing' stamp: 'hlsf 28/Apr/2020, 9:18:17 am (UTC)'!
 handlesMouseDown: evt
 	^ true! !
 
-!DrGDrawable methodsFor: 'event handling testing' stamp: 'hlsf 28/Apr/2020 12:13:20'!
+!DrGDrawable methodsFor: 'event handling testing' stamp: 'hlsf 28/Apr/2020, 10:13:20 am (UTC)'!
 handlesMouseHover
 	^ true! !
 
@@ -28350,7 +28352,7 @@ handlesMouseHover
 handlesMouseOver: evt
 	^ true! !
 
-!DrGDrawable methodsFor: 'event handling testing' stamp: 'hlsf 28/Apr/2020 10:20:54'!
+!DrGDrawable methodsFor: 'event handling testing' stamp: 'hlsf 28/Apr/2020, 8:20:54 am (UTC)'!
 handlesMouseScroll: scrollEvent
 	^ true! !
 
@@ -28358,14 +28360,14 @@ handlesMouseScroll: scrollEvent
 handlesMouseStillDown: evt
 	^ true! !
 
-!DrGDrawable methodsFor: 'events' stamp: 'hlsf 30/May/2025 14:47:24'!
+!DrGDrawable methodsFor: 'events' stamp: 'hlsf 30/May/2025, 12:47:24 pm (UTC)'!
 mouseButton1Down: evt localPosition: localPosition
 	evt shiftPressed 
 		ifTrue: [self tool handlePressShiftKey: localPosition ]
 		ifFalse: [self tool handlePress: localPosition].
 	self showUnderMouseMorph! !
 
-!DrGDrawable methodsFor: 'events' stamp: 'hlsf 28/Jan/2026 18:03:20'!
+!DrGDrawable methodsFor: 'events' stamp: 'hlsf 28/Jan/2026, 4:03:20 pm (UTC)'!
 mouseButton1Up: evt localPosition: localPosition
 	evt shiftPressed 
 		ifTrue: [self tool handleReleaseShiftKey: localPosition]
@@ -28375,17 +28377,17 @@ mouseButton1Up: evt localPosition: localPosition
 		ifFalse: [Cursor normalCursor activateCursor.]
 ! !
 
-!DrGDrawable methodsFor: 'events' stamp: 'hlsf 10/Apr/2022 15:00:10'!
+!DrGDrawable methodsFor: 'events' stamp: 'hlsf 10/Apr/2022, 1:00:10 pm (UTC)'!
 mouseButton2Up: evt localPosition: localPosition
 	self presenter openTools! !
 
-!DrGDrawable methodsFor: 'events' stamp: 'hlsf 3/Jul/2022 13:07:57'!
+!DrGDrawable methodsFor: 'events' stamp: 'hlsf 3/Jul/2022, 11:07:57 am (UTC)'!
 mouseEnter: evt
 	(Preferences at: #focusFollowsMouse) ifTrue: [
 	    evt hand newKeyboardFocus: self.
 	    self redrawNeeded ].! !
 
-!DrGDrawable methodsFor: 'events' stamp: 'hlsf 4/Aug/2021 15:22:13'!
+!DrGDrawable methodsFor: 'events' stamp: 'hlsf 4/Aug/2021, 1:22:13 pm (UTC)'!
 mouseHover: evt localPosition: localEventPosition
 "handle mouse move with button up"
 	localEventPosition = prevMousePos ifTrue: [^ self]. "nothing to process"
@@ -28394,13 +28396,13 @@ mouseHover: evt localPosition: localEventPosition
 		ifFalse: [self tool handleMouseAt: localEventPosition].
 	prevMousePos := localEventPosition! !
 
-!DrGDrawable methodsFor: 'events' stamp: 'hlsf 28/Jan/2026 18:03:33'!
+!DrGDrawable methodsFor: 'events' stamp: 'hlsf 28/Jan/2026, 4:03:33 pm (UTC)'!
 mouseLeave: evt
 	super mouseLeave: evt.
 	Cursor normalCursor activateCursor.
 	! !
 
-!DrGDrawable methodsFor: 'events' stamp: 'hlsf 23/Sep/2025 18:12:15'!
+!DrGDrawable methodsFor: 'events' stamp: 'hlsf 23/Sep/2025, 4:12:15 pm (UTC)'!
 mouseMove: evt localPosition: localEventPosition
 "Mouse move with pressed button"
 	evt anyButtonPressed ifFalse: [ ^ self ].
@@ -28414,7 +28416,7 @@ mouseMove: evt localPosition: localEventPosition
 	prevMousePos := localEventPosition.
 ! !
 
-!DrGDrawable methodsFor: 'events' stamp: 'hlsf 28/Apr/2020 12:21:19'!
+!DrGDrawable methodsFor: 'events' stamp: 'hlsf 28/Apr/2020, 10:21:19 am (UTC)'!
 mouseMoveOxy: newPosition
 "move the whole sketch in the Oxy plane"
 	|delta| 
@@ -28422,7 +28424,7 @@ mouseMoveOxy: newPosition
 	delta r  < 100 ifTrue: "we need to check because in tablet mode, previous mouse position can be far away"
 		[self moveOxy: (self pixelVectorToWorldVector: delta)]! !
 
-!DrGDrawable methodsFor: 'events' stamp: 'hlsf 5/Aug/2021 12:51:36'!
+!DrGDrawable methodsFor: 'events' stamp: 'hlsf 5/Aug/2021, 10:51:36 am (UTC)'!
 mouseScroll: evt localPosition: localEventPosition
 	| increment orginalWorldCursorPoint |
 	orginalWorldCursorPoint := self morphToWorld: localEventPosition.
@@ -28438,7 +28440,7 @@ mouseScroll: evt localPosition: localEventPosition
 	self
 		moveOxy: (self morphToWorld: localEventPosition) - orginalWorldCursorPoint! !
 
-!DrGDrawable methodsFor: 'events' stamp: 'hlsf 16/Sep/2021 13:52:11'!
+!DrGDrawable methodsFor: 'events' stamp: 'hlsf 16/Sep/2021, 11:52:11 am (UTC)'!
 mouseStillDown
 	self tool handleStillPress: prevMousePos! !
 
@@ -28446,7 +28448,7 @@ mouseStillDown
 mouseStillDownThreshold 
 	^ 1500! !
 
-!DrGDrawable methodsFor: 'events' stamp: 'hlsf 16/Sep/2021 14:01:18'!
+!DrGDrawable methodsFor: 'events' stamp: 'hlsf 16/Sep/2021, 12:01:18 pm (UTC)'!
 processMouseMove: aMouseMoveEvent localPosition: localEventPosition
 "Overwritten to prevent superfluous mouseStillDown events"
 	aMouseMoveEvent wasHandled ifTrue: [ ^self ]. 
@@ -28455,7 +28457,7 @@ processMouseMove: aMouseMoveEvent localPosition: localEventPosition
 	aMouseMoveEvent wasHandled: true.
 	self mouseMove: aMouseMoveEvent localPosition: localEventPosition.! !
 
-!DrGDrawable methodsFor: 'events' stamp: 'hlsf 16/Sep/2021 13:51:56'!
+!DrGDrawable methodsFor: 'events' stamp: 'hlsf 16/Sep/2021, 11:51:56 am (UTC)'!
 restartMouseStillDownHandle
 "We reset the timer"
 	prevMousePos ifNotNil: [	
@@ -28463,11 +28465,11 @@ restartMouseStillDownHandle
 			in: 1500
 			stepTime: self mouseStillDownStepRate]! !
 
-!DrGDrawable methodsFor: 'geometry testing' stamp: 'hlsf 13/Jun/2021 18:17:19'!
+!DrGDrawable methodsFor: 'geometry testing' stamp: 'hlsf 13/Jun/2021, 4:17:19 pm (UTC)'!
 clipsSubmorphs
 	^ true! !
 
-!DrGDrawable methodsFor: 'geometry testing' stamp: 'hlsf 2/Nov/2022 14:41:17'!
+!DrGDrawable methodsFor: 'geometry testing' stamp: 'hlsf 2/Nov/2022, 12:41:17 pm (UTC)'!
 requiresVectorCanvas
 	^ true! !
 
@@ -28495,7 +28497,7 @@ updateGrid
 		ifTrue: [ self updateGridScaleForAxes]
 		ifFalse: [ self updateGridScaleForGrid]! !
 
-!DrGDrawable methodsFor: 'gridding' stamp: 'hlsf 30/Apr/2020 18:11:39'!
+!DrGDrawable methodsFor: 'gridding' stamp: 'hlsf 30/Apr/2020, 4:11:39 pm (UTC)'!
 updateGridScaleForAxes
 	gridScale := 50 / scale.
 	gridScale >= 1 
@@ -28505,24 +28507,24 @@ updateGridScaleForAxes
 		ifFalse: [
 			gridScale := 1 / ((1 / gridScale) rounded)]! !
 
-!DrGDrawable methodsFor: 'gridding' stamp: 'hlsf 26/Apr/2020 14:46:44'!
+!DrGDrawable methodsFor: 'gridding' stamp: 'hlsf 26/Apr/2020, 12:46:44 pm (UTC)'!
 updateGridScaleForGrid
 	gridScale := 5! !
 
-!DrGDrawable methodsFor: 'halos and balloon help' stamp: 'hlsf 21/Jun/2021 21:55:43'!
+!DrGDrawable methodsFor: 'halos and balloon help' stamp: 'hlsf 21/Jun/2021, 7:55:43 pm (UTC)'!
 wantsHalo
 	^true! !
 
-!DrGDrawable methodsFor: 'initialize-release' stamp: 'drgeo 24/Feb/2026 14:29:23'!
+!DrGDrawable methodsFor: 'initialize-release' stamp: 'drgeo 24/Feb/2026, 12:29:23 pm (UTC)'!
 defaultExtent
 	^ `750@500` ! !
 
-!DrGDrawable methodsFor: 'initialize-release' stamp: 'hlsf 4/Aug/2023 17:42:44'!
+!DrGDrawable methodsFor: 'initialize-release' stamp: 'hlsf 4/Aug/2023, 3:42:44 pm (UTC)'!
 dismissMorph
 	super dismissMorph.
 	presenter view dismissMorph ! !
 
-!DrGDrawable methodsFor: 'initialize-release' stamp: 'hlsf 7/Feb/2026 11:46:58'!
+!DrGDrawable methodsFor: 'initialize-release' stamp: 'hlsf 7/Feb/2026, 9:46:58 am (UTC)'!
 initialize
 	super initialize.
 	self color: Theme current canvasBackground.
@@ -28546,7 +28548,7 @@ initialize
 		morphPosition: self morphPosition;
 		hide."	! !
 
-!DrGDrawable methodsFor: 'initialize-release' stamp: 'drgeo 7/Jun/2026 10:45:26'!
+!DrGDrawable methodsFor: 'initialize-release' stamp: 'drgeo 7/Jun/2026, 8:45:26 am (UTC)'!
 registerEvents
 	self domain
 		when: #redoMathItem
@@ -28565,40 +28567,40 @@ registerEvents
 		send: #redrawNeeded
 		to: self.! !
 
-!DrGDrawable methodsFor: 'initialize-release' stamp: 'hlsf 12/Apr/2024 15:19:23'!
+!DrGDrawable methodsFor: 'initialize-release' stamp: 'hlsf 12/Apr/2024, 1:19:23 pm (UTC)'!
 release
 	self domain removeActionsWithReceiver: self.
 	self removeAllMorphs ! !
 
-!DrGDrawable methodsFor: 'item-view' stamp: 'hlsf 4/Aug/2023 11:08:35'!
+!DrGDrawable methodsFor: 'item-view' stamp: 'hlsf 4/Aug/2023, 9:08:35 am (UTC)'!
 deleteItemView: aMorph
 	aMorph release.
 	undoneViews add: aMorph.
 	itemViews := itemViews copyWithout: aMorph.
 	! !
 
-!DrGDrawable methodsFor: 'item-view' stamp: 'hlsf 4/Aug/2023 11:14:32'!
+!DrGDrawable methodsFor: 'item-view' stamp: 'hlsf 4/Aug/2023, 9:14:32 am (UTC)'!
 fastLastItemView
 "Find the morph in the factory last mathItem, cahed version, may not update to date"
 	^ lastView ! !
 
-!DrGDrawable methodsFor: 'item-view' stamp: 'hlsf 4/Aug/2023 11:43:49'!
+!DrGDrawable methodsFor: 'item-view' stamp: 'hlsf 4/Aug/2023, 9:43:49 am (UTC)'!
 forcedVisibility: aBoolean
 "Force or not the visibility of hidden morph"
 	aBoolean ifTrue: [self redrawNeeded ].
 	itemViews do: [:morph |
 		morph forcedVisibility: aBoolean].! !
 
-!DrGDrawable methodsFor: 'item-view' stamp: 'hlsf 4/Aug/2023 11:07:15'!
+!DrGDrawable methodsFor: 'item-view' stamp: 'hlsf 4/Aug/2023, 9:07:15 am (UTC)'!
 itemView: aMathItem 
 	"new math item event : A new math item has been created, create its morph"
 	lastView := itemViews add: (DrGMorph for: aMathItem in: self)! !
 
-!DrGDrawable methodsFor: 'item-view' stamp: 'hlsf 4/Aug/2023 11:37:26'!
+!DrGDrawable methodsFor: 'item-view' stamp: 'hlsf 4/Aug/2023, 9:37:26 am (UTC)'!
 itemViews
 	^ itemViews ! !
 
-!DrGDrawable methodsFor: 'item-view' stamp: 'hlsf 4/Aug/2023 11:15:36'!
+!DrGDrawable methodsFor: 'item-view' stamp: 'hlsf 4/Aug/2023, 9:15:36 am (UTC)'!
 lastItemView
 "Find the morph in the factory last mathItem"
 	| lastMathItem morph |
@@ -28610,7 +28612,7 @@ lastItemView
 		ifFound: [ :aMorph | aMorph ]
 		ifNone: [ nil]! !
 
-!DrGDrawable methodsFor: 'item-view' stamp: 'drgeo 7/Jun/2026 11:32:19'!
+!DrGDrawable methodsFor: 'item-view' stamp: 'drgeo 7/Jun/2026, 9:32:19 am (UTC)'!
 recoverViewOf: aMathItem 
 	"a redo math item event : a math item has been recalled, find its morph "
 	| itemMorph |
@@ -28629,14 +28631,14 @@ recoverViewOf: aMathItem
 	undoneViews := undoneViews copyWithout: itemMorph.
 	itemViews add: itemMorph! !
 
-!DrGDrawable methodsFor: 'item-view' stamp: 'hlsf 4/Aug/2023 18:19:41'!
+!DrGDrawable methodsFor: 'item-view' stamp: 'hlsf 4/Aug/2023, 4:19:41 pm (UTC)'!
 redrawNeeded
 	"View resized, update the area without recomputing the items"
 	self updateGrid.
 	super redrawNeeded.
 	presenter tool ifNotNil: [:aTool | aTool redrawFlyingMorph ]! !
 
-!DrGDrawable methodsFor: 'item-view' stamp: 'hlsf 4/Aug/2023 12:19:10'!
+!DrGDrawable methodsFor: 'item-view' stamp: 'hlsf 4/Aug/2023, 10:19:10 am (UTC)'!
 viewOf: aMathItem
 "Find the view of the given mathItem"
 	^ itemViews 
@@ -28644,7 +28646,7 @@ viewOf: aMathItem
 		ifFound: [ :morph | morph ]
 		ifNone: [ nil]! !
 
-!DrGDrawable methodsFor: 'item-view' stamp: 'hlsf 4/Aug/2023 12:19:10'!
+!DrGDrawable methodsFor: 'item-view' stamp: 'hlsf 4/Aug/2023, 10:19:10 am (UTC)'!
 viewsOf: aMathItemCollection
 "Find the morphs of the given mathItem collection"
 	^ aMathItemCollection collect: [:aMathItem | self viewOf: aMathItem]
@@ -28658,11 +28660,11 @@ step
 stepTime 
 	^ 300! !
 
-!DrGDrawable methodsFor: 'stepping' stamp: 'hlsf 3/Aug/2021 13:55:28'!
+!DrGDrawable methodsFor: 'stepping' stamp: 'hlsf 3/Aug/2021, 11:55:28 am (UTC)'!
 wantsSteps
 	^ (self presenter isTool: #animate) and: [self tool isAnimating]! !
 
-!DrGDrawable methodsFor: 'submorphs-add/remove' stamp: 'hlsf 19/Jun/2021 10:08:59'!
+!DrGDrawable methodsFor: 'submorphs-add/remove' stamp: 'hlsf 19/Jun/2021, 8:08:59 am (UTC)'!
 addMorph: newMorph
 	| aLabel |
 	newMorph class == DrGLabel ifTrue: [^ self addMorphFront: newMorph].
@@ -28671,21 +28673,21 @@ addMorph: newMorph
 		ifNil: [self addMorphFront: newMorph]  
 		ifNotNil: [self addMorph: newMorph behind: aLabel]! !
 
-!DrGDrawable methodsFor: 'submorphs-add/remove' stamp: 'hlsf 7/Jun/2026 12:27:26'!
+!DrGDrawable methodsFor: 'submorphs-add/remove' stamp: 'hlsf 7/Jun/2026, 10:27:26 am (UTC)'!
 resampleLocusViews
 "	Our locus view are sampled, and it depends on both its model and the drawable status (scale and visible area)"
 	submorphs 
 		select: [:each | each is:#LocusMorph] 
 		thenDo: [:locusMorph | locusMorph getVertices ]! !
 
-!DrGDrawable methodsFor: 'tip' stamp: 'hlsf 7/Feb/2026 12:00:59'!
+!DrGDrawable methodsFor: 'tip' stamp: 'hlsf 7/Feb/2026, 10:00:59 am (UTC)'!
 hideTip
 	balloonTarget setBalloonText: nil.
 	balloonTarget deleteBalloon
 	
 ! !
 
-!DrGDrawable methodsFor: 'tip' stamp: 'hlsf 17/Feb/2026 14:47:26'!
+!DrGDrawable methodsFor: 'tip' stamp: 'hlsf 17/Feb/2026, 12:47:26 pm (UTC)'!
 tip: aText at: aPoint
 	tipOn ifFalse: [^self].
 	balloonTarget  comeToFront.
@@ -28699,7 +28701,7 @@ tip: aText at: aPoint
 toggleTip
 	tipOn := tipOn not! !
 
-!DrGDrawable methodsFor: 'under mouse' stamp: 'hlsf 17/Feb/2026 14:47:23'!
+!DrGDrawable methodsFor: 'under mouse' stamp: 'hlsf 17/Feb/2026, 12:47:23 pm (UTC)'!
 showUnderMouseMorph
 	DrGeoSystem ifTablet: [
 		self updateUnderMouseMorphPosition.
@@ -28707,75 +28709,75 @@ showUnderMouseMorph
 			comeToFront;
 			show].! !
 
-!DrGDrawable methodsFor: 'under mouse' stamp: 'hlsf 17/Feb/2026 14:47:32'!
+!DrGDrawable methodsFor: 'under mouse' stamp: 'hlsf 17/Feb/2026, 12:47:32 pm (UTC)'!
 updateUnderMouseMorph
 	DrGeoSystem ifTablet: [underMouse changed]! !
 
-!DrGDrawable methodsFor: 'under mouse' stamp: 'hlsf 17/Feb/2026 14:47:36'!
+!DrGDrawable methodsFor: 'under mouse' stamp: 'hlsf 17/Feb/2026, 12:47:36 pm (UTC)'!
 updateUnderMouseMorphPosition
 	DrGeoSystem ifTablet: 
 		[self activeHand morphPosition x - self morphPosition x > (self morphWidth // 2 )
 			ifTrue: [underMouse position: self morphPosition] 
 			ifFalse: [underMouse position: (self morphWidth - underMouse width) @ self morphPosition y]]! !
 
-!DrGDrawable methodsFor: 'geometry' stamp: 'drgeo 7/Jun/2026 11:58:23'!
+!DrGDrawable methodsFor: 'geometry' stamp: 'drgeo 7/Jun/2026, 9:58:23 am (UTC)'!
 extentChanged: oldExtent 
 	super extentChanged: oldExtent.
 	self resampleLocusViews.
 	self redrawNeeded ! !
 
-!DrGDrawable class methodsFor: 'instance creation' stamp: 'hlsf 4/Aug/2023 12:40:52'!
+!DrGDrawable class methodsFor: 'instance creation' stamp: 'hlsf 4/Aug/2023, 10:40:52 am (UTC)'!
 newOn: aPresenter
 	^self basicNew presenter: aPresenter ; initialize ! !
 
-!DrGDrawable class methodsFor: 'new-morph participation' stamp: 'hlsf 15/Mar/2022 21:33:11'!
+!DrGDrawable class methodsFor: 'new-morph participation' stamp: 'hlsf 15/Mar/2022, 7:33:11 pm (UTC)'!
 includeInNewMorphMenu
 	^ false! !
 
-!DrGeoMiniView methodsFor: 'accessing' stamp: 'hlsf 19/Jun/2021 10:07:28'!
+!DrGeoMiniView methodsFor: 'accessing' stamp: 'hlsf 19/Jun/2021, 8:07:28 am (UTC)'!
 drawable
 	^ drawable! !
 
-!DrGeoMiniView methodsFor: 'accessing' stamp: 'hlsf 10/Apr/2022 15:56:20'!
+!DrGeoMiniView methodsFor: 'accessing' stamp: 'hlsf 10/Apr/2022, 1:56:20 pm (UTC)'!
 fullScreen
 	self
 		morphPosition: 0@0;
 		morphExtent: RealEstateAgent maximumUsableArea extent! !
 
-!DrGeoMiniView methodsFor: 'accessing' stamp: 'hlsf 19/Jun/2021 11:02:21'!
+!DrGeoMiniView methodsFor: 'accessing' stamp: 'hlsf 19/Jun/2021, 9:02:21 am (UTC)'!
 label
 	^ 'A Dr. Geo sketch' translated! !
 
-!DrGeoMiniView methodsFor: 'accessing' stamp: 'hlsf 4/Aug/2023 13:05:34'!
+!DrGeoMiniView methodsFor: 'accessing' stamp: 'hlsf 4/Aug/2023, 11:05:34 am (UTC)'!
 presenter
 	^ presenter! !
 
-!DrGeoMiniView methodsFor: 'accessing' stamp: 'hlsf 4/Aug/2023 13:05:26'!
+!DrGeoMiniView methodsFor: 'accessing' stamp: 'hlsf 4/Aug/2023, 11:05:26 am (UTC)'!
 presenter: anObject
 	presenter := anObject! !
 
-!DrGeoMiniView methodsFor: 'accessing' stamp: 'hlsf 5/Jun/2021 11:19:44'!
+!DrGeoMiniView methodsFor: 'accessing' stamp: 'hlsf 5/Jun/2021, 9:19:44 am (UTC)'!
 setLabel: aString 
 	"There is not such things as a label for a minimal view"! !
 
-!DrGeoMiniView methodsFor: 'menus' stamp: 'hlsf 21/Oct/2021 21:23:37'!
+!DrGeoMiniView methodsFor: 'menus' stamp: 'hlsf 21/Oct/2021, 7:23:37 pm (UTC)'!
 macroMenu: aMenuMorph 
 	self flag: #drgeoTodo! !
 
-!DrGeoMiniView methodsFor: 'menus' stamp: 'hlsf 21/Oct/2021 21:23:12'!
+!DrGeoMiniView methodsFor: 'menus' stamp: 'hlsf 21/Oct/2021, 7:23:12 pm (UTC)'!
 scriptMenu: aMenu
 self flag: #drgeoTodo! !
 
-!DrGeoMiniView methodsFor: 'initialize-release' stamp: 'hlsf 27/May/2026 18:54:59'!
+!DrGeoMiniView methodsFor: 'initialize-release' stamp: 'hlsf 27/May/2026, 4:54:59 pm (UTC)'!
 defaultColor
 	^ Color transparent! !
 
-!DrGeoMiniView methodsFor: 'initialize-release' stamp: 'drgeo 25/May/2026 17:08:34'!
+!DrGeoMiniView methodsFor: 'initialize-release' stamp: 'drgeo 25/May/2026, 3:08:34 pm (UTC)'!
 delete 
 	super delete.
 	self release! !
 
-!DrGeoMiniView methodsFor: 'initialize-release' stamp: 'hlsf 27/May/2026 17:03:56'!
+!DrGeoMiniView methodsFor: 'initialize-release' stamp: 'hlsf 27/May/2026, 3:03:56 pm (UTC)'!
 initialize
 	super initialize.
 	self color: self defaultColor .
@@ -28785,17 +28787,17 @@ initialize
 	self when: #enterAnnotator send: #showTools to: presenter controlsManager.
 	self when: #leaveAnnotator send: #hideTools to: presenter controlsManager.! !
 
-!DrGeoMiniView methodsFor: 'initialize-release' stamp: 'hlsf 25/May/2026 16:58:51'!
+!DrGeoMiniView methodsFor: 'initialize-release' stamp: 'hlsf 25/May/2026, 2:58:51 pm (UTC)'!
 release
 	presenter release.
 	self removeAllActions.
 	presenter := drawable := nil.! !
 
-!DrGeoMiniView methodsFor: 'geometry testing' stamp: 'hlsf 5/Jun/2021 12:16:21'!
+!DrGeoMiniView methodsFor: 'geometry testing' stamp: 'hlsf 5/Jun/2021, 10:16:21 am (UTC)'!
 clipsSubmorphs
 	^ false! !
 
-!DrGeoMiniView class methodsFor: 'instance creation' stamp: 'hlsf 27/May/2026 18:22:39'!
+!DrGeoMiniView class methodsFor: 'instance creation' stamp: 'hlsf 27/May/2026, 4:22:39 pm (UTC)'!
 for: aPresenter
 	^ self basicNew 
 		presenter: aPresenter ;
@@ -28803,18 +28805,18 @@ for: aPresenter
 		morphExtent: 750@500;
 		yourself! !
 
-!DrGeoMiniView class methodsFor: 'new-morph participation' stamp: 'hlsf 15/Mar/2022 21:34:31'!
+!DrGeoMiniView class methodsFor: 'new-morph participation' stamp: 'hlsf 15/Mar/2022, 7:34:31 pm (UTC)'!
 includeInNewMorphMenu
 	^ false! !
 
-!DrGDrawableMenu methodsFor: 'events' stamp: 'hlsf 30/Mar/2024 09:21:21'!
+!DrGDrawableMenu methodsFor: 'events' stamp: 'hlsf 30/Mar/2024, 7:21:21 am (UTC)'!
 initialize
 	super initialize.
 	self color: (self color alpha: 0.8).
 	self borderColor: (self borderColor alpha: 0.7).
 ! !
 
-!DrGDrawableMenu methodsFor: 'events' stamp: 'hlsf 12/Apr/2024 12:22:33'!
+!DrGDrawableMenu methodsFor: 'events' stamp: 'hlsf 12/Apr/2024, 10:22:33 am (UTC)'!
 mouseButton1Down: aMouseButtonEvent localPosition: localEventPosition
 	"click outside => step blinking the selected item "
 	(stayUp or: [(self coversLocalPoint:localEventPosition) or: [selectedItem isNil]]) 
@@ -28823,7 +28825,7 @@ mouseButton1Down: aMouseButtonEvent localPosition: localEventPosition
 			tool reset].
 	super mouseButton1Down: aMouseButtonEvent localPosition: localEventPosition ! !
 
-!DrGDrawableMenu methodsFor: 'control' stamp: 'hlsf 12/Apr/2024 12:23:15'!
+!DrGDrawableMenu methodsFor: 'control' stamp: 'hlsf 12/Apr/2024, 10:23:15 am (UTC)'!
 selectItem: aMenuItem 
 	selectedItem ifNotNil:[
 		selectedItem arguments first first stopStepping " blinking"].
@@ -28831,19 +28833,19 @@ selectItem: aMenuItem
 		aMenuItem arguments first first startStepping " blinking"].
 	^ super selectItem: aMenuItem ! !
 
-!DrGDrawableMenu methodsFor: 'accessing' stamp: 'hlsf 6/May/2020 14:17:28'!
+!DrGDrawableMenu methodsFor: 'accessing' stamp: 'hlsf 6/May/2020, 12:17:28 pm (UTC)'!
 tool: aDrGeoTool
 	tool := aDrGeoTool ! !
 
-!DrGLabel methodsFor: 'editing' stamp: 'hlsf 11/Apr/2021 11:49:05'!
+!DrGLabel methodsFor: 'editing' stamp: 'hlsf 11/Apr/2021, 9:49:05 am (UTC)'!
 acceptContents
 	itemMorph mathItem name: contents asString.! !
 
-!DrGLabel methodsFor: 'event handling' stamp: 'hlsf 11/Apr/2021 11:56:51'!
+!DrGLabel methodsFor: 'event handling' stamp: 'hlsf 11/Apr/2021, 9:56:51 am (UTC)'!
 handlesMouseDown: evt
 	^true! !
 
-!DrGLabel methodsFor: 'event handling' stamp: 'hlsf 23/Sep/2025 18:12:02'!
+!DrGLabel methodsFor: 'event handling' stamp: 'hlsf 23/Sep/2025, 4:12:02 pm (UTC)'!
 mouseMove: evt localPosition: deltaVector
 	evt anyButtonPressed ifFalse: [ ^ self ].
 	itemMorph ifNotNil: 
@@ -28852,7 +28854,7 @@ mouseMove: evt localPosition: deltaVector
 		self morphPosition: itemMorph labelPosition].
 ! !
 
-!DrGLabel methodsFor: 'initialization' stamp: 'hlsf 17/Feb/2026 14:47:39'!
+!DrGLabel methodsFor: 'initialization' stamp: 'hlsf 17/Feb/2026, 12:47:39 pm (UTC)'!
 initialize
 	super initialize.
 	blink := false.
@@ -28860,24 +28862,24 @@ initialize
 	self font: DrGeoSystem canvasFont
 ! !
 
-!DrGLabel methodsFor: 'accessing' stamp: 'hlsf 12/Apr/2024 11:09:41'!
+!DrGLabel methodsFor: 'accessing' stamp: 'hlsf 12/Apr/2024, 9:09:41 am (UTC)'!
 delta
 	^ delta! !
 
-!DrGLabel methodsFor: 'accessing' stamp: 'hlsf 12/Apr/2024 11:09:52'!
+!DrGLabel methodsFor: 'accessing' stamp: 'hlsf 12/Apr/2024, 9:09:52 am (UTC)'!
 delta: aPoint
 	delta := aPoint! !
 
-!DrGLabel methodsFor: 'accessing' stamp: 'hlsf 11/Apr/2021 11:56:58'!
+!DrGLabel methodsFor: 'accessing' stamp: 'hlsf 11/Apr/2021, 9:56:58 am (UTC)'!
 morph: aDrGMorph
 	itemMorph := aDrGMorph! !
 
-!DrGLabel methodsFor: 'stepping and presenter' stamp: 'hlsf 11/Apr/2021 11:57:02'!
+!DrGLabel methodsFor: 'stepping and presenter' stamp: 'hlsf 11/Apr/2021, 9:57:02 am (UTC)'!
 startBlinking
 	blink := true.
 	self startStepping ! !
 
-!DrGLabel methodsFor: 'stepping and presenter' stamp: 'hlsf 3/Jun/2022 11:37:32'!
+!DrGLabel methodsFor: 'stepping and presenter' stamp: 'hlsf 3/Jun/2022, 9:37:32 am (UTC)'!
 step
 	blink ifFalse: [^self].
 	super step.
@@ -28885,25 +28887,25 @@ step
 		ifTrue: [self color: itemMorph style color]
 		ifFalse: [self color: DrGTypeColor blinkingColor]! !
 
-!DrGLabel methodsFor: 'stepping and presenter' stamp: 'hlsf 11/Apr/2021 11:57:18'!
+!DrGLabel methodsFor: 'stepping and presenter' stamp: 'hlsf 11/Apr/2021, 9:57:18 am (UTC)'!
 stopBlinking
 	blink := false.
 	self stopStepping.! !
 
-!DrGLabel methodsFor: 'stepping and presenter' stamp: 'hlsf 11/Apr/2021 11:57:23'!
+!DrGLabel methodsFor: 'stepping and presenter' stamp: 'hlsf 11/Apr/2021, 9:57:23 am (UTC)'!
 stopStepping
 	super stopStepping.
 	self color: itemMorph style color.! !
 
-!DrGLabel methodsFor: 'testing' stamp: 'hlsf 11/Apr/2021 11:57:27'!
+!DrGLabel methodsFor: 'testing' stamp: 'hlsf 11/Apr/2021, 9:57:27 am (UTC)'!
 stepTime
 	^500! !
 
-!DrGLabel class methodsFor: 'new-morph participation' stamp: 'hlsf 15/Mar/2022 21:33:53'!
+!DrGLabel class methodsFor: 'new-morph participation' stamp: 'hlsf 15/Mar/2022, 7:33:53 pm (UTC)'!
 includeInNewMorphMenu
 	^ false! !
 
-!DrGStylePanel methodsFor: 'GUI building' stamp: 'hlsf 23/Aug/2025 12:33:08'!
+!DrGStylePanel methodsFor: 'GUI building' stamp: 'drgeo 28/Jun/2026, 7:35:55 am (UTC)'!
 buildMorphicWindow
 	| labelWidth widgets |
 	titleMorph showButtonsNamed: #(#close).
@@ -28918,7 +28920,7 @@ buildMorphicWindow
 	self 	morphExtent: self minimumExtent. 
 	layoutMorph adoptWidgetsColor: self widgetsColor! !
 
-!DrGStylePanel methodsFor: 'GUI building' stamp: 'hlsf 14/Feb/2022 11:25:48'!
+!DrGStylePanel methodsFor: 'GUI building' stamp: 'hlsf 14/Feb/2022, 9:25:48 am (UTC)'!
 searchLabelIn: aMorph
 " Dirty, search for the label morph "
 	(aMorph isKindOf: LabelMorph)
@@ -28932,11 +28934,11 @@ searchLabelIn: aMorph
 				
 		! !
 
-!DrGStylePanel methodsFor: 'initialization' stamp: 'hlsf 28/Jul/2024 10:24:21'!
+!DrGStylePanel methodsFor: 'initialization' stamp: 'hlsf 28/Jul/2024, 8:24:21 am (UTC)'!
 defaultColor
 	^ Theme current transcript ! !
 
-!DrGeoScriptTest methodsFor: 'testing-point' stamp: 'hlsf 13/Apr/2024 10:35:57'!
+!DrGeoScriptTest methodsFor: 'testing-point' stamp: 'hlsf 13/Apr/2024, 8:35:57 am (UTC)'!
 testPointByCoordinates
 	|x y p|
 	x := sketch value: 12.
@@ -28944,7 +28946,7 @@ testPointByCoordinates
 	p := sketch pointX: x Y: y.
 	self assert: p coordinates = (12 @ -18)   ! !
 
-!DrGeoScriptTest methodsFor: 'testing-point' stamp: 'hlsf 13/Apr/2024 10:36:07'!
+!DrGeoScriptTest methodsFor: 'testing-point' stamp: 'hlsf 13/Apr/2024, 8:36:07 am (UTC)'!
 testPointByCoordinatesUnicity
 	|x y p q|
 	x := sketch value: 12.
@@ -29009,7 +29011,7 @@ testPointMiddleUnicity
 	q := sketch middleOf: s.
 	self should: p mathItem == q mathItem  ! !
 
-!DrGeoScriptTest methodsFor: 'testing-point' stamp: 'HilaireFernandes 23/May/2019 11:11:00'!
+!DrGeoScriptTest methodsFor: 'testing-point' stamp: 'HilaireFernandes 23/May/2019, 9:11:00 am (UTC)'!
 testPointOnArc
 	| a b c curve p |
 	a := sketch point: -5 @ 0.
@@ -29029,7 +29031,7 @@ testPointOnArc
 	p mathItem setCurveAbscissa: 1/3  .
 	self assert: (p coordinates closeTo: -2.5 @ 4.3301)! !
 
-!DrGeoScriptTest methodsFor: 'testing-point' stamp: 'HilaireFernandes 23/May/2019 11:11:00'!
+!DrGeoScriptTest methodsFor: 'testing-point' stamp: 'HilaireFernandes 23/May/2019, 9:11:00 am (UTC)'!
 testPointOnArcUnicity
 	| a b c curve p q|
 	a := sketch point: -5 @ 0.
@@ -29045,7 +29047,7 @@ testPointOnArcUnicity
 	self shouldnt: p mathItem == q mathItem   
 ! !
 
-!DrGeoScriptTest methodsFor: 'testing-point' stamp: 'HilaireFernandes 23/May/2019 11:11:00'!
+!DrGeoScriptTest methodsFor: 'testing-point' stamp: 'HilaireFernandes 23/May/2019, 9:11:00 am (UTC)'!
 testPointOnCircle
 	| a b curve p |
 	a := sketch point: -5 @ -5.
@@ -29068,7 +29070,7 @@ testPointOnCircle
 	self assert: (p coordinates closeTo: -8.5355 @ -1.4645).
 ! !
 
-!DrGeoScriptTest methodsFor: 'testing-point' stamp: 'HilaireFernandes 23/May/2019 11:11:00'!
+!DrGeoScriptTest methodsFor: 'testing-point' stamp: 'HilaireFernandes 23/May/2019, 9:11:00 am (UTC)'!
 testPointOnCircleUnicity
 	| a b curve p q |
 	a := sketch point: -5 @ -5.
@@ -29084,7 +29086,7 @@ testPointOnCircleUnicity
 
 ! !
 
-!DrGeoScriptTest methodsFor: 'testing-point' stamp: 'HilaireFernandes 23/May/2019 11:11:00'!
+!DrGeoScriptTest methodsFor: 'testing-point' stamp: 'HilaireFernandes 23/May/2019, 9:11:00 am (UTC)'!
 testPointOnLine
 	| a b curve p |
 	a := sketch point: -15 @ -45.
@@ -29094,7 +29096,7 @@ testPointOnLine
 	self
 		assert: (p coordinates closeTo: -15.4557 @ -45.2279)! !
 
-!DrGeoScriptTest methodsFor: 'testing-point' stamp: 'HilaireFernandes 23/May/2019 11:11:00'!
+!DrGeoScriptTest methodsFor: 'testing-point' stamp: 'HilaireFernandes 23/May/2019, 9:11:00 am (UTC)'!
 testPointOnLineUnicity
 	| a b curve p q|
 	a := sketch point: -15 @ -45.
@@ -29108,7 +29110,7 @@ testPointOnLineUnicity
 	self shouldnt: p mathItem == q mathItem.
 ! !
 
-!DrGeoScriptTest methodsFor: 'testing-point' stamp: 'HilaireFernandes 23/May/2019 11:11:00'!
+!DrGeoScriptTest methodsFor: 'testing-point' stamp: 'HilaireFernandes 23/May/2019, 9:11:00 am (UTC)'!
 testPointOnRay
 	| a b curve p |
 	a := sketch point: -15 @ -45.
@@ -29121,7 +29123,7 @@ testPointOnRay
 	self
 		assert: (p coordinates closeTo: -14.1056 @ -44.5528)! !
 
-!DrGeoScriptTest methodsFor: 'testing-point' stamp: 'HilaireFernandes 23/May/2019 11:11:00'!
+!DrGeoScriptTest methodsFor: 'testing-point' stamp: 'HilaireFernandes 23/May/2019, 9:11:00 am (UTC)'!
 testPointOnRayUnicity
 	| a b curve p q|
 	a := sketch point: -15 @ -45.
@@ -29134,7 +29136,7 @@ testPointOnRayUnicity
 	q := sketch pointOnLine: curve at: 0.22.
 	self shouldnt: p mathItem == q mathItem   ! !
 
-!DrGeoScriptTest methodsFor: 'testing-point' stamp: 'HilaireFernandes 23/May/2019 11:11:00'!
+!DrGeoScriptTest methodsFor: 'testing-point' stamp: 'HilaireFernandes 23/May/2019, 9:11:00 am (UTC)'!
 testPointOnSegment
 	| a b curve p |
 	a := sketch point: -5 @ -5.
@@ -29154,7 +29156,7 @@ testPointOnSegment
 	self assert: p coordinates = (5 / 3 @ (5 / 3)).
 	""  ! !
 
-!DrGeoScriptTest methodsFor: 'testing-point' stamp: 'HilaireFernandes 23/May/2019 11:11:00'!
+!DrGeoScriptTest methodsFor: 'testing-point' stamp: 'HilaireFernandes 23/May/2019, 9:11:00 am (UTC)'!
 testPointOnSegmentUnicity
 	| a b curve p q |
 	a := sketch point: -25 @ -5.
@@ -29184,7 +29186,7 @@ testPointReflexion
 	self assert: (b coordinates closeTo:  2.4@1.8).
 ! !
 
-!DrGeoScriptTest methodsFor: 'testing-point' stamp: 'hlsf 13/Apr/2024 10:36:14'!
+!DrGeoScriptTest methodsFor: 'testing-point' stamp: 'hlsf 13/Apr/2024, 8:36:14 am (UTC)'!
 testPointRotation
 	| c v a b|
 	c := sketch point: 1@1.
@@ -29199,7 +29201,7 @@ testPointRotation
 	self assert: (b coordinates closeTo: 1.5@0.13397).
 ! !
 
-!DrGeoScriptTest methodsFor: 'testing-point' stamp: 'hlsf 13/Apr/2024 10:36:22'!
+!DrGeoScriptTest methodsFor: 'testing-point' stamp: 'hlsf 13/Apr/2024, 8:36:22 am (UTC)'!
 testPointScale
 	| c k a b|
 	c := sketch point: 1@1.
@@ -29384,7 +29386,7 @@ testSlope
 	recomputed := (3 - -5) / (2 - -5).
 	self should: (slope mathItem valueItem closeTo: recomputed).! !
 
-!DrGeoScriptTest methodsFor: 'testing-value' stamp: 'hlsf 13/Apr/2024 10:36:52'!
+!DrGeoScriptTest methodsFor: 'testing-value' stamp: 'hlsf 13/Apr/2024, 8:36:52 am (UTC)'!
 testValueFree
 	| v |
 	v := sketch value: Float pi / 3.  
@@ -29406,7 +29408,7 @@ testCircle
 	self should: (c mathItem center = (3@2)).
 	self should: (c mathItem contains: 8@2)	! !
 
-!DrGeoScriptTest methodsFor: 'testing-circle' stamp: 'hlsf 13/Apr/2024 10:35:29'!
+!DrGeoScriptTest methodsFor: 'testing-circle' stamp: 'hlsf 13/Apr/2024, 8:35:29 am (UTC)'!
 testCircleRadius
 	| c |
 	c := sketch circleCenter: (sketch point: 3@2) radius: (sketch value: 5).
@@ -29418,7 +29420,7 @@ testCircleRadius
 	self should: (c mathItem center = (3@2)).
 	self should: (c mathItem contains: 8@2)	! !
 
-!DrGeoScriptTest methodsFor: 'testing-circle' stamp: 'hlsf 13/Apr/2024 10:35:39'!
+!DrGeoScriptTest methodsFor: 'testing-circle' stamp: 'hlsf 13/Apr/2024, 8:35:39 am (UTC)'!
 testCircleRadiusUnicity
 	| a r c1 c2|
 	a := sketch point: 788@985.
@@ -29566,7 +29568,7 @@ testRayReflexion
 	self assert: (r2 mathItem direction closeTo: 2.2@0.4)  
 ! !
 
-!DrGeoScriptTest methodsFor: 'testing-ray' stamp: 'hlsf 13/Apr/2024 10:36:27'!
+!DrGeoScriptTest methodsFor: 'testing-ray' stamp: 'hlsf 13/Apr/2024, 8:36:27 am (UTC)'!
 testRayRotation
 	| r1 r2 c k |
 	c := sketch point: 1 @ 1.
@@ -29578,7 +29580,7 @@ testRayRotation
 	self assert: (r2 mathItem direction closeTo: -2.23205@0.133974)  
 ! !
 
-!DrGeoScriptTest methodsFor: 'testing-ray' stamp: 'hlsf 13/Apr/2024 10:36:34'!
+!DrGeoScriptTest methodsFor: 'testing-ray' stamp: 'hlsf 13/Apr/2024, 8:36:34 am (UTC)'!
 testRayScale
 	| r1 r2 c k |
 	c := sketch point: 1 @ 1.
@@ -29700,7 +29702,7 @@ testLineReflexion
 	self assert: (l2 mathItem direction closeTo: 2.2@0.4)  
 ! !
 
-!DrGeoScriptTest methodsFor: 'testing-line' stamp: 'hlsf 13/Apr/2024 10:35:45'!
+!DrGeoScriptTest methodsFor: 'testing-line' stamp: 'hlsf 13/Apr/2024, 8:35:45 am (UTC)'!
 testLineRotation
 	| l1 l2 c k |
 	c := sketch point: 1 @ 1.
@@ -29712,7 +29714,7 @@ testLineRotation
 	self assert: (l2 mathItem direction closeTo: -2.23205@0.133974)  
 ! !
 
-!DrGeoScriptTest methodsFor: 'testing-line' stamp: 'hlsf 13/Apr/2024 10:35:51'!
+!DrGeoScriptTest methodsFor: 'testing-line' stamp: 'hlsf 13/Apr/2024, 8:35:51 am (UTC)'!
 testLineScale
 	| l1 l2 c k |
 	c := sketch point: 1 @ 1.
@@ -29756,7 +29758,7 @@ testLineTranslation
 	self assert: l2 mathItem direction = l1 mathItem direction.
 ! !
 
-!DrGeoScriptTest methodsFor: 'testing-line' stamp: 'hlsf 11/Aug/2025 19:45:29'!
+!DrGeoScriptTest methodsFor: 'testing-line' stamp: 'hlsf 11/Aug/2025, 5:45:29 pm (UTC)'!
 testLineUnicity
 	| a b s1 s2|
 	a := sketch point: 788@985.
@@ -30039,7 +30041,7 @@ testPolygonTranslation
 	self should: (p2 mathItem points anySatisfy: [:aPoint | aPoint closeTo: 5@3]).
 ! !
 
-!DrGeoScriptTest methodsFor: 'testing-polygon' stamp: 'hlsf 29/May/2025 12:08:17'!
+!DrGeoScriptTest methodsFor: 'testing-polygon' stamp: 'hlsf 29/May/2025, 10:08:17 am (UTC)'!
 testPolygonUnicity
 	| p1 p2 summit |
 	summit := Array withAll: {
@@ -30171,7 +30173,7 @@ testSegmentReflexion
 	self assert: (v mathItem direction closeTo: 2.2@0.4)  
 ! !
 
-!DrGeoScriptTest methodsFor: 'testing-segment' stamp: 'hlsf 13/Apr/2024 10:36:38'!
+!DrGeoScriptTest methodsFor: 'testing-segment' stamp: 'hlsf 13/Apr/2024, 8:36:38 am (UTC)'!
 testSegmentRotation
 	| u v c k |
 	c := sketch point: 1 @ 1.
@@ -30183,7 +30185,7 @@ testSegmentRotation
 	self assert: (v mathItem direction closeTo: -2.23205@0.133974)  
 ! !
 
-!DrGeoScriptTest methodsFor: 'testing-segment' stamp: 'hlsf 13/Apr/2024 10:36:45'!
+!DrGeoScriptTest methodsFor: 'testing-segment' stamp: 'hlsf 13/Apr/2024, 8:36:45 am (UTC)'!
 testSegmentScale
 	| u v c k |
 	c := sketch point: 1 @ 1.
@@ -30248,29 +30250,29 @@ testSegmentUnicity
 resources 
 	^ {DrGeoScriptTestResource}! !
 
-!DrGeoSmalltalkSketchTest methodsFor: 'helpers' stamp: 'hlsf 8/Apr/2022 11:34:07'!
+!DrGeoSmalltalkSketchTest methodsFor: 'helpers' stamp: 'hlsf 8/Apr/2022, 9:34:07 am (UTC)'!
 launchSketch: aScriptFile
 "Launch a test"
 	(DrGeoSystem smalltalkSketchesPath // aScriptFile) readStream fileIn! !
 
-!DrGeoSmalltalkSketchTest methodsFor: 'helpers' stamp: 'drgeo 25/May/2026 17:08:44'!
+!DrGeoSmalltalkSketchTest methodsFor: 'helpers' stamp: 'drgeo 25/May/2026, 3:08:44 pm (UTC)'!
 tearDown
 	(Delay forMilliseconds: 200) wait.
 	DrGeoSketch allInstancesDo: [:aSketch | aSketch terminateDo ].
 	DrGeoView allInstancesDo: [:drMorph | drMorph delete].! !
 
-!DrGeoSmalltalkSketchTest methodsFor: 'helpers' stamp: 'hlsf 13/Jun/2021 11:03:31'!
+!DrGeoSmalltalkSketchTest methodsFor: 'helpers' stamp: 'hlsf 13/Jun/2021, 9:03:31 am (UTC)'!
 testOnSketch: aScriptFile
 	self 
 		shouldnt: [self launchSketch: aScriptFile] 
 		raise: Error
 		description: 'Fail on script ', aScriptFile.	! !
 
-!DrGeoSmalltalkSketchTest methodsFor: 'tests' stamp: 'hlsf 13/Jun/2021 10:55:27'!
+!DrGeoSmalltalkSketchTest methodsFor: 'tests' stamp: 'hlsf 13/Jun/2021, 8:55:27 am (UTC)'!
 testArchimedesPI
 	self testOnSketch: 'Archimedes PI.st'! !
 
-!DrGeoSmalltalkSketchTest methodsFor: 'tests' stamp: 'hlsf 13/Jun/2021 22:13:51'!
+!DrGeoSmalltalkSketchTest methodsFor: 'tests' stamp: 'hlsf 13/Jun/2021, 8:13:51 pm (UTC)'!
 testArchimedesPIInterval
 	self testOnSketch: 'Archimedes PI Interval.st'! !
 
@@ -30278,7 +30280,7 @@ testArchimedesPIInterval
 testArchimedesSpiral
 	self testOnSketch: 'Archimedes Spiral.st'! !
 
-!DrGeoSmalltalkSketchTest methodsFor: 'tests' stamp: 'hlsf 13/Jun/2021 11:14:54'!
+!DrGeoSmalltalkSketchTest methodsFor: 'tests' stamp: 'hlsf 13/Jun/2021, 9:14:54 am (UTC)'!
 testBernouilliSpiral
 	self launchSketch: 'Bernouilli Spiral.st'! !
 
@@ -30286,7 +30288,7 @@ testBernouilliSpiral
 testBisection
 	self testOnSketch: 'Bisection.st'! !
 
-!DrGeoSmalltalkSketchTest methodsFor: 'tests' stamp: 'hlsf 8/Jun/2021 21:12:18'!
+!DrGeoSmalltalkSketchTest methodsFor: 'tests' stamp: 'hlsf 8/Jun/2021, 7:12:18 pm (UTC)'!
 testBranches
 	self testOnSketch: 'Branches.st'.! !
 
@@ -30318,7 +30320,7 @@ testDurer
 testFathauer
 	self testOnSketch: 'Fathauer.st'! !
 
-!DrGeoSmalltalkSketchTest methodsFor: 'tests' stamp: 'hlsf 13/Jun/2021 11:50:26'!
+!DrGeoSmalltalkSketchTest methodsFor: 'tests' stamp: 'hlsf 13/Jun/2021, 9:50:26 am (UTC)'!
 testFermatSpiral
 	self testOnSketch: 'Fermat Spiral.st'! !
 
@@ -30338,7 +30340,7 @@ testKoch
 testNewtonRaphson
 	self testOnSketch: 'Newton-Raphson.st'! !
 
-!DrGeoSmalltalkSketchTest methodsFor: 'tests' stamp: 'hlsf 13/Jun/2021 12:06:36'!
+!DrGeoSmalltalkSketchTest methodsFor: 'tests' stamp: 'hlsf 13/Jun/2021, 10:06:36 am (UTC)'!
 testPIMontCarlo
 	self testOnSketch: 'PI-Mont-Carlo.st'! !
 
@@ -30362,7 +30364,7 @@ testTree
 testWave
 	self testOnSketch: 'wave.st'! !
 
-!LanguageFontTest methodsFor: 'setUp/tearDown' stamp: 'hlsf 17/Nov/2023 23:37:32'!
+!LanguageFontTest methodsFor: 'setUp/tearDown' stamp: 'hlsf 17/Nov/2023, 9:37:32 pm (UTC)'!
 setUp
 	| font |
 	fontManager := LanguageFontManager new.
@@ -30374,20 +30376,20 @@ setUp
 	font addLocale: (LocaleID isoLanguage: 'kl').
 	fontManager add: font! !
 
-!LanguageFontTest methodsFor: 'testing' stamp: 'hlsf 17/Nov/2023 22:05:46'!
+!LanguageFontTest methodsFor: 'testing' stamp: 'hlsf 17/Nov/2023, 8:05:46 pm (UTC)'!
 testChinese
 " No font for Mandarin in China "
 	| font |
 	font := fontManager languageFontFor: (LocaleID isoString: 'zh-CN').
 	self assert: font isNil! !
 
-!LanguageFontTest methodsFor: 'testing' stamp: 'hlsf 17/Nov/2023 23:38:49'!
+!LanguageFontTest methodsFor: 'testing' stamp: 'hlsf 17/Nov/2023, 9:38:49 pm (UTC)'!
 testEuropean
 " European languages use the default font in Cuis "
 	self assert: (fontManager languageFontFor: (LocaleID isoString: 'fr-FR')) isNil.
 	self assert: (fontManager languageFontFor: (LocaleID isoLanguage: 'fr')) isNil! !
 
-!LanguageFontTest methodsFor: 'testing' stamp: 'hlsf 17/Nov/2023 22:53:57'!
+!LanguageFontTest methodsFor: 'testing' stamp: 'hlsf 17/Nov/2023, 8:53:57 pm (UTC)'!
 testKlingonOnEarth
 " font for Klingo wathever the country  "
 	| font |
@@ -30395,7 +30397,7 @@ testKlingonOnEarth
 	self assert: font notNil.
 	self assert: font family = 'Klingon'! !
 
-!LanguageFontTest methodsFor: 'testing' stamp: 'hlsf 17/Nov/2023 23:38:19'!
+!LanguageFontTest methodsFor: 'testing' stamp: 'hlsf 17/Nov/2023, 9:38:19 pm (UTC)'!
 testKorean
 " Font for Korean in Korea "
 	| font |
@@ -30404,21 +30406,21 @@ testKorean
 	font := fontManager languageFontFor: (LocaleID isoLanguage: 'ko').
 	self assert: font notNil! !
 
-!LanguageFontTest methodsFor: 'testing' stamp: 'hlsf 17/Nov/2023 22:07:09'!
+!LanguageFontTest methodsFor: 'testing' stamp: 'hlsf 17/Nov/2023, 8:07:09 pm (UTC)'!
 testMandarin
 " Font for Mandarin, whatever the country TW, HK, CN "
 	| font |
 	font := fontManager languageFontFor: (LocaleID isoLanguage: 'zh').
 	self assert: font family = 'UnDotum'! !
 
-!LanguageFontTest methodsFor: 'testing' stamp: 'hlsf 17/Nov/2023 22:05:26'!
+!LanguageFontTest methodsFor: 'testing' stamp: 'hlsf 17/Nov/2023, 8:05:26 pm (UTC)'!
 testTaiwan
 " Font for Mandarin in Taiwan "
 	| font |
 	font := fontManager languageFontFor: (LocaleID isoString: 'zh-TW').
 	self assert: font family = 'UnDotum'! !
 
-!LanguageFontTest methodsFor: 'testing' stamp: 'hlsf 17/Nov/2023 22:55:26'!
+!LanguageFontTest methodsFor: 'testing' stamp: 'hlsf 17/Nov/2023, 8:55:26 pm (UTC)'!
 testThai
 " No font for Thai, with and without country code "
 	| font |
@@ -30427,7 +30429,7 @@ testThai
 		font := fontManager languageFontFor: (LocaleID isoLanguage: 'th').
 	self assert: font isNil! !
 
-!DrGeoScriptTestResource methodsFor: 'running' stamp: 'hlsf 10/Apr/2022 19:24:35'!
+!DrGeoScriptTestResource methodsFor: 'running' stamp: 'hlsf 10/Apr/2022, 5:24:35 pm (UTC)'!
 setUp
 	sketch := DrGeoSketch new! !
 
@@ -30444,28 +30446,28 @@ sketch
 isAvailable 
 	^ sketch notNil! !
 
-!DrGTypeArrow methodsFor: 'accessing' stamp: 'hlsf 5/Jun/2022 14:40:15'!
+!DrGTypeArrow methodsFor: 'accessing' stamp: 'hlsf 5/Jun/2022, 12:40:15 pm (UTC)'!
 arrowIndex
 	^ self class arrowIndexOf: self value! !
 
-!DrGTypeArrow methodsFor: 'accessing' stamp: 'hlsf 5/Jun/2022 14:43:11'!
+!DrGTypeArrow methodsFor: 'accessing' stamp: 'hlsf 5/Jun/2022, 12:43:11 pm (UTC)'!
 arrowIndex: anIndex
 	self value: (self class arrowFor: anIndex).
 	self changed: #arrowIndex:! !
 
-!DrGTypeArrow methodsFor: 'accessing' stamp: 'hlsf 5/Jun/2022 14:39:54'!
+!DrGTypeArrow methodsFor: 'accessing' stamp: 'hlsf 5/Jun/2022, 12:39:54 pm (UTC)'!
 arrowMorphCollection
 	^ self class arrowMorphCollection ! !
 
-!DrGTypeArrow class methodsFor: 'accessing' stamp: 'hlsf 5/Jun/2022 14:38:38'!
+!DrGTypeArrow class methodsFor: 'accessing' stamp: 'hlsf 5/Jun/2022, 12:38:38 pm (UTC)'!
 arrowFor: index
 	^ self arrowSymbols at: index! !
 
-!DrGTypeArrow class methodsFor: 'accessing' stamp: 'hlsf 5/Jun/2022 14:39:08'!
+!DrGTypeArrow class methodsFor: 'accessing' stamp: 'hlsf 5/Jun/2022, 12:39:08 pm (UTC)'!
 arrowIndexOf: aSymbol
 	^ self arrowSymbols indexOf: aSymbol! !
 
-!DrGTypeArrow class methodsFor: 'accessing' stamp: 'hlsf 30/Aug/2025 11:40:40'!
+!DrGTypeArrow class methodsFor: 'accessing' stamp: 'hlsf 30/Aug/2025, 9:40:40 am (UTC)'!
 arrowMorphCollection
 	^ self arrowSymbols collect: [:symbol |
 		ImageMorph newWith: (
@@ -30475,74 +30477,74 @@ arrowMorphCollection
 				dash: (Theme current  lineStyleDataFor: #plain)
 				arrow: symbol) ]! !
 
-!DrGTypeArrow class methodsFor: 'accessing' stamp: 'hlsf 5/Jun/2022 14:37:42'!
+!DrGTypeArrow class methodsFor: 'accessing' stamp: 'hlsf 5/Jun/2022, 12:37:42 pm (UTC)'!
 arrowSymbols
 	^ #(#none #back #forward #both) ! !
 
-!DrGTypeColor methodsFor: 'accessing' stamp: 'hlsf 3/Jun/2022 22:05:04'!
+!DrGTypeColor methodsFor: 'accessing' stamp: 'hlsf 3/Jun/2022, 8:05:04 pm (UTC)'!
 colorIndex
 	^ self class colorIndexOf: self value! !
 
-!DrGTypeColor methodsFor: 'accessing' stamp: 'hlsf 3/Jun/2022 22:06:22'!
+!DrGTypeColor methodsFor: 'accessing' stamp: 'hlsf 3/Jun/2022, 8:06:22 pm (UTC)'!
 colorIndex: index
 	self value: (self class colorFor: index).
 	self changed: #colorIndex:! !
 
-!DrGTypeColor methodsFor: 'accessing' stamp: 'hlsf 3/Jun/2022 22:02:11'!
+!DrGTypeColor methodsFor: 'accessing' stamp: 'hlsf 3/Jun/2022, 8:02:11 pm (UTC)'!
 colorMorphCollection
 	^ self class colorMorphCollection! !
 
-!DrGTypeColor class methodsFor: 'accessing' stamp: 'hlsf 3/Jun/2022 11:36:00'!
+!DrGTypeColor class methodsFor: 'accessing' stamp: 'hlsf 3/Jun/2022, 9:36:00 am (UTC)'!
 blinkingColor
 	^Color lightGray lighter lighter! !
 
-!DrGTypeColor class methodsFor: 'accessing' stamp: 'hlsf 3/Jun/2022 11:36:08'!
+!DrGTypeColor class methodsFor: 'accessing' stamp: 'hlsf 3/Jun/2022, 9:36:08 am (UTC)'!
 colorFor: index
 	^ Color perform: (self colorSymbols at: index)! !
 
-!DrGTypeColor class methodsFor: 'accessing' stamp: 'hlsf 3/Jun/2022 11:36:14'!
+!DrGTypeColor class methodsFor: 'accessing' stamp: 'hlsf 3/Jun/2022, 9:36:14 am (UTC)'!
 colorIndexOf: aColor
 	^self colors indexOf: (aColor alpha: 1)! !
 
-!DrGTypeColor class methodsFor: 'accessing' stamp: 'hlsf 30/Aug/2025 11:40:26'!
+!DrGTypeColor class methodsFor: 'accessing' stamp: 'hlsf 30/Aug/2025, 9:40:26 am (UTC)'!
 colorMorphCollection
 	^ self colors collect: [:aColor |
 		ImageMorph newWith: (DrGIcons colorForm: aColor )]! !
 
-!DrGTypeColor class methodsFor: 'accessing' stamp: 'hlsf 3/Jun/2022 11:36:29'!
+!DrGTypeColor class methodsFor: 'accessing' stamp: 'hlsf 3/Jun/2022, 9:36:29 am (UTC)'!
 colorSymbols
 	^#(#black #blue #brown #green #magenta #orange #red #yellow #white)! !
 
-!DrGTypeColor class methodsFor: 'accessing' stamp: 'hlsf 3/Jun/2022 11:36:35'!
+!DrGTypeColor class methodsFor: 'accessing' stamp: 'hlsf 3/Jun/2022, 9:36:35 am (UTC)'!
 colors
 	^ self colorSymbols collect: [:symbol | Color perform: symbol]! !
 
-!DrGTypeColor class methodsFor: 'accessing' stamp: 'hlsf 3/Jun/2022 11:36:40'!
+!DrGTypeColor class methodsFor: 'accessing' stamp: 'hlsf 3/Jun/2022, 9:36:40 am (UTC)'!
 hiddenColor
 	^Color lightGray lighter lighter lighter! !
 
-!DrGTypeMark methodsFor: 'accessing' stamp: 'hlsf 5/Jun/2022 14:42:22'!
+!DrGTypeMark methodsFor: 'accessing' stamp: 'hlsf 5/Jun/2022, 12:42:22 pm (UTC)'!
 markIndex
 	^ self class markIndexOf: self value! !
 
-!DrGTypeMark methodsFor: 'accessing' stamp: 'hlsf 5/Jun/2022 14:26:46'!
+!DrGTypeMark methodsFor: 'accessing' stamp: 'hlsf 5/Jun/2022, 12:26:46 pm (UTC)'!
 markIndex: anIndex
 	self value: (self class markFor: anIndex).
 	self changed: #markIndex:! !
 
-!DrGTypeMark methodsFor: 'accessing' stamp: 'hlsf 5/Jun/2022 14:24:25'!
+!DrGTypeMark methodsFor: 'accessing' stamp: 'hlsf 5/Jun/2022, 12:24:25 pm (UTC)'!
 markMorphCollection
 	^ self class markMorphCollection ! !
 
-!DrGTypeMark class methodsFor: 'accessing' stamp: 'hlsf 5/Jun/2022 14:23:52'!
+!DrGTypeMark class methodsFor: 'accessing' stamp: 'hlsf 5/Jun/2022, 12:23:52 pm (UTC)'!
 markFor: index
 	^ self markSymbols at: index! !
 
-!DrGTypeMark class methodsFor: 'accessing' stamp: 'hlsf 5/Jun/2022 14:23:49'!
+!DrGTypeMark class methodsFor: 'accessing' stamp: 'hlsf 5/Jun/2022, 12:23:49 pm (UTC)'!
 markIndexOf: aMark
 	^ self markSymbols indexOf: aMark! !
 
-!DrGTypeMark class methodsFor: 'accessing' stamp: 'hlsf 30/Aug/2025 11:40:15'!
+!DrGTypeMark class methodsFor: 'accessing' stamp: 'hlsf 30/Aug/2025, 9:40:15 am (UTC)'!
 markMorphCollection
 	^ self markSymbols collect: [:symbol |
 		ImageMorph newWith: (
@@ -30551,36 +30553,36 @@ markMorphCollection
 				color: Color black 
 				mark: symbol) ]! !
 
-!DrGTypeMark class methodsFor: 'accessing' stamp: 'hlsf 5/Jun/2022 14:23:41'!
+!DrGTypeMark class methodsFor: 'accessing' stamp: 'hlsf 5/Jun/2022, 12:23:41 pm (UTC)'!
 markSymbols
 	^ #(#none #mark1 #mark2 #mark3 #disc #circle)! !
 
-!DrGTypePointShape methodsFor: 'accessing' stamp: 'hlsf 5/Jun/2022 11:10:56'!
+!DrGTypePointShape methodsFor: 'accessing' stamp: 'hlsf 5/Jun/2022, 9:10:56 am (UTC)'!
 pointShapeIndex
 	^ self class pointShapeIndexOf: self value! !
 
-!DrGTypePointShape methodsFor: 'accessing' stamp: 'hlsf 5/Jun/2022 11:12:07'!
+!DrGTypePointShape methodsFor: 'accessing' stamp: 'hlsf 5/Jun/2022, 9:12:07 am (UTC)'!
 pointShapeIndex: anIndex
 	self value: (self class pointShapeFor: anIndex).
 	self changed: #pointShapeIndex:! !
 
-!DrGTypePointShape methodsFor: 'accessing' stamp: 'hlsf 5/Jun/2022 11:09:37'!
+!DrGTypePointShape methodsFor: 'accessing' stamp: 'hlsf 5/Jun/2022, 9:09:37 am (UTC)'!
 shapeMorphCollection
 	^ self class shapeMorphCollection ! !
 
-!DrGTypePointShape class methodsFor: 'accessing' stamp: 'hlsf 5/Jun/2022 10:51:10'!
+!DrGTypePointShape class methodsFor: 'accessing' stamp: 'hlsf 5/Jun/2022, 8:51:10 am (UTC)'!
 pointShapeFor: index
 	^ self pointShapeSymbols at: index! !
 
-!DrGTypePointShape class methodsFor: 'accessing' stamp: 'hlsf 5/Jun/2022 10:54:52'!
+!DrGTypePointShape class methodsFor: 'accessing' stamp: 'hlsf 5/Jun/2022, 8:54:52 am (UTC)'!
 pointShapeIndexOf: pointShape
 	^ self pointShapeSymbols indexOf: pointShape! !
 
-!DrGTypePointShape class methodsFor: 'accessing' stamp: 'hlsf 5/Jun/2022 12:01:43'!
+!DrGTypePointShape class methodsFor: 'accessing' stamp: 'hlsf 5/Jun/2022, 10:01:43 am (UTC)'!
 pointShapeSymbols
 	^ `#(#cross #round #square)`! !
 
-!DrGTypePointShape class methodsFor: 'accessing' stamp: 'hlsf 30/Aug/2025 11:39:54'!
+!DrGTypePointShape class methodsFor: 'accessing' stamp: 'hlsf 30/Aug/2025, 9:39:54 am (UTC)'!
 shapeMorphCollection
 	^ self pointShapeSymbols collect: [:symbol |
 		ImageMorph newWith: (
@@ -30590,32 +30592,32 @@ shapeMorphCollection
 				shape: symbol) ]
 ! !
 
-!DrGTypePointSize methodsFor: 'accessing' stamp: 'hlsf 4/Jun/2022 22:15:22'!
+!DrGTypePointSize methodsFor: 'accessing' stamp: 'hlsf 4/Jun/2022, 8:15:22 pm (UTC)'!
 pointSizeIndex
 	^ self class pointSizeIndexOf: self value! !
 
-!DrGTypePointSize methodsFor: 'accessing' stamp: 'hlsf 4/Jun/2022 22:38:08'!
+!DrGTypePointSize methodsFor: 'accessing' stamp: 'hlsf 4/Jun/2022, 8:38:08 pm (UTC)'!
 pointSizeIndex: anIndex
 	self value: (self class pointSizeFor: anIndex).
 	self changed: #pointSizeIndex:! !
 
-!DrGTypePointSize methodsFor: 'accessing' stamp: 'hlsf 4/Jun/2022 22:35:07'!
+!DrGTypePointSize methodsFor: 'accessing' stamp: 'hlsf 4/Jun/2022, 8:35:07 pm (UTC)'!
 sizeMorphCollection
 	^ self class sizeMorphCollection: #square! !
 
-!DrGTypePointSize class methodsFor: 'accessing' stamp: 'hlsf 4/Jun/2022 14:55:59'!
+!DrGTypePointSize class methodsFor: 'accessing' stamp: 'hlsf 4/Jun/2022, 12:55:59 pm (UTC)'!
 pointSizeFor: index
 	^ self pointSizeSymbols at: index! !
 
-!DrGTypePointSize class methodsFor: 'accessing' stamp: 'hlsf 4/Jun/2022 14:51:12'!
+!DrGTypePointSize class methodsFor: 'accessing' stamp: 'hlsf 4/Jun/2022, 12:51:12 pm (UTC)'!
 pointSizeIndexOf: aSize
 	^ self pointSizeSymbols indexOf: aSize! !
 
-!DrGTypePointSize class methodsFor: 'accessing' stamp: 'hlsf 5/Jun/2022 12:01:51'!
+!DrGTypePointSize class methodsFor: 'accessing' stamp: 'hlsf 5/Jun/2022, 10:01:51 am (UTC)'!
 pointSizeSymbols
 	^ `#(#small #medium #large)`! !
 
-!DrGTypePointSize class methodsFor: 'accessing' stamp: 'hlsf 30/Aug/2025 11:39:32'!
+!DrGTypePointSize class methodsFor: 'accessing' stamp: 'hlsf 30/Aug/2025, 9:39:32 am (UTC)'!
 sizeMorphCollection: aShape
 	^ self  pointSizeSymbols collect: [:symbol |
 		ImageMorph newWith: (
@@ -30625,29 +30627,29 @@ sizeMorphCollection: aShape
 				shape: aShape) ]
 ! !
 
-!DrGTypeStyle methodsFor: 'accessing' stamp: 'hlsf 5/Jun/2022 12:50:56'!
+!DrGTypeStyle methodsFor: 'accessing' stamp: 'hlsf 5/Jun/2022, 10:50:56 am (UTC)'!
 styleIndex
 	^ self class styleIndexOf: self value! !
 
-!DrGTypeStyle methodsFor: 'accessing' stamp: 'hlsf 5/Jun/2022 14:51:35'!
+!DrGTypeStyle methodsFor: 'accessing' stamp: 'hlsf 5/Jun/2022, 12:51:35 pm (UTC)'!
 styleIndex: anIndex
 	self value: (self class styleFor: anIndex).
 	self changed: #styleIndex:! !
 
-!DrGTypeStyle methodsFor: 'accessing' stamp: 'hlsf 5/Jun/2022 12:42:26'!
+!DrGTypeStyle methodsFor: 'accessing' stamp: 'hlsf 5/Jun/2022, 10:42:26 am (UTC)'!
 styleMorphCollection
 	^ self class styleMorphCollection ! !
 
-!DrGTypeStyle class methodsFor: 'accessing' stamp: 'hlsf 5/Jun/2022 12:41:21'!
+!DrGTypeStyle class methodsFor: 'accessing' stamp: 'hlsf 5/Jun/2022, 10:41:21 am (UTC)'!
 styleFor: index
 	^ self styleSymbols at: index
 ! !
 
-!DrGTypeStyle class methodsFor: 'accessing' stamp: 'hlsf 5/Jun/2022 12:39:00'!
+!DrGTypeStyle class methodsFor: 'accessing' stamp: 'hlsf 5/Jun/2022, 10:39:00 am (UTC)'!
 styleIndexOf: aLineStyle
 	^ self styleSymbols indexOf: aLineStyle! !
 
-!DrGTypeStyle class methodsFor: 'accessing' stamp: 'hlsf 30/Aug/2025 11:39:02'!
+!DrGTypeStyle class methodsFor: 'accessing' stamp: 'hlsf 30/Aug/2025, 9:39:02 am (UTC)'!
 styleMorphCollection
 	^ self styleSymbols collect: [:symbol |
 		ImageMorph newWith: (
@@ -30656,32 +30658,32 @@ styleMorphCollection
 				color: Color black 
 				dash: (Theme current lineStyleDataFor: symbol)) ]! !
 
-!DrGTypeStyle class methodsFor: 'accessing' stamp: 'hlsf 5/Jun/2022 12:38:39'!
+!DrGTypeStyle class methodsFor: 'accessing' stamp: 'hlsf 5/Jun/2022, 10:38:39 am (UTC)'!
 styleSymbols
 	^ #(#dot #dash #plain) ! !
 
-!DrGTypeThickness methodsFor: 'accessing' stamp: 'hlsf 5/Jun/2022 12:22:49'!
+!DrGTypeThickness methodsFor: 'accessing' stamp: 'hlsf 5/Jun/2022, 10:22:49 am (UTC)'!
 thicknessIndex
 	^ self class thicknessIndexOf: self value! !
 
-!DrGTypeThickness methodsFor: 'accessing' stamp: 'hlsf 5/Jun/2022 12:28:53'!
+!DrGTypeThickness methodsFor: 'accessing' stamp: 'hlsf 5/Jun/2022, 10:28:53 am (UTC)'!
 thicknessIndex: anIndex
 	self value: (self class thicknessFor: anIndex).
 	self changed: #thicknessIndex:! !
 
-!DrGTypeThickness methodsFor: 'accessing' stamp: 'hlsf 5/Jun/2022 12:22:27'!
+!DrGTypeThickness methodsFor: 'accessing' stamp: 'hlsf 5/Jun/2022, 10:22:27 am (UTC)'!
 thicknessMorphCollection
 	^ self class thicknessMorphCollection ! !
 
-!DrGTypeThickness class methodsFor: 'accessing' stamp: 'hlsf 5/Jun/2022 12:07:24'!
+!DrGTypeThickness class methodsFor: 'accessing' stamp: 'hlsf 5/Jun/2022, 10:07:24 am (UTC)'!
 thicknessFor: index
 	^ self thicknessSymbols at: index! !
 
-!DrGTypeThickness class methodsFor: 'accessing' stamp: 'hlsf 5/Jun/2022 12:06:44'!
+!DrGTypeThickness class methodsFor: 'accessing' stamp: 'hlsf 5/Jun/2022, 10:06:44 am (UTC)'!
 thicknessIndexOf: thickness
 	^ self thicknessSymbols indexOf: thickness! !
 
-!DrGTypeThickness class methodsFor: 'accessing' stamp: 'hlsf 30/Aug/2025 11:39:07'!
+!DrGTypeThickness class methodsFor: 'accessing' stamp: 'hlsf 30/Aug/2025, 9:39:07 am (UTC)'!
 thicknessMorphCollection
 	^ self thicknessSymbols collect: [:symbol | 		
 		ImageMorph newWith: (
@@ -30690,122 +30692,122 @@ thicknessMorphCollection
 				color: Color black
 				dash: nil) ]! !
 
-!DrGTypeThickness class methodsFor: 'accessing' stamp: 'hlsf 5/Jun/2022 12:01:35'!
+!DrGTypeThickness class methodsFor: 'accessing' stamp: 'hlsf 5/Jun/2022, 10:01:35 am (UTC)'!
 thicknessSymbols
 	^ `#(#small #medium #large)`! !
 
-!Object methodsFor: '*DrGeoCore' stamp: 'hlsf 20/Jun/2021 11:37:54'!
+!Object methodsFor: '*DrGeoCore' stamp: 'hlsf 20/Jun/2021, 9:37:54 am (UTC)'!
 isAngleItem
 	^false! !
 
-!Object methodsFor: '*DrGeoCore' stamp: 'hlsf 20/Jun/2021 11:38:03'!
+!Object methodsFor: '*DrGeoCore' stamp: 'hlsf 20/Jun/2021, 9:38:03 am (UTC)'!
 isArcItem
 	^false! !
 
-!Object methodsFor: '*DrGeoCore' stamp: 'hlsf 20/Jun/2021 11:38:10'!
+!Object methodsFor: '*DrGeoCore' stamp: 'hlsf 20/Jun/2021, 9:38:10 am (UTC)'!
 isBitmapItem
 	^false! !
 
-!Object methodsFor: '*DrGeoCore' stamp: 'hlsf 20/Jun/2021 11:38:15'!
+!Object methodsFor: '*DrGeoCore' stamp: 'hlsf 20/Jun/2021, 9:38:15 am (UTC)'!
 isCircleItem
 	^false! !
 
-!Object methodsFor: '*DrGeoCore' stamp: 'hlsf 20/Jun/2021 11:39:10'!
+!Object methodsFor: '*DrGeoCore' stamp: 'hlsf 20/Jun/2021, 9:39:10 am (UTC)'!
 isCompositeItem
 	^false! !
 
-!Object methodsFor: '*DrGeoCore' stamp: 'hlsf 20/Jun/2021 11:39:16'!
+!Object methodsFor: '*DrGeoCore' stamp: 'hlsf 20/Jun/2021, 9:39:16 am (UTC)'!
 isConstrainedPointItem
 	^false! !
 
-!Object methodsFor: '*DrGeoCore' stamp: 'hlsf 20/Jun/2021 11:39:24'!
+!Object methodsFor: '*DrGeoCore' stamp: 'hlsf 20/Jun/2021, 9:39:24 am (UTC)'!
 isCurveItem
 "When true, free point can be constrained on this item line"
 	^false! !
 
-!Object methodsFor: '*DrGeoCore' stamp: 'hlsf 20/Jun/2021 11:39:38'!
+!Object methodsFor: '*DrGeoCore' stamp: 'hlsf 20/Jun/2021, 9:39:38 am (UTC)'!
 isDirectionItem
 "When true, this item are straight line with normal and unit vector"
 	^false! !
 
-!Object methodsFor: '*DrGeoCore' stamp: 'hlsf 20/Jun/2021 11:39:45'!
+!Object methodsFor: '*DrGeoCore' stamp: 'hlsf 20/Jun/2021, 9:39:45 am (UTC)'!
 isEquation
 	^ false! !
 
-!Object methodsFor: '*DrGeoCore' stamp: 'hlsf 20/Jun/2021 11:39:50'!
+!Object methodsFor: '*DrGeoCore' stamp: 'hlsf 20/Jun/2021, 9:39:50 am (UTC)'!
 isFreePointItem
 	^false! !
 
-!Object methodsFor: '*DrGeoCore' stamp: 'hlsf 20/Jun/2021 11:39:56'!
+!Object methodsFor: '*DrGeoCore' stamp: 'hlsf 20/Jun/2021, 9:39:56 am (UTC)'!
 isFreePointOnPlaneItem
 	^false! !
 
-!Object methodsFor: '*DrGeoCore' stamp: 'hlsf 20/Jun/2021 11:40:02'!
+!Object methodsFor: '*DrGeoCore' stamp: 'hlsf 20/Jun/2021, 9:40:02 am (UTC)'!
 isGeometricItem
 	^false! !
 
-!Object methodsFor: '*DrGeoCore' stamp: 'hlsf 20/Jun/2021 11:40:10'!
+!Object methodsFor: '*DrGeoCore' stamp: 'hlsf 20/Jun/2021, 9:40:10 am (UTC)'!
 isIntersectableItem
 "When true, this curve can be intersected"
 	^self isCurveItem! !
 
-!Object methodsFor: '*DrGeoCore' stamp: 'hlsf 20/Jun/2021 11:40:15'!
+!Object methodsFor: '*DrGeoCore' stamp: 'hlsf 20/Jun/2021, 9:40:15 am (UTC)'!
 isIntersectionPointItem
 	^false! !
 
-!Object methodsFor: '*DrGeoCore' stamp: 'hlsf 20/Jun/2021 11:40:21'!
+!Object methodsFor: '*DrGeoCore' stamp: 'hlsf 20/Jun/2021, 9:40:21 am (UTC)'!
 isLineItem
 	^false! !
 
-!Object methodsFor: '*DrGeoCore' stamp: 'hlsf 20/Jun/2021 11:40:26'!
+!Object methodsFor: '*DrGeoCore' stamp: 'hlsf 20/Jun/2021, 9:40:26 am (UTC)'!
 isLocusItem
 	^false! !
 
-!Object methodsFor: '*DrGeoCore' stamp: 'hlsf 20/Jun/2021 11:40:32'!
+!Object methodsFor: '*DrGeoCore' stamp: 'hlsf 20/Jun/2021, 9:40:32 am (UTC)'!
 isMathItem
 	^false! !
 
-!Object methodsFor: '*DrGeoCore' stamp: 'hlsf 20/Jun/2021 11:40:38'!
+!Object methodsFor: '*DrGeoCore' stamp: 'hlsf 20/Jun/2021, 9:40:38 am (UTC)'!
 isNumberItem
 	^false! !
 
-!Object methodsFor: '*DrGeoCore' stamp: 'hlsf 20/Jun/2021 11:40:43'!
+!Object methodsFor: '*DrGeoCore' stamp: 'hlsf 20/Jun/2021, 9:40:43 am (UTC)'!
 isPointItem
 	^false! !
 
-!Object methodsFor: '*DrGeoCore' stamp: 'hlsf 20/Jun/2021 11:40:49'!
+!Object methodsFor: '*DrGeoCore' stamp: 'hlsf 20/Jun/2021, 9:40:49 am (UTC)'!
 isPointItemOnCurve
 	^false! !
 
-!Object methodsFor: '*DrGeoCore' stamp: 'hlsf 20/Jun/2021 11:40:54'!
+!Object methodsFor: '*DrGeoCore' stamp: 'hlsf 20/Jun/2021, 9:40:54 am (UTC)'!
 isPolygonItem
 	^false! !
 
-!Object methodsFor: '*DrGeoCore' stamp: 'hlsf 20/Jun/2021 11:40:59'!
+!Object methodsFor: '*DrGeoCore' stamp: 'hlsf 20/Jun/2021, 9:40:59 am (UTC)'!
 isRayItem
 	^false! !
 
-!Object methodsFor: '*DrGeoCore' stamp: 'hlsf 20/Jun/2021 11:41:04'!
+!Object methodsFor: '*DrGeoCore' stamp: 'hlsf 20/Jun/2021, 9:41:04 am (UTC)'!
 isScriptItem
 	^false! !
 
-!Object methodsFor: '*DrGeoCore' stamp: 'hlsf 20/Jun/2021 11:41:09'!
+!Object methodsFor: '*DrGeoCore' stamp: 'hlsf 20/Jun/2021, 9:41:09 am (UTC)'!
 isSegmentItem
 	^false! !
 
-!Object methodsFor: '*DrGeoCore' stamp: 'hlsf 20/Jun/2021 11:41:16'!
+!Object methodsFor: '*DrGeoCore' stamp: 'hlsf 20/Jun/2021, 9:41:16 am (UTC)'!
 isTextItem
 	^false! !
 
-!Object methodsFor: '*DrGeoCore' stamp: 'hlsf 20/Jun/2021 11:41:32'!
+!Object methodsFor: '*DrGeoCore' stamp: 'hlsf 20/Jun/2021, 9:41:32 am (UTC)'!
 isValueItem
 	^false! !
 
-!Object methodsFor: '*DrGeoCore' stamp: 'hlsf 20/Jun/2021 11:41:37'!
+!Object methodsFor: '*DrGeoCore' stamp: 'hlsf 20/Jun/2021, 9:41:37 am (UTC)'!
 isVectorItem
 	^false! !
 
-!Theme methodsFor: '*DrGeoCore-canvas' stamp: 'hlsf 30/Mar/2024 11:00:26'!
+!Theme methodsFor: '*DrGeoCore-canvas' stamp: 'hlsf 30/Mar/2024, 9:00:26 am (UTC)'!
 adjustColor: aColor
 "Depending on the current Theme, 
 we want to adjust the black or white color used to display an item view"
@@ -30818,44 +30820,44 @@ we want to adjust the black or white color used to display an item view"
 				ifTrue: [Color black alpha: aColor alpha] ifFalse: [aColor] ]
 		! !
 
-!Theme methodsFor: '*DrGeoCore-canvas' stamp: 'hlsf 3/Apr/2024 17:07:44'!
+!Theme methodsFor: '*DrGeoCore-canvas' stamp: 'hlsf 3/Apr/2024, 3:07:44 pm (UTC)'!
 canvasBackground
 	^ `Color white`! !
 
-!Theme methodsFor: '*DrGeoCore-UI' stamp: 'hlsf 26/Mar/2024 21:35:54'!
+!Theme methodsFor: '*DrGeoCore-UI' stamp: 'hlsf 26/Mar/2024, 7:35:54 pm (UTC)'!
 circularToolbarDropDownGap
 	^ self scale: 5! !
 
-!Theme methodsFor: '*DrGeoCore-UI' stamp: 'hlsf 26/Mar/2024 21:36:11'!
+!Theme methodsFor: '*DrGeoCore-UI' stamp: 'hlsf 26/Mar/2024, 7:36:11 pm (UTC)'!
 circularToolbarDropDownHeight
 	^ self scale: 15! !
 
-!Theme methodsFor: '*DrGeoCore-UI' stamp: 'hlsf 26/Mar/2024 21:37:58'!
+!Theme methodsFor: '*DrGeoCore-UI' stamp: 'hlsf 26/Mar/2024, 7:37:58 pm (UTC)'!
 circularToolbarExtent
 	^ self scale: 300! !
 
-!Theme methodsFor: '*DrGeoCore-UI' stamp: 'hlsf 3/Apr/2024 17:07:52'!
+!Theme methodsFor: '*DrGeoCore-UI' stamp: 'hlsf 3/Apr/2024, 3:07:52 pm (UTC)'!
 drgeoButtonColor
 "Blue Ukraine"
 	^ `Color fromHexString: '#0057b7'`! !
 
-!Theme methodsFor: '*DrGeoCore-UI' stamp: 'hlsf 3/Apr/2024 17:07:56'!
+!Theme methodsFor: '*DrGeoCore-UI' stamp: 'hlsf 3/Apr/2024, 3:07:56 pm (UTC)'!
 drgeoButtonSelectedColor
 "Yellow Ukraine"
 	^ Color fromHexString: '#ffd700'! !
 
-!Theme methodsFor: '*DrGeoCore-UI' stamp: 'hlsf 30/Mar/2024 15:45:44'!
+!Theme methodsFor: '*DrGeoCore-UI' stamp: 'hlsf 30/Mar/2024, 1:45:44 pm (UTC)'!
 isDarkTheme
 	^ self canvasBackground = `Color black`! !
 
-!Theme methodsFor: '*DrGeoCore-canvas' stamp: 'hlsf 27/May/2025 18:14:19'!
+!Theme methodsFor: '*DrGeoCore-canvas' stamp: 'hlsf 27/May/2025, 4:14:19 pm (UTC)'!
 lineStyleDataFor: aStyle
 	"possible lineStyle"
 	aStyle = #dot ifTrue: [^ self scale: #(1 6)].
 	aStyle = #dash ifTrue: [^ self scale: #(8 8)].
 	^ nil! !
 
-!Theme methodsFor: '*DrGeoCore-canvas' stamp: 'hlsf 29/Mar/2024 10:03:10'!
+!Theme methodsFor: '*DrGeoCore-canvas' stamp: 'hlsf 29/Mar/2024, 8:03:10 am (UTC)'!
 lineWidthFor: thickness
 " width of line  view "
 	^ thickness == #small 
@@ -30865,7 +30867,7 @@ lineWidthFor: thickness
 				ifTrue:[self scale: 2]					
 				ifFalse:[self scale: 3]	]! !
 
-!Theme methodsFor: '*DrGeoCore-canvas' stamp: 'hlsf 26/Mar/2024 21:55:20'!
+!Theme methodsFor: '*DrGeoCore-canvas' stamp: 'hlsf 26/Mar/2024, 7:55:20 pm (UTC)'!
 pointExtentFor: pointSize
 " Extent of point view "
 	^ (pointSize == #small 
@@ -30875,54 +30877,54 @@ pointExtentFor: pointSize
 				ifTrue:[self scale: 10]					
 				ifFalse:[self scale: 8]	]) asPoint! !
 
-!Theme methodsFor: '*DrGeoCore-UI' stamp: 'hlsf 2/Apr/2024 18:47:14'!
+!Theme methodsFor: '*DrGeoCore-UI' stamp: 'hlsf 2/Apr/2024, 4:47:14 pm (UTC)'!
 previewSize
 	^ 300@200! !
 
-!Theme methodsFor: '*DrGeoCore-UI' stamp: 'hlsf 30/Jul/2024 09:32:34'!
+!Theme methodsFor: '*DrGeoCore-UI' stamp: 'hlsf 30/Jul/2024, 7:32:34 am (UTC)'!
 scale: anIntegerOrCollection
 " Scale the length represented by anInteger to the display density "
 	^ (self scaled: anIntegerOrCollection) rounded! !
 
-!Theme methodsFor: '*DrGeoCore-UI' stamp: 'hlsf 26/Mar/2024 22:06:34'!
+!Theme methodsFor: '*DrGeoCore-UI' stamp: 'hlsf 26/Mar/2024, 8:06:34 pm (UTC)'!
 scaled: aFloat
 " Scale the length represented by anInteger to the display density "
 	^ aFloat * FontFamily defaultPointSize / 12! !
 
-!Theme methodsFor: '*DrGeoCore-UI' stamp: 'hlsf 24/Mar/2024 15:42:17'!
+!Theme methodsFor: '*DrGeoCore-UI' stamp: 'hlsf 24/Mar/2024, 1:42:17 pm (UTC)'!
 smWheelWidth
 	^ (self wheelWidth / 1.5) rounded max: 1! !
 
-!Theme methodsFor: '*DrGeoCore-UI' stamp: 'hlsf 24/Mar/2024 15:38:21'!
+!Theme methodsFor: '*DrGeoCore-UI' stamp: 'hlsf 24/Mar/2024, 1:38:21 pm (UTC)'!
 toolbarIconSize
 	^ (FontFamily defaultPointSize + 1) * 4! !
 
-!Theme methodsFor: '*DrGeoCore-UI' stamp: 'hlsf 26/Mar/2024 21:41:25'!
+!Theme methodsFor: '*DrGeoCore-UI' stamp: 'hlsf 26/Mar/2024, 7:41:25 pm (UTC)'!
 wheelHeight
 	^ self scale: 120! !
 
-!Theme methodsFor: '*DrGeoCore-UI' stamp: 'hlsf 26/Mar/2024 21:40:56'!
+!Theme methodsFor: '*DrGeoCore-UI' stamp: 'hlsf 26/Mar/2024, 7:40:56 pm (UTC)'!
 wheelWidth
 	^ self scale: 24! !
 
-!DarkTheme methodsFor: '*DrGeoCore-canvas' stamp: 'hlsf 30/Mar/2024 15:45:27'!
+!DarkTheme methodsFor: '*DrGeoCore-canvas' stamp: 'hlsf 30/Mar/2024, 1:45:27 pm (UTC)'!
 canvasBackground
 	^ `Color black`! !
 
-!DarkTheme methodsFor: '*DrGeoCore-UI' stamp: 'hlsf 30/Mar/2024 16:22:36'!
+!DarkTheme methodsFor: '*DrGeoCore-UI' stamp: 'hlsf 30/Mar/2024, 2:22:36 pm (UTC)'!
 drgeoButtonColor
 	^ `Color black lighter lighter lighter`
 ! !
 
-!DarkTheme methodsFor: '*DrGeoCore-UI' stamp: 'hlsf 30/Mar/2024 16:22:30'!
+!DarkTheme methodsFor: '*DrGeoCore-UI' stamp: 'hlsf 30/Mar/2024, 2:22:30 pm (UTC)'!
 drgeoButtonSelectedColor
 	^ `Color lightGray lighter`! !
 
-!SequenceableCollection methodsFor: '*DrGeoCore' stamp: 'hlsf 24/Feb/2022 22:32:55'!
+!SequenceableCollection methodsFor: '*DrGeoCore' stamp: 'hlsf 24/Feb/2022, 8:32:55 pm (UTC)'!
 shiftRight
 	^ self allButFirst, (Array with: self first)! !
 
-!LinkedList methodsFor: '*DrGeoCore-Link' stamp: 'hlsf 11/Apr/2024 10:35:30'!
+!LinkedList methodsFor: '*DrGeoCore-Link' stamp: 'hlsf 11/Apr/2024, 8:35:30 am (UTC)'!
 add: aLink after: otherLink
 	"Add otherLink  after link in the list. Answer aLink."
 	| savedLink |
@@ -30932,21 +30934,21 @@ add: aLink after: otherLink
 	aLink nextLink:  savedLink.
 	^aLink.! !
 
-!Number methodsFor: '*DrGeoCore' stamp: 'hlsf 1/May/2020 23:32:17'!
+!Number methodsFor: '*DrGeoCore' stamp: 'hlsf 1/May/2020, 9:32:17 pm (UTC)'!
 closeTo: num
 	"Tell whether the receiver and arguments are close from each."
 
 	num isFloat ifTrue: [ ^ num closeTo: self asFloat ].
 	^ [ self = num ] ifError: [ false ]! !
 
-!Number methodsFor: '*DrGeoCore' stamp: 'hlsf 1/May/2020 23:31:58'!
+!Number methodsFor: '*DrGeoCore' stamp: 'hlsf 1/May/2020, 9:31:58 pm (UTC)'!
 closeTo: num precision: aPrecision
 	"are these two numbers close?"
 
 	num isFloat ifTrue: [ ^ num closeTo: self asFloat precision: aPrecision ].
 	^ [ self = num ] ifError: [ false ]! !
 
-!Number methodsFor: '*DrGeoCore' stamp: 'hlsf 19/Oct/2022 17:11:44'!
+!Number methodsFor: '*DrGeoCore' stamp: 'hlsf 19/Oct/2022, 3:11:44 pm (UTC)'!
 printParenthesisOn: aStream
 "Add parenthesis when the value is negative"
 	self < 0 
@@ -30955,20 +30957,20 @@ printParenthesisOn: aStream
 			aStream nextPut: $)]
 		ifFalse: [self printOn: aStream]! !
 
-!Number methodsFor: '*DrGeoCore' stamp: 'hlsf 2/May/2020 12:52:46'!
+!Number methodsFor: '*DrGeoCore' stamp: 'hlsf 2/May/2020, 10:52:46 am (UTC)'!
 printShowingDecimalPlaces: digits
 	^ String 
 		streamContents:  [:str | self printOn: str fractionDigits: digits]
 		estimatedSize: 10 + digits! !
 
-!Float methodsFor: '*DrGeoCore' stamp: 'hlsf 28/Jan/2024 17:17:21'!
+!Float methodsFor: '*DrGeoCore' stamp: 'hlsf 28/Jan/2024, 3:17:21 pm (UTC)'!
 asApproximateFraction
 	"Answer a Fraction approximating the receiver. This conversion uses the 
 	continued fraction method to approximate a floating point number."
 
 	^ self asApproximateFractionAtOrder: 0! !
 
-!Float methodsFor: '*DrGeoCore' stamp: 'hlsf 28/Jan/2024 17:16:56'!
+!Float methodsFor: '*DrGeoCore' stamp: 'hlsf 28/Jan/2024, 3:16:56 pm (UTC)'!
 asApproximateFractionAtOrder: maxOrder
 	"Answer a Fraction approximating the receiver. This conversion uses the 
 	continued fraction method to approximate a floating point number. If maxOrder
@@ -31010,13 +31012,13 @@ asApproximateFractionAtOrder: maxOrder
 		ifFalse: ["Otherwise return Fraction result"
 				^ Fraction numerator: num1 denominator: denom1]! !
 
-!Float methodsFor: '*DrGeoCore' stamp: 'hlsf 1/May/2020 23:30:53'!
+!Float methodsFor: '*DrGeoCore' stamp: 'hlsf 1/May/2020, 9:30:53 pm (UTC)'!
 closeTo: num
  	"Tell whether the receiver and arguments are close from each."
 	
 	^ self closeTo: num precision: 0.0001! !
 
-!Float methodsFor: '*DrGeoCore' stamp: 'hlsf 1/May/2020 23:29:55'!
+!Float methodsFor: '*DrGeoCore' stamp: 'hlsf 1/May/2020, 9:29:55 pm (UTC)'!
 closeTo: num precision: aPrecision
  	"Tell whether the receiver and arguments are close from each other given a precision"
 	
@@ -31026,7 +31028,7 @@ closeTo: num precision: aPrecision
 	^self = num asFloat
 		or: [(self - num) abs / (self abs max: num abs) < aPrecision]! !
 
-!Float methodsFor: '*DrGeoCore' stamp: 'hlsf 19/Oct/2022 17:14:12'!
+!Float methodsFor: '*DrGeoCore' stamp: 'hlsf 19/Oct/2022, 3:14:12 pm (UTC)'!
 printParenthesisOn: aStream
 "Add parenthesis when the value is negative"
 	self < 0 
@@ -31035,44 +31037,44 @@ printParenthesisOn: aStream
 			aStream nextPut: $)]
 		ifFalse: [self printOn: aStream fractionDigits: 1]! !
 
-!Fraction methodsFor: '*DrGeoCore' stamp: 'hlsf 19/Oct/2022 17:15:34'!
+!Fraction methodsFor: '*DrGeoCore' stamp: 'hlsf 19/Oct/2022, 3:15:34 pm (UTC)'!
 printParenthesisOn: aStream
 "No need to add parenthesis, it is handled by Fraction>>printOn:"
 	self printOn: aStream ! !
 
-!Color methodsFor: '*DrGeoCore' stamp: 'hlsf 18/Mar/2023 11:00:59'!
+!Color methodsFor: '*DrGeoCore' stamp: 'hlsf 18/Mar/2023, 9:00:59 am (UTC)'!
 hexHtml
 	^ '#', self hexStringRGB ! !
 
-!Point methodsFor: '*DrGeoCore' stamp: 'hlsf 1/May/2020 23:35:38'!
+!Point methodsFor: '*DrGeoCore' stamp: 'hlsf 1/May/2020, 9:35:38 pm (UTC)'!
 closeTo: aPoint
  	^ (x closeTo: aPoint x) and: [ y closeTo: aPoint y ]! !
 
-!Point methodsFor: '*DrGeoCore' stamp: 'hlsf 18/Mar/2023 16:31:42'!
+!Point methodsFor: '*DrGeoCore' stamp: 'hlsf 18/Mar/2023, 2:31:42 pm (UTC)'!
 printCouple
 	^ String streamContents: [:str | self printCoupleOn: str]
 ! !
 
-!Point methodsFor: '*DrGeoCore' stamp: 'hlsf 18/Mar/2023 14:17:55'!
+!Point methodsFor: '*DrGeoCore' stamp: 'hlsf 18/Mar/2023, 12:17:55 pm (UTC)'!
 printCoupleOn: aStream
 " print as 'x,y' "
 	x printOn: aStream.
 	aStream nextPut: $,.
 	y printOn: aStream! !
 
-!Point methodsFor: '*DrGeoCore' stamp: 'hlsf 18/Mar/2023 15:52:02'!
+!Point methodsFor: '*DrGeoCore' stamp: 'hlsf 18/Mar/2023, 1:52:02 pm (UTC)'!
 printMini
 	^ String streamContents: [:str | self printMinimumOn: str]
 ! !
 
-!Point methodsFor: '*DrGeoCore' stamp: 'hlsf 18/Mar/2023 15:51:01'!
+!Point methodsFor: '*DrGeoCore' stamp: 'hlsf 18/Mar/2023, 1:51:01 pm (UTC)'!
 printMinimumOn: aStream
 " print as 'x,y' "
 	x printOn: aStream.
 	aStream nextPut: Character space.
 	y printOn: aStream! !
 
-!Point methodsFor: '*DrGeoCore' stamp: 'hlsf 31/May/2021 18:40:16'!
+!Point methodsFor: '*DrGeoCore' stamp: 'hlsf 31/May/2021, 4:40:16 pm (UTC)'!
 printShowingDecimalPlaces: placeDesired 
 "do not round when coordinate is a fraction"
 	|stringX stringY|
@@ -31084,12 +31086,12 @@ printShowingDecimalPlaces: placeDesired
 		ifFalse: [stringY := y printShowingDecimalPlaces: placeDesired].		
 	^ stringX, '@', stringY! !
 
-!Point methodsFor: '*DrGeoCore' stamp: 'hlsf 31/May/2021 18:38:18'!
+!Point methodsFor: '*DrGeoCore' stamp: 'hlsf 31/May/2021, 4:38:18 pm (UTC)'!
 reflexionBy: aPoint direction: aDirection
 "the reflected point according to the axe defined by aPoint and aDirection"
 	^ ((self - aPoint) vectorReflexionBy: aDirection) + aPoint! !
 
-!Point methodsFor: '*DrGeoCore' stamp: 'hlsf 31/May/2021 18:44:12'!
+!Point methodsFor: '*DrGeoCore' stamp: 'hlsf 31/May/2021, 4:44:12 pm (UTC)'!
 rotateBy: angle about: center 
 	"This method returns the point obtained after rotating myself (counter clockwise) 
 	around the #center point of an #angle given as parameter. The #angle provided as 
@@ -31100,18 +31102,18 @@ rotateBy: angle about: center
 	theta := angle asFloat - p theta.
 	^ (center x asFloat + (r * theta cos)) @ (center y asFloat - (r * theta sin))! !
 
-!Point methodsFor: '*DrGeoCore' stamp: 'hlsf 31/May/2021 18:39:43'!
+!Point methodsFor: '*DrGeoCore' stamp: 'hlsf 31/May/2021, 4:39:43 pm (UTC)'!
 rotateVector: anAngle
 |cosa sina|
 	cosa := anAngle cos.
 	sina := anAngle sin.
 	^ (x * cosa - (y * sina))@(x * sina + (y * cosa))! !
 
-!Point methodsFor: '*DrGeoCore' stamp: 'hlsf 4/Aug/2021 12:08:01'!
+!Point methodsFor: '*DrGeoCore' stamp: 'hlsf 4/Aug/2021, 10:08:01 am (UTC)'!
 roundTo: quantum
 	^ (x roundTo: quantum) @ (y roundTo: quantum)! !
 
-!Point methodsFor: '*DrGeoCore' stamp: 'hlsf 31/May/2021 18:37:51'!
+!Point methodsFor: '*DrGeoCore' stamp: 'hlsf 31/May/2021, 4:37:51 pm (UTC)'!
 vectorReflexionBy: aDirection
 "the reflected vector according to the direction"
 	| unit normal |
@@ -31123,15 +31125,15 @@ vectorReflexionBy: aDirection
 	^((self dotProduct: unit) * unit) - ((self dotProduct: normal) * normal)
 ! !
 
-!MenuItemMorph methodsFor: '*DrGeoCore' stamp: 'hlsf 3/Jan/2022 09:01:34'!
+!MenuItemMorph methodsFor: '*DrGeoCore' stamp: 'hlsf 3/Jan/2022, 7:01:34 am (UTC)'!
 arguments
 	^ arguments! !
 
-!WorldMorph methodsFor: '*DrGeoCore' stamp: 'hlsf 26/Feb/2026 11:10:57'!
+!WorldMorph methodsFor: '*DrGeoCore' stamp: 'hlsf 26/Feb/2026, 9:10:57 am (UTC)'!
 isStepping: aMorph
 	^ stepList anySatisfy: [:stepMsg | stepMsg receiver == aMorph]! !
 
-!AbstractVectorCanvas methodsFor: '*DrGeoCore' stamp: 'hlsf 27/May/2025 17:49:22'!
+!AbstractVectorCanvas methodsFor: '*DrGeoCore' stamp: 'hlsf 27/May/2025, 3:49:22 pm (UTC)'!
 strokeWidth: borderWidth color: borderColor strokeDashArray: dashedBorder 	do: pathCommandsBlock
 "
 dashedBorder = array of 2 element, for example #(1 6), one pixel on, 6 off 
@@ -31149,14 +31151,14 @@ dashedBorder = array of 2 element, for example #(1 6), one pixel on, 6 off
 			dashedStrokeBits:  (2 raisedTo: dashedBorder first) - 1  << dashedBorder second
 			do: pathCommandsBlock ]! !
 
-!RealEstateAgent class methodsFor: '*DrGeoCore' stamp: 'hlsf 24/Apr/2020 12:36:51'!
+!RealEstateAgent class methodsFor: '*DrGeoCore' stamp: 'hlsf 24/Apr/2020, 10:36:51 am (UTC)'!
 leftMaximumUsableArea
 "Return the left half of the usable area"
 	| rectangle |
 	rectangle := self maximumUsableArea.
 	^ rectangle origin corner: rectangle bottomCenter! !
 
-!RealEstateAgent class methodsFor: '*DrGeoCore' stamp: 'hlsf 24/Apr/2020 12:36:28'!
+!RealEstateAgent class methodsFor: '*DrGeoCore' stamp: 'hlsf 24/Apr/2020, 10:36:28 am (UTC)'!
 rightMaximumUsableArea
 	"Return the left half of the usable area"
 	| rectangle |

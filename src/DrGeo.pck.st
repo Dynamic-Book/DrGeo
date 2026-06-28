@@ -1,6 +1,6 @@
-'From Cuis7.9 [latest update: #7979] on 7 June 2026 at 12:24:19 pm'!
+'From Cuis7.9 [latest update: #8031] on 28 June 2026 at 10:33:04 am'!
 'Description '!
-!provides: 'DrGeo' 1 800!
+!provides: 'DrGeo' 1 801!
 !requires: 'Gettext' 1 17 nil!
 !requires: 'SVG' 1 16 nil!
 !requires: 'YAXO' 1 19 nil!
@@ -596,13 +596,13 @@ My model is a macro-construction player (DrGMacroPlayer instance)!
 !DrGWizardScript commentStamp: '<historical>' prior: 0!
 A wizard to plug a script instance in the canvas.!
 
-!DrGeoTree methodsFor: 'accessing' stamp: 'hlsf 10/Feb/2022 11:51:56'!
+!DrGeoTree methodsFor: 'accessing' stamp: 'hlsf 10/Feb/2022, 9:51:56 am (UTC)'!
 mathItem: aMathItem
 "select given a math item"
 	selectedItem := self pool detect: [:wrappedItem | wrappedItem item == aMathItem] ifNone: [nil].
 	self changed: #selectedItem.! !
 
-!DrGeoTree methodsFor: 'accessing' stamp: 'hlsf 4/Aug/2023 12:50:29'!
+!DrGeoTree methodsFor: 'accessing' stamp: 'hlsf 4/Aug/2023, 10:50:29 am (UTC)'!
 pool
 	^ presenter drawable itemViews 
 		select: [:aMorph | aMorph itemExist and: [aMorph style isNotHidden]] 
@@ -611,7 +611,7 @@ pool
 				hasContents: aMorph mathItem parents isNil not ;
 				yourself]! !
 
-!DrGeoTree methodsFor: 'accessing' stamp: 'drgeo 7/Jun/2026 10:44:54'!
+!DrGeoTree methodsFor: 'accessing' stamp: 'drgeo 7/Jun/2026, 8:44:54 am (UTC)'!
 presenter: aPresenter
 	presenter := aPresenter .
 	presenter domain
@@ -622,22 +622,22 @@ presenter: aPresenter
 	
 	! !
 
-!DrGeoTree methodsFor: 'accessing' stamp: 'hlsf 10/Feb/2022 09:54:14'!
+!DrGeoTree methodsFor: 'accessing' stamp: 'hlsf 10/Feb/2022, 7:54:14 am (UTC)'!
 selectedItem
 	^ selectedItem! !
 
-!DrGeoTree methodsFor: 'accessing' stamp: 'hlsf 4/Aug/2023 12:50:06'!
+!DrGeoTree methodsFor: 'accessing' stamp: 'hlsf 4/Aug/2023, 10:50:06 am (UTC)'!
 selectedItem: anItemWrapper
 	selectedItem := anItemWrapper.
 	self changed: #selectedItem.
 	presenter updateSelection ! !
 
-!DrGeoTree methodsFor: 'updating' stamp: 'hlsf 8/Jun/2024 13:01:17'!
+!DrGeoTree methodsFor: 'updating' stamp: 'hlsf 8/Jun/2024, 11:01:17 am (UTC)'!
 update: symbol
 "pass on the notified change to my observing view (hierarchy list)"
 	self changed: symbol! !
 
-!DrGeoTree class methodsFor: 'instance creation' stamp: 'hlsf 4/Aug/2023 12:49:23'!
+!DrGeoTree class methodsFor: 'instance creation' stamp: 'hlsf 4/Aug/2023, 10:49:23 am (UTC)'!
 on: aPresenter
 	^ self new
 		presenter: aPresenter ;
@@ -673,7 +673,7 @@ writeOutputAsXml
 	^ element 
 ! !
 
-!DrGMacro methodsFor: 'as yet unclassified' stamp: 'hlsf 4/Aug/2023 17:11:41'!
+!DrGMacro methodsFor: 'as yet unclassified' stamp: 'hlsf 4/Aug/2023, 3:11:41 pm (UTC)'!
 execute: inputs in: presenter
 	self cleanNodes.
 	self inputNodes 
@@ -753,7 +753,7 @@ cleanNodes
 				yourself).
 		node itemTemplate releaseActionMap.]! !
 
-!DrGMacro methodsFor: 'private' stamp: 'hlsf 18/Nov/2021 21:06:11'!
+!DrGMacro methodsFor: 'private' stamp: 'hlsf 18/Nov/2021, 7:06:11 pm (UTC)'!
 extractItemsFrom: inputs to: outputs in: domain
 	"extract the items to define the whole macro structure"
 
@@ -807,7 +807,7 @@ initialize
 	nodes := OrderedCollection new.
 	saved := false! !
 
-!DrGMacro methodsFor: 'initialize-release' stamp: 'hlsf 5/Aug/2023 14:35:47'!
+!DrGMacro methodsFor: 'initialize-release' stamp: 'hlsf 5/Aug/2023, 12:35:47 pm (UTC)'!
 release! !
 
 !DrGMacro methodsFor: 'comparing' stamp: ''!
@@ -822,7 +822,7 @@ release! !
 hash
 	^nodes hash! !
 
-!DrGMacro class methodsFor: 'testing' stamp: 'hlsf 18/Nov/2021 21:05:19'!
+!DrGMacro class methodsFor: 'testing' stamp: 'hlsf 18/Nov/2021, 7:05:19 pm (UTC)'!
 isValidWith: inputs and: outputs
 	"check the validity of a macro defined with these input and output items"
 
@@ -1034,7 +1034,7 @@ arg3
 arg4
 	^ arguments fourth mathItem! !
 
-!DrGeoUserScript methodsFor: 'helpers' stamp: 'hlsf 9/Apr/2024 15:52:16'!
+!DrGeoUserScript methodsFor: 'helpers' stamp: 'hlsf 9/Apr/2024, 1:52:16 pm (UTC)'!
 costume
 "Search for the morph of my instance, then cache it"
 	^ costume ifNil: [ 
@@ -1064,12 +1064,12 @@ costume3
 costume4
 	^ arguments fourth! !
 
-!DrGeoUserScript methodsFor: 'helpers' stamp: 'hlsf 4/Aug/2023 13:04:00'!
+!DrGeoUserScript methodsFor: 'helpers' stamp: 'hlsf 4/Aug/2023, 11:04:00 am (UTC)'!
 presenter
 "Access to the presenter handling my instance"
 	^ self costume ifNotNil: [ costume presenter ]! !
 
-!DrGeoUserScript methodsFor: 'private' stamp: 'hlsf 13/Apr/2024 09:44:05'!
+!DrGeoUserScript methodsFor: 'private' stamp: 'hlsf 13/Apr/2024, 7:44:05 am (UTC)'!
 arguments: aCollectionOfMorph
 	arguments := aCollectionOfMorph ! !
 
@@ -1083,7 +1083,7 @@ argumentsType
 "return a collection of Math item, one for each argument type for this script"
 	^ argumentsType ifNil: [ argumentsType := self newArgumentsType ]! !
 
-!DrGeoUserScript class methodsFor: 'private' stamp: 'hlsf 7/Apr/2022 15:12:50'!
+!DrGeoUserScript class methodsFor: 'private' stamp: 'hlsf 7/Apr/2022, 1:12:50 pm (UTC)'!
 newArgumentsType
 "The arguments type I need to work"
 	self subclassResponsibility ! !
@@ -1133,24 +1133,24 @@ scriptName
 newArgumentsType
 	^ {DrGValueItem. DrGValueItem}.! !
 
-!DrGeoScript126328658 methodsFor: 'public' stamp: 'drgeo 7/Jun/2026 12:00:52'!
+!DrGeoScript126328658 methodsFor: 'public' stamp: 'drgeo 7/Jun/2026, 10:00:52 am (UTC)'!
 compute
 "Edit me"
 	^[:x |(x/8) + (5*x) cos ]! !
 
-!DrGeoScript126328658 class methodsFor: 'public' stamp: 'HilaireFernandes 9/Dec/2014 14:50:00'!
+!DrGeoScript126328658 class methodsFor: 'public' stamp: 'HilaireFernandes 9/Dec/2014, 12:50:00 pm (UTC)'!
 description
 	^'The function to be plotted. Return a bloc of code'! !
 
-!DrGeoScript126328658 class methodsFor: 'public' stamp: 'HilaireFernandes 9/Dec/2014 14:43:00'!
+!DrGeoScript126328658 class methodsFor: 'public' stamp: 'HilaireFernandes 9/Dec/2014, 12:43:00 pm (UTC)'!
 scriptName
 	^'Function'! !
 
-!DrGeoScript126328658 class methodsFor: 'private' stamp: 'HilaireFernandes 9/Dec/2014 14:43:00'!
+!DrGeoScript126328658 class methodsFor: 'private' stamp: 'HilaireFernandes 9/Dec/2014, 12:43:00 pm (UTC)'!
 newArgumentsType
 	^{}! !
 
-!DrGeoScript75108106 methodsFor: 'public' stamp: 'HilaireFernandes 9/Dec/2014 15:18:00'!
+!DrGeoScript75108106 methodsFor: 'public' stamp: 'HilaireFernandes 9/Dec/2014, 1:18:00 pm (UTC)'!
 compute
 "Edit me"
 	| p x |
@@ -1158,62 +1158,62 @@ compute
 	p _ ((self arg2 compute value: x +0.0001) - (self arg2 compute value: x)) / 0.0001.
 	^ self arg1 point + (1 @ p)! !
 
-!DrGeoScript75108106 class methodsFor: 'private' stamp: 'HilaireFernandes 9/Dec/2014 15:15:00'!
+!DrGeoScript75108106 class methodsFor: 'private' stamp: 'HilaireFernandes 9/Dec/2014, 1:15:00 pm (UTC)'!
 newArgumentsType
 	^{DrGPointItem.DrGValueItem}! !
 
-!DrGeoScript75108106 class methodsFor: 'public' stamp: 'HilaireFernandes 9/Dec/2014 15:15:00'!
+!DrGeoScript75108106 class methodsFor: 'public' stamp: 'HilaireFernandes 9/Dec/2014, 1:15:00 pm (UTC)'!
 description
 	^'Compute the coordinates of a point on the slope.
 Arguments:
 - Script returning a function as a bloc of code
 - A point whose x-coordinates is used as the base computation'! !
 
-!DrGeoScript75108106 class methodsFor: 'public' stamp: 'HilaireFernandes 9/Dec/2014 15:15:00'!
+!DrGeoScript75108106 class methodsFor: 'public' stamp: 'HilaireFernandes 9/Dec/2014, 1:15:00 pm (UTC)'!
 scriptName
 	^'Point on slope'! !
 
-!DrGeoScript88541399 methodsFor: 'public' stamp: 'HilaireFernandes 9/Dec/2014 15:04:00'!
+!DrGeoScript88541399 methodsFor: 'public' stamp: 'HilaireFernandes 9/Dec/2014, 1:04:00 pm (UTC)'!
 compute
 "Edit me"
 	^ (self arg1 point x) @ (self arg2 compute value: self arg1 point x)! !
 
-!DrGeoScript88541399 class methodsFor: 'private' stamp: 'HilaireFernandes 9/Dec/2014 15:02:00'!
+!DrGeoScript88541399 class methodsFor: 'private' stamp: 'HilaireFernandes 9/Dec/2014, 1:02:00 pm (UTC)'!
 newArgumentsType
 	^{DrGPointItem.DrGValueItem}! !
 
-!DrGeoScript88541399 class methodsFor: 'public' stamp: 'HilaireFernandes 9/Dec/2014 15:02:00'!
+!DrGeoScript88541399 class methodsFor: 'public' stamp: 'HilaireFernandes 9/Dec/2014, 1:02:00 pm (UTC)'!
 description
 	^'Calculate the image of a point x-coordinates.
 Arguments:
 - Point
 - Script returning a bloc of code, a function'! !
 
-!DrGeoScript88541399 class methodsFor: 'public' stamp: 'HilaireFernandes 9/Dec/2014 15:02:00'!
+!DrGeoScript88541399 class methodsFor: 'public' stamp: 'HilaireFernandes 9/Dec/2014, 1:02:00 pm (UTC)'!
 scriptName
 	^'Image'! !
 
-!LanguageFont methodsFor: 'accessing' stamp: 'hlsf 16/Nov/2023 23:00:43'!
+!LanguageFont methodsFor: 'accessing' stamp: 'hlsf 16/Nov/2023, 9:00:43 pm (UTC)'!
 addLocale: aLocaleID
 	locales add: aLocaleID ! !
 
-!LanguageFont methodsFor: 'accessing' stamp: 'hlsf 16/Nov/2023 23:29:35'!
+!LanguageFont methodsFor: 'accessing' stamp: 'hlsf 16/Nov/2023, 9:29:35 pm (UTC)'!
 family
 	^ family! !
 
-!LanguageFont methodsFor: 'accessing' stamp: 'hlsf 16/Nov/2023 23:28:48'!
+!LanguageFont methodsFor: 'accessing' stamp: 'hlsf 16/Nov/2023, 9:28:48 pm (UTC)'!
 family: aFamilyFont
 	family := aFamilyFont ! !
 
-!LanguageFont methodsFor: 'accessing' stamp: 'hlsf 16/Nov/2023 23:29:41'!
+!LanguageFont methodsFor: 'accessing' stamp: 'hlsf 16/Nov/2023, 9:29:41 pm (UTC)'!
 file
 	^ file ! !
 
-!LanguageFont methodsFor: 'accessing' stamp: 'hlsf 16/Nov/2023 23:29:11'!
+!LanguageFont methodsFor: 'accessing' stamp: 'hlsf 16/Nov/2023, 9:29:11 pm (UTC)'!
 file: aFontFile
 	file := aFontFile ! !
 
-!LanguageFont methodsFor: 'accessing' stamp: 'hlsf 17/Nov/2023 22:46:50'!
+!LanguageFont methodsFor: 'accessing' stamp: 'hlsf 17/Nov/2023, 8:46:50 pm (UTC)'!
 handles: aLocaleID
 	^  aLocaleID isoCountry 
 		ifNotNil:  [
@@ -1225,12 +1225,12 @@ handles: aLocaleID
 		ifNil: [locales anySatisfy: [:each | each isoLanguage = aLocaleID isoLanguage] ].
 ! !
 
-!LanguageFont methodsFor: 'initialization' stamp: 'hlsf 16/Nov/2023 23:01:36'!
+!LanguageFont methodsFor: 'initialization' stamp: 'hlsf 16/Nov/2023, 9:01:36 pm (UTC)'!
 initialize
 	super initialize.
 	locales := OrderedCollection new! !
 
-!LanguageFont methodsFor: 'printing' stamp: 'hlsf 16/Nov/2023 23:47:01'!
+!LanguageFont methodsFor: 'printing' stamp: 'hlsf 16/Nov/2023, 9:47:01 pm (UTC)'!
 printOn: str
 	str nextPutAll: 'LanguageFont for '.
 	locales 
@@ -1238,27 +1238,27 @@ printOn: str
 		separatedBy: [str nextPut: Character space]
 	! !
 
-!LanguageFont class methodsFor: 'instance creation' stamp: 'hlsf 16/Nov/2023 23:30:43'!
+!LanguageFont class methodsFor: 'instance creation' stamp: 'hlsf 16/Nov/2023, 9:30:43 pm (UTC)'!
 family: aString1 file: aString2
 	^ self new
 		family: aString1;
 		file: aString2 ;
 		yourself! !
 
-!LanguageFontManager methodsFor: 'accessing' stamp: 'hlsf 16/Nov/2023 23:28:15'!
+!LanguageFontManager methodsFor: 'accessing' stamp: 'hlsf 16/Nov/2023, 9:28:15 pm (UTC)'!
 add: aLanguageFont
 	languageFonts add: aLanguageFont ! !
 
-!LanguageFontManager methodsFor: 'accessing' stamp: 'hlsf 16/Nov/2023 23:13:02'!
+!LanguageFontManager methodsFor: 'accessing' stamp: 'hlsf 16/Nov/2023, 9:13:02 pm (UTC)'!
 europeanLang
 	^ `#(#ast #ca #cs #da #de #en #es #fi #fr #it #nl #pt #ru #sv #tr #uk)`! !
 
-!LanguageFontManager methodsFor: 'accessing' stamp: 'hlsf 16/Nov/2023 23:21:55'!
+!LanguageFontManager methodsFor: 'accessing' stamp: 'hlsf 16/Nov/2023, 9:21:55 pm (UTC)'!
 languageFontFor: aLocaleID
 	(self europeanLang includes: aLocaleID isoLanguage asSymbol) 		ifTrue: [^ nil]. "Use Deja Vu font within Cuis"
 	^ languageFonts detect: [:each | each handles: aLocaleID] ifNone: [nil]! !
 
-!LanguageFontManager methodsFor: 'initialization' stamp: 'hlsf 16/Nov/2023 23:07:06'!
+!LanguageFontManager methodsFor: 'initialization' stamp: 'hlsf 16/Nov/2023, 9:07:06 pm (UTC)'!
 initialize
 	super initialize.
 	languageFonts := OrderedCollection new! !
@@ -1281,26 +1281,26 @@ purge
 new
 	^ uniqueInstance ifNil: [uniqueInstance := super new]! !
 
-!DrGMacroBuildTool methodsFor: 'accessing' stamp: 'hlsf 23/Jun/2021 15:52:50'!
+!DrGMacroBuildTool methodsFor: 'accessing' stamp: 'hlsf 23/Jun/2021, 1:52:50 pm (UTC)'!
 relevantMorphsNear: aPoint
 	^self pointMorphsFirstNear: aPoint ! !
 
-!DrGMacroBuildTool methodsFor: 'accessing' stamp: 'hlsf 11/Apr/2021 13:52:07'!
+!DrGMacroBuildTool methodsFor: 'accessing' stamp: 'hlsf 11/Apr/2021, 11:52:07 am (UTC)'!
 selectInputMorph
 	self selectMorphsFrom: builder input! !
 
-!DrGMacroBuildTool methodsFor: 'accessing' stamp: 'hlsf 4/Aug/2023 12:18:22'!
+!DrGMacroBuildTool methodsFor: 'accessing' stamp: 'hlsf 4/Aug/2023, 10:18:22 am (UTC)'!
 selectMorphsFrom: aMathItemCollection 
 	presenter ifNil: [^self].
 	self stopBlinking.
 	selectedMorphs := self drawable viewsOf: aMathItemCollection.
 	self startBlinking! !
 
-!DrGMacroBuildTool methodsFor: 'accessing' stamp: 'hlsf 11/Apr/2021 12:31:09'!
+!DrGMacroBuildTool methodsFor: 'accessing' stamp: 'hlsf 11/Apr/2021, 10:31:09 am (UTC)'!
 selectNoMorph
 	self selectMorphsFrom: OrderedCollection new! !
 
-!DrGMacroBuildTool methodsFor: 'accessing' stamp: 'hlsf 11/Apr/2021 12:31:25'!
+!DrGMacroBuildTool methodsFor: 'accessing' stamp: 'hlsf 11/Apr/2021, 10:31:25 am (UTC)'!
 selectOutputMorph
 	self selectMorphsFrom: builder output! !
 
@@ -1320,7 +1320,7 @@ registerDependant: anObject
 	builder when: #cancel send: #cancel to: self.
 	builder when: #readyToBuild send: #readyToBuildMacro to: anObject! !
 
-!DrGMacroPlayTool methodsFor: 'accessing' stamp: 'hlsf 3/Aug/2023 21:18:06'!
+!DrGMacroPlayTool methodsFor: 'accessing' stamp: 'hlsf 3/Aug/2023, 7:18:06 pm (UTC)'!
 presenter: aPresenter
 	super presenter: aPresenter.
 	presenter notInteractive: true.! !
@@ -1332,12 +1332,12 @@ registerDependant: anObject
 	builder when: #readyToBuild send: #readyToPlayMacro to: anObject.
 	builder when: #changedMacro send: #changedMacro to: self! !
 
-!DrGMacroPlayTool methodsFor: 'initialize-release' stamp: 'hlsf 3/Aug/2023 21:18:23'!
+!DrGMacroPlayTool methodsFor: 'initialize-release' stamp: 'hlsf 3/Aug/2023, 7:18:23 pm (UTC)'!
 release
 	super release.
 	presenter notInteractive: false! !
 
-!DrGMacroPlayTool methodsFor: 'updating' stamp: 'hlsf 11/Apr/2021 12:31:09'!
+!DrGMacroPlayTool methodsFor: 'updating' stamp: 'hlsf 11/Apr/2021, 10:31:09 am (UTC)'!
 changedMacro
 " the builder inform us the user selected another macro-construction,
 do some cleaning"
@@ -1350,7 +1350,7 @@ registerDependant: anObject
 	builder when: #readyToBuild send: #readyToBuild to: anObject.
 	builder when: #changedScript send: #changedScript to: self! !
 
-!DrGScriptPlayTool methodsFor: 'updating' stamp: 'hlsf 11/Apr/2021 12:31:09'!
+!DrGScriptPlayTool methodsFor: 'updating' stamp: 'hlsf 11/Apr/2021, 10:31:09 am (UTC)'!
 changedScript
 " the builder inform us the user selected another script,
 do some cleaning"
@@ -1360,12 +1360,12 @@ do some cleaning"
 handleMouseAt: aPoint
 	^false! !
 
-!DrGMacroToolStateNeutral methodsFor: 'accessing' stamp: 'hlsf 31/May/2025 15:50:56'!
+!DrGMacroToolStateNeutral methodsFor: 'accessing' stamp: 'hlsf 31/May/2025, 1:50:56 pm (UTC)'!
 context: aContext
 	super context: aContext.
 	context selectNoMorph! !
 
-!DrGMacroBuildToolStateInput methodsFor: 'handling' stamp: 'hlsf 31/May/2025 15:49:00'!
+!DrGMacroBuildToolStateInput methodsFor: 'handling' stamp: 'hlsf 31/May/2025, 1:49:00 pm (UTC)'!
 handleChoice: aMorphCollection 
 	context builder
 		add: (aMorphCollection collect: [ :c | c mathItem ])	
@@ -1373,24 +1373,24 @@ handleChoice: aMorphCollection
 		changed: #inputNames.
 	context selectInputMorph! !
 
-!DrGMacroBuildToolStateInput methodsFor: 'accessing' stamp: 'hlsf 31/May/2025 15:48:43'!
+!DrGMacroBuildToolStateInput methodsFor: 'accessing' stamp: 'hlsf 31/May/2025, 1:48:43 pm (UTC)'!
 context: aContext
 	super context: aContext.
 	context selectInputMorph ! !
 
-!DrGMacroPlayToolStateSelect methodsFor: 'handling' stamp: 'hlsf 31/May/2025 15:49:07'!
+!DrGMacroPlayToolStateSelect methodsFor: 'handling' stamp: 'hlsf 31/May/2025, 1:49:07 pm (UTC)'!
 handleChoice: aMorphCollection 
 	context builder 
 		add: (aMorphCollection collect: [ :c | c mathItem ])
 		at: (self drawable gridWorldPoint: context last).
 	context selectInputMorph! !
 
-!DrGMacroBuildToolStateOutput methodsFor: 'handling' stamp: 'hlsf 31/May/2025 15:49:16'!
+!DrGMacroBuildToolStateOutput methodsFor: 'handling' stamp: 'hlsf 31/May/2025, 1:49:16 pm (UTC)'!
 context: aContext
 	super context: aContext.
 	context selectOutputMorph ! !
 
-!DrGMacroBuildToolStateOutput methodsFor: 'handling' stamp: 'hlsf 31/May/2025 15:49:24'!
+!DrGMacroBuildToolStateOutput methodsFor: 'handling' stamp: 'hlsf 31/May/2025, 1:49:24 pm (UTC)'!
 handleChoice: aMorphCollection 
 	context builder
 		add: (aMorphCollection collect: [ :c | c mathItem ])
@@ -1398,7 +1398,7 @@ handleChoice: aMorphCollection
 		changed: #outputNames.
 	context selectOutputMorph! !
 
-!DrGDevelopment methodsFor: 'initialization' stamp: 'drgeo 24/Feb/2026 14:45:49'!
+!DrGDevelopment methodsFor: 'initialization' stamp: 'drgeo 24/Feb/2026, 12:45:49 pm (UTC)'!
 initialize
 	super initialize.
 	canWeDisplaySpinner := false.
@@ -1407,29 +1407,29 @@ initialize
 		at: #fullScreenLeavesDeskMargins put: true;
 		at: #worldMenu put: TheWorldMenu.! !
 
-!DrGDevelopment methodsFor: 'path' stamp: 'hlsf 17/Aug/2022 15:13:41'!
+!DrGDevelopment methodsFor: 'path' stamp: 'hlsf 17/Aug/2022, 1:13:41 pm (UTC)'!
 iconsPath
 	^ self resourcesPath / 'graphics' / 'iconsSVG'! !
 
-!DrGDevelopment methodsFor: 'path' stamp: 'hlsf 17/Aug/2022 15:13:13'!
+!DrGDevelopment methodsFor: 'path' stamp: 'hlsf 17/Aug/2022, 1:13:13 pm (UTC)'!
 resourcesPath
 "	The resources are in the Dr. Geo source code local repository "
 	^ self rootPath / 'drgeo' / 'resources'! !
 
-!DrGDevelopment methodsFor: 'path' stamp: 'hlsf 21/Jan/2024 18:42:11'!
+!DrGDevelopment methodsFor: 'path' stamp: 'hlsf 21/Jan/2024, 4:42:11 pm (UTC)'!
 rootPath
 "	Regarding the development environement, we consider the root path to be 
 	Cuis-Smalltalk-Dev from where is taking place the DrGeo development "
 
 	^ DirectoryEntry smalltalkImageDirectory parent! !
 
-!DrGDevelopment methodsFor: 'font' stamp: 'hlsf 10/Aug/2025 10:38:48'!
+!DrGDevelopment methodsFor: 'font' stamp: 'hlsf 10/Aug/2025, 8:38:48 am (UTC)'!
 setFontPreferences
 	PreferenceSet setDefaultFont: 'DejaVu Sans'.
 	Preferences at: #defaultFontSize put: 14.
 ! !
 
-!DrGWorkstation methodsFor: 'initialize-release' stamp: 'drgeo 24/Feb/2026 14:46:10'!
+!DrGWorkstation methodsFor: 'initialize-release' stamp: 'drgeo 24/Feb/2026, 12:46:10 pm (UTC)'!
 initialize
 	super initialize .
 	self initFontManager.
@@ -1439,13 +1439,13 @@ initialize
 		at: #fullScreenLeavesDeskMargins put: false.
 	UISupervisor ui taskbar scale: 1/2.! !
 
-!DrGWorkstation methodsFor: 'initialize-release' stamp: 'hlsf 17/Feb/2026 14:57:19'!
+!DrGWorkstation methodsFor: 'initialize-release' stamp: 'hlsf 17/Feb/2026, 12:57:19 pm (UTC)'!
 launch
 	super launch.
 	self setFontPreferences.
 	Transcript show: '[DrGeo] Font installed'; cr! !
 
-!DrGWorkstation methodsFor: 'initialize-release' stamp: 'hlsf 17/Feb/2026 14:59:59'!
+!DrGWorkstation methodsFor: 'initialize-release' stamp: 'hlsf 17/Feb/2026, 12:59:59 pm (UTC)'!
 splash
 | splash copy  background position path |
 	path := 	DrGeoSystem iconsPath.
@@ -1464,17 +1464,17 @@ splash
 isWorkstation
 	^ true! !
 
-!DrGWorkstation methodsFor: 'path' stamp: 'drgeo 17/Aug/2022 17:14:00'!
+!DrGWorkstation methodsFor: 'path' stamp: 'drgeo 17/Aug/2022, 3:14:00 pm (UTC)'!
 rootPath
 " 	Test purpose, point to the bundle "
 "	^ DirectoryEntry smalltalkImageDirectory / 'drgeo' / 'build' / 'bundles' / 'gnulinux' / 'DrGeo'"
 	^ super rootPath! !
 
-!DrGWorkstation methodsFor: 'font' stamp: 'hlsf 17/Feb/2026 14:55:50'!
+!DrGWorkstation methodsFor: 'font' stamp: 'hlsf 17/Feb/2026, 12:55:50 pm (UTC)'!
 fontManager
 	^ fontManager ifNil: [fontManager := self initFontManager]! !
 
-!DrGWorkstation methodsFor: 'font' stamp: 'hlsf 17/Feb/2026 14:55:37'!
+!DrGWorkstation methodsFor: 'font' stamp: 'hlsf 17/Feb/2026, 12:55:37 pm (UTC)'!
 initFontManager
 	| font |
 	fontManager := LanguageFontManager new.
@@ -1488,7 +1488,7 @@ initFontManager
 	fontManager add: font.
 ! !
 
-!DrGWorkstation methodsFor: 'font' stamp: 'hlsf 17/Feb/2026 14:55:26'!
+!DrGWorkstation methodsFor: 'font' stamp: 'hlsf 17/Feb/2026, 12:55:26 pm (UTC)'!
 setFontPreferences
 	| languageFont |
 	" Pick an appropriate font file for the current locale, if necessary "
@@ -1498,7 +1498,7 @@ setFontPreferences
 		PreferenceSet setDefaultFont: languageFont family].
 	Preferences at: #defaultFontSize put: 12! !
 
-!DrGControlsManager methodsFor: 'widget access' stamp: 'hlsf 30/Mar/2022 18:08:59'!
+!DrGControlsManager methodsFor: 'widget access' stamp: 'hlsf 30/Mar/2022, 4:08:59 pm (UTC)'!
 addChevron: symbolOrArray to: aToolbar
 	"array first = menu label or button label
 	array second = button form = selection mode
@@ -1516,7 +1516,7 @@ addChevron: symbolOrArray to: aToolbar
 		setBalloonText: array fourth;
 		yourself	! !
 
-!DrGControlsManager methodsFor: 'widget access' stamp: 'hlsf 23/Aug/2025 12:23:27'!
+!DrGControlsManager methodsFor: 'widget access' stamp: 'hlsf 23/Aug/2025, 10:23:27 am (UTC)'!
 button: symbolOrArray
 	"array first = menu label or button label
 	array second = button form = selection mode
@@ -1539,14 +1539,14 @@ button: symbolOrArray
 		morphExtent: (Theme current toolbarIconSize + 4) asPoint;
 		yourself	! !
 
-!DrGControlsManager methodsFor: 'widget access' stamp: 'hlsf 7/Jan/2026 15:50:36'!
+!DrGControlsManager methodsFor: 'widget access' stamp: 'hlsf 7/Jan/2026, 1:50:36 pm (UTC)'!
 openTools
 " Open the toolbox to manipulate items in the canvas "
 	self tools 
 		morphPosition: self activeHand morphPosition ;
 		openInWorld! !
 
-!DrGControlsManager methodsFor: 'widget access' stamp: 'hlsf 7/Jan/2026 15:34:59'!
+!DrGControlsManager methodsFor: 'widget access' stamp: 'hlsf 7/Jan/2026, 1:34:59 pm (UTC)'!
 quickToolbar
 	quickToolbar ifNotNil: [^ quickToolbar].
 	quickToolbar := LayoutMorph newRow
@@ -1557,7 +1557,7 @@ quickToolbar
 	
 ! !
 
-!DrGControlsManager methodsFor: 'widget access' stamp: 'hlsf 7/Jan/2026 15:54:30'!
+!DrGControlsManager methodsFor: 'widget access' stamp: 'hlsf 7/Jan/2026, 1:54:30 pm (UTC)'!
 tools
 	| toolsData dropDown |
 	tools ifNotNil: [^ tools].
@@ -1580,12 +1580,12 @@ tools
 	
 ! !
 
-!DrGControlsManager methodsFor: 'widget access' stamp: 'hlsf 4/Aug/2023 12:48:55'!
+!DrGControlsManager methodsFor: 'widget access' stamp: 'hlsf 4/Aug/2023, 10:48:55 am (UTC)'!
 tree
 " I am the model of a tree presenting the math item "
 	^ tree ifNil: [ tree := DrGeoTree on: presenter]! !
 
-!DrGControlsManager methodsFor: 'widget access' stamp: 'hlsf 10/Aug/2024 15:49:19'!
+!DrGControlsManager methodsFor: 'widget access' stamp: 'hlsf 10/Aug/2024, 1:49:19 pm (UTC)'!
 treeView
 	^ treeView ifNil: [treeView := HierarchicalListMorph 
 		withModel: self tree
@@ -1593,7 +1593,7 @@ treeView
 		indexGetter: #selectedItem
 		indexSetter: #selectedItem:]! !
 
-!DrGControlsManager methodsFor: 'initialization' stamp: 'hlsf 7/Jan/2026 15:55:23'!
+!DrGControlsManager methodsFor: 'initialization' stamp: 'hlsf 7/Jan/2026, 1:55:23 pm (UTC)'!
 installTools
 " Install menu, toolbar, tree, wheels, statusbar "
 	| row col wheelHeight wheelWidth |
@@ -1629,7 +1629,7 @@ installTools
 	view addMorph: row layoutSpec: (LayoutSpec fixedHeight: wheelWidth)
 ! !
 
-!DrGMinControlsManager methodsFor: 'menus' stamp: 'hlsf 10/Apr/2022 14:55:40'!
+!DrGMinControlsManager methodsFor: 'menus' stamp: 'hlsf 10/Apr/2022, 12:55:40 pm (UTC)'!
 addMenuItem: toolSymbol to: menu
 	| array |
 	"access the buttonData method from the tool symbol"
@@ -1641,12 +1641,12 @@ addMenuItem: toolSymbol to: menu
 	(DrGIcons respondsTo: array second)
 		ifTrue: [	 menu lastItem setIcon: (DrGIcons perform: array second) ]! !
 
-!DrGMinControlsManager methodsFor: 'menus' stamp: 'hlsf 13/Aug/2023 15:06:36'!
+!DrGMinControlsManager methodsFor: 'menus' stamp: 'hlsf 13/Aug/2023, 1:06:36 pm (UTC)'!
 addUpdatingMenuItem: array to: menu
 	(menu addUpdating: array first action: array third)
 		setBalloonText: array fourth.! !
 
-!DrGMinControlsManager methodsFor: 'menus' stamp: 'hlsf 10/Apr/2022 14:55:54'!
+!DrGMinControlsManager methodsFor: 'menus' stamp: 'hlsf 10/Apr/2022, 12:55:54 pm (UTC)'!
 animateMenu
 	| menu |
 	menu := self newMenu.
@@ -1654,14 +1654,14 @@ animateMenu
 	^ menu
 		! !
 
-!DrGMinControlsManager methodsFor: 'menus' stamp: 'hlsf 10/Apr/2022 14:55:59'!
+!DrGMinControlsManager methodsFor: 'menus' stamp: 'hlsf 10/Apr/2022, 12:55:59 pm (UTC)'!
 curveMenu
 	| lineMenu |
 	lineMenu := self newMenu.
 	self curveTools  do: [ :symbol | self addMenuItem: symbol to: lineMenu ].
 	^ lineMenu! !
 
-!DrGMinControlsManager methodsFor: 'menus' stamp: 'hlsf 10/Apr/2022 14:56:06'!
+!DrGMinControlsManager methodsFor: 'menus' stamp: 'hlsf 10/Apr/2022, 12:56:06 pm (UTC)'!
 editMenu
 	| menu |
 	menu := self newMenu.
@@ -1691,7 +1691,7 @@ editMenu
 	^ menu
 		! !
 
-!DrGMinControlsManager methodsFor: 'menus' stamp: 'hlsf 7/Jan/2026 16:18:11'!
+!DrGMinControlsManager methodsFor: 'menus' stamp: 'hlsf 7/Jan/2026, 2:18:11 pm (UTC)'!
 fileMenu
 	| fileMenu |
 	fileMenu := self newMenu.
@@ -1707,14 +1707,14 @@ fileMenu
 	^ fileMenu
 		! !
 
-!DrGMinControlsManager methodsFor: 'menus' stamp: 'hlsf 10/Apr/2022 14:56:14'!
+!DrGMinControlsManager methodsFor: 'menus' stamp: 'hlsf 10/Apr/2022, 12:56:14 pm (UTC)'!
 macroconstructionMenu
 	| menu |
 	self view macroMenu: (menu := self newMenu).
 	 self macroTools do: [ :symbol | self addMenuItem: symbol to: menu].
 	^ menu! !
 
-!DrGMinControlsManager methodsFor: 'menus' stamp: 'hlsf 10/Apr/2022 14:56:18'!
+!DrGMinControlsManager methodsFor: 'menus' stamp: 'hlsf 10/Apr/2022, 12:56:18 pm (UTC)'!
 mainMenu
 	| mainMenu menu |
 	mainMenu := MenuMorph entitled: self view label.
@@ -1752,13 +1752,13 @@ mainMenu
 	^ mainMenu 
 ! !
 
-!DrGMinControlsManager methodsFor: 'menus' stamp: 'hlsf 10/Apr/2022 14:56:21'!
+!DrGMinControlsManager methodsFor: 'menus' stamp: 'hlsf 10/Apr/2022, 12:56:21 pm (UTC)'!
 newMenu
 	^ MenuMorph new 
 		defaultTarget: presenter;
 		yourself! !
 
-!DrGMinControlsManager methodsFor: 'menus' stamp: 'hlsf 10/Apr/2022 14:56:25'!
+!DrGMinControlsManager methodsFor: 'menus' stamp: 'hlsf 10/Apr/2022, 12:56:25 pm (UTC)'!
 numericMenu
 	| menu |
 	menu := self newMenu.
@@ -1766,7 +1766,7 @@ numericMenu
 	^ menu
 		! !
 
-!DrGMinControlsManager methodsFor: 'menus' stamp: 'hlsf 10/Apr/2022 14:56:28'!
+!DrGMinControlsManager methodsFor: 'menus' stamp: 'hlsf 10/Apr/2022, 12:56:28 pm (UTC)'!
 pointMenu
 	| pointMenu |
 	pointMenu := self newMenu.
@@ -1774,7 +1774,7 @@ pointMenu
 	^ pointMenu
 		! !
 
-!DrGMinControlsManager methodsFor: 'menus' stamp: 'hlsf 10/Apr/2022 14:56:31'!
+!DrGMinControlsManager methodsFor: 'menus' stamp: 'hlsf 10/Apr/2022, 12:56:31 pm (UTC)'!
 scriptMenu
 	| menu |
 	self view scriptMenu: (menu := self newMenu).
@@ -1782,7 +1782,7 @@ scriptMenu
 	^ menu 
 		! !
 
-!DrGMinControlsManager methodsFor: 'menus' stamp: 'hlsf 10/Apr/2022 14:56:36'!
+!DrGMinControlsManager methodsFor: 'menus' stamp: 'hlsf 10/Apr/2022, 12:56:36 pm (UTC)'!
 transformationMenu
 	| menu |
 	menu := self newMenu.
@@ -1790,7 +1790,7 @@ transformationMenu
 	^ menu
 		! !
 
-!DrGMinControlsManager methodsFor: 'menus' stamp: 'hlsf 10/Apr/2022 14:56:40'!
+!DrGMinControlsManager methodsFor: 'menus' stamp: 'hlsf 10/Apr/2022, 12:56:40 pm (UTC)'!
 updateMacroMenu
 	| macroMenu |
 	macroMenu := self view macroMenu.
@@ -1807,7 +1807,7 @@ updateMacroMenu
 			setBalloonText: aMacro description]
 ! !
 
-!DrGMinControlsManager methodsFor: 'menus' stamp: 'hlsf 10/Apr/2022 14:56:44'!
+!DrGMinControlsManager methodsFor: 'menus' stamp: 'hlsf 10/Apr/2022, 12:56:44 pm (UTC)'!
 updateScriptMenu
 	| scripts scriptMenu |
 	scriptMenu := self view scriptMenu.
@@ -1826,7 +1826,7 @@ updateScriptMenu
 			setBalloonText: aScript description]
 ! !
 
-!DrGMinControlsManager methodsFor: 'initialization' stamp: 'hlsf 7/Jan/2026 15:48:57'!
+!DrGMinControlsManager methodsFor: 'initialization' stamp: 'hlsf 7/Jan/2026, 1:48:57 pm (UTC)'!
 installTools
 " Install menu, toolbar, tree, wheels, statusbar "
 	| row col wheelHeight wheelWidth |
@@ -1858,11 +1858,11 @@ installTools
 	
 	view addMorph: row layoutSpec: (LayoutSpec fixedHeight: wheelWidth)! !
 
-!DrGMinControlsManager methodsFor: 'widget access' stamp: 'hlsf 10/Apr/2022 16:36:58'!
+!DrGMinControlsManager methodsFor: 'widget access' stamp: 'hlsf 10/Apr/2022, 2:36:58 pm (UTC)'!
 openTools
 	self tools popUpInWorld ! !
 
-!DrGMinControlsManager methodsFor: 'widget access' stamp: 'hlsf 10/Apr/2022 16:25:16'!
+!DrGMinControlsManager methodsFor: 'widget access' stamp: 'hlsf 10/Apr/2022, 2:25:16 pm (UTC)'!
 tools
 	^ tools ifNil: [tools := self mainMenu]! !
 
@@ -1937,11 +1937,11 @@ description: string
 input
 	^input! !
 
-!DrGMacroBuilder methodsFor: 'accessing' stamp: 'hlsf 3/Nov/2021 19:11:47'!
+!DrGMacroBuilder methodsFor: 'accessing' stamp: 'hlsf 3/Nov/2021, 5:11:47 pm (UTC)'!
 inputNames
 	^ self itemNames: input! !
 
-!DrGMacroBuilder methodsFor: 'accessing' stamp: 'hlsf 3/Nov/2021 19:11:47'!
+!DrGMacroBuilder methodsFor: 'accessing' stamp: 'hlsf 3/Nov/2021, 5:11:47 pm (UTC)'!
 itemNames: aMathItemCollection
 	^aMathItemCollection collect: [:mathItem | mathItem descriptiveName]! !
 
@@ -1949,7 +1949,7 @@ itemNames: aMathItemCollection
 output
 	^output ! !
 
-!DrGMacroBuilder methodsFor: 'accessing' stamp: 'hlsf 3/Nov/2021 19:11:47'!
+!DrGMacroBuilder methodsFor: 'accessing' stamp: 'hlsf 3/Nov/2021, 5:11:47 pm (UTC)'!
 outputNames
 	^ self itemNames: output! !
 
@@ -2007,7 +2007,7 @@ readyToBuild
 the system checks wheter the macro can be instiated"
 	^false! !
 
-!DrGMacroBuilder methodsFor: 'initialize-release' stamp: 'drgeo 20/Apr/2026 21:37:47'!
+!DrGMacroBuilder methodsFor: 'initialize-release' stamp: 'drgeo 20/Apr/2026, 7:37:47 pm (UTC)'!
 initialize
 	self reset.
 	wizard := (DrGWizardMacroBuild open: self) openInWorld.
@@ -2016,7 +2016,7 @@ initialize
 	wizard when: #apply send: #apply to: self.
 	wizard when: #cancel send: #cancel to: self! !
 
-!DrGMacroBuilder methodsFor: 'initialize-release' stamp: 'hlsf 27/Dec/2021 10:59:17'!
+!DrGMacroBuilder methodsFor: 'initialize-release' stamp: 'hlsf 27/Dec/2021, 8:59:17 am (UTC)'!
 release
 	wizard removeActionsWithReceiver: self.
 	wizard delete.
@@ -2028,7 +2028,7 @@ addItem: aMathItemCollection at: aPoint
 	self isInputMode ifTrue: [self addToggleItem: aMathItemCollection in: input].
 	self isOutputMode ifTrue: [self addToggleItem: aMathItemCollection in: output]! !
 
-!DrGMacroBuilder methodsFor: 'updating' stamp: 'hlsf 3/Nov/2021 19:07:55'!
+!DrGMacroBuilder methodsFor: 'updating' stamp: 'hlsf 3/Nov/2021, 5:07:55 pm (UTC)'!
 reset
 	super reset.
 	input := OrderedCollection new.
@@ -2052,7 +2052,7 @@ title
 constructedNodes
 	^ selectedMacro constructedNodes ! !
 
-!DrGMacroPlayer methodsFor: 'accessing' stamp: 'hlsf 19/Nov/2021 10:57:19'!
+!DrGMacroPlayer methodsFor: 'accessing' stamp: 'hlsf 19/Nov/2021, 8:57:19 am (UTC)'!
 description
 	^ selectedMacro ifNotNil: [selectedMacro description] ifNil: [^'']! !
 
@@ -2084,7 +2084,7 @@ addItem: aMathItemCollection at: aPoint
 	super addItem: aMathItemCollection at: aPoint.
 	self addToggleItem: aMathItemCollection in: input! !
 
-!DrGMacroPlayer methodsFor: 'initialize-release' stamp: 'drgeo 20/Apr/2026 21:50:56'!
+!DrGMacroPlayer methodsFor: 'initialize-release' stamp: 'drgeo 20/Apr/2026, 7:50:56 pm (UTC)'!
 initialize
 	wizard := (DrGWizardMacroPlay open: self) openInWorld.
 	wizard morphPosition: 0@0.
@@ -2092,7 +2092,7 @@ initialize
 	wizard when: #page send: #page: to: self.
 	wizard when: #cancel send: #cancel to: self! !
 
-!DrGMacroPlayer methodsFor: 'initialize-release' stamp: 'hlsf 27/Dec/2021 10:57:41'!
+!DrGMacroPlayer methodsFor: 'initialize-release' stamp: 'hlsf 27/Dec/2021, 8:57:41 am (UTC)'!
 release
 	wizard removeActionsWithReceiver: self.
 	wizard delete.
@@ -2114,7 +2114,7 @@ page: integer
 		triggerEvent: #changedState
 		with: newState! !
 
-!DrGMacroPlayer methodsFor: 'building' stamp: 'hlsf 4/Aug/2023 17:12:55'!
+!DrGMacroPlayer methodsFor: 'building' stamp: 'hlsf 4/Aug/2023, 3:12:55 pm (UTC)'!
 buildItem
 	^selectedMacro execute: input in: presenter.! !
 
@@ -2128,7 +2128,7 @@ isWanted: aMathItemCollection
 readyToBuild
 	^ self inputBasicType = selectedMacro inputBasicType! !
 
-!DrGMacroPlayer methodsFor: 'updating' stamp: 'hlsf 19/Nov/2021 11:01:22'!
+!DrGMacroPlayer methodsFor: 'updating' stamp: 'hlsf 19/Nov/2021, 9:01:22 am (UTC)'!
 reset
 	super reset.
 	input := OrderedCollection new.
@@ -2177,7 +2177,7 @@ basicItemFrom: node
 	item script: (node attributeAt: #class) asClass.
 	^ item! !
 
-!DrGScriptPlayer methodsFor: 'xml' stamp: 'hlsf 25/Sep/2021 21:43:01'!
+!DrGScriptPlayer methodsFor: 'xml' stamp: 'hlsf 25/Sep/2021, 7:43:01 pm (UTC)'!
 itemInstanceFrom: node
 	self scriptClass: (Smalltalk at: (node attributeAt: #class) asSymbol).
 	self add: #() at: 0@0.
@@ -2238,7 +2238,7 @@ arguments
 		add: point;
 		yourself! !
 
-!DrGScriptPlayer methodsFor: 'accessing' stamp: 'hlsf 7/Apr/2022 15:41:45'!
+!DrGScriptPlayer methodsFor: 'accessing' stamp: 'hlsf 7/Apr/2022, 1:41:45 pm (UTC)'!
 description
 	| comment |
 	^ scriptClass
@@ -2249,7 +2249,7 @@ description
 				ifTrue: ['No description, write one in the description method of this script.' translated]
 				ifFalse: [comment]]! !
 
-!DrGScriptPlayer methodsFor: 'accessing' stamp: 'hlsf 7/Apr/2022 15:24:54'!
+!DrGScriptPlayer methodsFor: 'accessing' stamp: 'hlsf 7/Apr/2022, 1:24:54 pm (UTC)'!
 description: aText 
 " Not yet implemented, should rewrite the description of the selected scriptClass "
 	self flag: #drgeoTodo! !
@@ -2272,7 +2272,7 @@ scriptClass: anObject
 basicInitialize
 	input := OrderedCollection new.! !
 
-!DrGScriptPlayer methodsFor: 'initialize-release' stamp: 'drgeo 20/Apr/2026 21:54:30'!
+!DrGScriptPlayer methodsFor: 'initialize-release' stamp: 'drgeo 20/Apr/2026, 7:54:30 pm (UTC)'!
 initialize
 	wizard := (DrGWizardScript open: self) openInWorld.
 	input := OrderedCollection new.
@@ -2290,7 +2290,7 @@ basicItemFrom: node
 	builder := self basicNew basicInitialize.
 	^ builder basicItemFrom: node! !
 
-!DrGScriptPlayer class methodsFor: 'xml' stamp: 'hlsf 4/Aug/2023 17:29:25'!
+!DrGScriptPlayer class methodsFor: 'xml' stamp: 'hlsf 4/Aug/2023, 3:29:25 pm (UTC)'!
 itemFrom: node in: presenter
 "create an item from this node and add it to the domain, return a couple {item. boolean}"
 	| builder |
@@ -2312,25 +2312,25 @@ initialize
 !DrGScriptPlayerHeadless methodsFor: 'as yet unclassified' stamp: ''!
 release! !
 
-!DrGeoView methodsFor: 'initialization' stamp: 'hlsf 4/Aug/2023 12:40:38'!
+!DrGeoView methodsFor: 'initialization' stamp: 'hlsf 4/Aug/2023, 10:40:38 am (UTC)'!
 initialize
 	super initialize.
 	self model: self domain.
 	self setLabel: 'Dr. Geo --  ' , Date today yyyymmdd.
 	drawable := DrGDrawable newOn: presenter! !
 
-!DrGeoView methodsFor: 'initialization' stamp: 'hlsf 4/Aug/2023 17:06:40'!
+!DrGeoView methodsFor: 'initialization' stamp: 'hlsf 4/Aug/2023, 3:06:40 pm (UTC)'!
 release
 	presenter ifNotNil: [presenter removeActionsWithReceiver: self].
 	drawable release.
 	drawable := nil.
 	presenter := nil! !
 
-!DrGeoView methodsFor: 'initialization' stamp: 'hlsf 30/Mar/2024 16:10:30'!
+!DrGeoView methodsFor: 'initialization' stamp: 'hlsf 30/Mar/2024, 2:10:30 pm (UTC)'!
 windowColor
 	^Theme current browser! !
 
-!DrGeoView methodsFor: 'stepping' stamp: 'hlsf 5/Jun/2021 11:00:04'!
+!DrGeoView methodsFor: 'stepping' stamp: 'hlsf 5/Jun/2021, 9:00:04 am (UTC)'!
 step
 	DrGeoSystem ifTablet: [
 		"track device rotation"
@@ -2345,46 +2345,46 @@ stepTime
 wantsSteps
 	^ DrGeoSystem isTablet! !
 
-!DrGeoView methodsFor: 'accessing' stamp: 'hlsf 4/Aug/2023 12:40:16'!
+!DrGeoView methodsFor: 'accessing' stamp: 'hlsf 4/Aug/2023, 10:40:16 am (UTC)'!
 domain
 	^ presenter domain ! !
 
-!DrGeoView methodsFor: 'accessing' stamp: 'hlsf 19/Jun/2021 10:07:28'!
+!DrGeoView methodsFor: 'accessing' stamp: 'hlsf 19/Jun/2021, 8:07:28 am (UTC)'!
 drawable
 	^ drawable! !
 
-!DrGeoView methodsFor: 'accessing' stamp: 'hlsf 4/Aug/2023 17:05:12'!
+!DrGeoView methodsFor: 'accessing' stamp: 'hlsf 4/Aug/2023, 3:05:12 pm (UTC)'!
 presenter 
 	^ presenter! !
 
-!DrGeoView methodsFor: 'accessing' stamp: 'hlsf 4/Aug/2023 17:08:28'!
+!DrGeoView methodsFor: 'accessing' stamp: 'hlsf 4/Aug/2023, 3:08:28 pm (UTC)'!
 presenter: aPresenter
 	presenter := aPresenter ! !
 
-!DrGeoView methodsFor: 'open/close' stamp: 'hlsf 4/Aug/2023 17:04:50'!
+!DrGeoView methodsFor: 'open/close' stamp: 'hlsf 4/Aug/2023, 3:04:50 pm (UTC)'!
 delete
 	super delete.
 	presenter ifNotNil: [presenter release]! !
 
-!DrGeoView methodsFor: 'label' stamp: 'hlsf 28/Mar/2022 11:45:46'!
+!DrGeoView methodsFor: 'label' stamp: 'hlsf 28/Mar/2022, 9:45:46 am (UTC)'!
 relabel
 " Not authorized. Label is changed accordingly to the sketch name "! !
 
-!DrGeoView class methodsFor: 'initialize-release' stamp: 'hlsf 4/Aug/2023 17:08:00'!
+!DrGeoView class methodsFor: 'initialize-release' stamp: 'hlsf 4/Aug/2023, 3:08:00 pm (UTC)'!
 for: aPresenter
 	"A new model with an existing domain. For multiple MVP on a same
 	Domain "
 	^ super basicNew presenter: aPresenter ;
 		 initialize! !
 
-!DrGDebuggerWindow methodsFor: 'GUI building' stamp: 'hlsf 13/Oct/2022 15:09:14'!
+!DrGDebuggerWindow methodsFor: 'GUI building' stamp: 'hlsf 13/Oct/2022, 1:09:14 pm (UTC)'!
 buildLowerPanes
 	^ LayoutMorph newColumn 
 		addMorph: self customButtonRow fixedHeight: self defaultButtonPaneHeight;
 		addMorph: self buildMorphicCodePane proportionalHeight: 1.0;
 		yourself! !
 
-!DrGDebuggerWindow methodsFor: 'GUI building' stamp: 'hlsf 28/Apr/2024 15:42:11'!
+!DrGDebuggerWindow methodsFor: 'GUI building' stamp: 'hlsf 28/Apr/2024, 1:42:11 pm (UTC)'!
 buildMorphicWindow
 	"Open a full morphic debugger with the given label"
 
@@ -2405,7 +2405,7 @@ buildMorphicWindow
 		addAdjusterAndMorph: self buildLowerPanes proportionalHeight: 0.6;
 		addAdjusterAndMorph: bottomMorph proportionalHeight: 0.3.! !
 
-!DrGDebuggerWindow methodsFor: 'GUI building' stamp: 'hlsf 10/Apr/2024 16:46:52'!
+!DrGDebuggerWindow methodsFor: 'GUI building' stamp: 'hlsf 10/Apr/2024, 2:46:52 pm (UTC)'!
 customButtonSpecs
 	"Answer an array of elements of the form wording, selector, help-message, that characterize the custom button row of a debugger."
 
@@ -2416,15 +2416,15 @@ customButtonSpecs
 		{'Run to Cursor' translated . #runToCursor	 . 	'Execute the code up to the cursor position.' translated }
 	}! !
 
-!DrGDebuggerWindow methodsFor: 'GUI building' stamp: 'hlsf 13/Oct/2022 15:20:08'!
+!DrGDebuggerWindow methodsFor: 'GUI building' stamp: 'hlsf 13/Oct/2022, 1:20:08 pm (UTC)'!
 initialExtent
 	^ 600 @ 400! !
 
-!DrGDebuggerWindow methodsFor: 'accessing' stamp: 'hlsf 13/Oct/2022 15:37:01'!
+!DrGDebuggerWindow methodsFor: 'accessing' stamp: 'hlsf 13/Oct/2022, 1:37:01 pm (UTC)'!
 layerNumber
 	^ 50! !
 
-!DrGDebuggerWindow class methodsFor: 'instance creation' stamp: 'hlsf 28/Apr/2024 15:41:23'!
+!DrGDebuggerWindow class methodsFor: 'instance creation' stamp: 'hlsf 28/Apr/2024, 1:41:23 pm (UTC)'!
 open: model
 	| debuggerWindow |
 	debuggerWindow := self new
@@ -2434,12 +2434,12 @@ open: model
 	^ debuggerWindow 	
 ! !
 
-!DrGFileOpenMorph methodsFor: 'GUI building' stamp: 'hlsf 21/Jul/2024 23:06:29'!
+!DrGFileOpenMorph methodsFor: 'GUI building' stamp: 'hlsf 21/Jul/2024, 9:06:29 pm (UTC)'!
 buildMorphicWindow
 	super buildMorphicWindow .
 	layoutMorph adoptWidgetsColor: self widgetsColor! !
 
-!DrGFileOpenMorph methodsFor: 'GUI building' stamp: 'hlsf 2/May/2023 20:51:08'!
+!DrGFileOpenMorph methodsFor: 'GUI building' stamp: 'hlsf 2/May/2023, 6:51:08 pm (UTC)'!
 buildPane
 	| sketches row |
 	DrGeoSystem startSpinner.
@@ -2463,7 +2463,7 @@ buildPane
 	DrGeoSystem stopSpinner.
 	^ panel! !
 
-!DrGFileOpenMorph methodsFor: 'GUI building' stamp: 'drgeo 24/Feb/2026 14:18:19'!
+!DrGFileOpenMorph methodsFor: 'GUI building' stamp: 'drgeo 24/Feb/2026, 12:18:19 pm (UTC)'!
 computePreviewFor: aSketchFile
 	| stream drgeo |
 	stream := aSketchFile readStream.
@@ -2474,7 +2474,7 @@ computePreviewFor: aSketchFile
 		ifNil: [Form extent: 1@1] 
 		ifNotNil: [drgeo previewIn: ((aSketchFile pathName allButLast: 4), 'png') asFileEntry]! !
 
-!DrGFileOpenMorph methodsFor: 'GUI building' stamp: 'hlsf 11/Apr/2022 21:24:20'!
+!DrGFileOpenMorph methodsFor: 'GUI building' stamp: 'hlsf 11/Apr/2022, 7:24:20 pm (UTC)'!
 newButtonArea
 	| rowLeft rowRight |	
 	buttonArea := LayoutMorph newRow 
@@ -2514,13 +2514,13 @@ newButtonArea
 		addMorph: rowRight.
 	^ buttonArea! !
 
-!DrGFileOpenMorph methodsFor: 'GUI building' stamp: 'hlsf 25/Dec/2021 16:48:00'!
+!DrGFileOpenMorph methodsFor: 'GUI building' stamp: 'hlsf 25/Dec/2021, 2:48:00 pm (UTC)'!
 newPane
 	^ PluggableScrollPane new scroller: self buildPane; 
 		scrollDeltaHeight: 80; 
 		yourself! !
 
-!DrGFileOpenMorph methodsFor: 'GUI building' stamp: 'drgeo 24/Feb/2026 14:09:06'!
+!DrGFileOpenMorph methodsFor: 'GUI building' stamp: 'drgeo 24/Feb/2026, 12:09:06 pm (UTC)'!
 previewFor: aSketchEntry
 	| imageFilename form |
 	imageFilename := ((aSketchEntry pathName allButLast: 4), 'png') asFileEntry.
@@ -2529,7 +2529,7 @@ previewFor: aSketchEntry
 		ifFalse: [self computePreviewFor: aSketchEntry ].
 	^ form magnifyBy: (Theme current scale: Theme current previewSize x) / form width! !
 
-!DrGFileOpenMorph methodsFor: 'GUI building' stamp: 'hlsf 12/Jan/2025 12:57:47'!
+!DrGFileOpenMorph methodsFor: 'GUI building' stamp: 'hlsf 12/Jan/2025, 10:57:47 am (UTC)'!
 previewMorphFor: sketchEntry
 	| preview  |
 	preview := (FilePreviewMorph 		
@@ -2542,16 +2542,16 @@ previewMorphFor: sketchEntry
 	^ preview
 ! !
 
-!DrGFileOpenMorph methodsFor: 'accessing' stamp: 'hlsf 1/May/2023 17:13:25'!
+!DrGFileOpenMorph methodsFor: 'accessing' stamp: 'hlsf 1/May/2023, 3:13:25 pm (UTC)'!
 selectedFile
 	^ self selectedPreview ifNotNil: [:aPreview | aPreview fileEntry]! !
 
-!DrGFileOpenMorph methodsFor: 'accessing' stamp: 'hlsf 25/Oct/2021 10:01:23'!
+!DrGFileOpenMorph methodsFor: 'accessing' stamp: 'hlsf 25/Oct/2021, 8:01:23 am (UTC)'!
 selectedPreview
 "Detect the selected preview morph, if any"
 	^ previews detect: [:preview | preview isSelected] ifFound: [:preview | preview] ifNone: [nil]! !
 
-!DrGFileOpenMorph methodsFor: 'actions' stamp: 'hlsf 25/Oct/2021 10:04:45'!
+!DrGFileOpenMorph methodsFor: 'actions' stamp: 'hlsf 25/Oct/2021, 8:04:45 am (UTC)'!
 deleteSketch
 "Delete the selected sketch"
 	self canDelete ifTrue: [ | file |
@@ -2563,71 +2563,71 @@ deleteSketch
 	
 	! !
 
-!DrGFileOpenMorph methodsFor: 'actions' stamp: 'hlsf 8/Aug/2023 19:13:55'!
+!DrGFileOpenMorph methodsFor: 'actions' stamp: 'hlsf 8/Aug/2023, 5:13:55 pm (UTC)'!
 ok
 "Open the selected sketch"
 	self selectedFile ifNotNil: [:selectedFile |
 		self delete.
 		DrGeo file: selectedFile]! !
 
-!DrGFileOpenMorph methodsFor: 'actions' stamp: 'hlsf 8/Aug/2023 19:13:55'!
+!DrGFileOpenMorph methodsFor: 'actions' stamp: 'hlsf 8/Aug/2023, 5:13:55 pm (UTC)'!
 open: previewMorph
 "Open the selected sketch"
 	self delete.
 	DrGeo file: previewMorph fileEntry! !
 
-!DrGFileOpenMorph methodsFor: 'actions' stamp: 'hlsf 17/Oct/2021 12:29:46'!
+!DrGFileOpenMorph methodsFor: 'actions' stamp: 'hlsf 17/Oct/2021, 10:29:46 am (UTC)'!
 switchToExamples
 	model := DrGeoSystem examplesPath.
 	self updateButtonsAndPreviews ! !
 
-!DrGFileOpenMorph methodsFor: 'actions' stamp: 'hlsf 17/Oct/2021 12:30:00'!
+!DrGFileOpenMorph methodsFor: 'actions' stamp: 'hlsf 17/Oct/2021, 10:30:00 am (UTC)'!
 switchToMySketches
 	model := DrGeoSystem mySketchesPath.
 	self updateButtonsAndPreviews ! !
 
-!DrGFileOpenMorph methodsFor: 'states' stamp: 'hlsf 25/Oct/2021 09:46:28'!
+!DrGFileOpenMorph methodsFor: 'states' stamp: 'hlsf 25/Oct/2021, 7:46:28 am (UTC)'!
 canDelete
 	^ self isMySketches and: [self selectedFile notNil ]! !
 
-!DrGFileOpenMorph methodsFor: 'states' stamp: 'hlsf 14/Oct/2021 21:13:20'!
+!DrGFileOpenMorph methodsFor: 'states' stamp: 'hlsf 14/Oct/2021, 7:13:20 pm (UTC)'!
 isExamples
 	^ model asString includesSubString: 'examples'! !
 
-!DrGFileOpenMorph methodsFor: 'states' stamp: 'hlsf 14/Oct/2021 21:13:57'!
+!DrGFileOpenMorph methodsFor: 'states' stamp: 'hlsf 14/Oct/2021, 7:13:57 pm (UTC)'!
 isMySketches
 	^ model asString includesSubString: 'MySketches'! !
 
-!DrGFileOpenMorph methodsFor: 'update' stamp: 'hlsf 25/Oct/2021 09:50:49'!
+!DrGFileOpenMorph methodsFor: 'update' stamp: 'hlsf 25/Oct/2021, 7:50:49 am (UTC)'!
 update: aPreview
  "aPreview is now the user selected preview, update all the previews accordingly"
 	previews do: [:each | each selected: each == aPreview].
 	self redrawNeeded ! !
 
-!DrGFileOpenMorph methodsFor: 'update' stamp: 'hlsf 25/Dec/2021 16:48:00'!
+!DrGFileOpenMorph methodsFor: 'update' stamp: 'hlsf 25/Dec/2021, 2:48:00 pm (UTC)'!
 updateButtonsAndPreviews
 	self changed: #isExamples.
 	self changed: #isMySketches.
 	self buildPane! !
 
-!DrGFileOpenMorph methodsFor: 'initialization' stamp: 'hlsf 28/Jul/2024 10:24:43'!
+!DrGFileOpenMorph methodsFor: 'initialization' stamp: 'hlsf 28/Jul/2024, 8:24:43 am (UTC)'!
 defaultColor
 	^ Theme current transcript ! !
 
-!DrGFileOpenMorph methodsFor: 'initialization' stamp: 'hlsf 29/Oct/2021 12:12:00'!
+!DrGFileOpenMorph methodsFor: 'initialization' stamp: 'hlsf 29/Oct/2021, 10:12:00 am (UTC)'!
 initialize
 	super initialize.
 	previews := #()! !
 
-!DrGFileOpenMorph methodsFor: 'geometry' stamp: 'hlsf 2/Apr/2024 18:44:39'!
+!DrGFileOpenMorph methodsFor: 'geometry' stamp: 'hlsf 2/Apr/2024, 4:44:39 pm (UTC)'!
 minimumExtent
 	^ Theme current scale: 1000@500! !
 
-!DrGFileOpenMorph class methodsFor: 'instance creation' stamp: 'hlsf 14/Oct/2021 21:04:26'!
+!DrGFileOpenMorph class methodsFor: 'instance creation' stamp: 'hlsf 14/Oct/2021, 7:04:26 pm (UTC)'!
 open
 	^ self open: DrGeoSystem examplesPath label: 'Open a sketch' translated! !
 
-!DrGScriptDesignerDialog methodsFor: 'accessing' stamp: 'hlsf 4/Apr/2022 21:52:06'!
+!DrGScriptDesignerDialog methodsFor: 'accessing' stamp: 'hlsf 4/Apr/2022, 7:52:06 pm (UTC)'!
 arguments 
 "The arguments as selected by the user"
 |alignments|
@@ -2635,39 +2635,39 @@ arguments
 	^  alignments reverse collect: [ :each | each submorphs first selectedItem].
 	! !
 
-!DrGScriptDesignerDialog methodsFor: 'accessing' stamp: 'hlsf 5/Apr/2022 21:45:00'!
+!DrGScriptDesignerDialog methodsFor: 'accessing' stamp: 'hlsf 5/Apr/2022, 7:45:00 pm (UTC)'!
 argumentsClass
 "The arguments type as selected by the user, tpye=class from the MathItem hierarchy"
 |dict|
 	dict := self class labelsAndClasses .
 	^ self arguments collect: [:aLabel | dict at: aLabel]! !
 
-!DrGScriptDesignerDialog methodsFor: 'accessing' stamp: 'hlsf 6/Apr/2022 14:52:28'!
+!DrGScriptDesignerDialog methodsFor: 'accessing' stamp: 'hlsf 6/Apr/2022, 12:52:28 pm (UTC)'!
 description
 	^ description asString! !
 
-!DrGScriptDesignerDialog methodsFor: 'accessing' stamp: 'hlsf 2/Apr/2022 09:10:06'!
+!DrGScriptDesignerDialog methodsFor: 'accessing' stamp: 'hlsf 2/Apr/2022, 7:10:06 am (UTC)'!
 description: aString
 	description := aString ! !
 
-!DrGScriptDesignerDialog methodsFor: 'accessing' stamp: 'hlsf 6/Apr/2022 14:52:35'!
+!DrGScriptDesignerDialog methodsFor: 'accessing' stamp: 'hlsf 6/Apr/2022, 12:52:35 pm (UTC)'!
 scriptName
 	^ scriptName asString! !
 
-!DrGScriptDesignerDialog methodsFor: 'accessing' stamp: 'hlsf 2/Apr/2022 09:09:41'!
+!DrGScriptDesignerDialog methodsFor: 'accessing' stamp: 'hlsf 2/Apr/2022, 7:09:41 am (UTC)'!
 scriptName: aString
 	scriptName := aString ! !
 
-!DrGScriptDesignerDialog methodsFor: 'GUI building' stamp: 'hlsf 21/Jul/2024 23:14:31'!
+!DrGScriptDesignerDialog methodsFor: 'GUI building' stamp: 'hlsf 21/Jul/2024, 9:14:31 pm (UTC)'!
 buildMorphicWindow
 	super buildMorphicWindow .
 	self adoptWidgetsColor: self widgetsColor! !
 
-!DrGScriptDesignerDialog methodsFor: 'GUI building' stamp: 'hlsf 28/Jul/2024 10:25:05'!
+!DrGScriptDesignerDialog methodsFor: 'GUI building' stamp: 'hlsf 28/Jul/2024, 8:25:05 am (UTC)'!
 defaultColor
 	^ Theme current workspace ! !
 
-!DrGScriptDesignerDialog methodsFor: 'GUI building' stamp: 'hlsf 23/Aug/2025 12:23:51'!
+!DrGScriptDesignerDialog methodsFor: 'GUI building' stamp: 'hlsf 23/Aug/2025, 10:23:51 am (UTC)'!
 newAddArgumentButton
 	^ (PluggableButtonMorph model: self action: #addArgument)
 			icon: Theme current listAddIcon ;
@@ -2675,7 +2675,7 @@ newAddArgumentButton
 			setBalloonText: 'Add an argument to this script.' translated;
 			yourself! !
 
-!DrGScriptDesignerDialog methodsFor: 'GUI building' stamp: 'hlsf 27/May/2023 12:02:16'!
+!DrGScriptDesignerDialog methodsFor: 'GUI building' stamp: 'hlsf 27/May/2023, 10:02:16 am (UTC)'!
 newArgumentMorph
 	^ LayoutMorph newRow
 		color: Color transparent ;
@@ -2683,7 +2683,7 @@ newArgumentMorph
 		separation: 4@0;
 		yourself! !
 
-!DrGScriptDesignerDialog methodsFor: 'GUI building' stamp: 'hlsf 10/Aug/2025 11:17:11'!
+!DrGScriptDesignerDialog methodsFor: 'GUI building' stamp: 'hlsf 10/Aug/2025, 9:17:11 am (UTC)'!
 newButtonArea
 	buttonArea := LayoutMorph newRow
 		separation: 8@0;
@@ -2704,7 +2704,7 @@ newButtonArea
 		color: Color transparent.
 	^ buttonArea ! !
 
-!DrGScriptDesignerDialog methodsFor: 'GUI building' stamp: 'hlsf 10/Aug/2025 11:18:05'!
+!DrGScriptDesignerDialog methodsFor: 'GUI building' stamp: 'hlsf 10/Aug/2025, 9:18:05 am (UTC)'!
 newDescriptionMorph
 | morph |
 	morph := (TextModelMorph textProvider: self textGetter: #description textSetter: #description:)
@@ -2717,7 +2717,7 @@ newDescriptionMorph
 		self changed: #isValid]. 
 	^ morph! !
 
-!DrGScriptDesignerDialog methodsFor: 'GUI building' stamp: 'hlsf 10/Aug/2025 11:05:06'!
+!DrGScriptDesignerDialog methodsFor: 'GUI building' stamp: 'hlsf 10/Aug/2025, 9:05:06 am (UTC)'!
 newPane
 	| group |
 	group := LabelGroup with: {
@@ -2727,7 +2727,7 @@ newPane
 	group doAdoptWidgetsColor.
 	^ group! !
 
-!DrGScriptDesignerDialog methodsFor: 'GUI building' stamp: 'hlsf 10/Aug/2025 11:18:31'!
+!DrGScriptDesignerDialog methodsFor: 'GUI building' stamp: 'hlsf 10/Aug/2025, 9:18:31 am (UTC)'!
 newScriptNameMorph
 | morph |
 	morph := (TextModelMorph textProvider: self textGetter: #scriptName textSetter:  #scriptName:)
@@ -2743,13 +2743,13 @@ newScriptNameMorph
 		self changed: #isValid]. 
 	^ morph! !
 
-!DrGScriptDesignerDialog methodsFor: 'initialization' stamp: 'hlsf 5/Apr/2022 21:02:25'!
+!DrGScriptDesignerDialog methodsFor: 'initialization' stamp: 'hlsf 5/Apr/2022, 7:02:25 pm (UTC)'!
 initialize
 	super initialize.
 	scriptName := ''.
 	description := ''! !
 
-!DrGScriptDesignerDialog methodsFor: 'action' stamp: 'hlsf 10/Aug/2025 22:53:45'!
+!DrGScriptDesignerDialog methodsFor: 'action' stamp: 'hlsf 10/Aug/2025, 8:53:45 pm (UTC)'!
 addArgument
 	| newArgument |
 	newArgument := LayoutMorph newRow
@@ -2772,7 +2772,7 @@ addArgument
 	argumentsMorph addMorphFront: newArgument.
 	self morphExtent: self minimumExtent ! !
 
-!DrGScriptDesignerDialog methodsFor: 'action' stamp: 'hlsf 4/Aug/2023 17:38:35'!
+!DrGScriptDesignerDialog methodsFor: 'action' stamp: 'hlsf 4/Aug/2023, 3:38:35 pm (UTC)'!
 build
 	| scriptClass stream |
 	self delete.
@@ -2819,11 +2819,11 @@ build
 	"Browse the newly created script"
 	model editScript: scriptClass! !
 
-!DrGScriptDesignerDialog methodsFor: 'action' stamp: 'hlsf 4/Apr/2022 18:50:59'!
+!DrGScriptDesignerDialog methodsFor: 'action' stamp: 'hlsf 4/Apr/2022, 4:50:59 pm (UTC)'!
 cancel
 	self delete! !
 
-!DrGScriptDesignerDialog methodsFor: 'action' stamp: 'hlsf 4/Apr/2022 19:28:41'!
+!DrGScriptDesignerDialog methodsFor: 'action' stamp: 'hlsf 4/Apr/2022, 5:28:41 pm (UTC)'!
 isValid
 "respond wheter the given input data is valid to build a script"
 	scriptName asString withBlanksCondensed isEmpty ifTrue: [ ^ false ].
@@ -2831,16 +2831,16 @@ isValid
 	(Smalltalk hasClassNamed: #DrGeoScript, scriptName asString hash printString) ifTrue: [ ^ false ].
 	^ true! !
 
-!DrGScriptDesignerDialog methodsFor: 'action' stamp: 'hlsf 4/Apr/2022 21:49:52'!
+!DrGScriptDesignerDialog methodsFor: 'action' stamp: 'hlsf 4/Apr/2022, 7:49:52 pm (UTC)'!
 removeArgument: aRowArgument
 	argumentsMorph removeMorph: aRowArgument .
 	self morphExtent: self minimumExtent ! !
 
-!DrGScriptDesignerDialog methodsFor: 'as yet unclassified' stamp: 'hlsf 10/Aug/2025 11:35:21'!
+!DrGScriptDesignerDialog methodsFor: 'as yet unclassified' stamp: 'hlsf 10/Aug/2025, 9:35:21 am (UTC)'!
 minimumExtent
 	^ (Theme current scale: 400@250) max: (super minimumExtent )! !
 
-!DrGScriptDesignerDialog class methodsFor: 'labels and classes' stamp: 'hlsf 2/Apr/2022 12:50:48'!
+!DrGScriptDesignerDialog class methodsFor: 'labels and classes' stamp: 'hlsf 2/Apr/2022, 10:50:48 am (UTC)'!
 classesAndLabels
 	| dict |
 	dict := Dictionary new.
@@ -2849,17 +2849,17 @@ classesAndLabels
 	^ dict
 	! !
 
-!DrGScriptDesignerDialog class methodsFor: 'labels and classes' stamp: 'hlsf 2/Apr/2022 12:49:47'!
+!DrGScriptDesignerDialog class methodsFor: 'labels and classes' stamp: 'hlsf 2/Apr/2022, 10:49:47 am (UTC)'!
 indexOfLabel: string
 	self labels withIndexDo: [:label :i |
 		label = string ifTrue: [ ^ i ]].
 	self errorNotFound: string! !
 
-!DrGScriptDesignerDialog class methodsFor: 'labels and classes' stamp: 'hlsf 2/Apr/2022 12:49:05'!
+!DrGScriptDesignerDialog class methodsFor: 'labels and classes' stamp: 'hlsf 2/Apr/2022, 10:49:05 am (UTC)'!
 labels
 	^ self labelsAndClasses keys sorted! !
 
-!DrGScriptDesignerDialog class methodsFor: 'labels and classes' stamp: 'hlsf 7/Apr/2022 18:41:41'!
+!DrGScriptDesignerDialog class methodsFor: 'labels and classes' stamp: 'hlsf 7/Apr/2022, 4:41:41 pm (UTC)'!
 labelsAndClasses
 	^ Dictionary newFrom: {
 		'Any type' translated -> DrGMathItem.
@@ -2876,38 +2876,41 @@ labelsAndClasses
 		'Value' translated -> DrGValueItem.
 		'Angle' translated -> DrGAngleItem}! !
 
-!DrGSmalltalkSketchBrowser methodsFor: 'accessing' stamp: 'hlsf 25/May/2023 17:55:31'!
+!DrGSmalltalkSketchBrowser methodsFor: 'accessing' stamp: 'drgeo 28/Jun/2026, 8:16:33 am (UTC)'!
 compiledSketch: aSketch
 	| oldView |
 	self releaseMiniView.
-	oldView := drgeoView.
+"	oldView := drgeoView.
 	drgeoView := aSketch view.
 	pane replaceSubmorph: oldView by: drgeoView.
-	self runningWorld doOneCycleNow.! !
+	self runningWorld doOneCycleNow."
+		drgeoView 
+			removeAllMorphs;
+			addMorph: aSketch view! !
 
-!DrGSmalltalkSketchBrowser methodsFor: 'accessing' stamp: 'hlsf 11/Apr/2022 21:52:55'!
+!DrGSmalltalkSketchBrowser methodsFor: 'accessing' stamp: 'hlsf 11/Apr/2022, 7:52:55 pm (UTC)'!
 deleteSketch
 	self canDelete ifTrue: [
 		selectedFile delete.
 		self sketch: 0]! !
 
-!DrGSmalltalkSketchBrowser methodsFor: 'accessing' stamp: 'hlsf 16/Apr/2022 11:43:15'!
+!DrGSmalltalkSketchBrowser methodsFor: 'accessing' stamp: 'hlsf 16/Apr/2022, 9:43:15 am (UTC)'!
 edit
 " Inform any interested party the user wants to edit the selected sketch "
 	self triggerEvent: #editSmalltalkSketch with: 	selectedFile.
 	self delete.! !
 
-!DrGSmalltalkSketchBrowser methodsFor: 'accessing' stamp: 'hlsf 9/Apr/2025 20:56:47'!
+!DrGSmalltalkSketchBrowser methodsFor: 'accessing' stamp: 'hlsf 9/Apr/2025, 6:56:47 pm (UTC)'!
 layerNumber
 " Lower it a bit, the user may want to open alternate window as Browser "
 	^ 100! !
 
-!DrGSmalltalkSketchBrowser methodsFor: 'accessing' stamp: 'hlsf 9/Apr/2022 11:05:19'!
+!DrGSmalltalkSketchBrowser methodsFor: 'accessing' stamp: 'hlsf 9/Apr/2022, 9:05:19 am (UTC)'!
 model: aDirectoryEntry
 	model := aDirectoryEntry .
 	sketches := nil! !
 
-!DrGSmalltalkSketchBrowser methodsFor: 'accessing' stamp: 'hlsf 12/Apr/2022 21:24:54'!
+!DrGSmalltalkSketchBrowser methodsFor: 'accessing' stamp: 'hlsf 12/Apr/2022, 7:24:54 pm (UTC)'!
 showCode: aCheckButtonMorph 
 | drgeoFraction |
 	aCheckButtonMorph isSelected 
@@ -2920,21 +2923,19 @@ showCode: aCheckButtonMorph
 			pane removeMorph: codeView].
 	drgeoView layoutSpec: (LayoutSpec proportionalHeight: drgeoFraction)! !
 
-!DrGSmalltalkSketchBrowser methodsFor: 'accessing' stamp: 'hlsf 11/Apr/2022 21:47:52'!
+!DrGSmalltalkSketchBrowser methodsFor: 'accessing' stamp: 'hlsf 11/Apr/2022, 7:47:52 pm (UTC)'!
 sketch
 	^ selectedFile 
 		ifNil: [0] 
 		ifNotNil: [	sketches indexOf: selectedFile baseName]! !
 
-!DrGSmalltalkSketchBrowser methodsFor: 'accessing' stamp: 'hlsf 8/Jun/2024 16:20:56'!
+!DrGSmalltalkSketchBrowser methodsFor: 'accessing' stamp: 'drgeo 28/Jun/2026, 8:32:35 am (UTC)'!
 sketch: anIndex
 	ActiveModel flushEventSystem.
 	anIndex = 0 
-		ifTrue:  [	| oldView |
+		ifTrue:  [	
 			self releaseMiniView.
-			oldView := drgeoView.
-			drgeoView := self emptyView .
-			pane replaceSubmorph: oldView by: drgeoView.
+			drgeoView removeAllMorphs.
 			selectedFile := nil.
 			self changed: #sourceCode]
 		ifFalse: [
@@ -2944,7 +2945,7 @@ sketch: anIndex
 			selectedFile readStream fileIn	.
 			DrGeoSketch removeActionsForEvent: #newSmalltalkSketch	]! !
 
-!DrGSmalltalkSketchBrowser methodsFor: 'accessing' stamp: 'hlsf 28/Sep/2022 16:32:35'!
+!DrGSmalltalkSketchBrowser methodsFor: 'accessing' stamp: 'hlsf 28/Sep/2022, 2:32:35 pm (UTC)'!
 sketches
 " The skteches files in the current path"
 	^ sketches ifNil: [sketches := (model files 
@@ -2952,29 +2953,29 @@ sketches
 			thenCollect: [:aFile | aFile baseName ]) sorted ]
 			! !
 
-!DrGSmalltalkSketchBrowser methodsFor: 'accessing' stamp: 'hlsf 22/Feb/2023 11:28:15'!
+!DrGSmalltalkSketchBrowser methodsFor: 'accessing' stamp: 'hlsf 22/Feb/2023, 9:28:15 am (UTC)'!
 sourceCode
 	^ selectedFile 
 		ifNotNil: [	selectedFile fileContents]
 		ifNil: ['']! !
 
-!DrGSmalltalkSketchBrowser methodsFor: 'accessing' stamp: 'hlsf 11/Apr/2022 21:54:35'!
+!DrGSmalltalkSketchBrowser methodsFor: 'accessing' stamp: 'hlsf 11/Apr/2022, 7:54:35 pm (UTC)'!
 switchToExamples
 	model := DrGeoSystem smalltalkSketchesPath.
 	self updateButtonsAndPreviews! !
 
-!DrGSmalltalkSketchBrowser methodsFor: 'accessing' stamp: 'hlsf 11/Apr/2022 21:55:43'!
+!DrGSmalltalkSketchBrowser methodsFor: 'accessing' stamp: 'hlsf 11/Apr/2022, 7:55:43 pm (UTC)'!
 switchToMySketches
 	model := DrGeoSystem mySmalltalkSketchesPath.
 	self updateButtonsAndPreviews! !
 
-!DrGSmalltalkSketchBrowser methodsFor: 'GUI building' stamp: 'hlsf 21/Jul/2024 23:00:23'!
+!DrGSmalltalkSketchBrowser methodsFor: 'GUI building' stamp: 'hlsf 21/Jul/2024, 9:00:23 pm (UTC)'!
 buildMorphicWindow
 	super buildMorphicWindow.
 	titleMorph showButtonsNamed: #(close expand).
 	layoutMorph adoptWidgetsColor: self widgetsColor! !
 
-!DrGSmalltalkSketchBrowser methodsFor: 'GUI building' stamp: 'hlsf 4/Apr/2024 12:54:48'!
+!DrGSmalltalkSketchBrowser methodsFor: 'GUI building' stamp: 'hlsf 4/Apr/2024, 10:54:48 am (UTC)'!
 newButtonArea
 	| rowLeft rowRight |	
 	buttonArea := LayoutMorph newRow 
@@ -3020,7 +3021,7 @@ newButtonArea
 		addMorph: rowRight.
 	^ buttonArea! !
 
-!DrGSmalltalkSketchBrowser methodsFor: 'GUI building' stamp: 'hlsf 12/Apr/2022 23:31:48'!
+!DrGSmalltalkSketchBrowser methodsFor: 'GUI building' stamp: 'hlsf 12/Apr/2022, 9:31:48 pm (UTC)'!
 newDrGeoColumn
 " the DrGeo view and an optional code view"
 	^ pane := LayoutMorph newColumn
@@ -3028,7 +3029,7 @@ newDrGeoColumn
 		addAdjusterMorph ;
 		yourself! !
 
-!DrGSmalltalkSketchBrowser methodsFor: 'GUI building' stamp: 'hlsf 10/Aug/2025 11:56:01'!
+!DrGSmalltalkSketchBrowser methodsFor: 'GUI building' stamp: 'hlsf 10/Aug/2025, 9:56:01 am (UTC)'!
 newPane
 	^ LayoutMorph newRow
 		separation: self defaultSeparation ;
@@ -3036,7 +3037,7 @@ newPane
 		addMorphUseAll: self newDrGeoColumn;
 		yourself! !
 
-!DrGSmalltalkSketchBrowser methodsFor: 'GUI building' stamp: 'hlsf 10/Aug/2025 11:56:10'!
+!DrGSmalltalkSketchBrowser methodsFor: 'GUI building' stamp: 'hlsf 10/Aug/2025, 9:56:10 am (UTC)'!
 newSketchesColumn
 " The list of the sketch and an option to view the code"
 	| checkGtoup |
@@ -3048,32 +3049,32 @@ newSketchesColumn
 		yourself
 		! !
 
-!DrGSmalltalkSketchBrowser methodsFor: 'initialization' stamp: 'hlsf 28/Jul/2024 10:25:31'!
+!DrGSmalltalkSketchBrowser methodsFor: 'initialization' stamp: 'hlsf 28/Jul/2024, 8:25:31 am (UTC)'!
 defaultColor
 	^ Theme current transcript ! !
 
-!DrGSmalltalkSketchBrowser methodsFor: 'initialization' stamp: 'hlsf 18/Sep/2024 21:00:24'!
-emptyView
-	^ BorderedBoxMorph new
-		color: self color;
-		borderWidth: 1;
-		layoutSpec: LayoutSpec useAll! !
-
-!DrGSmalltalkSketchBrowser methodsFor: 'initialization' stamp: 'hlsf 20/May/2024 15:32:05'!
+!DrGSmalltalkSketchBrowser methodsFor: 'initialization' stamp: 'drgeo 28/Jun/2026, 8:27:55 am (UTC)'!
 initialize
 	super initialize.
 	sketchesListMorph := PluggableListMorph 
-		withModel: self 		listGetter: #sketches 		indexGetter: #sketch indexSetter: #sketch:.
-	drgeoView := self emptyView.
+		withModel: self listGetter: #sketches indexGetter: #sketch indexSetter: #sketch:.
+	drgeoView := self viewHolder.
 	codeView := (TextModelMorph textProvider: self textGetter: #sourceCode)
 		disableEditing;
 		yourself.! !
 
-!DrGSmalltalkSketchBrowser methodsFor: 'geometry' stamp: 'hlsf 2/Apr/2024 19:01:40'!
+!DrGSmalltalkSketchBrowser methodsFor: 'initialization' stamp: 'drgeo 28/Jun/2026, 8:27:55 am (UTC)'!
+viewHolder
+	^ LayoutMorph newRow
+		color: self color;
+		borderWidth: 1;
+		layoutSpec: LayoutSpec useAll! !
+
+!DrGSmalltalkSketchBrowser methodsFor: 'geometry' stamp: 'hlsf 2/Apr/2024, 5:01:40 pm (UTC)'!
 minimumExtent
 	^ Theme current scale: 800@600! !
 
-!DrGSmalltalkSketchBrowser methodsFor: 'update' stamp: 'hlsf 9/Jul/2022 12:07:45'!
+!DrGSmalltalkSketchBrowser methodsFor: 'update' stamp: 'hlsf 9/Jul/2022, 10:07:45 am (UTC)'!
 updateButtonsAndPreviews
 	sketches := nil.
 	self changed: #isExamples.
@@ -3083,70 +3084,70 @@ updateButtonsAndPreviews
 	self changed: #canDelete.
 	self sketch: 0! !
 
-!DrGSmalltalkSketchBrowser methodsFor: 'states' stamp: 'hlsf 11/Apr/2022 21:56:14'!
+!DrGSmalltalkSketchBrowser methodsFor: 'states' stamp: 'hlsf 11/Apr/2022, 7:56:14 pm (UTC)'!
 canDelete
 	^ self isMySketches and: [selectedFile notNil ]! !
 
-!DrGSmalltalkSketchBrowser methodsFor: 'states' stamp: 'hlsf 18/Sep/2024 21:10:18'!
+!DrGSmalltalkSketchBrowser methodsFor: 'states' stamp: 'hlsf 18/Sep/2024, 7:10:18 pm (UTC)'!
 canEdit
 " Is there any editor listening to edit a selected Smalltalk Sketch? "
 	^ self actionMap 
 		ifNotNil: [:map | map  includesKey: #editSmalltalkSketch]
 		ifNil: [false]! !
 
-!DrGSmalltalkSketchBrowser methodsFor: 'states' stamp: 'hlsf 11/Apr/2022 21:57:32'!
+!DrGSmalltalkSketchBrowser methodsFor: 'states' stamp: 'hlsf 11/Apr/2022, 7:57:32 pm (UTC)'!
 isExamples
 	^ self isMySketches not! !
 
-!DrGSmalltalkSketchBrowser methodsFor: 'states' stamp: 'hlsf 11/Apr/2022 21:57:17'!
+!DrGSmalltalkSketchBrowser methodsFor: 'states' stamp: 'hlsf 11/Apr/2022, 7:57:17 pm (UTC)'!
 isMySketches
 	^ model asString includesSubString: 'MySmalltalk'! !
 
-!DrGSmalltalkSketchBrowser methodsFor: 'user interface support' stamp: 'hlsf 12/Apr/2022 23:28:08'!
+!DrGSmalltalkSketchBrowser methodsFor: 'user interface support' stamp: 'hlsf 12/Apr/2022, 9:28:08 pm (UTC)'!
 shouldStyle: aText with: aSHTextStylerST80 
 	
 	^true! !
 
-!DrGSmalltalkSketchBrowser methodsFor: 'user interface support' stamp: 'hlsf 23/Nov/2023 17:27:51'!
+!DrGSmalltalkSketchBrowser methodsFor: 'user interface support' stamp: 'hlsf 23/Nov/2023, 3:27:51 pm (UTC)'!
 styleByParagraphs
 	^ false! !
 
-!DrGSmalltalkSketchBrowser methodsFor: 'user interface support' stamp: 'hlsf 12/Apr/2022 23:25:32'!
+!DrGSmalltalkSketchBrowser methodsFor: 'user interface support' stamp: 'hlsf 12/Apr/2022, 9:25:32 pm (UTC)'!
 textStylerClassFor: object
 	^ SHTextStylerST80 ! !
 
-!DrGSmalltalkSketchBrowser methodsFor: 'menus' stamp: 'hlsf 23/Apr/2022 14:19:49'!
+!DrGSmalltalkSketchBrowser methodsFor: 'menus' stamp: 'hlsf 23/Apr/2022, 12:19:49 pm (UTC)'!
 expand
 	super expand.
 	self fullScreen! !
 
-!DrGSmalltalkSketchBrowser methodsFor: 'testing' stamp: 'hlsf 18/May/2023 17:09:55'!
+!DrGSmalltalkSketchBrowser methodsFor: 'testing' stamp: 'hlsf 18/May/2023, 3:09:55 pm (UTC)'!
 shouldAutoHighlight
 	^ false! !
 
-!DrGSmalltalkSketchBrowser methodsFor: 'testing' stamp: 'hlsf 18/May/2023 17:10:10'!
+!DrGSmalltalkSketchBrowser methodsFor: 'testing' stamp: 'hlsf 18/May/2023, 3:10:10 pm (UTC)'!
 shoutMustKeepContentsSize
 	^ true! !
 
-!DrGSmalltalkSketchBrowser methodsFor: 'submorphs-add/remove' stamp: 'hlsf 12/Apr/2024 17:54:59'!
+!DrGSmalltalkSketchBrowser methodsFor: 'submorphs-add/remove' stamp: 'hlsf 12/Apr/2024, 3:54:59 pm (UTC)'!
 delete
 	super delete.
 	self releaseMiniView! !
 
-!DrGSmalltalkSketchBrowser methodsFor: 'submorphs-add/remove' stamp: 'hlsf 4/Aug/2023 12:58:33'!
+!DrGSmalltalkSketchBrowser methodsFor: 'submorphs-add/remove' stamp: 'drgeo 28/Jun/2026, 8:28:26 am (UTC)'!
 releaseMiniView
-	(drgeoView respondsTo: #presenter) 
-		ifTrue: [drgeoView presenter ifNotNil: [:pres | pres release] ]! !
+	drgeoView submorphCount = 1 ifTrue: [
+		drgeoView firstSubmorph ifNotNil: [:miniView | miniView release]]! !
 
-!DrGSmalltalkSketchBrowser methodsFor: 'as yet unclassified' stamp: 'hlsf 18/Sep/2024 21:02:40'!
+!DrGSmalltalkSketchBrowser methodsFor: 'as yet unclassified' stamp: 'hlsf 18/Sep/2024, 7:02:40 pm (UTC)'!
 aboutToStyleWith: aSHTextStylerST80 
 ! !
 
-!DrGSmalltalkSketchBrowser methodsFor: 'as yet unclassified' stamp: 'hlsf 18/Sep/2024 21:02:02'!
+!DrGSmalltalkSketchBrowser methodsFor: 'as yet unclassified' stamp: 'hlsf 18/Sep/2024, 7:02:02 pm (UTC)'!
 allowsStylingFor: aSymbol isTextDirty: aFalse 
 	^ true! !
 
-!DrGSmalltalkSketchEditor methodsFor: 'GUI building' stamp: 'hlsf 21/Jul/2024 23:00:38'!
+!DrGSmalltalkSketchEditor methodsFor: 'GUI building' stamp: 'hlsf 21/Jul/2024, 9:00:38 pm (UTC)'!
 buildMorphicWindow
 	super buildMorphicWindow.
 	titleMorph showButtonsNamed: #(close collapse expand).
@@ -3154,7 +3155,7 @@ buildMorphicWindow
 	self activeHand newKeyboardFocus: codeView scroller.
 	layoutMorph adoptWidgetsColor: self widgetsColor! !
 
-!DrGSmalltalkSketchEditor methodsFor: 'GUI building' stamp: 'hlsf 30/Mar/2024 08:48:53'!
+!DrGSmalltalkSketchEditor methodsFor: 'GUI building' stamp: 'hlsf 30/Mar/2024, 6:48:53 am (UTC)'!
 button: iconSymbol action: actionSelector help: helpString
 	^ (ButtonMorph model: self action: actionSelector)
 			icon: (DrGIcons for: iconSymbol );
@@ -3166,7 +3167,7 @@ button: iconSymbol action: actionSelector help: helpString
 			morphExtent: (Theme current toolbarIconSize + 4) asPoint;
 			yourself! !
 
-!DrGSmalltalkSketchEditor methodsFor: 'GUI building' stamp: 'hlsf 30/Mar/2024 08:49:06'!
+!DrGSmalltalkSketchEditor methodsFor: 'GUI building' stamp: 'hlsf 30/Mar/2024, 6:49:06 am (UTC)'!
 button: iconSymbol action: actionSelector state: getStateSel help: helpString
 	^ (ButtonMorph model: self stateGetter: getStateSel action: actionSelector)
 			icon: (DrGIcons for: iconSymbol );
@@ -3178,7 +3179,7 @@ button: iconSymbol action: actionSelector state: getStateSel help: helpString
 			morphExtent: (Theme current toolbarIconSize + 4) asPoint;
 			yourself! !
 
-!DrGSmalltalkSketchEditor methodsFor: 'GUI building' stamp: 'hlsf 14/Apr/2022 16:43:31'!
+!DrGSmalltalkSketchEditor methodsFor: 'GUI building' stamp: 'hlsf 14/Apr/2022, 2:43:31 pm (UTC)'!
 newButtonArea
 	buttonArea := LayoutMorph newRow 
 		axisEdgeWeight: #rowRight;
@@ -3188,7 +3189,7 @@ newButtonArea
 			label: 'Cancel' translated).
 	^ buttonArea! !
 
-!DrGSmalltalkSketchEditor methodsFor: 'GUI building' stamp: 'hlsf 2/Nov/2022 19:39:02'!
+!DrGSmalltalkSketchEditor methodsFor: 'GUI building' stamp: 'hlsf 2/Nov/2022, 5:39:02 pm (UTC)'!
 newCodeAndView
 	^ LayoutMorph newRow
 		separation: self defaultSeparation;
@@ -3201,7 +3202,7 @@ newCodeAndView
 		addMorph: drgeoView proportionalWidth: 0.5;
 		yourself! !
 
-!DrGSmalltalkSketchEditor methodsFor: 'GUI building' stamp: 'hlsf 19/Oct/2022 21:31:20'!
+!DrGSmalltalkSketchEditor methodsFor: 'GUI building' stamp: 'hlsf 19/Oct/2022, 7:31:20 pm (UTC)'!
 newPane
 	^ LayoutMorph newColumn
 		separation: self defaultSeparation ;
@@ -3209,7 +3210,7 @@ newPane
 		addMorphUseAll: self newCodeAndView;
 		yourself! !
 
-!DrGSmalltalkSketchEditor methodsFor: 'GUI building' stamp: 'drgeo 25/Apr/2026 19:00:21'!
+!DrGSmalltalkSketchEditor methodsFor: 'GUI building' stamp: 'drgeo 25/Apr/2026, 5:00:21 pm (UTC)'!
 newToolbar
 	^ LayoutMorph newRow
 		separation: 5@0 ;
@@ -3223,20 +3224,20 @@ newToolbar
 		addMorph: (self button: #doc action: #toggleHelp state: #isDocVisible help: 'Dr. Geo tutorial' translated)
 		yourself! !
 
-!DrGSmalltalkSketchEditor methodsFor: 'GUI building' stamp: 'hlsf 1/May/2024 11:08:16'!
+!DrGSmalltalkSketchEditor methodsFor: 'GUI building' stamp: 'hlsf 1/May/2024, 9:08:16 am (UTC)'!
 plugDebugger
 " Install the debugger window at the place of the code viewer "
 	debugger layoutMorph borderWidth: 1.
 	codeAndViewPanel replaceSubmorph: codeView by: debugger layoutMorph.			
 	debugger model when: #closeViews send: #stopDebbuger to: self.! !
 
-!DrGSmalltalkSketchEditor methodsFor: 'GUI building' stamp: 'hlsf 9/May/2024 11:20:31'!
+!DrGSmalltalkSketchEditor methodsFor: 'GUI building' stamp: 'hlsf 9/May/2024, 9:20:31 am (UTC)'!
 plugDebugger: aDebugger
 	self stopDebbuger.
 	debugger := aDebugger.
 	self plugDebugger ! !
 
-!DrGSmalltalkSketchEditor methodsFor: 'GUI building' stamp: 'hlsf 6/Oct/2022 12:44:50'!
+!DrGSmalltalkSketchEditor methodsFor: 'GUI building' stamp: 'hlsf 6/Oct/2022, 10:44:50 am (UTC)'!
 switchToPauseButton
 " 
 Switch to pause sketch action 
@@ -3247,7 +3248,7 @@ Switch to pause sketch action
 		setBalloonText: 'Pause the Smalltalk sketch.' translated;
 		redrawNeeded ! !
 
-!DrGSmalltalkSketchEditor methodsFor: 'GUI building' stamp: 'hlsf 20/Mar/2024 16:20:14'!
+!DrGSmalltalkSketchEditor methodsFor: 'GUI building' stamp: 'hlsf 20/Mar/2024, 2:20:14 pm (UTC)'!
 switchToPlayButton
 " 
 Switch to play sketch action 
@@ -3258,7 +3259,7 @@ Switch to play sketch action
 		setBalloonText: 'Play the Smalltalk sketch.' translated;
 		redrawNeeded.! !
 
-!DrGSmalltalkSketchEditor methodsFor: 'GUI building' stamp: 'hlsf 6/Oct/2022 12:44:44'!
+!DrGSmalltalkSketchEditor methodsFor: 'GUI building' stamp: 'hlsf 6/Oct/2022, 10:44:44 am (UTC)'!
 switchToResumeButton
 " 
 Switch to resume sketch action
@@ -3269,17 +3270,17 @@ Switch to resume sketch action
 		setBalloonText: 'Resume the Smalltalk sketch.' translated;
 		redrawNeeded ! !
 
-!DrGSmalltalkSketchEditor methodsFor: 'GUI building' stamp: 'hlsf 18/Sep/2024 21:03:16'!
+!DrGSmalltalkSketchEditor methodsFor: 'GUI building' stamp: 'hlsf 18/Sep/2024, 7:03:16 pm (UTC)'!
 transparentMorph
 	^ ColoredBoxMorph new 
 		color: Color transparent; 
 		yourself! !
 
-!DrGSmalltalkSketchEditor methodsFor: 'initialization' stamp: 'hlsf 28/Jul/2024 10:25:47'!
+!DrGSmalltalkSketchEditor methodsFor: 'initialization' stamp: 'hlsf 28/Jul/2024, 8:25:47 am (UTC)'!
 defaultColor
 	^ Theme current workspace ! !
 
-!DrGSmalltalkSketchEditor methodsFor: 'initialization' stamp: 'hlsf 10/Aug/2024 15:53:38'!
+!DrGSmalltalkSketchEditor methodsFor: 'initialization' stamp: 'hlsf 10/Aug/2024, 1:53:38 pm (UTC)'!
 initialize
 	| book |
 	super initialize.
@@ -3298,38 +3299,38 @@ initialize
 		borderWidth: 1;
 		layoutSpec: LayoutSpec useAll! !
 
-!DrGSmalltalkSketchEditor methodsFor: 'accessing' stamp: 'hlsf 30/Oct/2022 20:39:21'!
+!DrGSmalltalkSketchEditor methodsFor: 'accessing' stamp: 'hlsf 30/Oct/2022, 6:39:21 pm (UTC)'!
 isDocVisible
 	^ docView visible! !
 
-!DrGSmalltalkSketchEditor methodsFor: 'accessing' stamp: 'hlsf 9/Apr/2025 20:57:24'!
+!DrGSmalltalkSketchEditor methodsFor: 'accessing' stamp: 'hlsf 9/Apr/2025, 6:57:24 pm (UTC)'!
 layerNumber
 " Lower it a bit, the user may want to open alternate window as Browser "
 	^ 100! !
 
-!DrGSmalltalkSketchEditor methodsFor: 'accessing' stamp: 'hlsf 14/Apr/2022 16:35:00'!
+!DrGSmalltalkSketchEditor methodsFor: 'accessing' stamp: 'hlsf 14/Apr/2022, 2:35:00 pm (UTC)'!
 model: sourceCode
 "Set an initial source code (string)"
 	model := sourceCode
 ! !
 
-!DrGSmalltalkSketchEditor methodsFor: 'accessing' stamp: 'hlsf 30/Oct/2022 20:45:35'!
+!DrGSmalltalkSketchEditor methodsFor: 'accessing' stamp: 'hlsf 30/Oct/2022, 6:45:35 pm (UTC)'!
 separator
 "The adjuster/separator between the codeView and docView"
 	^ codeView owner submorphs second
 ! !
 
-!DrGSmalltalkSketchEditor methodsFor: 'accessing' stamp: 'drgeo 25/Apr/2026 19:07:52'!
+!DrGSmalltalkSketchEditor methodsFor: 'accessing' stamp: 'drgeo 25/Apr/2026, 5:07:52 pm (UTC)'!
 sketchName
 	^ file ifNil: [''] ifNotNil: [file baseName]! !
 
-!DrGSmalltalkSketchEditor methodsFor: 'accessing' stamp: 'hlsf 14/Apr/2022 16:36:21'!
+!DrGSmalltalkSketchEditor methodsFor: 'accessing' stamp: 'hlsf 14/Apr/2022, 2:36:21 pm (UTC)'!
 sourceCode
 	^ model 
 		ifNotNil: [model]
 		ifNil: ['']! !
 
-!DrGSmalltalkSketchEditor methodsFor: 'accessing' stamp: 'hlsf 25/May/2023 15:31:43'!
+!DrGSmalltalkSketchEditor methodsFor: 'accessing' stamp: 'hlsf 25/May/2023, 1:31:43 pm (UTC)'!
 sourceCode: aText
 	self model: aText asString.
 	self changed: #clearUserEdits.
@@ -3338,35 +3339,35 @@ sourceCode: aText
 	drgeoView removeAllMorphs
 ! !
 
-!DrGSmalltalkSketchEditor methodsFor: 'user interface support' stamp: 'hlsf 15/Apr/2022 15:12:50'!
+!DrGSmalltalkSketchEditor methodsFor: 'user interface support' stamp: 'hlsf 15/Apr/2022, 1:12:50 pm (UTC)'!
 autoCompleterClassFor: textGetter
 	^SmalltalkCompleter! !
 
-!DrGSmalltalkSketchEditor methodsFor: 'user interface support' stamp: 'hlsf 22/Dec/2022 21:45:04'!
+!DrGSmalltalkSketchEditor methodsFor: 'user interface support' stamp: 'hlsf 22/Dec/2022, 7:45:04 pm (UTC)'!
 computeMessageEntriesIn: aDynamicTypingSmalltalkCompleter ofBlockArgNamed: aString 
 	aDynamicTypingSmalltalkCompleter 
 		computeMessageEntriesForClassOrNil: (DrGeoSystem preferences at: #programmingCodeCompletion)! !
 
-!DrGSmalltalkSketchEditor methodsFor: 'user interface support' stamp: 'hlsf 22/Dec/2022 21:45:36'!
+!DrGSmalltalkSketchEditor methodsFor: 'user interface support' stamp: 'hlsf 22/Dec/2022, 7:45:36 pm (UTC)'!
 computeMessageEntriesIn: aDynamicTypingSmalltalkCompleter ofBlockTempVarNamed: aString 
 	aDynamicTypingSmalltalkCompleter 
 		computeMessageEntriesForClassOrNil: (DrGeoSystem preferences at: #programmingCodeCompletion)! !
 
-!DrGSmalltalkSketchEditor methodsFor: 'user interface support' stamp: 'hlsf 22/Dec/2022 21:45:25'!
+!DrGSmalltalkSketchEditor methodsFor: 'user interface support' stamp: 'hlsf 22/Dec/2022, 7:45:25 pm (UTC)'!
 computeMessageEntriesIn: aDynamicTypingSmalltalkCompleter ofInstVarNamed: aString 
 	aDynamicTypingSmalltalkCompleter 
 		computeMessageEntriesForClassOrNil: (DrGeoSystem preferences at: #programmingCodeCompletion)! !
 
-!DrGSmalltalkSketchEditor methodsFor: 'user interface support' stamp: 'hlsf 22/Dec/2022 21:40:20'!
+!DrGSmalltalkSketchEditor methodsFor: 'user interface support' stamp: 'hlsf 22/Dec/2022, 7:40:20 pm (UTC)'!
 computeMessageEntriesIn: aDynamicTypingSmalltalkCompleter ofTempVarNamed: aString 
 	aDynamicTypingSmalltalkCompleter 
 		computeMessageEntriesForClassOrNil: (DrGeoSystem preferences at: #programmingCodeCompletion)! !
 
-!DrGSmalltalkSketchEditor methodsFor: 'user interface support' stamp: 'hlsf 15/Apr/2022 15:10:56'!
+!DrGSmalltalkSketchEditor methodsFor: 'user interface support' stamp: 'hlsf 15/Apr/2022, 1:10:56 pm (UTC)'!
 editorClassFor: textGetter
     ^SmalltalkEditor! !
 
-!DrGSmalltalkSketchEditor methodsFor: 'user interface support' stamp: 'drgeo 25/Apr/2026 19:16:36'!
+!DrGSmalltalkSketchEditor methodsFor: 'user interface support' stamp: 'drgeo 25/Apr/2026, 5:16:36 pm (UTC)'!
 promptAI
 	^ '# Introduction
 I am an user of Dr. Geo, an  application for interactive geometry. 
@@ -3534,20 +3535,20 @@ mySketch translate: polygon vector: -0.5@-0.2.
 mySketch text: ''This sketch illustrates the Inteactive geometry DSL API''.
 mySketch view'! !
 
-!DrGSmalltalkSketchEditor methodsFor: 'user interface support' stamp: 'hlsf 14/Apr/2022 16:40:23'!
+!DrGSmalltalkSketchEditor methodsFor: 'user interface support' stamp: 'hlsf 14/Apr/2022, 2:40:23 pm (UTC)'!
 shouldStyle: aText with: aSHTextStylerST80 
 	
 	^true! !
 
-!DrGSmalltalkSketchEditor methodsFor: 'user interface support' stamp: 'hlsf 23/Nov/2023 17:27:30'!
+!DrGSmalltalkSketchEditor methodsFor: 'user interface support' stamp: 'hlsf 23/Nov/2023, 3:27:30 pm (UTC)'!
 styleByParagraphs
 	^ false! !
 
-!DrGSmalltalkSketchEditor methodsFor: 'user interface support' stamp: 'hlsf 14/Apr/2022 16:40:27'!
+!DrGSmalltalkSketchEditor methodsFor: 'user interface support' stamp: 'hlsf 14/Apr/2022, 2:40:27 pm (UTC)'!
 textStylerClassFor: object
 	^ SHTextStylerST80 ! !
 
-!DrGSmalltalkSketchEditor methodsFor: 'actions' stamp: 'hlsf 18/May/2023 17:35:00'!
+!DrGSmalltalkSketchEditor methodsFor: 'actions' stamp: 'hlsf 18/May/2023, 3:35:00 pm (UTC)'!
 browseSketches
 | browser |
 	self stopSketch.
@@ -3556,18 +3557,18 @@ browseSketches
 		label: 'Select a Smalltalk sketch' translated.
 	browser when: #editSmalltalkSketch send: #loadSketch: to: self.! !
 
-!DrGSmalltalkSketchEditor methodsFor: 'actions' stamp: 'hlsf 20/Mar/2024 17:07:38'!
+!DrGSmalltalkSketchEditor methodsFor: 'actions' stamp: 'hlsf 20/Mar/2024, 3:07:38 pm (UTC)'!
 compiledSketch: aSketch
 	self releaseMiniView.
 	drgeoView 
 		removeAllMorphs;
 		addMorph: aSketch view.! !
 
-!DrGSmalltalkSketchEditor methodsFor: 'actions' stamp: 'drgeo 25/Apr/2026 19:16:45'!
+!DrGSmalltalkSketchEditor methodsFor: 'actions' stamp: 'drgeo 25/Apr/2026, 5:16:45 pm (UTC)'!
 copyAIprompt
 	Clipboard storeObject: self promptAI ! !
 
-!DrGSmalltalkSketchEditor methodsFor: 'actions' stamp: 'hlsf 12/Jan/2025 13:08:18'!
+!DrGSmalltalkSketchEditor methodsFor: 'actions' stamp: 'hlsf 12/Jan/2025, 11:08:18 am (UTC)'!
 debugSketch
 " Execute the sketch step by step in a debugger "
 	model ifEmpty: [^ self].
@@ -3588,7 +3589,7 @@ debugSketch
 				self plugDebugger ]]
 		ifFail: []! !
 
-!DrGSmalltalkSketchEditor methodsFor: 'actions' stamp: 'hlsf 9/May/2024 12:21:15'!
+!DrGSmalltalkSketchEditor methodsFor: 'actions' stamp: 'hlsf 9/May/2024, 10:21:15 am (UTC)'!
 executeSketch
 	self stopSketch.
 	codeView scroller acceptContents.
@@ -3622,7 +3623,7 @@ Sketch stopped' translated.
 		name: '[DrGeo] Smalltalk Sketch execution';
 		resume.! !
 
-!DrGSmalltalkSketchEditor methodsFor: 'actions' stamp: 'hlsf 15/Apr/2022 21:31:52'!
+!DrGSmalltalkSketchEditor methodsFor: 'actions' stamp: 'drgeo 28/Jun/2026, 8:02:53 am (UTC)'!
 keepSketch
 | modelName |
 	DrGeoSystem showVirtualKeyboard: true.
@@ -3634,16 +3635,17 @@ keepSketch
 		file < model].
 	(StringEntryPanel openWide: modelName label: 'Name the sketch to keep.' translated)
 		morphCenter: self fullBoundsInOwner center;
+		widgetsColor: self defaultColor ;
 		setProperty: #layerNumber toValue: 20! !
 
-!DrGSmalltalkSketchEditor methodsFor: 'actions' stamp: 'hlsf 22/Feb/2023 11:31:05'!
+!DrGSmalltalkSketchEditor methodsFor: 'actions' stamp: 'hlsf 22/Feb/2023, 9:31:05 am (UTC)'!
 loadSketch: afileEntry
 " we are informed by the browser we want a file "
 	file := afileEntry.
 	self setLabel: self sketchName.
 	self sourceCode: file fileContents! !
 
-!DrGSmalltalkSketchEditor methodsFor: 'actions' stamp: 'Install-DrGeoFrench 7/Dec/2022 16:12:01'!
+!DrGSmalltalkSketchEditor methodsFor: 'actions' stamp: 'Install-DrGeoFrench 7/Dec/2022, 2:12:01 pm (UTC)'!
 pauseSketch
     sketchProcess isTerminated ifTrue: [
         self stopSketch.
@@ -3651,12 +3653,12 @@ pauseSketch
     sketchProcess suspend.
     self switchToResumeButton.! !
 
-!DrGSmalltalkSketchEditor methodsFor: 'actions' stamp: 'hlsf 6/Oct/2022 12:28:58'!
+!DrGSmalltalkSketchEditor methodsFor: 'actions' stamp: 'hlsf 6/Oct/2022, 10:28:58 am (UTC)'!
 resumeSketch
 	sketchProcess resume.
 	self switchToPauseButton! !
 
-!DrGSmalltalkSketchEditor methodsFor: 'actions' stamp: 'hlsf 9/May/2024 11:26:05'!
+!DrGSmalltalkSketchEditor methodsFor: 'actions' stamp: 'hlsf 9/May/2024, 9:26:05 am (UTC)'!
 stopDebbuger
 	debugger ifNotNil: [
 		codeAndViewPanel replaceSubmorph: debugger layoutMorph by: codeView.
@@ -3666,7 +3668,7 @@ stopDebbuger
 		
 		! !
 
-!DrGSmalltalkSketchEditor methodsFor: 'actions' stamp: 'hlsf 8/Jun/2024 16:21:22'!
+!DrGSmalltalkSketchEditor methodsFor: 'actions' stamp: 'hlsf 8/Jun/2024, 2:21:22 pm (UTC)'!
 stopSketch
 	ActiveModel flushEventSystem.
 	DrGeoSketch removeActionsForEvent: #newSmalltalkSketch.
@@ -3677,7 +3679,7 @@ stopSketch
 	self stopDebbuger 
 	! !
 
-!DrGSmalltalkSketchEditor methodsFor: 'actions' stamp: 'hlsf 2/Nov/2022 19:48:07'!
+!DrGSmalltalkSketchEditor methodsFor: 'actions' stamp: 'hlsf 2/Nov/2022, 5:48:07 pm (UTC)'!
 toggleHelp
 "Show/unshow the doc pane"
 	debugger ifNotNil: [^ self]. "No doc while debugging, the pane does not like it"
@@ -3694,57 +3696,57 @@ toggleHelp
 	self changed: #isDocVisible
 ! !
 
-!DrGSmalltalkSketchEditor methodsFor: 'geometry' stamp: 'hlsf 23/Apr/2022 14:19:25'!
+!DrGSmalltalkSketchEditor methodsFor: 'geometry' stamp: 'hlsf 23/Apr/2022, 12:19:25 pm (UTC)'!
 expand
 	super expand.
 	self fullScreen! !
 
-!DrGSmalltalkSketchEditor methodsFor: 'geometry' stamp: 'hlsf 2/Apr/2024 18:58:11'!
+!DrGSmalltalkSketchEditor methodsFor: 'geometry' stamp: 'hlsf 2/Apr/2024, 4:58:11 pm (UTC)'!
 minimumExtent
 	^ Theme current scale: 800@600! !
 
-!DrGSmalltalkSketchEditor methodsFor: 'testing' stamp: 'hlsf 18/May/2023 17:07:27'!
+!DrGSmalltalkSketchEditor methodsFor: 'testing' stamp: 'hlsf 18/May/2023, 3:07:27 pm (UTC)'!
 shouldAutoHighlight
 	^ false! !
 
-!DrGSmalltalkSketchEditor methodsFor: 'testing' stamp: 'hlsf 18/May/2023 17:09:35'!
+!DrGSmalltalkSketchEditor methodsFor: 'testing' stamp: 'hlsf 18/May/2023, 3:09:35 pm (UTC)'!
 shoutMustKeepContentsSize
 	^ true! !
 
-!DrGSmalltalkSketchEditor methodsFor: 'submorphs-add/remove' stamp: 'hlsf 25/May/2023 18:03:51'!
+!DrGSmalltalkSketchEditor methodsFor: 'submorphs-add/remove' stamp: 'hlsf 25/May/2023, 4:03:51 pm (UTC)'!
 delete
 	self stopSketch .
 	super delete.
 	self releaseMiniView ! !
 
-!DrGSmalltalkSketchEditor methodsFor: 'submorphs-add/remove' stamp: 'hlsf 6/Jun/2024 17:34:07'!
+!DrGSmalltalkSketchEditor methodsFor: 'submorphs-add/remove' stamp: 'hlsf 6/Jun/2024, 3:34:07 pm (UTC)'!
 releaseMiniView
 	drgeoView submorphCount = 1 ifTrue: [
 		drgeoView firstSubmorph ifNotNil: [:miniView| 	miniView release]]! !
 
-!DrGSmalltalkSketchEditor methodsFor: 'label' stamp: 'drgeo 25/Apr/2026 19:07:39'!
+!DrGSmalltalkSketchEditor methodsFor: 'label' stamp: 'drgeo 25/Apr/2026, 5:07:39 pm (UTC)'!
 restoreLabel
 	| defaultLabel |
 	defaultLabel := self sketchName ifEmpty: ['Edit Smalltalk Sketch' translated].
 	self label == defaultLabel ifFalse: [self setLabel: defaultLabel]! !
 
-!DrGSmalltalkSketchEditor methodsFor: 'shout' stamp: 'hlsf 8/Sep/2024 19:55:01'!
+!DrGSmalltalkSketchEditor methodsFor: 'shout' stamp: 'hlsf 8/Sep/2024, 5:55:01 pm (UTC)'!
 aboutToStyleWith: aSHTextStylerST80 
 	! !
 
-!DrGSmalltalkSketchEditor methodsFor: 'shout' stamp: 'hlsf 8/Sep/2024 19:54:15'!
+!DrGSmalltalkSketchEditor methodsFor: 'shout' stamp: 'hlsf 8/Sep/2024, 5:54:15 pm (UTC)'!
 allowsStylingFor: aSymbol isTextDirty: aFalse 
 	^ true! !
 
-!DrGSmalltalkSketchEditor methodsFor: 'evaluation' stamp: 'hlsf 12/Jan/2025 13:10:44'!
+!DrGSmalltalkSketchEditor methodsFor: 'evaluation' stamp: 'hlsf 12/Jan/2025, 11:10:44 am (UTC)'!
 doItContext
 	^ nil! !
 
-!DrGSmalltalkSketchEditor methodsFor: 'evaluation' stamp: 'hlsf 12/Jan/2025 13:09:57'!
+!DrGSmalltalkSketchEditor methodsFor: 'evaluation' stamp: 'hlsf 12/Jan/2025, 11:09:57 am (UTC)'!
 doItReceiver
 	^ nil! !
 
-!DrGWizardMacroBuild methodsFor: 'pages' stamp: 'hlsf 27/Dec/2021 10:00:29'!
+!DrGWizardMacroBuild methodsFor: 'pages' stamp: 'hlsf 27/Dec/2021, 8:00:29 am (UTC)'!
 firstPage
 	^ (WizardPage firstPage: 'Build a macro-construction' translated on: self) contents:
 'To build a macro-construction,
@@ -3755,7 +3757,7 @@ firstPage
  4. Last apply the selection.' translated
 		! !
 
-!DrGWizardMacroBuild methodsFor: 'pages' stamp: 'hlsf 10/Aug/2025 11:47:21'!
+!DrGWizardMacroBuild methodsFor: 'pages' stamp: 'hlsf 10/Aug/2025, 9:47:21 am (UTC)'!
 fourthPage
 	| page tMorph descrMorph |
 	tMorph := (TextModelMorph textProvider: model textGetter: #title textSetter: #title:)
@@ -3783,11 +3785,11 @@ fourthPage
 		contents: page;
 		yourself! !
 
-!DrGWizardMacroBuild methodsFor: 'pages' stamp: 'drgeo 20/Apr/2026 21:37:15'!
+!DrGWizardMacroBuild methodsFor: 'pages' stamp: 'drgeo 20/Apr/2026, 7:37:15 pm (UTC)'!
 pageBuilders
 	^ #(firstPage secondPage thirdPage fourthPage) ! !
 
-!DrGWizardMacroBuild methodsFor: 'pages' stamp: 'hlsf 10/Aug/2025 11:36:43'!
+!DrGWizardMacroBuild methodsFor: 'pages' stamp: 'hlsf 10/Aug/2025, 9:36:43 am (UTC)'!
 secondPage
 | list pane |
 	list := PluggableListMorph 
@@ -3804,7 +3806,7 @@ secondPage
 		yourself
 	! !
 
-!DrGWizardMacroBuild methodsFor: 'pages' stamp: 'hlsf 10/Aug/2025 11:36:55'!
+!DrGWizardMacroBuild methodsFor: 'pages' stamp: 'hlsf 10/Aug/2025, 9:36:55 am (UTC)'!
 thirdPage
 | list pane |
 	list := PluggableListMorph 
@@ -3821,24 +3823,24 @@ thirdPage
 		yourself
 	! !
 
-!DrGWizardMacroBuild methodsFor: 'testing' stamp: 'hlsf 4/Nov/2021 19:30:31'!
+!DrGWizardMacroBuild methodsFor: 'testing' stamp: 'hlsf 4/Nov/2021, 5:30:31 pm (UTC)'!
 isInputPage
 	^ currentPageIndex = 2! !
 
-!DrGWizardMacroBuild methodsFor: 'testing' stamp: 'hlsf 4/Nov/2021 19:30:13'!
+!DrGWizardMacroBuild methodsFor: 'testing' stamp: 'hlsf 4/Nov/2021, 5:30:13 pm (UTC)'!
 isOutputPage
 	^ currentPageIndex = 3! !
 
-!DrGWizardMacroBuild methodsFor: 'testing' stamp: 'hlsf 19/Nov/2021 10:44:38'!
+!DrGWizardMacroBuild methodsFor: 'testing' stamp: 'hlsf 19/Nov/2021, 8:44:38 am (UTC)'!
 isReadyToApply
 "Can we apply the macro-construction to the selected geometric items?"
 	^ model isMacroValid ! !
 
-!DrGWizardMacroBuild methodsFor: 'initialization' stamp: 'hlsf 28/Jul/2024 10:26:04'!
+!DrGWizardMacroBuild methodsFor: 'initialization' stamp: 'hlsf 28/Jul/2024, 8:26:04 am (UTC)'!
 defaultColor
 	^ Theme current workspace ! !
 
-!DrGWizardMacroPlay methodsFor: 'pages' stamp: 'drgeo 20/Apr/2026 21:51:37'!
+!DrGWizardMacroPlay methodsFor: 'pages' stamp: 'drgeo 20/Apr/2026, 7:51:37 pm (UTC)'!
 firstPage
 	^ (WizardPage firstPage: 'Execute a macro-construction' translated on: self) contents: 
 'To execute a macro-construction,
@@ -3850,11 +3852,11 @@ firstPage
  automaticly executed.
  To start press the ''next'' button.' translated! !
 
-!DrGWizardMacroPlay methodsFor: 'pages' stamp: 'drgeo 20/Apr/2026 21:50:44'!
+!DrGWizardMacroPlay methodsFor: 'pages' stamp: 'drgeo 20/Apr/2026, 7:50:44 pm (UTC)'!
 pageBuilders
 	^#(firstPage secondPage)! !
 
-!DrGWizardMacroPlay methodsFor: 'pages' stamp: 'drgeo 20/Apr/2026 21:51:30'!
+!DrGWizardMacroPlay methodsFor: 'pages' stamp: 'drgeo 20/Apr/2026, 7:51:30 pm (UTC)'!
 secondPage
 | page list description  |
 	list := PluggableListMorph 
@@ -3872,39 +3874,39 @@ secondPage
 		yourself
 	! !
 
-!DrGWizardMacroPlay methodsFor: 'accessing' stamp: 'hlsf 18/Nov/2021 21:31:41'!
+!DrGWizardMacroPlay methodsFor: 'accessing' stamp: 'hlsf 18/Nov/2021, 7:31:41 pm (UTC)'!
 macroList
 	^ macroFactories titles! !
 
-!DrGWizardMacroPlay methodsFor: 'accessing' stamp: 'hlsf 18/Nov/2021 21:32:00'!
+!DrGWizardMacroPlay methodsFor: 'accessing' stamp: 'hlsf 18/Nov/2021, 7:32:00 pm (UTC)'!
 selectedMacro
 	^ macroFactories indexOf: model selectedMacro! !
 
-!DrGWizardMacroPlay methodsFor: 'accessing' stamp: 'hlsf 18/Nov/2021 21:32:37'!
+!DrGWizardMacroPlay methodsFor: 'accessing' stamp: 'hlsf 18/Nov/2021, 7:32:37 pm (UTC)'!
 selectedMacro: anIndex
 	model selectedMacro: (macroFactories at: anIndex).
 	self changed: #selectedMacro.
 	model changed: #description.! !
 
-!DrGWizardMacroPlay methodsFor: 'testing' stamp: 'hlsf 19/Nov/2021 10:50:20'!
+!DrGWizardMacroPlay methodsFor: 'testing' stamp: 'hlsf 19/Nov/2021, 8:50:20 am (UTC)'!
 isReadyToApply
 "It is not relevant, apply button disabled"
 	^ false! !
 
-!DrGWizardMacroPlay methodsFor: 'testing' stamp: 'hlsf 18/Nov/2021 21:31:31'!
+!DrGWizardMacroPlay methodsFor: 'testing' stamp: 'hlsf 18/Nov/2021, 7:31:31 pm (UTC)'!
 isSelectPage
 	^ currentPageIndex = 2! !
 
-!DrGWizardMacroPlay methodsFor: 'initialization' stamp: 'hlsf 28/Jul/2024 10:26:24'!
+!DrGWizardMacroPlay methodsFor: 'initialization' stamp: 'hlsf 28/Jul/2024, 8:26:24 am (UTC)'!
 defaultColor
 	^ Theme current workspace ! !
 
-!DrGWizardMacroPlay methodsFor: 'initialization' stamp: 'hlsf 27/Dec/2021 11:03:24'!
+!DrGWizardMacroPlay methodsFor: 'initialization' stamp: 'hlsf 27/Dec/2021, 9:03:24 am (UTC)'!
 initialize
 	super initialize.
 	macroFactories := DrGMacroFactory new! !
 
-!DrGWizardScript methodsFor: 'accessing' stamp: 'hlsf 7/Apr/2022 15:17:16'!
+!DrGWizardScript methodsFor: 'accessing' stamp: 'hlsf 7/Apr/2022, 1:17:16 pm (UTC)'!
 argumentsName
 	| labels |
 	^ model scriptClass 
@@ -3914,28 +3916,28 @@ argumentsName
 			model scriptClass argumentsType collect: [ :type | labels at: type ]
 		]! !
 
-!DrGWizardScript methodsFor: 'accessing' stamp: 'hlsf 7/Apr/2022 15:40:01'!
+!DrGWizardScript methodsFor: 'accessing' stamp: 'hlsf 7/Apr/2022, 1:40:01 pm (UTC)'!
 scripts
 	^ scripts 	ifNil: [ 	scripts := DrGWizardScript sortedScripts ]! !
 
-!DrGWizardScript methodsFor: 'accessing' stamp: 'hlsf 6/Apr/2022 16:55:26'!
+!DrGWizardScript methodsFor: 'accessing' stamp: 'hlsf 6/Apr/2022, 2:55:26 pm (UTC)'!
 scriptsName
 	^ self scripts collect: [:class | class scriptName]! !
 
-!DrGWizardScript methodsFor: 'accessing' stamp: 'hlsf 7/Apr/2022 15:18:28'!
+!DrGWizardScript methodsFor: 'accessing' stamp: 'hlsf 7/Apr/2022, 1:18:28 pm (UTC)'!
 selectedScript
 	^ model scriptClass
 		ifNil: [0]
 		ifNotNil: [self scripts indexOf: model scriptClass]! !
 
-!DrGWizardScript methodsFor: 'accessing' stamp: 'hlsf 7/Apr/2022 15:19:44'!
+!DrGWizardScript methodsFor: 'accessing' stamp: 'hlsf 7/Apr/2022, 1:19:44 pm (UTC)'!
 selectedScript: anIndex 
 	model scriptClass: (self scripts at: anIndex ifAbsent: [nil]).
 	self changed: #selectedScript.
 	self changed: #argumentsName.
 	model changed: #description! !
 
-!DrGWizardScript methodsFor: 'pages' stamp: 'hlsf 7/Apr/2022 15:29:09'!
+!DrGWizardScript methodsFor: 'pages' stamp: 'hlsf 7/Apr/2022, 1:29:09 pm (UTC)'!
 firstPage
 	^ (WizardPage firstPage: 'Use a script in the sketch' translated on: self) 	contents: 
 'To use a script,
@@ -3947,11 +3949,11 @@ firstPage
  inserted in the sketch, at the user selected position.
  To start press the ''next'' button.' translated! !
 
-!DrGWizardScript methodsFor: 'pages' stamp: 'drgeo 20/Apr/2026 21:53:51'!
+!DrGWizardScript methodsFor: 'pages' stamp: 'drgeo 20/Apr/2026, 7:53:51 pm (UTC)'!
 pageBuilders
 	^ #(firstPage secondPage) ! !
 
-!DrGWizardScript methodsFor: 'pages' stamp: 'hlsf 10/Aug/2025 11:47:41'!
+!DrGWizardScript methodsFor: 'pages' stamp: 'hlsf 10/Aug/2025, 9:47:41 am (UTC)'!
 secondPage
 	| list argumentList page textMorph |
 	list := (PluggableListMorph 
@@ -3975,46 +3977,46 @@ secondPage
 	^ (WizardPage applyPage: 'Select a script then items in the sketch' translated on: self)
 		 contents: page! !
 
-!DrGWizardScript methodsFor: 'open/close' stamp: 'hlsf 7/Apr/2022 12:34:54'!
+!DrGWizardScript methodsFor: 'open/close' stamp: 'hlsf 7/Apr/2022, 10:34:54 am (UTC)'!
 delete
 	super delete.
 	model := nil! !
 
-!DrGWizardScript methodsFor: 'navigation' stamp: 'hlsf 7/Apr/2022 15:54:58'!
+!DrGWizardScript methodsFor: 'navigation' stamp: 'hlsf 7/Apr/2022, 1:54:58 pm (UTC)'!
 goPage: integer
 	super goPage: integer.
 	self changed: #scriptsName! !
 
-!DrGWizardScript methodsFor: 'GUI building' stamp: 'hlsf 28/Jul/2024 10:26:47'!
+!DrGWizardScript methodsFor: 'GUI building' stamp: 'hlsf 28/Jul/2024, 8:26:47 am (UTC)'!
 defaultColor
 	^ Theme current workspace ! !
 
-!DrGWizardScript class methodsFor: 'as yet unclassified' stamp: 'hlsf 7/Apr/2022 15:39:42'!
+!DrGWizardScript class methodsFor: 'as yet unclassified' stamp: 'hlsf 7/Apr/2022, 1:39:42 pm (UTC)'!
 sortedScripts
 " Return a list of the user script sorted by their scriptName "
 	^ DrGeoUserScript subclasses 
 		sorted: [:script1 :script2 | script1 scriptName asLowercase < script2 scriptName asLowercase]! !
 
-!DrGeoTreeNode methodsFor: 'as yet unclassified' stamp: 'hlsf 10/Feb/2022 17:06:51'!
+!DrGeoTreeNode methodsFor: 'as yet unclassified' stamp: 'hlsf 10/Feb/2022, 3:06:51 pm (UTC)'!
 contents
 	^ item parents 
 		ifNotNil: [:array | array collect: [:each | DrGeoTreeNode with: each] ]
 		ifNil: [`#()`]! !
 
-!DrGeoTreeNode methodsFor: 'as yet unclassified' stamp: 'hlsf 10/Feb/2022 17:12:39'!
+!DrGeoTreeNode methodsFor: 'as yet unclassified' stamp: 'hlsf 10/Feb/2022, 3:12:39 pm (UTC)'!
 hasContents
 	^ hasContents! !
 
-!DrGeoTreeNode methodsFor: 'as yet unclassified' stamp: 'hlsf 10/Feb/2022 17:10:52'!
+!DrGeoTreeNode methodsFor: 'as yet unclassified' stamp: 'hlsf 10/Feb/2022, 3:10:52 pm (UTC)'!
 hasContents: boolean
 	hasContents := boolean ! !
 
-!DrGeoTreeNode methodsFor: 'initialization' stamp: 'hlsf 10/Feb/2022 17:09:34'!
+!DrGeoTreeNode methodsFor: 'initialization' stamp: 'hlsf 10/Feb/2022, 3:09:34 pm (UTC)'!
 initialize
 	super initialize.
 	hasContents := false.! !
 
-!MorphicEruditeDocRenderer methodsFor: '*DrGeo' stamp: 'MM 27/Oct/2022 11:00:56'!
+!MorphicEruditeDocRenderer methodsFor: '*DrGeo' stamp: 'MM 27/Oct/2022, 9:00:56 am (UTC)'!
 createButton: aForm action: aBlock balloonText: balloonText
 
 	| button |
@@ -4028,12 +4030,12 @@ createButton: aForm action: aBlock balloonText: balloonText
 
 	! !
 
-!MorphicEruditeDocRenderer methodsFor: '*DrGeo' stamp: 'hlsf 27/Oct/2022 23:43:29'!
+!MorphicEruditeDocRenderer methodsFor: '*DrGeo' stamp: 'hlsf 27/Oct/2022, 9:43:29 pm (UTC)'!
 renderCodeCopyToDrGeo: aDocCode
 	self deprecatedMethod.
 	self renderCodeWithDrGeoActions: aDocCode ! !
 
-!MorphicEruditeDocRenderer methodsFor: '*DrGeo' stamp: 'hlsf 14/Dec/2022 15:39:08'!
+!MorphicEruditeDocRenderer methodsFor: '*DrGeo' stamp: 'hlsf 14/Dec/2022, 1:39:08 pm (UTC)'!
 renderCodeWithDrGeoActions: aDocCode
 
 	|text button textModel |
@@ -4061,12 +4063,12 @@ renderCodeWithDrGeoActions: aDocCode
 	stream nextPut: (Text streamContents: [:s | button printOn: s]).
 	"! !
 
-!MorphicEruditeDocRenderer methodsFor: '*DrGeo' stamp: 'hlsf 14/Dec/2022 15:38:23'!
+!MorphicEruditeDocRenderer methodsFor: '*DrGeo' stamp: 'hlsf 14/Dec/2022, 1:38:23 pm (UTC)'!
 someDrGeoAction: aDocCode
 
 	^ self shouldBeImplemented ! !
 
-!Debugger methodsFor: '*DrGeo' stamp: 'hlsf 19/Oct/2022 21:20:23'!
+!Debugger methodsFor: '*DrGeo' stamp: 'hlsf 19/Oct/2022, 7:20:23 pm (UTC)'!
 openMinimalMorphic
 	"Open a panel debugger"
 
@@ -4078,7 +4080,7 @@ openMinimalMorphic
 	self toggleContextStackIndex: oldContextStackIndex.
 	^ window! !
 
-!Debugger methodsFor: '*DrGeo' stamp: 'hlsf 1/May/2024 11:09:22'!
+!Debugger methodsFor: '*DrGeo' stamp: 'hlsf 1/May/2024, 9:09:22 am (UTC)'!
 openMinimalMorphicIn: aDialog
 	"Open a panel debugger on process"
 
@@ -4109,7 +4111,7 @@ openMinimalMorphicIn: aDialog
 		safeBlockAlreadyRan := true.
 		interruptedProcess suspend ]! !
 
-!Debugger class methodsFor: '*DrGeo' stamp: 'hlsf 23/Apr/2024 22:47:43'!
+!Debugger class methodsFor: '*DrGeo' stamp: 'hlsf 23/Apr/2024, 8:47:43 pm (UTC)'!
 openMinimalDebugging: aBlock to: aCompiledMethod 
 	"Create a new process to debug aBlock, and step into it."
 
@@ -4120,7 +4122,7 @@ openMinimalDebugging: aBlock to: aCompiledMethod
 		whileFalse: [debugger send].
 	^ window ! !
 
-!Debugger class methodsFor: '*DrGeo' stamp: 'hlsf 28/Apr/2024 15:54:22'!
+!Debugger class methodsFor: '*DrGeo' stamp: 'hlsf 28/Apr/2024, 1:54:22 pm (UTC)'!
 openMinimalIn: aDialog debuggingProcess: process context: context
 "Open a Minimal Debugger on an existing process."
 	| debugger |
@@ -4131,7 +4133,7 @@ openMinimalIn: aDialog debuggingProcess: process context: context
 	^ debugger openMinimalMorphicIn: aDialog.
 	! !
 
-!PreferenceBrowserVisitor methodsFor: '*DrGeo-visitors type' stamp: 'hlsf 20/May/2024 15:28:52'!
+!PreferenceBrowserVisitor methodsFor: '*DrGeo-visitors type' stamp: 'hlsf 20/May/2024, 1:28:52 pm (UTC)'!
 visitDrGTypeArrowPreference: aPref
 	| listMorph |
 	listMorph  := (DropDownButtonMorph 
@@ -4143,7 +4145,7 @@ visitDrGTypeArrowPreference: aPref
 		setBalloonText: aPref description.
 	views at: aPref nameDetailed put: listMorph! !
 
-!PreferenceBrowserVisitor methodsFor: '*DrGeo-visitors type' stamp: 'hlsf 20/May/2024 15:29:03'!
+!PreferenceBrowserVisitor methodsFor: '*DrGeo-visitors type' stamp: 'hlsf 20/May/2024, 1:29:03 pm (UTC)'!
 visitDrGTypeColorPreference: aPref
 	| listMorph |
 	listMorph  := (DropDownButtonMorph 
@@ -4155,7 +4157,7 @@ visitDrGTypeColorPreference: aPref
 		setBalloonText: aPref description.
 	views at: aPref nameDetailed put: listMorph! !
 
-!PreferenceBrowserVisitor methodsFor: '*DrGeo-visitors type' stamp: 'hlsf 20/May/2024 15:29:14'!
+!PreferenceBrowserVisitor methodsFor: '*DrGeo-visitors type' stamp: 'hlsf 20/May/2024, 1:29:14 pm (UTC)'!
 visitDrGTypeMarkPreference: aPref
 	| listMorph |
 	listMorph  := (DropDownButtonMorph 
@@ -4167,7 +4169,7 @@ visitDrGTypeMarkPreference: aPref
 		setBalloonText: aPref description.
 	views at: aPref nameDetailed put: listMorph! !
 
-!PreferenceBrowserVisitor methodsFor: '*DrGeo-visitors type' stamp: 'hlsf 20/May/2024 15:29:26'!
+!PreferenceBrowserVisitor methodsFor: '*DrGeo-visitors type' stamp: 'hlsf 20/May/2024, 1:29:26 pm (UTC)'!
 visitDrGTypePointShapePreference: aPref
 	| listMorph |
 	listMorph  := (DropDownButtonMorph 
@@ -4179,7 +4181,7 @@ visitDrGTypePointShapePreference: aPref
 		setBalloonText: aPref description.
 	views at: aPref nameDetailed put: listMorph! !
 
-!PreferenceBrowserVisitor methodsFor: '*DrGeo-visitors type' stamp: 'hlsf 20/May/2024 15:29:31'!
+!PreferenceBrowserVisitor methodsFor: '*DrGeo-visitors type' stamp: 'hlsf 20/May/2024, 1:29:31 pm (UTC)'!
 visitDrGTypePointSizePreference: aPref
 	| listMorph |
 	listMorph  := (DropDownButtonMorph 
@@ -4191,7 +4193,7 @@ visitDrGTypePointSizePreference: aPref
 		setBalloonText: aPref description.
 	views at: aPref nameDetailed put: listMorph! !
 
-!PreferenceBrowserVisitor methodsFor: '*DrGeo-visitors type' stamp: 'hlsf 20/May/2024 15:29:34'!
+!PreferenceBrowserVisitor methodsFor: '*DrGeo-visitors type' stamp: 'hlsf 20/May/2024, 1:29:34 pm (UTC)'!
 visitDrGTypeStylePreference: aPref
 	| listMorph |
 	listMorph  := (DropDownButtonMorph 
@@ -4203,7 +4205,7 @@ visitDrGTypeStylePreference: aPref
 		setBalloonText: aPref description.
 	views at: aPref nameDetailed put: listMorph! !
 
-!PreferenceBrowserVisitor methodsFor: '*DrGeo-visitors type' stamp: 'hlsf 20/May/2024 15:29:51'!
+!PreferenceBrowserVisitor methodsFor: '*DrGeo-visitors type' stamp: 'hlsf 20/May/2024, 1:29:51 pm (UTC)'!
 visitDrGTypeThicknessPreference: aPref
 	| listMorph |
 	listMorph  := (DropDownButtonMorph 
