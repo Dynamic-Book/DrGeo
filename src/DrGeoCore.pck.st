@@ -1,10 +1,10 @@
-'From Cuis7.9 [latest update: #8045] on 4 July 2026 at 4:22:09 pm'!
+'From Cuis7.9 [latest update: #8171] on 13 September 2026 at 5:40:52 pm'!
 'Description '!
-!provides: 'DrGeoCore' 1 72!
+!provides: 'DrGeoCore' 1 73!
 !requires: 'UI-Preference' 1 28 nil!
 !requires: 'UI-Panel' 1 140 nil!
-!requires: 'YAXO' 1 28 nil!
 !requires: 'Graphics-Files-Additional' 1 30 nil!
+!requires: 'YAXO' 1 28 nil!
 SystemOrganization addCategory: #'DrGeoCore-Model'!
 SystemOrganization addCategory: #'DrGeoCore-Model-Smalltalk'!
 SystemOrganization addCategory: #'DrGeoCore-Model-Item'!
@@ -28309,13 +28309,13 @@ labelForAxes: number
 			ifTrue: [number printString allButFirst allButLast]
 			ifFalse: [ number printString]! !
 
-!DrGDrawable methodsFor: 'dropping/grabbing' stamp: 'hlsf 8/Jun/2021, 5:33:45 pm (UTC)'!
+!DrGDrawable methodsFor: 'dropping/grabbing' stamp: 'hlsf 13/Sep/2026, 3:40:32 pm (UTC)'!
 acceptDroppingMorph: dropped event: evt
 "Here we encapsulated the image morph (dropped) in a DrGBitmapItem.
 We do not really need a builder to do so but we have to process it in the command stack"
 	| item |
 	item := (DrGBitmapItem newWith: {self morphToWorld: evt eventPosition})
-		data: (self resizeImage: dropped form);
+		data: (self resizeImage: dropped image);
 		insertAtScale: self scale.
 	self domain createFromMathItem: item.! !
 
