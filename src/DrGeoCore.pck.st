@@ -1,10 +1,10 @@
-'From Cuis7.9 [latest update: #8171] on 13 September 2026 at 5:40:52 pm'!
+'From Cuis7.9 [latest update: #8279] on 25 October 2026 at 11:39:19 am'!
 'Description '!
-!provides: 'DrGeoCore' '1.73.0'!
+!provides: 'DrGeoCore' '1.74.0'!
 !requires: 'UI-Preference' '1.28.0' '1.*.*'!
 !requires: 'UI-Panel' '1.140.0' '1.*.*'!
-!requires: 'Graphics-Files-Additional' '1.30.0' '1.*.*'!
 !requires: 'YAXO' '1.28.0' '1.*.*'!
+!requires: 'Graphics-Files-Additional' '1.30.0' '1.*.*'!
 SystemOrganization addCategory: #'DrGeoCore-Model'!
 SystemOrganization addCategory: #'DrGeoCore-Model-Smalltalk'!
 SystemOrganization addCategory: #'DrGeoCore-Model-Item'!
@@ -7419,12 +7419,12 @@ toolsMenu: builder
 		icon:	 #saveIcon;
 		help: 'Save this Dr. Geo session.' translated! !
 
-!DrGeo class methodsFor: 'menu' stamp: 'drgeo 28/Jun/2026, 9:13:51 am (UTC)'!
+!DrGeo class methodsFor: 'menu' stamp: 'hlsf 25/Oct/2026, 10:38:56 am (UTC)'!
 version
 	^ 'Installed version: ' translated, 
 		'26.07a beta (code revision ', 
 		(String streamContents: [:str | 
-			(CodePackage installedPackages at: 'DrGeo') featureSpec provides printVersionRevisionOn: str]), ')'! !
+			(CodePackage installedPackages at: 'DrGeo') featureSpec provides printDetailsOn: str]), ')'! !
 
 !DrGeo class methodsFor: 'menu' stamp: 'drgeo 30/Apr/2026, 8:34:08 am (UTC)'!
 worldMenu: builder
