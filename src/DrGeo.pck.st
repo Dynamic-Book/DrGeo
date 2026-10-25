@@ -1,16 +1,16 @@
 'From Cuis7.9 [latest update: #8031] on 28 June 2026 at 10:33:04 am'!
 'Description '!
-!provides: 'DrGeo' 1 801!
-!requires: 'Gettext' 1 17 nil!
-!requires: 'SVG' 1 16 nil!
-!requires: 'YAXO' 1 19 nil!
-!requires: 'DrGeoCore' 1 39 nil!
-!requires: 'UI-Widgets' 1 0 nil!
-!requires: 'Erudite' 1 224 nil!
-!requires: 'UI-Preference' 1 15 nil!
-!requires: 'UI-Panel' 1 17 nil!
-!requires: 'Commander' 1 4 nil!
-!requires: 'Graphics-Files-Additional' 1 24 nil!
+!provides: 'DrGeo' '1.801.0'!
+!requires: 'Gettext' '1.17.0' '1.*.*'!
+!requires: 'SVG' '1.16.0' '1.*.*'!
+!requires: 'YAXO' '1.19.0' '1.*.*'!
+!requires: 'DrGeoCore' '1.39.0' '1.*.*'!
+!requires: 'UI-Widgets' '1.0.0' '1.*.*'!
+!requires: 'Erudite' '1.0.224' '1.*.*'!
+!requires: 'UI-Preference' '1.15.0' '1.*.*'!
+!requires: 'UI-Panel' '1.17.0' '1.*.*'!
+!requires: 'Commander' '1.4.0' '1.*.*'!
+!requires: 'Graphics-Files-Additional' '1.24.0' '1.*.*'!
 SystemOrganization addCategory: #'DrGeo-Model'!
 SystemOrganization addCategory: #'DrGeo-Model-Macro'!
 SystemOrganization addCategory: #'DrGeo-Model-Script'!

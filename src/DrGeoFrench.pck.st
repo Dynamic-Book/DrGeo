@@ -1,8 +1,8 @@
 'From Cuis7.9 [latest update: #8031] on 28 June 2026 at 11:13:17 am'!
 'Description '!
-!provides: 'DrGeoFrench' 1 23!
-!requires: 'DrGeoCore' 1 33 nil!
-!requires: 'CuisFrench' 1 0 nil!
+!provides: 'DrGeoFrench' '1.23.0'!
+!requires: 'DrGeoCore' '1.33.0' '1.*.*'!
+!requires: 'CuisFrench' '1.0.0' '1.*.*'!
 SystemOrganization addCategory: #DrGeoFrench!
 
 

@@ -1,7 +1,7 @@
 'From Cuis 6.0 [latest update: #5448] on 16 August 2022 at 12:00:54 pm'!
 'Description '!
-!provides: 'DrGeoTablet' 1 1!
-!requires: 'DrGeo' 1 430 nil!
+!provides: 'DrGeoTablet' '1.1.0'!
+!requires: 'DrGeo' '1.430.0' '1.*.*'!
 SystemOrganization addCategory: 'DrGeoTablet'!
 
 

@@ -1,6 +1,6 @@
 'From Cuis 6.0 [latest update: #6068] on 11 November 2023 at 3:41:26 am'!
 'Description '!
-!provides: 'DrGeoSpanish' 1 6!
+!provides: 'DrGeoSpanish' '1.6.0'!
 SystemOrganization addCategory: #DrGeoSpanish!
 
 

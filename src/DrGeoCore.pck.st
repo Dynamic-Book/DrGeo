@@ -1,10 +1,10 @@
 'From Cuis7.9 [latest update: #8171] on 13 September 2026 at 5:40:52 pm'!
 'Description '!
-!provides: 'DrGeoCore' 1 73!
-!requires: 'UI-Preference' 1 28 nil!
-!requires: 'UI-Panel' 1 140 nil!
-!requires: 'Graphics-Files-Additional' 1 30 nil!
-!requires: 'YAXO' 1 28 nil!
+!provides: 'DrGeoCore' '1.73.0'!
+!requires: 'UI-Preference' '1.28.0' '1.*.*'!
+!requires: 'UI-Panel' '1.140.0' '1.*.*'!
+!requires: 'Graphics-Files-Additional' '1.30.0' '1.*.*'!
+!requires: 'YAXO' '1.28.0' '1.*.*'!
 SystemOrganization addCategory: #'DrGeoCore-Model'!
 SystemOrganization addCategory: #'DrGeoCore-Model-Smalltalk'!
 SystemOrganization addCategory: #'DrGeoCore-Model-Item'!
